@@ -57,3 +57,13 @@ Then make sure the following GameObjects scripts are execute AFTER the DefaultTi
 
 I'm working on automating this because it's an important step that will cause the application to crash if not done.
 
+Demo
+====
+
+If you want to test without compiling or see how to use the GameObject download the follow Unity Project.
+http://www.svenberra.net/NewtonDemo.zip
+
+
+
+
+
