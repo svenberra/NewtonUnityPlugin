@@ -43,7 +43,7 @@ folder as the NewtonWrapper.dll
 * dJointLibrary.dll
 * newton.dll
 
-Note though! NewtonPlugin requires the newton.dll, but the NewtonWrapper might be able to be statically linked(haven't tried yet).
+**Note though!** NewtonPlugin requires the newton.dll, but the NewtonWrapper might be able to be statically linked(haven't tried yet).
 
 The plugin is compiled as a 64-bit library by default so remember to compile Newton as 64-bit as well.
 
