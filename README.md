@@ -9,10 +9,15 @@ It should work on any other OS too, but the project is only a few days old so on
 
 Just open the solution file (NewtonUnityPlugin.sln) and build. (Visual Studio 2015)
 
+# NewtonWrapper
 You need to download and build the Newton Dynamics Library first.
 https://github.com/MADEAPPS/newton-dynamics/
 
 Adjust the include directories and linker paths in the NewtonWrapper project to match the location where you installed Newton.
+
+# NewtonPlugin
+NewtonPlugin requires a reference to the assembly UnityEngine.dll which you will find where Unity 3D is installed.
+<Unity Installdir>\Editor\Data\Managed\UnityEngine.dll
 
 Using NewtonUnityPlugin
 =======================
