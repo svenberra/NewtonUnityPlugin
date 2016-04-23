@@ -8,6 +8,7 @@ Windows only for now.
 It should work on any other OS too, but the project is only a few days old so only Windows for now. 
 
 Just open the solution file (NewtonUnityPlugin.sln) and build. (Visual Studio 2015)
+
 For now, choose Release and x64
 
 # NewtonWrapper
