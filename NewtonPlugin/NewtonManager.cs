@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using UnityEditor;
+using UnityEngine;
 using System;
 using System.Runtime.InteropServices;
 
