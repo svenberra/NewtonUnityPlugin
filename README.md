@@ -60,7 +60,7 @@ I'm working on automating this because it's an important step that will cause th
 Demo
 ====
 
-If you want to test without compiling or see how to use the GameObject download the follow Unity Project.
+If you want to test without compiling or see how to use the GameObjects, download the following Unity Project.
 http://www.svenberra.net/NewtonDemo.zip
 
 
