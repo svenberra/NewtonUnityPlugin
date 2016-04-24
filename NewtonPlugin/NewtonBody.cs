@@ -66,7 +66,8 @@ namespace NewtonPlugin
             IntPtr pWorld = NewtonWorld.Instance.pWorld;
             IntPtr pColl = IntPtr.Zero;
 
-            NewtonCollider[] colliders = GetComponentsInChildren<NewtonCollider>();
+            //NewtonCollider[] colliders = GetComponentsInChildren<NewtonCollider>();
+            NewtonCollider[] colliders = GetAllColliders();
 
             if (colliders.Length == 0) // No collider found, create null collision
             {
@@ -125,7 +126,7 @@ namespace NewtonPlugin
 
             NewtonAPI.NewtonDestroyCollision(pColl); // Release the reference
 
-            Debug.Log("Created body(" + pBody.ToString() + ")");
+            //Debug.Log("Created body(" + pBody.ToString() + ")");
 
 
         }
@@ -164,7 +165,7 @@ namespace NewtonPlugin
             // No need to destroy the body if the application is shutting down, Newton will have destroyed all remaining bodies.
             if (world!=null)
             {
-                Debug.Log("Destroyed body(" + pBody.ToString() + ")");
+                //Debug.Log("Destroyed body(" + pBody.ToString() + ")");
                 NewtonAPI.NewtonDestroyBody(pBody);
             }
             //else
@@ -203,17 +204,29 @@ namespace NewtonPlugin
             //body.transform.rotation = q;
         }
 
-        //void TraverseColliders(GameObject obj)
-        //{
-        //    Debug.Log(obj.name);
-        //    foreach (Transform child in obj.transform)
-        //    {
-        //        TraverseColliders(child.gameObject);
-        //    }
+        private NewtonCollider[] GetAllColliders()
+        {
+            List<NewtonPlugin.NewtonCollider> colliders = new List<NewtonPlugin.NewtonCollider>();
 
+            TraverseColliders(this.gameObject, colliders);
 
-        //}
+            return colliders.ToArray();
+        }
 
+        private void TraverseColliders(GameObject obj, List<NewtonPlugin.NewtonCollider> colliders)
+        {
+            // Don't fetch colliders from children with NewtonBodies
+            if (obj != this.gameObject && obj.GetComponent<NewtonPlugin.NewtonBody>() != null)
+                return;
+
+            //Fetch all colliders
+            foreach (NewtonPlugin.NewtonCollider coll in obj.GetComponents<NewtonPlugin.NewtonCollider>())
+                colliders.Add(coll);
+
+            foreach (Transform child in obj.transform)
+                TraverseColliders(child.gameObject, colliders);
+
+        }
 
     }
 
