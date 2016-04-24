@@ -300,6 +300,12 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_cpp(SWIG_CSharpStringHelp
 	#include "stdafx.h"
 	#include "Newton.h"
 
+	#include "dMathDefines.h"
+	#include "dVector.h"
+	#include "dMatrix.h"
+	#include "dQuaternion.h"
+	#include "dLinearAlgebra.h"
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -9636,6 +9642,2714 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonMeshSetFaceMaterial(void * jarg1, void 
   NewtonMeshSetFaceMaterial((NewtonMesh const *)arg1,(void const *)arg2,arg3);
 }
 
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dVector__SWIG_0() {
+  void * jresult ;
+  dVector *result = 0 ;
+  
+  result = (dVector *)new dVector();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dVector__SWIG_1(float jarg1) {
+  void * jresult ;
+  float arg1 ;
+  dVector *result = 0 ;
+  
+  arg1 = (float)jarg1; 
+  result = (dVector *)new dVector(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dVector__SWIG_2(void * jarg1) {
+  void * jresult ;
+  TemplateVector< float > *arg1 = 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (TemplateVector< float > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "TemplateVector< float > const & type is null", 0);
+    return 0;
+  } 
+  result = (dVector *)new dVector((TemplateVector< float > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dVector__SWIG_3(void * jarg1) {
+  void * jresult ;
+  float *arg1 = (float *) (float *)0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (float *)jarg1; 
+  result = (dVector *)new dVector((float const *)arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dVector__SWIG_4(float jarg1, float jarg2, float jarg3, float jarg4) {
+  void * jresult ;
+  float arg1 ;
+  float arg2 ;
+  float arg3 ;
+  float arg4 ;
+  dVector *result = 0 ;
+  
+  arg1 = (float)jarg1; 
+  arg2 = (float)jarg2; 
+  arg3 = (float)jarg3; 
+  arg4 = (float)jarg4; 
+  result = (dVector *)new dVector(arg1,arg2,arg3,arg4);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dVector__SWIG_5(float jarg1, float jarg2, float jarg3) {
+  void * jresult ;
+  float arg1 ;
+  float arg2 ;
+  float arg3 ;
+  dVector *result = 0 ;
+  
+  arg1 = (float)jarg1; 
+  arg2 = (float)jarg2; 
+  arg3 = (float)jarg3; 
+  result = (dVector *)new dVector(arg1,arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dVector(void * jarg1) {
+  dVector *arg1 = (dVector *) 0 ;
+  
+  arg1 = (dVector *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dBigVector__SWIG_0() {
+  void * jresult ;
+  dBigVector *result = 0 ;
+  
+  result = (dBigVector *)new dBigVector();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dBigVector__SWIG_1(double jarg1) {
+  void * jresult ;
+  double arg1 ;
+  dBigVector *result = 0 ;
+  
+  arg1 = (double)jarg1; 
+  result = (dBigVector *)new dBigVector(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dBigVector__SWIG_2(void * jarg1) {
+  void * jresult ;
+  double *arg1 = (double *) (double *)0 ;
+  dBigVector *result = 0 ;
+  
+  arg1 = (double *)jarg1; 
+  result = (dBigVector *)new dBigVector((double const *)arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dBigVector__SWIG_3(void * jarg1) {
+  void * jresult ;
+  TemplateVector< double > *arg1 = 0 ;
+  dBigVector *result = 0 ;
+  
+  arg1 = (TemplateVector< double > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "TemplateVector< double > const & type is null", 0);
+    return 0;
+  } 
+  result = (dBigVector *)new dBigVector((TemplateVector< double > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dBigVector__SWIG_4(void * jarg1) {
+  void * jresult ;
+  dVector *arg1 = 0 ;
+  dBigVector *result = 0 ;
+  
+  arg1 = (dVector *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = (dBigVector *)new dBigVector((dVector const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dBigVector__SWIG_5(double jarg1, double jarg2, double jarg3, double jarg4) {
+  void * jresult ;
+  double arg1 ;
+  double arg2 ;
+  double arg3 ;
+  double arg4 ;
+  dBigVector *result = 0 ;
+  
+  arg1 = (double)jarg1; 
+  arg2 = (double)jarg2; 
+  arg3 = (double)jarg3; 
+  arg4 = (double)jarg4; 
+  result = (dBigVector *)new dBigVector(arg1,arg2,arg3,arg4);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dBigVector__SWIG_6(double jarg1, double jarg2, double jarg3) {
+  void * jresult ;
+  double arg1 ;
+  double arg2 ;
+  double arg3 ;
+  dBigVector *result = 0 ;
+  
+  arg1 = (double)jarg1; 
+  arg2 = (double)jarg2; 
+  arg3 = (double)jarg3; 
+  result = (dBigVector *)new dBigVector(arg1,arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dBigVector(void * jarg1) {
+  dBigVector *arg1 = (dBigVector *) 0 ;
+  
+  arg1 = (dBigVector *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dGetZeroMatrix() {
+  void * jresult ;
+  dMatrix result;
+  
+  result = dGetZeroMatrix();
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dGetIdentityMatrix() {
+  void * jresult ;
+  dMatrix result;
+  
+  result = dGetIdentityMatrix();
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dMatrix__SWIG_0() {
+  void * jresult ;
+  dMatrix *result = 0 ;
+  
+  result = (dMatrix *)new dMatrix();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dMatrix__SWIG_1(void * jarg1) {
+  void * jresult ;
+  float *arg1 = (float *) (float *)0 ;
+  dMatrix *result = 0 ;
+  
+  arg1 = (float *)jarg1; 
+  result = (dMatrix *)new dMatrix((float const *)arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dMatrix__SWIG_2(void * jarg1) {
+  void * jresult ;
+  double *arg1 = (double *) (double *)0 ;
+  dMatrix *result = 0 ;
+  
+  arg1 = (double *)jarg1; 
+  result = (dMatrix *)new dMatrix((double const *)arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dMatrix__SWIG_3(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  void * jresult ;
+  dVector *arg1 = 0 ;
+  dVector *arg2 = 0 ;
+  dVector *arg3 = 0 ;
+  dVector *arg4 = 0 ;
+  dMatrix *result = 0 ;
+  
+  arg1 = (dVector *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  arg3 = (dVector *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  arg4 = (dVector *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = (dMatrix *)new dMatrix((dVector const &)*arg1,(dVector const &)*arg2,(dVector const &)*arg3,(dVector const &)*arg4);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dMatrix__SWIG_4(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dQuaternion *arg1 = 0 ;
+  dVector *arg2 = 0 ;
+  dMatrix *result = 0 ;
+  
+  arg1 = (dQuaternion *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dQuaternion const & type is null", 0);
+    return 0;
+  } 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = (dMatrix *)new dMatrix((dQuaternion const &)*arg1,(dVector const &)*arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dMatrix__SWIG_5(float jarg1, float jarg2, float jarg3, void * jarg4) {
+  void * jresult ;
+  float arg1 ;
+  float arg2 ;
+  float arg3 ;
+  dVector *arg4 = 0 ;
+  dMatrix *result = 0 ;
+  
+  arg1 = (float)jarg1; 
+  arg2 = (float)jarg2; 
+  arg3 = (float)jarg3; 
+  arg4 = (dVector *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = (dMatrix *)new dMatrix(arg1,arg2,arg3,(dVector const &)*arg4);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix___dMatrix_GetElement__(void * jarg1, int jarg2) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  int arg2 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (dVector *) &(arg1)->operator [](arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix___dMatrix_Const_GetElement__(void * jarg1, int jarg2) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  int arg2 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (dVector *) &((dMatrix const *)arg1)->operator [](arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_Inverse(void * jarg1) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dMatrix result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  result = ((dMatrix const *)arg1)->Inverse();
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_Transpose(void * jarg1) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dMatrix result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  result = ((dMatrix const *)arg1)->Transpose();
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_Transpose4X4(void * jarg1) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dMatrix result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  result = ((dMatrix const *)arg1)->Transpose4X4();
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_RotateVector(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = ((dMatrix const *)arg1)->RotateVector((dVector const &)*arg2);
+  jresult = new dVector((const dVector &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_UnrotateVector(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = ((dMatrix const *)arg1)->UnrotateVector((dVector const &)*arg2);
+  jresult = new dVector((const dVector &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_TransformVector(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = ((dMatrix const *)arg1)->TransformVector((dVector const &)*arg2);
+  jresult = new dVector((const dVector &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_UntransformVector(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = ((dMatrix const *)arg1)->UntransformVector((dVector const &)*arg2);
+  jresult = new dVector((const dVector &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_TransformPlane(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = ((dMatrix const *)arg1)->TransformPlane((dVector const &)*arg2);
+  jresult = new dVector((const dVector &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_UntransformPlane(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = ((dMatrix const *)arg1)->UntransformPlane((dVector const &)*arg2);
+  jresult = new dVector((const dVector &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dMatrix_GetEulerAngles__SWIG_0(void * jarg1, void * jarg2, void * jarg3, int jarg4) {
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector *arg3 = 0 ;
+  dEulerAngleOrder arg4 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector & type is null", 0);
+    return ;
+  } 
+  arg3 = (dVector *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector & type is null", 0);
+    return ;
+  } 
+  arg4 = (dEulerAngleOrder)jarg4; 
+  ((dMatrix const *)arg1)->GetEulerAngles(*arg2,*arg3,arg4);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dMatrix_GetEulerAngles__SWIG_1(void * jarg1, void * jarg2, void * jarg3) {
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector *arg3 = 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector & type is null", 0);
+    return ;
+  } 
+  arg3 = (dVector *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector & type is null", 0);
+    return ;
+  } 
+  ((dMatrix const *)arg1)->GetEulerAngles(*arg2,*arg3);
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_dMatrix_TestIdentity(void * jarg1) {
+  unsigned int jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  bool result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  result = (bool)((dMatrix const *)arg1)->TestIdentity();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_dMatrix_TestOrthogonal(void * jarg1) {
+  unsigned int jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  bool result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  result = (bool)((dMatrix const *)arg1)->TestOrthogonal();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_Inverse4x4(void * jarg1) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dMatrix result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  result = ((dMatrix const *)arg1)->Inverse4x4();
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_RotateVector4x4(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = ((dMatrix const *)arg1)->RotateVector4x4((dVector const &)*arg2);
+  jresult = new dVector((const dVector &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_JacobiDiagonalization__SWIG_0(void * jarg1, void * jarg2, void * jarg3) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = 0 ;
+  dMatrix *arg3 = 0 ;
+  dMatrix result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector & type is null", 0);
+    return 0;
+  } 
+  arg3 = (dMatrix *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dMatrix const & type is null", 0);
+    return 0;
+  } 
+  result = ((dMatrix const *)arg1)->JacobiDiagonalization(*arg2,(dMatrix const &)*arg3);
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_JacobiDiagonalization__SWIG_1(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = 0 ;
+  dMatrix result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector & type is null", 0);
+    return 0;
+  } 
+  result = ((dMatrix const *)arg1)->JacobiDiagonalization(*arg2);
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dMatrix_PolarDecomposition__SWIG_0(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5) {
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dMatrix *arg2 = 0 ;
+  dVector *arg3 = 0 ;
+  dMatrix *arg4 = 0 ;
+  dMatrix *arg5 = 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dMatrix *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dMatrix & type is null", 0);
+    return ;
+  } 
+  arg3 = (dVector *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector & type is null", 0);
+    return ;
+  } 
+  arg4 = (dMatrix *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dMatrix & type is null", 0);
+    return ;
+  } 
+  arg5 = (dMatrix *)jarg5;
+  if (!arg5) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dMatrix const & type is null", 0);
+    return ;
+  } 
+  ((dMatrix const *)arg1)->PolarDecomposition(*arg2,*arg3,*arg4,(dMatrix const &)*arg5);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dMatrix_PolarDecomposition__SWIG_1(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dMatrix *arg2 = 0 ;
+  dVector *arg3 = 0 ;
+  dMatrix *arg4 = 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dMatrix *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dMatrix & type is null", 0);
+    return ;
+  } 
+  arg3 = (dVector *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector & type is null", 0);
+    return ;
+  } 
+  arg4 = (dMatrix *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dMatrix & type is null", 0);
+    return ;
+  } 
+  ((dMatrix const *)arg1)->PolarDecomposition(*arg2,*arg3,*arg4);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dMatrix__SWIG_6(void * jarg1, void * jarg2, void * jarg3) {
+  void * jresult ;
+  dMatrix *arg1 = 0 ;
+  dVector *arg2 = 0 ;
+  dMatrix *arg3 = 0 ;
+  dMatrix *result = 0 ;
+  
+  arg1 = (dMatrix *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dMatrix const & type is null", 0);
+    return 0;
+  } 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  arg3 = (dMatrix *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dMatrix const & type is null", 0);
+    return 0;
+  } 
+  result = (dMatrix *)new dMatrix((dMatrix const &)*arg1,(dVector const &)*arg2,(dMatrix const &)*arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dMatrix_TransformTriplex__SWIG_0(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5, int jarg6) {
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  float *arg2 = (float *) (float *)0 ;
+  int arg3 ;
+  float *arg4 = (float *) (float *)0 ;
+  int arg5 ;
+  int arg6 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (float *)jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = (float *)jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  ((dMatrix const *)arg1)->TransformTriplex(arg2,arg3,(float const *)arg4,arg5,arg6);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dMatrix_TransformTriplex__SWIG_1(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5, int jarg6) {
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  double *arg2 = (double *) (double *)0 ;
+  int arg3 ;
+  double *arg4 = (double *) (double *)0 ;
+  int arg5 ;
+  int arg6 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (double *)jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = (double *)jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  ((dMatrix const *)arg1)->TransformTriplex(arg2,arg3,(double const *)arg4,arg5,arg6);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix___dMatrix_multiply__(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dMatrix *arg2 = 0 ;
+  dMatrix result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dMatrix *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dMatrix const & type is null", 0);
+    return 0;
+  } 
+  result = ((dMatrix const *)arg1)->operator *((dMatrix const &)*arg2);
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_dMatrix_SanityCheck(void * jarg1) {
+  unsigned int jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  bool result;
+  
+  arg1 = (dMatrix *)jarg1; 
+  result = (bool)((dMatrix const *)arg1)->SanityCheck();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dMatrix_m_front_set(void * jarg1, void * jarg2) {
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_front = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_m_front_get(void * jarg1) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  result = (dVector *)& ((arg1)->m_front);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dMatrix_m_up_set(void * jarg1, void * jarg2) {
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_up = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_m_up_get(void * jarg1) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  result = (dVector *)& ((arg1)->m_up);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dMatrix_m_right_set(void * jarg1, void * jarg2) {
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_right = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_m_right_get(void * jarg1) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  result = (dVector *)& ((arg1)->m_right);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dMatrix_m_posit_set(void * jarg1, void * jarg2) {
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_posit = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dMatrix_m_posit_get(void * jarg1) {
+  void * jresult ;
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  result = (dVector *)& ((arg1)->m_posit);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dMatrix(void * jarg1) {
+  dMatrix *arg1 = (dMatrix *) 0 ;
+  
+  arg1 = (dMatrix *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dRollMatrix(float jarg1) {
+  void * jresult ;
+  float arg1 ;
+  dMatrix result;
+  
+  arg1 = (float)jarg1; 
+  result = dRollMatrix(arg1);
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dYawMatrix(float jarg1) {
+  void * jresult ;
+  float arg1 ;
+  dMatrix result;
+  
+  arg1 = (float)jarg1; 
+  result = dYawMatrix(arg1);
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dPitchMatrix(float jarg1) {
+  void * jresult ;
+  float arg1 ;
+  dMatrix result;
+  
+  arg1 = (float)jarg1; 
+  result = dPitchMatrix(arg1);
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dGrammSchmidt(void * jarg1) {
+  void * jresult ;
+  dVector *arg1 = 0 ;
+  dMatrix result;
+  
+  arg1 = (dVector *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = dGrammSchmidt((dVector const &)*arg1);
+  jresult = new dMatrix((const dMatrix &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dQuaternion__SWIG_0() {
+  void * jresult ;
+  dQuaternion *result = 0 ;
+  
+  result = (dQuaternion *)new dQuaternion();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dQuaternion__SWIG_1(void * jarg1) {
+  void * jresult ;
+  dMatrix *arg1 = 0 ;
+  dQuaternion *result = 0 ;
+  
+  arg1 = (dMatrix *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dMatrix const & type is null", 0);
+    return 0;
+  } 
+  result = (dQuaternion *)new dQuaternion((dMatrix const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dQuaternion__SWIG_2(float jarg1, float jarg2, float jarg3, float jarg4) {
+  void * jresult ;
+  float arg1 ;
+  float arg2 ;
+  float arg3 ;
+  float arg4 ;
+  dQuaternion *result = 0 ;
+  
+  arg1 = (float)jarg1; 
+  arg2 = (float)jarg2; 
+  arg3 = (float)jarg3; 
+  arg4 = (float)jarg4; 
+  result = (dQuaternion *)new dQuaternion(arg1,arg2,arg3,arg4);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dQuaternion__SWIG_3(void * jarg1, float jarg2) {
+  void * jresult ;
+  dVector *arg1 = 0 ;
+  float arg2 ;
+  dQuaternion *result = 0 ;
+  
+  arg1 = (dVector *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  arg2 = (float)jarg2; 
+  result = (dQuaternion *)new dQuaternion((dVector const &)*arg1,arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dQuaternion__SWIG_4(void * jarg1) {
+  void * jresult ;
+  dVector *arg1 = 0 ;
+  dQuaternion *result = 0 ;
+  
+  arg1 = (dVector *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = (dQuaternion *)new dQuaternion((dVector const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dQuaternion_Scale(void * jarg1, float jarg2) {
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (float)jarg2; 
+  (arg1)->Scale(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dQuaternion_Normalize(void * jarg1) {
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  (arg1)->Normalize();
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dQuaternion_DotProduct(void * jarg1, void * jarg2) {
+  float jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  dQuaternion *arg2 = 0 ;
+  float result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (dQuaternion *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dQuaternion const & type is null", 0);
+    return 0;
+  } 
+  result = (float)((dQuaternion const *)arg1)->DotProduct((dQuaternion const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dQuaternion_Inverse(void * jarg1) {
+  void * jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  dQuaternion result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  result = ((dQuaternion const *)arg1)->Inverse();
+  jresult = new dQuaternion((const dQuaternion &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dQuaternion_RotateVector(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = ((dQuaternion const *)arg1)->RotateVector((dVector const &)*arg2);
+  jresult = new dVector((const dVector &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dQuaternion_UnrotateVector(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  result = ((dQuaternion const *)arg1)->UnrotateVector((dVector const &)*arg2);
+  jresult = new dVector((const dVector &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dQuaternion_GetEulerAngles__SWIG_0(void * jarg1, void * jarg2, void * jarg3, int jarg4) {
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector *arg3 = 0 ;
+  dEulerAngleOrder arg4 ;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector & type is null", 0);
+    return ;
+  } 
+  arg3 = (dVector *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector & type is null", 0);
+    return ;
+  } 
+  arg4 = (dEulerAngleOrder)jarg4; 
+  ((dQuaternion const *)arg1)->GetEulerAngles(*arg2,*arg3,arg4);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dQuaternion_GetEulerAngles__SWIG_1(void * jarg1, void * jarg2, void * jarg3) {
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  dVector *arg2 = 0 ;
+  dVector *arg3 = 0 ;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector & type is null", 0);
+    return ;
+  } 
+  arg3 = (dVector *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector & type is null", 0);
+    return ;
+  } 
+  ((dQuaternion const *)arg1)->GetEulerAngles(*arg2,*arg3);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dQuaternion_CalcAverageOmega(void * jarg1, void * jarg2, float jarg3) {
+  void * jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  dQuaternion *arg2 = 0 ;
+  float arg3 ;
+  dVector result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (dQuaternion *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dQuaternion const & type is null", 0);
+    return 0;
+  } 
+  arg3 = (float)jarg3; 
+  result = ((dQuaternion const *)arg1)->CalcAverageOmega((dQuaternion const &)*arg2,arg3);
+  jresult = new dVector((const dVector &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dQuaternion_Slerp(void * jarg1, void * jarg2, float jarg3) {
+  void * jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  dQuaternion *arg2 = 0 ;
+  float arg3 ;
+  dQuaternion result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (dQuaternion *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dQuaternion const & type is null", 0);
+    return 0;
+  } 
+  arg3 = (float)jarg3; 
+  result = ((dQuaternion const *)arg1)->Slerp((dQuaternion const &)*arg2,arg3);
+  jresult = new dQuaternion((const dQuaternion &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dQuaternion_IntegrateOmega(void * jarg1, void * jarg2, float jarg3) {
+  void * jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  dVector *arg2 = 0 ;
+  float arg3 ;
+  dQuaternion result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return 0;
+  } 
+  arg3 = (float)jarg3; 
+  result = ((dQuaternion const *)arg1)->IntegrateOmega((dVector const &)*arg2,arg3);
+  jresult = new dQuaternion((const dQuaternion &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dQuaternion___dQuaternion_multiply__(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  dQuaternion *arg2 = 0 ;
+  dQuaternion result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (dQuaternion *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dQuaternion const & type is null", 0);
+    return 0;
+  } 
+  result = ((dQuaternion const *)arg1)->operator *((dQuaternion const &)*arg2);
+  jresult = new dQuaternion((const dQuaternion &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dQuaternion___dQuaternion_add__(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  dQuaternion *arg2 = 0 ;
+  dQuaternion result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (dQuaternion *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dQuaternion const & type is null", 0);
+    return 0;
+  } 
+  result = ((dQuaternion const *)arg1)->operator +((dQuaternion const &)*arg2);
+  jresult = new dQuaternion((const dQuaternion &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dQuaternion___dQuaternion_sub__(void * jarg1, void * jarg2) {
+  void * jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  dQuaternion *arg2 = 0 ;
+  dQuaternion result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (dQuaternion *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dQuaternion const & type is null", 0);
+    return 0;
+  } 
+  result = ((dQuaternion const *)arg1)->operator -((dQuaternion const &)*arg2);
+  jresult = new dQuaternion((const dQuaternion &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dQuaternion_m_q0_set(void * jarg1, float jarg2) {
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_q0 = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dQuaternion_m_q0_get(void * jarg1) {
+  float jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  float result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  result = (float) ((arg1)->m_q0);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dQuaternion_m_q1_set(void * jarg1, float jarg2) {
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_q1 = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dQuaternion_m_q1_get(void * jarg1) {
+  float jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  float result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  result = (float) ((arg1)->m_q1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dQuaternion_m_q2_set(void * jarg1, float jarg2) {
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_q2 = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dQuaternion_m_q2_get(void * jarg1) {
+  float jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  float result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  result = (float) ((arg1)->m_q2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dQuaternion_m_q3_set(void * jarg1, float jarg2) {
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_q3 = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dQuaternion_m_q3_get(void * jarg1) {
+  float jresult ;
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  float result;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  result = (float) ((arg1)->m_q3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dQuaternion(void * jarg1) {
+  dQuaternion *arg1 = (dQuaternion *) 0 ;
+  
+  arg1 = (dQuaternion *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_D_MAX_PRAM_INFO_SIZE_get() {
+  int jresult ;
+  int result;
+  
+  result = (int)(16);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_D_MAX_PLACEMENT_CONTACTS_get() {
+  int jresult ;
+  int result;
+  
+  result = (int)(128);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dSymmetricBiconjugateGradientSolve(void * jarg1) {
+  dSymmetricBiconjugateGradientSolve *arg1 = (dSymmetricBiconjugateGradientSolve *) 0 ;
+  
+  arg1 = (dSymmetricBiconjugateGradientSolve *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_dSymmetricBiconjugateGradientSolve_Solve(void * jarg1, int jarg2, double jarg3, void * jarg4, void * jarg5) {
+  double jresult ;
+  dSymmetricBiconjugateGradientSolve *arg1 = (dSymmetricBiconjugateGradientSolve *) 0 ;
+  int arg2 ;
+  double arg3 ;
+  double *arg4 = (double *) (double *)0 ;
+  double *arg5 = (double *) (double *)0 ;
+  double result;
+  
+  arg1 = (dSymmetricBiconjugateGradientSolve *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (double)jarg3; 
+  arg4 = (double *)jarg4; 
+  arg5 = (double *)jarg5; 
+  result = (double)((dSymmetricBiconjugateGradientSolve const *)arg1)->Solve(arg2,arg3,arg4,(double const *)arg5);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dComplentaritySolver_dContact() {
+  void * jresult ;
+  dComplentaritySolver::dContact *result = 0 ;
+  
+  result = (dComplentaritySolver::dContact *)new dComplentaritySolver::dContact();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dContact_m_point_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dContact *arg1 = (dComplentaritySolver::dContact *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dContact *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_point = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dContact_m_point_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dContact *arg1 = (dComplentaritySolver::dContact *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dContact *)jarg1; 
+  result = (dVector *)& ((arg1)->m_point);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dContact_m_normal_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dContact *arg1 = (dComplentaritySolver::dContact *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dContact *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_normal = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dContact_m_normal_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dContact *arg1 = (dComplentaritySolver::dContact *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dContact *)jarg1; 
+  result = (dVector *)& ((arg1)->m_normal);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dComplentaritySolver_dContact(void * jarg1) {
+  dComplentaritySolver::dContact *arg1 = (dComplentaritySolver::dContact *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dContact *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dComplentaritySolver_dJacobian() {
+  void * jresult ;
+  dComplentaritySolver::dJacobian *result = 0 ;
+  
+  result = (dComplentaritySolver::dJacobian *)new dComplentaritySolver::dJacobian();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJacobian_m_linear_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dJacobian *arg1 = (dComplentaritySolver::dJacobian *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dJacobian *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_linear = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dJacobian_m_linear_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dJacobian *arg1 = (dComplentaritySolver::dJacobian *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dJacobian *)jarg1; 
+  result = (dVector *)& ((arg1)->m_linear);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJacobian_m_angular_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dJacobian *arg1 = (dComplentaritySolver::dJacobian *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dJacobian *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_angular = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dJacobian_m_angular_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dJacobian *arg1 = (dComplentaritySolver::dJacobian *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dJacobian *)jarg1; 
+  result = (dVector *)& ((arg1)->m_angular);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dComplentaritySolver_dJacobian(void * jarg1) {
+  dComplentaritySolver::dJacobian *arg1 = (dComplentaritySolver::dJacobian *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dJacobian *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianPair_m_jacobian_IM0_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dJacobianPair *arg1 = (dComplentaritySolver::dJacobianPair *) 0 ;
+  dComplentaritySolver::dJacobian *arg2 = (dComplentaritySolver::dJacobian *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianPair *)jarg1; 
+  arg2 = (dComplentaritySolver::dJacobian *)jarg2; 
+  if (arg1) (arg1)->m_jacobian_IM0 = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianPair_m_jacobian_IM0_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dJacobianPair *arg1 = (dComplentaritySolver::dJacobianPair *) 0 ;
+  dComplentaritySolver::dJacobian *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianPair *)jarg1; 
+  result = (dComplentaritySolver::dJacobian *)& ((arg1)->m_jacobian_IM0);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianPair_m_jacobian_IM1_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dJacobianPair *arg1 = (dComplentaritySolver::dJacobianPair *) 0 ;
+  dComplentaritySolver::dJacobian *arg2 = (dComplentaritySolver::dJacobian *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianPair *)jarg1; 
+  arg2 = (dComplentaritySolver::dJacobian *)jarg2; 
+  if (arg1) (arg1)->m_jacobian_IM1 = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianPair_m_jacobian_IM1_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dJacobianPair *arg1 = (dComplentaritySolver::dJacobianPair *) 0 ;
+  dComplentaritySolver::dJacobian *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianPair *)jarg1; 
+  result = (dComplentaritySolver::dJacobian *)& ((arg1)->m_jacobian_IM1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dComplentaritySolver_dJacobianPair() {
+  void * jresult ;
+  dComplentaritySolver::dJacobianPair *result = 0 ;
+  
+  result = (dComplentaritySolver::dJacobianPair *)new dComplentaritySolver::dJacobianPair();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dComplentaritySolver_dJacobianPair(void * jarg1) {
+  dComplentaritySolver::dJacobianPair *arg1 = (dComplentaritySolver::dJacobianPair *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianPair *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_force_set(void * jarg1, float jarg2) {
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_force = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_force_get(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  result = (float) ((arg1)->m_force);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_diagDamp_set(void * jarg1, float jarg2) {
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_diagDamp = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_diagDamp_get(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  result = (float) ((arg1)->m_diagDamp);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_deltaAccel_set(void * jarg1, float jarg2) {
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_deltaAccel = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_deltaAccel_get(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  result = (float) ((arg1)->m_deltaAccel);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_invDJMinvJt_set(void * jarg1, float jarg2) {
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_invDJMinvJt = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_invDJMinvJt_get(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  result = (float) ((arg1)->m_invDJMinvJt);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_coordenateAccel_set(void * jarg1, float jarg2) {
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_coordenateAccel = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_coordenateAccel_get(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  result = (float) ((arg1)->m_coordenateAccel);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_jointLowFriction_set(void * jarg1, float jarg2) {
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_jointLowFriction = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_jointLowFriction_get(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  result = (float) ((arg1)->m_jointLowFriction);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_jointHighFriction_set(void * jarg1, float jarg2) {
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_jointHighFriction = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dJacobianColum_m_jointHighFriction_get(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  result = (float) ((arg1)->m_jointHighFriction);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dComplentaritySolver_dJacobianColum() {
+  void * jresult ;
+  dComplentaritySolver::dJacobianColum *result = 0 ;
+  
+  result = (dComplentaritySolver::dJacobianColum *)new dComplentaritySolver::dJacobianColum();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dComplentaritySolver_dJacobianColum(void * jarg1) {
+  dComplentaritySolver::dJacobianColum *arg1 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dJacobianColum *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_jacobians_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  dComplentaritySolver::dJacobianPair *arg2 ;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  arg2 = (dComplentaritySolver::dJacobianPair *)jarg2; 
+  {
+    size_t ii;
+    dComplentaritySolver::dJacobianPair *b = (dComplentaritySolver::dJacobianPair *) arg1->m_jacobians;
+    for (ii = 0; ii < (size_t)16; ii++) b[ii] = *((dComplentaritySolver::dJacobianPair *) arg2 + ii);
+  }
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_jacobians_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  dComplentaritySolver::dJacobianPair *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  result = (dComplentaritySolver::dJacobianPair *)(dComplentaritySolver::dJacobianPair *) ((arg1)->m_jacobians);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_jointAccel_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  float *arg2 ;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  arg2 = (float *)jarg2; 
+  {
+    size_t ii;
+    float *b = (float *) arg1->m_jointAccel;
+    for (ii = 0; ii < (size_t)16; ii++) b[ii] = *((float *) arg2 + ii);
+  }
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_jointAccel_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  float *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  result = (float *)(float *) ((arg1)->m_jointAccel);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_jointLowFriction_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  float *arg2 ;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  arg2 = (float *)jarg2; 
+  {
+    size_t ii;
+    float *b = (float *) arg1->m_jointLowFriction;
+    for (ii = 0; ii < (size_t)16; ii++) b[ii] = *((float *) arg2 + ii);
+  }
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_jointLowFriction_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  float *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  result = (float *)(float *) ((arg1)->m_jointLowFriction);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_jointHighFriction_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  float *arg2 ;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  arg2 = (float *)jarg2; 
+  {
+    size_t ii;
+    float *b = (float *) arg1->m_jointHighFriction;
+    for (ii = 0; ii < (size_t)16; ii++) b[ii] = *((float *) arg2 + ii);
+  }
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_jointHighFriction_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  float *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  result = (float *)(float *) ((arg1)->m_jointHighFriction);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_timestep_set(void * jarg1, float jarg2) {
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_timestep = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_timestep_get(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  result = (float) ((arg1)->m_timestep);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_timestepInv_set(void * jarg1, float jarg2) {
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_timestepInv = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_timestepInv_get(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  result = (float) ((arg1)->m_timestepInv);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_count_set(void * jarg1, int jarg2) {
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  int arg2 ;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->m_count = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_dComplentaritySolver_dParamInfo_m_count_get(void * jarg1) {
+  int jresult ;
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  int result;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  result = (int) ((arg1)->m_count);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dComplentaritySolver_dParamInfo() {
+  void * jresult ;
+  dComplentaritySolver::dParamInfo *result = 0 ;
+  
+  result = (dComplentaritySolver::dParamInfo *)new dComplentaritySolver::dParamInfo();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dComplentaritySolver_dParamInfo(void * jarg1) {
+  dComplentaritySolver::dParamInfo *arg1 = (dComplentaritySolver::dParamInfo *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dParamInfo *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dComplentaritySolver_dPointDerivativeParam() {
+  void * jresult ;
+  dComplentaritySolver::dPointDerivativeParam *result = 0 ;
+  
+  result = (dComplentaritySolver::dPointDerivativeParam *)new dComplentaritySolver::dPointDerivativeParam();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_r0_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_r0 = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_r0_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  result = (dVector *)& ((arg1)->m_r0);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_posit0_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_posit0 = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_posit0_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  result = (dVector *)& ((arg1)->m_posit0);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_veloc0_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_veloc0 = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_veloc0_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  result = (dVector *)& ((arg1)->m_veloc0);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_centripetal0_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_centripetal0 = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_centripetal0_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  result = (dVector *)& ((arg1)->m_centripetal0);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_r1_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_r1 = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_r1_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  result = (dVector *)& ((arg1)->m_r1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_posit1_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_posit1 = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_posit1_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  result = (dVector *)& ((arg1)->m_posit1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_veloc1_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_veloc1 = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_veloc1_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  result = (dVector *)& ((arg1)->m_veloc1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_centripetal1_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *arg2 = (dVector *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  arg2 = (dVector *)jarg2; 
+  if (arg1) (arg1)->m_centripetal1 = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dPointDerivativeParam_m_centripetal1_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  result = (dVector *)& ((arg1)->m_centripetal1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dComplentaritySolver_dPointDerivativeParam(void * jarg1) {
+  dComplentaritySolver::dPointDerivativeParam *arg1 = (dComplentaritySolver::dPointDerivativeParam *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dPointDerivativeParam *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJointAccelerationDecriptor_m_rowsCount_set(void * jarg1, int jarg2) {
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  int arg2 ;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->m_rowsCount = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_dComplentaritySolver_dJointAccelerationDecriptor_m_rowsCount_get(void * jarg1) {
+  int jresult ;
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  int result;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  result = (int) ((arg1)->m_rowsCount);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJointAccelerationDecriptor_m_timeStep_set(void * jarg1, float jarg2) {
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_timeStep = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dJointAccelerationDecriptor_m_timeStep_get(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  result = (float) ((arg1)->m_timeStep);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJointAccelerationDecriptor_m_invTimeStep_set(void * jarg1, float jarg2) {
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_invTimeStep = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dJointAccelerationDecriptor_m_invTimeStep_get(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  result = (float) ((arg1)->m_invTimeStep);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJointAccelerationDecriptor_m_firstPassCoefFlag_set(void * jarg1, float jarg2) {
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->m_firstPassCoefFlag = arg2;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dJointAccelerationDecriptor_m_firstPassCoefFlag_get(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  result = (float) ((arg1)->m_firstPassCoefFlag);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJointAccelerationDecriptor_m_rowMatrix_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  dComplentaritySolver::dJacobianPair *arg2 = (dComplentaritySolver::dJacobianPair *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  arg2 = (dComplentaritySolver::dJacobianPair *)jarg2; 
+  if (arg1) (arg1)->m_rowMatrix = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dJointAccelerationDecriptor_m_rowMatrix_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  dComplentaritySolver::dJacobianPair *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  result = (dComplentaritySolver::dJacobianPair *) ((arg1)->m_rowMatrix);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dJointAccelerationDecriptor_m_colMatrix_set(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  dComplentaritySolver::dJacobianColum *arg2 = (dComplentaritySolver::dJacobianColum *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  arg2 = (dComplentaritySolver::dJacobianColum *)jarg2; 
+  if (arg1) (arg1)->m_colMatrix = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dJointAccelerationDecriptor_m_colMatrix_get(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  dComplentaritySolver::dJacobianColum *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  result = (dComplentaritySolver::dJacobianColum *) ((arg1)->m_colMatrix);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dComplentaritySolver_dJointAccelerationDecriptor() {
+  void * jresult ;
+  dComplentaritySolver::dJointAccelerationDecriptor *result = 0 ;
+  
+  result = (dComplentaritySolver::dJointAccelerationDecriptor *)new dComplentaritySolver::dJointAccelerationDecriptor();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dComplentaritySolver_dJointAccelerationDecriptor(void * jarg1) {
+  dComplentaritySolver::dJointAccelerationDecriptor *arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dJointAccelerationDecriptor *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dComplentaritySolver_dBilateralJoint(void * jarg1) {
+  dComplentaritySolver::dBilateralJoint *arg1 = (dComplentaritySolver::dBilateralJoint *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dBilateralJoint *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dBilateralJoint_Init(void * jarg1, void * jarg2, void * jarg3) {
+  dComplentaritySolver::dBilateralJoint *arg1 = (dComplentaritySolver::dBilateralJoint *) 0 ;
+  dComplentaritySolver::dBodyState *arg2 = (dComplentaritySolver::dBodyState *) (dComplentaritySolver::dBodyState *)0 ;
+  dComplentaritySolver::dBodyState *arg3 = (dComplentaritySolver::dBodyState *) (dComplentaritySolver::dBodyState *)0 ;
+  
+  arg1 = (dComplentaritySolver::dBilateralJoint *)jarg1; 
+  arg2 = (dComplentaritySolver::dBodyState *)jarg2; 
+  arg3 = (dComplentaritySolver::dBodyState *)jarg3; 
+  (arg1)->Init(arg2,arg3);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dComplentaritySolver_dFrictionLessContactJoint() {
+  void * jresult ;
+  dComplentaritySolver::dFrictionLessContactJoint *result = 0 ;
+  
+  result = (dComplentaritySolver::dFrictionLessContactJoint *)new dComplentaritySolver::dFrictionLessContactJoint();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dComplentaritySolver_dFrictionLessContactJoint(void * jarg1) {
+  dComplentaritySolver::dFrictionLessContactJoint *arg1 = (dComplentaritySolver::dFrictionLessContactJoint *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dFrictionLessContactJoint *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dFrictionLessContactJoint_SetContacts(void * jarg1, int jarg2, void * jarg3, float jarg4) {
+  dComplentaritySolver::dFrictionLessContactJoint *arg1 = (dComplentaritySolver::dFrictionLessContactJoint *) 0 ;
+  int arg2 ;
+  dComplentaritySolver::dContact *arg3 = (dComplentaritySolver::dContact *) (dComplentaritySolver::dContact *)0 ;
+  float arg4 ;
+  
+  arg1 = (dComplentaritySolver::dFrictionLessContactJoint *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (dComplentaritySolver::dContact *)jarg3; 
+  arg4 = (float)jarg4; 
+  (arg1)->SetContacts(arg2,arg3,arg4);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dComplentaritySolver_dBodyState() {
+  void * jresult ;
+  dComplentaritySolver::dBodyState *result = 0 ;
+  
+  result = (dComplentaritySolver::dBodyState *)new dComplentaritySolver::dBodyState();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dComplentaritySolver_dBodyState(void * jarg1) {
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_GetMass(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  result = (float)((dComplentaritySolver::dBodyState const *)arg1)->GetMass();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_SetMass(void * jarg1, float jarg2) {
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  arg2 = (float)jarg2; 
+  (arg1)->SetMass(arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_GetInvMass(void * jarg1) {
+  float jresult ;
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  float result;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  result = (float)((dComplentaritySolver::dBodyState const *)arg1)->GetInvMass();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_SetInertia(void * jarg1, float jarg2, float jarg3, float jarg4) {
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  float arg2 ;
+  float arg3 ;
+  float arg4 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  arg2 = (float)jarg2; 
+  arg3 = (float)jarg3; 
+  arg4 = (float)jarg4; 
+  (arg1)->SetInertia(arg2,arg3,arg4);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_GetInertia(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  float *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  arg2 = (float *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "float & type is null", 0);
+    return ;
+  } 
+  arg3 = (float *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "float & type is null", 0);
+    return ;
+  } 
+  arg4 = (float *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "float & type is null", 0);
+    return ;
+  } 
+  ((dComplentaritySolver::dBodyState const *)arg1)->GetInertia(*arg2,*arg3,*arg4);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_SetVeloc(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dVector *arg2 = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return ;
+  } 
+  (arg1)->SetVeloc((dVector const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_SetOmega(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dVector *arg2 = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return ;
+  } 
+  (arg1)->SetOmega((dVector const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_GetOmega(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  result = (dVector *) &((dComplentaritySolver::dBodyState const *)arg1)->GetOmega();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_GetVelocity(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  result = (dVector *) &((dComplentaritySolver::dBodyState const *)arg1)->GetVelocity();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_UpdateInertia(void * jarg1) {
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  (arg1)->UpdateInertia();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_SetMatrix(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dMatrix *arg2 = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  arg2 = (dMatrix *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dMatrix const & type is null", 0);
+    return ;
+  } 
+  (arg1)->SetMatrix((dMatrix const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_GetMatrix(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dMatrix *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  result = (dMatrix *) &((dComplentaritySolver::dBodyState const *)arg1)->GetMatrix();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_SetLocalMatrix(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dMatrix *arg2 = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  arg2 = (dMatrix *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dMatrix const & type is null", 0);
+    return ;
+  } 
+  (arg1)->SetLocalMatrix((dMatrix const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_GetLocalMatrix(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dMatrix *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  result = (dMatrix *) &((dComplentaritySolver::dBodyState const *)arg1)->GetLocalMatrix();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_SetForce(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dVector *arg2 = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return ;
+  } 
+  (arg1)->SetForce((dVector const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_SetTorque(void * jarg1, void * jarg2) {
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dVector *arg2 = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  arg2 = (dVector *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "dVector const & type is null", 0);
+    return ;
+  } 
+  (arg1)->SetTorque((dVector const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_GetForce(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  result = (dVector *) &((dComplentaritySolver::dBodyState const *)arg1)->GetForce();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_GetTorque(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  result = (dVector *) &((dComplentaritySolver::dBodyState const *)arg1)->GetTorque();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_GetCenterOfMass(void * jarg1) {
+  void * jresult ;
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  dVector *result = 0 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  result = (dVector *) &((dComplentaritySolver::dBodyState const *)arg1)->GetCenterOfMass();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_dBodyState_IntegrateVelocity(void * jarg1, float jarg2) {
+  dComplentaritySolver::dBodyState *arg1 = (dComplentaritySolver::dBodyState *) 0 ;
+  float arg2 ;
+  
+  arg1 = (dComplentaritySolver::dBodyState *)jarg1; 
+  arg2 = (float)jarg2; 
+  (arg1)->IntegrateVelocity(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_dComplentaritySolver() {
+  void * jresult ;
+  dComplentaritySolver *result = 0 ;
+  
+  result = (dComplentaritySolver *)new dComplentaritySolver();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_dComplentaritySolver(void * jarg1) {
+  dComplentaritySolver *arg1 = (dComplentaritySolver *) 0 ;
+  
+  arg1 = (dComplentaritySolver *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_dComplentaritySolver_GetActiveJoints(void * jarg1, void * jarg2, int jarg3) {
+  int jresult ;
+  dComplentaritySolver *arg1 = (dComplentaritySolver *) 0 ;
+  dComplentaritySolver::dBilateralJoint **arg2 = (dComplentaritySolver::dBilateralJoint **) (dComplentaritySolver::dBilateralJoint **)0 ;
+  int arg3 ;
+  int result;
+  
+  arg1 = (dComplentaritySolver *)jarg1; 
+  arg2 = (dComplentaritySolver::dBilateralJoint **)jarg2; 
+  arg3 = (int)jarg3; 
+  result = (int)(arg1)->GetActiveJoints(arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_dComplentaritySolver_BuildJacobianMatrix(void * jarg1, int jarg2, void * jarg3, float jarg4, void * jarg5, void * jarg6, int jarg7) {
+  int jresult ;
+  dComplentaritySolver *arg1 = (dComplentaritySolver *) 0 ;
+  int arg2 ;
+  dComplentaritySolver::dBilateralJoint **arg3 = (dComplentaritySolver::dBilateralJoint **) (dComplentaritySolver::dBilateralJoint **)0 ;
+  float arg4 ;
+  dComplentaritySolver::dJacobianPair *arg5 = (dComplentaritySolver::dJacobianPair *) (dComplentaritySolver::dJacobianPair *)0 ;
+  dComplentaritySolver::dJacobianColum *arg6 = (dComplentaritySolver::dJacobianColum *) (dComplentaritySolver::dJacobianColum *)0 ;
+  int arg7 ;
+  int result;
+  
+  arg1 = (dComplentaritySolver *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (dComplentaritySolver::dBilateralJoint **)jarg3; 
+  arg4 = (float)jarg4; 
+  arg5 = (dComplentaritySolver::dJacobianPair *)jarg5; 
+  arg6 = (dComplentaritySolver::dJacobianColum *)jarg6; 
+  arg7 = (int)jarg7; 
+  result = (int)(arg1)->BuildJacobianMatrix(arg2,arg3,arg4,arg5,arg6,arg7);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_dComplentaritySolver_CalculateReactionsForces(void * jarg1, int jarg2, void * jarg3, int jarg4, void * jarg5, float jarg6, void * jarg7, void * jarg8) {
+  dComplentaritySolver *arg1 = (dComplentaritySolver *) 0 ;
+  int arg2 ;
+  dComplentaritySolver::dBodyState **arg3 = (dComplentaritySolver::dBodyState **) (dComplentaritySolver::dBodyState **)0 ;
+  int arg4 ;
+  dComplentaritySolver::dBilateralJoint **arg5 = (dComplentaritySolver::dBilateralJoint **) (dComplentaritySolver::dBilateralJoint **)0 ;
+  float arg6 ;
+  dComplentaritySolver::dJacobianPair *arg7 = (dComplentaritySolver::dJacobianPair *) (dComplentaritySolver::dJacobianPair *)0 ;
+  dComplentaritySolver::dJacobianColum *arg8 = (dComplentaritySolver::dJacobianColum *) (dComplentaritySolver::dJacobianColum *)0 ;
+  
+  arg1 = (dComplentaritySolver *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (dComplentaritySolver::dBodyState **)jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = (dComplentaritySolver::dBilateralJoint **)jarg5; 
+  arg6 = (float)jarg6; 
+  arg7 = (dComplentaritySolver::dJacobianPair *)jarg7; 
+  arg8 = (dComplentaritySolver::dJacobianColum *)jarg8; 
+  (arg1)->CalculateReactionsForces(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+}
+
+
+SWIGEXPORT dComplentaritySolver::dBilateralJoint * SWIGSTDCALL CSharp_dComplentaritySolver_dFrictionLessContactJoint_SWIGUpcast(dComplentaritySolver::dFrictionLessContactJoint *jarg1) {
+    return (dComplentaritySolver::dBilateralJoint *)jarg1;
+}
 
 #ifdef __cplusplus
 }

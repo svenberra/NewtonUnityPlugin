@@ -68,14 +68,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
     <CustomBuildBeforeTargets>
     </CustomBuildBeforeTargets>
     <CustomBuildAfterTargets>
     </CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\PluginBinaries\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -92,14 +92,17 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainres;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_dll\$(platform)\newton\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dJointLibrary\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>newton_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dMath\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dJointLibrary\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_dll\$(platform)\newton\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dMath_d.lib;newton_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ShowProgress>NotSet</ShowProgress>
+      <AdditionalOptions> /FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <CustomBuildStep>
       <Command>
@@ -117,12 +120,15 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainres;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>newton_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_dll\$(platform)\newton\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dJointLibrary\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dMath_d.lib;newton_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dMath\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dJointLibrary\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_dll\$(platform)\newton\$(Configuration)</AdditionalLibraryDirectories>
       <ShowProgress>NotSet</ShowProgress>
     </Link>
     <PostBuildEvent>
@@ -145,14 +151,16 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainres;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>newton.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_dll\$(platform)\newton\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dJointLibrary\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dMath.lib;Newton.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dMath\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dJointLibrary\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_dll\$(platform)\newton\$(Configuration)</AdditionalLibraryDirectories>
       <ShowProgress>NotSet</ShowProgress>
     </Link>
     <CustomBuildStep>
@@ -172,7 +180,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\newton\packages\dContainers;C:\newton\packages\dCustomJoints;C:\newton\packages\dMath;C:\newton\packages\thirdParty\timeTracker;C:\newton\coreLibrary_300\source\newton;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainres;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -180,8 +188,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_dll\$(platform)\newton\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dJointLibrary\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Newton.lib;dContainers.lib;dJointLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dMath\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dJointLibrary\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_dll\$(platform)\newton\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dMath.lib;Newton.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ShowProgress>NotSet</ShowProgress>
     </Link>
     <PostBuildEvent>
@@ -196,7 +204,6 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="NewtonWrapper.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -215,29 +222,25 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Joints.cpp" />
-    <ClCompile Include="NewtonWrapper.cpp" />
-    <ClCompile Include="newton_wrap.cxx" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="newton.i">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile %(Filename).cs  %(Filename)%(Extension)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building newton sdk csharp wraper %(Filename).cs</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).cxx</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile %(Filename).cs  %(Filename)%(Extension)</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile %(Filename).cs  %(Filename)%(Extension)</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile %(Filename).cs  %(Filename)%(Extension)</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building newton sdk csharp wraper %(Filename).cs</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building newton sdk csharp wraper %(Filename).cs</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building newton sdk csharp wraper %(Filename).cs</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).cxx</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).cxx</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).cxx</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).cxx</Outputs>

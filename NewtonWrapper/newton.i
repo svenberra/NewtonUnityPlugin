@@ -17,8 +17,31 @@
 %{
 	#include "stdafx.h"
 	#include "Newton.h"
+
+	#include "dMathDefines.h"
+	#include "dVector.h"
+	#include "dMatrix.h"
+	#include "dQuaternion.h"
+	#include "dLinearAlgebra.h"
 %}
 
-%include "Newton.h"
+%rename(__dMatrix_multiply__) dMatrix::operator*;
+%rename(__dMatrix_GetElement__) dMatrix::operator[](int i);
+%rename(__dMatrix_Const_GetElement__) dMatrix::operator[] (int i) const; 
+
+%rename(__dQuaternion_add__) dQuaternion::operator+;
+%rename(__dQuaternion_sub__) dQuaternion::operator-;
+%rename(__dQuaternion_multiply__) dQuaternion::operator*;
+
+//%rename(__CustomAlloc_Delete__) CustomAlloc::operator delete;
+//%rename(__CustomJoint_AngularIntegration_Add__) CustomAlloc::AngularIntegration::operator+;
+//%rename(__CustomJoint_AngularIntegration_Sub__) CustomAlloc::AngularIntegration::operator-;
 
 
+#pragma SWIG nowarn=401
+%include "newton.h"
+%include "dMathDefines.h"
+%include "dVector.h"
+%include "dMatrix.h"
+%include "dQuaternion.h"
+%include "dLinearAlgebra.h"
