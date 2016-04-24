@@ -147,6 +147,7 @@ namespace NewtonPlugin
             q.y *= Mathf.Sign(q.y * (mat[0, 2] - mat[2, 0]));
             q.z *= Mathf.Sign(q.z * (mat[1, 0] - mat[0, 1]));
 
+
             transform.position = new Vector3(mat.m03, mat.m13, mat.m23);
             transform.rotation = q;
 
@@ -201,6 +202,17 @@ namespace NewtonPlugin
             //body.transform.position = new Vector3(mat.m03, mat.m13, mat.m23);
             //body.transform.rotation = q;
         }
+
+        //void TraverseColliders(GameObject obj)
+        //{
+        //    Debug.Log(obj.name);
+        //    foreach (Transform child in obj.transform)
+        //    {
+        //        TraverseColliders(child.gameObject);
+        //    }
+
+
+        //}
 
 
     }

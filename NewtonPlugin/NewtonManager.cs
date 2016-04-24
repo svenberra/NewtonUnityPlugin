@@ -78,8 +78,8 @@ namespace NewtonPlugin
         {
             NewtonAPI.NewtonUpdate(pWorld, Time.deltaTime);
 
-            //if (DebugRender)
-            //    RenderDebugLines();
+            if (DebugRender)
+                RenderDebugLines();
         }
 
         void RenderDebugLines()
@@ -96,6 +96,8 @@ namespace NewtonPlugin
 
                 pBody = NewtonAPI.NewtonWorldGetNextBody(pWorld, pBody);
             }
+
+            //Debug.Log("BodyCount:" + bodyCount.ToString());
 
             //Vector3 p0 = new Vector3(-100, -100, -100);
             //Vector3 p1 = new Vector3(100, 100, 100);
