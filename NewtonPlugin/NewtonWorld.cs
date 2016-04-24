@@ -55,35 +55,25 @@ namespace NewtonPlugin
 
     //}
 
-    internal class NewtonWorld : Singleton<NewtonWorld>
+    //   internal class NewtonWorld : Singleton<NewtonWorld>
+    class NewtonWorld: IDisposable
     {
-
-        public IntPtr pWorld;
-
         protected NewtonWorld()
         {
-            pWorld = NewtonAPI.NewtonCreate();
-
+            //pWorld = NewtonAPI.NewtonCreate();
+            pWorld = cpp.NewtonCreate();
             Debug.Log("Newton World created(" + pWorld.ToString() + ")");
-
-            //string log = DateTime.Now.ToUniversalTime() + ":" + "Newton World created(" + pWorld.ToString() + ")\n";
-            //System.IO.File.AppendAllText("D:\\worldlog.txt", log);
         }
 
-        protected override void OnBaseDestroy()
+        public void Dispose()
         {
-            NewtonAPI.NewtonDestroy(pWorld);
-
+            cpp.NewtonDestroy(pWorld);
             Debug.Log("Newton World destroyed(" + pWorld.ToString() + ")");
-
-            //string log = DateTime.Now.ToUniversalTime() + ":" + "Newton World destroyed(" + pWorld.ToString() + ")\n";
-            //System.IO.File.AppendAllText("D:\\worldlog.txt", log);
-
-            pWorld = IntPtr.Zero;
+            Debug.Log("Newton World destroyed(" + pWorld.ToString() + ")");
+//          pWorld = pWorld..Zero;
         }
 
+        protected SWIGTYPE_p_NewtonWorld pWorld;
     }
-
-
 }
 
