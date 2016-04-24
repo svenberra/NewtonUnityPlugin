@@ -1,4 +1,5 @@
 #include "stdafx.h"
+/*
 #include "NewtonWrapper.h"
 
 CustomVehicleControllerManager* NewtonCreateVehicleManager(NewtonWorld* world)
@@ -227,4 +228,4 @@ void NewtonVehicleSetCOM(CustomVehicleController* vehicle, dVector& com)
 {
 	vehicle->SetCenterOfGravity(com);
 }
-
+*/

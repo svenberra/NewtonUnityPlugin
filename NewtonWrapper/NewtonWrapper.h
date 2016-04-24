@@ -1,11 +1,14 @@
 
+/*
 #ifdef NEWTONWRAPPER_EXPORTS
 #define NEWTONWRAPPER_API extern "C" __declspec(dllexport)
 #else
 #define NEWTONWRAPPER_API __declspec(dllimport)
 #endif
 
+
 #include "Newton.h"
+
 #include "CustomVehicleControllerManager.h"
 #include "CustomBallAndSocket.h"
 #include "CustomHinge.h"
@@ -87,5 +90,5 @@ NEWTONWRAPPER_API int NewtonVehicleGetGear(CustomVehicleController* vehicle);
 NEWTONWRAPPER_API float NewtonVehicleGetRPM(CustomVehicleController* vehicle);
 NEWTONWRAPPER_API NewtonBody* NewtonVehicleGetBody(CustomVehicleController* vehicle);
 NEWTONWRAPPER_API NewtonBody* NewtonVehicleTireGetBody(CustomVehicleController::BodyPartTire* tire);
-
+*/
 

@@ -69,6 +69,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -83,16 +87,28 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_dll\$(platform)\newton\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dJointLibrary\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>newton_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
     </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>building newton sdk csharp wraper</Message>
+      <Outputs>NewtonWraper_1.cxx</Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -105,11 +121,20 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>newton_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_dll\$(platform)\newton\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dJointLibrary\$(Configuration)</AdditionalLibraryDirectories>
+      <ShowProgress>NotSet</ShowProgress>
     </Link>
     <PostBuildEvent>
       <Command>
       </Command>
     </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile xxxxxx.cs  NewtonWraper_1.i </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>buiding newton sdk csharp wraper</Message>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -126,7 +151,17 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>newton.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_dll\$(platform)\newton\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dJointLibrary\$(Configuration)</AdditionalLibraryDirectories>
+      <ShowProgress>NotSet</ShowProgress>
     </Link>
+    <CustomBuildStep>
+      <Command>..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile xxxxxx.cs  NewtonWraper_1.i </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>buiding newton sdk csharp wraper</Message>
+      <Outputs>NewtonWraper_1.cxx</Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -145,13 +180,20 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\newton\coreLibrary_300\projects\windows\project_vs2015_dll\x64\newton\release;C:\newton\packages\projects\visualStudio_2015_dll\x64\dContainers\release;C:\newton\packages\projects\visualStudio_2015_dll\x64\dJointLibrary\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_dll\$(platform)\newton\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_dll\$(platform)\dJointLibrary\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Newton.lib;dContainers.lib;dJointLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
     </Link>
     <PostBuildEvent>
       <Command>
       </Command>
     </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile xxxxxx.cs  NewtonWraper_1.i </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>buiding newton sdk csharp wraper</Message>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="NewtonWrapper.h" />
@@ -175,6 +217,7 @@
     </ClCompile>
     <ClCompile Include="Joints.cpp" />
     <ClCompile Include="NewtonWrapper.cpp" />
+    <ClCompile Include="newton_wrap.cxx" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -182,6 +225,23 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Vehicle.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="newton.i">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile %(Filename).cs  %(Filename)%(Extension)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building newton sdk csharp wraper %(Filename).cs</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).cxx</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile %(Filename).cs  %(Filename)%(Extension)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile %(Filename).cs  %(Filename)%(Extension)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile %(Filename).cs  %(Filename)%(Extension)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building newton sdk csharp wraper %(Filename).cs</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building newton sdk csharp wraper %(Filename).cs</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building newton sdk csharp wraper %(Filename).cs</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).cxx</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).cxx</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).cxx</Outputs>
+    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

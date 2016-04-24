@@ -1,4 +1,5 @@
 #include "stdafx.h"
+/*
 #include "NewtonWrapper.h"
 
 void NewtonDestroyCustomJoint(CustomJoint* joint)
@@ -40,6 +41,6 @@ CustomDryRollingFriction* NewtonCreateRollingFriction(NewtonBody* child, float r
 {
 	return new CustomDryRollingFriction(child, radius, coeff);
 }
-
+*/
 
 
