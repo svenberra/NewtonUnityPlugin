@@ -2049,8 +2049,8 @@ public class dMatrix : global::System.IDisposable {
     return ret;
   }
 
-  public dVector __dMatrix_Const_GetElement__(int i) {
-    dVector ret = new dVector(cppPINVOKE.dMatrix___dMatrix_Const_GetElement__(swigCPtr, i), false);
+  public dVector __dMatrix_GetElement__Const__(int i) {
+    dVector ret = new dVector(cppPINVOKE.dMatrix___dMatrix_GetElement__Const__(swigCPtr, i), false);
     return ret;
   }
 
@@ -3286,6 +3286,1167 @@ public class dComplentaritySolver : global::System.IDisposable {
 
   public virtual void CalculateReactionsForces(int bodyCount, SWIGTYPE_p_p_dComplentaritySolver__dBodyState bodyArray, int jointCount, SWIGTYPE_p_p_dComplentaritySolver__dBilateralJoint jointArray, float timestep, dComplentaritySolver.dJacobianPair jacobianArray, dComplentaritySolver.dJacobianColum jacobianColumnArray) {
     cppPINVOKE.dComplentaritySolver_CalculateReactionsForces(swigCPtr, bodyCount, SWIGTYPE_p_p_dComplentaritySolver__dBodyState.getCPtr(bodyArray), jointCount, SWIGTYPE_p_p_dComplentaritySolver__dBilateralJoint.getCPtr(jointArray), timestep, dComplentaritySolver.dJacobianPair.getCPtr(jacobianArray), dComplentaritySolver.dJacobianColum.getCPtr(jacobianColumnArray));
+  }
+
+}
+
+public class dContainersAlloc : global::System.IDisposable {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  protected bool swigCMemOwn;
+
+  internal dContainersAlloc(global::System.IntPtr cPtr, bool cMemoryOwn) {
+    swigCMemOwn = cMemoryOwn;
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(dContainersAlloc obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~dContainersAlloc() {
+    Dispose();
+  }
+
+  public virtual void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          cppPINVOKE.delete_dContainersAlloc(swigCPtr);
+        }
+        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+      }
+      global::System.GC.SuppressFinalize(this);
+    }
+  }
+
+  public SWIGTYPE_p_void __dContainers_Alloc__(uint size) {
+    global::System.IntPtr cPtr = cppPINVOKE.dContainersAlloc___dContainers_Alloc__(swigCPtr, size);
+    SWIGTYPE_p_void ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_void(cPtr, false);
+    return ret;
+  }
+
+  public void __dContainers_Freec__(SWIGTYPE_p_void ptr) {
+    cppPINVOKE.dContainersAlloc___dContainers_Freec__(swigCPtr, SWIGTYPE_p_void.getCPtr(ptr));
+  }
+
+  public dContainersAlloc() : this(cppPINVOKE.new_dContainersAlloc(), true) {
+  }
+
+  public static SWIGTYPE_p_void Alloc(uint size) {
+    global::System.IntPtr cPtr = cppPINVOKE.dContainersAlloc_Alloc(size);
+    SWIGTYPE_p_void ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_void(cPtr, false);
+    return ret;
+  }
+
+  public static void Free(SWIGTYPE_p_void ptr) {
+    cppPINVOKE.dContainersAlloc_Free(SWIGTYPE_p_void.getCPtr(ptr));
+  }
+
+}
+
+public class dContainerFixSizeAllocator : global::System.IDisposable {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  protected bool swigCMemOwn;
+
+  internal dContainerFixSizeAllocator(global::System.IntPtr cPtr, bool cMemoryOwn) {
+    swigCMemOwn = cMemoryOwn;
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(dContainerFixSizeAllocator obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~dContainerFixSizeAllocator() {
+    Dispose();
+  }
+
+  public virtual void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          cppPINVOKE.delete_dContainerFixSizeAllocator(swigCPtr);
+        }
+        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+      }
+      global::System.GC.SuppressFinalize(this);
+    }
+  }
+
+  public static dContainerFixSizeAllocator Create(int size, int poolSize) {
+    global::System.IntPtr cPtr = cppPINVOKE.dContainerFixSizeAllocator_Create(size, poolSize);
+    dContainerFixSizeAllocator ret = (cPtr == global::System.IntPtr.Zero) ? null : new dContainerFixSizeAllocator(cPtr, false);
+    return ret;
+  }
+
+  public SWIGTYPE_p_void Alloc() {
+    global::System.IntPtr cPtr = cppPINVOKE.dContainerFixSizeAllocator_Alloc(swigCPtr);
+    SWIGTYPE_p_void ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_void(cPtr, false);
+    return ret;
+  }
+
+  public void Free(SWIGTYPE_p_void ptr) {
+    cppPINVOKE.dContainerFixSizeAllocator_Free(swigCPtr, SWIGTYPE_p_void.getCPtr(ptr));
+  }
+
+  public void Flush() {
+    cppPINVOKE.dContainerFixSizeAllocator_Flush(swigCPtr);
+  }
+
+}
+
+public class dBezierSpline : dContainersAlloc {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+
+  internal dBezierSpline(global::System.IntPtr cPtr, bool cMemoryOwn) : base(cppPINVOKE.dBezierSpline_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(dBezierSpline obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~dBezierSpline() {
+    Dispose();
+  }
+
+  public override void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          cppPINVOKE.delete_dBezierSpline(swigCPtr);
+        }
+        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+      }
+      global::System.GC.SuppressFinalize(this);
+      base.Dispose();
+    }
+  }
+
+  public dBezierSpline() : this(cppPINVOKE.new_dBezierSpline__SWIG_0(), true) {
+  }
+
+  public dBezierSpline(dBezierSpline src) : this(cppPINVOKE.new_dBezierSpline__SWIG_1(dBezierSpline.getCPtr(src)), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public dBezierSpline __dBezierSpline__Assigment__(dBezierSpline copy) {
+    dBezierSpline ret = new dBezierSpline(cppPINVOKE.dBezierSpline___dBezierSpline__Assigment__(swigCPtr, dBezierSpline.getCPtr(copy)), false);
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public int GetDegree() {
+    int ret = cppPINVOKE.dBezierSpline_GetDegree(swigCPtr);
+    return ret;
+  }
+
+  public dBigVector CurvePoint(double u) {
+    dBigVector ret = new dBigVector(cppPINVOKE.dBezierSpline_CurvePoint(swigCPtr, u), true);
+    return ret;
+  }
+
+  public dBigVector CurveDerivative(double u, int index) {
+    dBigVector ret = new dBigVector(cppPINVOKE.dBezierSpline_CurveDerivative__SWIG_0(swigCPtr, u, index), true);
+    return ret;
+  }
+
+  public dBigVector CurveDerivative(double u) {
+    dBigVector ret = new dBigVector(cppPINVOKE.dBezierSpline_CurveDerivative__SWIG_1(swigCPtr, u), true);
+    return ret;
+  }
+
+  public int CurveAllDerivatives(double u, dBigVector defivatives) {
+    int ret = cppPINVOKE.dBezierSpline_CurveAllDerivatives(swigCPtr, u, dBigVector.getCPtr(defivatives));
+    return ret;
+  }
+
+  public double CalculateLength(double tol) {
+    double ret = cppPINVOKE.dBezierSpline_CalculateLength(swigCPtr, tol);
+    return ret;
+  }
+
+  public void GlobalCubicInterpolation(int count, dBigVector points, dBigVector firstTangent, dBigVector lastTangent) {
+    cppPINVOKE.dBezierSpline_GlobalCubicInterpolation(swigCPtr, count, dBigVector.getCPtr(points), dBigVector.getCPtr(firstTangent), dBigVector.getCPtr(lastTangent));
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public void CreateFromKnotVectorAndControlPoints(int degree, int knotCount, SWIGTYPE_p_double knotVector, dBigVector controlPoints) {
+    cppPINVOKE.dBezierSpline_CreateFromKnotVectorAndControlPoints(swigCPtr, degree, knotCount, SWIGTYPE_p_double.getCPtr(knotVector), dBigVector.getCPtr(controlPoints));
+  }
+
+  public void InsertKnot(double u) {
+    cppPINVOKE.dBezierSpline_InsertKnot(swigCPtr, u);
+  }
+
+  public bool RemoveKnot(double u, double tol) {
+    bool ret = cppPINVOKE.dBezierSpline_RemoveKnot(swigCPtr, u, tol);
+    return ret;
+  }
+
+  public int GetControlPointCount() {
+    int ret = cppPINVOKE.dBezierSpline_GetControlPointCount(swigCPtr);
+    return ret;
+  }
+
+  public dBigVector __dBezierSpline__GetControlPointArray__() {
+    global::System.IntPtr cPtr = cppPINVOKE.dBezierSpline___dBezierSpline__GetControlPointArray__(swigCPtr);
+    dBigVector ret = (cPtr == global::System.IntPtr.Zero) ? null : new dBigVector(cPtr, false);
+    return ret;
+  }
+
+  public dBigVector __dBezierSpline__GetControlPointArray__Const() {
+    global::System.IntPtr cPtr = cppPINVOKE.dBezierSpline___dBezierSpline__GetControlPointArray__Const(swigCPtr);
+    dBigVector ret = (cPtr == global::System.IntPtr.Zero) ? null : new dBigVector(cPtr, false);
+    return ret;
+  }
+
+  public dBigVector GetControlPoint(int i) {
+    dBigVector ret = new dBigVector(cppPINVOKE.dBezierSpline_GetControlPoint(swigCPtr, i), true);
+    return ret;
+  }
+
+  public void SetControlPoint(int i, dBigVector point) {
+    cppPINVOKE.dBezierSpline_SetControlPoint(swigCPtr, i, dBigVector.getCPtr(point));
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public int GetKnotCount() {
+    int ret = cppPINVOKE.dBezierSpline_GetKnotCount(swigCPtr);
+    return ret;
+  }
+
+  public SWIGTYPE_p_double __dBezierSpline__GetKnotArray__() {
+    global::System.IntPtr cPtr = cppPINVOKE.dBezierSpline___dBezierSpline__GetKnotArray__(swigCPtr);
+    SWIGTYPE_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_double(cPtr, false);
+    return ret;
+  }
+
+  public SWIGTYPE_p_double __dBezierSpline__GetKnotArray__Const() {
+    global::System.IntPtr cPtr = cppPINVOKE.dBezierSpline___dBezierSpline__GetKnotArray__Const(swigCPtr);
+    SWIGTYPE_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_double(cPtr, false);
+    return ret;
+  }
+
+  public double GetKnot(int i) {
+    double ret = cppPINVOKE.dBezierSpline_GetKnot(swigCPtr, i);
+    return ret;
+  }
+
+  public double FindClosestKnot(dBigVector closestPointOnCurve, dBigVector point, int subdivitionSteps) {
+    double ret = cppPINVOKE.dBezierSpline_FindClosestKnot__SWIG_0(swigCPtr, dBigVector.getCPtr(closestPointOnCurve), dBigVector.getCPtr(point), subdivitionSteps);
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public double FindClosestKnot(dBigVector closestPointOnCurve, dBigVector point) {
+    double ret = cppPINVOKE.dBezierSpline_FindClosestKnot__SWIG_1(swigCPtr, dBigVector.getCPtr(closestPointOnCurve), dBigVector.getCPtr(point));
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+}
+
+public class CustomScopeLock : global::System.IDisposable {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  protected bool swigCMemOwn;
+
+  internal CustomScopeLock(global::System.IntPtr cPtr, bool cMemoryOwn) {
+    swigCMemOwn = cMemoryOwn;
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(CustomScopeLock obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~CustomScopeLock() {
+    Dispose();
+  }
+
+  public virtual void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          cppPINVOKE.delete_CustomScopeLock(swigCPtr);
+        }
+        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+      }
+      global::System.GC.SuppressFinalize(this);
+    }
+  }
+
+  public CustomScopeLock(SWIGTYPE_p_unsigned_int arg0) : this(cppPINVOKE.new_CustomScopeLock(SWIGTYPE_p_unsigned_int.getCPtr(arg0)), true) {
+  }
+
+  public SWIGTYPE_p_unsigned_int m_atomicLock {
+    set {
+      cppPINVOKE.CustomScopeLock_m_atomicLock_set(swigCPtr, SWIGTYPE_p_unsigned_int.getCPtr(value));
+    } 
+    get {
+      global::System.IntPtr cPtr = cppPINVOKE.CustomScopeLock_m_atomicLock_get(swigCPtr);
+      SWIGTYPE_p_unsigned_int ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_unsigned_int(cPtr, false);
+      return ret;
+    } 
+  }
+
+}
+
+public class CustomAlloc : global::System.IDisposable {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  protected bool swigCMemOwn;
+
+  internal CustomAlloc(global::System.IntPtr cPtr, bool cMemoryOwn) {
+    swigCMemOwn = cMemoryOwn;
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(CustomAlloc obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~CustomAlloc() {
+    Dispose();
+  }
+
+  public virtual void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          cppPINVOKE.delete_CustomAlloc(swigCPtr);
+        }
+        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+      }
+      global::System.GC.SuppressFinalize(this);
+    }
+  }
+
+  public SWIGTYPE_p_void __CustomAlloc_Alloc__(uint size) {
+    global::System.IntPtr cPtr = cppPINVOKE.CustomAlloc___CustomAlloc_Alloc__(swigCPtr, size);
+    SWIGTYPE_p_void ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_void(cPtr, false);
+    return ret;
+  }
+
+  public void __CustomAlloc_Delete__(SWIGTYPE_p_void ptr) {
+    cppPINVOKE.CustomAlloc___CustomAlloc_Delete__(swigCPtr, SWIGTYPE_p_void.getCPtr(ptr));
+  }
+
+  public CustomAlloc() : this(cppPINVOKE.new_CustomAlloc(), true) {
+  }
+
+}
+
+public class CustomJoint : CustomAlloc {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+
+  internal CustomJoint(global::System.IntPtr cPtr, bool cMemoryOwn) : base(cppPINVOKE.CustomJoint_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(CustomJoint obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~CustomJoint() {
+    Dispose();
+  }
+
+  public override void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          cppPINVOKE.delete_CustomJoint(swigCPtr);
+        }
+        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+      }
+      global::System.GC.SuppressFinalize(this);
+      base.Dispose();
+    }
+  }
+
+  public class SerializeMetaData : global::System.IDisposable {
+    private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+    protected bool swigCMemOwn;
+  
+    internal SerializeMetaData(global::System.IntPtr cPtr, bool cMemoryOwn) {
+      swigCMemOwn = cMemoryOwn;
+      swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    }
+  
+    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData obj) {
+      return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+    }
+  
+    ~SerializeMetaData() {
+      Dispose();
+    }
+  
+    public virtual void Dispose() {
+      lock(this) {
+        if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+          if (swigCMemOwn) {
+            swigCMemOwn = false;
+            cppPINVOKE.delete_CustomJoint_SerializeMetaData(swigCPtr);
+          }
+          swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        }
+        global::System.GC.SuppressFinalize(this);
+      }
+    }
+  
+    public SerializeMetaData(string name) : this(cppPINVOKE.new_CustomJoint_SerializeMetaData(name), true) {
+    }
+  
+    public virtual void SerializeJoint(CustomJoint joint, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void callback, SWIGTYPE_p_void userData) {
+      cppPINVOKE.CustomJoint_SerializeMetaData_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), SWIGTYPE_p_void.getCPtr(userData));
+    }
+  
+    public virtual CustomJoint DeserializeJoint(SWIGTYPE_p_NewtonBody body0, SWIGTYPE_p_NewtonBody body1, SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void callback, SWIGTYPE_p_void userData) {
+      global::System.IntPtr cPtr = cppPINVOKE.CustomJoint_SerializeMetaData_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), SWIGTYPE_p_void.getCPtr(userData));
+      CustomJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomJoint(cPtr, false);
+      return ret;
+    }
+  
+  }
+
+  public class SerializeMetaDataDictionary : global::System.IDisposable {
+    private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+    protected bool swigCMemOwn;
+  
+    internal SerializeMetaDataDictionary(global::System.IntPtr cPtr, bool cMemoryOwn) {
+      swigCMemOwn = cMemoryOwn;
+      swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    }
+  
+    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaDataDictionary obj) {
+      return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+    }
+  
+    ~SerializeMetaDataDictionary() {
+      Dispose();
+    }
+  
+    public virtual void Dispose() {
+      lock(this) {
+        if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+          if (swigCMemOwn) {
+            swigCMemOwn = false;
+            cppPINVOKE.delete_CustomJoint_SerializeMetaDataDictionary(swigCPtr);
+          }
+          swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        }
+        global::System.GC.SuppressFinalize(this);
+      }
+    }
+  
+    public SerializeMetaDataDictionary() : this(cppPINVOKE.new_CustomJoint_SerializeMetaDataDictionary(), true) {
+    }
+  
+  }
+
+  public class AngularIntegration : global::System.IDisposable {
+    private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+    protected bool swigCMemOwn;
+  
+    internal AngularIntegration(global::System.IntPtr cPtr, bool cMemoryOwn) {
+      swigCMemOwn = cMemoryOwn;
+      swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    }
+  
+    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(AngularIntegration obj) {
+      return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+    }
+  
+    ~AngularIntegration() {
+      Dispose();
+    }
+  
+    public virtual void Dispose() {
+      lock(this) {
+        if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+          if (swigCMemOwn) {
+            swigCMemOwn = false;
+            cppPINVOKE.delete_CustomJoint_AngularIntegration(swigCPtr);
+          }
+          swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        }
+        global::System.GC.SuppressFinalize(this);
+      }
+    }
+  
+    public AngularIntegration() : this(cppPINVOKE.new_CustomJoint_AngularIntegration__SWIG_0(), true) {
+    }
+  
+    public AngularIntegration(float angle) : this(cppPINVOKE.new_CustomJoint_AngularIntegration__SWIG_1(angle), true) {
+    }
+  
+    public float GetAngle() {
+      float ret = cppPINVOKE.CustomJoint_AngularIntegration_GetAngle(swigCPtr);
+      return ret;
+    }
+  
+    public void SetAngle(float angle) {
+      cppPINVOKE.CustomJoint_AngularIntegration_SetAngle(swigCPtr, angle);
+    }
+  
+    public float Update(float newAngleCos, float newAngleSin) {
+      float ret = cppPINVOKE.CustomJoint_AngularIntegration_Update__SWIG_0(swigCPtr, newAngleCos, newAngleSin);
+      return ret;
+    }
+  
+    public CustomJoint.AngularIntegration __CustomJoint_AngularIntegration_Add__(CustomJoint.AngularIntegration angle) {
+      CustomJoint.AngularIntegration ret = new CustomJoint.AngularIntegration(cppPINVOKE.CustomJoint_AngularIntegration___CustomJoint_AngularIntegration_Add__(swigCPtr, CustomJoint.AngularIntegration.getCPtr(angle)), true);
+      if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+      return ret;
+    }
+  
+    public CustomJoint.AngularIntegration __CustomJoint_AngularIntegration_Sub__(CustomJoint.AngularIntegration angle) {
+      CustomJoint.AngularIntegration ret = new CustomJoint.AngularIntegration(cppPINVOKE.CustomJoint_AngularIntegration___CustomJoint_AngularIntegration_Sub__(swigCPtr, CustomJoint.AngularIntegration.getCPtr(angle)), true);
+      if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+      return ret;
+    }
+  
+    public float Update(float angle) {
+      float ret = cppPINVOKE.CustomJoint_AngularIntegration_Update__SWIG_1(swigCPtr, angle);
+      return ret;
+    }
+  
+  }
+
+  public CustomJoint() : this(cppPINVOKE.new_CustomJoint__SWIG_0(), true) {
+  }
+
+  public CustomJoint(int maxDOF, SWIGTYPE_p_NewtonBody body0, SWIGTYPE_p_NewtonBody body1) : this(cppPINVOKE.new_CustomJoint__SWIG_1(maxDOF, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1)), true) {
+  }
+
+  public CustomJoint(SWIGTYPE_p_NewtonBody body0, SWIGTYPE_p_NewtonBody body1, SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void callback, SWIGTYPE_p_void userData) : this(cppPINVOKE.new_CustomJoint__SWIG_2(SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), SWIGTYPE_p_void.getCPtr(userData)), true) {
+  }
+
+  public static void Initalize(SWIGTYPE_p_NewtonWorld world) {
+    cppPINVOKE.CustomJoint_Initalize(SWIGTYPE_p_NewtonWorld.getCPtr(world));
+  }
+
+  public virtual void Serialize(SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void callback, SWIGTYPE_p_void userData) {
+    cppPINVOKE.CustomJoint_Serialize(swigCPtr, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), SWIGTYPE_p_void.getCPtr(userData));
+  }
+
+  public void SetBodiesCollisionState(int state) {
+    cppPINVOKE.CustomJoint_SetBodiesCollisionState(swigCPtr, state);
+  }
+
+  public int GetBodiesCollisionState() {
+    int ret = cppPINVOKE.CustomJoint_GetBodiesCollisionState(swigCPtr);
+    return ret;
+  }
+
+  public SWIGTYPE_p_NewtonBody GetBody0() {
+    global::System.IntPtr cPtr = cppPINVOKE.CustomJoint_GetBody0(swigCPtr);
+    SWIGTYPE_p_NewtonBody ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonBody(cPtr, false);
+    return ret;
+  }
+
+  public SWIGTYPE_p_NewtonBody GetBody1() {
+    global::System.IntPtr cPtr = cppPINVOKE.CustomJoint_GetBody1(swigCPtr);
+    SWIGTYPE_p_NewtonBody ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonBody(cPtr, false);
+    return ret;
+  }
+
+  public SWIGTYPE_p_NewtonJoint GetJoint() {
+    global::System.IntPtr cPtr = cppPINVOKE.CustomJoint_GetJoint(swigCPtr);
+    SWIGTYPE_p_NewtonJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonJoint(cPtr, false);
+    return ret;
+  }
+
+  public dMatrix GetMatrix0() {
+    dMatrix ret = new dMatrix(cppPINVOKE.CustomJoint_GetMatrix0(swigCPtr), false);
+    return ret;
+  }
+
+  public dMatrix GetMatrix1() {
+    dMatrix ret = new dMatrix(cppPINVOKE.CustomJoint_GetMatrix1(swigCPtr), false);
+    return ret;
+  }
+
+  public virtual string GetTypeName() {
+    string ret = cppPINVOKE.CustomJoint_GetTypeName(swigCPtr);
+    return ret;
+  }
+
+  public virtual SWIGTYPE_p_dCRCTYPE GetSerializeKey() {
+    SWIGTYPE_p_dCRCTYPE ret = new SWIGTYPE_p_dCRCTYPE(cppPINVOKE.CustomJoint_GetSerializeKey(swigCPtr), true);
+    return ret;
+  }
+
+  public virtual void GetInfo(NewtonJointRecord info) {
+    cppPINVOKE.CustomJoint_GetInfo(swigCPtr, NewtonJointRecord.getCPtr(info));
+  }
+
+  public void SetUserData(SWIGTYPE_p_void userData) {
+    cppPINVOKE.CustomJoint_SetUserData(swigCPtr, SWIGTYPE_p_void.getCPtr(userData));
+  }
+
+  public SWIGTYPE_p_void GetUserData() {
+    global::System.IntPtr cPtr = cppPINVOKE.CustomJoint_GetUserData(swigCPtr);
+    SWIGTYPE_p_void ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_void(cPtr, false);
+    return ret;
+  }
+
+  public float GetStiffness() {
+    float ret = cppPINVOKE.CustomJoint_GetStiffness(swigCPtr);
+    return ret;
+  }
+
+  public void SetStiffness(float stiffness) {
+    cppPINVOKE.CustomJoint_SetStiffness(swigCPtr, stiffness);
+  }
+
+  public void SetUserDestructorCallback(SWIGTYPE_p_f_q_const__p_q_const__NewtonUserJoint__void callback) {
+    cppPINVOKE.CustomJoint_SetUserDestructorCallback(swigCPtr, SWIGTYPE_p_f_q_const__p_q_const__NewtonUserJoint__void.getCPtr(callback));
+  }
+
+  public void SetUserSubmintConstraintCallback(SWIGTYPE_p_f_q_const__p_q_const__NewtonUserJoint_float_int__void callback) {
+    cppPINVOKE.CustomJoint_SetUserSubmintConstraintCallback(swigCPtr, SWIGTYPE_p_f_q_const__p_q_const__NewtonUserJoint_float_int__void.getCPtr(callback));
+  }
+
+  public virtual void UserUpdate(float timestep, int threadIndex) {
+    cppPINVOKE.CustomJoint_UserUpdate(swigCPtr, timestep, threadIndex);
+  }
+
+}
+
+public class CustomPointToPoint : CustomJoint {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+
+  internal CustomPointToPoint(global::System.IntPtr cPtr, bool cMemoryOwn) : base(cppPINVOKE.CustomPointToPoint_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(CustomPointToPoint obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~CustomPointToPoint() {
+    Dispose();
+  }
+
+  public override void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          cppPINVOKE.delete_CustomPointToPoint(swigCPtr);
+        }
+        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+      }
+      global::System.GC.SuppressFinalize(this);
+      base.Dispose();
+    }
+  }
+
+  public CustomPointToPoint(dVector pivotFrame0, dVector pivotFrame1, SWIGTYPE_p_NewtonBody child, SWIGTYPE_p_NewtonBody parent) : this(cppPINVOKE.new_CustomPointToPoint__SWIG_0(dVector.getCPtr(pivotFrame0), dVector.getCPtr(pivotFrame1), SWIGTYPE_p_NewtonBody.getCPtr(child), SWIGTYPE_p_NewtonBody.getCPtr(parent)), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public CustomPointToPoint(dVector pivotFrame0, dVector pivotFrame1, SWIGTYPE_p_NewtonBody child) : this(cppPINVOKE.new_CustomPointToPoint__SWIG_1(dVector.getCPtr(pivotFrame0), dVector.getCPtr(pivotFrame1), SWIGTYPE_p_NewtonBody.getCPtr(child)), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public override SWIGTYPE_p_dCRCTYPE GetSerializeKey() {
+    SWIGTYPE_p_dCRCTYPE ret = new SWIGTYPE_p_dCRCTYPE(cppPINVOKE.CustomPointToPoint_GetSerializeKey(swigCPtr), true);
+    return ret;
+  }
+
+  public override string GetTypeName() {
+    string ret = cppPINVOKE.CustomPointToPoint_GetTypeName(swigCPtr);
+    return ret;
+  }
+
+  public class SerializeMetaData : CustomJoint.SerializeMetaData {
+    private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  
+    internal SerializeMetaData(global::System.IntPtr cPtr, bool cMemoryOwn) : base(cppPINVOKE.CustomPointToPoint_SerializeMetaData_SWIGUpcast(cPtr), cMemoryOwn) {
+      swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    }
+  
+    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData obj) {
+      return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+    }
+  
+    ~SerializeMetaData() {
+      Dispose();
+    }
+  
+    public override void Dispose() {
+      lock(this) {
+        if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+          if (swigCMemOwn) {
+            swigCMemOwn = false;
+            cppPINVOKE.delete_CustomPointToPoint_SerializeMetaData(swigCPtr);
+          }
+          swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        }
+        global::System.GC.SuppressFinalize(this);
+        base.Dispose();
+      }
+    }
+  
+    public SerializeMetaData(string name) : this(cppPINVOKE.new_CustomPointToPoint_SerializeMetaData(name), true) {
+    }
+  
+    public override void SerializeJoint(CustomJoint joint, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void callback, SWIGTYPE_p_void userData) {
+      cppPINVOKE.CustomPointToPoint_SerializeMetaData_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), SWIGTYPE_p_void.getCPtr(userData));
+    }
+  
+    public override CustomJoint DeserializeJoint(SWIGTYPE_p_NewtonBody body0, SWIGTYPE_p_NewtonBody body1, SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void callback, SWIGTYPE_p_void userData) {
+      global::System.IntPtr cPtr = cppPINVOKE.CustomPointToPoint_SerializeMetaData_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), SWIGTYPE_p_void.getCPtr(userData));
+      CustomJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomJoint(cPtr, false);
+      return ret;
+    }
+  
+  }
+
+  public static CustomPointToPoint.SerializeMetaData m_metaData {
+    set {
+      cppPINVOKE.CustomPointToPoint_m_metaData_set(CustomPointToPoint.SerializeMetaData.getCPtr(value));
+    } 
+    get {
+      global::System.IntPtr cPtr = cppPINVOKE.CustomPointToPoint_m_metaData_get();
+      CustomPointToPoint.SerializeMetaData ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomPointToPoint.SerializeMetaData(cPtr, false);
+      return ret;
+    } 
+  }
+
+}
+
+public class CustomBallAndSocket : CustomJoint {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+
+  internal CustomBallAndSocket(global::System.IntPtr cPtr, bool cMemoryOwn) : base(cppPINVOKE.CustomBallAndSocket_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(CustomBallAndSocket obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~CustomBallAndSocket() {
+    Dispose();
+  }
+
+  public override void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          cppPINVOKE.delete_CustomBallAndSocket(swigCPtr);
+        }
+        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+      }
+      global::System.GC.SuppressFinalize(this);
+      base.Dispose();
+    }
+  }
+
+  public CustomBallAndSocket(dMatrix pinAndPivotFrame, SWIGTYPE_p_NewtonBody child, SWIGTYPE_p_NewtonBody parent) : this(cppPINVOKE.new_CustomBallAndSocket__SWIG_0(dMatrix.getCPtr(pinAndPivotFrame), SWIGTYPE_p_NewtonBody.getCPtr(child), SWIGTYPE_p_NewtonBody.getCPtr(parent)), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public CustomBallAndSocket(dMatrix pinAndPivotFrame, SWIGTYPE_p_NewtonBody child) : this(cppPINVOKE.new_CustomBallAndSocket__SWIG_1(dMatrix.getCPtr(pinAndPivotFrame), SWIGTYPE_p_NewtonBody.getCPtr(child)), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public CustomBallAndSocket(dMatrix pinAndPivotFrame0, dMatrix pinAndPivotFrame1, SWIGTYPE_p_NewtonBody child, SWIGTYPE_p_NewtonBody parent) : this(cppPINVOKE.new_CustomBallAndSocket__SWIG_2(dMatrix.getCPtr(pinAndPivotFrame0), dMatrix.getCPtr(pinAndPivotFrame1), SWIGTYPE_p_NewtonBody.getCPtr(child), SWIGTYPE_p_NewtonBody.getCPtr(parent)), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public CustomBallAndSocket(dMatrix pinAndPivotFrame0, dMatrix pinAndPivotFrame1, SWIGTYPE_p_NewtonBody child) : this(cppPINVOKE.new_CustomBallAndSocket__SWIG_3(dMatrix.getCPtr(pinAndPivotFrame0), dMatrix.getCPtr(pinAndPivotFrame1), SWIGTYPE_p_NewtonBody.getCPtr(child)), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public override SWIGTYPE_p_dCRCTYPE GetSerializeKey() {
+    SWIGTYPE_p_dCRCTYPE ret = new SWIGTYPE_p_dCRCTYPE(cppPINVOKE.CustomBallAndSocket_GetSerializeKey(swigCPtr), true);
+    return ret;
+  }
+
+  public override string GetTypeName() {
+    string ret = cppPINVOKE.CustomBallAndSocket_GetTypeName(swigCPtr);
+    return ret;
+  }
+
+  public class SerializeMetaData : CustomJoint.SerializeMetaData {
+    private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  
+    internal SerializeMetaData(global::System.IntPtr cPtr, bool cMemoryOwn) : base(cppPINVOKE.CustomBallAndSocket_SerializeMetaData_SWIGUpcast(cPtr), cMemoryOwn) {
+      swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    }
+  
+    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData obj) {
+      return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+    }
+  
+    ~SerializeMetaData() {
+      Dispose();
+    }
+  
+    public override void Dispose() {
+      lock(this) {
+        if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+          if (swigCMemOwn) {
+            swigCMemOwn = false;
+            cppPINVOKE.delete_CustomBallAndSocket_SerializeMetaData(swigCPtr);
+          }
+          swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        }
+        global::System.GC.SuppressFinalize(this);
+        base.Dispose();
+      }
+    }
+  
+    public SerializeMetaData(string name) : this(cppPINVOKE.new_CustomBallAndSocket_SerializeMetaData(name), true) {
+    }
+  
+    public override void SerializeJoint(CustomJoint joint, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void callback, SWIGTYPE_p_void userData) {
+      cppPINVOKE.CustomBallAndSocket_SerializeMetaData_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), SWIGTYPE_p_void.getCPtr(userData));
+    }
+  
+    public override CustomJoint DeserializeJoint(SWIGTYPE_p_NewtonBody body0, SWIGTYPE_p_NewtonBody body1, SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void callback, SWIGTYPE_p_void userData) {
+      global::System.IntPtr cPtr = cppPINVOKE.CustomBallAndSocket_SerializeMetaData_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), SWIGTYPE_p_void.getCPtr(userData));
+      CustomJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomJoint(cPtr, false);
+      return ret;
+    }
+  
+  }
+
+  public static CustomBallAndSocket.SerializeMetaData m_metaData {
+    set {
+      cppPINVOKE.CustomBallAndSocket_m_metaData_set(CustomBallAndSocket.SerializeMetaData.getCPtr(value));
+    } 
+    get {
+      global::System.IntPtr cPtr = cppPINVOKE.CustomBallAndSocket_m_metaData_get();
+      CustomBallAndSocket.SerializeMetaData ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomBallAndSocket.SerializeMetaData(cPtr, false);
+      return ret;
+    } 
+  }
+
+}
+
+public class CustomLimitBallAndSocket : CustomBallAndSocket {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+
+  internal CustomLimitBallAndSocket(global::System.IntPtr cPtr, bool cMemoryOwn) : base(cppPINVOKE.CustomLimitBallAndSocket_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(CustomLimitBallAndSocket obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~CustomLimitBallAndSocket() {
+    Dispose();
+  }
+
+  public override void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          cppPINVOKE.delete_CustomLimitBallAndSocket(swigCPtr);
+        }
+        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+      }
+      global::System.GC.SuppressFinalize(this);
+      base.Dispose();
+    }
+  }
+
+  public CustomLimitBallAndSocket(dMatrix pinAndPivotFrame, SWIGTYPE_p_NewtonBody child, SWIGTYPE_p_NewtonBody parent) : this(cppPINVOKE.new_CustomLimitBallAndSocket__SWIG_0(dMatrix.getCPtr(pinAndPivotFrame), SWIGTYPE_p_NewtonBody.getCPtr(child), SWIGTYPE_p_NewtonBody.getCPtr(parent)), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public CustomLimitBallAndSocket(dMatrix pinAndPivotFrame, SWIGTYPE_p_NewtonBody child) : this(cppPINVOKE.new_CustomLimitBallAndSocket__SWIG_1(dMatrix.getCPtr(pinAndPivotFrame), SWIGTYPE_p_NewtonBody.getCPtr(child)), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public CustomLimitBallAndSocket(dMatrix childPinAndPivotFrame, SWIGTYPE_p_NewtonBody child, dMatrix parentPinAndPivotFrame, SWIGTYPE_p_NewtonBody parent) : this(cppPINVOKE.new_CustomLimitBallAndSocket__SWIG_2(dMatrix.getCPtr(childPinAndPivotFrame), SWIGTYPE_p_NewtonBody.getCPtr(child), dMatrix.getCPtr(parentPinAndPivotFrame), SWIGTYPE_p_NewtonBody.getCPtr(parent)), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public void SetConeAngle(float angle) {
+    cppPINVOKE.CustomLimitBallAndSocket_SetConeAngle(swigCPtr, angle);
+  }
+
+  public void SetTwistAngle(float minAngle, float maxAngle) {
+    cppPINVOKE.CustomLimitBallAndSocket_SetTwistAngle(swigCPtr, minAngle, maxAngle);
+  }
+
+  public float GetConeAngle() {
+    float ret = cppPINVOKE.CustomLimitBallAndSocket_GetConeAngle(swigCPtr);
+    return ret;
+  }
+
+  public void GetTwistAngle(SWIGTYPE_p_float minAngle, SWIGTYPE_p_float maxAngle) {
+    cppPINVOKE.CustomLimitBallAndSocket_GetTwistAngle(swigCPtr, SWIGTYPE_p_float.getCPtr(minAngle), SWIGTYPE_p_float.getCPtr(maxAngle));
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public override SWIGTYPE_p_dCRCTYPE GetSerializeKey() {
+    SWIGTYPE_p_dCRCTYPE ret = new SWIGTYPE_p_dCRCTYPE(cppPINVOKE.CustomLimitBallAndSocket_GetSerializeKey(swigCPtr), true);
+    return ret;
+  }
+
+  public override string GetTypeName() {
+    string ret = cppPINVOKE.CustomLimitBallAndSocket_GetTypeName(swigCPtr);
+    return ret;
+  }
+
+  public class SerializeMetaData : CustomBallAndSocket.SerializeMetaData {
+    private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  
+    internal SerializeMetaData(global::System.IntPtr cPtr, bool cMemoryOwn) : base(cppPINVOKE.CustomLimitBallAndSocket_SerializeMetaData_SWIGUpcast(cPtr), cMemoryOwn) {
+      swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    }
+  
+    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData obj) {
+      return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+    }
+  
+    ~SerializeMetaData() {
+      Dispose();
+    }
+  
+    public override void Dispose() {
+      lock(this) {
+        if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+          if (swigCMemOwn) {
+            swigCMemOwn = false;
+            cppPINVOKE.delete_CustomLimitBallAndSocket_SerializeMetaData(swigCPtr);
+          }
+          swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        }
+        global::System.GC.SuppressFinalize(this);
+        base.Dispose();
+      }
+    }
+  
+    public SerializeMetaData(string name) : this(cppPINVOKE.new_CustomLimitBallAndSocket_SerializeMetaData(name), true) {
+    }
+  
+    public override void SerializeJoint(CustomJoint joint, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void callback, SWIGTYPE_p_void userData) {
+      cppPINVOKE.CustomLimitBallAndSocket_SerializeMetaData_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), SWIGTYPE_p_void.getCPtr(userData));
+    }
+  
+    public override CustomJoint DeserializeJoint(SWIGTYPE_p_NewtonBody body0, SWIGTYPE_p_NewtonBody body1, SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void callback, SWIGTYPE_p_void userData) {
+      global::System.IntPtr cPtr = cppPINVOKE.CustomLimitBallAndSocket_SerializeMetaData_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), SWIGTYPE_p_void.getCPtr(userData));
+      CustomJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomJoint(cPtr, false);
+      return ret;
+    }
+  
+  }
+
+  public static CustomLimitBallAndSocket.SerializeMetaData m_metaData {
+    set {
+      cppPINVOKE.CustomLimitBallAndSocket_m_metaData_set(CustomLimitBallAndSocket.SerializeMetaData.getCPtr(value));
+    } 
+    get {
+      global::System.IntPtr cPtr = cppPINVOKE.CustomLimitBallAndSocket_m_metaData_get();
+      CustomLimitBallAndSocket.SerializeMetaData ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomLimitBallAndSocket.SerializeMetaData(cPtr, false);
+      return ret;
+    } 
+  }
+
+}
+
+public class CustomBallAndSocketWithFriction : CustomBallAndSocket {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+
+  internal CustomBallAndSocketWithFriction(global::System.IntPtr cPtr, bool cMemoryOwn) : base(cppPINVOKE.CustomBallAndSocketWithFriction_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(CustomBallAndSocketWithFriction obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~CustomBallAndSocketWithFriction() {
+    Dispose();
+  }
+
+  public override void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          cppPINVOKE.delete_CustomBallAndSocketWithFriction(swigCPtr);
+        }
+        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+      }
+      global::System.GC.SuppressFinalize(this);
+      base.Dispose();
+    }
+  }
+
+  public CustomBallAndSocketWithFriction(dMatrix pinAndPivotFrame, SWIGTYPE_p_NewtonBody child, SWIGTYPE_p_NewtonBody parent, float dryFriction) : this(cppPINVOKE.new_CustomBallAndSocketWithFriction(dMatrix.getCPtr(pinAndPivotFrame), SWIGTYPE_p_NewtonBody.getCPtr(child), SWIGTYPE_p_NewtonBody.getCPtr(parent), dryFriction), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public virtual void SubmitConstraints(float timestep, int threadIndex) {
+    cppPINVOKE.CustomBallAndSocketWithFriction_SubmitConstraints(swigCPtr, timestep, threadIndex);
+  }
+
+  public float m_dryFriction {
+    set {
+      cppPINVOKE.CustomBallAndSocketWithFriction_m_dryFriction_set(swigCPtr, value);
+    } 
+    get {
+      float ret = cppPINVOKE.CustomBallAndSocketWithFriction_m_dryFriction_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+}
+
+public class CustomControlledBallAndSocket : CustomBallAndSocket {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+
+  internal CustomControlledBallAndSocket(global::System.IntPtr cPtr, bool cMemoryOwn) : base(cppPINVOKE.CustomControlledBallAndSocket_SWIGUpcast(cPtr), cMemoryOwn) {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(CustomControlledBallAndSocket obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~CustomControlledBallAndSocket() {
+    Dispose();
+  }
+
+  public override void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          cppPINVOKE.delete_CustomControlledBallAndSocket(swigCPtr);
+        }
+        swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+      }
+      global::System.GC.SuppressFinalize(this);
+      base.Dispose();
+    }
+  }
+
+  public CustomControlledBallAndSocket(dMatrix pinAndPivotFrame, SWIGTYPE_p_NewtonBody child, SWIGTYPE_p_NewtonBody parent) : this(cppPINVOKE.new_CustomControlledBallAndSocket__SWIG_0(dMatrix.getCPtr(pinAndPivotFrame), SWIGTYPE_p_NewtonBody.getCPtr(child), SWIGTYPE_p_NewtonBody.getCPtr(parent)), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public CustomControlledBallAndSocket(dMatrix pinAndPivotFrame, SWIGTYPE_p_NewtonBody child) : this(cppPINVOKE.new_CustomControlledBallAndSocket__SWIG_1(dMatrix.getCPtr(pinAndPivotFrame), SWIGTYPE_p_NewtonBody.getCPtr(child)), true) {
+    if (cppPINVOKE.SWIGPendingException.Pending) throw cppPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public void SetAngularVelocity(float omegaMag) {
+    cppPINVOKE.CustomControlledBallAndSocket_SetAngularVelocity(swigCPtr, omegaMag);
+  }
+
+  public float GetAngularVelocity() {
+    float ret = cppPINVOKE.CustomControlledBallAndSocket_GetAngularVelocity(swigCPtr);
+    return ret;
+  }
+
+  public void SetPitchAngle(float angle) {
+    cppPINVOKE.CustomControlledBallAndSocket_SetPitchAngle__SWIG_0(swigCPtr, angle);
+  }
+
+  public float SetPitchAngle() {
+    float ret = cppPINVOKE.CustomControlledBallAndSocket_SetPitchAngle__SWIG_1(swigCPtr);
+    return ret;
+  }
+
+  public void SetYawAngle(float angle) {
+    cppPINVOKE.CustomControlledBallAndSocket_SetYawAngle__SWIG_0(swigCPtr, angle);
+  }
+
+  public float SetYawAngle() {
+    float ret = cppPINVOKE.CustomControlledBallAndSocket_SetYawAngle__SWIG_1(swigCPtr);
+    return ret;
+  }
+
+  public void SetRollAngle(float angle) {
+    cppPINVOKE.CustomControlledBallAndSocket_SetRollAngle__SWIG_0(swigCPtr, angle);
+  }
+
+  public float SetRollAngle() {
+    float ret = cppPINVOKE.CustomControlledBallAndSocket_SetRollAngle__SWIG_1(swigCPtr);
+    return ret;
+  }
+
+  public override SWIGTYPE_p_dCRCTYPE GetSerializeKey() {
+    SWIGTYPE_p_dCRCTYPE ret = new SWIGTYPE_p_dCRCTYPE(cppPINVOKE.CustomControlledBallAndSocket_GetSerializeKey(swigCPtr), true);
+    return ret;
+  }
+
+  public override string GetTypeName() {
+    string ret = cppPINVOKE.CustomControlledBallAndSocket_GetTypeName(swigCPtr);
+    return ret;
+  }
+
+  public class SerializeMetaData : CustomBallAndSocket.SerializeMetaData {
+    private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+  
+    internal SerializeMetaData(global::System.IntPtr cPtr, bool cMemoryOwn) : base(cppPINVOKE.CustomControlledBallAndSocket_SerializeMetaData_SWIGUpcast(cPtr), cMemoryOwn) {
+      swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+    }
+  
+    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData obj) {
+      return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+    }
+  
+    ~SerializeMetaData() {
+      Dispose();
+    }
+  
+    public override void Dispose() {
+      lock(this) {
+        if (swigCPtr.Handle != global::System.IntPtr.Zero) {
+          if (swigCMemOwn) {
+            swigCMemOwn = false;
+            cppPINVOKE.delete_CustomControlledBallAndSocket_SerializeMetaData(swigCPtr);
+          }
+          swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+        }
+        global::System.GC.SuppressFinalize(this);
+        base.Dispose();
+      }
+    }
+  
+    public SerializeMetaData(string name) : this(cppPINVOKE.new_CustomControlledBallAndSocket_SerializeMetaData(name), true) {
+    }
+  
+    public override void SerializeJoint(CustomJoint joint, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void callback, SWIGTYPE_p_void userData) {
+      cppPINVOKE.CustomControlledBallAndSocket_SerializeMetaData_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), SWIGTYPE_p_void.getCPtr(userData));
+    }
+  
+    public override CustomJoint DeserializeJoint(SWIGTYPE_p_NewtonBody body0, SWIGTYPE_p_NewtonBody body1, SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void callback, SWIGTYPE_p_void userData) {
+      global::System.IntPtr cPtr = cppPINVOKE.CustomControlledBallAndSocket_SerializeMetaData_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), SWIGTYPE_p_void.getCPtr(userData));
+      CustomJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomJoint(cPtr, false);
+      return ret;
+    }
+  
+  }
+
+  public static CustomControlledBallAndSocket.SerializeMetaData m_metaData {
+    set {
+      cppPINVOKE.CustomControlledBallAndSocket_m_metaData_set(CustomControlledBallAndSocket.SerializeMetaData.getCPtr(value));
+    } 
+    get {
+      global::System.IntPtr cPtr = cppPINVOKE.CustomControlledBallAndSocket_m_metaData_get();
+      CustomControlledBallAndSocket.SerializeMetaData ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomControlledBallAndSocket.SerializeMetaData(cPtr, false);
+      return ret;
+    } 
   }
 
 }
@@ -5814,8 +6975,8 @@ class cppPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dMatrix___dMatrix_GetElement__")]
   public static extern global::System.IntPtr dMatrix___dMatrix_GetElement__(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dMatrix___dMatrix_Const_GetElement__")]
-  public static extern global::System.IntPtr dMatrix___dMatrix_Const_GetElement__(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dMatrix___dMatrix_GetElement__Const__")]
+  public static extern global::System.IntPtr dMatrix___dMatrix_GetElement__Const__(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dMatrix_Inverse")]
   public static extern global::System.IntPtr dMatrix_Inverse(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -6366,8 +7527,482 @@ class cppPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dComplentaritySolver_CalculateReactionsForces")]
   public static extern void dComplentaritySolver_CalculateReactionsForces(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, int jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, float jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, global::System.Runtime.InteropServices.HandleRef jarg8);
 
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_D_MAX_ENTRIES_IN_FREELIST_get")]
+  public static extern int D_MAX_ENTRIES_IN_FREELIST_get();
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dContainersAlloc___dContainers_Alloc__")]
+  public static extern global::System.IntPtr dContainersAlloc___dContainers_Alloc__(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dContainersAlloc___dContainers_Freec__")]
+  public static extern void dContainersAlloc___dContainers_Freec__(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_dContainersAlloc")]
+  public static extern global::System.IntPtr new_dContainersAlloc();
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_dContainersAlloc")]
+  public static extern void delete_dContainersAlloc(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dContainersAlloc_Alloc")]
+  public static extern global::System.IntPtr dContainersAlloc_Alloc(uint jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dContainersAlloc_Free")]
+  public static extern void dContainersAlloc_Free(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dContainerFixSizeAllocator_Create")]
+  public static extern global::System.IntPtr dContainerFixSizeAllocator_Create(int jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_dContainerFixSizeAllocator")]
+  public static extern void delete_dContainerFixSizeAllocator(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dContainerFixSizeAllocator_Alloc")]
+  public static extern global::System.IntPtr dContainerFixSizeAllocator_Alloc(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dContainerFixSizeAllocator_Free")]
+  public static extern void dContainerFixSizeAllocator_Free(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dContainerFixSizeAllocator_Flush")]
+  public static extern void dContainerFixSizeAllocator_Flush(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_dBezierSpline__SWIG_0")]
+  public static extern global::System.IntPtr new_dBezierSpline__SWIG_0();
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_dBezierSpline__SWIG_1")]
+  public static extern global::System.IntPtr new_dBezierSpline__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_dBezierSpline")]
+  public static extern void delete_dBezierSpline(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline___dBezierSpline__Assigment__")]
+  public static extern global::System.IntPtr dBezierSpline___dBezierSpline__Assigment__(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_GetDegree")]
+  public static extern int dBezierSpline_GetDegree(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_CurvePoint")]
+  public static extern global::System.IntPtr dBezierSpline_CurvePoint(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_CurveDerivative__SWIG_0")]
+  public static extern global::System.IntPtr dBezierSpline_CurveDerivative__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_CurveDerivative__SWIG_1")]
+  public static extern global::System.IntPtr dBezierSpline_CurveDerivative__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_CurveAllDerivatives")]
+  public static extern int dBezierSpline_CurveAllDerivatives(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_CalculateLength")]
+  public static extern double dBezierSpline_CalculateLength(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_GlobalCubicInterpolation")]
+  public static extern void dBezierSpline_GlobalCubicInterpolation(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_CreateFromKnotVectorAndControlPoints")]
+  public static extern void dBezierSpline_CreateFromKnotVectorAndControlPoints(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_InsertKnot")]
+  public static extern void dBezierSpline_InsertKnot(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_RemoveKnot")]
+  public static extern bool dBezierSpline_RemoveKnot(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2, double jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_GetControlPointCount")]
+  public static extern int dBezierSpline_GetControlPointCount(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline___dBezierSpline__GetControlPointArray__")]
+  public static extern global::System.IntPtr dBezierSpline___dBezierSpline__GetControlPointArray__(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline___dBezierSpline__GetControlPointArray__Const")]
+  public static extern global::System.IntPtr dBezierSpline___dBezierSpline__GetControlPointArray__Const(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_GetControlPoint")]
+  public static extern global::System.IntPtr dBezierSpline_GetControlPoint(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_SetControlPoint")]
+  public static extern void dBezierSpline_SetControlPoint(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_GetKnotCount")]
+  public static extern int dBezierSpline_GetKnotCount(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline___dBezierSpline__GetKnotArray__")]
+  public static extern global::System.IntPtr dBezierSpline___dBezierSpline__GetKnotArray__(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline___dBezierSpline__GetKnotArray__Const")]
+  public static extern global::System.IntPtr dBezierSpline___dBezierSpline__GetKnotArray__Const(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_GetKnot")]
+  public static extern double dBezierSpline_GetKnot(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_FindClosestKnot__SWIG_0")]
+  public static extern double dBezierSpline_FindClosestKnot__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, int jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_FindClosestKnot__SWIG_1")]
+  public static extern double dBezierSpline_FindClosestKnot__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomScopeLock")]
+  public static extern global::System.IntPtr new_CustomScopeLock(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomScopeLock")]
+  public static extern void delete_CustomScopeLock(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomScopeLock_m_atomicLock_set")]
+  public static extern void CustomScopeLock_m_atomicLock_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomScopeLock_m_atomicLock_get")]
+  public static extern global::System.IntPtr CustomScopeLock_m_atomicLock_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomAlloc___CustomAlloc_Alloc__")]
+  public static extern global::System.IntPtr CustomAlloc___CustomAlloc_Alloc__(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomAlloc___CustomAlloc_Delete__")]
+  public static extern void CustomAlloc___CustomAlloc_Delete__(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomAlloc")]
+  public static extern global::System.IntPtr new_CustomAlloc();
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomAlloc")]
+  public static extern void delete_CustomAlloc(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomJoint_SerializeMetaData")]
+  public static extern global::System.IntPtr new_CustomJoint_SerializeMetaData(string jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_SerializeMetaData_SerializeJoint")]
+  public static extern void CustomJoint_SerializeMetaData_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_SerializeMetaData_DeserializeJoint")]
+  public static extern global::System.IntPtr CustomJoint_SerializeMetaData_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomJoint_SerializeMetaData")]
+  public static extern void delete_CustomJoint_SerializeMetaData(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomJoint_SerializeMetaDataDictionary")]
+  public static extern global::System.IntPtr new_CustomJoint_SerializeMetaDataDictionary();
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomJoint_SerializeMetaDataDictionary")]
+  public static extern void delete_CustomJoint_SerializeMetaDataDictionary(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomJoint_AngularIntegration__SWIG_0")]
+  public static extern global::System.IntPtr new_CustomJoint_AngularIntegration__SWIG_0();
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomJoint_AngularIntegration__SWIG_1")]
+  public static extern global::System.IntPtr new_CustomJoint_AngularIntegration__SWIG_1(float jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_AngularIntegration_GetAngle")]
+  public static extern float CustomJoint_AngularIntegration_GetAngle(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_AngularIntegration_SetAngle")]
+  public static extern void CustomJoint_AngularIntegration_SetAngle(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_AngularIntegration_Update__SWIG_0")]
+  public static extern float CustomJoint_AngularIntegration_Update__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_AngularIntegration___CustomJoint_AngularIntegration_Add__")]
+  public static extern global::System.IntPtr CustomJoint_AngularIntegration___CustomJoint_AngularIntegration_Add__(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_AngularIntegration___CustomJoint_AngularIntegration_Sub__")]
+  public static extern global::System.IntPtr CustomJoint_AngularIntegration___CustomJoint_AngularIntegration_Sub__(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_AngularIntegration_Update__SWIG_1")]
+  public static extern float CustomJoint_AngularIntegration_Update__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomJoint_AngularIntegration")]
+  public static extern void delete_CustomJoint_AngularIntegration(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomJoint__SWIG_0")]
+  public static extern global::System.IntPtr new_CustomJoint__SWIG_0();
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomJoint__SWIG_1")]
+  public static extern global::System.IntPtr new_CustomJoint__SWIG_1(int jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomJoint__SWIG_2")]
+  public static extern global::System.IntPtr new_CustomJoint__SWIG_2(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomJoint")]
+  public static extern void delete_CustomJoint(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_Initalize")]
+  public static extern void CustomJoint_Initalize(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_Serialize")]
+  public static extern void CustomJoint_Serialize(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_SetBodiesCollisionState")]
+  public static extern void CustomJoint_SetBodiesCollisionState(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_GetBodiesCollisionState")]
+  public static extern int CustomJoint_GetBodiesCollisionState(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_GetBody0")]
+  public static extern global::System.IntPtr CustomJoint_GetBody0(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_GetBody1")]
+  public static extern global::System.IntPtr CustomJoint_GetBody1(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_GetJoint")]
+  public static extern global::System.IntPtr CustomJoint_GetJoint(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_GetMatrix0")]
+  public static extern global::System.IntPtr CustomJoint_GetMatrix0(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_GetMatrix1")]
+  public static extern global::System.IntPtr CustomJoint_GetMatrix1(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_GetTypeName")]
+  public static extern string CustomJoint_GetTypeName(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_GetSerializeKey")]
+  public static extern global::System.IntPtr CustomJoint_GetSerializeKey(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_GetInfo")]
+  public static extern void CustomJoint_GetInfo(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_SetUserData")]
+  public static extern void CustomJoint_SetUserData(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_GetUserData")]
+  public static extern global::System.IntPtr CustomJoint_GetUserData(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_GetStiffness")]
+  public static extern float CustomJoint_GetStiffness(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_SetStiffness")]
+  public static extern void CustomJoint_SetStiffness(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_SetUserDestructorCallback")]
+  public static extern void CustomJoint_SetUserDestructorCallback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_SetUserSubmintConstraintCallback")]
+  public static extern void CustomJoint_SetUserSubmintConstraintCallback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_UserUpdate")]
+  public static extern void CustomJoint_UserUpdate(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomPointToPoint__SWIG_0")]
+  public static extern global::System.IntPtr new_CustomPointToPoint__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomPointToPoint__SWIG_1")]
+  public static extern global::System.IntPtr new_CustomPointToPoint__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomPointToPoint")]
+  public static extern void delete_CustomPointToPoint(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomPointToPoint_GetSerializeKey")]
+  public static extern global::System.IntPtr CustomPointToPoint_GetSerializeKey(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomPointToPoint_GetTypeName")]
+  public static extern string CustomPointToPoint_GetTypeName(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomPointToPoint_SerializeMetaData")]
+  public static extern global::System.IntPtr new_CustomPointToPoint_SerializeMetaData(string jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomPointToPoint_SerializeMetaData_SerializeJoint")]
+  public static extern void CustomPointToPoint_SerializeMetaData_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomPointToPoint_SerializeMetaData_DeserializeJoint")]
+  public static extern global::System.IntPtr CustomPointToPoint_SerializeMetaData_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomPointToPoint_SerializeMetaData")]
+  public static extern void delete_CustomPointToPoint_SerializeMetaData(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomPointToPoint_m_metaData_set")]
+  public static extern void CustomPointToPoint_m_metaData_set(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomPointToPoint_m_metaData_get")]
+  public static extern global::System.IntPtr CustomPointToPoint_m_metaData_get();
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomBallAndSocket__SWIG_0")]
+  public static extern global::System.IntPtr new_CustomBallAndSocket__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomBallAndSocket__SWIG_1")]
+  public static extern global::System.IntPtr new_CustomBallAndSocket__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomBallAndSocket__SWIG_2")]
+  public static extern global::System.IntPtr new_CustomBallAndSocket__SWIG_2(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomBallAndSocket__SWIG_3")]
+  public static extern global::System.IntPtr new_CustomBallAndSocket__SWIG_3(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomBallAndSocket")]
+  public static extern void delete_CustomBallAndSocket(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomBallAndSocket_GetSerializeKey")]
+  public static extern global::System.IntPtr CustomBallAndSocket_GetSerializeKey(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomBallAndSocket_GetTypeName")]
+  public static extern string CustomBallAndSocket_GetTypeName(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomBallAndSocket_SerializeMetaData")]
+  public static extern global::System.IntPtr new_CustomBallAndSocket_SerializeMetaData(string jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomBallAndSocket_SerializeMetaData_SerializeJoint")]
+  public static extern void CustomBallAndSocket_SerializeMetaData_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomBallAndSocket_SerializeMetaData_DeserializeJoint")]
+  public static extern global::System.IntPtr CustomBallAndSocket_SerializeMetaData_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomBallAndSocket_SerializeMetaData")]
+  public static extern void delete_CustomBallAndSocket_SerializeMetaData(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomBallAndSocket_m_metaData_set")]
+  public static extern void CustomBallAndSocket_m_metaData_set(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomBallAndSocket_m_metaData_get")]
+  public static extern global::System.IntPtr CustomBallAndSocket_m_metaData_get();
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomLimitBallAndSocket__SWIG_0")]
+  public static extern global::System.IntPtr new_CustomLimitBallAndSocket__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomLimitBallAndSocket__SWIG_1")]
+  public static extern global::System.IntPtr new_CustomLimitBallAndSocket__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomLimitBallAndSocket__SWIG_2")]
+  public static extern global::System.IntPtr new_CustomLimitBallAndSocket__SWIG_2(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomLimitBallAndSocket")]
+  public static extern void delete_CustomLimitBallAndSocket(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomLimitBallAndSocket_SetConeAngle")]
+  public static extern void CustomLimitBallAndSocket_SetConeAngle(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomLimitBallAndSocket_SetTwistAngle")]
+  public static extern void CustomLimitBallAndSocket_SetTwistAngle(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomLimitBallAndSocket_GetConeAngle")]
+  public static extern float CustomLimitBallAndSocket_GetConeAngle(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomLimitBallAndSocket_GetTwistAngle")]
+  public static extern void CustomLimitBallAndSocket_GetTwistAngle(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomLimitBallAndSocket_GetSerializeKey")]
+  public static extern global::System.IntPtr CustomLimitBallAndSocket_GetSerializeKey(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomLimitBallAndSocket_GetTypeName")]
+  public static extern string CustomLimitBallAndSocket_GetTypeName(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomLimitBallAndSocket_SerializeMetaData")]
+  public static extern global::System.IntPtr new_CustomLimitBallAndSocket_SerializeMetaData(string jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomLimitBallAndSocket_SerializeMetaData_SerializeJoint")]
+  public static extern void CustomLimitBallAndSocket_SerializeMetaData_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomLimitBallAndSocket_SerializeMetaData_DeserializeJoint")]
+  public static extern global::System.IntPtr CustomLimitBallAndSocket_SerializeMetaData_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomLimitBallAndSocket_SerializeMetaData")]
+  public static extern void delete_CustomLimitBallAndSocket_SerializeMetaData(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomLimitBallAndSocket_m_metaData_set")]
+  public static extern void CustomLimitBallAndSocket_m_metaData_set(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomLimitBallAndSocket_m_metaData_get")]
+  public static extern global::System.IntPtr CustomLimitBallAndSocket_m_metaData_get();
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomBallAndSocketWithFriction")]
+  public static extern global::System.IntPtr new_CustomBallAndSocketWithFriction(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, float jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomBallAndSocketWithFriction_SubmitConstraints")]
+  public static extern void CustomBallAndSocketWithFriction_SubmitConstraints(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomBallAndSocketWithFriction_m_dryFriction_set")]
+  public static extern void CustomBallAndSocketWithFriction_m_dryFriction_set(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomBallAndSocketWithFriction_m_dryFriction_get")]
+  public static extern float CustomBallAndSocketWithFriction_m_dryFriction_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomBallAndSocketWithFriction")]
+  public static extern void delete_CustomBallAndSocketWithFriction(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomControlledBallAndSocket__SWIG_0")]
+  public static extern global::System.IntPtr new_CustomControlledBallAndSocket__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomControlledBallAndSocket__SWIG_1")]
+  public static extern global::System.IntPtr new_CustomControlledBallAndSocket__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomControlledBallAndSocket")]
+  public static extern void delete_CustomControlledBallAndSocket(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_SetAngularVelocity")]
+  public static extern void CustomControlledBallAndSocket_SetAngularVelocity(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_GetAngularVelocity")]
+  public static extern float CustomControlledBallAndSocket_GetAngularVelocity(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_SetPitchAngle__SWIG_0")]
+  public static extern void CustomControlledBallAndSocket_SetPitchAngle__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_SetPitchAngle__SWIG_1")]
+  public static extern float CustomControlledBallAndSocket_SetPitchAngle__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_SetYawAngle__SWIG_0")]
+  public static extern void CustomControlledBallAndSocket_SetYawAngle__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_SetYawAngle__SWIG_1")]
+  public static extern float CustomControlledBallAndSocket_SetYawAngle__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_SetRollAngle__SWIG_0")]
+  public static extern void CustomControlledBallAndSocket_SetRollAngle__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_SetRollAngle__SWIG_1")]
+  public static extern float CustomControlledBallAndSocket_SetRollAngle__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_GetSerializeKey")]
+  public static extern global::System.IntPtr CustomControlledBallAndSocket_GetSerializeKey(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_GetTypeName")]
+  public static extern string CustomControlledBallAndSocket_GetTypeName(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_new_CustomControlledBallAndSocket_SerializeMetaData")]
+  public static extern global::System.IntPtr new_CustomControlledBallAndSocket_SerializeMetaData(string jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_SerializeMetaData_SerializeJoint")]
+  public static extern void CustomControlledBallAndSocket_SerializeMetaData_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_SerializeMetaData_DeserializeJoint")]
+  public static extern global::System.IntPtr CustomControlledBallAndSocket_SerializeMetaData_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_delete_CustomControlledBallAndSocket_SerializeMetaData")]
+  public static extern void delete_CustomControlledBallAndSocket_SerializeMetaData(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_m_metaData_set")]
+  public static extern void CustomControlledBallAndSocket_m_metaData_set(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_m_metaData_get")]
+  public static extern global::System.IntPtr CustomControlledBallAndSocket_m_metaData_get();
+
   [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dComplentaritySolver_dFrictionLessContactJoint_SWIGUpcast")]
   public static extern global::System.IntPtr dComplentaritySolver_dFrictionLessContactJoint_SWIGUpcast(global::System.IntPtr jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_dBezierSpline_SWIGUpcast")]
+  public static extern global::System.IntPtr dBezierSpline_SWIGUpcast(global::System.IntPtr jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomJoint_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomJoint_SWIGUpcast(global::System.IntPtr jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomPointToPoint_SerializeMetaData_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomPointToPoint_SerializeMetaData_SWIGUpcast(global::System.IntPtr jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomPointToPoint_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomPointToPoint_SWIGUpcast(global::System.IntPtr jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomBallAndSocket_SerializeMetaData_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomBallAndSocket_SerializeMetaData_SWIGUpcast(global::System.IntPtr jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomBallAndSocket_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomBallAndSocket_SWIGUpcast(global::System.IntPtr jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomLimitBallAndSocket_SerializeMetaData_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomLimitBallAndSocket_SerializeMetaData_SWIGUpcast(global::System.IntPtr jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomLimitBallAndSocket_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomLimitBallAndSocket_SWIGUpcast(global::System.IntPtr jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomBallAndSocketWithFriction_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomBallAndSocketWithFriction_SWIGUpcast(global::System.IntPtr jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_SerializeMetaData_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomControlledBallAndSocket_SerializeMetaData_SWIGUpcast(global::System.IntPtr jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("cpp", EntryPoint="CSharp_CustomControlledBallAndSocket_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomControlledBallAndSocket_SWIGUpcast(global::System.IntPtr jarg1);
 }
 
 public class cpp {
@@ -8738,6 +10373,7 @@ public class cpp {
   public static readonly int SERIALIZE_ID_FRACTURED_COMPOUND = cppPINVOKE.SERIALIZE_ID_FRACTURED_COMPOUND_get();
   public static readonly int D_MAX_PRAM_INFO_SIZE = cppPINVOKE.D_MAX_PRAM_INFO_SIZE_get();
   public static readonly int D_MAX_PLACEMENT_CONTACTS = cppPINVOKE.D_MAX_PLACEMENT_CONTACTS_get();
+  public static readonly int D_MAX_ENTRIES_IN_FREELIST = cppPINVOKE.D_MAX_ENTRIES_IN_FREELIST_get();
 }
 
 public class SWIGTYPE_p_p_f_q_const__p_NewtonBody_q_const__p_NewtonBody_p_f_q_const__p_void_q_const__p_void_int__void_q_const__p_void__void {
@@ -8752,6 +10388,22 @@ public class SWIGTYPE_p_p_f_q_const__p_NewtonBody_q_const__p_NewtonBody_p_f_q_co
   }
 
   internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_p_f_q_const__p_NewtonBody_q_const__p_NewtonBody_p_f_q_const__p_void_q_const__p_void_int__void_q_const__p_void__void obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+}
+
+public class SWIGTYPE_p_f_q_const__p_q_const__NewtonUserJoint_float_int__void {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+
+  internal SWIGTYPE_p_f_q_const__p_q_const__NewtonUserJoint_float_int__void(global::System.IntPtr cPtr, bool futureUse) {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  protected SWIGTYPE_p_f_q_const__p_q_const__NewtonUserJoint_float_int__void() {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_f_q_const__p_q_const__NewtonUserJoint_float_int__void obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 }
@@ -9748,6 +11400,22 @@ public class SWIGTYPE_p_TemplateVectorT_float_t {
   }
 }
 
+public class SWIGTYPE_p_dCRCTYPE {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+
+  internal SWIGTYPE_p_dCRCTYPE(global::System.IntPtr cPtr, bool futureUse) {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  protected SWIGTYPE_p_dCRCTYPE() {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_dCRCTYPE obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+}
+
 public class SWIGTYPE_p_NewtonWorld {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
 
@@ -9840,6 +11508,38 @@ public class SWIGTYPE_p_p_dComplentaritySolver__dBodyState {
   }
 
   internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_p_dComplentaritySolver__dBodyState obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+}
+
+public class SWIGTYPE_p_unsigned_int {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+
+  internal SWIGTYPE_p_unsigned_int(global::System.IntPtr cPtr, bool futureUse) {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  protected SWIGTYPE_p_unsigned_int() {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_unsigned_int obj) {
+    return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+  }
+}
+
+public class SWIGTYPE_p_f_q_const__p_q_const__NewtonUserJoint__void {
+  private global::System.Runtime.InteropServices.HandleRef swigCPtr;
+
+  internal SWIGTYPE_p_f_q_const__p_q_const__NewtonUserJoint__void(global::System.IntPtr cPtr, bool futureUse) {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
+  }
+
+  protected SWIGTYPE_p_f_q_const__p_q_const__NewtonUserJoint__void() {
+    swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
+  }
+
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_f_q_const__p_q_const__NewtonUserJoint__void obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 }
