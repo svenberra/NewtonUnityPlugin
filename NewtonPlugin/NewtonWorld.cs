@@ -27,10 +27,11 @@ namespace NewtonPlugin
         protected NewtonWorld()
         {
             // create the static memory alloction glue code. (I am no sur eif this is right)
-            m_alloc = new NewtonAllocMemory();
-            m_free = new NewtonFreeMemory();
-
-            cpp.NewtonSetMemorySystem(m_alloc, m_free);
+            if (!m_isMemoryEnable)
+            {
+                m_isMemoryEnable = true;
+                cpp.NewtonSetMemorySystem(m_alloc, m_free);
+            }
 
             m_world = cpp.NewtonCreate();
             
@@ -44,8 +45,9 @@ namespace NewtonPlugin
         }
 
         protected SWIGTYPE_p_NewtonWorld m_world;
-        static private NewtonAllocMemory m_alloc;
-        static private NewtonFreeMemory m_free;
+        static private bool m_isMemoryEnable = false;
+        static private NewtonAllocMemory m_alloc = new NewtonAllocMemory();
+        static private NewtonFreeMemory m_free = new NewtonFreeMemory();
     }
 }
 
