@@ -2,6 +2,10 @@
 Compiling NewtonUnityPlugin
 ===========================
 
+# READ THIS!
+### Plugin is being rebuilt from scratch, this time using Swig-generated wrapper.
+There will be limited functionality for a while because of this.
+
 ## Windows
 
 Windows only for now.
