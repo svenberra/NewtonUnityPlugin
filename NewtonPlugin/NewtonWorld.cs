@@ -34,13 +34,26 @@ namespace NewtonPlugin
             }
 
             m_world = cpp.NewtonCreate();
-            
-            Debug.Log("Newton World created(" + m_world.ToString() + ")");
+
+
+            // link the work with this user data
+            // !!!!no sure how to call this in teh wraper
+            //cpp.NewtonWorldSetUserData(m_world, this);
+
+            // set the simplified solver mode (faster but less accurate)
+            cpp.NewtonSetSolverModel(m_world, 4);
+
+            // set joint serialization call back
+            // !!!!no sure how to call this in teh wraper
+            // CustomJoint::Initalize(m_world);
+
+
+            //Debug.Log("Newton World created(" + m_world.ToString() + ")");
         }
 
         ~NewtonWorld()
         {
-            Debug.Log("Newton World destroyed(" + m_world.ToString() + ")");
+            //Debug.Log("Newton World destroyed(" + m_world.ToString() + ")");
             cpp.NewtonDestroy(m_world);
         }
 
