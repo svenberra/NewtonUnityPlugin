@@ -13,7 +13,7 @@
 // freely
 /////////////////////////////////////////////////////////////////////////////
 
-%module cpp
+%module NewtonWrapper
 %{
 	// minimal standard library support
 	#include "new"
@@ -70,6 +70,35 @@
 %rename(__CustomJoint_AngularIntegration_Add__) CustomAlloc::AngularIntegration::operator+;
 %rename(__CustomJoint_AngularIntegration_Sub__) CustomAlloc::AngularIntegration::operator-;
 
+%typemap(ctype)  void * "void *"
+%typemap(imtype) void * "global::System.IntPtr"
+%typemap(cstype) void * "global::System.IntPtr"
+%typemap(csin)   void * "$csinput"
+%typemap(in)     void * %{ $1 = $input; %}
+%typemap(out)    void * %{ $result = $1; %}
+//%typemap(csout)  void * { return $imcall; }
+%typemap(csout, excode=SWIGEXCODE)  void* { 
+    System.IntPtr cPtr = $imcall;$excode
+    return cPtr;
+    }
+%typemap(csvarout, excode=SWIGEXCODE2) void* %{ 
+    get {
+        System.IntPtr cPtr = $imcall;$excode 
+        return cPtr; 
+   } 
+%}
+ 
+%define %cs_callback(TYPE, CSTYPE)
+%typemap(ctype) TYPE, TYPE& "void*"
+%typemap(in) TYPE %{ $1 = (TYPE)$input; %}
+%typemap(in) TYPE& %{ $1 = (TYPE*)&$input; %}
+%typemap(imtype, out="IntPtr") TYPE, TYPE& "CSTYPE"
+%typemap(cstype, out="IntPtr") TYPE, TYPE& "CSTYPE"
+%typemap(csin) TYPE, TYPE& "$csinput"
+%enddef
+
+%cs_callback(NewtonAllocMemory, NewtonAllocMemoryDelegate)
+%cs_callback(NewtonFreeMemory, NewtonFreeMemoryDelegate)
 
 #pragma SWIG nowarn=401
 

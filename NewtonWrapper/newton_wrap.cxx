@@ -241,7 +241,7 @@ static void SWIGUNUSED SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpExcepti
 #ifdef __cplusplus
 extern "C" 
 #endif
-SWIGEXPORT void SWIGSTDCALL SWIGRegisterExceptionCallbacks_cpp(
+SWIGEXPORT void SWIGSTDCALL SWIGRegisterExceptionCallbacks_NewtonWrapper(
                                                 SWIG_CSharpExceptionCallback_t applicationCallback,
                                                 SWIG_CSharpExceptionCallback_t arithmeticCallback,
                                                 SWIG_CSharpExceptionCallback_t divideByZeroCallback, 
@@ -269,7 +269,7 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterExceptionCallbacks_cpp(
 #ifdef __cplusplus
 extern "C" 
 #endif
-SWIGEXPORT void SWIGSTDCALL SWIGRegisterExceptionArgumentCallbacks_cpp(
+SWIGEXPORT void SWIGSTDCALL SWIGRegisterExceptionArgumentCallbacks_NewtonWrapper(
                                                 SWIG_CSharpExceptionArgumentCallback_t argumentCallback,
                                                 SWIG_CSharpExceptionArgumentCallback_t argumentNullCallback,
                                                 SWIG_CSharpExceptionArgumentCallback_t argumentOutOfRangeCallback) {
@@ -287,7 +287,7 @@ static SWIG_CSharpStringHelperCallback SWIG_csharp_string_callback = NULL;
 #ifdef __cplusplus
 extern "C" 
 #endif
-SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_cpp(SWIG_CSharpStringHelperCallback callback) {
+SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_NewtonWrapper(SWIG_CSharpStringHelperCallback callback) {
   SWIG_csharp_string_callback = callback;
 }
 
@@ -1475,7 +1475,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonHeightFieldCollisionParam_m_vertialElev
   void *arg2 = (void *) 0 ;
   
   arg1 = (NewtonHeightFieldCollisionParam *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   if (arg1) (arg1)->m_vertialElevation = arg2;
 }
 
@@ -1487,7 +1487,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonHeightFieldCollisionParam_m_vertialEl
   
   arg1 = (NewtonHeightFieldCollisionParam *)jarg1; 
   result = (void *) ((arg1)->m_vertialElevation);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -2464,7 +2464,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonUserMeshCollisionCollideDesc_m_userData
   void *arg2 = (void *) 0 ;
   
   arg1 = (NewtonUserMeshCollisionCollideDesc *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   if (arg1) (arg1)->m_userData = arg2;
 }
 
@@ -2476,7 +2476,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonUserMeshCollisionCollideDesc_m_userDa
   
   arg1 = (NewtonUserMeshCollisionCollideDesc *)jarg1; 
   result = (void *) ((arg1)->m_userData);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -2894,7 +2894,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonUserMeshCollisionRayHitDesc_m_userData_
   void *arg2 = (void *) 0 ;
   
   arg1 = (NewtonUserMeshCollisionRayHitDesc *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   if (arg1) (arg1)->m_userData = arg2;
 }
 
@@ -2906,7 +2906,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonUserMeshCollisionRayHitDesc_m_userDat
   
   arg1 = (NewtonUserMeshCollisionRayHitDesc *)jarg1; 
   result = (void *) ((arg1)->m_userData);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -3421,7 +3421,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonGetMemoryUsed() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_NewtonSetMemorySystem(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_NewtonSetMemorySystem(void* jarg1, void* jarg2) {
   NewtonAllocMemory arg1 = (NewtonAllocMemory) 0 ;
   NewtonFreeMemory arg2 = (NewtonFreeMemory) 0 ;
   
@@ -3464,7 +3464,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonAlloc(int jarg1) {
   
   arg1 = (int)jarg1; 
   result = (void *)NewtonAlloc(arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -3472,7 +3472,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonAlloc(int jarg1) {
 SWIGEXPORT void SWIGSTDCALL CSharp_NewtonFree(void * jarg1) {
   void *arg1 = (void *) (void *)0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   NewtonFree(arg1);
 }
 
@@ -3656,7 +3656,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonSerializeToFile(void * jarg1, char * ja
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (char *)jarg2; 
   arg3 = (NewtonOnBodySerializationCallback)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   NewtonSerializeToFile((NewtonWorld const *)arg1,(char const *)arg2,arg3,arg4);
 }
 
@@ -3670,7 +3670,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonDeserializeFromFile(void * jarg1, char 
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (char *)jarg2; 
   arg3 = (NewtonOnBodyDeserializationCallback)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   NewtonDeserializeFromFile((NewtonWorld const *)arg1,(char const *)arg2,arg3,arg4);
 }
 
@@ -3758,7 +3758,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonDispachThreadJob(void * jarg1, void * j
   
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (NewtonJobTask)jarg2; 
-  arg3 = (void *)jarg3; 
+  arg3 = jarg3; 
   NewtonDispachThreadJob((NewtonWorld const *)arg1,arg2,arg3);
 }
 
@@ -3841,7 +3841,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonWorldForEachJointDo(void * jarg1, void 
   
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (NewtonJointIterator)jarg2; 
-  arg3 = (void *)jarg3; 
+  arg3 = jarg3; 
   NewtonWorldForEachJointDo((NewtonWorld const *)arg1,arg2,arg3);
 }
 
@@ -3857,7 +3857,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonWorldForEachBodyInAABBDo(void * jarg1, 
   arg2 = (float *)jarg2; 
   arg3 = (float *)jarg3; 
   arg4 = (NewtonBodyIterator)jarg4; 
-  arg5 = (void *)jarg5; 
+  arg5 = jarg5; 
   NewtonWorldForEachBodyInAABBDo((NewtonWorld const *)arg1,(float const *)arg2,(float const *)arg3,arg4,arg5);
 }
 
@@ -3867,7 +3867,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonWorldSetUserData(void * jarg1, void * j
   void *arg2 = (void *) (void *)0 ;
   
   arg1 = (NewtonWorld *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   NewtonWorldSetUserData((NewtonWorld const *)arg1,arg2);
 }
 
@@ -3879,7 +3879,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonWorldGetUserData(void * jarg1) {
   
   arg1 = (NewtonWorld *)jarg1; 
   result = (void *)NewtonWorldGetUserData((NewtonWorld const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -3891,9 +3891,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonWorldGetListenerUserData(void * jarg1
   void *result = 0 ;
   
   arg1 = (NewtonWorld *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (void *)NewtonWorldGetListenerUserData((NewtonWorld const *)arg1,arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -3905,7 +3905,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonWorldListenerGetBodyDestroyCallback(v
   NewtonWorldListenerBodyDestroyCallback result;
   
   arg1 = (NewtonWorld *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (NewtonWorldListenerBodyDestroyCallback)NewtonWorldListenerGetBodyDestroyCallback((NewtonWorld const *)arg1,arg2);
   jresult = (void *)result; 
   return jresult;
@@ -3918,7 +3918,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonWorldListenerSetBodyDestroyCallback(voi
   NewtonWorldListenerBodyDestroyCallback arg3 = (NewtonWorldListenerBodyDestroyCallback) 0 ;
   
   arg1 = (NewtonWorld *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (NewtonWorldListenerBodyDestroyCallback)jarg3; 
   NewtonWorldListenerSetBodyDestroyCallback((NewtonWorld const *)arg1,arg2,arg3);
 }
@@ -3933,7 +3933,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonWorldGetPreListener(void * jarg1, cha
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (char *)jarg2; 
   result = (void *)NewtonWorldGetPreListener((NewtonWorld const *)arg1,(char const *)arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -3949,11 +3949,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonWorldAddPreListener(void * jarg1, cha
   
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (char *)jarg2; 
-  arg3 = (void *)jarg3; 
+  arg3 = jarg3; 
   arg4 = (NewtonWorldUpdateListenerCallback)jarg4; 
   arg5 = (NewtonWorldDestroyListenerCallback)jarg5; 
   result = (void *)NewtonWorldAddPreListener((NewtonWorld const *)arg1,(char const *)arg2,arg3,arg4,arg5);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -3967,7 +3967,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonWorldGetPostListener(void * jarg1, ch
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (char *)jarg2; 
   result = (void *)NewtonWorldGetPostListener((NewtonWorld const *)arg1,(char const *)arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -3983,11 +3983,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonWorldAddPostListener(void * jarg1, ch
   
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (char *)jarg2; 
-  arg3 = (void *)jarg3; 
+  arg3 = jarg3; 
   arg4 = (NewtonWorldUpdateListenerCallback)jarg4; 
   arg5 = (NewtonWorldDestroyListenerCallback)jarg5; 
   result = (void *)NewtonWorldAddPostListener((NewtonWorld const *)arg1,(char const *)arg2,arg3,arg4,arg5);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -4039,7 +4039,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonWorldRayCast(void * jarg1, void * jarg2
   arg2 = (float *)jarg2; 
   arg3 = (float *)jarg3; 
   arg4 = (NewtonWorldRayFilterCallback)jarg4; 
-  arg5 = (void *)jarg5; 
+  arg5 = jarg5; 
   arg6 = (NewtonWorldRayPrefilterCallback)jarg6; 
   arg7 = (int)jarg7; 
   NewtonWorldRayCast((NewtonWorld const *)arg1,(float const *)arg2,(float const *)arg3,arg4,arg5,arg6,arg7);
@@ -4065,7 +4065,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonWorldConvexCast(void * jarg1, void * jar
   arg3 = (float *)jarg3; 
   arg4 = (NewtonCollision *)jarg4; 
   arg5 = (float *)jarg5; 
-  arg6 = (void *)jarg6; 
+  arg6 = jarg6; 
   arg7 = (NewtonWorldRayPrefilterCallback)jarg7; 
   arg8 = (NewtonWorldConvexCastReturnInfo *)jarg8; 
   arg9 = (int)jarg9; 
@@ -4091,7 +4091,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonWorldCollide(void * jarg1, void * jarg2,
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (float *)jarg2; 
   arg3 = (NewtonCollision *)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   arg5 = (NewtonWorldRayPrefilterCallback)jarg5; 
   arg6 = (NewtonWorldConvexCastReturnInfo *)jarg6; 
   arg7 = (int)jarg7; 
@@ -4132,7 +4132,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonIslandGetBody(void * jarg1, int jarg2
   int arg2 ;
   NewtonBody *result = 0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   arg2 = (int)jarg2; 
   result = (NewtonBody *)NewtonIslandGetBody((void const *)arg1,arg2);
   jresult = (void *)result; 
@@ -4146,7 +4146,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonIslandGetBodyAABB(void * jarg1, int jar
   float *arg3 = (float *) (float *)0 ;
   float *arg4 = (float *) (float *)0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (float *)jarg3; 
   arg4 = (float *)jarg4; 
@@ -4197,7 +4197,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMaterialGetUserData(void * jarg1, int
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   result = (void *)NewtonMaterialGetUserData((NewtonWorld const *)arg1,arg2,arg3);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -4225,7 +4225,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonMaterialSetCallbackUserData(void * jarg
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   NewtonMaterialSetCallbackUserData((NewtonWorld const *)arg1,arg2,arg3,arg4);
 }
 
@@ -4391,7 +4391,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMaterialGetMaterialPairUserData(void 
   
   arg1 = (NewtonMaterial *)jarg1; 
   result = (void *)NewtonMaterialGetMaterialPairUserData((NewtonMaterial const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -4911,7 +4911,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCollisionDataPointer(void * jarg1) {
   
   arg1 = (NewtonCollision *)jarg1; 
   result = (void *)NewtonCollisionDataPointer((NewtonCollision const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -4967,7 +4967,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCompoundCollisionAddSubCollision(void
   arg1 = (NewtonCollision *)jarg1; 
   arg2 = (NewtonCollision *)jarg2; 
   result = (void *)NewtonCompoundCollisionAddSubCollision(arg1,(NewtonCollision const *)arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -4977,7 +4977,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonCompoundCollisionRemoveSubCollision(voi
   void *arg2 = (void *) (void *)0 ;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   NewtonCompoundCollisionRemoveSubCollision(arg1,(void const *)arg2);
 }
 
@@ -4998,7 +4998,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonCompoundCollisionSetSubCollisionMatrix(
   float *arg3 = (float *) (float *)0 ;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (float *)jarg3; 
   NewtonCompoundCollisionSetSubCollisionMatrix(arg1,(void const *)arg2,(float const *)arg3);
 }
@@ -5019,7 +5019,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCompoundCollisionGetFirstNode(void * 
   
   arg1 = (NewtonCollision *)jarg1; 
   result = (void *)NewtonCompoundCollisionGetFirstNode(arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -5031,9 +5031,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCompoundCollisionGetNextNode(void * j
   void *result = 0 ;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (void *)NewtonCompoundCollisionGetNextNode(arg1,(void const *)arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -5047,7 +5047,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCompoundCollisionGetNodeByIndex(void 
   arg1 = (NewtonCollision *)jarg1; 
   arg2 = (int)jarg2; 
   result = (void *)NewtonCompoundCollisionGetNodeByIndex(arg1,arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -5059,7 +5059,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonCompoundCollisionGetNodeIndex(void * jar
   int result;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (int)NewtonCompoundCollisionGetNodeIndex(arg1,(void const *)arg2);
   jresult = result; 
   return jresult;
@@ -5073,7 +5073,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCompoundCollisionGetCollisionFromNode
   NewtonCollision *result = 0 ;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (NewtonCollision *)NewtonCompoundCollisionGetCollisionFromNode(arg1,(void const *)arg2);
   jresult = (void *)result; 
   return jresult;
@@ -5149,7 +5149,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonFracturedCompoundIsNodeFreeToDetach(void
   int result;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (int)NewtonFracturedCompoundIsNodeFreeToDetach((NewtonCollision const *)arg1,arg2);
   jresult = result; 
   return jresult;
@@ -5165,7 +5165,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonFracturedCompoundNeighborNodeList(void *
   int result;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (void **)jarg3; 
   arg4 = (int)jarg4; 
   result = (int)NewtonFracturedCompoundNeighborNodeList((NewtonCollision const *)arg1,arg2,arg3,arg4);
@@ -5278,7 +5278,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonFracturedCompoundMeshPartGetIndexStream(
   
   arg1 = (NewtonCollision *)jarg1; 
   arg2 = (NewtonFracturedCompoundMeshPart *)jarg2; 
-  arg3 = (void *)jarg3; 
+  arg3 = jarg3; 
   arg4 = (int *)jarg4; 
   result = (int)NewtonFracturedCompoundMeshPartGetIndexStream((NewtonCollision const *)arg1,(NewtonFracturedCompoundMeshPart const *)arg2,(void const *)arg3,arg4);
   jresult = result; 
@@ -5293,7 +5293,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonFracturedCompoundMeshPartGetFirstSegm
   
   arg1 = (NewtonFracturedCompoundMeshPart *)jarg1; 
   result = (void *)NewtonFracturedCompoundMeshPartGetFirstSegment((NewtonFracturedCompoundMeshPart const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -5303,9 +5303,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonFracturedCompoundMeshPartGetNextSegme
   void *arg1 = (void *) (void *)0 ;
   void *result = 0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   result = (void *)NewtonFracturedCompoundMeshPartGetNextSegment((void const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -5315,7 +5315,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonFracturedCompoundMeshPartGetMaterial(voi
   void *arg1 = (void *) (void *)0 ;
   int result;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   result = (int)NewtonFracturedCompoundMeshPartGetMaterial((void const *)arg1);
   jresult = result; 
   return jresult;
@@ -5327,7 +5327,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonFracturedCompoundMeshPartGetIndexCount(v
   void *arg1 = (void *) (void *)0 ;
   int result;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   result = (int)NewtonFracturedCompoundMeshPartGetIndexCount((void const *)arg1);
   jresult = result; 
   return jresult;
@@ -5365,7 +5365,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonSceneCollisionAddSubCollision(void * 
   arg1 = (NewtonCollision *)jarg1; 
   arg2 = (NewtonCollision *)jarg2; 
   result = (void *)NewtonSceneCollisionAddSubCollision(arg1,(NewtonCollision const *)arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -5375,7 +5375,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonSceneCollisionRemoveSubCollision(void *
   void *arg2 = (void *) (void *)0 ;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   NewtonSceneCollisionRemoveSubCollision(arg1,(void const *)arg2);
 }
 
@@ -5396,7 +5396,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonSceneCollisionSetSubCollisionMatrix(voi
   float *arg3 = (float *) (float *)0 ;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (float *)jarg3; 
   NewtonSceneCollisionSetSubCollisionMatrix(arg1,(void const *)arg2,(float const *)arg3);
 }
@@ -5417,7 +5417,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonSceneCollisionGetFirstNode(void * jar
   
   arg1 = (NewtonCollision *)jarg1; 
   result = (void *)NewtonSceneCollisionGetFirstNode(arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -5429,9 +5429,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonSceneCollisionGetNextNode(void * jarg
   void *result = 0 ;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (void *)NewtonSceneCollisionGetNextNode(arg1,(void const *)arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -5445,7 +5445,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonSceneCollisionGetNodeByIndex(void * j
   arg1 = (NewtonCollision *)jarg1; 
   arg2 = (int)jarg2; 
   result = (void *)NewtonSceneCollisionGetNodeByIndex(arg1,arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -5457,7 +5457,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonSceneCollisionGetNodeIndex(void * jarg1,
   int result;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (int)NewtonSceneCollisionGetNodeIndex(arg1,(void const *)arg2);
   jresult = result; 
   return jresult;
@@ -5471,7 +5471,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonSceneCollisionGetCollisionFromNode(vo
   NewtonCollision *result = 0 ;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (NewtonCollision *)NewtonSceneCollisionGetCollisionFromNode(arg1,(void const *)arg2);
   jresult = (void *)result; 
   return jresult;
@@ -5497,7 +5497,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCreateUserMeshCollision(void * jarg1,
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (float *)jarg2; 
   arg3 = (float *)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   arg5 = (NewtonUserMeshCollisionCollideCallback)jarg5; 
   arg6 = (NewtonUserMeshCollisionRayHitCallback)jarg6; 
   arg7 = (NewtonUserMeshCollisionDestroyCallback)jarg7; 
@@ -5521,7 +5521,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonUserMeshCollisionContinuousOverlapTest(v
   int result;
   
   arg1 = (NewtonUserMeshCollisionCollideDesc *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (float *)jarg3; 
   arg4 = (float *)jarg4; 
   result = (int)NewtonUserMeshCollisionContinuousOverlapTest((NewtonUserMeshCollisionCollideDesc const *)arg1,(void const *)arg2,(float const *)arg3,(float const *)arg4);
@@ -5539,7 +5539,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCreateCollisionFromSerialization(void
   
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (NewtonDeserializeCallback)jarg2; 
-  arg3 = (void *)jarg3; 
+  arg3 = jarg3; 
   result = (NewtonCollision *)NewtonCreateCollisionFromSerialization((NewtonWorld const *)arg1,arg2,arg3);
   jresult = (void *)result; 
   return jresult;
@@ -5555,7 +5555,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonCollisionSerialize(void * jarg1, void *
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (NewtonCollision *)jarg2; 
   arg3 = (NewtonSerializeCallback)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   NewtonCollisionSerialize((NewtonWorld const *)arg1,(NewtonCollision const *)arg2,arg3,arg4);
 }
 
@@ -5589,7 +5589,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCreateHeightFieldCollision(void * jar
   arg3 = (int)jarg3; 
   arg4 = (int)jarg4; 
   arg5 = (int)jarg5; 
-  arg6 = (void *)jarg6; 
+  arg6 = jarg6; 
   arg7 = (char *)jarg7; 
   arg8 = (float)jarg8; 
   arg9 = (float)jarg9; 
@@ -5733,7 +5733,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonTreeCollisionForEachFace(void * jarg1, 
   
   arg1 = (NewtonCollision *)jarg1; 
   arg2 = (NewtonTreeCollisionFaceCallback)jarg2; 
-  arg3 = (void *)jarg3; 
+  arg3 = jarg3; 
   NewtonTreeCollisionForEachFace((NewtonCollision const *)arg1,arg2,arg3);
 }
 
@@ -5829,7 +5829,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonCollisionSetUserData(void * jarg1, void
   void *arg2 = (void *) (void *)0 ;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   NewtonCollisionSetUserData((NewtonCollision const *)arg1,arg2);
 }
 
@@ -5841,7 +5841,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCollisionGetUserData(void * jarg1) {
   
   arg1 = (NewtonCollision *)jarg1; 
   result = (void *)NewtonCollisionGetUserData((NewtonCollision const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -5851,7 +5851,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonCollisionSetUserData1(void * jarg1, voi
   void *arg2 = (void *) (void *)0 ;
   
   arg1 = (NewtonCollision *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   NewtonCollisionSetUserData1((NewtonCollision const *)arg1,arg2);
 }
 
@@ -5863,7 +5863,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCollisionGetUserData1(void * jarg1) {
   
   arg1 = (NewtonCollision *)jarg1; 
   result = (void *)NewtonCollisionGetUserData1((NewtonCollision const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -5897,7 +5897,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCollisionGetSubCollisionHandle(void *
   
   arg1 = (NewtonCollision *)jarg1; 
   result = (void *)NewtonCollisionGetSubCollisionHandle((NewtonCollision const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -6191,7 +6191,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonCollisionForEachPolygonDo(void * jarg1,
   arg1 = (NewtonCollision *)jarg1; 
   arg2 = (float *)jarg2; 
   arg3 = (NewtonCollisionIterator)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   NewtonCollisionForEachPolygonDo((NewtonCollision const *)arg1,(float const *)arg2,arg3,arg4);
 }
 
@@ -6203,7 +6203,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCollisionAggregateCreate(void * jarg1
   
   arg1 = (NewtonWorld *)jarg1; 
   result = (void *)NewtonCollisionAggregateCreate(arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -6211,7 +6211,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonCollisionAggregateCreate(void * jarg1
 SWIGEXPORT void SWIGSTDCALL CSharp_NewtonCollisionAggregateDestroy(void * jarg1) {
   void *arg1 = (void *) (void *)0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   NewtonCollisionAggregateDestroy(arg1);
 }
 
@@ -6220,7 +6220,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonCollisionAggregateAddBody(void * jarg1,
   void *arg1 = (void *) (void *)0 ;
   NewtonBody *arg2 = (NewtonBody *) (NewtonBody *)0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   arg2 = (NewtonBody *)jarg2; 
   NewtonCollisionAggregateAddBody(arg1,(NewtonBody const *)arg2);
 }
@@ -6230,7 +6230,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonCollisionAggregateRemoveBody(void * jar
   void *arg1 = (void *) (void *)0 ;
   NewtonBody *arg2 = (NewtonBody *) (NewtonBody *)0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   arg2 = (NewtonBody *)jarg2; 
   NewtonCollisionAggregateRemoveBody(arg1,(NewtonBody const *)arg2);
 }
@@ -6241,7 +6241,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonCollisionAggregateGetSelfCollision(void 
   void *arg1 = (void *) (void *)0 ;
   int result;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   result = (int)NewtonCollisionAggregateGetSelfCollision(arg1);
   jresult = result; 
   return jresult;
@@ -6252,7 +6252,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonCollisionAggregateSetSelfCollision(void
   void *arg1 = (void *) (void *)0 ;
   int arg2 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   arg2 = (int)jarg2; 
   NewtonCollisionAggregateSetSelfCollision(arg1,arg2);
 }
@@ -6831,7 +6831,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonBodySetUserData(void * jarg1, void * ja
   void *arg2 = (void *) (void *)0 ;
   
   arg1 = (NewtonBody *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   NewtonBodySetUserData((NewtonBody const *)arg1,arg2);
 }
 
@@ -6843,7 +6843,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonBodyGetUserData(void * jarg1) {
   
   arg1 = (NewtonBody *)jarg1; 
   result = (void *)NewtonBodyGetUserData((NewtonBody const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -7227,7 +7227,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonContactJointGetFirstContact(void * ja
   
   arg1 = (NewtonJoint *)jarg1; 
   result = (void *)NewtonContactJointGetFirstContact((NewtonJoint const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -7239,9 +7239,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonContactJointGetNextContact(void * jar
   void *result = 0 ;
   
   arg1 = (NewtonJoint *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (void *)NewtonContactJointGetNextContact((NewtonJoint const *)arg1,arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -7263,7 +7263,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonContactJointRemoveContact(void * jarg1,
   void *arg2 = (void *) (void *)0 ;
   
   arg1 = (NewtonJoint *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   NewtonContactJointRemoveContact((NewtonJoint const *)arg1,arg2);
 }
 
@@ -7285,7 +7285,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonContactGetMaterial(void * jarg1) {
   void *arg1 = (void *) (void *)0 ;
   NewtonMaterial *result = 0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   result = (NewtonMaterial *)NewtonContactGetMaterial((void const *)arg1);
   jresult = (void *)result; 
   return jresult;
@@ -7297,7 +7297,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonContactGetCollision0(void * jarg1) {
   void *arg1 = (void *) (void *)0 ;
   NewtonCollision *result = 0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   result = (NewtonCollision *)NewtonContactGetCollision0((void const *)arg1);
   jresult = (void *)result; 
   return jresult;
@@ -7309,7 +7309,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonContactGetCollision1(void * jarg1) {
   void *arg1 = (void *) (void *)0 ;
   NewtonCollision *result = 0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   result = (NewtonCollision *)NewtonContactGetCollision1((void const *)arg1);
   jresult = (void *)result; 
   return jresult;
@@ -7321,9 +7321,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonContactGetCollisionID0(void * jarg1) 
   void *arg1 = (void *) (void *)0 ;
   void *result = 0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   result = (void *)NewtonContactGetCollisionID0((void const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -7333,9 +7333,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonContactGetCollisionID1(void * jarg1) 
   void *arg1 = (void *) (void *)0 ;
   void *result = 0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   result = (void *)NewtonContactGetCollisionID1((void const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -7347,7 +7347,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonJointGetUserData(void * jarg1) {
   
   arg1 = (NewtonJoint *)jarg1; 
   result = (void *)NewtonJointGetUserData((NewtonJoint const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -7357,7 +7357,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonJointSetUserData(void * jarg1, void * j
   void *arg2 = (void *) (void *)0 ;
   
   arg1 = (NewtonJoint *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   NewtonJointSetUserData((NewtonJoint const *)arg1,arg2);
 }
 
@@ -8465,7 +8465,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonSkeletonContainerAttachBone(void * ja
   arg2 = (NewtonBody *)jarg2; 
   arg3 = (NewtonBody *)jarg3; 
   result = (void *)NewtonSkeletonContainerAttachBone(arg1,arg2,arg3);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -8485,7 +8485,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonSkeletonContainerGetRoot(void * jarg1
   
   arg1 = (NewtonSkeletonContainer *)jarg1; 
   result = (void *)NewtonSkeletonContainerGetRoot((NewtonSkeletonContainer const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -8497,9 +8497,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonSkeletonContainerGetParent(void * jar
   void *result = 0 ;
   
   arg1 = (NewtonSkeletonContainer *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (void *)NewtonSkeletonContainerGetParent((NewtonSkeletonContainer const *)arg1,arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -8511,9 +8511,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonSkeletonContainerFirstChild(void * ja
   void *result = 0 ;
   
   arg1 = (NewtonSkeletonContainer *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (void *)NewtonSkeletonContainerFirstChild((NewtonSkeletonContainer const *)arg1,arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -8525,9 +8525,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonSkeletonContainerNextSibling(void * j
   void *result = 0 ;
   
   arg1 = (NewtonSkeletonContainer *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (void *)NewtonSkeletonContainerNextSibling((NewtonSkeletonContainer const *)arg1,arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -8539,7 +8539,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonSkeletonContainerGetBodyFromNode(void
   NewtonBody *result = 0 ;
   
   arg1 = (NewtonSkeletonContainer *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (NewtonBody *)NewtonSkeletonContainerGetBodyFromNode((NewtonSkeletonContainer const *)arg1,arg2);
   jresult = (void *)result; 
   return jresult;
@@ -8553,7 +8553,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonSkeletonContainerGetParentJointFromNo
   NewtonJoint *result = 0 ;
   
   arg1 = (NewtonSkeletonContainer *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (NewtonJoint *)NewtonSkeletonContainerGetParentJointFromNode((NewtonSkeletonContainer const *)arg1,arg2);
   jresult = (void *)result; 
   return jresult;
@@ -8669,7 +8669,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMeshCreateFromSerialization(void * ja
   
   arg1 = (NewtonWorld *)jarg1; 
   arg2 = (NewtonDeserializeCallback)jarg2; 
-  arg3 = (void *)jarg3; 
+  arg3 = jarg3; 
   result = (NewtonMesh *)NewtonMeshCreateFromSerialization((NewtonWorld const *)arg1,arg2,arg3);
   jresult = (void *)result; 
   return jresult;
@@ -8691,7 +8691,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonMeshSerialize(void * jarg1, void * jarg
   
   arg1 = (NewtonMesh *)jarg1; 
   arg2 = (NewtonSerializeCallback)jarg2; 
-  arg3 = (void *)jarg3; 
+  arg3 = jarg3; 
   NewtonMeshSerialize((NewtonMesh const *)arg1,arg2,arg3);
 }
 
@@ -8801,7 +8801,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonMeshApplyAngleBasedMapping(void * jarg1
   arg1 = (NewtonMesh *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (NewtonReportProgress)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   NewtonMeshApplyAngleBasedMapping((NewtonMesh const *)arg1,arg2,arg3,arg4);
 }
 
@@ -8931,7 +8931,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMeshSimplify(void * jarg1, int jarg2,
   arg1 = (NewtonMesh *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (NewtonReportProgress)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   result = (NewtonMesh *)NewtonMeshSimplify((NewtonMesh const *)arg1,arg2,arg3,arg4);
   jresult = (void *)result; 
   return jresult;
@@ -8955,7 +8955,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMeshApproximateConvexDecomposition(vo
   arg4 = (int)jarg4; 
   arg5 = (int)jarg5; 
   arg6 = (NewtonReportProgress)jarg6; 
-  arg7 = (void *)jarg7; 
+  arg7 = jarg7; 
   result = (NewtonMesh *)NewtonMeshApproximateConvexDecomposition((NewtonMesh const *)arg1,arg2,arg3,arg4,arg5,arg6,arg7);
   jresult = (void *)result; 
   return jresult;
@@ -9113,7 +9113,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMeshBeginHandle(void * jarg1) {
   
   arg1 = (NewtonMesh *)jarg1; 
   result = (void *)NewtonMeshBeginHandle((NewtonMesh const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -9123,7 +9123,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonMeshEndHandle(void * jarg1, void * jarg
   void *arg2 = (void *) (void *)0 ;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   NewtonMeshEndHandle((NewtonMesh const *)arg1,arg2);
 }
 
@@ -9135,7 +9135,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonMeshFirstMaterial(void * jarg1, void * j
   int result;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (int)NewtonMeshFirstMaterial((NewtonMesh const *)arg1,arg2);
   jresult = result; 
   return jresult;
@@ -9150,7 +9150,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonMeshNextMaterial(void * jarg1, void * ja
   int result;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (int)jarg3; 
   result = (int)NewtonMeshNextMaterial((NewtonMesh const *)arg1,arg2,arg3);
   jresult = result; 
@@ -9166,7 +9166,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonMeshMaterialGetMaterial(void * jarg1, vo
   int result;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (int)jarg3; 
   result = (int)NewtonMeshMaterialGetMaterial((NewtonMesh const *)arg1,arg2,arg3);
   jresult = result; 
@@ -9182,7 +9182,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonMeshMaterialGetIndexCount(void * jarg1, 
   int result;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (int)jarg3; 
   result = (int)NewtonMeshMaterialGetIndexCount((NewtonMesh const *)arg1,arg2,arg3);
   jresult = result; 
@@ -9197,7 +9197,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonMeshMaterialGetIndexStream(void * jarg1
   int *arg4 = (int *) (int *)0 ;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (int)jarg3; 
   arg4 = (int *)jarg4; 
   NewtonMeshMaterialGetIndexStream((NewtonMesh const *)arg1,arg2,arg3,arg4);
@@ -9211,7 +9211,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonMeshMaterialGetIndexStreamShort(void * 
   short *arg4 = (short *) (short *)0 ;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (int)jarg3; 
   arg4 = (short *)jarg4; 
   NewtonMeshMaterialGetIndexStreamShort((NewtonMesh const *)arg1,arg2,arg3,arg4);
@@ -9423,7 +9423,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMeshGetFirstVertex(void * jarg1) {
   
   arg1 = (NewtonMesh *)jarg1; 
   result = (void *)NewtonMeshGetFirstVertex((NewtonMesh const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -9435,9 +9435,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMeshGetNextVertex(void * jarg1, void 
   void *result = 0 ;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (void *)NewtonMeshGetNextVertex((NewtonMesh const *)arg1,(void const *)arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -9449,7 +9449,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonMeshGetVertexIndex(void * jarg1, void * 
   int result;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (int)NewtonMeshGetVertexIndex((NewtonMesh const *)arg1,(void const *)arg2);
   jresult = result; 
   return jresult;
@@ -9463,7 +9463,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMeshGetFirstPoint(void * jarg1) {
   
   arg1 = (NewtonMesh *)jarg1; 
   result = (void *)NewtonMeshGetFirstPoint((NewtonMesh const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -9475,9 +9475,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMeshGetNextPoint(void * jarg1, void *
   void *result = 0 ;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (void *)NewtonMeshGetNextPoint((NewtonMesh const *)arg1,(void const *)arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -9489,7 +9489,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonMeshGetPointIndex(void * jarg1, void * j
   int result;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (int)NewtonMeshGetPointIndex((NewtonMesh const *)arg1,(void const *)arg2);
   jresult = result; 
   return jresult;
@@ -9503,7 +9503,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonMeshGetVertexIndexFromPoint(void * jarg1
   int result;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (int)NewtonMeshGetVertexIndexFromPoint((NewtonMesh const *)arg1,(void const *)arg2);
   jresult = result; 
   return jresult;
@@ -9517,7 +9517,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMeshGetFirstEdge(void * jarg1) {
   
   arg1 = (NewtonMesh *)jarg1; 
   result = (void *)NewtonMeshGetFirstEdge((NewtonMesh const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -9529,9 +9529,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMeshGetNextEdge(void * jarg1, void * 
   void *result = 0 ;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (void *)NewtonMeshGetNextEdge((NewtonMesh const *)arg1,(void const *)arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -9543,7 +9543,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonMeshGetEdgeIndices(void * jarg1, void *
   int *arg4 = (int *) (int *)0 ;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (int *)jarg3; 
   arg4 = (int *)jarg4; 
   NewtonMeshGetEdgeIndices((NewtonMesh const *)arg1,(void const *)arg2,arg3,arg4);
@@ -9557,7 +9557,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMeshGetFirstFace(void * jarg1) {
   
   arg1 = (NewtonMesh *)jarg1; 
   result = (void *)NewtonMeshGetFirstFace((NewtonMesh const *)arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -9569,9 +9569,9 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_NewtonMeshGetNextFace(void * jarg1, void * 
   void *result = 0 ;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (void *)NewtonMeshGetNextFace((NewtonMesh const *)arg1,(void const *)arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -9583,7 +9583,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonMeshIsFaceOpen(void * jarg1, void * jarg
   int result;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (int)NewtonMeshIsFaceOpen((NewtonMesh const *)arg1,(void const *)arg2);
   jresult = result; 
   return jresult;
@@ -9597,7 +9597,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonMeshGetFaceMaterial(void * jarg1, void *
   int result;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (int)NewtonMeshGetFaceMaterial((NewtonMesh const *)arg1,(void const *)arg2);
   jresult = result; 
   return jresult;
@@ -9611,7 +9611,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NewtonMeshGetFaceIndexCount(void * jarg1, void
   int result;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   result = (int)NewtonMeshGetFaceIndexCount((NewtonMesh const *)arg1,(void const *)arg2);
   jresult = result; 
   return jresult;
@@ -9624,7 +9624,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonMeshGetFaceIndices(void * jarg1, void *
   int *arg3 = (int *) (int *)0 ;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (int *)jarg3; 
   NewtonMeshGetFaceIndices((NewtonMesh const *)arg1,(void const *)arg2,arg3);
 }
@@ -9636,7 +9636,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonMeshGetFacePointIndices(void * jarg1, v
   int *arg3 = (int *) (int *)0 ;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (int *)jarg3; 
   NewtonMeshGetFacePointIndices((NewtonMesh const *)arg1,(void const *)arg2,arg3);
 }
@@ -9648,7 +9648,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonMeshCalculateFaceNormal(void * jarg1, v
   double *arg3 = (double *) (double *)0 ;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (double *)jarg3; 
   NewtonMeshCalculateFaceNormal((NewtonMesh const *)arg1,(void const *)arg2,arg3);
 }
@@ -9660,7 +9660,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NewtonMeshSetFaceMaterial(void * jarg1, void 
   int arg3 ;
   
   arg1 = (NewtonMesh *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   arg3 = (int)jarg3; 
   NewtonMeshSetFaceMaterial((NewtonMesh const *)arg1,(void const *)arg2,arg3);
 }
@@ -12389,7 +12389,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_dContainersAlloc___dContainers_Alloc__(void
   arg1 = (dContainersAlloc *)jarg1; 
   arg2 = (size_t)jarg2; 
   result = (void *)(arg1)->operator new(arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -12399,7 +12399,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_dContainersAlloc___dContainers_Freec__(void *
   void *arg2 = (void *) 0 ;
   
   arg1 = (dContainersAlloc *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   (arg1)->operator delete(arg2);
 }
 
@@ -12429,7 +12429,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_dContainersAlloc_Alloc(unsigned long jarg1)
   
   arg1 = (size_t)jarg1; 
   result = (void *)dContainersAlloc::Alloc(arg1);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -12437,7 +12437,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_dContainersAlloc_Alloc(unsigned long jarg1)
 SWIGEXPORT void SWIGSTDCALL CSharp_dContainersAlloc_Free(void * jarg1) {
   void *arg1 = (void *) (void *)0 ;
   
-  arg1 = (void *)jarg1; 
+  arg1 = jarg1; 
   dContainersAlloc::Free(arg1);
 }
 
@@ -12471,7 +12471,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_dContainerFixSizeAllocator_Alloc(void * jar
   
   arg1 = (dContainerFixSizeAllocator *)jarg1; 
   result = (void *)(arg1)->Alloc();
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -12481,7 +12481,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_dContainerFixSizeAllocator_Free(void * jarg1,
   void *arg2 = (void *) (void *)0 ;
   
   arg1 = (dContainerFixSizeAllocator *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   (arg1)->Free(arg2);
 }
 
@@ -12915,7 +12915,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_CustomAlloc___CustomAlloc_Alloc__(void * ja
   arg1 = (CustomAlloc *)jarg1; 
   arg2 = (size_t)jarg2; 
   result = (void *)(arg1)->operator new(arg2);
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -12925,7 +12925,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_CustomAlloc___CustomAlloc_Delete__(void * jar
   void *arg2 = (void *) 0 ;
   
   arg1 = (CustomAlloc *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   (arg1)->operator delete(arg2);
 }
 
@@ -12969,7 +12969,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_CustomJoint_SerializeMetaData_SerializeJoint(
   arg1 = (CustomJoint::SerializeMetaData *)jarg1; 
   arg2 = (CustomJoint *)jarg2; 
   arg3 = (NewtonSerializeCallback)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   (arg1)->SerializeJoint(arg2,arg3,arg4);
 }
 
@@ -12987,7 +12987,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_CustomJoint_SerializeMetaData_DeserializeJo
   arg2 = (NewtonBody *)jarg2; 
   arg3 = (NewtonBody *)jarg3; 
   arg4 = (NewtonDeserializeCallback)jarg4; 
-  arg5 = (void *)jarg5; 
+  arg5 = jarg5; 
   result = (CustomJoint *)(arg1)->DeserializeJoint(arg2,arg3,arg4,arg5);
   jresult = (void *)result; 
   return jresult;
@@ -13175,7 +13175,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_CustomJoint__SWIG_2(void * jarg1, void 
   arg1 = (NewtonBody *)jarg1; 
   arg2 = (NewtonBody *)jarg2; 
   arg3 = (NewtonDeserializeCallback)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   result = (CustomJoint *)new CustomJoint(arg1,arg2,arg3,arg4);
   jresult = (void *)result; 
   return jresult;
@@ -13205,7 +13205,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_CustomJoint_Serialize(void * jarg1, void * ja
   
   arg1 = (CustomJoint *)jarg1; 
   arg2 = (NewtonSerializeCallback)jarg2; 
-  arg3 = (void *)jarg3; 
+  arg3 = jarg3; 
   ((CustomJoint const *)arg1)->Serialize(arg2,arg3);
 }
 
@@ -13331,7 +13331,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_CustomJoint_SetUserData(void * jarg1, void * 
   void *arg2 = (void *) 0 ;
   
   arg1 = (CustomJoint *)jarg1; 
-  arg2 = (void *)jarg2; 
+  arg2 = jarg2; 
   (arg1)->SetUserData(arg2);
 }
 
@@ -13343,7 +13343,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_CustomJoint_GetUserData(void * jarg1) {
   
   arg1 = (CustomJoint *)jarg1; 
   result = (void *)((CustomJoint const *)arg1)->GetUserData();
-  jresult = (void *)result; 
+  jresult = result; 
   return jresult;
 }
 
@@ -13505,7 +13505,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_CustomPointToPoint_SerializeMetaData_Serializ
   arg1 = (CustomPointToPoint::SerializeMetaData *)jarg1; 
   arg2 = (CustomJoint *)jarg2; 
   arg3 = (NewtonSerializeCallback)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   (arg1)->SerializeJoint(arg2,arg3,arg4);
 }
 
@@ -13523,7 +13523,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_CustomPointToPoint_SerializeMetaData_Deseri
   arg2 = (NewtonBody *)jarg2; 
   arg3 = (NewtonBody *)jarg3; 
   arg4 = (NewtonDeserializeCallback)jarg4; 
-  arg5 = (void *)jarg5; 
+  arg5 = jarg5; 
   result = (CustomJoint *)(arg1)->DeserializeJoint(arg2,arg3,arg4,arg5);
   jresult = (void *)result; 
   return jresult;
@@ -13697,7 +13697,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_CustomBallAndSocket_SerializeMetaData_Seriali
   arg1 = (CustomBallAndSocket::SerializeMetaData *)jarg1; 
   arg2 = (CustomJoint *)jarg2; 
   arg3 = (NewtonSerializeCallback)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   (arg1)->SerializeJoint(arg2,arg3,arg4);
 }
 
@@ -13715,7 +13715,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_CustomBallAndSocket_SerializeMetaData_Deser
   arg2 = (NewtonBody *)jarg2; 
   arg3 = (NewtonBody *)jarg3; 
   arg4 = (NewtonDeserializeCallback)jarg4; 
-  arg5 = (void *)jarg5; 
+  arg5 = jarg5; 
   result = (CustomJoint *)(arg1)->DeserializeJoint(arg2,arg3,arg4,arg5);
   jresult = (void *)result; 
   return jresult;
@@ -13919,7 +13919,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_CustomLimitBallAndSocket_SerializeMetaData_Se
   arg1 = (CustomLimitBallAndSocket::SerializeMetaData *)jarg1; 
   arg2 = (CustomJoint *)jarg2; 
   arg3 = (NewtonSerializeCallback)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   (arg1)->SerializeJoint(arg2,arg3,arg4);
 }
 
@@ -13937,7 +13937,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_CustomLimitBallAndSocket_SerializeMetaData_
   arg2 = (NewtonBody *)jarg2; 
   arg3 = (NewtonBody *)jarg3; 
   arg4 = (NewtonDeserializeCallback)jarg4; 
-  arg5 = (void *)jarg5; 
+  arg5 = jarg5; 
   result = (CustomJoint *)(arg1)->DeserializeJoint(arg2,arg3,arg4,arg5);
   jresult = (void *)result; 
   return jresult;
@@ -14213,7 +14213,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_CustomControlledBallAndSocket_SerializeMetaDa
   arg1 = (CustomControlledBallAndSocket::SerializeMetaData *)jarg1; 
   arg2 = (CustomJoint *)jarg2; 
   arg3 = (NewtonSerializeCallback)jarg3; 
-  arg4 = (void *)jarg4; 
+  arg4 = jarg4; 
   (arg1)->SerializeJoint(arg2,arg3,arg4);
 }
 
@@ -14231,7 +14231,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_CustomControlledBallAndSocket_SerializeMeta
   arg2 = (NewtonBody *)jarg2; 
   arg3 = (NewtonBody *)jarg3; 
   arg4 = (NewtonDeserializeCallback)jarg4; 
-  arg5 = (void *)jarg5; 
+  arg5 = jarg5; 
   result = (CustomJoint *)(arg1)->DeserializeJoint(arg2,arg3,arg4,arg5);
   jresult = (void *)result; 
   return jresult;

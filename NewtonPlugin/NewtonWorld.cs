@@ -1,66 +1,77 @@
 ﻿using UnityEngine;
+using System.Runtime.InteropServices;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
+public delegate IntPtr NewtonAllocMemoryDelegate(int sizeInBytes);
+public delegate void NewtonFreeMemoryDelegate(System.IntPtr ptr, int sizeInBytes);
 
 namespace NewtonPlugin
 {
-    // This compiles but I do no think is correct, I do not see any funtion to return the allocated memory
-    class NewtonAllocMemory: SWIGTYPE_p_f_int__p_void
+
+    public class NewtonWorld : MonoBehaviour
     {
-        static NewtonAllocMemory()
+        protected SWIGTYPE_p_NewtonWorld m_world;
+        private GCHandle gch_this;
+
+        static private bool m_isMemoryEnable = false;
+        static private NewtonAllocMemoryDelegate m_alloc = new NewtonAllocMemoryDelegate(AllocMemory);
+        static private NewtonFreeMemoryDelegate m_free = new NewtonFreeMemoryDelegate(FreeMemory);
+
+        static IntPtr AllocMemory(int sizeInBytes)
         {
+            IntPtr newMemPtr = Marshal.AllocHGlobal(sizeInBytes);
+            Debug.Log("Allocated " + sizeInBytes.ToString() + " bytes at address " + newMemPtr.ToString());
+            return newMemPtr;
         }
-    }
-
-    class NewtonFreeMemory : SWIGTYPE_p_f_q_const__p_void_int__void
-    {
-        static NewtonFreeMemory()
+        
+        static void FreeMemory(IntPtr ptr, int sizeInBytes)
         {
+            Marshal.FreeHGlobal(ptr);
+            Debug.Log("Freed " + sizeInBytes.ToString() + " bytes at address " + ptr.ToString());
         }
-    }
 
-
-    class NewtonWorld
-    {
-        protected NewtonWorld()
+        void Awake()
         {
-            // create the static memory alloction glue code. (I am no sur eif this is right)
+
+            // Enable custom memory allocation
             if (!m_isMemoryEnable)
             {
                 m_isMemoryEnable = true;
-                cpp.NewtonSetMemorySystem(m_alloc, m_free);
+
+                NewtonWrapper.NewtonSetMemorySystem(m_alloc, m_free);
             }
 
-            m_world = cpp.NewtonCreate();
+            m_world = NewtonWrapper.NewtonCreate();
 
 
-            // link the work with this user data
+            // link the world with this user data
             // !!!!no sure how to call this in teh wraper
+
+            gch_this = GCHandle.Alloc(this, GCHandleType.Normal);
+
+            NewtonWrapper.NewtonWorldSetUserData(m_world, GCHandle.ToIntPtr(gch_this));
+            Debug.Log("Passed this to NewtonWorld as Userdata");
             //cpp.NewtonWorldSetUserData(m_world, this);
 
             // set the simplified solver mode (faster but less accurate)
-            cpp.NewtonSetSolverModel(m_world, 4);
+            NewtonWrapper.NewtonSetSolverModel(m_world, 4);
 
             // set joint serialization call back
             // !!!!no sure how to call this in teh wraper
             // CustomJoint::Initalize(m_world);
 
-
-            //Debug.Log("Newton World created(" + m_world.ToString() + ")");
+            //Debug.Log("Newton World created");
         }
 
-        ~NewtonWorld()
+        void OnDestroy()
         {
-            //Debug.Log("Newton World destroyed(" + m_world.ToString() + ")");
-            cpp.NewtonDestroy(m_world);
+            gch_this.Free();
+
+            NewtonWrapper.NewtonDestroy(m_world);
+
+            //Debug.Log("Newton World destroyed");
         }
 
-        protected SWIGTYPE_p_NewtonWorld m_world;
-        static private bool m_isMemoryEnable = false;
-        static private NewtonAllocMemory m_alloc = new NewtonAllocMemory();
-        static private NewtonFreeMemory m_free = new NewtonFreeMemory();
     }
 }
 

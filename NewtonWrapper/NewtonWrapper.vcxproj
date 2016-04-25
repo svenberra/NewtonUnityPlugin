@@ -178,7 +178,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -197,7 +197,8 @@
       </Command>
     </PostBuildEvent>
     <CustomBuildStep>
-      <Command>..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile xxxxxx.cs  NewtonWraper_1.i </Command>
+      <Command>@echo
+..\swigwin-3.0.8\swig.exe -I$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton -c++ -csharp -outdir ../NewtonPlugin/swigSource -outfile xxxxxx.cs  NewtonWraper_1.i </Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Message>buiding newton sdk csharp wraper</Message>
@@ -222,7 +223,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="newton_wrap.cxx" />
+    <ClCompile Include="newton_wrap.cxx">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
