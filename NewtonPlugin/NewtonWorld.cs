@@ -14,12 +14,14 @@ namespace NewtonPlugin
         private GCHandle gch_this;
 
         static private bool m_isMemoryEnable = false;
+        static private System.Collections.Generic.Dictionary<IntPtr, int> _allocated = null;
         static private NewtonAllocMemoryDelegate m_alloc = new NewtonAllocMemoryDelegate(AllocMemory);
         static private NewtonFreeMemoryDelegate m_free = new NewtonFreeMemoryDelegate(FreeMemory);
 
         static IntPtr AllocMemory(int sizeInBytes)
         {
             IntPtr newMemPtr = Marshal.AllocHGlobal(sizeInBytes);
+            _allocated.Add(newMemPtr, sizeInBytes);
             Debug.Log("Allocated " + sizeInBytes.ToString() + " bytes at address " + newMemPtr.ToString());
             return newMemPtr;
         }
@@ -27,6 +29,7 @@ namespace NewtonPlugin
         static void FreeMemory(IntPtr ptr, int sizeInBytes)
         {
             Marshal.FreeHGlobal(ptr);
+            _allocated.Remove(ptr);
             Debug.Log("Freed " + sizeInBytes.ToString() + " bytes at address " + ptr.ToString());
         }
 
@@ -37,7 +40,7 @@ namespace NewtonPlugin
             if (!m_isMemoryEnable)
             {
                 m_isMemoryEnable = true;
-
+                _allocated = new System.Collections.Generic.Dictionary<IntPtr, int>();
                 NewtonWrapper.NewtonSetMemorySystem(m_alloc, m_free);
             }
 
@@ -68,6 +71,8 @@ namespace NewtonPlugin
             gch_this.Free();
 
             NewtonWrapper.NewtonDestroy(m_world);
+
+            Debug.Log("Unallocated memory addresses:" + _allocated.Count.ToString());
 
             //Debug.Log("Newton World destroyed");
         }
