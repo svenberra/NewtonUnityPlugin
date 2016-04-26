@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewtonPlugin", "NewtonPlugin\NewtonPlugin.csproj", "{B6B57011-4DB5-4BF8-857C-1E0DC896B4AA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{17450CAC-6906-4D61-870D-67608F43F5D0} = {17450CAC-6906-4D61-870D-67608F43F5D0}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NewtonWrapper", "NewtonWrapper\NewtonWrapper.vcxproj", "{17450CAC-6906-4D61-870D-67608F43F5D0}"
 EndProject

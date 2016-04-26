@@ -77,10 +77,12 @@
 %typemap(in)     void * %{ $1 = $input; %}
 %typemap(out)    void * %{ $result = $1; %}
 //%typemap(csout)  void * { return $imcall; }
+
 %typemap(csout, excode=SWIGEXCODE)  void* { 
     System.IntPtr cPtr = $imcall;$excode
     return cPtr;
-    }
+}
+
 %typemap(csvarout, excode=SWIGEXCODE2) void* %{ 
     get {
         System.IntPtr cPtr = $imcall;$excode 

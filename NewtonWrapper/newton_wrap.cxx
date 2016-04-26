@@ -13484,25 +13484,25 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_CustomPointToPoint_GetTypeName(void * jarg1
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_CustomPointToPoint_SerializeMetaData(char * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_CustomPointToPoint_SerializeMetaData_CustomPointToPoint(char * jarg1) {
   void * jresult ;
   char *arg1 = (char *) (char *)0 ;
-  CustomPointToPoint::SerializeMetaData *result = 0 ;
+  CustomPointToPoint::SerializeMetaData_CustomPointToPoint *result = 0 ;
   
   arg1 = (char *)jarg1; 
-  result = (CustomPointToPoint::SerializeMetaData *)new CustomPointToPoint::SerializeMetaData((char const *)arg1);
+  result = (CustomPointToPoint::SerializeMetaData_CustomPointToPoint *)new CustomPointToPoint::SerializeMetaData_CustomPointToPoint((char const *)arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_CustomPointToPoint_SerializeMetaData_SerializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  CustomPointToPoint::SerializeMetaData *arg1 = (CustomPointToPoint::SerializeMetaData *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_CustomPointToPoint_SerializeMetaData_CustomPointToPoint_SerializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  CustomPointToPoint::SerializeMetaData_CustomPointToPoint *arg1 = (CustomPointToPoint::SerializeMetaData_CustomPointToPoint *) 0 ;
   CustomJoint *arg2 = (CustomJoint *) (CustomJoint *)0 ;
   NewtonSerializeCallback arg3 = (NewtonSerializeCallback) 0 ;
   void *arg4 = (void *) (void *)0 ;
   
-  arg1 = (CustomPointToPoint::SerializeMetaData *)jarg1; 
+  arg1 = (CustomPointToPoint::SerializeMetaData_CustomPointToPoint *)jarg1; 
   arg2 = (CustomJoint *)jarg2; 
   arg3 = (NewtonSerializeCallback)jarg3; 
   arg4 = jarg4; 
@@ -13510,16 +13510,16 @@ SWIGEXPORT void SWIGSTDCALL CSharp_CustomPointToPoint_SerializeMetaData_Serializ
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_CustomPointToPoint_SerializeMetaData_DeserializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_CustomPointToPoint_SerializeMetaData_CustomPointToPoint_DeserializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5) {
   void * jresult ;
-  CustomPointToPoint::SerializeMetaData *arg1 = (CustomPointToPoint::SerializeMetaData *) 0 ;
+  CustomPointToPoint::SerializeMetaData_CustomPointToPoint *arg1 = (CustomPointToPoint::SerializeMetaData_CustomPointToPoint *) 0 ;
   NewtonBody *arg2 = (NewtonBody *) (NewtonBody *)0 ;
   NewtonBody *arg3 = (NewtonBody *) (NewtonBody *)0 ;
   NewtonDeserializeCallback arg4 = (NewtonDeserializeCallback) 0 ;
   void *arg5 = (void *) (void *)0 ;
   CustomJoint *result = 0 ;
   
-  arg1 = (CustomPointToPoint::SerializeMetaData *)jarg1; 
+  arg1 = (CustomPointToPoint::SerializeMetaData_CustomPointToPoint *)jarg1; 
   arg2 = (NewtonBody *)jarg2; 
   arg3 = (NewtonBody *)jarg3; 
   arg4 = (NewtonDeserializeCallback)jarg4; 
@@ -13530,27 +13530,27 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_CustomPointToPoint_SerializeMetaData_Deseri
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_CustomPointToPoint_SerializeMetaData(void * jarg1) {
-  CustomPointToPoint::SerializeMetaData *arg1 = (CustomPointToPoint::SerializeMetaData *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_CustomPointToPoint_SerializeMetaData_CustomPointToPoint(void * jarg1) {
+  CustomPointToPoint::SerializeMetaData_CustomPointToPoint *arg1 = (CustomPointToPoint::SerializeMetaData_CustomPointToPoint *) 0 ;
   
-  arg1 = (CustomPointToPoint::SerializeMetaData *)jarg1; 
+  arg1 = (CustomPointToPoint::SerializeMetaData_CustomPointToPoint *)jarg1; 
   delete arg1;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_CustomPointToPoint_m_metaData_set(void * jarg1) {
-  CustomPointToPoint::SerializeMetaData *arg1 = (CustomPointToPoint::SerializeMetaData *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_CustomPointToPoint_m_metaData_CustomPointToPoint_set(void * jarg1) {
+  CustomPointToPoint::SerializeMetaData_CustomPointToPoint *arg1 = (CustomPointToPoint::SerializeMetaData_CustomPointToPoint *) 0 ;
   
-  arg1 = (CustomPointToPoint::SerializeMetaData *)jarg1; 
-  CustomPointToPoint::m_metaData = *arg1;
+  arg1 = (CustomPointToPoint::SerializeMetaData_CustomPointToPoint *)jarg1; 
+  CustomPointToPoint::m_metaData_CustomPointToPoint = *arg1;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_CustomPointToPoint_m_metaData_get() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_CustomPointToPoint_m_metaData_CustomPointToPoint_get() {
   void * jresult ;
-  CustomPointToPoint::SerializeMetaData *result = 0 ;
+  CustomPointToPoint::SerializeMetaData_CustomPointToPoint *result = 0 ;
   
-  result = (CustomPointToPoint::SerializeMetaData *)&CustomPointToPoint::m_metaData;
+  result = (CustomPointToPoint::SerializeMetaData_CustomPointToPoint *)&CustomPointToPoint::m_metaData_CustomPointToPoint;
   jresult = (void *)result; 
   return jresult;
 }
@@ -13676,25 +13676,25 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_CustomBallAndSocket_GetTypeName(void * jarg
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_CustomBallAndSocket_SerializeMetaData(char * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket(char * jarg1) {
   void * jresult ;
   char *arg1 = (char *) (char *)0 ;
-  CustomBallAndSocket::SerializeMetaData *result = 0 ;
+  CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *result = 0 ;
   
   arg1 = (char *)jarg1; 
-  result = (CustomBallAndSocket::SerializeMetaData *)new CustomBallAndSocket::SerializeMetaData((char const *)arg1);
+  result = (CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *)new CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket((char const *)arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_CustomBallAndSocket_SerializeMetaData_SerializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  CustomBallAndSocket::SerializeMetaData *arg1 = (CustomBallAndSocket::SerializeMetaData *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket_SerializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *arg1 = (CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *) 0 ;
   CustomJoint *arg2 = (CustomJoint *) (CustomJoint *)0 ;
   NewtonSerializeCallback arg3 = (NewtonSerializeCallback) 0 ;
   void *arg4 = (void *) (void *)0 ;
   
-  arg1 = (CustomBallAndSocket::SerializeMetaData *)jarg1; 
+  arg1 = (CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *)jarg1; 
   arg2 = (CustomJoint *)jarg2; 
   arg3 = (NewtonSerializeCallback)jarg3; 
   arg4 = jarg4; 
@@ -13702,16 +13702,16 @@ SWIGEXPORT void SWIGSTDCALL CSharp_CustomBallAndSocket_SerializeMetaData_Seriali
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_CustomBallAndSocket_SerializeMetaData_DeserializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket_DeserializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5) {
   void * jresult ;
-  CustomBallAndSocket::SerializeMetaData *arg1 = (CustomBallAndSocket::SerializeMetaData *) 0 ;
+  CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *arg1 = (CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *) 0 ;
   NewtonBody *arg2 = (NewtonBody *) (NewtonBody *)0 ;
   NewtonBody *arg3 = (NewtonBody *) (NewtonBody *)0 ;
   NewtonDeserializeCallback arg4 = (NewtonDeserializeCallback) 0 ;
   void *arg5 = (void *) (void *)0 ;
   CustomJoint *result = 0 ;
   
-  arg1 = (CustomBallAndSocket::SerializeMetaData *)jarg1; 
+  arg1 = (CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *)jarg1; 
   arg2 = (NewtonBody *)jarg2; 
   arg3 = (NewtonBody *)jarg3; 
   arg4 = (NewtonDeserializeCallback)jarg4; 
@@ -13722,27 +13722,27 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_CustomBallAndSocket_SerializeMetaData_Deser
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_CustomBallAndSocket_SerializeMetaData(void * jarg1) {
-  CustomBallAndSocket::SerializeMetaData *arg1 = (CustomBallAndSocket::SerializeMetaData *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket(void * jarg1) {
+  CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *arg1 = (CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *) 0 ;
   
-  arg1 = (CustomBallAndSocket::SerializeMetaData *)jarg1; 
+  arg1 = (CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *)jarg1; 
   delete arg1;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_CustomBallAndSocket_m_metaData_set(void * jarg1) {
-  CustomBallAndSocket::SerializeMetaData *arg1 = (CustomBallAndSocket::SerializeMetaData *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_CustomBallAndSocket_m_metaData_CustomBallAndSocket_set(void * jarg1) {
+  CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *arg1 = (CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *) 0 ;
   
-  arg1 = (CustomBallAndSocket::SerializeMetaData *)jarg1; 
-  CustomBallAndSocket::m_metaData = *arg1;
+  arg1 = (CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *)jarg1; 
+  CustomBallAndSocket::m_metaData_CustomBallAndSocket = *arg1;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_CustomBallAndSocket_m_metaData_get() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_CustomBallAndSocket_m_metaData_CustomBallAndSocket_get() {
   void * jresult ;
-  CustomBallAndSocket::SerializeMetaData *result = 0 ;
+  CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *result = 0 ;
   
-  result = (CustomBallAndSocket::SerializeMetaData *)&CustomBallAndSocket::m_metaData;
+  result = (CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *)&CustomBallAndSocket::m_metaData_CustomBallAndSocket;
   jresult = (void *)result; 
   return jresult;
 }
@@ -13898,25 +13898,25 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_CustomLimitBallAndSocket_GetTypeName(void *
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_CustomLimitBallAndSocket_SerializeMetaData(char * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket(char * jarg1) {
   void * jresult ;
   char *arg1 = (char *) (char *)0 ;
-  CustomLimitBallAndSocket::SerializeMetaData *result = 0 ;
+  CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *result = 0 ;
   
   arg1 = (char *)jarg1; 
-  result = (CustomLimitBallAndSocket::SerializeMetaData *)new CustomLimitBallAndSocket::SerializeMetaData((char const *)arg1);
+  result = (CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *)new CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket((char const *)arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_CustomLimitBallAndSocket_SerializeMetaData_SerializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  CustomLimitBallAndSocket::SerializeMetaData *arg1 = (CustomLimitBallAndSocket::SerializeMetaData *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket_SerializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *arg1 = (CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *) 0 ;
   CustomJoint *arg2 = (CustomJoint *) (CustomJoint *)0 ;
   NewtonSerializeCallback arg3 = (NewtonSerializeCallback) 0 ;
   void *arg4 = (void *) (void *)0 ;
   
-  arg1 = (CustomLimitBallAndSocket::SerializeMetaData *)jarg1; 
+  arg1 = (CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *)jarg1; 
   arg2 = (CustomJoint *)jarg2; 
   arg3 = (NewtonSerializeCallback)jarg3; 
   arg4 = jarg4; 
@@ -13924,16 +13924,16 @@ SWIGEXPORT void SWIGSTDCALL CSharp_CustomLimitBallAndSocket_SerializeMetaData_Se
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_CustomLimitBallAndSocket_SerializeMetaData_DeserializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket_DeserializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5) {
   void * jresult ;
-  CustomLimitBallAndSocket::SerializeMetaData *arg1 = (CustomLimitBallAndSocket::SerializeMetaData *) 0 ;
+  CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *arg1 = (CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *) 0 ;
   NewtonBody *arg2 = (NewtonBody *) (NewtonBody *)0 ;
   NewtonBody *arg3 = (NewtonBody *) (NewtonBody *)0 ;
   NewtonDeserializeCallback arg4 = (NewtonDeserializeCallback) 0 ;
   void *arg5 = (void *) (void *)0 ;
   CustomJoint *result = 0 ;
   
-  arg1 = (CustomLimitBallAndSocket::SerializeMetaData *)jarg1; 
+  arg1 = (CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *)jarg1; 
   arg2 = (NewtonBody *)jarg2; 
   arg3 = (NewtonBody *)jarg3; 
   arg4 = (NewtonDeserializeCallback)jarg4; 
@@ -13944,27 +13944,27 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_CustomLimitBallAndSocket_SerializeMetaData_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_CustomLimitBallAndSocket_SerializeMetaData(void * jarg1) {
-  CustomLimitBallAndSocket::SerializeMetaData *arg1 = (CustomLimitBallAndSocket::SerializeMetaData *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket(void * jarg1) {
+  CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *arg1 = (CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *) 0 ;
   
-  arg1 = (CustomLimitBallAndSocket::SerializeMetaData *)jarg1; 
+  arg1 = (CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *)jarg1; 
   delete arg1;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_CustomLimitBallAndSocket_m_metaData_set(void * jarg1) {
-  CustomLimitBallAndSocket::SerializeMetaData *arg1 = (CustomLimitBallAndSocket::SerializeMetaData *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_CustomLimitBallAndSocket_m_metaData_CustomLimitBallAndSocket_set(void * jarg1) {
+  CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *arg1 = (CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *) 0 ;
   
-  arg1 = (CustomLimitBallAndSocket::SerializeMetaData *)jarg1; 
-  CustomLimitBallAndSocket::m_metaData = *arg1;
+  arg1 = (CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *)jarg1; 
+  CustomLimitBallAndSocket::m_metaData_CustomLimitBallAndSocket = *arg1;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_CustomLimitBallAndSocket_m_metaData_get() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_CustomLimitBallAndSocket_m_metaData_CustomLimitBallAndSocket_get() {
   void * jresult ;
-  CustomLimitBallAndSocket::SerializeMetaData *result = 0 ;
+  CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *result = 0 ;
   
-  result = (CustomLimitBallAndSocket::SerializeMetaData *)&CustomLimitBallAndSocket::m_metaData;
+  result = (CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *)&CustomLimitBallAndSocket::m_metaData_CustomLimitBallAndSocket;
   jresult = (void *)result; 
   return jresult;
 }
@@ -14192,25 +14192,25 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_CustomControlledBallAndSocket_GetTypeName(v
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_CustomControlledBallAndSocket_SerializeMetaData(char * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket(char * jarg1) {
   void * jresult ;
   char *arg1 = (char *) (char *)0 ;
-  CustomControlledBallAndSocket::SerializeMetaData *result = 0 ;
+  CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *result = 0 ;
   
   arg1 = (char *)jarg1; 
-  result = (CustomControlledBallAndSocket::SerializeMetaData *)new CustomControlledBallAndSocket::SerializeMetaData((char const *)arg1);
+  result = (CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *)new CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket((char const *)arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_CustomControlledBallAndSocket_SerializeMetaData_SerializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
-  CustomControlledBallAndSocket::SerializeMetaData *arg1 = (CustomControlledBallAndSocket::SerializeMetaData *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket_SerializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *arg1 = (CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *) 0 ;
   CustomJoint *arg2 = (CustomJoint *) (CustomJoint *)0 ;
   NewtonSerializeCallback arg3 = (NewtonSerializeCallback) 0 ;
   void *arg4 = (void *) (void *)0 ;
   
-  arg1 = (CustomControlledBallAndSocket::SerializeMetaData *)jarg1; 
+  arg1 = (CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *)jarg1; 
   arg2 = (CustomJoint *)jarg2; 
   arg3 = (NewtonSerializeCallback)jarg3; 
   arg4 = jarg4; 
@@ -14218,16 +14218,16 @@ SWIGEXPORT void SWIGSTDCALL CSharp_CustomControlledBallAndSocket_SerializeMetaDa
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_CustomControlledBallAndSocket_SerializeMetaData_DeserializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket_DeserializeJoint(void * jarg1, void * jarg2, void * jarg3, void * jarg4, void * jarg5) {
   void * jresult ;
-  CustomControlledBallAndSocket::SerializeMetaData *arg1 = (CustomControlledBallAndSocket::SerializeMetaData *) 0 ;
+  CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *arg1 = (CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *) 0 ;
   NewtonBody *arg2 = (NewtonBody *) (NewtonBody *)0 ;
   NewtonBody *arg3 = (NewtonBody *) (NewtonBody *)0 ;
   NewtonDeserializeCallback arg4 = (NewtonDeserializeCallback) 0 ;
   void *arg5 = (void *) (void *)0 ;
   CustomJoint *result = 0 ;
   
-  arg1 = (CustomControlledBallAndSocket::SerializeMetaData *)jarg1; 
+  arg1 = (CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *)jarg1; 
   arg2 = (NewtonBody *)jarg2; 
   arg3 = (NewtonBody *)jarg3; 
   arg4 = (NewtonDeserializeCallback)jarg4; 
@@ -14238,27 +14238,27 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_CustomControlledBallAndSocket_SerializeMeta
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_CustomControlledBallAndSocket_SerializeMetaData(void * jarg1) {
-  CustomControlledBallAndSocket::SerializeMetaData *arg1 = (CustomControlledBallAndSocket::SerializeMetaData *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket(void * jarg1) {
+  CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *arg1 = (CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *) 0 ;
   
-  arg1 = (CustomControlledBallAndSocket::SerializeMetaData *)jarg1; 
+  arg1 = (CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *)jarg1; 
   delete arg1;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_CustomControlledBallAndSocket_m_metaData_set(void * jarg1) {
-  CustomControlledBallAndSocket::SerializeMetaData *arg1 = (CustomControlledBallAndSocket::SerializeMetaData *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_CustomControlledBallAndSocket_m_metaData_CustomControlledBallAndSocket_set(void * jarg1) {
+  CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *arg1 = (CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *) 0 ;
   
-  arg1 = (CustomControlledBallAndSocket::SerializeMetaData *)jarg1; 
-  CustomControlledBallAndSocket::m_metaData = *arg1;
+  arg1 = (CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *)jarg1; 
+  CustomControlledBallAndSocket::m_metaData_CustomControlledBallAndSocket = *arg1;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_CustomControlledBallAndSocket_m_metaData_get() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_CustomControlledBallAndSocket_m_metaData_CustomControlledBallAndSocket_get() {
   void * jresult ;
-  CustomControlledBallAndSocket::SerializeMetaData *result = 0 ;
+  CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *result = 0 ;
   
-  result = (CustomControlledBallAndSocket::SerializeMetaData *)&CustomControlledBallAndSocket::m_metaData;
+  result = (CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *)&CustomControlledBallAndSocket::m_metaData_CustomControlledBallAndSocket;
   jresult = (void *)result; 
   return jresult;
 }
@@ -14276,7 +14276,7 @@ SWIGEXPORT CustomAlloc * SWIGSTDCALL CSharp_CustomJoint_SWIGUpcast(CustomJoint *
     return (CustomAlloc *)jarg1;
 }
 
-SWIGEXPORT CustomJoint::SerializeMetaData * SWIGSTDCALL CSharp_CustomPointToPoint_SerializeMetaData_SWIGUpcast(CustomPointToPoint::SerializeMetaData *jarg1) {
+SWIGEXPORT CustomJoint::SerializeMetaData * SWIGSTDCALL CSharp_CustomPointToPoint_SerializeMetaData_CustomPointToPoint_SWIGUpcast(CustomPointToPoint::SerializeMetaData_CustomPointToPoint *jarg1) {
     return (CustomJoint::SerializeMetaData *)jarg1;
 }
 
@@ -14284,7 +14284,7 @@ SWIGEXPORT CustomJoint * SWIGSTDCALL CSharp_CustomPointToPoint_SWIGUpcast(Custom
     return (CustomJoint *)jarg1;
 }
 
-SWIGEXPORT CustomJoint::SerializeMetaData * SWIGSTDCALL CSharp_CustomBallAndSocket_SerializeMetaData_SWIGUpcast(CustomBallAndSocket::SerializeMetaData *jarg1) {
+SWIGEXPORT CustomJoint::SerializeMetaData * SWIGSTDCALL CSharp_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket_SWIGUpcast(CustomBallAndSocket::SerializeMetaData_CustomBallAndSocket *jarg1) {
     return (CustomJoint::SerializeMetaData *)jarg1;
 }
 
@@ -14292,8 +14292,8 @@ SWIGEXPORT CustomJoint * SWIGSTDCALL CSharp_CustomBallAndSocket_SWIGUpcast(Custo
     return (CustomJoint *)jarg1;
 }
 
-SWIGEXPORT CustomBallAndSocket::SerializeMetaData * SWIGSTDCALL CSharp_CustomLimitBallAndSocket_SerializeMetaData_SWIGUpcast(CustomLimitBallAndSocket::SerializeMetaData *jarg1) {
-    return (CustomBallAndSocket::SerializeMetaData *)jarg1;
+SWIGEXPORT CustomJoint::SerializeMetaData * SWIGSTDCALL CSharp_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket_SWIGUpcast(CustomLimitBallAndSocket::SerializeMetaData_CustomLimitBallAndSocket *jarg1) {
+    return (CustomJoint::SerializeMetaData *)jarg1;
 }
 
 SWIGEXPORT CustomBallAndSocket * SWIGSTDCALL CSharp_CustomLimitBallAndSocket_SWIGUpcast(CustomLimitBallAndSocket *jarg1) {
@@ -14304,8 +14304,8 @@ SWIGEXPORT CustomBallAndSocket * SWIGSTDCALL CSharp_CustomBallAndSocketWithFrict
     return (CustomBallAndSocket *)jarg1;
 }
 
-SWIGEXPORT CustomBallAndSocket::SerializeMetaData * SWIGSTDCALL CSharp_CustomControlledBallAndSocket_SerializeMetaData_SWIGUpcast(CustomControlledBallAndSocket::SerializeMetaData *jarg1) {
-    return (CustomBallAndSocket::SerializeMetaData *)jarg1;
+SWIGEXPORT CustomJoint::SerializeMetaData * SWIGSTDCALL CSharp_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket_SWIGUpcast(CustomControlledBallAndSocket::SerializeMetaData_CustomControlledBallAndSocket *jarg1) {
+    return (CustomJoint::SerializeMetaData *)jarg1;
 }
 
 SWIGEXPORT CustomBallAndSocket * SWIGSTDCALL CSharp_CustomControlledBallAndSocket_SWIGUpcast(CustomControlledBallAndSocket *jarg1) {
