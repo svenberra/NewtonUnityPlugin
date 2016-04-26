@@ -70,13 +70,13 @@
 %rename(__CustomJoint_AngularIntegration_Add__) CustomAlloc::AngularIntegration::operator+;
 %rename(__CustomJoint_AngularIntegration_Sub__) CustomAlloc::AngularIntegration::operator-;
 
+// Wrap void * to IntPtr
 %typemap(ctype)  void * "void *"
 %typemap(imtype) void * "global::System.IntPtr"
 %typemap(cstype) void * "global::System.IntPtr"
 %typemap(csin)   void * "$csinput"
 %typemap(in)     void * %{ $1 = $input; %}
 %typemap(out)    void * %{ $result = $1; %}
-//%typemap(csout)  void * { return $imcall; }
 
 %typemap(csout, excode=SWIGEXCODE)  void* { 
     System.IntPtr cPtr = $imcall;$excode
@@ -89,7 +89,28 @@
         return cPtr; 
    } 
 %}
- 
+
+// Wrap float * to IntPtr
+%typemap(ctype)  float * "float *"
+%typemap(imtype) float * "global::System.IntPtr"
+%typemap(cstype) float * "global::System.IntPtr"
+%typemap(csin)   float * "$csinput"
+%typemap(in)     float * %{ $1 = $input; %}
+%typemap(out)    float * %{ $result = $1; %}
+
+%typemap(csout, excode=SWIGEXCODE)  float* { 
+    System.IntPtr cPtr = $imcall;$excode
+    return cPtr;
+}
+
+%typemap(csvarout, excode=SWIGEXCODE2) float* %{ 
+    get {
+        System.IntPtr cPtr = $imcall;$excode 
+        return cPtr; 
+   } 
+%}
+
+// Macro for wrapping C++ callbacks as C# delegates 
 %define %cs_callback(TYPE, CSTYPE)
 %typemap(ctype) TYPE, TYPE& "void*"
 %typemap(in) TYPE %{ $1 = (TYPE)$input; %}
@@ -99,6 +120,7 @@
 %typemap(csin) TYPE, TYPE& "$csinput"
 %enddef
 
+// Wrap Newton callbacks
 %cs_callback(NewtonAllocMemory, NewtonAllocMemoryDelegate)
 %cs_callback(NewtonFreeMemory, NewtonFreeMemoryDelegate)
 

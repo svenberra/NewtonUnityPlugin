@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
-using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace NewtonPlugin
 {
@@ -14,14 +14,19 @@ namespace NewtonPlugin
         public bool KinematicCollidable = false;
         public float Mass = 1.0f;
 
-        internal IntPtr pBody = IntPtr.Zero;
+        protected SWIGTYPE_p_NewtonBody m_body;
 
         public Matrix4x4 BodyTransform
         {
             get
             {
                 Matrix4x4 mat = Matrix4x4.identity;
-                NewtonAPI.NewtonBodyGetMatrix(pBody, ref mat);
+                IntPtr ptrmat = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(Matrix4x4)));
+                //Marshal.StructureToPtr(test_struct_simple, ptest_struct_simple, false);
+                NewtonWrapper.NewtonBodyGetMatrix(m_body, ptrmat);
+                Marshal.PtrToStructure(ptrmat, mat);
+                Marshal.FreeHGlobal(ptrmat);
+                
                 return mat;
             }
 

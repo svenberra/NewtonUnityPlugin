@@ -8,41 +8,44 @@ public delegate void NewtonFreeMemoryDelegate(System.IntPtr ptr, int sizeInBytes
 namespace NewtonPlugin
 {
 
+    [DisallowMultipleComponent]
+    [AddComponentMenu("Newton Physics/Rigid Body")]
     public class NewtonWorld : MonoBehaviour
     {
         protected SWIGTYPE_p_NewtonWorld m_world;
         private GCHandle gch_this;
 
-        static private bool m_isMemoryEnable = false;
-        static private System.Collections.Generic.Dictionary<IntPtr, int> _allocated = null;
-        static private NewtonAllocMemoryDelegate m_alloc = new NewtonAllocMemoryDelegate(AllocMemory);
-        static private NewtonFreeMemoryDelegate m_free = new NewtonFreeMemoryDelegate(FreeMemory);
+        //static private bool m_isMemoryEnable = false;
+        //static private System.Collections.Generic.Dictionary<IntPtr, int> _allocated = null;
+        //static private NewtonAllocMemoryDelegate m_alloc = new NewtonAllocMemoryDelegate(AllocMemory);
+        //static private NewtonFreeMemoryDelegate m_free = new NewtonFreeMemoryDelegate(FreeMemory);
+        //static IntPtr AllocMemory(int sizeInBytes)
+        //{
+        //    //IntPtr newMemPtr = Marshal.AllocHGlobal(sizeInBytes);
+        //    IntPtr newMemPtr = NewtonWrapper.NewtonAlloc(sizeInBytes);
 
-        static IntPtr AllocMemory(int sizeInBytes)
-        {
-            IntPtr newMemPtr = Marshal.AllocHGlobal(sizeInBytes);
-            _allocated.Add(newMemPtr, sizeInBytes);
-            Debug.Log("Allocated " + sizeInBytes.ToString() + " bytes at address " + newMemPtr.ToString());
-            return newMemPtr;
-        }
-        
-        static void FreeMemory(IntPtr ptr, int sizeInBytes)
-        {
-            Marshal.FreeHGlobal(ptr);
-            _allocated.Remove(ptr);
-            Debug.Log("Freed " + sizeInBytes.ToString() + " bytes at address " + ptr.ToString());
-        }
+        //    _allocated.Add(newMemPtr, sizeInBytes);
+        //    Debug.Log("Allocated " + sizeInBytes.ToString() + " bytes at address " + newMemPtr.ToString());
+        //    return newMemPtr;
+        //}
+        //static void FreeMemory(IntPtr ptr, int sizeInBytes)
+        //{
+        //    //Marshal.FreeHGlobal(ptr);
+        //    NewtonWrapper.NewtonFree(ptr);
+
+        //    _allocated.Remove(ptr);
+        //    Debug.Log("Freed " + sizeInBytes.ToString() + " bytes at address " + ptr.ToString());
+        //}
 
         void Awake()
         {
-
             // Enable custom memory allocation
-            if (!m_isMemoryEnable)
-            {
-                m_isMemoryEnable = true;
-                _allocated = new System.Collections.Generic.Dictionary<IntPtr, int>();
-                NewtonWrapper.NewtonSetMemorySystem(m_alloc, m_free);
-            }
+            //if (!m_isMemoryEnable)
+            //{
+            //    m_isMemoryEnable = true;
+            //    _allocated = new System.Collections.Generic.Dictionary<IntPtr, int>();
+            //    NewtonWrapper.NewtonSetMemorySystem(m_alloc, m_free);
+            //}
 
             m_world = NewtonWrapper.NewtonCreate();
 
@@ -72,7 +75,7 @@ namespace NewtonPlugin
 
             NewtonWrapper.NewtonDestroy(m_world);
 
-            Debug.Log("Unallocated memory addresses:" + _allocated.Count.ToString());
+            //Debug.Log("Unallocated memory addresses:" + _allocated.Count.ToString());
 
             //Debug.Log("Newton World destroyed");
         }

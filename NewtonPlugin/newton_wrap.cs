@@ -419,15 +419,15 @@ public class NewtonConvexHullParam : global::System.IDisposable {
     } 
   }
 
-  public SWIGTYPE_p_float m_vertex {
+  public global::System.IntPtr m_vertex {
     set {
-      NewtonWrapperPINVOKE.NewtonConvexHullParam_m_vertex_set(swigCPtr, SWIGTYPE_p_float.getCPtr(value));
-    } 
+      NewtonWrapperPINVOKE.NewtonConvexHullParam_m_vertex_set(swigCPtr, value);
+    }  
     get {
-      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConvexHullParam_m_vertex_get(swigCPtr);
-      SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
-      return ret;
-    } 
+        System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConvexHullParam_m_vertex_get(swigCPtr); 
+        return cPtr; 
+   } 
+
   }
 
   public NewtonConvexHullParam() : this(NewtonWrapperPINVOKE.new_NewtonConvexHullParam(), true) {
@@ -606,15 +606,15 @@ public class NewtonDeformableMeshParam : global::System.IDisposable {
     } 
   }
 
-  public SWIGTYPE_p_float m_vertexList {
+  public global::System.IntPtr m_vertexList {
     set {
-      NewtonWrapperPINVOKE.NewtonDeformableMeshParam_m_vertexList_set(swigCPtr, SWIGTYPE_p_float.getCPtr(value));
-    } 
+      NewtonWrapperPINVOKE.NewtonDeformableMeshParam_m_vertexList_set(swigCPtr, value);
+    }  
     get {
-      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonDeformableMeshParam_m_vertexList_get(swigCPtr);
-      SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
-      return ret;
-    } 
+        System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonDeformableMeshParam_m_vertexList_get(swigCPtr); 
+        return cPtr; 
+   } 
+
   }
 
   public NewtonDeformableMeshParam() : this(NewtonWrapperPINVOKE.new_NewtonDeformableMeshParam(), true) {
@@ -1325,15 +1325,15 @@ public class NewtonUserMeshCollisionCollideDesc : global::System.IDisposable {
     } 
   }
 
-  public SWIGTYPE_p_float m_vertex {
+  public global::System.IntPtr m_vertex {
     set {
-      NewtonWrapperPINVOKE.NewtonUserMeshCollisionCollideDesc_m_vertex_set(swigCPtr, SWIGTYPE_p_float.getCPtr(value));
-    } 
+      NewtonWrapperPINVOKE.NewtonUserMeshCollisionCollideDesc_m_vertex_set(swigCPtr, value);
+    }  
     get {
-      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonUserMeshCollisionCollideDesc_m_vertex_get(swigCPtr);
-      SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
-      return ret;
-    } 
+        System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonUserMeshCollisionCollideDesc_m_vertex_get(swigCPtr); 
+        return cPtr; 
+   } 
+
   }
 
   public SWIGTYPE_p_int m_faceIndexCount {
@@ -1927,7 +1927,7 @@ public class dVector : global::System.IDisposable {
     if (NewtonWrapperPINVOKE.SWIGPendingException.Pending) throw NewtonWrapperPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public dVector(SWIGTYPE_p_float ptr) : this(NewtonWrapperPINVOKE.new_dVector__SWIG_3(SWIGTYPE_p_float.getCPtr(ptr)), true) {
+  public dVector(global::System.IntPtr ptr) : this(NewtonWrapperPINVOKE.new_dVector__SWIG_3(ptr), true) {
   }
 
   public dVector(float x, float y, float z, float w) : this(NewtonWrapperPINVOKE.new_dVector__SWIG_4(x, y, z, w), true) {
@@ -2026,7 +2026,7 @@ public class dMatrix : global::System.IDisposable {
   public dMatrix() : this(NewtonWrapperPINVOKE.new_dMatrix__SWIG_0(), true) {
   }
 
-  public dMatrix(SWIGTYPE_p_float array) : this(NewtonWrapperPINVOKE.new_dMatrix__SWIG_1(SWIGTYPE_p_float.getCPtr(array)), true) {
+  public dMatrix(global::System.IntPtr array) : this(NewtonWrapperPINVOKE.new_dMatrix__SWIG_1(array), true) {
   }
 
   public dMatrix(SWIGTYPE_p_double array) : this(NewtonWrapperPINVOKE.new_dMatrix__SWIG_2(SWIGTYPE_p_double.getCPtr(array)), true) {
@@ -2162,8 +2162,8 @@ public class dMatrix : global::System.IDisposable {
     if (NewtonWrapperPINVOKE.SWIGPendingException.Pending) throw NewtonWrapperPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public void TransformTriplex(SWIGTYPE_p_float dst, int dstStrideInBytes, SWIGTYPE_p_float src, int srcStrideInBytes, int count) {
-    NewtonWrapperPINVOKE.dMatrix_TransformTriplex__SWIG_0(swigCPtr, SWIGTYPE_p_float.getCPtr(dst), dstStrideInBytes, SWIGTYPE_p_float.getCPtr(src), srcStrideInBytes, count);
+  public void TransformTriplex(global::System.IntPtr dst, int dstStrideInBytes, global::System.IntPtr src, int srcStrideInBytes, int count) {
+    NewtonWrapperPINVOKE.dMatrix_TransformTriplex__SWIG_0(swigCPtr, dst, dstStrideInBytes, src, srcStrideInBytes, count);
   }
 
   public void TransformTriplex(SWIGTYPE_p_double dst, int dstStrideInBytes, SWIGTYPE_p_double src, int srcStrideInBytes, int count) {
@@ -3962,18 +3962,18 @@ public class CustomPointToPoint : CustomJoint {
     return ret;
   }
 
-  public class SerializeMetaData_CustomPointToPoint : CustomJoint.SerializeMetaData {
+  public class SerializeMetaData : CustomJoint.SerializeMetaData {
     private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   
-    internal SerializeMetaData_CustomPointToPoint(global::System.IntPtr cPtr, bool cMemoryOwn) : base(NewtonWrapperPINVOKE.CustomPointToPoint_SerializeMetaData_CustomPointToPoint_SWIGUpcast(cPtr), cMemoryOwn) {
+    internal SerializeMetaData(global::System.IntPtr cPtr, bool cMemoryOwn) : base(NewtonWrapperPINVOKE.CustomPointToPoint_SerializeMetaData_SWIGUpcast(cPtr), cMemoryOwn) {
       swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
     }
   
-    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData_CustomPointToPoint obj) {
+    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData obj) {
       return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
     }
   
-    ~SerializeMetaData_CustomPointToPoint() {
+    ~SerializeMetaData() {
       Dispose();
     }
   
@@ -3982,7 +3982,7 @@ public class CustomPointToPoint : CustomJoint {
         if (swigCPtr.Handle != global::System.IntPtr.Zero) {
           if (swigCMemOwn) {
             swigCMemOwn = false;
-            NewtonWrapperPINVOKE.delete_CustomPointToPoint_SerializeMetaData_CustomPointToPoint(swigCPtr);
+            NewtonWrapperPINVOKE.delete_CustomPointToPoint_SerializeMetaData(swigCPtr);
           }
           swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
         }
@@ -3991,28 +3991,28 @@ public class CustomPointToPoint : CustomJoint {
       }
     }
   
-    public SerializeMetaData_CustomPointToPoint(string name) : this(NewtonWrapperPINVOKE.new_CustomPointToPoint_SerializeMetaData_CustomPointToPoint(name), true) {
+    public SerializeMetaData(string name) : this(NewtonWrapperPINVOKE.new_CustomPointToPoint_SerializeMetaData(name), true) {
     }
   
     public override void SerializeJoint(CustomJoint joint, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void callback, global::System.IntPtr userData) {
-      NewtonWrapperPINVOKE.CustomPointToPoint_SerializeMetaData_CustomPointToPoint_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), userData);
+      NewtonWrapperPINVOKE.CustomPointToPoint_SerializeMetaData_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), userData);
     }
   
     public override CustomJoint DeserializeJoint(SWIGTYPE_p_NewtonBody body0, SWIGTYPE_p_NewtonBody body1, SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void callback, global::System.IntPtr userData) {
-      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomPointToPoint_SerializeMetaData_CustomPointToPoint_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), userData);
+      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomPointToPoint_SerializeMetaData_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), userData);
       CustomJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomJoint(cPtr, false);
       return ret;
     }
   
   }
 
-  public static CustomPointToPoint.SerializeMetaData_CustomPointToPoint m_metaData_CustomPointToPoint {
+  public static CustomPointToPoint.SerializeMetaData m_metaData {
     set {
-      NewtonWrapperPINVOKE.CustomPointToPoint_m_metaData_CustomPointToPoint_set(CustomPointToPoint.SerializeMetaData_CustomPointToPoint.getCPtr(value));
+      NewtonWrapperPINVOKE.CustomPointToPoint_m_metaData_set(CustomPointToPoint.SerializeMetaData.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomPointToPoint_m_metaData_CustomPointToPoint_get();
-      CustomPointToPoint.SerializeMetaData_CustomPointToPoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomPointToPoint.SerializeMetaData_CustomPointToPoint(cPtr, false);
+      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomPointToPoint_m_metaData_get();
+      CustomPointToPoint.SerializeMetaData ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomPointToPoint.SerializeMetaData(cPtr, false);
       return ret;
     } 
   }
@@ -4074,18 +4074,18 @@ public class CustomBallAndSocket : CustomJoint {
     return ret;
   }
 
-  public class SerializeMetaData_CustomBallAndSocket : CustomJoint.SerializeMetaData {
+  public class SerializeMetaData : CustomJoint.SerializeMetaData {
     private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   
-    internal SerializeMetaData_CustomBallAndSocket(global::System.IntPtr cPtr, bool cMemoryOwn) : base(NewtonWrapperPINVOKE.CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket_SWIGUpcast(cPtr), cMemoryOwn) {
+    internal SerializeMetaData(global::System.IntPtr cPtr, bool cMemoryOwn) : base(NewtonWrapperPINVOKE.CustomBallAndSocket_SerializeMetaData_SWIGUpcast(cPtr), cMemoryOwn) {
       swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
     }
   
-    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData_CustomBallAndSocket obj) {
+    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData obj) {
       return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
     }
   
-    ~SerializeMetaData_CustomBallAndSocket() {
+    ~SerializeMetaData() {
       Dispose();
     }
   
@@ -4094,7 +4094,7 @@ public class CustomBallAndSocket : CustomJoint {
         if (swigCPtr.Handle != global::System.IntPtr.Zero) {
           if (swigCMemOwn) {
             swigCMemOwn = false;
-            NewtonWrapperPINVOKE.delete_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket(swigCPtr);
+            NewtonWrapperPINVOKE.delete_CustomBallAndSocket_SerializeMetaData(swigCPtr);
           }
           swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
         }
@@ -4103,28 +4103,28 @@ public class CustomBallAndSocket : CustomJoint {
       }
     }
   
-    public SerializeMetaData_CustomBallAndSocket(string name) : this(NewtonWrapperPINVOKE.new_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket(name), true) {
+    public SerializeMetaData(string name) : this(NewtonWrapperPINVOKE.new_CustomBallAndSocket_SerializeMetaData(name), true) {
     }
   
     public override void SerializeJoint(CustomJoint joint, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void callback, global::System.IntPtr userData) {
-      NewtonWrapperPINVOKE.CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), userData);
+      NewtonWrapperPINVOKE.CustomBallAndSocket_SerializeMetaData_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), userData);
     }
   
     public override CustomJoint DeserializeJoint(SWIGTYPE_p_NewtonBody body0, SWIGTYPE_p_NewtonBody body1, SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void callback, global::System.IntPtr userData) {
-      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), userData);
+      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomBallAndSocket_SerializeMetaData_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), userData);
       CustomJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomJoint(cPtr, false);
       return ret;
     }
   
   }
 
-  public static CustomBallAndSocket.SerializeMetaData_CustomBallAndSocket m_metaData_CustomBallAndSocket {
+  public static CustomBallAndSocket.SerializeMetaData m_metaData {
     set {
-      NewtonWrapperPINVOKE.CustomBallAndSocket_m_metaData_CustomBallAndSocket_set(CustomBallAndSocket.SerializeMetaData_CustomBallAndSocket.getCPtr(value));
+      NewtonWrapperPINVOKE.CustomBallAndSocket_m_metaData_set(CustomBallAndSocket.SerializeMetaData.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomBallAndSocket_m_metaData_CustomBallAndSocket_get();
-      CustomBallAndSocket.SerializeMetaData_CustomBallAndSocket ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomBallAndSocket.SerializeMetaData_CustomBallAndSocket(cPtr, false);
+      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomBallAndSocket_m_metaData_get();
+      CustomBallAndSocket.SerializeMetaData ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomBallAndSocket.SerializeMetaData(cPtr, false);
       return ret;
     } 
   }
@@ -4200,18 +4200,18 @@ public class CustomLimitBallAndSocket : CustomBallAndSocket {
     return ret;
   }
 
-  public class SerializeMetaData_CustomLimitBallAndSocket : CustomJoint.SerializeMetaData {
+  public class SerializeMetaData : CustomBallAndSocket.SerializeMetaData {
     private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   
-    internal SerializeMetaData_CustomLimitBallAndSocket(global::System.IntPtr cPtr, bool cMemoryOwn) : base(NewtonWrapperPINVOKE.CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket_SWIGUpcast(cPtr), cMemoryOwn) {
+    internal SerializeMetaData(global::System.IntPtr cPtr, bool cMemoryOwn) : base(NewtonWrapperPINVOKE.CustomLimitBallAndSocket_SerializeMetaData_SWIGUpcast(cPtr), cMemoryOwn) {
       swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
     }
   
-    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData_CustomLimitBallAndSocket obj) {
+    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData obj) {
       return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
     }
   
-    ~SerializeMetaData_CustomLimitBallAndSocket() {
+    ~SerializeMetaData() {
       Dispose();
     }
   
@@ -4220,7 +4220,7 @@ public class CustomLimitBallAndSocket : CustomBallAndSocket {
         if (swigCPtr.Handle != global::System.IntPtr.Zero) {
           if (swigCMemOwn) {
             swigCMemOwn = false;
-            NewtonWrapperPINVOKE.delete_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket(swigCPtr);
+            NewtonWrapperPINVOKE.delete_CustomLimitBallAndSocket_SerializeMetaData(swigCPtr);
           }
           swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
         }
@@ -4229,28 +4229,28 @@ public class CustomLimitBallAndSocket : CustomBallAndSocket {
       }
     }
   
-    public SerializeMetaData_CustomLimitBallAndSocket(string name) : this(NewtonWrapperPINVOKE.new_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket(name), true) {
+    public SerializeMetaData(string name) : this(NewtonWrapperPINVOKE.new_CustomLimitBallAndSocket_SerializeMetaData(name), true) {
     }
   
     public override void SerializeJoint(CustomJoint joint, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void callback, global::System.IntPtr userData) {
-      NewtonWrapperPINVOKE.CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), userData);
+      NewtonWrapperPINVOKE.CustomLimitBallAndSocket_SerializeMetaData_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), userData);
     }
   
     public override CustomJoint DeserializeJoint(SWIGTYPE_p_NewtonBody body0, SWIGTYPE_p_NewtonBody body1, SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void callback, global::System.IntPtr userData) {
-      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), userData);
+      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomLimitBallAndSocket_SerializeMetaData_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), userData);
       CustomJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomJoint(cPtr, false);
       return ret;
     }
   
   }
 
-  public static CustomLimitBallAndSocket.SerializeMetaData_CustomLimitBallAndSocket m_metaData_CustomLimitBallAndSocket {
+  public static CustomLimitBallAndSocket.SerializeMetaData m_metaData {
     set {
-      NewtonWrapperPINVOKE.CustomLimitBallAndSocket_m_metaData_CustomLimitBallAndSocket_set(CustomLimitBallAndSocket.SerializeMetaData_CustomLimitBallAndSocket.getCPtr(value));
+      NewtonWrapperPINVOKE.CustomLimitBallAndSocket_m_metaData_set(CustomLimitBallAndSocket.SerializeMetaData.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomLimitBallAndSocket_m_metaData_CustomLimitBallAndSocket_get();
-      CustomLimitBallAndSocket.SerializeMetaData_CustomLimitBallAndSocket ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomLimitBallAndSocket.SerializeMetaData_CustomLimitBallAndSocket(cPtr, false);
+      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomLimitBallAndSocket_m_metaData_get();
+      CustomLimitBallAndSocket.SerializeMetaData ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomLimitBallAndSocket.SerializeMetaData(cPtr, false);
       return ret;
     } 
   }
@@ -4389,18 +4389,18 @@ public class CustomControlledBallAndSocket : CustomBallAndSocket {
     return ret;
   }
 
-  public class SerializeMetaData_CustomControlledBallAndSocket : CustomJoint.SerializeMetaData {
+  public class SerializeMetaData : CustomBallAndSocket.SerializeMetaData {
     private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   
-    internal SerializeMetaData_CustomControlledBallAndSocket(global::System.IntPtr cPtr, bool cMemoryOwn) : base(NewtonWrapperPINVOKE.CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket_SWIGUpcast(cPtr), cMemoryOwn) {
+    internal SerializeMetaData(global::System.IntPtr cPtr, bool cMemoryOwn) : base(NewtonWrapperPINVOKE.CustomControlledBallAndSocket_SerializeMetaData_SWIGUpcast(cPtr), cMemoryOwn) {
       swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
     }
   
-    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData_CustomControlledBallAndSocket obj) {
+    internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SerializeMetaData obj) {
       return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
     }
   
-    ~SerializeMetaData_CustomControlledBallAndSocket() {
+    ~SerializeMetaData() {
       Dispose();
     }
   
@@ -4409,7 +4409,7 @@ public class CustomControlledBallAndSocket : CustomBallAndSocket {
         if (swigCPtr.Handle != global::System.IntPtr.Zero) {
           if (swigCMemOwn) {
             swigCMemOwn = false;
-            NewtonWrapperPINVOKE.delete_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket(swigCPtr);
+            NewtonWrapperPINVOKE.delete_CustomControlledBallAndSocket_SerializeMetaData(swigCPtr);
           }
           swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
         }
@@ -4418,28 +4418,28 @@ public class CustomControlledBallAndSocket : CustomBallAndSocket {
       }
     }
   
-    public SerializeMetaData_CustomControlledBallAndSocket(string name) : this(NewtonWrapperPINVOKE.new_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket(name), true) {
+    public SerializeMetaData(string name) : this(NewtonWrapperPINVOKE.new_CustomControlledBallAndSocket_SerializeMetaData(name), true) {
     }
   
     public override void SerializeJoint(CustomJoint joint, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void callback, global::System.IntPtr userData) {
-      NewtonWrapperPINVOKE.CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), userData);
+      NewtonWrapperPINVOKE.CustomControlledBallAndSocket_SerializeMetaData_SerializeJoint(swigCPtr, CustomJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__void_int__void.getCPtr(callback), userData);
     }
   
     public override CustomJoint DeserializeJoint(SWIGTYPE_p_NewtonBody body0, SWIGTYPE_p_NewtonBody body1, SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void callback, global::System.IntPtr userData) {
-      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), userData);
+      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomControlledBallAndSocket_SerializeMetaData_DeserializeJoint(swigCPtr, SWIGTYPE_p_NewtonBody.getCPtr(body0), SWIGTYPE_p_NewtonBody.getCPtr(body1), SWIGTYPE_p_f_q_const__p_void_q_const__p_void_int__void.getCPtr(callback), userData);
       CustomJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomJoint(cPtr, false);
       return ret;
     }
   
   }
 
-  public static CustomControlledBallAndSocket.SerializeMetaData_CustomControlledBallAndSocket m_metaData_CustomControlledBallAndSocket {
+  public static CustomControlledBallAndSocket.SerializeMetaData m_metaData {
     set {
-      NewtonWrapperPINVOKE.CustomControlledBallAndSocket_m_metaData_CustomControlledBallAndSocket_set(CustomControlledBallAndSocket.SerializeMetaData_CustomControlledBallAndSocket.getCPtr(value));
+      NewtonWrapperPINVOKE.CustomControlledBallAndSocket_m_metaData_set(CustomControlledBallAndSocket.SerializeMetaData.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomControlledBallAndSocket_m_metaData_CustomControlledBallAndSocket_get();
-      CustomControlledBallAndSocket.SerializeMetaData_CustomControlledBallAndSocket ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomControlledBallAndSocket.SerializeMetaData_CustomControlledBallAndSocket(cPtr, false);
+      global::System.IntPtr cPtr = NewtonWrapperPINVOKE.CustomControlledBallAndSocket_m_metaData_get();
+      CustomControlledBallAndSocket.SerializeMetaData ret = (cPtr == global::System.IntPtr.Zero) ? null : new CustomControlledBallAndSocket.SerializeMetaData(cPtr, false);
       return ret;
     } 
   }
@@ -4832,7 +4832,7 @@ class NewtonWrapperPINVOKE {
   public static extern int NewtonConvexHullParam_m_faceCount_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonConvexHullParam_m_vertex_set")]
-  public static extern void NewtonConvexHullParam_m_vertex_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonConvexHullParam_m_vertex_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonConvexHullParam_m_vertex_get")]
   public static extern global::System.IntPtr NewtonConvexHullParam_m_vertex_get(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -4898,7 +4898,7 @@ class NewtonWrapperPINVOKE {
   public static extern global::System.IntPtr NewtonDeformableMeshParam_m_indexList_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonDeformableMeshParam_m_vertexList_set")]
-  public static extern void NewtonDeformableMeshParam_m_vertexList_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonDeformableMeshParam_m_vertexList_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonDeformableMeshParam_m_vertexList_get")]
   public static extern global::System.IntPtr NewtonDeformableMeshParam_m_vertexList_get(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -5234,7 +5234,7 @@ class NewtonWrapperPINVOKE {
   public static extern global::System.IntPtr NewtonUserMeshCollisionCollideDesc_m_polySoupCollision_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUserMeshCollisionCollideDesc_m_vertex_set")]
-  public static extern void NewtonUserMeshCollisionCollideDesc_m_vertex_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonUserMeshCollisionCollideDesc_m_vertex_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUserMeshCollisionCollideDesc_m_vertex_get")]
   public static extern global::System.IntPtr NewtonUserMeshCollisionCollideDesc_m_vertex_get(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -5585,7 +5585,7 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonWorldForEachJointDo(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonWorldForEachBodyInAABBDo")]
-  public static extern void NewtonWorldForEachBodyInAABBDo(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5);
+  public static extern void NewtonWorldForEachBodyInAABBDo(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonWorldSetUserData")]
   public static extern void NewtonWorldSetUserData(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
@@ -5624,13 +5624,13 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonWorldSetCollisionConstructorDestructorCallback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonWorldRayCast")]
-  public static extern void NewtonWorldRayCast(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, int jarg7);
+  public static extern void NewtonWorldRayCast(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, int jarg7);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonWorldConvexCast")]
-  public static extern int NewtonWorldConvexCast(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.IntPtr jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, global::System.Runtime.InteropServices.HandleRef jarg8, int jarg9, int jarg10);
+  public static extern int NewtonWorldConvexCast(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5, global::System.IntPtr jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, global::System.Runtime.InteropServices.HandleRef jarg8, int jarg9, int jarg10);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonWorldCollide")]
-  public static extern int NewtonWorldCollide(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, int jarg7, int jarg8);
+  public static extern int NewtonWorldCollide(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, int jarg7, int jarg8);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonWorldGetBodyCount")]
   public static extern int NewtonWorldGetBodyCount(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -5642,7 +5642,7 @@ class NewtonWrapperPINVOKE {
   public static extern global::System.IntPtr NewtonIslandGetBody(global::System.IntPtr jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonIslandGetBodyAABB")]
-  public static extern void NewtonIslandGetBodyAABB(global::System.IntPtr jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern void NewtonIslandGetBodyAABB(global::System.IntPtr jarg1, int jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMaterialCreateGroupID")]
   public static extern int NewtonMaterialCreateGroupID(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -5708,13 +5708,13 @@ class NewtonWrapperPINVOKE {
   public static extern float NewtonMaterialGetContactNormalSpeed(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMaterialGetContactForce")]
-  public static extern void NewtonMaterialGetContactForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonMaterialGetContactForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMaterialGetContactPositionAndNormal")]
-  public static extern void NewtonMaterialGetContactPositionAndNormal(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern void NewtonMaterialGetContactPositionAndNormal(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMaterialGetContactTangentDirections")]
-  public static extern void NewtonMaterialGetContactTangentDirections(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern void NewtonMaterialGetContactTangentDirections(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMaterialGetContactTangentSpeed")]
   public static extern float NewtonMaterialGetContactTangentSpeed(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
@@ -5741,10 +5741,10 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonMaterialSetContactNormalAcceleration(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMaterialSetContactNormalDirection")]
-  public static extern void NewtonMaterialSetContactNormalDirection(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonMaterialSetContactNormalDirection(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMaterialSetContactPosition")]
-  public static extern void NewtonMaterialSetContactPosition(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonMaterialSetContactPosition(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMaterialSetContactTangentFriction")]
   public static extern void NewtonMaterialSetContactTangentFriction(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, int jarg3);
@@ -5753,31 +5753,31 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonMaterialSetContactTangentAcceleration(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, int jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMaterialContactRotateTangentDirections")]
-  public static extern void NewtonMaterialContactRotateTangentDirections(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonMaterialContactRotateTangentDirections(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateNull")]
   public static extern global::System.IntPtr NewtonCreateNull(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateSphere")]
-  public static extern global::System.IntPtr NewtonCreateSphere(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, int jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern global::System.IntPtr NewtonCreateSphere(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, int jarg3, global::System.IntPtr jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateBox")]
-  public static extern global::System.IntPtr NewtonCreateBox(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3, float jarg4, int jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+  public static extern global::System.IntPtr NewtonCreateBox(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3, float jarg4, int jarg5, global::System.IntPtr jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateCone")]
-  public static extern global::System.IntPtr NewtonCreateCone(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3, int jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern global::System.IntPtr NewtonCreateCone(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3, int jarg4, global::System.IntPtr jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateCapsule")]
-  public static extern global::System.IntPtr NewtonCreateCapsule(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3, float jarg4, int jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+  public static extern global::System.IntPtr NewtonCreateCapsule(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3, float jarg4, int jarg5, global::System.IntPtr jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateCylinder")]
-  public static extern global::System.IntPtr NewtonCreateCylinder(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3, float jarg4, int jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+  public static extern global::System.IntPtr NewtonCreateCylinder(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3, float jarg4, int jarg5, global::System.IntPtr jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateChamferCylinder")]
-  public static extern global::System.IntPtr NewtonCreateChamferCylinder(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3, int jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern global::System.IntPtr NewtonCreateChamferCylinder(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3, int jarg4, global::System.IntPtr jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateConvexHull")]
-  public static extern global::System.IntPtr NewtonCreateConvexHull(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, int jarg4, float jarg5, int jarg6, global::System.Runtime.InteropServices.HandleRef jarg7);
+  public static extern global::System.IntPtr NewtonCreateConvexHull(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.IntPtr jarg3, int jarg4, float jarg5, int jarg6, global::System.IntPtr jarg7);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateConvexHullFromMesh")]
   public static extern global::System.IntPtr NewtonCreateConvexHullFromMesh(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3, int jarg4);
@@ -5798,10 +5798,10 @@ class NewtonWrapperPINVOKE {
   public static extern float NewtonConvexCollisionCalculateVolume(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonConvexCollisionCalculateInertialMatrix")]
-  public static extern void NewtonConvexCollisionCalculateInertialMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonConvexCollisionCalculateInertialMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonConvexCollisionCalculateBuoyancyAcceleration")]
-  public static extern void NewtonConvexCollisionCalculateBuoyancyAcceleration(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, float jarg6, float jarg7, global::System.Runtime.InteropServices.HandleRef jarg8, global::System.Runtime.InteropServices.HandleRef jarg9);
+  public static extern void NewtonConvexCollisionCalculateBuoyancyAcceleration(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4, global::System.IntPtr jarg5, float jarg6, float jarg7, global::System.IntPtr jarg8, global::System.IntPtr jarg9);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionDataPointer")]
   public static extern global::System.IntPtr NewtonCollisionDataPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -5825,7 +5825,7 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonCompoundCollisionRemoveSubCollisionByIndex(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCompoundCollisionSetSubCollisionMatrix")]
-  public static extern void NewtonCompoundCollisionSetSubCollisionMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonCompoundCollisionSetSubCollisionMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCompoundCollisionEndAddRemove")]
   public static extern void NewtonCompoundCollisionEndAddRemove(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -5846,10 +5846,10 @@ class NewtonWrapperPINVOKE {
   public static extern global::System.IntPtr NewtonCompoundCollisionGetCollisionFromNode(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateFracturedCompoundCollision")]
-  public static extern global::System.IntPtr NewtonCreateFracturedCompoundCollision(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, int jarg3, int jarg4, int jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, int jarg7, int jarg8, global::System.Runtime.InteropServices.HandleRef jarg9, global::System.Runtime.InteropServices.HandleRef jarg10, global::System.Runtime.InteropServices.HandleRef jarg11, global::System.Runtime.InteropServices.HandleRef jarg12);
+  public static extern global::System.IntPtr NewtonCreateFracturedCompoundCollision(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, int jarg3, int jarg4, int jarg5, global::System.IntPtr jarg6, int jarg7, int jarg8, global::System.IntPtr jarg9, global::System.Runtime.InteropServices.HandleRef jarg10, global::System.Runtime.InteropServices.HandleRef jarg11, global::System.Runtime.InteropServices.HandleRef jarg12);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonFracturedCompoundPlaneClip")]
-  public static extern global::System.IntPtr NewtonFracturedCompoundPlaneClip(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern global::System.IntPtr NewtonFracturedCompoundPlaneClip(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonFracturedCompoundSetCallbacks")]
   public static extern void NewtonFracturedCompoundSetCallbacks(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
@@ -5912,7 +5912,7 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonSceneCollisionRemoveSubCollisionByIndex(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonSceneCollisionSetSubCollisionMatrix")]
-  public static extern void NewtonSceneCollisionSetSubCollisionMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonSceneCollisionSetSubCollisionMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonSceneCollisionEndAddRemove")]
   public static extern void NewtonSceneCollisionEndAddRemove(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -5933,10 +5933,10 @@ class NewtonWrapperPINVOKE {
   public static extern global::System.IntPtr NewtonSceneCollisionGetCollisionFromNode(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateUserMeshCollision")]
-  public static extern global::System.IntPtr NewtonCreateUserMeshCollision(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, global::System.Runtime.InteropServices.HandleRef jarg8, global::System.Runtime.InteropServices.HandleRef jarg9, global::System.Runtime.InteropServices.HandleRef jarg10, global::System.Runtime.InteropServices.HandleRef jarg11, int jarg12);
+  public static extern global::System.IntPtr NewtonCreateUserMeshCollision(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, global::System.Runtime.InteropServices.HandleRef jarg8, global::System.Runtime.InteropServices.HandleRef jarg9, global::System.Runtime.InteropServices.HandleRef jarg10, global::System.Runtime.InteropServices.HandleRef jarg11, int jarg12);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUserMeshCollisionContinuousOverlapTest")]
-  public static extern int NewtonUserMeshCollisionContinuousOverlapTest(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern int NewtonUserMeshCollisionContinuousOverlapTest(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateCollisionFromSerialization")]
   public static extern global::System.IntPtr NewtonCreateCollisionFromSerialization(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3);
@@ -5969,7 +5969,7 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonTreeCollisionBeginBuild(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonTreeCollisionAddFace")]
-  public static extern void NewtonTreeCollisionAddFace(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, int jarg4, int jarg5);
+  public static extern void NewtonTreeCollisionAddFace(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.IntPtr jarg3, int jarg4, int jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonTreeCollisionEndBuild")]
   public static extern void NewtonTreeCollisionEndBuild(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
@@ -5984,7 +5984,7 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonTreeCollisionForEachFace(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonTreeCollisionGetVertexListTriangleListInAABB")]
-  public static extern int NewtonTreeCollisionGetVertexListTriangleListInAABB(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, int jarg8, global::System.Runtime.InteropServices.HandleRef jarg9);
+  public static extern int NewtonTreeCollisionGetVertexListTriangleListInAABB(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, int jarg8, global::System.Runtime.InteropServices.HandleRef jarg9);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonStaticCollisionSetDebugCallback")]
   public static extern void NewtonStaticCollisionSetDebugCallback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -6026,16 +6026,16 @@ class NewtonWrapperPINVOKE {
   public static extern global::System.IntPtr NewtonCollisionGetParentInstance(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionSetMatrix")]
-  public static extern void NewtonCollisionSetMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonCollisionSetMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionGetMatrix")]
-  public static extern void NewtonCollisionGetMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonCollisionGetMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionSetScale")]
   public static extern void NewtonCollisionSetScale(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3, float jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionGetScale")]
-  public static extern void NewtonCollisionGetScale(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern void NewtonCollisionGetScale(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonDestroyCollision")]
   public static extern void NewtonDestroyCollision(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -6044,31 +6044,31 @@ class NewtonWrapperPINVOKE {
   public static extern float NewtonCollisionGetSkinThickness(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionIntersectionTest")]
-  public static extern int NewtonCollisionIntersectionTest(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, int jarg6);
+  public static extern int NewtonCollisionIntersectionTest(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5, int jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionPointDistance")]
-  public static extern int NewtonCollisionPointDistance(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, int jarg7);
+  public static extern int NewtonCollisionPointDistance(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4, global::System.IntPtr jarg5, global::System.IntPtr jarg6, int jarg7);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionClosestPoint")]
-  public static extern int NewtonCollisionClosestPoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, global::System.Runtime.InteropServices.HandleRef jarg8, int jarg9);
+  public static extern int NewtonCollisionClosestPoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5, global::System.IntPtr jarg6, global::System.IntPtr jarg7, global::System.IntPtr jarg8, int jarg9);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionCollide")]
-  public static extern int NewtonCollisionCollide(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, global::System.Runtime.InteropServices.HandleRef jarg8, global::System.Runtime.InteropServices.HandleRef jarg9, global::System.Runtime.InteropServices.HandleRef jarg10, global::System.Runtime.InteropServices.HandleRef jarg11, int jarg12);
+  public static extern int NewtonCollisionCollide(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.IntPtr jarg6, global::System.IntPtr jarg7, global::System.IntPtr jarg8, global::System.IntPtr jarg9, global::System.Runtime.InteropServices.HandleRef jarg10, global::System.Runtime.InteropServices.HandleRef jarg11, int jarg12);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionCollideContinue")]
-  public static extern int NewtonCollisionCollideContinue(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, float jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, global::System.Runtime.InteropServices.HandleRef jarg8, global::System.Runtime.InteropServices.HandleRef jarg9, global::System.Runtime.InteropServices.HandleRef jarg10, global::System.Runtime.InteropServices.HandleRef jarg11, global::System.Runtime.InteropServices.HandleRef jarg12, global::System.Runtime.InteropServices.HandleRef jarg13, global::System.Runtime.InteropServices.HandleRef jarg14, global::System.Runtime.InteropServices.HandleRef jarg15, global::System.Runtime.InteropServices.HandleRef jarg16, global::System.Runtime.InteropServices.HandleRef jarg17, int jarg18);
+  public static extern int NewtonCollisionCollideContinue(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, float jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5, global::System.IntPtr jarg6, global::System.IntPtr jarg7, global::System.Runtime.InteropServices.HandleRef jarg8, global::System.IntPtr jarg9, global::System.IntPtr jarg10, global::System.IntPtr jarg11, global::System.IntPtr jarg12, global::System.IntPtr jarg13, global::System.IntPtr jarg14, global::System.IntPtr jarg15, global::System.Runtime.InteropServices.HandleRef jarg16, global::System.Runtime.InteropServices.HandleRef jarg17, int jarg18);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionSupportVertex")]
-  public static extern void NewtonCollisionSupportVertex(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonCollisionSupportVertex(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionRayCast")]
-  public static extern float NewtonCollisionRayCast(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern float NewtonCollisionRayCast(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionCalculateAABB")]
-  public static extern void NewtonCollisionCalculateAABB(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern void NewtonCollisionCalculateAABB(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionForEachPolygonDo")]
-  public static extern void NewtonCollisionForEachPolygonDo(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4);
+  public static extern void NewtonCollisionForEachPolygonDo(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCollisionAggregateCreate")]
   public static extern global::System.IntPtr NewtonCollisionAggregateCreate(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -6089,22 +6089,22 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonCollisionAggregateSetSelfCollision(global::System.IntPtr jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonSetEulerAngle")]
-  public static extern void NewtonSetEulerAngle(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonSetEulerAngle(global::System.IntPtr jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonGetEulerAngle")]
-  public static extern void NewtonGetEulerAngle(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonGetEulerAngle(global::System.IntPtr jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCalculateSpringDamperAcceleration")]
   public static extern float NewtonCalculateSpringDamperAcceleration(float jarg1, float jarg2, float jarg3, float jarg4, float jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateDynamicBody")]
-  public static extern global::System.IntPtr NewtonCreateDynamicBody(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr NewtonCreateDynamicBody(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateKinematicBody")]
-  public static extern global::System.IntPtr NewtonCreateKinematicBody(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr NewtonCreateKinematicBody(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCreateDeformableBody")]
-  public static extern global::System.IntPtr NewtonCreateDeformableBody(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr NewtonCreateDeformableBody(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonDestroyBody")]
   public static extern void NewtonDestroyBody(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -6125,34 +6125,34 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonBodySetCollidable(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyAddForce")]
-  public static extern void NewtonBodyAddForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyAddForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyAddTorque")]
-  public static extern void NewtonBodyAddTorque(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyAddTorque(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyCalculateInverseDynamicsForce")]
-  public static extern void NewtonBodyCalculateInverseDynamicsForce(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern void NewtonBodyCalculateInverseDynamicsForce(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetCentreOfMass")]
-  public static extern void NewtonBodySetCentreOfMass(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodySetCentreOfMass(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetMassMatrix")]
   public static extern void NewtonBodySetMassMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3, float jarg4, float jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetFullMassMatrix")]
-  public static extern void NewtonBodySetFullMassMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonBodySetFullMassMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetMassProperties")]
   public static extern void NewtonBodySetMassProperties(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetMatrix")]
-  public static extern void NewtonBodySetMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodySetMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetMatrixNoSleep")]
-  public static extern void NewtonBodySetMatrixNoSleep(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodySetMatrixNoSleep(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetMatrixRecursive")]
-  public static extern void NewtonBodySetMatrixRecursive(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodySetMatrixRecursive(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetMaterialGroupID")]
   public static extern void NewtonBodySetMaterialGroupID(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
@@ -6164,28 +6164,28 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonBodySetJointRecursiveCollision(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetOmega")]
-  public static extern void NewtonBodySetOmega(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodySetOmega(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetOmegaNoSleep")]
-  public static extern void NewtonBodySetOmegaNoSleep(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodySetOmegaNoSleep(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetVelocity")]
-  public static extern void NewtonBodySetVelocity(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodySetVelocity(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetVelocityNoSleep")]
-  public static extern void NewtonBodySetVelocityNoSleep(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodySetVelocityNoSleep(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetForce")]
-  public static extern void NewtonBodySetForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodySetForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetTorque")]
-  public static extern void NewtonBodySetTorque(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodySetTorque(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetLinearDamping")]
   public static extern void NewtonBodySetLinearDamping(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetAngularDamping")]
-  public static extern void NewtonBodySetAngularDamping(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodySetAngularDamping(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodySetCollision")]
   public static extern void NewtonBodySetCollision(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -6260,58 +6260,58 @@ class NewtonWrapperPINVOKE {
   public static extern int NewtonBodyGetJointRecursiveCollision(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetPosition")]
-  public static extern void NewtonBodyGetPosition(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetPosition(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetMatrix")]
-  public static extern void NewtonBodyGetMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetRotation")]
-  public static extern void NewtonBodyGetRotation(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetRotation(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetMassMatrix")]
-  public static extern void NewtonBodyGetMassMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern void NewtonBodyGetMassMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4, global::System.IntPtr jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetInvMass")]
-  public static extern void NewtonBodyGetInvMass(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern void NewtonBodyGetInvMass(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4, global::System.IntPtr jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetInertiaMatrix")]
-  public static extern void NewtonBodyGetInertiaMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetInertiaMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetInvInertiaMatrix")]
-  public static extern void NewtonBodyGetInvInertiaMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetInvInertiaMatrix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetOmega")]
-  public static extern void NewtonBodyGetOmega(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetOmega(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetVelocity")]
-  public static extern void NewtonBodyGetVelocity(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetVelocity(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetForce")]
-  public static extern void NewtonBodyGetForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetTorque")]
-  public static extern void NewtonBodyGetTorque(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetTorque(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetForceAcc")]
-  public static extern void NewtonBodyGetForceAcc(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetForceAcc(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetTorqueAcc")]
-  public static extern void NewtonBodyGetTorqueAcc(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetTorqueAcc(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetCentreOfMass")]
-  public static extern void NewtonBodyGetCentreOfMass(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetCentreOfMass(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetPointVelocity")]
-  public static extern void NewtonBodyGetPointVelocity(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonBodyGetPointVelocity(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyAddImpulse")]
-  public static extern void NewtonBodyAddImpulse(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonBodyAddImpulse(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyApplyImpulseArray")]
-  public static extern void NewtonBodyApplyImpulseArray(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern void NewtonBodyApplyImpulseArray(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3, global::System.IntPtr jarg4, global::System.IntPtr jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyApplyImpulsePair")]
-  public static extern void NewtonBodyApplyImpulsePair(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonBodyApplyImpulsePair(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyIntegrateVelocity")]
   public static extern void NewtonBodyIntegrateVelocity(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
@@ -6320,10 +6320,10 @@ class NewtonWrapperPINVOKE {
   public static extern float NewtonBodyGetLinearDamping(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetAngularDamping")]
-  public static extern void NewtonBodyGetAngularDamping(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBodyGetAngularDamping(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetAABB")]
-  public static extern void NewtonBodyGetAABB(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonBodyGetAABB(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBodyGetFirstJoint")]
   public static extern global::System.IntPtr NewtonBodyGetFirstJoint(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -6422,7 +6422,7 @@ class NewtonWrapperPINVOKE {
   public static extern int NewtonDeformableMeshGetParticleCount(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonDeformableMeshGetParticlePosition")]
-  public static extern void NewtonDeformableMeshGetParticlePosition(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonDeformableMeshGetParticlePosition(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonDeformableMeshBeginConfiguration")]
   public static extern void NewtonDeformableMeshBeginConfiguration(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -6431,7 +6431,7 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonDeformableMeshUnconstraintParticle(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonDeformableMeshConstraintParticle")]
-  public static extern void NewtonDeformableMeshConstraintParticle(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern void NewtonDeformableMeshConstraintParticle(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonDeformableMeshEndConfiguration")]
   public static extern void NewtonDeformableMeshEndConfiguration(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -6446,7 +6446,7 @@ class NewtonWrapperPINVOKE {
   public static extern int NewtonDeformableMeshGetVertexCount(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonDeformableMeshGetVertexStreams")]
-  public static extern void NewtonDeformableMeshGetVertexStreams(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, int jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, int jarg6, global::System.Runtime.InteropServices.HandleRef jarg7);
+  public static extern void NewtonDeformableMeshGetVertexStreams(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.IntPtr jarg3, int jarg4, global::System.IntPtr jarg5, int jarg6, global::System.IntPtr jarg7);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonDeformableMeshGetFirstSegment")]
   public static extern global::System.IntPtr NewtonDeformableMeshGetFirstSegment(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -6464,25 +6464,25 @@ class NewtonWrapperPINVOKE {
   public static extern global::System.IntPtr NewtonDeformableMeshSegmentGetIndexList(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonConstraintCreateBall")]
-  public static extern global::System.IntPtr NewtonConstraintCreateBall(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern global::System.IntPtr NewtonConstraintCreateBall(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBallSetUserCallback")]
   public static extern void NewtonBallSetUserCallback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBallGetJointAngle")]
-  public static extern void NewtonBallGetJointAngle(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBallGetJointAngle(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBallGetJointOmega")]
-  public static extern void NewtonBallGetJointOmega(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBallGetJointOmega(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBallGetJointForce")]
-  public static extern void NewtonBallGetJointForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonBallGetJointForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonBallSetConeLimits")]
-  public static extern void NewtonBallSetConeLimits(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3, float jarg4);
+  public static extern void NewtonBallSetConeLimits(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, float jarg3, float jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonConstraintCreateHinge")]
-  public static extern global::System.IntPtr NewtonConstraintCreateHinge(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern global::System.IntPtr NewtonConstraintCreateHinge(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonHingeSetUserCallback")]
   public static extern void NewtonHingeSetUserCallback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -6494,13 +6494,13 @@ class NewtonWrapperPINVOKE {
   public static extern float NewtonHingeGetJointOmega(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonHingeGetJointForce")]
-  public static extern void NewtonHingeGetJointForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonHingeGetJointForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonHingeCalculateStopAlpha")]
   public static extern float NewtonHingeCalculateStopAlpha(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonConstraintCreateSlider")]
-  public static extern global::System.IntPtr NewtonConstraintCreateSlider(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern global::System.IntPtr NewtonConstraintCreateSlider(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonSliderSetUserCallback")]
   public static extern void NewtonSliderSetUserCallback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -6512,13 +6512,13 @@ class NewtonWrapperPINVOKE {
   public static extern float NewtonSliderGetJointVeloc(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonSliderGetJointForce")]
-  public static extern void NewtonSliderGetJointForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonSliderGetJointForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonSliderCalculateStopAccel")]
   public static extern float NewtonSliderCalculateStopAccel(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonConstraintCreateCorkscrew")]
-  public static extern global::System.IntPtr NewtonConstraintCreateCorkscrew(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern global::System.IntPtr NewtonConstraintCreateCorkscrew(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCorkscrewSetUserCallback")]
   public static extern void NewtonCorkscrewSetUserCallback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -6536,7 +6536,7 @@ class NewtonWrapperPINVOKE {
   public static extern float NewtonCorkscrewGetJointOmega(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCorkscrewGetJointForce")]
-  public static extern void NewtonCorkscrewGetJointForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonCorkscrewGetJointForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonCorkscrewCalculateStopAlpha")]
   public static extern float NewtonCorkscrewCalculateStopAlpha(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3);
@@ -6545,7 +6545,7 @@ class NewtonWrapperPINVOKE {
   public static extern float NewtonCorkscrewCalculateStopAccel(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonConstraintCreateUniversal")]
-  public static extern global::System.IntPtr NewtonConstraintCreateUniversal(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+  public static extern global::System.IntPtr NewtonConstraintCreateUniversal(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUniversalSetUserCallback")]
   public static extern void NewtonUniversalSetUserCallback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -6563,7 +6563,7 @@ class NewtonWrapperPINVOKE {
   public static extern float NewtonUniversalGetJointOmega1(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUniversalGetJointForce")]
-  public static extern void NewtonUniversalGetJointForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonUniversalGetJointForce(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUniversalCalculateStopAlpha0")]
   public static extern float NewtonUniversalCalculateStopAlpha0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3);
@@ -6572,13 +6572,13 @@ class NewtonWrapperPINVOKE {
   public static extern float NewtonUniversalCalculateStopAlpha1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonConstraintCreateUpVector")]
-  public static extern global::System.IntPtr NewtonConstraintCreateUpVector(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr NewtonConstraintCreateUpVector(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUpVectorGetPin")]
-  public static extern void NewtonUpVectorGetPin(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonUpVectorGetPin(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUpVectorSetPin")]
-  public static extern void NewtonUpVectorSetPin(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonUpVectorSetPin(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonConstraintCreateUserJoint")]
   public static extern global::System.IntPtr NewtonConstraintCreateUserJoint(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
@@ -6587,13 +6587,13 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonUserJointSetFeedbackCollectorCallback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUserJointAddLinearRow")]
-  public static extern void NewtonUserJointAddLinearRow(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern void NewtonUserJointAddLinearRow(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUserJointAddAngularRow")]
-  public static extern void NewtonUserJointAddAngularRow(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonUserJointAddAngularRow(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUserJointAddGeneralRow")]
-  public static extern void NewtonUserJointAddGeneralRow(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void NewtonUserJointAddGeneralRow(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUserJointSetRowMinimumFriction")]
   public static extern void NewtonUserJointSetRowMinimumFriction(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
@@ -6617,7 +6617,7 @@ class NewtonWrapperPINVOKE {
   public static extern int NewtonUserJoinRowsCount(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUserJointGetGeneralRow")]
-  public static extern void NewtonUserJointGetGeneralRow(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern void NewtonUserJointGetGeneralRow(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonUserJointGetRowForce")]
   public static extern float NewtonUserJointGetRowForce(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
@@ -6671,13 +6671,13 @@ class NewtonWrapperPINVOKE {
   public static extern global::System.IntPtr NewtonMeshCreateFromCollision(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshCreateConvexHull")]
-  public static extern global::System.IntPtr NewtonMeshCreateConvexHull(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, int jarg4, float jarg5);
+  public static extern global::System.IntPtr NewtonMeshCreateConvexHull(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.IntPtr jarg3, int jarg4, float jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshCreateDelaunayTetrahedralization")]
-  public static extern global::System.IntPtr NewtonMeshCreateDelaunayTetrahedralization(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, int jarg4, int jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+  public static extern global::System.IntPtr NewtonMeshCreateDelaunayTetrahedralization(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.IntPtr jarg3, int jarg4, int jarg5, global::System.IntPtr jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshCreateVoronoiConvexDecomposition")]
-  public static extern global::System.IntPtr NewtonMeshCreateVoronoiConvexDecomposition(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, int jarg4, int jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+  public static extern global::System.IntPtr NewtonMeshCreateVoronoiConvexDecomposition(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.IntPtr jarg3, int jarg4, int jarg5, global::System.IntPtr jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshCreateFromSerialization")]
   public static extern global::System.IntPtr NewtonMeshCreateFromSerialization(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3);
@@ -6695,10 +6695,10 @@ class NewtonWrapperPINVOKE {
   public static extern global::System.IntPtr NewtonMeshLoadOFF(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshApplyTransform")]
-  public static extern void NewtonMeshApplyTransform(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void NewtonMeshApplyTransform(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshCalculateOOBB")]
-  public static extern void NewtonMeshCalculateOOBB(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern void NewtonMeshCalculateOOBB(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3, global::System.IntPtr jarg4, global::System.IntPtr jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshCalculateVertexNormals")]
   public static extern void NewtonMeshCalculateVertexNormals(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
@@ -6728,16 +6728,16 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonMeshTriangulate(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshUnion")]
-  public static extern global::System.IntPtr NewtonMeshUnion(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr NewtonMeshUnion(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshDifference")]
-  public static extern global::System.IntPtr NewtonMeshDifference(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr NewtonMeshDifference(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshIntersection")]
-  public static extern global::System.IntPtr NewtonMeshIntersection(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr NewtonMeshIntersection(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshClip")]
-  public static extern void NewtonMeshClip(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern void NewtonMeshClip(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshConvexMeshIntersection")]
   public static extern global::System.IntPtr NewtonMeshConvexMeshIntersection(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -6755,19 +6755,19 @@ class NewtonWrapperPINVOKE {
   public static extern void NewtonMeshBeginFace(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshAddFace")]
-  public static extern void NewtonMeshAddFace(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, int jarg4, int jarg5);
+  public static extern void NewtonMeshAddFace(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.IntPtr jarg3, int jarg4, int jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshEndFace")]
   public static extern void NewtonMeshEndFace(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshBuildFromVertexListIndexList")]
-  public static extern void NewtonMeshBuildFromVertexListIndexList(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, int jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, global::System.Runtime.InteropServices.HandleRef jarg8, int jarg9, global::System.Runtime.InteropServices.HandleRef jarg10, global::System.Runtime.InteropServices.HandleRef jarg11, int jarg12, global::System.Runtime.InteropServices.HandleRef jarg13, global::System.Runtime.InteropServices.HandleRef jarg14, int jarg15, global::System.Runtime.InteropServices.HandleRef jarg16);
+  public static extern void NewtonMeshBuildFromVertexListIndexList(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5, int jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, global::System.IntPtr jarg8, int jarg9, global::System.Runtime.InteropServices.HandleRef jarg10, global::System.IntPtr jarg11, int jarg12, global::System.Runtime.InteropServices.HandleRef jarg13, global::System.IntPtr jarg14, int jarg15, global::System.Runtime.InteropServices.HandleRef jarg16);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshGetVertexStreams")]
-  public static extern void NewtonMeshGetVertexStreams(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, int jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, int jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, int jarg8, global::System.Runtime.InteropServices.HandleRef jarg9);
+  public static extern void NewtonMeshGetVertexStreams(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.IntPtr jarg3, int jarg4, global::System.IntPtr jarg5, int jarg6, global::System.IntPtr jarg7, int jarg8, global::System.IntPtr jarg9);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshGetIndirectVertexStreams")]
-  public static extern void NewtonMeshGetIndirectVertexStreams(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, int jarg6, global::System.Runtime.InteropServices.HandleRef jarg7, global::System.Runtime.InteropServices.HandleRef jarg8, global::System.Runtime.InteropServices.HandleRef jarg9, int jarg10, global::System.Runtime.InteropServices.HandleRef jarg11, global::System.Runtime.InteropServices.HandleRef jarg12, global::System.Runtime.InteropServices.HandleRef jarg13, int jarg14, global::System.Runtime.InteropServices.HandleRef jarg15, global::System.Runtime.InteropServices.HandleRef jarg16, global::System.Runtime.InteropServices.HandleRef jarg17);
+  public static extern void NewtonMeshGetIndirectVertexStreams(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.IntPtr jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.Runtime.InteropServices.HandleRef jarg5, int jarg6, global::System.IntPtr jarg7, global::System.Runtime.InteropServices.HandleRef jarg8, global::System.Runtime.InteropServices.HandleRef jarg9, int jarg10, global::System.IntPtr jarg11, global::System.Runtime.InteropServices.HandleRef jarg12, global::System.Runtime.InteropServices.HandleRef jarg13, int jarg14, global::System.IntPtr jarg15, global::System.Runtime.InteropServices.HandleRef jarg16, global::System.Runtime.InteropServices.HandleRef jarg17);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_NewtonMeshBeginHandle")]
   public static extern global::System.IntPtr NewtonMeshBeginHandle(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -6908,7 +6908,7 @@ class NewtonWrapperPINVOKE {
   public static extern global::System.IntPtr new_dVector__SWIG_2(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_dVector__SWIG_3")]
-  public static extern global::System.IntPtr new_dVector__SWIG_3(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern global::System.IntPtr new_dVector__SWIG_3(global::System.IntPtr jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_dVector__SWIG_4")]
   public static extern global::System.IntPtr new_dVector__SWIG_4(float jarg1, float jarg2, float jarg3, float jarg4);
@@ -6953,7 +6953,7 @@ class NewtonWrapperPINVOKE {
   public static extern global::System.IntPtr new_dMatrix__SWIG_0();
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_dMatrix__SWIG_1")]
-  public static extern global::System.IntPtr new_dMatrix__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern global::System.IntPtr new_dMatrix__SWIG_1(global::System.IntPtr jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_dMatrix__SWIG_2")]
   public static extern global::System.IntPtr new_dMatrix__SWIG_2(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -7034,7 +7034,7 @@ class NewtonWrapperPINVOKE {
   public static extern global::System.IntPtr new_dMatrix__SWIG_6(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_dMatrix_TransformTriplex__SWIG_0")]
-  public static extern void dMatrix_TransformTriplex__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, int jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, int jarg5, int jarg6);
+  public static extern void dMatrix_TransformTriplex__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, int jarg3, global::System.IntPtr jarg4, int jarg5, int jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_dMatrix_TransformTriplex__SWIG_1")]
   public static extern void dMatrix_TransformTriplex__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, int jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, int jarg5, int jarg6);
@@ -7786,23 +7786,23 @@ class NewtonWrapperPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomPointToPoint_GetTypeName")]
   public static extern string CustomPointToPoint_GetTypeName(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_CustomPointToPoint_SerializeMetaData_CustomPointToPoint")]
-  public static extern global::System.IntPtr new_CustomPointToPoint_SerializeMetaData_CustomPointToPoint(string jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_CustomPointToPoint_SerializeMetaData")]
+  public static extern global::System.IntPtr new_CustomPointToPoint_SerializeMetaData(string jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomPointToPoint_SerializeMetaData_CustomPointToPoint_SerializeJoint")]
-  public static extern void CustomPointToPoint_SerializeMetaData_CustomPointToPoint_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomPointToPoint_SerializeMetaData_SerializeJoint")]
+  public static extern void CustomPointToPoint_SerializeMetaData_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomPointToPoint_SerializeMetaData_CustomPointToPoint_DeserializeJoint")]
-  public static extern global::System.IntPtr CustomPointToPoint_SerializeMetaData_CustomPointToPoint_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomPointToPoint_SerializeMetaData_DeserializeJoint")]
+  public static extern global::System.IntPtr CustomPointToPoint_SerializeMetaData_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_delete_CustomPointToPoint_SerializeMetaData_CustomPointToPoint")]
-  public static extern void delete_CustomPointToPoint_SerializeMetaData_CustomPointToPoint(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_delete_CustomPointToPoint_SerializeMetaData")]
+  public static extern void delete_CustomPointToPoint_SerializeMetaData(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomPointToPoint_m_metaData_CustomPointToPoint_set")]
-  public static extern void CustomPointToPoint_m_metaData_CustomPointToPoint_set(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomPointToPoint_m_metaData_set")]
+  public static extern void CustomPointToPoint_m_metaData_set(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomPointToPoint_m_metaData_CustomPointToPoint_get")]
-  public static extern global::System.IntPtr CustomPointToPoint_m_metaData_CustomPointToPoint_get();
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomPointToPoint_m_metaData_get")]
+  public static extern global::System.IntPtr CustomPointToPoint_m_metaData_get();
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_CustomBallAndSocket__SWIG_0")]
   public static extern global::System.IntPtr new_CustomBallAndSocket__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -7825,23 +7825,23 @@ class NewtonWrapperPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocket_GetTypeName")]
   public static extern string CustomBallAndSocket_GetTypeName(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket")]
-  public static extern global::System.IntPtr new_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket(string jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_CustomBallAndSocket_SerializeMetaData")]
+  public static extern global::System.IntPtr new_CustomBallAndSocket_SerializeMetaData(string jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket_SerializeJoint")]
-  public static extern void CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocket_SerializeMetaData_SerializeJoint")]
+  public static extern void CustomBallAndSocket_SerializeMetaData_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket_DeserializeJoint")]
-  public static extern global::System.IntPtr CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocket_SerializeMetaData_DeserializeJoint")]
+  public static extern global::System.IntPtr CustomBallAndSocket_SerializeMetaData_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_delete_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket")]
-  public static extern void delete_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_delete_CustomBallAndSocket_SerializeMetaData")]
+  public static extern void delete_CustomBallAndSocket_SerializeMetaData(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocket_m_metaData_CustomBallAndSocket_set")]
-  public static extern void CustomBallAndSocket_m_metaData_CustomBallAndSocket_set(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocket_m_metaData_set")]
+  public static extern void CustomBallAndSocket_m_metaData_set(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocket_m_metaData_CustomBallAndSocket_get")]
-  public static extern global::System.IntPtr CustomBallAndSocket_m_metaData_CustomBallAndSocket_get();
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocket_m_metaData_get")]
+  public static extern global::System.IntPtr CustomBallAndSocket_m_metaData_get();
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_CustomLimitBallAndSocket__SWIG_0")]
   public static extern global::System.IntPtr new_CustomLimitBallAndSocket__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -7873,23 +7873,23 @@ class NewtonWrapperPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomLimitBallAndSocket_GetTypeName")]
   public static extern string CustomLimitBallAndSocket_GetTypeName(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket")]
-  public static extern global::System.IntPtr new_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket(string jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_CustomLimitBallAndSocket_SerializeMetaData")]
+  public static extern global::System.IntPtr new_CustomLimitBallAndSocket_SerializeMetaData(string jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket_SerializeJoint")]
-  public static extern void CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomLimitBallAndSocket_SerializeMetaData_SerializeJoint")]
+  public static extern void CustomLimitBallAndSocket_SerializeMetaData_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket_DeserializeJoint")]
-  public static extern global::System.IntPtr CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomLimitBallAndSocket_SerializeMetaData_DeserializeJoint")]
+  public static extern global::System.IntPtr CustomLimitBallAndSocket_SerializeMetaData_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_delete_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket")]
-  public static extern void delete_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_delete_CustomLimitBallAndSocket_SerializeMetaData")]
+  public static extern void delete_CustomLimitBallAndSocket_SerializeMetaData(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomLimitBallAndSocket_m_metaData_CustomLimitBallAndSocket_set")]
-  public static extern void CustomLimitBallAndSocket_m_metaData_CustomLimitBallAndSocket_set(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomLimitBallAndSocket_m_metaData_set")]
+  public static extern void CustomLimitBallAndSocket_m_metaData_set(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomLimitBallAndSocket_m_metaData_CustomLimitBallAndSocket_get")]
-  public static extern global::System.IntPtr CustomLimitBallAndSocket_m_metaData_CustomLimitBallAndSocket_get();
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomLimitBallAndSocket_m_metaData_get")]
+  public static extern global::System.IntPtr CustomLimitBallAndSocket_m_metaData_get();
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_CustomBallAndSocketWithFriction")]
   public static extern global::System.IntPtr new_CustomBallAndSocketWithFriction(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, float jarg4);
@@ -7945,23 +7945,23 @@ class NewtonWrapperPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomControlledBallAndSocket_GetTypeName")]
   public static extern string CustomControlledBallAndSocket_GetTypeName(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket")]
-  public static extern global::System.IntPtr new_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket(string jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_new_CustomControlledBallAndSocket_SerializeMetaData")]
+  public static extern global::System.IntPtr new_CustomControlledBallAndSocket_SerializeMetaData(string jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket_SerializeJoint")]
-  public static extern void CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomControlledBallAndSocket_SerializeMetaData_SerializeJoint")]
+  public static extern void CustomControlledBallAndSocket_SerializeMetaData_SerializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.IntPtr jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket_DeserializeJoint")]
-  public static extern global::System.IntPtr CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomControlledBallAndSocket_SerializeMetaData_DeserializeJoint")]
+  public static extern global::System.IntPtr CustomControlledBallAndSocket_SerializeMetaData_DeserializeJoint(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, global::System.IntPtr jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_delete_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket")]
-  public static extern void delete_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_delete_CustomControlledBallAndSocket_SerializeMetaData")]
+  public static extern void delete_CustomControlledBallAndSocket_SerializeMetaData(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomControlledBallAndSocket_m_metaData_CustomControlledBallAndSocket_set")]
-  public static extern void CustomControlledBallAndSocket_m_metaData_CustomControlledBallAndSocket_set(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomControlledBallAndSocket_m_metaData_set")]
+  public static extern void CustomControlledBallAndSocket_m_metaData_set(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomControlledBallAndSocket_m_metaData_CustomControlledBallAndSocket_get")]
-  public static extern global::System.IntPtr CustomControlledBallAndSocket_m_metaData_CustomControlledBallAndSocket_get();
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomControlledBallAndSocket_m_metaData_get")]
+  public static extern global::System.IntPtr CustomControlledBallAndSocket_m_metaData_get();
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_dComplentaritySolver_dFrictionLessContactJoint_SWIGUpcast")]
   public static extern global::System.IntPtr dComplentaritySolver_dFrictionLessContactJoint_SWIGUpcast(global::System.IntPtr jarg1);
@@ -7972,20 +7972,20 @@ class NewtonWrapperPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomJoint_SWIGUpcast")]
   public static extern global::System.IntPtr CustomJoint_SWIGUpcast(global::System.IntPtr jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomPointToPoint_SerializeMetaData_CustomPointToPoint_SWIGUpcast")]
-  public static extern global::System.IntPtr CustomPointToPoint_SerializeMetaData_CustomPointToPoint_SWIGUpcast(global::System.IntPtr jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomPointToPoint_SerializeMetaData_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomPointToPoint_SerializeMetaData_SWIGUpcast(global::System.IntPtr jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomPointToPoint_SWIGUpcast")]
   public static extern global::System.IntPtr CustomPointToPoint_SWIGUpcast(global::System.IntPtr jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket_SWIGUpcast")]
-  public static extern global::System.IntPtr CustomBallAndSocket_SerializeMetaData_CustomBallAndSocket_SWIGUpcast(global::System.IntPtr jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocket_SerializeMetaData_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomBallAndSocket_SerializeMetaData_SWIGUpcast(global::System.IntPtr jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocket_SWIGUpcast")]
   public static extern global::System.IntPtr CustomBallAndSocket_SWIGUpcast(global::System.IntPtr jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket_SWIGUpcast")]
-  public static extern global::System.IntPtr CustomLimitBallAndSocket_SerializeMetaData_CustomLimitBallAndSocket_SWIGUpcast(global::System.IntPtr jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomLimitBallAndSocket_SerializeMetaData_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomLimitBallAndSocket_SerializeMetaData_SWIGUpcast(global::System.IntPtr jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomLimitBallAndSocket_SWIGUpcast")]
   public static extern global::System.IntPtr CustomLimitBallAndSocket_SWIGUpcast(global::System.IntPtr jarg1);
@@ -7993,8 +7993,8 @@ class NewtonWrapperPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomBallAndSocketWithFriction_SWIGUpcast")]
   public static extern global::System.IntPtr CustomBallAndSocketWithFriction_SWIGUpcast(global::System.IntPtr jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket_SWIGUpcast")]
-  public static extern global::System.IntPtr CustomControlledBallAndSocket_SerializeMetaData_CustomControlledBallAndSocket_SWIGUpcast(global::System.IntPtr jarg1);
+  [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomControlledBallAndSocket_SerializeMetaData_SWIGUpcast")]
+  public static extern global::System.IntPtr CustomControlledBallAndSocket_SerializeMetaData_SWIGUpcast(global::System.IntPtr jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("NewtonWrapper", EntryPoint="CSharp_CustomControlledBallAndSocket_SWIGUpcast")]
   public static extern global::System.IntPtr CustomControlledBallAndSocket_SWIGUpcast(global::System.IntPtr jarg1);
@@ -8188,8 +8188,8 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonWorldForEachJointDo(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_f_q_const__p_q_const__NewtonJoint_q_const__p_void__void.getCPtr(callback), userData);
   }
 
-  public static void NewtonWorldForEachBodyInAABBDo(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_float p0, SWIGTYPE_p_float p1, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_void__int callback, global::System.IntPtr userData) {
-    NewtonWrapperPINVOKE.NewtonWorldForEachBodyInAABBDo(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_float.getCPtr(p0), SWIGTYPE_p_float.getCPtr(p1), SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_void__int.getCPtr(callback), userData);
+  public static void NewtonWorldForEachBodyInAABBDo(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr p0, global::System.IntPtr p1, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_void__int callback, global::System.IntPtr userData) {
+    NewtonWrapperPINVOKE.NewtonWorldForEachBodyInAABBDo(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), p0, p1, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_void__int.getCPtr(callback), userData);
   }
 
   public static void NewtonWorldSetUserData(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr userData) {
@@ -8250,17 +8250,17 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonWorldSetCollisionConstructorDestructorCallback(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_f_q_const__p_q_const__NewtonWorld_q_const__p_NewtonCollision_q_const__p_q_const__NewtonCollision__void.getCPtr(constructor), SWIGTYPE_p_f_q_const__p_q_const__NewtonWorld_q_const__p_q_const__NewtonCollision__void.getCPtr(destructor));
   }
 
-  public static void NewtonWorldRayCast(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_float p0, SWIGTYPE_p_float p1, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_q_const__float_q_const__p_q_const__float_long_long_q_const__p_void_float__float filter, global::System.IntPtr userData, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_void__unsigned_int prefilter, int threadIndex) {
-    NewtonWrapperPINVOKE.NewtonWorldRayCast(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_float.getCPtr(p0), SWIGTYPE_p_float.getCPtr(p1), SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_q_const__float_q_const__p_q_const__float_long_long_q_const__p_void_float__float.getCPtr(filter), userData, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_void__unsigned_int.getCPtr(prefilter), threadIndex);
+  public static void NewtonWorldRayCast(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr p0, global::System.IntPtr p1, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_q_const__float_q_const__p_q_const__float_long_long_q_const__p_void_float__float filter, global::System.IntPtr userData, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_void__unsigned_int prefilter, int threadIndex) {
+    NewtonWrapperPINVOKE.NewtonWorldRayCast(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), p0, p1, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_q_const__float_q_const__p_q_const__float_long_long_q_const__p_void_float__float.getCPtr(filter), userData, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_void__unsigned_int.getCPtr(prefilter), threadIndex);
   }
 
-  public static int NewtonWorldConvexCast(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_float matrix, SWIGTYPE_p_float target, SWIGTYPE_p_NewtonCollision shape, SWIGTYPE_p_float param, global::System.IntPtr userData, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_void__unsigned_int prefilter, NewtonWorldConvexCastReturnInfo info, int maxContactsCount, int threadIndex) {
-    int ret = NewtonWrapperPINVOKE.NewtonWorldConvexCast(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_float.getCPtr(matrix), SWIGTYPE_p_float.getCPtr(target), SWIGTYPE_p_NewtonCollision.getCPtr(shape), SWIGTYPE_p_float.getCPtr(param), userData, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_void__unsigned_int.getCPtr(prefilter), NewtonWorldConvexCastReturnInfo.getCPtr(info), maxContactsCount, threadIndex);
+  public static int NewtonWorldConvexCast(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr matrix, global::System.IntPtr target, SWIGTYPE_p_NewtonCollision shape, global::System.IntPtr param, global::System.IntPtr userData, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_void__unsigned_int prefilter, NewtonWorldConvexCastReturnInfo info, int maxContactsCount, int threadIndex) {
+    int ret = NewtonWrapperPINVOKE.NewtonWorldConvexCast(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), matrix, target, SWIGTYPE_p_NewtonCollision.getCPtr(shape), param, userData, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_void__unsigned_int.getCPtr(prefilter), NewtonWorldConvexCastReturnInfo.getCPtr(info), maxContactsCount, threadIndex);
     return ret;
   }
 
-  public static int NewtonWorldCollide(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_float matrix, SWIGTYPE_p_NewtonCollision shape, global::System.IntPtr userData, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_void__unsigned_int prefilter, NewtonWorldConvexCastReturnInfo info, int maxContactsCount, int threadIndex) {
-    int ret = NewtonWrapperPINVOKE.NewtonWorldCollide(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_float.getCPtr(matrix), SWIGTYPE_p_NewtonCollision.getCPtr(shape), userData, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_void__unsigned_int.getCPtr(prefilter), NewtonWorldConvexCastReturnInfo.getCPtr(info), maxContactsCount, threadIndex);
+  public static int NewtonWorldCollide(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr matrix, SWIGTYPE_p_NewtonCollision shape, global::System.IntPtr userData, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_void__unsigned_int prefilter, NewtonWorldConvexCastReturnInfo info, int maxContactsCount, int threadIndex) {
+    int ret = NewtonWrapperPINVOKE.NewtonWorldCollide(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), matrix, SWIGTYPE_p_NewtonCollision.getCPtr(shape), userData, SWIGTYPE_p_f_q_const__p_q_const__NewtonBody_q_const__p_q_const__NewtonCollision_q_const__p_void__unsigned_int.getCPtr(prefilter), NewtonWorldConvexCastReturnInfo.getCPtr(info), maxContactsCount, threadIndex);
     return ret;
   }
 
@@ -8280,8 +8280,8 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonIslandGetBodyAABB(global::System.IntPtr island, int bodyIndex, SWIGTYPE_p_float p0, SWIGTYPE_p_float p1) {
-    NewtonWrapperPINVOKE.NewtonIslandGetBodyAABB(island, bodyIndex, SWIGTYPE_p_float.getCPtr(p0), SWIGTYPE_p_float.getCPtr(p1));
+  public static void NewtonIslandGetBodyAABB(global::System.IntPtr island, int bodyIndex, global::System.IntPtr p0, global::System.IntPtr p1) {
+    NewtonWrapperPINVOKE.NewtonIslandGetBodyAABB(island, bodyIndex, p0, p1);
   }
 
   public static int NewtonMaterialCreateGroupID(SWIGTYPE_p_NewtonWorld newtonWorld) {
@@ -8384,16 +8384,16 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonMaterialGetContactForce(SWIGTYPE_p_NewtonMaterial material, SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float force) {
-    NewtonWrapperPINVOKE.NewtonMaterialGetContactForce(SWIGTYPE_p_NewtonMaterial.getCPtr(material), SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(force));
+  public static void NewtonMaterialGetContactForce(SWIGTYPE_p_NewtonMaterial material, SWIGTYPE_p_NewtonBody body, global::System.IntPtr force) {
+    NewtonWrapperPINVOKE.NewtonMaterialGetContactForce(SWIGTYPE_p_NewtonMaterial.getCPtr(material), SWIGTYPE_p_NewtonBody.getCPtr(body), force);
   }
 
-  public static void NewtonMaterialGetContactPositionAndNormal(SWIGTYPE_p_NewtonMaterial material, SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float posit, SWIGTYPE_p_float normal) {
-    NewtonWrapperPINVOKE.NewtonMaterialGetContactPositionAndNormal(SWIGTYPE_p_NewtonMaterial.getCPtr(material), SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(posit), SWIGTYPE_p_float.getCPtr(normal));
+  public static void NewtonMaterialGetContactPositionAndNormal(SWIGTYPE_p_NewtonMaterial material, SWIGTYPE_p_NewtonBody body, global::System.IntPtr posit, global::System.IntPtr normal) {
+    NewtonWrapperPINVOKE.NewtonMaterialGetContactPositionAndNormal(SWIGTYPE_p_NewtonMaterial.getCPtr(material), SWIGTYPE_p_NewtonBody.getCPtr(body), posit, normal);
   }
 
-  public static void NewtonMaterialGetContactTangentDirections(SWIGTYPE_p_NewtonMaterial material, SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float dir0, SWIGTYPE_p_float dir1) {
-    NewtonWrapperPINVOKE.NewtonMaterialGetContactTangentDirections(SWIGTYPE_p_NewtonMaterial.getCPtr(material), SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(dir0), SWIGTYPE_p_float.getCPtr(dir1));
+  public static void NewtonMaterialGetContactTangentDirections(SWIGTYPE_p_NewtonMaterial material, SWIGTYPE_p_NewtonBody body, global::System.IntPtr dir0, global::System.IntPtr dir1) {
+    NewtonWrapperPINVOKE.NewtonMaterialGetContactTangentDirections(SWIGTYPE_p_NewtonMaterial.getCPtr(material), SWIGTYPE_p_NewtonBody.getCPtr(body), dir0, dir1);
   }
 
   public static float NewtonMaterialGetContactTangentSpeed(SWIGTYPE_p_NewtonMaterial material, int index) {
@@ -8431,12 +8431,12 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonMaterialSetContactNormalAcceleration(SWIGTYPE_p_NewtonMaterial.getCPtr(material), accel);
   }
 
-  public static void NewtonMaterialSetContactNormalDirection(SWIGTYPE_p_NewtonMaterial material, SWIGTYPE_p_float directionVector) {
-    NewtonWrapperPINVOKE.NewtonMaterialSetContactNormalDirection(SWIGTYPE_p_NewtonMaterial.getCPtr(material), SWIGTYPE_p_float.getCPtr(directionVector));
+  public static void NewtonMaterialSetContactNormalDirection(SWIGTYPE_p_NewtonMaterial material, global::System.IntPtr directionVector) {
+    NewtonWrapperPINVOKE.NewtonMaterialSetContactNormalDirection(SWIGTYPE_p_NewtonMaterial.getCPtr(material), directionVector);
   }
 
-  public static void NewtonMaterialSetContactPosition(SWIGTYPE_p_NewtonMaterial material, SWIGTYPE_p_float position) {
-    NewtonWrapperPINVOKE.NewtonMaterialSetContactPosition(SWIGTYPE_p_NewtonMaterial.getCPtr(material), SWIGTYPE_p_float.getCPtr(position));
+  public static void NewtonMaterialSetContactPosition(SWIGTYPE_p_NewtonMaterial material, global::System.IntPtr position) {
+    NewtonWrapperPINVOKE.NewtonMaterialSetContactPosition(SWIGTYPE_p_NewtonMaterial.getCPtr(material), position);
   }
 
   public static void NewtonMaterialSetContactTangentFriction(SWIGTYPE_p_NewtonMaterial material, float friction, int index) {
@@ -8447,8 +8447,8 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonMaterialSetContactTangentAcceleration(SWIGTYPE_p_NewtonMaterial.getCPtr(material), accel, index);
   }
 
-  public static void NewtonMaterialContactRotateTangentDirections(SWIGTYPE_p_NewtonMaterial material, SWIGTYPE_p_float directionVector) {
-    NewtonWrapperPINVOKE.NewtonMaterialContactRotateTangentDirections(SWIGTYPE_p_NewtonMaterial.getCPtr(material), SWIGTYPE_p_float.getCPtr(directionVector));
+  public static void NewtonMaterialContactRotateTangentDirections(SWIGTYPE_p_NewtonMaterial material, global::System.IntPtr directionVector) {
+    NewtonWrapperPINVOKE.NewtonMaterialContactRotateTangentDirections(SWIGTYPE_p_NewtonMaterial.getCPtr(material), directionVector);
   }
 
   public static SWIGTYPE_p_NewtonCollision NewtonCreateNull(SWIGTYPE_p_NewtonWorld newtonWorld) {
@@ -8457,44 +8457,44 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonCollision NewtonCreateSphere(SWIGTYPE_p_NewtonWorld newtonWorld, float radius, int shapeID, SWIGTYPE_p_float offsetMatrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateSphere(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), radius, shapeID, SWIGTYPE_p_float.getCPtr(offsetMatrix));
+  public static SWIGTYPE_p_NewtonCollision NewtonCreateSphere(SWIGTYPE_p_NewtonWorld newtonWorld, float radius, int shapeID, global::System.IntPtr offsetMatrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateSphere(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), radius, shapeID, offsetMatrix);
     SWIGTYPE_p_NewtonCollision ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonCollision(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonCollision NewtonCreateBox(SWIGTYPE_p_NewtonWorld newtonWorld, float dx, float dy, float dz, int shapeID, SWIGTYPE_p_float offsetMatrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateBox(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), dx, dy, dz, shapeID, SWIGTYPE_p_float.getCPtr(offsetMatrix));
+  public static SWIGTYPE_p_NewtonCollision NewtonCreateBox(SWIGTYPE_p_NewtonWorld newtonWorld, float dx, float dy, float dz, int shapeID, global::System.IntPtr offsetMatrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateBox(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), dx, dy, dz, shapeID, offsetMatrix);
     SWIGTYPE_p_NewtonCollision ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonCollision(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonCollision NewtonCreateCone(SWIGTYPE_p_NewtonWorld newtonWorld, float radius, float height, int shapeID, SWIGTYPE_p_float offsetMatrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateCone(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), radius, height, shapeID, SWIGTYPE_p_float.getCPtr(offsetMatrix));
+  public static SWIGTYPE_p_NewtonCollision NewtonCreateCone(SWIGTYPE_p_NewtonWorld newtonWorld, float radius, float height, int shapeID, global::System.IntPtr offsetMatrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateCone(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), radius, height, shapeID, offsetMatrix);
     SWIGTYPE_p_NewtonCollision ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonCollision(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonCollision NewtonCreateCapsule(SWIGTYPE_p_NewtonWorld newtonWorld, float radius0, float radius1, float height, int shapeID, SWIGTYPE_p_float offsetMatrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateCapsule(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), radius0, radius1, height, shapeID, SWIGTYPE_p_float.getCPtr(offsetMatrix));
+  public static SWIGTYPE_p_NewtonCollision NewtonCreateCapsule(SWIGTYPE_p_NewtonWorld newtonWorld, float radius0, float radius1, float height, int shapeID, global::System.IntPtr offsetMatrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateCapsule(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), radius0, radius1, height, shapeID, offsetMatrix);
     SWIGTYPE_p_NewtonCollision ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonCollision(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonCollision NewtonCreateCylinder(SWIGTYPE_p_NewtonWorld newtonWorld, float radio0, float radio1, float height, int shapeID, SWIGTYPE_p_float offsetMatrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateCylinder(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), radio0, radio1, height, shapeID, SWIGTYPE_p_float.getCPtr(offsetMatrix));
+  public static SWIGTYPE_p_NewtonCollision NewtonCreateCylinder(SWIGTYPE_p_NewtonWorld newtonWorld, float radio0, float radio1, float height, int shapeID, global::System.IntPtr offsetMatrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateCylinder(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), radio0, radio1, height, shapeID, offsetMatrix);
     SWIGTYPE_p_NewtonCollision ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonCollision(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonCollision NewtonCreateChamferCylinder(SWIGTYPE_p_NewtonWorld newtonWorld, float radius, float height, int shapeID, SWIGTYPE_p_float offsetMatrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateChamferCylinder(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), radius, height, shapeID, SWIGTYPE_p_float.getCPtr(offsetMatrix));
+  public static SWIGTYPE_p_NewtonCollision NewtonCreateChamferCylinder(SWIGTYPE_p_NewtonWorld newtonWorld, float radius, float height, int shapeID, global::System.IntPtr offsetMatrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateChamferCylinder(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), radius, height, shapeID, offsetMatrix);
     SWIGTYPE_p_NewtonCollision ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonCollision(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonCollision NewtonCreateConvexHull(SWIGTYPE_p_NewtonWorld newtonWorld, int count, SWIGTYPE_p_float vertexCloud, int strideInBytes, float tolerance, int shapeID, SWIGTYPE_p_float offsetMatrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateConvexHull(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), count, SWIGTYPE_p_float.getCPtr(vertexCloud), strideInBytes, tolerance, shapeID, SWIGTYPE_p_float.getCPtr(offsetMatrix));
+  public static SWIGTYPE_p_NewtonCollision NewtonCreateConvexHull(SWIGTYPE_p_NewtonWorld newtonWorld, int count, global::System.IntPtr vertexCloud, int strideInBytes, float tolerance, int shapeID, global::System.IntPtr offsetMatrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateConvexHull(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), count, vertexCloud, strideInBytes, tolerance, shapeID, offsetMatrix);
     SWIGTYPE_p_NewtonCollision ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonCollision(cPtr, false);
     return ret;
   }
@@ -8529,12 +8529,12 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonConvexCollisionCalculateInertialMatrix(SWIGTYPE_p_NewtonCollision convexCollision, SWIGTYPE_p_float inertia, SWIGTYPE_p_float origin) {
-    NewtonWrapperPINVOKE.NewtonConvexCollisionCalculateInertialMatrix(SWIGTYPE_p_NewtonCollision.getCPtr(convexCollision), SWIGTYPE_p_float.getCPtr(inertia), SWIGTYPE_p_float.getCPtr(origin));
+  public static void NewtonConvexCollisionCalculateInertialMatrix(SWIGTYPE_p_NewtonCollision convexCollision, global::System.IntPtr inertia, global::System.IntPtr origin) {
+    NewtonWrapperPINVOKE.NewtonConvexCollisionCalculateInertialMatrix(SWIGTYPE_p_NewtonCollision.getCPtr(convexCollision), inertia, origin);
   }
 
-  public static void NewtonConvexCollisionCalculateBuoyancyAcceleration(SWIGTYPE_p_NewtonCollision convexCollision, SWIGTYPE_p_float matrix, SWIGTYPE_p_float shapeOrigin, SWIGTYPE_p_float gravityVector, SWIGTYPE_p_float fluidPlane, float fluidDensity, float fluidViscosity, SWIGTYPE_p_float accel, SWIGTYPE_p_float alpha) {
-    NewtonWrapperPINVOKE.NewtonConvexCollisionCalculateBuoyancyAcceleration(SWIGTYPE_p_NewtonCollision.getCPtr(convexCollision), SWIGTYPE_p_float.getCPtr(matrix), SWIGTYPE_p_float.getCPtr(shapeOrigin), SWIGTYPE_p_float.getCPtr(gravityVector), SWIGTYPE_p_float.getCPtr(fluidPlane), fluidDensity, fluidViscosity, SWIGTYPE_p_float.getCPtr(accel), SWIGTYPE_p_float.getCPtr(alpha));
+  public static void NewtonConvexCollisionCalculateBuoyancyAcceleration(SWIGTYPE_p_NewtonCollision convexCollision, global::System.IntPtr matrix, global::System.IntPtr shapeOrigin, global::System.IntPtr gravityVector, global::System.IntPtr fluidPlane, float fluidDensity, float fluidViscosity, global::System.IntPtr accel, global::System.IntPtr alpha) {
+    NewtonWrapperPINVOKE.NewtonConvexCollisionCalculateBuoyancyAcceleration(SWIGTYPE_p_NewtonCollision.getCPtr(convexCollision), matrix, shapeOrigin, gravityVector, fluidPlane, fluidDensity, fluidViscosity, accel, alpha);
   }
 
   public static global::System.IntPtr NewtonCollisionDataPointer(SWIGTYPE_p_NewtonCollision convexCollision) { 
@@ -8571,8 +8571,8 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonCompoundCollisionRemoveSubCollisionByIndex(SWIGTYPE_p_NewtonCollision.getCPtr(compoundCollision), nodeIndex);
   }
 
-  public static void NewtonCompoundCollisionSetSubCollisionMatrix(SWIGTYPE_p_NewtonCollision compoundCollision, global::System.IntPtr collisionNode, SWIGTYPE_p_float matrix) {
-    NewtonWrapperPINVOKE.NewtonCompoundCollisionSetSubCollisionMatrix(SWIGTYPE_p_NewtonCollision.getCPtr(compoundCollision), collisionNode, SWIGTYPE_p_float.getCPtr(matrix));
+  public static void NewtonCompoundCollisionSetSubCollisionMatrix(SWIGTYPE_p_NewtonCollision compoundCollision, global::System.IntPtr collisionNode, global::System.IntPtr matrix) {
+    NewtonWrapperPINVOKE.NewtonCompoundCollisionSetSubCollisionMatrix(SWIGTYPE_p_NewtonCollision.getCPtr(compoundCollision), collisionNode, matrix);
   }
 
   public static void NewtonCompoundCollisionEndAddRemove(SWIGTYPE_p_NewtonCollision compoundCollision) {
@@ -8605,14 +8605,14 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonCollision NewtonCreateFracturedCompoundCollision(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_NewtonMesh solidMesh, int shapeID, int fracturePhysicsMaterialID, int pointcloudCount, SWIGTYPE_p_float vertexCloud, int strideInBytes, int materialID, SWIGTYPE_p_float textureMatrix, SWIGTYPE_p_f_q_const__p_NewtonBody_q_const__p_NewtonFracturedCompoundMeshPart_q_const__p_q_const__NewtonCollision__void regenerateMainMeshCallback, SWIGTYPE_p_f_q_const__p_NewtonBody__void emitFracturedCompound, SWIGTYPE_p_f_q_const__p_NewtonBody_q_const__p_NewtonFracturedCompoundMeshPart_q_const__p_q_const__NewtonCollision__void emitFracfuredChunk) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateFracturedCompoundCollision(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_NewtonMesh.getCPtr(solidMesh), shapeID, fracturePhysicsMaterialID, pointcloudCount, SWIGTYPE_p_float.getCPtr(vertexCloud), strideInBytes, materialID, SWIGTYPE_p_float.getCPtr(textureMatrix), SWIGTYPE_p_f_q_const__p_NewtonBody_q_const__p_NewtonFracturedCompoundMeshPart_q_const__p_q_const__NewtonCollision__void.getCPtr(regenerateMainMeshCallback), SWIGTYPE_p_f_q_const__p_NewtonBody__void.getCPtr(emitFracturedCompound), SWIGTYPE_p_f_q_const__p_NewtonBody_q_const__p_NewtonFracturedCompoundMeshPart_q_const__p_q_const__NewtonCollision__void.getCPtr(emitFracfuredChunk));
+  public static SWIGTYPE_p_NewtonCollision NewtonCreateFracturedCompoundCollision(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_NewtonMesh solidMesh, int shapeID, int fracturePhysicsMaterialID, int pointcloudCount, global::System.IntPtr vertexCloud, int strideInBytes, int materialID, global::System.IntPtr textureMatrix, SWIGTYPE_p_f_q_const__p_NewtonBody_q_const__p_NewtonFracturedCompoundMeshPart_q_const__p_q_const__NewtonCollision__void regenerateMainMeshCallback, SWIGTYPE_p_f_q_const__p_NewtonBody__void emitFracturedCompound, SWIGTYPE_p_f_q_const__p_NewtonBody_q_const__p_NewtonFracturedCompoundMeshPart_q_const__p_q_const__NewtonCollision__void emitFracfuredChunk) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateFracturedCompoundCollision(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_NewtonMesh.getCPtr(solidMesh), shapeID, fracturePhysicsMaterialID, pointcloudCount, vertexCloud, strideInBytes, materialID, textureMatrix, SWIGTYPE_p_f_q_const__p_NewtonBody_q_const__p_NewtonFracturedCompoundMeshPart_q_const__p_q_const__NewtonCollision__void.getCPtr(regenerateMainMeshCallback), SWIGTYPE_p_f_q_const__p_NewtonBody__void.getCPtr(emitFracturedCompound), SWIGTYPE_p_f_q_const__p_NewtonBody_q_const__p_NewtonFracturedCompoundMeshPart_q_const__p_q_const__NewtonCollision__void.getCPtr(emitFracfuredChunk));
     SWIGTYPE_p_NewtonCollision ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonCollision(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonCollision NewtonFracturedCompoundPlaneClip(SWIGTYPE_p_NewtonCollision fracturedCompound, SWIGTYPE_p_float plane) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonFracturedCompoundPlaneClip(SWIGTYPE_p_NewtonCollision.getCPtr(fracturedCompound), SWIGTYPE_p_float.getCPtr(plane));
+  public static SWIGTYPE_p_NewtonCollision NewtonFracturedCompoundPlaneClip(SWIGTYPE_p_NewtonCollision fracturedCompound, global::System.IntPtr plane) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonFracturedCompoundPlaneClip(SWIGTYPE_p_NewtonCollision.getCPtr(fracturedCompound), plane);
     SWIGTYPE_p_NewtonCollision ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonCollision(cPtr, false);
     return ret;
   }
@@ -8654,23 +8654,20 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static SWIGTYPE_p_float NewtonFracturedCompoundCollisionGetVertexPositions(SWIGTYPE_p_NewtonCollision fracturedCompound, SWIGTYPE_p_NewtonFracturedCompoundMeshPart meshOwner) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonFracturedCompoundCollisionGetVertexPositions(SWIGTYPE_p_NewtonCollision.getCPtr(fracturedCompound), SWIGTYPE_p_NewtonFracturedCompoundMeshPart.getCPtr(meshOwner));
-    SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
-    return ret;
-  }
+  public static global::System.IntPtr NewtonFracturedCompoundCollisionGetVertexPositions(SWIGTYPE_p_NewtonCollision fracturedCompound, SWIGTYPE_p_NewtonFracturedCompoundMeshPart meshOwner) { 
+    System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonFracturedCompoundCollisionGetVertexPositions(SWIGTYPE_p_NewtonCollision.getCPtr(fracturedCompound), SWIGTYPE_p_NewtonFracturedCompoundMeshPart.getCPtr(meshOwner));
+    return cPtr;
+}
 
-  public static SWIGTYPE_p_float NewtonFracturedCompoundCollisionGetVertexNormals(SWIGTYPE_p_NewtonCollision fracturedCompound, SWIGTYPE_p_NewtonFracturedCompoundMeshPart meshOwner) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonFracturedCompoundCollisionGetVertexNormals(SWIGTYPE_p_NewtonCollision.getCPtr(fracturedCompound), SWIGTYPE_p_NewtonFracturedCompoundMeshPart.getCPtr(meshOwner));
-    SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
-    return ret;
-  }
+  public static global::System.IntPtr NewtonFracturedCompoundCollisionGetVertexNormals(SWIGTYPE_p_NewtonCollision fracturedCompound, SWIGTYPE_p_NewtonFracturedCompoundMeshPart meshOwner) { 
+    System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonFracturedCompoundCollisionGetVertexNormals(SWIGTYPE_p_NewtonCollision.getCPtr(fracturedCompound), SWIGTYPE_p_NewtonFracturedCompoundMeshPart.getCPtr(meshOwner));
+    return cPtr;
+}
 
-  public static SWIGTYPE_p_float NewtonFracturedCompoundCollisionGetVertexUVs(SWIGTYPE_p_NewtonCollision fracturedCompound, SWIGTYPE_p_NewtonFracturedCompoundMeshPart meshOwner) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonFracturedCompoundCollisionGetVertexUVs(SWIGTYPE_p_NewtonCollision.getCPtr(fracturedCompound), SWIGTYPE_p_NewtonFracturedCompoundMeshPart.getCPtr(meshOwner));
-    SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
-    return ret;
-  }
+  public static global::System.IntPtr NewtonFracturedCompoundCollisionGetVertexUVs(SWIGTYPE_p_NewtonCollision fracturedCompound, SWIGTYPE_p_NewtonFracturedCompoundMeshPart meshOwner) { 
+    System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonFracturedCompoundCollisionGetVertexUVs(SWIGTYPE_p_NewtonCollision.getCPtr(fracturedCompound), SWIGTYPE_p_NewtonFracturedCompoundMeshPart.getCPtr(meshOwner));
+    return cPtr;
+}
 
   public static int NewtonFracturedCompoundMeshPartGetIndexStream(SWIGTYPE_p_NewtonCollision fracturedCompound, SWIGTYPE_p_NewtonFracturedCompoundMeshPart meshOwner, global::System.IntPtr segment, SWIGTYPE_p_int index) {
     int ret = NewtonWrapperPINVOKE.NewtonFracturedCompoundMeshPartGetIndexStream(SWIGTYPE_p_NewtonCollision.getCPtr(fracturedCompound), SWIGTYPE_p_NewtonFracturedCompoundMeshPart.getCPtr(meshOwner), segment, SWIGTYPE_p_int.getCPtr(index));
@@ -8720,8 +8717,8 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonSceneCollisionRemoveSubCollisionByIndex(SWIGTYPE_p_NewtonCollision.getCPtr(sceneCollision), nodeIndex);
   }
 
-  public static void NewtonSceneCollisionSetSubCollisionMatrix(SWIGTYPE_p_NewtonCollision sceneCollision, global::System.IntPtr collisionNode, SWIGTYPE_p_float matrix) {
-    NewtonWrapperPINVOKE.NewtonSceneCollisionSetSubCollisionMatrix(SWIGTYPE_p_NewtonCollision.getCPtr(sceneCollision), collisionNode, SWIGTYPE_p_float.getCPtr(matrix));
+  public static void NewtonSceneCollisionSetSubCollisionMatrix(SWIGTYPE_p_NewtonCollision sceneCollision, global::System.IntPtr collisionNode, global::System.IntPtr matrix) {
+    NewtonWrapperPINVOKE.NewtonSceneCollisionSetSubCollisionMatrix(SWIGTYPE_p_NewtonCollision.getCPtr(sceneCollision), collisionNode, matrix);
   }
 
   public static void NewtonSceneCollisionEndAddRemove(SWIGTYPE_p_NewtonCollision sceneCollision) {
@@ -8754,14 +8751,14 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonCollision NewtonCreateUserMeshCollision(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_float minBox, SWIGTYPE_p_float maxBox, global::System.IntPtr userData, SWIGTYPE_p_f_q_const__p_NewtonUserMeshCollisionCollideDesc_q_const__p_q_const__void__void collideCallback, SWIGTYPE_p_f_q_const__p_NewtonUserMeshCollisionRayHitDesc__float rayHitCallback, SWIGTYPE_p_f_q_const__p_void__void destroyCallback, SWIGTYPE_p_f_q_const__p_void_q_const__p_NewtonCollisionInfoRecord__void getInfoCallback, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__float_q_const__p_q_const__float__int getLocalAABBCallback, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__float_q_const__p_q_const__float_q_const__p_p_q_const__float_q_const__p_int_q_const__p_int_q_const__p_q_const__int_int_q_const__p_q_const__int__int facesInAABBCallback, SWIGTYPE_p_f_q_const__p_void_p_f_q_const__p_void_q_const__p_q_const__void_int__void_q_const__p_void__void serializeCallback, int shapeID) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateUserMeshCollision(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_float.getCPtr(minBox), SWIGTYPE_p_float.getCPtr(maxBox), userData, SWIGTYPE_p_f_q_const__p_NewtonUserMeshCollisionCollideDesc_q_const__p_q_const__void__void.getCPtr(collideCallback), SWIGTYPE_p_f_q_const__p_NewtonUserMeshCollisionRayHitDesc__float.getCPtr(rayHitCallback), SWIGTYPE_p_f_q_const__p_void__void.getCPtr(destroyCallback), SWIGTYPE_p_f_q_const__p_void_q_const__p_NewtonCollisionInfoRecord__void.getCPtr(getInfoCallback), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__float_q_const__p_q_const__float__int.getCPtr(getLocalAABBCallback), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__float_q_const__p_q_const__float_q_const__p_p_q_const__float_q_const__p_int_q_const__p_int_q_const__p_q_const__int_int_q_const__p_q_const__int__int.getCPtr(facesInAABBCallback), SWIGTYPE_p_f_q_const__p_void_p_f_q_const__p_void_q_const__p_q_const__void_int__void_q_const__p_void__void.getCPtr(serializeCallback), shapeID);
+  public static SWIGTYPE_p_NewtonCollision NewtonCreateUserMeshCollision(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr minBox, global::System.IntPtr maxBox, global::System.IntPtr userData, SWIGTYPE_p_f_q_const__p_NewtonUserMeshCollisionCollideDesc_q_const__p_q_const__void__void collideCallback, SWIGTYPE_p_f_q_const__p_NewtonUserMeshCollisionRayHitDesc__float rayHitCallback, SWIGTYPE_p_f_q_const__p_void__void destroyCallback, SWIGTYPE_p_f_q_const__p_void_q_const__p_NewtonCollisionInfoRecord__void getInfoCallback, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__float_q_const__p_q_const__float__int getLocalAABBCallback, SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__float_q_const__p_q_const__float_q_const__p_p_q_const__float_q_const__p_int_q_const__p_int_q_const__p_q_const__int_int_q_const__p_q_const__int__int facesInAABBCallback, SWIGTYPE_p_f_q_const__p_void_p_f_q_const__p_void_q_const__p_q_const__void_int__void_q_const__p_void__void serializeCallback, int shapeID) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateUserMeshCollision(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), minBox, maxBox, userData, SWIGTYPE_p_f_q_const__p_NewtonUserMeshCollisionCollideDesc_q_const__p_q_const__void__void.getCPtr(collideCallback), SWIGTYPE_p_f_q_const__p_NewtonUserMeshCollisionRayHitDesc__float.getCPtr(rayHitCallback), SWIGTYPE_p_f_q_const__p_void__void.getCPtr(destroyCallback), SWIGTYPE_p_f_q_const__p_void_q_const__p_NewtonCollisionInfoRecord__void.getCPtr(getInfoCallback), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__float_q_const__p_q_const__float__int.getCPtr(getLocalAABBCallback), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__float_q_const__p_q_const__float_q_const__p_p_q_const__float_q_const__p_int_q_const__p_int_q_const__p_q_const__int_int_q_const__p_q_const__int__int.getCPtr(facesInAABBCallback), SWIGTYPE_p_f_q_const__p_void_p_f_q_const__p_void_q_const__p_q_const__void_int__void_q_const__p_void__void.getCPtr(serializeCallback), shapeID);
     SWIGTYPE_p_NewtonCollision ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonCollision(cPtr, false);
     return ret;
   }
 
-  public static int NewtonUserMeshCollisionContinuousOverlapTest(NewtonUserMeshCollisionCollideDesc collideDescData, global::System.IntPtr continueCollisionHandle, SWIGTYPE_p_float minAabb, SWIGTYPE_p_float maxAabb) {
-    int ret = NewtonWrapperPINVOKE.NewtonUserMeshCollisionContinuousOverlapTest(NewtonUserMeshCollisionCollideDesc.getCPtr(collideDescData), continueCollisionHandle, SWIGTYPE_p_float.getCPtr(minAabb), SWIGTYPE_p_float.getCPtr(maxAabb));
+  public static int NewtonUserMeshCollisionContinuousOverlapTest(NewtonUserMeshCollisionCollideDesc collideDescData, global::System.IntPtr continueCollisionHandle, global::System.IntPtr minAabb, global::System.IntPtr maxAabb) {
+    int ret = NewtonWrapperPINVOKE.NewtonUserMeshCollisionContinuousOverlapTest(NewtonUserMeshCollisionCollideDesc.getCPtr(collideDescData), continueCollisionHandle, minAabb, maxAabb);
     return ret;
   }
 
@@ -8813,8 +8810,8 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonTreeCollisionBeginBuild(SWIGTYPE_p_NewtonCollision.getCPtr(treeCollision));
   }
 
-  public static void NewtonTreeCollisionAddFace(SWIGTYPE_p_NewtonCollision treeCollision, int vertexCount, SWIGTYPE_p_float vertexPtr, int strideInBytes, int faceAttribute) {
-    NewtonWrapperPINVOKE.NewtonTreeCollisionAddFace(SWIGTYPE_p_NewtonCollision.getCPtr(treeCollision), vertexCount, SWIGTYPE_p_float.getCPtr(vertexPtr), strideInBytes, faceAttribute);
+  public static void NewtonTreeCollisionAddFace(SWIGTYPE_p_NewtonCollision treeCollision, int vertexCount, global::System.IntPtr vertexPtr, int strideInBytes, int faceAttribute) {
+    NewtonWrapperPINVOKE.NewtonTreeCollisionAddFace(SWIGTYPE_p_NewtonCollision.getCPtr(treeCollision), vertexCount, vertexPtr, strideInBytes, faceAttribute);
   }
 
   public static void NewtonTreeCollisionEndBuild(SWIGTYPE_p_NewtonCollision treeCollision, int optimize) {
@@ -8834,8 +8831,8 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonTreeCollisionForEachFace(SWIGTYPE_p_NewtonCollision.getCPtr(treeCollision), SWIGTYPE_p_f_q_const__p_void_q_const__p_q_const__float_int_q_const__p_q_const__int_int__int.getCPtr(forEachFaceCallback), context);
   }
 
-  public static int NewtonTreeCollisionGetVertexListTriangleListInAABB(SWIGTYPE_p_NewtonCollision treeCollision, SWIGTYPE_p_float p0, SWIGTYPE_p_float p1, SWIGTYPE_p_p_float vertexArray, SWIGTYPE_p_int vertexCount, SWIGTYPE_p_int vertexStrideInBytes, SWIGTYPE_p_int indexList, int maxIndexCount, SWIGTYPE_p_int faceAttribute) {
-    int ret = NewtonWrapperPINVOKE.NewtonTreeCollisionGetVertexListTriangleListInAABB(SWIGTYPE_p_NewtonCollision.getCPtr(treeCollision), SWIGTYPE_p_float.getCPtr(p0), SWIGTYPE_p_float.getCPtr(p1), SWIGTYPE_p_p_float.getCPtr(vertexArray), SWIGTYPE_p_int.getCPtr(vertexCount), SWIGTYPE_p_int.getCPtr(vertexStrideInBytes), SWIGTYPE_p_int.getCPtr(indexList), maxIndexCount, SWIGTYPE_p_int.getCPtr(faceAttribute));
+  public static int NewtonTreeCollisionGetVertexListTriangleListInAABB(SWIGTYPE_p_NewtonCollision treeCollision, global::System.IntPtr p0, global::System.IntPtr p1, SWIGTYPE_p_p_float vertexArray, SWIGTYPE_p_int vertexCount, SWIGTYPE_p_int vertexStrideInBytes, SWIGTYPE_p_int indexList, int maxIndexCount, SWIGTYPE_p_int faceAttribute) {
+    int ret = NewtonWrapperPINVOKE.NewtonTreeCollisionGetVertexListTriangleListInAABB(SWIGTYPE_p_NewtonCollision.getCPtr(treeCollision), p0, p1, SWIGTYPE_p_p_float.getCPtr(vertexArray), SWIGTYPE_p_int.getCPtr(vertexCount), SWIGTYPE_p_int.getCPtr(vertexStrideInBytes), SWIGTYPE_p_int.getCPtr(indexList), maxIndexCount, SWIGTYPE_p_int.getCPtr(faceAttribute));
     return ret;
   }
 
@@ -8902,20 +8899,20 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonCollisionSetMatrix(SWIGTYPE_p_NewtonCollision collision, SWIGTYPE_p_float matrix) {
-    NewtonWrapperPINVOKE.NewtonCollisionSetMatrix(SWIGTYPE_p_NewtonCollision.getCPtr(collision), SWIGTYPE_p_float.getCPtr(matrix));
+  public static void NewtonCollisionSetMatrix(SWIGTYPE_p_NewtonCollision collision, global::System.IntPtr matrix) {
+    NewtonWrapperPINVOKE.NewtonCollisionSetMatrix(SWIGTYPE_p_NewtonCollision.getCPtr(collision), matrix);
   }
 
-  public static void NewtonCollisionGetMatrix(SWIGTYPE_p_NewtonCollision collision, SWIGTYPE_p_float matrix) {
-    NewtonWrapperPINVOKE.NewtonCollisionGetMatrix(SWIGTYPE_p_NewtonCollision.getCPtr(collision), SWIGTYPE_p_float.getCPtr(matrix));
+  public static void NewtonCollisionGetMatrix(SWIGTYPE_p_NewtonCollision collision, global::System.IntPtr matrix) {
+    NewtonWrapperPINVOKE.NewtonCollisionGetMatrix(SWIGTYPE_p_NewtonCollision.getCPtr(collision), matrix);
   }
 
   public static void NewtonCollisionSetScale(SWIGTYPE_p_NewtonCollision collision, float scaleX, float scaleY, float scaleZ) {
     NewtonWrapperPINVOKE.NewtonCollisionSetScale(SWIGTYPE_p_NewtonCollision.getCPtr(collision), scaleX, scaleY, scaleZ);
   }
 
-  public static void NewtonCollisionGetScale(SWIGTYPE_p_NewtonCollision collision, SWIGTYPE_p_float scaleX, SWIGTYPE_p_float scaleY, SWIGTYPE_p_float scaleZ) {
-    NewtonWrapperPINVOKE.NewtonCollisionGetScale(SWIGTYPE_p_NewtonCollision.getCPtr(collision), SWIGTYPE_p_float.getCPtr(scaleX), SWIGTYPE_p_float.getCPtr(scaleY), SWIGTYPE_p_float.getCPtr(scaleZ));
+  public static void NewtonCollisionGetScale(SWIGTYPE_p_NewtonCollision collision, global::System.IntPtr scaleX, global::System.IntPtr scaleY, global::System.IntPtr scaleZ) {
+    NewtonWrapperPINVOKE.NewtonCollisionGetScale(SWIGTYPE_p_NewtonCollision.getCPtr(collision), scaleX, scaleY, scaleZ);
   }
 
   public static void NewtonDestroyCollision(SWIGTYPE_p_NewtonCollision collision) {
@@ -8927,46 +8924,46 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static int NewtonCollisionIntersectionTest(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_NewtonCollision collisionA, SWIGTYPE_p_float matrixA, SWIGTYPE_p_NewtonCollision collisionB, SWIGTYPE_p_float matrixB, int threadIndex) {
-    int ret = NewtonWrapperPINVOKE.NewtonCollisionIntersectionTest(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_NewtonCollision.getCPtr(collisionA), SWIGTYPE_p_float.getCPtr(matrixA), SWIGTYPE_p_NewtonCollision.getCPtr(collisionB), SWIGTYPE_p_float.getCPtr(matrixB), threadIndex);
+  public static int NewtonCollisionIntersectionTest(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_NewtonCollision collisionA, global::System.IntPtr matrixA, SWIGTYPE_p_NewtonCollision collisionB, global::System.IntPtr matrixB, int threadIndex) {
+    int ret = NewtonWrapperPINVOKE.NewtonCollisionIntersectionTest(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_NewtonCollision.getCPtr(collisionA), matrixA, SWIGTYPE_p_NewtonCollision.getCPtr(collisionB), matrixB, threadIndex);
     return ret;
   }
 
-  public static int NewtonCollisionPointDistance(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_float point, SWIGTYPE_p_NewtonCollision collision, SWIGTYPE_p_float matrix, SWIGTYPE_p_float contact, SWIGTYPE_p_float normal, int threadIndex) {
-    int ret = NewtonWrapperPINVOKE.NewtonCollisionPointDistance(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_float.getCPtr(point), SWIGTYPE_p_NewtonCollision.getCPtr(collision), SWIGTYPE_p_float.getCPtr(matrix), SWIGTYPE_p_float.getCPtr(contact), SWIGTYPE_p_float.getCPtr(normal), threadIndex);
+  public static int NewtonCollisionPointDistance(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr point, SWIGTYPE_p_NewtonCollision collision, global::System.IntPtr matrix, global::System.IntPtr contact, global::System.IntPtr normal, int threadIndex) {
+    int ret = NewtonWrapperPINVOKE.NewtonCollisionPointDistance(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), point, SWIGTYPE_p_NewtonCollision.getCPtr(collision), matrix, contact, normal, threadIndex);
     return ret;
   }
 
-  public static int NewtonCollisionClosestPoint(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_NewtonCollision collisionA, SWIGTYPE_p_float matrixA, SWIGTYPE_p_NewtonCollision collisionB, SWIGTYPE_p_float matrixB, SWIGTYPE_p_float contactA, SWIGTYPE_p_float contactB, SWIGTYPE_p_float normalAB, int threadIndex) {
-    int ret = NewtonWrapperPINVOKE.NewtonCollisionClosestPoint(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_NewtonCollision.getCPtr(collisionA), SWIGTYPE_p_float.getCPtr(matrixA), SWIGTYPE_p_NewtonCollision.getCPtr(collisionB), SWIGTYPE_p_float.getCPtr(matrixB), SWIGTYPE_p_float.getCPtr(contactA), SWIGTYPE_p_float.getCPtr(contactB), SWIGTYPE_p_float.getCPtr(normalAB), threadIndex);
+  public static int NewtonCollisionClosestPoint(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_NewtonCollision collisionA, global::System.IntPtr matrixA, SWIGTYPE_p_NewtonCollision collisionB, global::System.IntPtr matrixB, global::System.IntPtr contactA, global::System.IntPtr contactB, global::System.IntPtr normalAB, int threadIndex) {
+    int ret = NewtonWrapperPINVOKE.NewtonCollisionClosestPoint(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_NewtonCollision.getCPtr(collisionA), matrixA, SWIGTYPE_p_NewtonCollision.getCPtr(collisionB), matrixB, contactA, contactB, normalAB, threadIndex);
     return ret;
   }
 
-  public static int NewtonCollisionCollide(SWIGTYPE_p_NewtonWorld newtonWorld, int maxSize, SWIGTYPE_p_NewtonCollision collisionA, SWIGTYPE_p_float matrixA, SWIGTYPE_p_NewtonCollision collisionB, SWIGTYPE_p_float matrixB, SWIGTYPE_p_float contacts, SWIGTYPE_p_float normals, SWIGTYPE_p_float penetration, SWIGTYPE_p_long_long attributeA, SWIGTYPE_p_long_long attributeB, int threadIndex) {
-    int ret = NewtonWrapperPINVOKE.NewtonCollisionCollide(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), maxSize, SWIGTYPE_p_NewtonCollision.getCPtr(collisionA), SWIGTYPE_p_float.getCPtr(matrixA), SWIGTYPE_p_NewtonCollision.getCPtr(collisionB), SWIGTYPE_p_float.getCPtr(matrixB), SWIGTYPE_p_float.getCPtr(contacts), SWIGTYPE_p_float.getCPtr(normals), SWIGTYPE_p_float.getCPtr(penetration), SWIGTYPE_p_long_long.getCPtr(attributeA), SWIGTYPE_p_long_long.getCPtr(attributeB), threadIndex);
+  public static int NewtonCollisionCollide(SWIGTYPE_p_NewtonWorld newtonWorld, int maxSize, SWIGTYPE_p_NewtonCollision collisionA, global::System.IntPtr matrixA, SWIGTYPE_p_NewtonCollision collisionB, global::System.IntPtr matrixB, global::System.IntPtr contacts, global::System.IntPtr normals, global::System.IntPtr penetration, SWIGTYPE_p_long_long attributeA, SWIGTYPE_p_long_long attributeB, int threadIndex) {
+    int ret = NewtonWrapperPINVOKE.NewtonCollisionCollide(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), maxSize, SWIGTYPE_p_NewtonCollision.getCPtr(collisionA), matrixA, SWIGTYPE_p_NewtonCollision.getCPtr(collisionB), matrixB, contacts, normals, penetration, SWIGTYPE_p_long_long.getCPtr(attributeA), SWIGTYPE_p_long_long.getCPtr(attributeB), threadIndex);
     return ret;
   }
 
-  public static int NewtonCollisionCollideContinue(SWIGTYPE_p_NewtonWorld newtonWorld, int maxSize, float timestep, SWIGTYPE_p_NewtonCollision collisionA, SWIGTYPE_p_float matrixA, SWIGTYPE_p_float velocA, SWIGTYPE_p_float omegaA, SWIGTYPE_p_NewtonCollision collisionB, SWIGTYPE_p_float matrixB, SWIGTYPE_p_float velocB, SWIGTYPE_p_float omegaB, SWIGTYPE_p_float timeOfImpact, SWIGTYPE_p_float contacts, SWIGTYPE_p_float normals, SWIGTYPE_p_float penetration, SWIGTYPE_p_long_long attributeA, SWIGTYPE_p_long_long attributeB, int threadIndex) {
-    int ret = NewtonWrapperPINVOKE.NewtonCollisionCollideContinue(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), maxSize, timestep, SWIGTYPE_p_NewtonCollision.getCPtr(collisionA), SWIGTYPE_p_float.getCPtr(matrixA), SWIGTYPE_p_float.getCPtr(velocA), SWIGTYPE_p_float.getCPtr(omegaA), SWIGTYPE_p_NewtonCollision.getCPtr(collisionB), SWIGTYPE_p_float.getCPtr(matrixB), SWIGTYPE_p_float.getCPtr(velocB), SWIGTYPE_p_float.getCPtr(omegaB), SWIGTYPE_p_float.getCPtr(timeOfImpact), SWIGTYPE_p_float.getCPtr(contacts), SWIGTYPE_p_float.getCPtr(normals), SWIGTYPE_p_float.getCPtr(penetration), SWIGTYPE_p_long_long.getCPtr(attributeA), SWIGTYPE_p_long_long.getCPtr(attributeB), threadIndex);
+  public static int NewtonCollisionCollideContinue(SWIGTYPE_p_NewtonWorld newtonWorld, int maxSize, float timestep, SWIGTYPE_p_NewtonCollision collisionA, global::System.IntPtr matrixA, global::System.IntPtr velocA, global::System.IntPtr omegaA, SWIGTYPE_p_NewtonCollision collisionB, global::System.IntPtr matrixB, global::System.IntPtr velocB, global::System.IntPtr omegaB, global::System.IntPtr timeOfImpact, global::System.IntPtr contacts, global::System.IntPtr normals, global::System.IntPtr penetration, SWIGTYPE_p_long_long attributeA, SWIGTYPE_p_long_long attributeB, int threadIndex) {
+    int ret = NewtonWrapperPINVOKE.NewtonCollisionCollideContinue(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), maxSize, timestep, SWIGTYPE_p_NewtonCollision.getCPtr(collisionA), matrixA, velocA, omegaA, SWIGTYPE_p_NewtonCollision.getCPtr(collisionB), matrixB, velocB, omegaB, timeOfImpact, contacts, normals, penetration, SWIGTYPE_p_long_long.getCPtr(attributeA), SWIGTYPE_p_long_long.getCPtr(attributeB), threadIndex);
     return ret;
   }
 
-  public static void NewtonCollisionSupportVertex(SWIGTYPE_p_NewtonCollision collision, SWIGTYPE_p_float dir, SWIGTYPE_p_float vertex) {
-    NewtonWrapperPINVOKE.NewtonCollisionSupportVertex(SWIGTYPE_p_NewtonCollision.getCPtr(collision), SWIGTYPE_p_float.getCPtr(dir), SWIGTYPE_p_float.getCPtr(vertex));
+  public static void NewtonCollisionSupportVertex(SWIGTYPE_p_NewtonCollision collision, global::System.IntPtr dir, global::System.IntPtr vertex) {
+    NewtonWrapperPINVOKE.NewtonCollisionSupportVertex(SWIGTYPE_p_NewtonCollision.getCPtr(collision), dir, vertex);
   }
 
-  public static float NewtonCollisionRayCast(SWIGTYPE_p_NewtonCollision collision, SWIGTYPE_p_float p0, SWIGTYPE_p_float p1, SWIGTYPE_p_float normal, SWIGTYPE_p_long_long attribute) {
-    float ret = NewtonWrapperPINVOKE.NewtonCollisionRayCast(SWIGTYPE_p_NewtonCollision.getCPtr(collision), SWIGTYPE_p_float.getCPtr(p0), SWIGTYPE_p_float.getCPtr(p1), SWIGTYPE_p_float.getCPtr(normal), SWIGTYPE_p_long_long.getCPtr(attribute));
+  public static float NewtonCollisionRayCast(SWIGTYPE_p_NewtonCollision collision, global::System.IntPtr p0, global::System.IntPtr p1, global::System.IntPtr normal, SWIGTYPE_p_long_long attribute) {
+    float ret = NewtonWrapperPINVOKE.NewtonCollisionRayCast(SWIGTYPE_p_NewtonCollision.getCPtr(collision), p0, p1, normal, SWIGTYPE_p_long_long.getCPtr(attribute));
     return ret;
   }
 
-  public static void NewtonCollisionCalculateAABB(SWIGTYPE_p_NewtonCollision collision, SWIGTYPE_p_float matrix, SWIGTYPE_p_float p0, SWIGTYPE_p_float p1) {
-    NewtonWrapperPINVOKE.NewtonCollisionCalculateAABB(SWIGTYPE_p_NewtonCollision.getCPtr(collision), SWIGTYPE_p_float.getCPtr(matrix), SWIGTYPE_p_float.getCPtr(p0), SWIGTYPE_p_float.getCPtr(p1));
+  public static void NewtonCollisionCalculateAABB(SWIGTYPE_p_NewtonCollision collision, global::System.IntPtr matrix, global::System.IntPtr p0, global::System.IntPtr p1) {
+    NewtonWrapperPINVOKE.NewtonCollisionCalculateAABB(SWIGTYPE_p_NewtonCollision.getCPtr(collision), matrix, p0, p1);
   }
 
-  public static void NewtonCollisionForEachPolygonDo(SWIGTYPE_p_NewtonCollision collision, SWIGTYPE_p_float matrix, SWIGTYPE_p_f_q_const__p_void_int_q_const__p_q_const__float_int__void callback, global::System.IntPtr userData) {
-    NewtonWrapperPINVOKE.NewtonCollisionForEachPolygonDo(SWIGTYPE_p_NewtonCollision.getCPtr(collision), SWIGTYPE_p_float.getCPtr(matrix), SWIGTYPE_p_f_q_const__p_void_int_q_const__p_q_const__float_int__void.getCPtr(callback), userData);
+  public static void NewtonCollisionForEachPolygonDo(SWIGTYPE_p_NewtonCollision collision, global::System.IntPtr matrix, SWIGTYPE_p_f_q_const__p_void_int_q_const__p_q_const__float_int__void callback, global::System.IntPtr userData) {
+    NewtonWrapperPINVOKE.NewtonCollisionForEachPolygonDo(SWIGTYPE_p_NewtonCollision.getCPtr(collision), matrix, SWIGTYPE_p_f_q_const__p_void_int_q_const__p_q_const__float_int__void.getCPtr(callback), userData);
   }
 
   public static global::System.IntPtr NewtonCollisionAggregateCreate(SWIGTYPE_p_NewtonWorld world) { 
@@ -8995,12 +8992,12 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonCollisionAggregateSetSelfCollision(aggregate, state);
   }
 
-  public static void NewtonSetEulerAngle(SWIGTYPE_p_float eulersAngles, SWIGTYPE_p_float matrix) {
-    NewtonWrapperPINVOKE.NewtonSetEulerAngle(SWIGTYPE_p_float.getCPtr(eulersAngles), SWIGTYPE_p_float.getCPtr(matrix));
+  public static void NewtonSetEulerAngle(global::System.IntPtr eulersAngles, global::System.IntPtr matrix) {
+    NewtonWrapperPINVOKE.NewtonSetEulerAngle(eulersAngles, matrix);
   }
 
-  public static void NewtonGetEulerAngle(SWIGTYPE_p_float matrix, SWIGTYPE_p_float eulersAngles0, SWIGTYPE_p_float eulersAngles1) {
-    NewtonWrapperPINVOKE.NewtonGetEulerAngle(SWIGTYPE_p_float.getCPtr(matrix), SWIGTYPE_p_float.getCPtr(eulersAngles0), SWIGTYPE_p_float.getCPtr(eulersAngles1));
+  public static void NewtonGetEulerAngle(global::System.IntPtr matrix, global::System.IntPtr eulersAngles0, global::System.IntPtr eulersAngles1) {
+    NewtonWrapperPINVOKE.NewtonGetEulerAngle(matrix, eulersAngles0, eulersAngles1);
   }
 
   public static float NewtonCalculateSpringDamperAcceleration(float dt, float ks, float x, float kd, float s) {
@@ -9008,20 +9005,20 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonBody NewtonCreateDynamicBody(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_NewtonCollision collision, SWIGTYPE_p_float matrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateDynamicBody(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_NewtonCollision.getCPtr(collision), SWIGTYPE_p_float.getCPtr(matrix));
+  public static SWIGTYPE_p_NewtonBody NewtonCreateDynamicBody(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_NewtonCollision collision, global::System.IntPtr matrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateDynamicBody(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_NewtonCollision.getCPtr(collision), matrix);
     SWIGTYPE_p_NewtonBody ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonBody(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonBody NewtonCreateKinematicBody(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_NewtonCollision collision, SWIGTYPE_p_float matrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateKinematicBody(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_NewtonCollision.getCPtr(collision), SWIGTYPE_p_float.getCPtr(matrix));
+  public static SWIGTYPE_p_NewtonBody NewtonCreateKinematicBody(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_NewtonCollision collision, global::System.IntPtr matrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateKinematicBody(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_NewtonCollision.getCPtr(collision), matrix);
     SWIGTYPE_p_NewtonBody ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonBody(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonBody NewtonCreateDeformableBody(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_NewtonCollision deformableMesh, SWIGTYPE_p_float matrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateDeformableBody(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_NewtonCollision.getCPtr(deformableMesh), SWIGTYPE_p_float.getCPtr(matrix));
+  public static SWIGTYPE_p_NewtonBody NewtonCreateDeformableBody(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_NewtonCollision deformableMesh, global::System.IntPtr matrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonCreateDeformableBody(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_NewtonCollision.getCPtr(deformableMesh), matrix);
     SWIGTYPE_p_NewtonBody ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonBody(cPtr, false);
     return ret;
   }
@@ -9053,44 +9050,44 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonBodySetCollidable(SWIGTYPE_p_NewtonBody.getCPtr(body), collidableState);
   }
 
-  public static void NewtonBodyAddForce(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float force) {
-    NewtonWrapperPINVOKE.NewtonBodyAddForce(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(force));
+  public static void NewtonBodyAddForce(SWIGTYPE_p_NewtonBody body, global::System.IntPtr force) {
+    NewtonWrapperPINVOKE.NewtonBodyAddForce(SWIGTYPE_p_NewtonBody.getCPtr(body), force);
   }
 
-  public static void NewtonBodyAddTorque(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float torque) {
-    NewtonWrapperPINVOKE.NewtonBodyAddTorque(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(torque));
+  public static void NewtonBodyAddTorque(SWIGTYPE_p_NewtonBody body, global::System.IntPtr torque) {
+    NewtonWrapperPINVOKE.NewtonBodyAddTorque(SWIGTYPE_p_NewtonBody.getCPtr(body), torque);
   }
 
-  public static void NewtonBodyCalculateInverseDynamicsForce(SWIGTYPE_p_NewtonBody body, float timestep, SWIGTYPE_p_float desiredVeloc, SWIGTYPE_p_float forceOut) {
-    NewtonWrapperPINVOKE.NewtonBodyCalculateInverseDynamicsForce(SWIGTYPE_p_NewtonBody.getCPtr(body), timestep, SWIGTYPE_p_float.getCPtr(desiredVeloc), SWIGTYPE_p_float.getCPtr(forceOut));
+  public static void NewtonBodyCalculateInverseDynamicsForce(SWIGTYPE_p_NewtonBody body, float timestep, global::System.IntPtr desiredVeloc, global::System.IntPtr forceOut) {
+    NewtonWrapperPINVOKE.NewtonBodyCalculateInverseDynamicsForce(SWIGTYPE_p_NewtonBody.getCPtr(body), timestep, desiredVeloc, forceOut);
   }
 
-  public static void NewtonBodySetCentreOfMass(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float com) {
-    NewtonWrapperPINVOKE.NewtonBodySetCentreOfMass(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(com));
+  public static void NewtonBodySetCentreOfMass(SWIGTYPE_p_NewtonBody body, global::System.IntPtr com) {
+    NewtonWrapperPINVOKE.NewtonBodySetCentreOfMass(SWIGTYPE_p_NewtonBody.getCPtr(body), com);
   }
 
   public static void NewtonBodySetMassMatrix(SWIGTYPE_p_NewtonBody body, float mass, float Ixx, float Iyy, float Izz) {
     NewtonWrapperPINVOKE.NewtonBodySetMassMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), mass, Ixx, Iyy, Izz);
   }
 
-  public static void NewtonBodySetFullMassMatrix(SWIGTYPE_p_NewtonBody body, float mass, SWIGTYPE_p_float inertiaMatrix) {
-    NewtonWrapperPINVOKE.NewtonBodySetFullMassMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), mass, SWIGTYPE_p_float.getCPtr(inertiaMatrix));
+  public static void NewtonBodySetFullMassMatrix(SWIGTYPE_p_NewtonBody body, float mass, global::System.IntPtr inertiaMatrix) {
+    NewtonWrapperPINVOKE.NewtonBodySetFullMassMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), mass, inertiaMatrix);
   }
 
   public static void NewtonBodySetMassProperties(SWIGTYPE_p_NewtonBody body, float mass, SWIGTYPE_p_NewtonCollision collision) {
     NewtonWrapperPINVOKE.NewtonBodySetMassProperties(SWIGTYPE_p_NewtonBody.getCPtr(body), mass, SWIGTYPE_p_NewtonCollision.getCPtr(collision));
   }
 
-  public static void NewtonBodySetMatrix(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float matrix) {
-    NewtonWrapperPINVOKE.NewtonBodySetMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(matrix));
+  public static void NewtonBodySetMatrix(SWIGTYPE_p_NewtonBody body, global::System.IntPtr matrix) {
+    NewtonWrapperPINVOKE.NewtonBodySetMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), matrix);
   }
 
-  public static void NewtonBodySetMatrixNoSleep(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float matrix) {
-    NewtonWrapperPINVOKE.NewtonBodySetMatrixNoSleep(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(matrix));
+  public static void NewtonBodySetMatrixNoSleep(SWIGTYPE_p_NewtonBody body, global::System.IntPtr matrix) {
+    NewtonWrapperPINVOKE.NewtonBodySetMatrixNoSleep(SWIGTYPE_p_NewtonBody.getCPtr(body), matrix);
   }
 
-  public static void NewtonBodySetMatrixRecursive(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float matrix) {
-    NewtonWrapperPINVOKE.NewtonBodySetMatrixRecursive(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(matrix));
+  public static void NewtonBodySetMatrixRecursive(SWIGTYPE_p_NewtonBody body, global::System.IntPtr matrix) {
+    NewtonWrapperPINVOKE.NewtonBodySetMatrixRecursive(SWIGTYPE_p_NewtonBody.getCPtr(body), matrix);
   }
 
   public static void NewtonBodySetMaterialGroupID(SWIGTYPE_p_NewtonBody body, int id) {
@@ -9105,36 +9102,36 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonBodySetJointRecursiveCollision(SWIGTYPE_p_NewtonBody.getCPtr(body), state);
   }
 
-  public static void NewtonBodySetOmega(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float omega) {
-    NewtonWrapperPINVOKE.NewtonBodySetOmega(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(omega));
+  public static void NewtonBodySetOmega(SWIGTYPE_p_NewtonBody body, global::System.IntPtr omega) {
+    NewtonWrapperPINVOKE.NewtonBodySetOmega(SWIGTYPE_p_NewtonBody.getCPtr(body), omega);
   }
 
-  public static void NewtonBodySetOmegaNoSleep(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float omega) {
-    NewtonWrapperPINVOKE.NewtonBodySetOmegaNoSleep(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(omega));
+  public static void NewtonBodySetOmegaNoSleep(SWIGTYPE_p_NewtonBody body, global::System.IntPtr omega) {
+    NewtonWrapperPINVOKE.NewtonBodySetOmegaNoSleep(SWIGTYPE_p_NewtonBody.getCPtr(body), omega);
   }
 
-  public static void NewtonBodySetVelocity(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float velocity) {
-    NewtonWrapperPINVOKE.NewtonBodySetVelocity(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(velocity));
+  public static void NewtonBodySetVelocity(SWIGTYPE_p_NewtonBody body, global::System.IntPtr velocity) {
+    NewtonWrapperPINVOKE.NewtonBodySetVelocity(SWIGTYPE_p_NewtonBody.getCPtr(body), velocity);
   }
 
-  public static void NewtonBodySetVelocityNoSleep(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float velocity) {
-    NewtonWrapperPINVOKE.NewtonBodySetVelocityNoSleep(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(velocity));
+  public static void NewtonBodySetVelocityNoSleep(SWIGTYPE_p_NewtonBody body, global::System.IntPtr velocity) {
+    NewtonWrapperPINVOKE.NewtonBodySetVelocityNoSleep(SWIGTYPE_p_NewtonBody.getCPtr(body), velocity);
   }
 
-  public static void NewtonBodySetForce(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float force) {
-    NewtonWrapperPINVOKE.NewtonBodySetForce(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(force));
+  public static void NewtonBodySetForce(SWIGTYPE_p_NewtonBody body, global::System.IntPtr force) {
+    NewtonWrapperPINVOKE.NewtonBodySetForce(SWIGTYPE_p_NewtonBody.getCPtr(body), force);
   }
 
-  public static void NewtonBodySetTorque(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float torque) {
-    NewtonWrapperPINVOKE.NewtonBodySetTorque(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(torque));
+  public static void NewtonBodySetTorque(SWIGTYPE_p_NewtonBody body, global::System.IntPtr torque) {
+    NewtonWrapperPINVOKE.NewtonBodySetTorque(SWIGTYPE_p_NewtonBody.getCPtr(body), torque);
   }
 
   public static void NewtonBodySetLinearDamping(SWIGTYPE_p_NewtonBody body, float linearDamp) {
     NewtonWrapperPINVOKE.NewtonBodySetLinearDamping(SWIGTYPE_p_NewtonBody.getCPtr(body), linearDamp);
   }
 
-  public static void NewtonBodySetAngularDamping(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float angularDamp) {
-    NewtonWrapperPINVOKE.NewtonBodySetAngularDamping(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(angularDamp));
+  public static void NewtonBodySetAngularDamping(SWIGTYPE_p_NewtonBody body, global::System.IntPtr angularDamp) {
+    NewtonWrapperPINVOKE.NewtonBodySetAngularDamping(SWIGTYPE_p_NewtonBody.getCPtr(body), angularDamp);
   }
 
   public static void NewtonBodySetCollision(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_NewtonCollision collision) {
@@ -9252,76 +9249,76 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonBodyGetPosition(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float pos) {
-    NewtonWrapperPINVOKE.NewtonBodyGetPosition(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(pos));
+  public static void NewtonBodyGetPosition(SWIGTYPE_p_NewtonBody body, global::System.IntPtr pos) {
+    NewtonWrapperPINVOKE.NewtonBodyGetPosition(SWIGTYPE_p_NewtonBody.getCPtr(body), pos);
   }
 
-  public static void NewtonBodyGetMatrix(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float matrix) {
-    NewtonWrapperPINVOKE.NewtonBodyGetMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(matrix));
+  public static void NewtonBodyGetMatrix(SWIGTYPE_p_NewtonBody body, global::System.IntPtr matrix) {
+    NewtonWrapperPINVOKE.NewtonBodyGetMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), matrix);
   }
 
-  public static void NewtonBodyGetRotation(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float rotation) {
-    NewtonWrapperPINVOKE.NewtonBodyGetRotation(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(rotation));
+  public static void NewtonBodyGetRotation(SWIGTYPE_p_NewtonBody body, global::System.IntPtr rotation) {
+    NewtonWrapperPINVOKE.NewtonBodyGetRotation(SWIGTYPE_p_NewtonBody.getCPtr(body), rotation);
   }
 
-  public static void NewtonBodyGetMassMatrix(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float mass, SWIGTYPE_p_float Ixx, SWIGTYPE_p_float Iyy, SWIGTYPE_p_float Izz) {
-    NewtonWrapperPINVOKE.NewtonBodyGetMassMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(mass), SWIGTYPE_p_float.getCPtr(Ixx), SWIGTYPE_p_float.getCPtr(Iyy), SWIGTYPE_p_float.getCPtr(Izz));
+  public static void NewtonBodyGetMassMatrix(SWIGTYPE_p_NewtonBody body, global::System.IntPtr mass, global::System.IntPtr Ixx, global::System.IntPtr Iyy, global::System.IntPtr Izz) {
+    NewtonWrapperPINVOKE.NewtonBodyGetMassMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), mass, Ixx, Iyy, Izz);
   }
 
-  public static void NewtonBodyGetInvMass(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float invMass, SWIGTYPE_p_float invIxx, SWIGTYPE_p_float invIyy, SWIGTYPE_p_float invIzz) {
-    NewtonWrapperPINVOKE.NewtonBodyGetInvMass(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(invMass), SWIGTYPE_p_float.getCPtr(invIxx), SWIGTYPE_p_float.getCPtr(invIyy), SWIGTYPE_p_float.getCPtr(invIzz));
+  public static void NewtonBodyGetInvMass(SWIGTYPE_p_NewtonBody body, global::System.IntPtr invMass, global::System.IntPtr invIxx, global::System.IntPtr invIyy, global::System.IntPtr invIzz) {
+    NewtonWrapperPINVOKE.NewtonBodyGetInvMass(SWIGTYPE_p_NewtonBody.getCPtr(body), invMass, invIxx, invIyy, invIzz);
   }
 
-  public static void NewtonBodyGetInertiaMatrix(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float inertiaMatrix) {
-    NewtonWrapperPINVOKE.NewtonBodyGetInertiaMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(inertiaMatrix));
+  public static void NewtonBodyGetInertiaMatrix(SWIGTYPE_p_NewtonBody body, global::System.IntPtr inertiaMatrix) {
+    NewtonWrapperPINVOKE.NewtonBodyGetInertiaMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), inertiaMatrix);
   }
 
-  public static void NewtonBodyGetInvInertiaMatrix(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float invInertiaMatrix) {
-    NewtonWrapperPINVOKE.NewtonBodyGetInvInertiaMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(invInertiaMatrix));
+  public static void NewtonBodyGetInvInertiaMatrix(SWIGTYPE_p_NewtonBody body, global::System.IntPtr invInertiaMatrix) {
+    NewtonWrapperPINVOKE.NewtonBodyGetInvInertiaMatrix(SWIGTYPE_p_NewtonBody.getCPtr(body), invInertiaMatrix);
   }
 
-  public static void NewtonBodyGetOmega(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float vector) {
-    NewtonWrapperPINVOKE.NewtonBodyGetOmega(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(vector));
+  public static void NewtonBodyGetOmega(SWIGTYPE_p_NewtonBody body, global::System.IntPtr vector) {
+    NewtonWrapperPINVOKE.NewtonBodyGetOmega(SWIGTYPE_p_NewtonBody.getCPtr(body), vector);
   }
 
-  public static void NewtonBodyGetVelocity(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float vector) {
-    NewtonWrapperPINVOKE.NewtonBodyGetVelocity(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(vector));
+  public static void NewtonBodyGetVelocity(SWIGTYPE_p_NewtonBody body, global::System.IntPtr vector) {
+    NewtonWrapperPINVOKE.NewtonBodyGetVelocity(SWIGTYPE_p_NewtonBody.getCPtr(body), vector);
   }
 
-  public static void NewtonBodyGetForce(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float vector) {
-    NewtonWrapperPINVOKE.NewtonBodyGetForce(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(vector));
+  public static void NewtonBodyGetForce(SWIGTYPE_p_NewtonBody body, global::System.IntPtr vector) {
+    NewtonWrapperPINVOKE.NewtonBodyGetForce(SWIGTYPE_p_NewtonBody.getCPtr(body), vector);
   }
 
-  public static void NewtonBodyGetTorque(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float vector) {
-    NewtonWrapperPINVOKE.NewtonBodyGetTorque(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(vector));
+  public static void NewtonBodyGetTorque(SWIGTYPE_p_NewtonBody body, global::System.IntPtr vector) {
+    NewtonWrapperPINVOKE.NewtonBodyGetTorque(SWIGTYPE_p_NewtonBody.getCPtr(body), vector);
   }
 
-  public static void NewtonBodyGetForceAcc(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float vector) {
-    NewtonWrapperPINVOKE.NewtonBodyGetForceAcc(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(vector));
+  public static void NewtonBodyGetForceAcc(SWIGTYPE_p_NewtonBody body, global::System.IntPtr vector) {
+    NewtonWrapperPINVOKE.NewtonBodyGetForceAcc(SWIGTYPE_p_NewtonBody.getCPtr(body), vector);
   }
 
-  public static void NewtonBodyGetTorqueAcc(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float vector) {
-    NewtonWrapperPINVOKE.NewtonBodyGetTorqueAcc(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(vector));
+  public static void NewtonBodyGetTorqueAcc(SWIGTYPE_p_NewtonBody body, global::System.IntPtr vector) {
+    NewtonWrapperPINVOKE.NewtonBodyGetTorqueAcc(SWIGTYPE_p_NewtonBody.getCPtr(body), vector);
   }
 
-  public static void NewtonBodyGetCentreOfMass(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float com) {
-    NewtonWrapperPINVOKE.NewtonBodyGetCentreOfMass(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(com));
+  public static void NewtonBodyGetCentreOfMass(SWIGTYPE_p_NewtonBody body, global::System.IntPtr com) {
+    NewtonWrapperPINVOKE.NewtonBodyGetCentreOfMass(SWIGTYPE_p_NewtonBody.getCPtr(body), com);
   }
 
-  public static void NewtonBodyGetPointVelocity(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float point, SWIGTYPE_p_float velocOut) {
-    NewtonWrapperPINVOKE.NewtonBodyGetPointVelocity(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(point), SWIGTYPE_p_float.getCPtr(velocOut));
+  public static void NewtonBodyGetPointVelocity(SWIGTYPE_p_NewtonBody body, global::System.IntPtr point, global::System.IntPtr velocOut) {
+    NewtonWrapperPINVOKE.NewtonBodyGetPointVelocity(SWIGTYPE_p_NewtonBody.getCPtr(body), point, velocOut);
   }
 
-  public static void NewtonBodyAddImpulse(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float pointDeltaVeloc, SWIGTYPE_p_float pointPosit) {
-    NewtonWrapperPINVOKE.NewtonBodyAddImpulse(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(pointDeltaVeloc), SWIGTYPE_p_float.getCPtr(pointPosit));
+  public static void NewtonBodyAddImpulse(SWIGTYPE_p_NewtonBody body, global::System.IntPtr pointDeltaVeloc, global::System.IntPtr pointPosit) {
+    NewtonWrapperPINVOKE.NewtonBodyAddImpulse(SWIGTYPE_p_NewtonBody.getCPtr(body), pointDeltaVeloc, pointPosit);
   }
 
-  public static void NewtonBodyApplyImpulseArray(SWIGTYPE_p_NewtonBody body, int impuleCount, int strideInByte, SWIGTYPE_p_float impulseArray, SWIGTYPE_p_float pointArray) {
-    NewtonWrapperPINVOKE.NewtonBodyApplyImpulseArray(SWIGTYPE_p_NewtonBody.getCPtr(body), impuleCount, strideInByte, SWIGTYPE_p_float.getCPtr(impulseArray), SWIGTYPE_p_float.getCPtr(pointArray));
+  public static void NewtonBodyApplyImpulseArray(SWIGTYPE_p_NewtonBody body, int impuleCount, int strideInByte, global::System.IntPtr impulseArray, global::System.IntPtr pointArray) {
+    NewtonWrapperPINVOKE.NewtonBodyApplyImpulseArray(SWIGTYPE_p_NewtonBody.getCPtr(body), impuleCount, strideInByte, impulseArray, pointArray);
   }
 
-  public static void NewtonBodyApplyImpulsePair(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float linearImpulse, SWIGTYPE_p_float angularImpulse) {
-    NewtonWrapperPINVOKE.NewtonBodyApplyImpulsePair(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(linearImpulse), SWIGTYPE_p_float.getCPtr(angularImpulse));
+  public static void NewtonBodyApplyImpulsePair(SWIGTYPE_p_NewtonBody body, global::System.IntPtr linearImpulse, global::System.IntPtr angularImpulse) {
+    NewtonWrapperPINVOKE.NewtonBodyApplyImpulsePair(SWIGTYPE_p_NewtonBody.getCPtr(body), linearImpulse, angularImpulse);
   }
 
   public static void NewtonBodyIntegrateVelocity(SWIGTYPE_p_NewtonBody body, float timestep) {
@@ -9333,12 +9330,12 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonBodyGetAngularDamping(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float vector) {
-    NewtonWrapperPINVOKE.NewtonBodyGetAngularDamping(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(vector));
+  public static void NewtonBodyGetAngularDamping(SWIGTYPE_p_NewtonBody body, global::System.IntPtr vector) {
+    NewtonWrapperPINVOKE.NewtonBodyGetAngularDamping(SWIGTYPE_p_NewtonBody.getCPtr(body), vector);
   }
 
-  public static void NewtonBodyGetAABB(SWIGTYPE_p_NewtonBody body, SWIGTYPE_p_float p0, SWIGTYPE_p_float p1) {
-    NewtonWrapperPINVOKE.NewtonBodyGetAABB(SWIGTYPE_p_NewtonBody.getCPtr(body), SWIGTYPE_p_float.getCPtr(p0), SWIGTYPE_p_float.getCPtr(p1));
+  public static void NewtonBodyGetAABB(SWIGTYPE_p_NewtonBody body, global::System.IntPtr p0, global::System.IntPtr p1) {
+    NewtonWrapperPINVOKE.NewtonBodyGetAABB(SWIGTYPE_p_NewtonBody.getCPtr(body), p0, p1);
   }
 
   public static SWIGTYPE_p_NewtonJoint NewtonBodyGetFirstJoint(SWIGTYPE_p_NewtonBody body) {
@@ -9504,8 +9501,8 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonDeformableMeshGetParticlePosition(SWIGTYPE_p_NewtonCollision deformableMesh, int particleIndex, SWIGTYPE_p_float posit) {
-    NewtonWrapperPINVOKE.NewtonDeformableMeshGetParticlePosition(SWIGTYPE_p_NewtonCollision.getCPtr(deformableMesh), particleIndex, SWIGTYPE_p_float.getCPtr(posit));
+  public static void NewtonDeformableMeshGetParticlePosition(SWIGTYPE_p_NewtonCollision deformableMesh, int particleIndex, global::System.IntPtr posit) {
+    NewtonWrapperPINVOKE.NewtonDeformableMeshGetParticlePosition(SWIGTYPE_p_NewtonCollision.getCPtr(deformableMesh), particleIndex, posit);
   }
 
   public static void NewtonDeformableMeshBeginConfiguration(SWIGTYPE_p_NewtonCollision deformableMesh) {
@@ -9516,8 +9513,8 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonDeformableMeshUnconstraintParticle(SWIGTYPE_p_NewtonCollision.getCPtr(deformableMesh), particleIndex);
   }
 
-  public static void NewtonDeformableMeshConstraintParticle(SWIGTYPE_p_NewtonCollision deformableMesh, int particleIndex, SWIGTYPE_p_float posit, SWIGTYPE_p_NewtonBody body) {
-    NewtonWrapperPINVOKE.NewtonDeformableMeshConstraintParticle(SWIGTYPE_p_NewtonCollision.getCPtr(deformableMesh), particleIndex, SWIGTYPE_p_float.getCPtr(posit), SWIGTYPE_p_NewtonBody.getCPtr(body));
+  public static void NewtonDeformableMeshConstraintParticle(SWIGTYPE_p_NewtonCollision deformableMesh, int particleIndex, global::System.IntPtr posit, SWIGTYPE_p_NewtonBody body) {
+    NewtonWrapperPINVOKE.NewtonDeformableMeshConstraintParticle(SWIGTYPE_p_NewtonCollision.getCPtr(deformableMesh), particleIndex, posit, SWIGTYPE_p_NewtonBody.getCPtr(body));
   }
 
   public static void NewtonDeformableMeshEndConfiguration(SWIGTYPE_p_NewtonCollision deformableMesh) {
@@ -9537,8 +9534,8 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonDeformableMeshGetVertexStreams(SWIGTYPE_p_NewtonCollision deformableMesh, int vertexStrideInByte, SWIGTYPE_p_float vertex, int normalStrideInByte, SWIGTYPE_p_float normal, int uvStrideInByte0, SWIGTYPE_p_float uv0) {
-    NewtonWrapperPINVOKE.NewtonDeformableMeshGetVertexStreams(SWIGTYPE_p_NewtonCollision.getCPtr(deformableMesh), vertexStrideInByte, SWIGTYPE_p_float.getCPtr(vertex), normalStrideInByte, SWIGTYPE_p_float.getCPtr(normal), uvStrideInByte0, SWIGTYPE_p_float.getCPtr(uv0));
+  public static void NewtonDeformableMeshGetVertexStreams(SWIGTYPE_p_NewtonCollision deformableMesh, int vertexStrideInByte, global::System.IntPtr vertex, int normalStrideInByte, global::System.IntPtr normal, int uvStrideInByte0, global::System.IntPtr uv0) {
+    NewtonWrapperPINVOKE.NewtonDeformableMeshGetVertexStreams(SWIGTYPE_p_NewtonCollision.getCPtr(deformableMesh), vertexStrideInByte, vertex, normalStrideInByte, normal, uvStrideInByte0, uv0);
   }
 
   public static SWIGTYPE_p_NewtonDeformableMeshSegment NewtonDeformableMeshGetFirstSegment(SWIGTYPE_p_NewtonCollision deformableMesh) {
@@ -9569,8 +9566,8 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateBall(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_float pivotPoint, SWIGTYPE_p_NewtonBody childBody, SWIGTYPE_p_NewtonBody parentBody) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConstraintCreateBall(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_float.getCPtr(pivotPoint), SWIGTYPE_p_NewtonBody.getCPtr(childBody), SWIGTYPE_p_NewtonBody.getCPtr(parentBody));
+  public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateBall(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr pivotPoint, SWIGTYPE_p_NewtonBody childBody, SWIGTYPE_p_NewtonBody parentBody) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConstraintCreateBall(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), pivotPoint, SWIGTYPE_p_NewtonBody.getCPtr(childBody), SWIGTYPE_p_NewtonBody.getCPtr(parentBody));
     SWIGTYPE_p_NewtonJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonJoint(cPtr, false);
     return ret;
   }
@@ -9579,24 +9576,24 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonBallSetUserCallback(SWIGTYPE_p_NewtonJoint.getCPtr(ball), SWIGTYPE_p_f_q_const__p_q_const__NewtonJoint_float__void.getCPtr(callback));
   }
 
-  public static void NewtonBallGetJointAngle(SWIGTYPE_p_NewtonJoint ball, SWIGTYPE_p_float angle) {
-    NewtonWrapperPINVOKE.NewtonBallGetJointAngle(SWIGTYPE_p_NewtonJoint.getCPtr(ball), SWIGTYPE_p_float.getCPtr(angle));
+  public static void NewtonBallGetJointAngle(SWIGTYPE_p_NewtonJoint ball, global::System.IntPtr angle) {
+    NewtonWrapperPINVOKE.NewtonBallGetJointAngle(SWIGTYPE_p_NewtonJoint.getCPtr(ball), angle);
   }
 
-  public static void NewtonBallGetJointOmega(SWIGTYPE_p_NewtonJoint ball, SWIGTYPE_p_float omega) {
-    NewtonWrapperPINVOKE.NewtonBallGetJointOmega(SWIGTYPE_p_NewtonJoint.getCPtr(ball), SWIGTYPE_p_float.getCPtr(omega));
+  public static void NewtonBallGetJointOmega(SWIGTYPE_p_NewtonJoint ball, global::System.IntPtr omega) {
+    NewtonWrapperPINVOKE.NewtonBallGetJointOmega(SWIGTYPE_p_NewtonJoint.getCPtr(ball), omega);
   }
 
-  public static void NewtonBallGetJointForce(SWIGTYPE_p_NewtonJoint ball, SWIGTYPE_p_float force) {
-    NewtonWrapperPINVOKE.NewtonBallGetJointForce(SWIGTYPE_p_NewtonJoint.getCPtr(ball), SWIGTYPE_p_float.getCPtr(force));
+  public static void NewtonBallGetJointForce(SWIGTYPE_p_NewtonJoint ball, global::System.IntPtr force) {
+    NewtonWrapperPINVOKE.NewtonBallGetJointForce(SWIGTYPE_p_NewtonJoint.getCPtr(ball), force);
   }
 
-  public static void NewtonBallSetConeLimits(SWIGTYPE_p_NewtonJoint ball, SWIGTYPE_p_float pin, float maxConeAngle, float maxTwistAngle) {
-    NewtonWrapperPINVOKE.NewtonBallSetConeLimits(SWIGTYPE_p_NewtonJoint.getCPtr(ball), SWIGTYPE_p_float.getCPtr(pin), maxConeAngle, maxTwistAngle);
+  public static void NewtonBallSetConeLimits(SWIGTYPE_p_NewtonJoint ball, global::System.IntPtr pin, float maxConeAngle, float maxTwistAngle) {
+    NewtonWrapperPINVOKE.NewtonBallSetConeLimits(SWIGTYPE_p_NewtonJoint.getCPtr(ball), pin, maxConeAngle, maxTwistAngle);
   }
 
-  public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateHinge(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_float pivotPoint, SWIGTYPE_p_float pinDir, SWIGTYPE_p_NewtonBody childBody, SWIGTYPE_p_NewtonBody parentBody) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConstraintCreateHinge(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_float.getCPtr(pivotPoint), SWIGTYPE_p_float.getCPtr(pinDir), SWIGTYPE_p_NewtonBody.getCPtr(childBody), SWIGTYPE_p_NewtonBody.getCPtr(parentBody));
+  public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateHinge(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr pivotPoint, global::System.IntPtr pinDir, SWIGTYPE_p_NewtonBody childBody, SWIGTYPE_p_NewtonBody parentBody) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConstraintCreateHinge(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), pivotPoint, pinDir, SWIGTYPE_p_NewtonBody.getCPtr(childBody), SWIGTYPE_p_NewtonBody.getCPtr(parentBody));
     SWIGTYPE_p_NewtonJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonJoint(cPtr, false);
     return ret;
   }
@@ -9615,8 +9612,8 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonHingeGetJointForce(SWIGTYPE_p_NewtonJoint hinge, SWIGTYPE_p_float force) {
-    NewtonWrapperPINVOKE.NewtonHingeGetJointForce(SWIGTYPE_p_NewtonJoint.getCPtr(hinge), SWIGTYPE_p_float.getCPtr(force));
+  public static void NewtonHingeGetJointForce(SWIGTYPE_p_NewtonJoint hinge, global::System.IntPtr force) {
+    NewtonWrapperPINVOKE.NewtonHingeGetJointForce(SWIGTYPE_p_NewtonJoint.getCPtr(hinge), force);
   }
 
   public static float NewtonHingeCalculateStopAlpha(SWIGTYPE_p_NewtonJoint hinge, NewtonHingeSliderUpdateDesc desc, float angle) {
@@ -9624,8 +9621,8 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateSlider(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_float pivotPoint, SWIGTYPE_p_float pinDir, SWIGTYPE_p_NewtonBody childBody, SWIGTYPE_p_NewtonBody parentBody) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConstraintCreateSlider(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_float.getCPtr(pivotPoint), SWIGTYPE_p_float.getCPtr(pinDir), SWIGTYPE_p_NewtonBody.getCPtr(childBody), SWIGTYPE_p_NewtonBody.getCPtr(parentBody));
+  public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateSlider(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr pivotPoint, global::System.IntPtr pinDir, SWIGTYPE_p_NewtonBody childBody, SWIGTYPE_p_NewtonBody parentBody) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConstraintCreateSlider(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), pivotPoint, pinDir, SWIGTYPE_p_NewtonBody.getCPtr(childBody), SWIGTYPE_p_NewtonBody.getCPtr(parentBody));
     SWIGTYPE_p_NewtonJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonJoint(cPtr, false);
     return ret;
   }
@@ -9644,8 +9641,8 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonSliderGetJointForce(SWIGTYPE_p_NewtonJoint slider, SWIGTYPE_p_float force) {
-    NewtonWrapperPINVOKE.NewtonSliderGetJointForce(SWIGTYPE_p_NewtonJoint.getCPtr(slider), SWIGTYPE_p_float.getCPtr(force));
+  public static void NewtonSliderGetJointForce(SWIGTYPE_p_NewtonJoint slider, global::System.IntPtr force) {
+    NewtonWrapperPINVOKE.NewtonSliderGetJointForce(SWIGTYPE_p_NewtonJoint.getCPtr(slider), force);
   }
 
   public static float NewtonSliderCalculateStopAccel(SWIGTYPE_p_NewtonJoint slider, NewtonHingeSliderUpdateDesc desc, float position) {
@@ -9653,8 +9650,8 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateCorkscrew(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_float pivotPoint, SWIGTYPE_p_float pinDir, SWIGTYPE_p_NewtonBody childBody, SWIGTYPE_p_NewtonBody parentBody) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConstraintCreateCorkscrew(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_float.getCPtr(pivotPoint), SWIGTYPE_p_float.getCPtr(pinDir), SWIGTYPE_p_NewtonBody.getCPtr(childBody), SWIGTYPE_p_NewtonBody.getCPtr(parentBody));
+  public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateCorkscrew(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr pivotPoint, global::System.IntPtr pinDir, SWIGTYPE_p_NewtonBody childBody, SWIGTYPE_p_NewtonBody parentBody) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConstraintCreateCorkscrew(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), pivotPoint, pinDir, SWIGTYPE_p_NewtonBody.getCPtr(childBody), SWIGTYPE_p_NewtonBody.getCPtr(parentBody));
     SWIGTYPE_p_NewtonJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonJoint(cPtr, false);
     return ret;
   }
@@ -9683,8 +9680,8 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonCorkscrewGetJointForce(SWIGTYPE_p_NewtonJoint corkscrew, SWIGTYPE_p_float force) {
-    NewtonWrapperPINVOKE.NewtonCorkscrewGetJointForce(SWIGTYPE_p_NewtonJoint.getCPtr(corkscrew), SWIGTYPE_p_float.getCPtr(force));
+  public static void NewtonCorkscrewGetJointForce(SWIGTYPE_p_NewtonJoint corkscrew, global::System.IntPtr force) {
+    NewtonWrapperPINVOKE.NewtonCorkscrewGetJointForce(SWIGTYPE_p_NewtonJoint.getCPtr(corkscrew), force);
   }
 
   public static float NewtonCorkscrewCalculateStopAlpha(SWIGTYPE_p_NewtonJoint corkscrew, NewtonHingeSliderUpdateDesc desc, float angle) {
@@ -9697,8 +9694,8 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateUniversal(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_float pivotPoint, SWIGTYPE_p_float pinDir0, SWIGTYPE_p_float pinDir1, SWIGTYPE_p_NewtonBody childBody, SWIGTYPE_p_NewtonBody parentBody) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConstraintCreateUniversal(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_float.getCPtr(pivotPoint), SWIGTYPE_p_float.getCPtr(pinDir0), SWIGTYPE_p_float.getCPtr(pinDir1), SWIGTYPE_p_NewtonBody.getCPtr(childBody), SWIGTYPE_p_NewtonBody.getCPtr(parentBody));
+  public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateUniversal(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr pivotPoint, global::System.IntPtr pinDir0, global::System.IntPtr pinDir1, SWIGTYPE_p_NewtonBody childBody, SWIGTYPE_p_NewtonBody parentBody) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConstraintCreateUniversal(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), pivotPoint, pinDir0, pinDir1, SWIGTYPE_p_NewtonBody.getCPtr(childBody), SWIGTYPE_p_NewtonBody.getCPtr(parentBody));
     SWIGTYPE_p_NewtonJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonJoint(cPtr, false);
     return ret;
   }
@@ -9727,8 +9724,8 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonUniversalGetJointForce(SWIGTYPE_p_NewtonJoint universal, SWIGTYPE_p_float force) {
-    NewtonWrapperPINVOKE.NewtonUniversalGetJointForce(SWIGTYPE_p_NewtonJoint.getCPtr(universal), SWIGTYPE_p_float.getCPtr(force));
+  public static void NewtonUniversalGetJointForce(SWIGTYPE_p_NewtonJoint universal, global::System.IntPtr force) {
+    NewtonWrapperPINVOKE.NewtonUniversalGetJointForce(SWIGTYPE_p_NewtonJoint.getCPtr(universal), force);
   }
 
   public static float NewtonUniversalCalculateStopAlpha0(SWIGTYPE_p_NewtonJoint universal, NewtonHingeSliderUpdateDesc desc, float angle) {
@@ -9741,18 +9738,18 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateUpVector(SWIGTYPE_p_NewtonWorld newtonWorld, SWIGTYPE_p_float pinDir, SWIGTYPE_p_NewtonBody body) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConstraintCreateUpVector(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), SWIGTYPE_p_float.getCPtr(pinDir), SWIGTYPE_p_NewtonBody.getCPtr(body));
+  public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateUpVector(SWIGTYPE_p_NewtonWorld newtonWorld, global::System.IntPtr pinDir, SWIGTYPE_p_NewtonBody body) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonConstraintCreateUpVector(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), pinDir, SWIGTYPE_p_NewtonBody.getCPtr(body));
     SWIGTYPE_p_NewtonJoint ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonJoint(cPtr, false);
     return ret;
   }
 
-  public static void NewtonUpVectorGetPin(SWIGTYPE_p_NewtonJoint upVector, SWIGTYPE_p_float pin) {
-    NewtonWrapperPINVOKE.NewtonUpVectorGetPin(SWIGTYPE_p_NewtonJoint.getCPtr(upVector), SWIGTYPE_p_float.getCPtr(pin));
+  public static void NewtonUpVectorGetPin(SWIGTYPE_p_NewtonJoint upVector, global::System.IntPtr pin) {
+    NewtonWrapperPINVOKE.NewtonUpVectorGetPin(SWIGTYPE_p_NewtonJoint.getCPtr(upVector), pin);
   }
 
-  public static void NewtonUpVectorSetPin(SWIGTYPE_p_NewtonJoint upVector, SWIGTYPE_p_float pin) {
-    NewtonWrapperPINVOKE.NewtonUpVectorSetPin(SWIGTYPE_p_NewtonJoint.getCPtr(upVector), SWIGTYPE_p_float.getCPtr(pin));
+  public static void NewtonUpVectorSetPin(SWIGTYPE_p_NewtonJoint upVector, global::System.IntPtr pin) {
+    NewtonWrapperPINVOKE.NewtonUpVectorSetPin(SWIGTYPE_p_NewtonJoint.getCPtr(upVector), pin);
   }
 
   public static SWIGTYPE_p_NewtonJoint NewtonConstraintCreateUserJoint(SWIGTYPE_p_NewtonWorld newtonWorld, int maxDOF, SWIGTYPE_p_f_q_const__p_q_const__NewtonJoint_float_int__void callback, SWIGTYPE_p_f_q_const__p_q_const__NewtonJoint_q_const__p_NewtonJointRecord__void getInfo, SWIGTYPE_p_NewtonBody childBody, SWIGTYPE_p_NewtonBody parentBody) {
@@ -9765,16 +9762,16 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonUserJointSetFeedbackCollectorCallback(SWIGTYPE_p_NewtonJoint.getCPtr(joint), SWIGTYPE_p_f_q_const__p_q_const__NewtonJoint_float_int__void.getCPtr(getFeedback));
   }
 
-  public static void NewtonUserJointAddLinearRow(SWIGTYPE_p_NewtonJoint joint, SWIGTYPE_p_float pivot0, SWIGTYPE_p_float pivot1, SWIGTYPE_p_float dir) {
-    NewtonWrapperPINVOKE.NewtonUserJointAddLinearRow(SWIGTYPE_p_NewtonJoint.getCPtr(joint), SWIGTYPE_p_float.getCPtr(pivot0), SWIGTYPE_p_float.getCPtr(pivot1), SWIGTYPE_p_float.getCPtr(dir));
+  public static void NewtonUserJointAddLinearRow(SWIGTYPE_p_NewtonJoint joint, global::System.IntPtr pivot0, global::System.IntPtr pivot1, global::System.IntPtr dir) {
+    NewtonWrapperPINVOKE.NewtonUserJointAddLinearRow(SWIGTYPE_p_NewtonJoint.getCPtr(joint), pivot0, pivot1, dir);
   }
 
-  public static void NewtonUserJointAddAngularRow(SWIGTYPE_p_NewtonJoint joint, float relativeAngle, SWIGTYPE_p_float dir) {
-    NewtonWrapperPINVOKE.NewtonUserJointAddAngularRow(SWIGTYPE_p_NewtonJoint.getCPtr(joint), relativeAngle, SWIGTYPE_p_float.getCPtr(dir));
+  public static void NewtonUserJointAddAngularRow(SWIGTYPE_p_NewtonJoint joint, float relativeAngle, global::System.IntPtr dir) {
+    NewtonWrapperPINVOKE.NewtonUserJointAddAngularRow(SWIGTYPE_p_NewtonJoint.getCPtr(joint), relativeAngle, dir);
   }
 
-  public static void NewtonUserJointAddGeneralRow(SWIGTYPE_p_NewtonJoint joint, SWIGTYPE_p_float jacobian0, SWIGTYPE_p_float jacobian1) {
-    NewtonWrapperPINVOKE.NewtonUserJointAddGeneralRow(SWIGTYPE_p_NewtonJoint.getCPtr(joint), SWIGTYPE_p_float.getCPtr(jacobian0), SWIGTYPE_p_float.getCPtr(jacobian1));
+  public static void NewtonUserJointAddGeneralRow(SWIGTYPE_p_NewtonJoint joint, global::System.IntPtr jacobian0, global::System.IntPtr jacobian1) {
+    NewtonWrapperPINVOKE.NewtonUserJointAddGeneralRow(SWIGTYPE_p_NewtonJoint.getCPtr(joint), jacobian0, jacobian1);
   }
 
   public static void NewtonUserJointSetRowMinimumFriction(SWIGTYPE_p_NewtonJoint joint, float friction) {
@@ -9807,8 +9804,8 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonUserJointGetGeneralRow(SWIGTYPE_p_NewtonJoint joint, int index, SWIGTYPE_p_float jacobian0, SWIGTYPE_p_float jacobian1) {
-    NewtonWrapperPINVOKE.NewtonUserJointGetGeneralRow(SWIGTYPE_p_NewtonJoint.getCPtr(joint), index, SWIGTYPE_p_float.getCPtr(jacobian0), SWIGTYPE_p_float.getCPtr(jacobian1));
+  public static void NewtonUserJointGetGeneralRow(SWIGTYPE_p_NewtonJoint joint, int index, global::System.IntPtr jacobian0, global::System.IntPtr jacobian1) {
+    NewtonWrapperPINVOKE.NewtonUserJointGetGeneralRow(SWIGTYPE_p_NewtonJoint.getCPtr(joint), index, jacobian0, jacobian1);
   }
 
   public static float NewtonUserJointGetRowForce(SWIGTYPE_p_NewtonJoint joint, int row) {
@@ -9898,20 +9895,20 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonMesh NewtonMeshCreateConvexHull(SWIGTYPE_p_NewtonWorld newtonWorld, int pointCount, SWIGTYPE_p_float vertexCloud, int strideInBytes, float tolerance) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonMeshCreateConvexHull(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), pointCount, SWIGTYPE_p_float.getCPtr(vertexCloud), strideInBytes, tolerance);
+  public static SWIGTYPE_p_NewtonMesh NewtonMeshCreateConvexHull(SWIGTYPE_p_NewtonWorld newtonWorld, int pointCount, global::System.IntPtr vertexCloud, int strideInBytes, float tolerance) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonMeshCreateConvexHull(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), pointCount, vertexCloud, strideInBytes, tolerance);
     SWIGTYPE_p_NewtonMesh ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonMesh(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonMesh NewtonMeshCreateDelaunayTetrahedralization(SWIGTYPE_p_NewtonWorld newtonWorld, int pointCount, SWIGTYPE_p_float vertexCloud, int strideInBytes, int materialID, SWIGTYPE_p_float textureMatrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonMeshCreateDelaunayTetrahedralization(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), pointCount, SWIGTYPE_p_float.getCPtr(vertexCloud), strideInBytes, materialID, SWIGTYPE_p_float.getCPtr(textureMatrix));
+  public static SWIGTYPE_p_NewtonMesh NewtonMeshCreateDelaunayTetrahedralization(SWIGTYPE_p_NewtonWorld newtonWorld, int pointCount, global::System.IntPtr vertexCloud, int strideInBytes, int materialID, global::System.IntPtr textureMatrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonMeshCreateDelaunayTetrahedralization(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), pointCount, vertexCloud, strideInBytes, materialID, textureMatrix);
     SWIGTYPE_p_NewtonMesh ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonMesh(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonMesh NewtonMeshCreateVoronoiConvexDecomposition(SWIGTYPE_p_NewtonWorld newtonWorld, int pointCount, SWIGTYPE_p_float vertexCloud, int strideInBytes, int materialID, SWIGTYPE_p_float textureMatrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonMeshCreateVoronoiConvexDecomposition(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), pointCount, SWIGTYPE_p_float.getCPtr(vertexCloud), strideInBytes, materialID, SWIGTYPE_p_float.getCPtr(textureMatrix));
+  public static SWIGTYPE_p_NewtonMesh NewtonMeshCreateVoronoiConvexDecomposition(SWIGTYPE_p_NewtonWorld newtonWorld, int pointCount, global::System.IntPtr vertexCloud, int strideInBytes, int materialID, global::System.IntPtr textureMatrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonMeshCreateVoronoiConvexDecomposition(SWIGTYPE_p_NewtonWorld.getCPtr(newtonWorld), pointCount, vertexCloud, strideInBytes, materialID, textureMatrix);
     SWIGTYPE_p_NewtonMesh ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonMesh(cPtr, false);
     return ret;
   }
@@ -9940,12 +9937,12 @@ public class NewtonWrapper {
     return ret;
   }
 
-  public static void NewtonMeshApplyTransform(SWIGTYPE_p_NewtonMesh mesh, SWIGTYPE_p_float matrix) {
-    NewtonWrapperPINVOKE.NewtonMeshApplyTransform(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), SWIGTYPE_p_float.getCPtr(matrix));
+  public static void NewtonMeshApplyTransform(SWIGTYPE_p_NewtonMesh mesh, global::System.IntPtr matrix) {
+    NewtonWrapperPINVOKE.NewtonMeshApplyTransform(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), matrix);
   }
 
-  public static void NewtonMeshCalculateOOBB(SWIGTYPE_p_NewtonMesh mesh, SWIGTYPE_p_float matrix, SWIGTYPE_p_float x, SWIGTYPE_p_float y, SWIGTYPE_p_float z) {
-    NewtonWrapperPINVOKE.NewtonMeshCalculateOOBB(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), SWIGTYPE_p_float.getCPtr(matrix), SWIGTYPE_p_float.getCPtr(x), SWIGTYPE_p_float.getCPtr(y), SWIGTYPE_p_float.getCPtr(z));
+  public static void NewtonMeshCalculateOOBB(SWIGTYPE_p_NewtonMesh mesh, global::System.IntPtr matrix, global::System.IntPtr x, global::System.IntPtr y, global::System.IntPtr z) {
+    NewtonWrapperPINVOKE.NewtonMeshCalculateOOBB(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), matrix, x, y, z);
   }
 
   public static void NewtonMeshCalculateVertexNormals(SWIGTYPE_p_NewtonMesh mesh, float angleInRadians) {
@@ -9985,26 +9982,26 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonMeshTriangulate(SWIGTYPE_p_NewtonMesh.getCPtr(mesh));
   }
 
-  public static SWIGTYPE_p_NewtonMesh NewtonMeshUnion(SWIGTYPE_p_NewtonMesh mesh, SWIGTYPE_p_NewtonMesh clipper, SWIGTYPE_p_float clipperMatrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonMeshUnion(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), SWIGTYPE_p_NewtonMesh.getCPtr(clipper), SWIGTYPE_p_float.getCPtr(clipperMatrix));
+  public static SWIGTYPE_p_NewtonMesh NewtonMeshUnion(SWIGTYPE_p_NewtonMesh mesh, SWIGTYPE_p_NewtonMesh clipper, global::System.IntPtr clipperMatrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonMeshUnion(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), SWIGTYPE_p_NewtonMesh.getCPtr(clipper), clipperMatrix);
     SWIGTYPE_p_NewtonMesh ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonMesh(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonMesh NewtonMeshDifference(SWIGTYPE_p_NewtonMesh mesh, SWIGTYPE_p_NewtonMesh clipper, SWIGTYPE_p_float clipperMatrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonMeshDifference(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), SWIGTYPE_p_NewtonMesh.getCPtr(clipper), SWIGTYPE_p_float.getCPtr(clipperMatrix));
+  public static SWIGTYPE_p_NewtonMesh NewtonMeshDifference(SWIGTYPE_p_NewtonMesh mesh, SWIGTYPE_p_NewtonMesh clipper, global::System.IntPtr clipperMatrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonMeshDifference(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), SWIGTYPE_p_NewtonMesh.getCPtr(clipper), clipperMatrix);
     SWIGTYPE_p_NewtonMesh ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonMesh(cPtr, false);
     return ret;
   }
 
-  public static SWIGTYPE_p_NewtonMesh NewtonMeshIntersection(SWIGTYPE_p_NewtonMesh mesh, SWIGTYPE_p_NewtonMesh clipper, SWIGTYPE_p_float clipperMatrix) {
-    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonMeshIntersection(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), SWIGTYPE_p_NewtonMesh.getCPtr(clipper), SWIGTYPE_p_float.getCPtr(clipperMatrix));
+  public static SWIGTYPE_p_NewtonMesh NewtonMeshIntersection(SWIGTYPE_p_NewtonMesh mesh, SWIGTYPE_p_NewtonMesh clipper, global::System.IntPtr clipperMatrix) {
+    global::System.IntPtr cPtr = NewtonWrapperPINVOKE.NewtonMeshIntersection(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), SWIGTYPE_p_NewtonMesh.getCPtr(clipper), clipperMatrix);
     SWIGTYPE_p_NewtonMesh ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_NewtonMesh(cPtr, false);
     return ret;
   }
 
-  public static void NewtonMeshClip(SWIGTYPE_p_NewtonMesh mesh, SWIGTYPE_p_NewtonMesh clipper, SWIGTYPE_p_float clipperMatrix, SWIGTYPE_p_p_NewtonMesh topMesh, SWIGTYPE_p_p_NewtonMesh bottomMesh) {
-    NewtonWrapperPINVOKE.NewtonMeshClip(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), SWIGTYPE_p_NewtonMesh.getCPtr(clipper), SWIGTYPE_p_float.getCPtr(clipperMatrix), SWIGTYPE_p_p_NewtonMesh.getCPtr(topMesh), SWIGTYPE_p_p_NewtonMesh.getCPtr(bottomMesh));
+  public static void NewtonMeshClip(SWIGTYPE_p_NewtonMesh mesh, SWIGTYPE_p_NewtonMesh clipper, global::System.IntPtr clipperMatrix, SWIGTYPE_p_p_NewtonMesh topMesh, SWIGTYPE_p_p_NewtonMesh bottomMesh) {
+    NewtonWrapperPINVOKE.NewtonMeshClip(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), SWIGTYPE_p_NewtonMesh.getCPtr(clipper), clipperMatrix, SWIGTYPE_p_p_NewtonMesh.getCPtr(topMesh), SWIGTYPE_p_p_NewtonMesh.getCPtr(bottomMesh));
   }
 
   public static SWIGTYPE_p_NewtonMesh NewtonMeshConvexMeshIntersection(SWIGTYPE_p_NewtonMesh mesh, SWIGTYPE_p_NewtonMesh convexMesh) {
@@ -10033,24 +10030,24 @@ public class NewtonWrapper {
     NewtonWrapperPINVOKE.NewtonMeshBeginFace(SWIGTYPE_p_NewtonMesh.getCPtr(mesh));
   }
 
-  public static void NewtonMeshAddFace(SWIGTYPE_p_NewtonMesh mesh, int vertexCount, SWIGTYPE_p_float vertex, int strideInBytes, int materialIndex) {
-    NewtonWrapperPINVOKE.NewtonMeshAddFace(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), vertexCount, SWIGTYPE_p_float.getCPtr(vertex), strideInBytes, materialIndex);
+  public static void NewtonMeshAddFace(SWIGTYPE_p_NewtonMesh mesh, int vertexCount, global::System.IntPtr vertex, int strideInBytes, int materialIndex) {
+    NewtonWrapperPINVOKE.NewtonMeshAddFace(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), vertexCount, vertex, strideInBytes, materialIndex);
   }
 
   public static void NewtonMeshEndFace(SWIGTYPE_p_NewtonMesh mesh) {
     NewtonWrapperPINVOKE.NewtonMeshEndFace(SWIGTYPE_p_NewtonMesh.getCPtr(mesh));
   }
 
-  public static void NewtonMeshBuildFromVertexListIndexList(SWIGTYPE_p_NewtonMesh mesh, int faceCount, SWIGTYPE_p_int faceIndexCount, SWIGTYPE_p_int faceMaterialIndex, SWIGTYPE_p_float vertex, int vertexStrideInBytes, SWIGTYPE_p_int vertexIndex, SWIGTYPE_p_float normal, int normalStrideInBytes, SWIGTYPE_p_int normalIndex, SWIGTYPE_p_float uv0, int uv0StrideInBytes, SWIGTYPE_p_int uv0Index, SWIGTYPE_p_float uv1, int uv1StrideInBytes, SWIGTYPE_p_int uv1Index) {
-    NewtonWrapperPINVOKE.NewtonMeshBuildFromVertexListIndexList(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), faceCount, SWIGTYPE_p_int.getCPtr(faceIndexCount), SWIGTYPE_p_int.getCPtr(faceMaterialIndex), SWIGTYPE_p_float.getCPtr(vertex), vertexStrideInBytes, SWIGTYPE_p_int.getCPtr(vertexIndex), SWIGTYPE_p_float.getCPtr(normal), normalStrideInBytes, SWIGTYPE_p_int.getCPtr(normalIndex), SWIGTYPE_p_float.getCPtr(uv0), uv0StrideInBytes, SWIGTYPE_p_int.getCPtr(uv0Index), SWIGTYPE_p_float.getCPtr(uv1), uv1StrideInBytes, SWIGTYPE_p_int.getCPtr(uv1Index));
+  public static void NewtonMeshBuildFromVertexListIndexList(SWIGTYPE_p_NewtonMesh mesh, int faceCount, SWIGTYPE_p_int faceIndexCount, SWIGTYPE_p_int faceMaterialIndex, global::System.IntPtr vertex, int vertexStrideInBytes, SWIGTYPE_p_int vertexIndex, global::System.IntPtr normal, int normalStrideInBytes, SWIGTYPE_p_int normalIndex, global::System.IntPtr uv0, int uv0StrideInBytes, SWIGTYPE_p_int uv0Index, global::System.IntPtr uv1, int uv1StrideInBytes, SWIGTYPE_p_int uv1Index) {
+    NewtonWrapperPINVOKE.NewtonMeshBuildFromVertexListIndexList(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), faceCount, SWIGTYPE_p_int.getCPtr(faceIndexCount), SWIGTYPE_p_int.getCPtr(faceMaterialIndex), vertex, vertexStrideInBytes, SWIGTYPE_p_int.getCPtr(vertexIndex), normal, normalStrideInBytes, SWIGTYPE_p_int.getCPtr(normalIndex), uv0, uv0StrideInBytes, SWIGTYPE_p_int.getCPtr(uv0Index), uv1, uv1StrideInBytes, SWIGTYPE_p_int.getCPtr(uv1Index));
   }
 
-  public static void NewtonMeshGetVertexStreams(SWIGTYPE_p_NewtonMesh mesh, int vertexStrideInByte, SWIGTYPE_p_float vertex, int normalStrideInByte, SWIGTYPE_p_float normal, int uvStrideInByte0, SWIGTYPE_p_float uv0, int uvStrideInByte1, SWIGTYPE_p_float uv1) {
-    NewtonWrapperPINVOKE.NewtonMeshGetVertexStreams(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), vertexStrideInByte, SWIGTYPE_p_float.getCPtr(vertex), normalStrideInByte, SWIGTYPE_p_float.getCPtr(normal), uvStrideInByte0, SWIGTYPE_p_float.getCPtr(uv0), uvStrideInByte1, SWIGTYPE_p_float.getCPtr(uv1));
+  public static void NewtonMeshGetVertexStreams(SWIGTYPE_p_NewtonMesh mesh, int vertexStrideInByte, global::System.IntPtr vertex, int normalStrideInByte, global::System.IntPtr normal, int uvStrideInByte0, global::System.IntPtr uv0, int uvStrideInByte1, global::System.IntPtr uv1) {
+    NewtonWrapperPINVOKE.NewtonMeshGetVertexStreams(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), vertexStrideInByte, vertex, normalStrideInByte, normal, uvStrideInByte0, uv0, uvStrideInByte1, uv1);
   }
 
-  public static void NewtonMeshGetIndirectVertexStreams(SWIGTYPE_p_NewtonMesh mesh, int vertexStrideInByte, SWIGTYPE_p_float vertex, SWIGTYPE_p_int vertexIndices, SWIGTYPE_p_int vertexCount, int normalStrideInByte, SWIGTYPE_p_float normal, SWIGTYPE_p_int normalIndices, SWIGTYPE_p_int normalCount, int uvStrideInByte0, SWIGTYPE_p_float uv0, SWIGTYPE_p_int uvIndices0, SWIGTYPE_p_int uvCount0, int uvStrideInByte1, SWIGTYPE_p_float uv1, SWIGTYPE_p_int uvIndices1, SWIGTYPE_p_int uvCount1) {
-    NewtonWrapperPINVOKE.NewtonMeshGetIndirectVertexStreams(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), vertexStrideInByte, SWIGTYPE_p_float.getCPtr(vertex), SWIGTYPE_p_int.getCPtr(vertexIndices), SWIGTYPE_p_int.getCPtr(vertexCount), normalStrideInByte, SWIGTYPE_p_float.getCPtr(normal), SWIGTYPE_p_int.getCPtr(normalIndices), SWIGTYPE_p_int.getCPtr(normalCount), uvStrideInByte0, SWIGTYPE_p_float.getCPtr(uv0), SWIGTYPE_p_int.getCPtr(uvIndices0), SWIGTYPE_p_int.getCPtr(uvCount0), uvStrideInByte1, SWIGTYPE_p_float.getCPtr(uv1), SWIGTYPE_p_int.getCPtr(uvIndices1), SWIGTYPE_p_int.getCPtr(uvCount1));
+  public static void NewtonMeshGetIndirectVertexStreams(SWIGTYPE_p_NewtonMesh mesh, int vertexStrideInByte, global::System.IntPtr vertex, SWIGTYPE_p_int vertexIndices, SWIGTYPE_p_int vertexCount, int normalStrideInByte, global::System.IntPtr normal, SWIGTYPE_p_int normalIndices, SWIGTYPE_p_int normalCount, int uvStrideInByte0, global::System.IntPtr uv0, SWIGTYPE_p_int uvIndices0, SWIGTYPE_p_int uvCount0, int uvStrideInByte1, global::System.IntPtr uv1, SWIGTYPE_p_int uvIndices1, SWIGTYPE_p_int uvCount1) {
+    NewtonWrapperPINVOKE.NewtonMeshGetIndirectVertexStreams(SWIGTYPE_p_NewtonMesh.getCPtr(mesh), vertexStrideInByte, vertex, SWIGTYPE_p_int.getCPtr(vertexIndices), SWIGTYPE_p_int.getCPtr(vertexCount), normalStrideInByte, normal, SWIGTYPE_p_int.getCPtr(normalIndices), SWIGTYPE_p_int.getCPtr(normalCount), uvStrideInByte0, uv0, SWIGTYPE_p_int.getCPtr(uvIndices0), SWIGTYPE_p_int.getCPtr(uvCount0), uvStrideInByte1, uv1, SWIGTYPE_p_int.getCPtr(uvIndices1), SWIGTYPE_p_int.getCPtr(uvCount1));
   }
 
   public static global::System.IntPtr NewtonMeshBeginHandle(SWIGTYPE_p_NewtonMesh mesh) { 
