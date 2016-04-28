@@ -53,7 +53,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="UnityEngine">
-      <HintPath>..\UnityEngineAPI\UnityEngine.dll</HintPath>
+      <HintPath>..\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
