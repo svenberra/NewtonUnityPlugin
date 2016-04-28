@@ -20,6 +20,9 @@
 	#include "stdio.h"
 	#include "stdlib.h"
 
+	#include "MemoryAlloc.h"
+	#include "NewtonSDK.h"
+/*
 	// newton SDK
 	#include "Newton.h"
 
@@ -46,8 +49,10 @@
 	#include "CustomAlloc.h"
 	#include "CustomJoint.h"
 	#include "CustomBallAndSocket.h"
+*/
 %}
 
+/*
 %rename(__dMatrix_multiply__) dMatrix::operator*;
 %rename(__dMatrix_GetElement__) dMatrix::operator[](int i);
 %rename(__dMatrix_GetElement__Const__) dMatrix::operator[] (int i) const; 
@@ -125,8 +130,11 @@
 %cs_callback(NewtonFreeMemory, NewtonFreeMemoryDelegate)
 
 #pragma SWIG nowarn=401
+*/
 
 // Newton SDK Glue
+
+/*
 %include "newton.h"
 
 // dmath sdk Glue
@@ -145,3 +153,12 @@
 %include "CustomAlloc.h"
 %include "CustomJoint.h"
 %include "CustomBallAndSocket.h"
+*/
+
+
+%rename(__MemoryAlloc_Alloc__) MemoryAlloc::operator new;  
+%rename(__MemoryAlloc_Free__) MemoryAlloc::operator delete;  
+
+
+%include "MemoryAlloc.h"
+%include "NewtonSDK.h"
