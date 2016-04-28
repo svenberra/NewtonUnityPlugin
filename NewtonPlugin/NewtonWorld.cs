@@ -1,30 +1,22 @@
 ﻿using UnityEngine;
-using System.Runtime.InteropServices;
 using System;
-
-public delegate IntPtr NewtonAllocMemoryDelegate(int sizeInBytes);
-public delegate void NewtonFreeMemoryDelegate(System.IntPtr ptr, int sizeInBytes);
 
 namespace NewtonPlugin
 {
     [DisallowMultipleComponent]
-    [AddComponentMenu("Newton Physics/Rigid Body")]
+    [AddComponentMenu("Newton Physics/Newton World")]
     public class NewtonWorld : MonoBehaviour
     {
-        protected NewtonSDK m_world;
+        private NewtonSDK m_sdk;
 
-        void Awake()
+        void Start()
         {
-            m_world = new NewtonSDK();
-            // link the world with this user data
-            Debug.Log("Passed this to NewtonWorld as Userdata");
+            m_sdk = new NewtonSDK();
         }
 
         void OnDestroy()
         {
-            //NewtonWrapper.NewtonDestroy(m_world);
-            //Debug.Log("Unallocated memory addresses:" + _allocated.Count.ToString());
-            //Debug.Log("Newton World destroyed");
+            m_sdk.Dispose();
         }
     }
 }
