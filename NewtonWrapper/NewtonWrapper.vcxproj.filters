@@ -20,6 +20,7 @@
     <ClInclude Include="wrapperSdk\NewtonSDK.h">
       <Filter>wrapperSdk</Filter>
     </ClInclude>
+    <ClInclude Include="IUnityInterface.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="newton.i" />
