@@ -32,7 +32,7 @@ class dNewtonCollision;
 
 
 //class dNewtonBody: public dNewtonAlloc, public dNewtonTransformLerp
-class dNewtonBody : public dAlloc
+class dNewtonBody: public dAlloc
 {
 	public:
 	enum dBodyType

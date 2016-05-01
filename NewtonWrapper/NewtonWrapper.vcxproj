@@ -226,6 +226,8 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="wrapperSdk\dAlloc.h" />
     <ClInclude Include="wrapperSdk\dNewtonBody.h" />
+    <ClInclude Include="wrapperSdk\dNewtonCollision.h" />
+    <ClInclude Include="wrapperSdk\dNewtonCollisionBox.h" />
     <ClInclude Include="wrapperSdk\dNewtonWorld.h" />
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +256,8 @@
     </ClCompile>
     <ClCompile Include="wrapperSdk\dAlloc.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonBody.cpp" />
+    <ClCompile Include="wrapperSdk\dNewtonCollision.cpp" />
+    <ClCompile Include="wrapperSdk\dNewtonCollisionBox.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonWorld.cpp" />
   </ItemGroup>
   <ItemGroup>

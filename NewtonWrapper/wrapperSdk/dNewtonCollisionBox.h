@@ -1,4 +1,4 @@
-/* 
+/*
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
 * arising from the use of this software.
@@ -18,28 +18,24 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef _D_NEWTON_WORLD_H_
-#define _D_NEWTON_WORLD_H_
+#ifndef _D_NEWTON_COLLISION_BOX_H_
+#define _D_NEWTON_COLLISION_BOX_H_
 
 #include "stdafx.h"
 #include "dAlloc.h"
+#include "dNewtonCollision.h"
 
-class NewtonWorld;
-class dNewtonBody;
-class dNewtonCollision;
-class dNewtonCollisionBox;
+class dNewtonWorld;
 
-class dNewtonWorld: public dAlloc
+class dNewtonCollisionBox: public dNewtonCollision
 {
 	public:
-	dNewtonWorld();
-	virtual ~dNewtonWorld();
+	dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z, dLong collisionMask);
+//	dNewtonCollision* Clone(NewtonCollision* const shape) const;
 
-	private:
-	NewtonWorld* m_world;
-	friend class dNewtonBody;
-	friend class dNewtonCollision;
-	friend class dNewtonCollisionBox;
+	protected:
+//	dNewtonCollisionBox(const dNewtonCollisionBox& srcCollision, NewtonCollision* const shape);
 };
+
 
 #endif

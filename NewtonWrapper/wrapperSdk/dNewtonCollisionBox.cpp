@@ -18,28 +18,28 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef _D_NEWTON_WORLD_H_
-#define _D_NEWTON_WORLD_H_
 
 #include "stdafx.h"
-#include "dAlloc.h"
+#include "Newton.h"
+#include "dNewtonBody.h"
+#include "dNewtonWorld.h"
+#include "dNewtonCollisionBox.h"
 
-class NewtonWorld;
-class dNewtonBody;
-class dNewtonCollision;
-class dNewtonCollisionBox;
-
-class dNewtonWorld: public dAlloc
+dNewtonCollisionBox::dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z, dLong collisionMask)
+	:dNewtonCollision(m_box, collisionMask)
 {
-	public:
-	dNewtonWorld();
-	virtual ~dNewtonWorld();
+	SetShape(NewtonCreateBox(world->m_world, x, y, z, 0, NULL));
+}
 
-	private:
-	NewtonWorld* m_world;
-	friend class dNewtonBody;
-	friend class dNewtonCollision;
-	friend class dNewtonCollisionBox;
-};
+/*
+dNewtonCollisionBox::dNewtonCollisionBox(const dNewtonCollisionBox& srcCollision, NewtonCollision* const shape)
+	: dNewtonCollision(srcCollision, shape)
+{
+}
 
-#endif
+
+dNewtonCollision* dNewtonCollisionBox::Clone(NewtonCollision* const shape) const
+{
+	return new dNewtonCollisionBox(*this, shape);
+}
+*/

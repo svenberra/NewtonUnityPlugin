@@ -26,6 +26,9 @@
 	#include "dAlloc.h"
 	#include "dNewtonBody.h"
 	#include "dNewtonWorld.h"
+	#include "dNewtonCollision.h"
+	#include "dNewtonCollisionBox.h"
+
 /*
 	// dmath sdk
 	#include "dMathDefines.h"
@@ -160,6 +163,8 @@
 %rename(__dAlloc_Alloc__) dAlloc::operator new;  
 %rename(__dAlloc_Free__) dAlloc::operator delete;  
 
-
 %include "dNewtonBody.h"
 %include "dNewtonWorld.h"
+%include "dNewtonCollision.h"
+%include "dNewtonCollisionBox.h"
+
