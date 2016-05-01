@@ -252,10 +252,13 @@ paket-files/
 .idea/
 *.sln.iml
 
-
-*.dll
-PluginBinaries/
+// filter some unity auto generated files
 Demos/Temp
 Demos/Library/
+PluginBinaries/
 NewtonPlugin/newton_wrap.cs
 NewtonWrapper/newton_wrap.cxx
+Demos/Assets/Plugins/NewtonPlugin.dll
+Demos/Assets/Plugins/NewtonWrapper.dll
+NewtonUnityPlugin/PluginBinaries/NewtonPlugin.dll
+NewtonUnityPlugin/PluginBinaries/NewtonWrapper.dll
