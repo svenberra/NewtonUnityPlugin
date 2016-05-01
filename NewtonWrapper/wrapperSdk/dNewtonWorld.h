@@ -35,6 +35,8 @@ class dNewtonWorld: public dAlloc
 	dNewtonWorld();
 	virtual ~dNewtonWorld();
 
+	dNewtonBody* CreateBody(float m_mass);
+
 	private:
 	NewtonWorld* m_world;
 	friend class dNewtonBody;

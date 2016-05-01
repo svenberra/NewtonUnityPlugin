@@ -62,3 +62,7 @@ dNewtonWorld::~dNewtonWorld()
 	NewtonDestroy (m_world);
 }
 
+dNewtonBody* dNewtonWorld::CreateBody(float m_mass)
+{
+	return NULL;
+}

@@ -9,13 +9,14 @@ namespace NewtonPlugin
     [AddComponentMenu("Newton Physics/Rigid Body")]
     public class NewtonBody : MonoBehaviour
     {
+        public NewtonWorld m_world;
+
+        public float m_mass;
         private dNewtonBody m_body;
         /*
                 public bool Kinematic = false;
                 public bool KinematicCollidable = false;
                 public float Mass = 1.0f;
-
-                protected SWIGTYPE_p_NewtonBody m_body;
 
                 public Matrix4x4 BodyTransform
                 {
@@ -237,13 +238,13 @@ namespace NewtonPlugin
 
         void Start()
         {
-            //            m_body = new dNewtonWorld();
-            m_body = null;
+            // Sweenei here is where we pass the parameters for creation the body
+            m_body = m_world.CreateBody(m_mass);
         }
 
         void OnDestroy()
         {
-//            m_world.Dispose();
+            m_body.Dispose();
         }
     }
 }

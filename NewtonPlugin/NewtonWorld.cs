@@ -18,6 +18,11 @@ namespace NewtonPlugin
         {
             m_world.Dispose();
         }
+
+        public dNewtonBody CreateBody(float mass)
+        {
+            return m_world.CreateBody(mass);
+        }
     }
 }
 
