@@ -33,6 +33,7 @@ dNewtonCollision::dNewtonCollision(dCollsionType type, dLong collisionMask)
 //	,m_userData(NULL)
 //	,m_type (type)
 {
+	dAssert(0);
 }
 
 dNewtonCollision::~dNewtonCollision()

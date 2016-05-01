@@ -29,14 +29,13 @@
 	#include "dNewtonCollision.h"
 	#include "dNewtonCollisionBox.h"
 
-/*
 	// dmath sdk
 	#include "dMathDefines.h"
 	#include "dVector.h"
 	#include "dMatrix.h"
 	#include "dQuaternion.h"
 	#include "dLinearAlgebra.h"
-
+/*
 	// dContainers SDK
 	#include "dContainersStdAfx.h"
 	#include "dCRC.h"
@@ -57,13 +56,6 @@
 %}
 
 /*
-%rename(__dMatrix_multiply__) dMatrix::operator*;
-%rename(__dMatrix_GetElement__) dMatrix::operator[](int i);
-%rename(__dMatrix_GetElement__Const__) dMatrix::operator[] (int i) const; 
-
-%rename(__dQuaternion_add__) dQuaternion::operator+;
-%rename(__dQuaternion_sub__) dQuaternion::operator-;
-%rename(__dQuaternion_multiply__) dQuaternion::operator*;
 
 %rename(__dContainers_Alloc__) dContainersAlloc::operator new;  
 %rename(__dContainers_Freec__) dContainersAlloc::operator delete;  
@@ -132,22 +124,10 @@
 // Wrap Newton callbacks
 %cs_callback(NewtonAllocMemory, NewtonAllocMemoryDelegate)
 %cs_callback(NewtonFreeMemory, NewtonFreeMemoryDelegate)
-
-
 */
 
 // Newton SDK Glue
-
 /*
-%include "newton.h"
-
-// dmath sdk Glue
-%include "dMathDefines.h"
-%include "dVector.h"
-%include "dMatrix.h"
-%include "dQuaternion.h"
-%include "dLinearAlgebra.h"
-
 // dContainers SDK Glue
 %include "dContainersStdAfx.h"
 %include "dContainersAlloc.h"
@@ -162,6 +142,22 @@
 #pragma SWIG nowarn=401
 %rename(__dAlloc_Alloc__) dAlloc::operator new;  
 %rename(__dAlloc_Free__) dAlloc::operator delete;  
+
+%rename(__dMatrix_multiply__) dMatrix::operator*;
+%rename(__dMatrix_GetElement__) dMatrix::operator[](int i);
+%rename(__dMatrix_GetElement__Const__) dMatrix::operator[] (int i) const; 
+
+%rename(__dQuaternion_add__) dQuaternion::operator+;
+%rename(__dQuaternion_sub__) dQuaternion::operator-;
+%rename(__dQuaternion_multiply__) dQuaternion::operator*;
+
+
+// dmath sdk Glue
+%include "dMathDefines.h"
+%include "dVector.h"
+%include "dMatrix.h"
+%include "dQuaternion.h"
+%include "dLinearAlgebra.h"
 
 %include "dNewtonBody.h"
 %include "dNewtonWorld.h"

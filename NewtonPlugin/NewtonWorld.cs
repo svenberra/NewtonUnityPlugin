@@ -21,7 +21,8 @@ namespace NewtonPlugin
 
         public dNewtonBody CreateBody(float mass)
         {
-            return m_world.CreateBody(mass);
+            //            return m_world.CreateBody(mass);
+            return null; 
         }
     }
 }

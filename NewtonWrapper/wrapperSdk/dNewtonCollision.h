@@ -28,6 +28,7 @@
 //#include "dNewtonMaterial.h"
 
 class NewtonCollision;
+class dNewtonBody;
 //class dNewtonMesh;
 
 
@@ -104,6 +105,7 @@ class dNewtonCollision: public dAlloc
 //	friend class dNewton;
 
 	NewtonCollision* m_shape;
+	friend class dNewtonBody;
 };
 
 /*

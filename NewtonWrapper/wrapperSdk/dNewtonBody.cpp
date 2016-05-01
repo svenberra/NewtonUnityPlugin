@@ -22,7 +22,7 @@
 #include "Newton.h"
 #include "dNewtonBody.h"
 #include "dNewtonWorld.h"
-//#include "dNewtonCollision.h"
+#include "dNewtonCollision.h"
 //#include "dNewtonTransformLerp.h"
 
 #if 0
@@ -281,7 +281,8 @@ void dNewtonBody::AttachChild(dNewtonBody* const child)
 
 
 //dNewtonBody::dNewtonBody(dNewtonWorld* const dWorld, dFloat mass, const dNewtonCollision* const collision, void* const userData, const dFloat* const matrix, dBodyType type, dNewtonBody* const parent)
-dNewtonBody::dNewtonBody(dNewtonWorld* const dWorld, dFloat mass, const dNewtonCollision* const collision, const dFloat* const matrix, dBodyType type, dNewtonBody* const parent)
+//dNewtonBody::dNewtonBody(dNewtonWorld* const dWorld, dFloat mass, const dNewtonCollision* const collision, const dMatrix& matrix, dBodyType type, dNewtonBody* const parent)
+dNewtonBody::dNewtonBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const dMatrix& matrix)
 	:dAlloc()
 //	,dNewtonTransformLerp(matrix)
 	,m_body(NULL)
@@ -293,10 +294,9 @@ dNewtonBody::dNewtonBody(dNewtonWorld* const dWorld, dFloat mass, const dNewtonC
 //	,m_bodyType(type)
 {
 	dAssert(0);
+	NewtonWorld* const newtond = world->m_world;
+	NewtonBody* const body = NewtonCreateDynamicBody(newtond, collision->m_shape, &matrix[0][0]);
 /*
-	NewtonWorld* const world = dWorld->GetNewton();
-	NewtonBody* const body = NewtonCreateDynamicBody(world, collision->GetShape(), matrix);
-
 	NewtonCollision* const shape = NewtonBodyGetCollision(body);
 	NewtonBodySetMassProperties(body, mass, shape);
 

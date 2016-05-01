@@ -26,6 +26,7 @@
 
 //#include "dNewtonTransformLerp.h"
 
+class dMatrix;
 class NewtonBody;
 class dNewtonWorld;
 class dNewtonCollision;
@@ -43,56 +44,43 @@ class dNewtonBody: public dAlloc
 	};
 
 //	dNewtonBody (dNewtonWorld* const world, dFloat mass, const dNewtonCollision* const collision, void* const userData, const dFloat* const matrix, dBodyType m_type, dNewtonBody* const parent);
-	dNewtonBody(dNewtonWorld* const world, dFloat mass, const dNewtonCollision* const collision, const dFloat* const matrix, dBodyType m_type, dNewtonBody* const parent);
+//	dNewtonBody(dNewtonWorld* const world, dFloat mass, const dNewtonCollision* const collision, const dMatrix& matrix, dBodyType m_type, dNewtonBody* const parent);
+
+	dNewtonBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const dMatrix& matrix);
 	virtual ~dNewtonBody();
 
 /*
 	dBodyType GetType() const {return m_bodyType;}
-
 	bool GetSleepState() const;
 	void SetSleepState(bool state) const;
-
 	bool GetAutoSleepMode() const;
 	void SetAutoSleepMode(bool mode);
-
 	void SetMatrix (const dFloat* const matrix);
 	void GetMatrix (dFloat* const matrix) const;
-
 	void GetVisualMatrix (dFloat param, dFloat* const matrix) const;
-
 	void SetVeloc (const dFloat* const veloc);
 	void GetVeloc (dFloat* const veloc) const;
-
 	void SetOmega (const dFloat* const omega);
 	void GetOmega (dFloat* const omega) const;
-
 	void SetForce (const dFloat* const force);
 	void AddForce (const dFloat* const force);
 	//void GetForce (dFloat* const force) const;
-
 	void SetTorque (const dFloat* const torque);
 	void AddTorque (const dFloat* const torque);
 	//void GetTorque (dFloat* const torque) const;
-
 	dFloat GetLinearDrag () const;
 	void SetLinearDrag (const dFloat drag);
-
 	void GetAngularDrag (dFloat* const drag) const;
 	void SetAngularDrag (const dFloat* const drag);
-	
 //	void  NewtonBodySetLinearDamping (const NewtonBody* const body, dFloat linearDamp);
 //	void  NewtonBodySetAngularDamping (const NewtonBody* const body, const dFloat* const angularDamp);
-
 	void GetCenterOfMass (dFloat* const com) const;
 	void SetCenterOfMass (const dFloat* const com);
-	 
     void SetMassAndInertia (dFloat mass, dFloat Ixx, dFloat Iyy, dFloat Izz);
 	void SetMassAndInertia (dFloat mass, const dNewtonCollision* const collision);
 	void GetMassAndInertia (dFloat& mass, dFloat& Ixx, dFloat& Iyy, dFloat& Izz) const;
-
 	void SetCCDMode (bool mode);
 	bool GetCCDMode () const;
-
 	// applications can overload this to update game object information each time there transformation changes 
 	virtual void OnApplicationPostTransform (dFloat timestep) {};
 

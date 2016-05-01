@@ -25,9 +25,12 @@
 #include "dNewtonWorld.h"
 #include "dNewtonCollisionBox.h"
 
-dNewtonCollisionBox::dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z, dLong collisionMask)
-	:dNewtonCollision(m_box, collisionMask)
+//dNewtonCollisionBox::dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z, dLong collisionMask)
+dNewtonCollisionBox::dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z)
+//	:dNewtonCollision(m_box, collisionMask)
+	:dNewtonCollision(m_box, 0)
 {
+	dAssert(0);
 	SetShape(NewtonCreateBox(world->m_world, x, y, z, 0, NULL));
 }
 
