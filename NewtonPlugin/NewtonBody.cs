@@ -12,7 +12,6 @@ namespace NewtonPlugin
         public NewtonWorld m_world;
 
         public float m_mass;
-        public NewtonCollider m_collider;
         private dNewtonBody m_body;
         /*
                 public bool Kinematic = false;

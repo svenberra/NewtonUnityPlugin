@@ -5,13 +5,16 @@ using System.Runtime.InteropServices;
 
 namespace NewtonPlugin
 {
-
     abstract public class NewtonCollider : MonoBehaviour
     {
+        public Vector3 m_size = Vector3.one;
+        public Vector3 m_posit = Vector3.zero;
+        public Vector3 m_rotation = Vector3.zero;
+        public Vector3 m_scale = Vector3.one;
+
+        protected dNewtonCollision m_collision;
         private List<Line> lines = null;
         Color col = new Color(0.6f, 1.0f, 0.6f);
-
-        public Vector3 Scale = Vector3.one;
 
         void OnDrawGizmosSelected()
         {
@@ -104,7 +107,7 @@ namespace NewtonPlugin
 
         }
 
-        abstract public IntPtr CreateCollider(bool applyOffset);
+        abstract public void CreateCollider(bool applyOffset);
 
     }
 
@@ -113,5 +116,5 @@ namespace NewtonPlugin
         public Vector3 pA;
         public Vector3 pB;
     }
-
+    
 }
