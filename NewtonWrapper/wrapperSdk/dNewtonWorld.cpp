@@ -20,11 +20,11 @@
 
 #include "stdafx.h"
 #include "Newton.h"
-#include "NewtonSDK.h"
-#include "MemoryAlloc.h"
+#include "dAlloc.h"
+#include "dNewtonWorld.h"
 
-NewtonSDK::NewtonSDK()
-	:MemoryAlloc()
+dNewtonWorld::dNewtonWorld()
+	:dAlloc()
 {
 	// create a newton world
 	m_world = NewtonCreate();
@@ -56,7 +56,7 @@ NewtonSDK::NewtonSDK()
 */
 }
 
-NewtonSDK::~NewtonSDK()
+dNewtonWorld::~dNewtonWorld()
 {
 	NewtonWaitForUpdateToFinish (m_world);
 	NewtonDestroy (m_world);

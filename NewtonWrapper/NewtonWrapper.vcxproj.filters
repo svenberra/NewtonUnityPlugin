@@ -4,23 +4,29 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="newton_wrap.cxx" />
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="wrapperSdk\MemoryAlloc.cpp">
+    <ClCompile Include="wrapperSdk\dAlloc.cpp">
       <Filter>wrapperSdk</Filter>
     </ClCompile>
-    <ClCompile Include="wrapperSdk\NewtonSDK.cpp">
+    <ClCompile Include="wrapperSdk\dNewtonWorld.cpp">
+      <Filter>wrapperSdk</Filter>
+    </ClCompile>
+    <ClCompile Include="wrapperSdk\dNewtonBody.cpp">
       <Filter>wrapperSdk</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="wrapperSdk\MemoryAlloc.h">
-      <Filter>wrapperSdk</Filter>
-    </ClInclude>
-    <ClInclude Include="wrapperSdk\NewtonSDK.h">
-      <Filter>wrapperSdk</Filter>
-    </ClInclude>
     <ClInclude Include="IUnityInterface.h" />
+    <ClInclude Include="wrapperSdk\dAlloc.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapperSdk\dNewtonWorld.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapperSdk\dNewtonBody.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="newton.i" />

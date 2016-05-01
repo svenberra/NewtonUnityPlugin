@@ -20,7 +20,7 @@
 
 #include "stdafx.h"
 #include "Newton.h"
-#include "MemoryAlloc.h"
+#include "dAlloc.h"
 
 
 class MemoryDriverSingleton
@@ -49,13 +49,13 @@ class MemoryDriverSingleton
 };
 
 
-void* MemoryAlloc::operator new (size_t size)
+void* dAlloc::operator new (size_t size)
 {
 	MemoryDriverSingleton::GetMemoryDriverSingleton();
 	return NewtonAlloc(int (size));
 }
 
-void MemoryAlloc::operator delete (void* ptr)
+void dAlloc::operator delete (void* ptr)
 {
 	MemoryDriverSingleton::GetMemoryDriverSingleton();
 	NewtonFree(ptr);

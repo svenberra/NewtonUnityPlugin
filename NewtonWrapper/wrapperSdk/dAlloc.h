@@ -1,4 +1,4 @@
-/* 
+/*
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
 * arising from the use of this software.
@@ -18,22 +18,24 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef _D_NEWTON_SDK_H_
-#define _D_NEWTON_SDK_H_
+#ifndef _D_ALLOC_H_
+#define _D_ALLOC_H_
 
 #include "stdafx.h"
-#include "MemoryAlloc.h"
 
-class NewtonWorld;
-
-class NewtonSDK: public MemoryAlloc
+class dAlloc  
 {
 	public:
-	NewtonSDK();
-	virtual ~NewtonSDK();
+	void *operator new (size_t size);
+	void operator delete (void* ptr);
 
-	private:
-	NewtonWorld* m_world;
+	dAlloc()
+	{
+	}
+
+	virtual ~dAlloc() 
+	{
+	}
 };
 
 #endif

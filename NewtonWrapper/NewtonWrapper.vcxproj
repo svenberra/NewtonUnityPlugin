@@ -90,7 +90,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -114,13 +114,17 @@
       <Outputs>
       </Outputs>
     </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -134,8 +138,8 @@
       <ShowProgress>NotSet</ShowProgress>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+</Command>
     </PostBuildEvent>
     <CustomBuildStep>
       <Command>
@@ -153,7 +157,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -177,6 +181,10 @@
       <Outputs>
       </Outputs>
     </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -185,7 +193,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -200,8 +208,8 @@
       <ShowProgress>NotSet</ShowProgress>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+</Command>
     </PostBuildEvent>
     <CustomBuildStep>
       <Command>
@@ -216,8 +224,9 @@
     <ClInclude Include="IUnityInterface.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="wrapperSdk\NewtonSDK.h" />
-    <ClInclude Include="wrapperSdk\MemoryAlloc.h" />
+    <ClInclude Include="wrapperSdk\dAlloc.h" />
+    <ClInclude Include="wrapperSdk\dNewtonBody.h" />
+    <ClInclude Include="wrapperSdk\dNewtonWorld.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -243,8 +252,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="wrapperSdk\NewtonSDK.cpp" />
-    <ClCompile Include="wrapperSdk\MemoryAlloc.cpp" />
+    <ClCompile Include="wrapperSdk\dAlloc.cpp" />
+    <ClCompile Include="wrapperSdk\dNewtonBody.cpp" />
+    <ClCompile Include="wrapperSdk\dNewtonWorld.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="newton.i">

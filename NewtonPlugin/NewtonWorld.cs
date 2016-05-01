@@ -7,16 +7,16 @@ namespace NewtonPlugin
     [AddComponentMenu("Newton Physics/Newton World")]
     public class NewtonWorld : MonoBehaviour
     {
-        private NewtonSDK m_sdk;
+        private dNewtonWorld m_world;
 
         void Start()
         {
-            m_sdk = new NewtonSDK();
+            m_world = new dNewtonWorld();
         }
 
         void OnDestroy()
         {
-            m_sdk.Dispose();
+            m_world.Dispose();
         }
     }
 }

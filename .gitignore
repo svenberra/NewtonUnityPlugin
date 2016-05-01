@@ -253,4 +253,11 @@ paket-files/
 .idea/
 *.sln.iml
 
+
+*.meta
+*.dll
 PluginBinaries/
+Demos/Temp
+Demos/Library/
+NewtonPlugin/newton_wrap.cs
+NewtonWrapper/newton_wrap.cxx

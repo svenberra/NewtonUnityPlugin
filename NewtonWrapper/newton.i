@@ -20,12 +20,13 @@
 	#include "stdio.h"
 	#include "stdlib.h"
 
-	#include "MemoryAlloc.h"
-	#include "NewtonSDK.h"
-/*
 	// newton SDK
 	#include "Newton.h"
 
+	#include "dAlloc.h"
+	#include "dNewtonBody.h"
+	#include "dNewtonWorld.h"
+/*
 	// dmath sdk
 	#include "dMathDefines.h"
 	#include "dVector.h"
@@ -129,7 +130,7 @@
 %cs_callback(NewtonAllocMemory, NewtonAllocMemoryDelegate)
 %cs_callback(NewtonFreeMemory, NewtonFreeMemoryDelegate)
 
-#pragma SWIG nowarn=401
+
 */
 
 // Newton SDK Glue
@@ -155,10 +156,10 @@
 %include "CustomBallAndSocket.h"
 */
 
+#pragma SWIG nowarn=401
+%rename(__dAlloc_Alloc__) dAlloc::operator new;  
+%rename(__dAlloc_Free__) dAlloc::operator delete;  
 
-%rename(__MemoryAlloc_Alloc__) MemoryAlloc::operator new;  
-%rename(__MemoryAlloc_Free__) MemoryAlloc::operator delete;  
 
-
-%include "MemoryAlloc.h"
-%include "NewtonSDK.h"
+%include "dNewtonBody.h"
+%include "dNewtonWorld.h"
