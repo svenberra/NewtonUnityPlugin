@@ -16,7 +16,7 @@ Just open the solution file (NewtonUnityPlugin.sln) and build. (Visual Studio 20
 For now, choose Release and x64
 
 # NewtonWrapper
-You need to download and build the Newton Dynamics Library first.
+You need to clone and build the Newton Dynamics Library first.
 https://github.com/MADEAPPS/newton-dynamics/
 
 Create an environment variable named NEWTON_DYNAMICS that match the location where you installed Newton.
