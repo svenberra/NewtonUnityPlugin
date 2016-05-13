@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B6B57011-4DB5-4BF8-857C-1E0DC896B4AA}</ProjectGuid>
+    <ProjectGuid>{CDD6E2D7-832E-470F-984D-5A3D13C0F760}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NewtonPlugin</RootNamespace>
@@ -13,62 +13,82 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Release\</OutputPath>
+    <OutputPath>..\PluginBin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\PluginBinaries\</OutputPath>
+    <OutputPath>bin\x64\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>..\PluginBinaries\</OutputPath>
+    <OutputPath>..\PluginBin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Accessibility" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
     <Reference Include="UnityEngine">
-      <HintPath>..\UnityEngine.dll</HintPath>
+      <HintPath>D:\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Colliders\NewtonBoxCollider.cs" />
+    <Compile Include="Colliders\NewtonCapsuleCollider.cs" />
+    <Compile Include="Colliders\NewtonCollider.cs" />
+    <Compile Include="Colliders\NewtonConeCollider.cs" />
+    <Compile Include="Colliders\NewtonConvexHullCollider.cs" />
+    <Compile Include="Colliders\NewtonCylinderCollider.cs" />
+    <Compile Include="Colliders\NewtonSphereCollider.cs" />
+    <Compile Include="Colliders\NewtonTreeCollider.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="Joints\NewtonBallAndSocket.cs" />
+    <Compile Include="Joints\NewtonHinge.cs" />
+    <Compile Include="Joints\NewtonJoint.cs" />
+    <Compile Include="Joints\NewtonRollingFriction.cs" />
+    <Compile Include="NewtonAPI.cs" />
+    <Compile Include="NewtonAPI_Extensions.cs" />
     <Compile Include="NewtonBody.cs" />
-    <Compile Include="NewtonBoxCollider.cs" />
-    <Compile Include="NewtonCollider.cs" />
     <Compile Include="NewtonWorld.cs" />
-    <Compile Include="newton_wrap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vehicle\NewtonVehicle.cs" />
+    <Compile Include="Vehicle\NewtonVehicleTire.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R</PostBuildEvent>
+    <PostBuildEvent>COPY /Y $(TargetPath) $(SolutionDir)Demos\Assets\Plugins\$(TargetFileName)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

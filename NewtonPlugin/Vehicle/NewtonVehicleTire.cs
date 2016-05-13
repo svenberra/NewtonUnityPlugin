@@ -1,38 +1,53 @@
-﻿//using UnityEngine;
-//using System;
+﻿using UnityEngine;
+using System;
+using NewtonAPI;
 
-//[AddComponentMenu("Newton Physics/Vehicle/Vehicle Tire")]
-//public class NewtonVehicleTire : MonoBehaviour
-//{
-//    public NewtonPlugin.TireParameters tireParameters;
+namespace NewtonPlugin
+{
 
-//    public Transform tireTransform;
 
-//    public Vector3 rotationOffset = Vector3.zero;
+    //TODO: Make this a NewtonBody as well
 
-//    public IntPtr _tirePtr;
+    [AddComponentMenu("Newton Physics/Vehicle/Vehicle Tire")]
+    public class NewtonVehicleTire : MonoBehaviour
+    {
+        public NewtonTireParameters tireParameters;
 
-//    public void UpdateTransform()
-//    {
-//        IntPtr body = NewtonPlugin.VehicleTireGetBody(_tirePtr);
+        public Vector3 rotationOffset = Vector3.zero;
+        public bool Steering;
+        public bool Brakes;
+        public bool HandBrakes;
 
-//        Matrix4x4 mat = Matrix4x4.identity;
-//        NewtonPlugin.BodyGetMatrix(body, ref mat);
+        //public Transform tireTransform;
 
-//        Quaternion q = new Quaternion();
-//        q.w = Mathf.Sqrt(Mathf.Max(0, 1 + mat[0, 0] + mat[1, 1] + mat[2, 2])) / 2;
-//        q.x = Mathf.Sqrt(Mathf.Max(0, 1 + mat[0, 0] - mat[1, 1] - mat[2, 2])) / 2;
-//        q.y = Mathf.Sqrt(Mathf.Max(0, 1 - mat[0, 0] + mat[1, 1] - mat[2, 2])) / 2;
-//        q.z = Mathf.Sqrt(Mathf.Max(0, 1 - mat[0, 0] - mat[1, 1] + mat[2, 2])) / 2;
-//        q.x *= Mathf.Sign(q.x * (mat[2, 1] - mat[1, 2]));
-//        q.y *= Mathf.Sign(q.y * (mat[0, 2] - mat[2, 0]));
-//        q.z *= Mathf.Sign(q.z * (mat[1, 0] - mat[0, 1]));
+        internal IntPtr tirePtr;
+        internal IntPtr bodyPtr;
+        internal IntPtr btsPtr;
 
-//        tireTransform.position = new Vector3(mat.m03, mat.m13, mat.m23);
+        public unsafe void UpdateTransform()
+        {
+            if (btsPtr != IntPtr.Zero)
+            {
+                BodyTransformState* bts = (BodyTransformState*)btsPtr;
 
-//        Quaternion offsetRot = Quaternion.Euler(rotationOffset);
-//        tireTransform.rotation = q * offsetRot;
+                Quaternion offsetRot = Quaternion.Euler(rotationOffset);
+                transform.position = bts->GetInterpolatedPosition(NewtonManager.TimeAlpha);
+                transform.rotation = bts->GetInterpolatedRotation(NewtonManager.TimeAlpha) * offsetRot;
 
-//    }
+            }
 
-//}
+            //IntPtr bodyPtr = NewtonInvoke.NewtonVehicleTireGetBody(tirePtr);
+
+            //Vector3 pos = new Vector3();
+            //Quaternion rot = new Quaternion();
+            //NewtonInvoke.NewtonBodyGetPositionAndRotation(bodyPtr, (float*)&pos, (float*)&rot);
+
+            //transform.position = pos;
+
+            //Quaternion offsetRot = Quaternion.Euler(rotationOffset);
+            //transform.rotation = rot * offsetRot;
+        }
+
+    }
+
+}

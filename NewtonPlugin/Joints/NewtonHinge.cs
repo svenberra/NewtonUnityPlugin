@@ -1,49 +1,67 @@
 ﻿using UnityEngine;
 using System;
+using NewtonAPI;
 
 namespace NewtonPlugin
 {
 
     [AddComponentMenu("Newton Physics/Joints/Hinge Joint")]
-    public class NewtonHinge : MonoBehaviour
+    public class NewtonHinge : NewtonJoint
     {
 
-        IntPtr joint = IntPtr.Zero;
-
-        private NewtonBody childBody = null;
         public NewtonBody ConnectedBody = null;
 
-        public float Friction;
-        public bool EnableLimits;
-        public float MinAngle;
-        public float MaxAngle;
+        public Vector3 Anchor;
+        public Vector3 Axis = Vector3.right;
 
-
-        void Start()
+        public new void Awake()
         {
-            Debug.Log("Creating hinge");
+            otherBody = ConnectedBody;
+            base.Awake();
+        }
 
-            childBody = GetComponentInParent<NewtonBody>();
+        public void OnDrawGizmosSelected()
+        {
+            Vector3 worldAnchorPos = transform.TransformPoint(Anchor);
+            Quaternion worldRot = transform.rotation;
+            Quaternion axisRot = Quaternion.FromToRotation(Vector3.right, Axis);
+            worldRot *= axisRot;
+
             Matrix4x4 matrix = Matrix4x4.identity;
-            matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
+            matrix.SetTRS(worldAnchorPos, worldRot, Vector3.one);
 
-            IntPtr parentBodyPtr = IntPtr.Zero;
-            if (ConnectedBody != null)
-                parentBodyPtr = ConnectedBody.pBody;
+            Gizmos.matrix = matrix;
+            Vector3 boxVector = new Vector3(0.5f, 0.05f, 0.05f);
 
-            joint = NewtonAPI.NewtonCreateHinge(ref matrix, childBody.pBody, parentBodyPtr);
-            NewtonAPI.NewtonHingeEnableLimits(joint, EnableLimits);
+            Gizmos.color = Color.red;
+            //Gizmos.DrawSphere(Vector3.zero, 0.05f);
+            Gizmos.DrawCube(Vector3.zero, boxVector);
 
-            NewtonAPI.NewtonHingeSetLimits(joint, MinAngle * Mathf.Deg2Rad, MaxAngle * Mathf.Deg2Rad);
-            NewtonAPI.NewtonHingeSetFriction(joint, Friction);
+            Gizmos.matrix = Matrix4x4.identity;
 
         }
 
-
-        void OnDestroy()
+        public unsafe override IntPtr CreateJoint()
         {
-            Debug.Log("Destroying hinge");
-            //NewtonPlugin.DestroyJoint(joint);
+            Debug.Log("Creating HingeJoint");
+
+            // Health check
+            if (mainBodyPtr == IntPtr.Zero)
+            {
+                Debug.LogError("[NewtonHinge]Something went bad, NewtonBody pointer is null.");
+                return IntPtr.Zero;
+            }
+
+            Vector3 worldAnchorPos = transform.TransformPoint(Anchor);
+            Quaternion worldRot = transform.rotation;
+            Quaternion axisRot = Quaternion.FromToRotation(Vector3.right, Axis);
+            worldRot *= axisRot;
+
+            Matrix4x4 matrix = Matrix4x4.identity;
+            matrix.SetTRS(worldAnchorPos, worldRot, Vector3.one);
+
+            return NewtonInvoke.NewtonCreateHinge((float*)&matrix, mainBodyPtr, otherBodyPtr);
+
         }
 
     }

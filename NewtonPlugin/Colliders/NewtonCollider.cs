@@ -12,53 +12,69 @@ namespace NewtonPlugin
         Color col = new Color(0.6f, 1.0f, 0.6f);
 
         public Vector3 Scale = Vector3.one;
+        private Vector3 prevScale = Vector3.one;
+        protected bool needRebuild = true;
 
         void OnDrawGizmosSelected()
         {
             //if (this.GetType() == typeof(NewtonTreeCollider))
             //    return; // Don't render tree collider, too heavy...
 
-            Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+            //Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
 
-            if (lines == null)
-            {
-                lines = new List<Line>();
-                UpdateLines();
-            }
+            //if (lines == null)
+            //{
+            //    UpdateDebugLines();
+            //}
 
-            DrawLines();
+            //DrawLines();
 
         }
 
-        void OnValidate()
+        public void OnValidate()
         {
-            //if (this.GetType() == typeof(NewtonTreeCollider))
-            //    return; // Don't render tree collider, too heavy...
+            if (!Scale.Equals(prevScale))
+                needRebuild = true;
 
+            if (Scale.x <= 0 | Scale.y <= 0 | Scale.z <= 0)
+            {
+                //Debug.Log("Scale invalid, won't update debug lines");
+                Scale = prevScale;
+                return;
+            }
+
+            prevScale = Scale;
+
+            if(needRebuild | lines == null)
+                UpdateDebugLines();
+
+        }
+
+        void UpdateDebugLines()
+        {
             if (lines == null)
                 lines = new List<Line>();
             else
                 lines.Clear();
 
-            UpdateLines();
-        }
+            //Debug.Log("Updating debug lines");
 
-        void UpdateLines()
-        {
+            needRebuild = false;
 
             //Debug.Log("Building debug lines for " + this.name);
-
             //GCHandle gch = GCHandle.Alloc(lines);
             //IntPtr collider = CreateCollider(false);
             //if (collider != IntPtr.Zero)
             //{
+            //    NewtonInvoke.NewtonCollisionSetScale(collider, Scale.x, Scale.y, Scale.z);
             //    Matrix4x4 offsetMatrix = Matrix4x4.identity;
-            //    NewtonAPI.NewtonCollisionForEachPolygonDo(collider, ref offsetMatrix, NewtonCollisionIterator, GCHandle.ToIntPtr(gch));
+            //    NewtonInvoke.NewtonCollisionForEachPolygonDo(collider, ref offsetMatrix, NewtonCollisionIterator, GCHandle.ToIntPtr(gch));
             //    gch.Free();
-            //    NewtonAPI.NewtonDestroyCollision(collider);
+            //    NewtonInvoke.NewtonDestroyCollision(collider);
             //}
 
         }
+
 
         void DrawLines()
         {
@@ -104,10 +120,11 @@ namespace NewtonPlugin
 
         }
 
-        abstract public IntPtr CreateCollider(bool applyOffset);
+        abstract public IntPtr CreateCollider(IntPtr world, bool applyOffset);
 
     }
 
+    [StructLayout(LayoutKind.Sequential)]
     public struct Line
     {
         public Vector3 pA;
