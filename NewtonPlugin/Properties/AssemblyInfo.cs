@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TestWrapper")]
+[assembly: AssemblyTitle("NewtonPluginManaged")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TestWrapper")]
+[assembly: AssemblyProduct("NewtonPluginManaged")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("cdd6e2d7-832e-470f-984d-5a3d13c0f760")]
+[assembly: Guid("b6b57011-4db5-4bf8-857c-1e0dc896b4aa")]
 
 // Version information for an assembly consists of the following four values:
 //

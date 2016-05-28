@@ -1,54 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="newton_wrap.cxx" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="wrapperSdk\dAlloc.cpp">
+      <Filter>wrapperSdk</Filter>
+    </ClCompile>
+    <ClCompile Include="wrapperSdk\dNewtonWorld.cpp">
+      <Filter>wrapperSdk</Filter>
+    </ClCompile>
+    <ClCompile Include="wrapperSdk\dNewtonBody.cpp">
+      <Filter>wrapperSdk</Filter>
+    </ClCompile>
+    <ClCompile Include="wrapperSdk\dNewtonCollision.cpp">
+      <Filter>wrapperSdk</Filter>
+    </ClCompile>
+    <ClCompile Include="wrapperSdk\dNewtonCollisionBox.cpp">
+      <Filter>wrapperSdk</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="IUnityInterface.h" />
+    <ClInclude Include="wrapperSdk\dAlloc.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapperSdk\dNewtonWorld.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapperSdk\dNewtonBody.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapperSdk\dNewtonCollision.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapperSdk\dNewtonCollisionBox.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NewtonWrapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IUnityInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <CustomBuild Include="newton.i" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NewtonWrapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Newton.cxx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CustomJoints.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vehicle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <Filter Include="wrapperSdk">
+      <UniqueIdentifier>{ff3aad4b-98fc-4f07-b860-2280acea605f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

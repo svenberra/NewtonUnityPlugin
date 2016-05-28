@@ -1,176 +1,250 @@
-﻿using System;
-using NewtonAPI;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace NewtonPlugin
 {
-
-    public abstract class NewtonBody : MonoBehaviour
-    {
-        protected IntPtr worldPtr;
-        protected IntPtr bodyPtr;
-        protected IntPtr btsPtr;
-
-        public delegate void BodyDestroyEvent();
-        public event BodyDestroyEvent OnBodyDestroy;
-
-        internal abstract IntPtr GetBodyPointer();
-
-        public unsafe void Update()
-        {
-
-            if (btsPtr != IntPtr.Zero)
-            {
-                BodyTransformState* bts = (BodyTransformState*)btsPtr;
-                transform.position = bts->GetInterpolatedPosition(NewtonManager.TimeAlpha);
-                transform.rotation = bts->GetInterpolatedRotation(NewtonManager.TimeAlpha);
-            }
-
-            //NewtonInvoke.NewtonBodyGetPositionAndRotation(bodyPtr, (float*)&pos, (float*)&rot);
-            //transform.position = pos;
-            //transform.rotation = new Quaternion(rot.y, rot.z, rot.w, rot.x);
-
-            //BodyTransformState bts = null;
-            //if(NewtonManager.bodyPointers.TryGetValue(bodyPtr, out bts))
-            //{
-            //    transform.position = bts.currentPosition;
-            //    transform.rotation = bts.currentRotation;
-            //}
-
-        }
-
-        public void OnDestroy()
-        {
-            // Inform connected joints to destroy themselves.
-            if (OnBodyDestroy != null)
-                OnBodyDestroy();
-
-        }
-
-
-    }
-
-
+    [DisallowMultipleComponent]
     [AddComponentMenu("Newton Physics/Rigid Body")]
-    public class NewtonRigidBody: NewtonBody
+    public class NewtonBody : MonoBehaviour
     {
-        public bool Kinematic = false;
-        public bool KinematicCollidable = false;
-        public float Mass = 1.0f;
+        public NewtonWorld m_world;
 
-        public void Awake()
-        {
-            CreateBody();
-        }
+        public float m_mass;
+        private dNewtonBody m_body;
+        /*
+                public bool Kinematic = false;
+                public bool KinematicCollidable = false;
+                public float Mass = 1.0f;
 
-        internal override IntPtr GetBodyPointer()
-        {
-
-            if (bodyPtr == IntPtr.Zero)
-                CreateBody();
-
-            return bodyPtr;
-        }
-
-        private unsafe void CreateBody()
-        {
-            if (bodyPtr != IntPtr.Zero)
-                return;
-
-            worldPtr = NewtonManager.Register(this);
-
-            if (worldPtr == IntPtr.Zero)
-            {
-                Debug.Log("Something went wrong, world is 0");
-                return;
-            }
-
-            IntPtr pColl = IntPtr.Zero;
-
-            NewtonCollider[] colliders = Helpers.GetAllColliders(this.gameObject);
-
-            if (colliders.Length == 0) // No collider found, create null collision
-            {
-                pColl = NewtonInvoke.NewtonCreateNull(worldPtr);
-            }
-            else if (colliders.Length == 1) // One collider found
-            {
-                NewtonCollider coll = colliders[0];
-
-                if (coll.transform == transform)
-                    pColl = coll.CreateCollider(worldPtr, false); // Collider is a component of the same GameObject the Body is attached to. No offset available in this case.
-                else
-                    pColl = coll.CreateCollider(worldPtr, true); // Collider is a component of a child GameObject, apply the child GameObjects offset transform.
-            }
-            else // Several colliders found, create a compound.
-            {
-                pColl = NewtonInvoke.NewtonCreateCompoundCollision(worldPtr, 0);
-                NewtonInvoke.NewtonCompoundCollisionBeginAddRemove(pColl);
-
-                foreach (NewtonCollider coll in colliders)
+                public Matrix4x4 BodyTransform
                 {
-                    IntPtr pSubColl;
+                    get
+                    {
+                        Matrix4x4 mat = Matrix4x4.identity;
+                        IntPtr ptrmat = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(Matrix4x4)));
+                        //Marshal.StructureToPtr(test_struct_simple, ptest_struct_simple, false);
+                        NewtonWrapper.NewtonBodyGetMatrix(m_body, ptrmat);
+                        Marshal.PtrToStructure(ptrmat, mat);
+                        Marshal.FreeHGlobal(ptrmat);
 
-                    if (coll.transform == transform)
-                        pSubColl = coll.CreateCollider(worldPtr, false);
-                    else
-                        pSubColl = coll.CreateCollider(worldPtr, true);
+                        return mat;
+                    }
 
-                    NewtonInvoke.NewtonCompoundCollisionAddSubCollision(pColl, pSubColl);
-                    NewtonInvoke.NewtonDestroyCollision(pSubColl);
+                    set
+                    {
+                        NewtonAPI.NewtonBodySetMatrix(pBody, ref value);
+                    }
                 }
 
-                NewtonInvoke.NewtonCompoundCollisionEndAddRemove(pColl);
-            }
+                public Vector3 GetPosition()
+                {
+                    Matrix4x4 mat = Matrix4x4.identity;
+                    NewtonAPI.NewtonBodyGetMatrix(pBody, ref mat);
+                    return new Vector3(mat.m03, mat.m13, mat.m23);
+                }
 
-            Matrix4x4 matrix = Matrix4x4.identity;
-            matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
+                public Quaternion GetRotation()
+                {
+                    Matrix4x4 mat = Matrix4x4.identity;
+                    NewtonAPI.NewtonBodyGetMatrix(pBody, ref mat);
+                    Quaternion q = new Quaternion();
+                    q.w = Mathf.Sqrt(Mathf.Max(0, 1 + mat[0, 0] + mat[1, 1] + mat[2, 2])) / 2;
+                    q.x = Mathf.Sqrt(Mathf.Max(0, 1 + mat[0, 0] - mat[1, 1] - mat[2, 2])) / 2;
+                    q.y = Mathf.Sqrt(Mathf.Max(0, 1 - mat[0, 0] + mat[1, 1] - mat[2, 2])) / 2;
+                    q.z = Mathf.Sqrt(Mathf.Max(0, 1 - mat[0, 0] - mat[1, 1] + mat[2, 2])) / 2;
+                    q.x *= Mathf.Sign(q.x * (mat[2, 1] - mat[1, 2]));
+                    q.y *= Mathf.Sign(q.y * (mat[0, 2] - mat[2, 0]));
+                    q.z *= Mathf.Sign(q.z * (mat[1, 0] - mat[0, 1]));
+                    return q;
+                }
 
-            if (!Kinematic)
-                bodyPtr = NewtonInvoke.NewtonCreateDynamicBody(worldPtr, pColl, (float*)&matrix);
-            else
-            {
-                bodyPtr = NewtonInvoke.NewtonCreateKinematicBody(worldPtr, pColl, (float*)&matrix);
-                if (KinematicCollidable)
-                    NewtonInvoke.NewtonBodySetCollidable(bodyPtr, 1);
-            }
+                public void SetPositionAndRotation(Vector3 position, Quaternion rotation)
+                {
+                    Matrix4x4 matrix = Matrix4x4.identity;
+                    matrix.SetTRS(position, rotation, Vector3.one);
+                    BodyTransform = matrix;
+                }
 
-            NewtonInvoke.NewtonBodySetMassProperties(bodyPtr, Mass, pColl);
+                void Start()
+                {
 
-            NewtonInvoke.NewtonBodySetForceAndTorqueCallback(bodyPtr, NewtonManager.ApplyForceAndTorque);
+                    IntPtr pWorld = NewtonWorld.Instance.pWorld;
+                    IntPtr pColl = IntPtr.Zero;
 
-            Vector3 pos = transform.position;
-            Quaternion rot = transform.rotation;
-            btsPtr = NewtonInvoke.NewtonCreateBodyTransformState((float*)&pos, (float*)&rot);
-            NewtonInvoke.NewtonBodySetUserData(bodyPtr, btsPtr);
+                    //NewtonCollider[] colliders = GetComponentsInChildren<NewtonCollider>();
+                    NewtonCollider[] colliders = GetAllColliders();
 
-            NewtonInvoke.NewtonDestroyCollision(pColl); // Release the reference
+                    if (colliders.Length == 0) // No collider found, create null collision
+                    {
+                        pColl = NewtonAPI.NewtonCreateNull(pWorld);
+                    }
+                    else if (colliders.Length == 1) // One collider found
+                    {
+                        NewtonCollider coll = colliders[0];
 
-            //Debug.Log("Created body(" + pBody.ToString() + ")");
+                        if (coll.transform == transform)
+                            pColl = coll.CreateCollider(false); // Collider is a component of the same GameObject the Body is attached to. No offset available in this case.
+                        else
+                            pColl = coll.CreateCollider(true); // Collider is a component of a child GameObject, apply the child GameObjects offset transform.
+                    }
+                    else // Several colliders found, create a compound.
+                    {
+                        pColl = NewtonAPI.NewtonCreateCompoundCollision(pWorld, 0);
+                        NewtonAPI.NewtonCompoundCollisionBeginAddRemove(pColl);
 
-        }
+                        foreach (NewtonCollider coll in colliders)
+                        {
+                            IntPtr pSubColl;
 
-        public new void OnDestroy()
+                            if (coll.transform == transform)
+                                pSubColl = coll.CreateCollider(false);
+                            else
+                                pSubColl = coll.CreateCollider(true);
+
+                            NewtonAPI.NewtonCompoundCollisionAddSubCollision(pColl, pSubColl);
+                            NewtonAPI.NewtonDestroyCollision(pSubColl);
+                        }
+
+                        NewtonAPI.NewtonCompoundCollisionEndAddRemove(pColl);
+                    }
+
+                    Matrix4x4 matrix = Matrix4x4.identity;
+                    matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
+
+                    if (!Kinematic)
+                        pBody = NewtonAPI.NewtonCreateDynamicBody(pWorld, pColl, ref matrix);
+                    else
+                    {
+                        pBody = NewtonAPI.NewtonCreateKinematicBody(pWorld, pColl, ref matrix);
+                        if (KinematicCollidable)
+                            NewtonAPI.NewtonBodySetCollidable(pBody, 1);
+                    }
+
+                    NewtonAPI.NewtonBodySetMassProperties(pBody, Mass, pColl);
+
+                    NewtonAPI.NewtonBodySetForceAndTorqueCallback(pBody, ApplyForceAndTorque);
+
+                    //NewtonAPI.NewtonBodySetTransformCallback(pBody, SetTransform);
+
+                    //gcHandle_instance = GCHandle.Alloc(this, GCHandleType.Normal);
+                    //NewtonAPI.NewtonBodySetUserData(pBody, GCHandle.ToIntPtr(gcHandle_instance));
+
+                    NewtonAPI.NewtonDestroyCollision(pColl); // Release the reference
+
+                    //Debug.Log("Created body(" + pBody.ToString() + ")");
+
+
+                }
+
+                // Update is called once per frame
+                void Update()
+                {
+
+                    //TODO: Use Newton transform callback instead, not need to fetch the transform if the body hasn't moved.
+                    Matrix4x4 mat = Matrix4x4.identity;
+                    NewtonAPI.NewtonBodyGetMatrix(pBody, ref mat);
+
+                    Quaternion q = new Quaternion();
+                    q.w = Mathf.Sqrt(Mathf.Max(0, 1 + mat[0, 0] + mat[1, 1] + mat[2, 2])) / 2;
+                    q.x = Mathf.Sqrt(Mathf.Max(0, 1 + mat[0, 0] - mat[1, 1] - mat[2, 2])) / 2;
+                    q.y = Mathf.Sqrt(Mathf.Max(0, 1 - mat[0, 0] + mat[1, 1] - mat[2, 2])) / 2;
+                    q.z = Mathf.Sqrt(Mathf.Max(0, 1 - mat[0, 0] - mat[1, 1] + mat[2, 2])) / 2;
+                    q.x *= Mathf.Sign(q.x * (mat[2, 1] - mat[1, 2]));
+                    q.y *= Mathf.Sign(q.y * (mat[0, 2] - mat[2, 0]));
+                    q.z *= Mathf.Sign(q.z * (mat[1, 0] - mat[0, 1]));
+
+
+                    transform.position = new Vector3(mat.m03, mat.m13, mat.m23);
+                    transform.rotation = q;
+
+                }
+
+                void OnDestroy()
+                {
+                    //Debug.Log("Destroying body");
+
+                    //gcHandle_instance.Free();
+
+                    NewtonWorld world = NewtonWorld.Instance;
+
+                    // No need to destroy the body if the application is shutting down, Newton will have destroyed all remaining bodies.
+                    if (world!=null)
+                    {
+                        //Debug.Log("Destroyed body(" + pBody.ToString() + ")");
+                        NewtonAPI.NewtonDestroyBody(pBody);
+                    }
+                    //else
+                    //    Debug.Log("World already destroyed");
+                }
+
+                static void ApplyForceAndTorque(IntPtr body, float timestep, int threadIndex)
+                {
+                    float mass = 0, iXX = 0, iYY = 0, iZZ = 0;
+                    NewtonAPI.NewtonBodyGetMassMatrix(body, ref mass, ref iXX, ref iYY, ref iZZ);
+
+                    Vector3 force = new Vector3(0.0f, -9.8f * mass, 0.0f);
+                    NewtonAPI.NewtonBodyAddForce(body, ref force);
+                }
+
+                static void SetTransform(IntPtr pBody, ref Matrix4x4 matrix, int threadIndex)
+                {
+
+                    //GCHandle gch = GCHandle.FromIntPtr(NewtonAPI.NewtonBodyGetUserData(pBody));
+
+                    //NewtonBody body = (NewtonBody)gch.Target;
+
+                    //Matrix4x4 mat = Matrix4x4.identity;
+                    //NewtonAPI.NewtonBodyGetMatrix(pBody, ref mat);
+
+                    //Quaternion q = new Quaternion();
+                    //q.w = Mathf.Sqrt(Mathf.Max(0, 1 + mat[0, 0] + mat[1, 1] + mat[2, 2])) / 2;
+                    //q.x = Mathf.Sqrt(Mathf.Max(0, 1 + mat[0, 0] - mat[1, 1] - mat[2, 2])) / 2;
+                    //q.y = Mathf.Sqrt(Mathf.Max(0, 1 - mat[0, 0] + mat[1, 1] - mat[2, 2])) / 2;
+                    //q.z = Mathf.Sqrt(Mathf.Max(0, 1 - mat[0, 0] - mat[1, 1] + mat[2, 2])) / 2;
+                    //q.x *= Mathf.Sign(q.x * (mat[2, 1] - mat[1, 2]));
+                    //q.y *= Mathf.Sign(q.y * (mat[0, 2] - mat[2, 0]));
+                    //q.z *= Mathf.Sign(q.z * (mat[1, 0] - mat[0, 1]));
+
+                    //body.transform.position = new Vector3(mat.m03, mat.m13, mat.m23);
+                    //body.transform.rotation = q;
+                }
+
+                private NewtonCollider[] GetAllColliders()
+                {
+                    List<NewtonPlugin.NewtonCollider> colliders = new List<NewtonPlugin.NewtonCollider>();
+
+                    TraverseColliders(this.gameObject, colliders);
+
+                    return colliders.ToArray();
+                }
+
+                private void TraverseColliders(GameObject obj, List<NewtonPlugin.NewtonCollider> colliders)
+                {
+                    // Don't fetch colliders from children with NewtonBodies
+                    if (obj != this.gameObject && obj.GetComponent<NewtonPlugin.NewtonBody>() != null)
+                        return;
+
+                    //Fetch all colliders
+                    foreach (NewtonPlugin.NewtonCollider coll in obj.GetComponents<NewtonPlugin.NewtonCollider>())
+                        colliders.Add(coll);
+
+                    foreach (Transform child in obj.transform)
+                        TraverseColliders(child.gameObject, colliders);
+
+                }
+        */
+
+        void Start()
         {
-            base.OnDestroy();
-
-            if (bodyPtr != IntPtr.Zero)
-            {
-                NewtonInvoke.NewtonDestroyBodyTransformState(btsPtr);
-                NewtonInvoke.NewtonDestroyBody(bodyPtr);
-                bodyPtr = IntPtr.Zero;
-                Debug.Log("[NewtonBody] Deleted unmanaged Body ptr attached to " + this.gameObject.name);
-
-
-                NewtonManager.Unregister(this);
-            }
-
+            // Sweenei here is where we pass the parameters for creation the body
+            m_body = m_world.CreateBody(m_mass);
         }
 
-
-
+        void OnDestroy()
+        {
+            m_body.Dispose();
+        }
     }
-
 }

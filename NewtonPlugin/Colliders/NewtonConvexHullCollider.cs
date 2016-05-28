@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using NewtonAPI;
 
 namespace NewtonPlugin
 {
@@ -12,7 +11,7 @@ namespace NewtonPlugin
         public Mesh mesh;
         public float tolerance = 0.1f;
 
-        public unsafe override IntPtr CreateCollider(IntPtr world, bool applyOffset)
+        public override IntPtr CreateCollider(bool applyOffset)
         {
             if (mesh == null)
                 return IntPtr.Zero;
@@ -23,12 +22,9 @@ namespace NewtonPlugin
                 offsetMatrix.SetTRS(transform.localPosition, transform.localRotation, Vector3.one);
 
             Vector3[] vertices = mesh.vertices;
-            IntPtr collider;
-            fixed (float* vPtr = &vertices[0].x)
-            { 
-                collider = NewtonInvoke.NewtonCreateConvexHull(world, vertices.Length, vPtr, 12, tolerance, 0, (float*)&offsetMatrix);
-            }
-            NewtonInvoke.NewtonCollisionSetScale(collider, Scale.x, Scale.y, Scale.z);
+
+            IntPtr collider = NewtonAPI.NewtonCreateConvexHull(NewtonWorld.Instance.pWorld, vertices.Length, vertices, 12, tolerance, 0, ref offsetMatrix);
+            NewtonAPI.NewtonCollisionSetScale(collider, Scale.x, Scale.y, Scale.z);
 
             return collider;
         }

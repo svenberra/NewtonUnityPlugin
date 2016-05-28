@@ -5,13 +5,13 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|Win32">
-      <Configuration>Release</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
@@ -19,13 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FC72B9A5-5C6B-4051-9A72-95D1B606B81D}</ProjectGuid>
+    <ProjectGuid>{17450CAC-6906-4D61-870D-67608F43F5D0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>NewtonWrapper</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
@@ -38,12 +44,6 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
@@ -54,131 +54,228 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="Shared">
-  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\PluginBinaries\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\PluginBin\</OutDir>
+    <OutDir>..\PluginBinaries\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dMath\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dJointLibrary\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\source\pthreads.2\VS_2015_static_mt\$(platform)\pthread\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\core\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\physics\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\newton\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dMath_d.lib;dContainers_d.lib;dJointLibrary_d.lib;core_d.lib;physics_d.lib;newton_d.lib;pthread_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <AdditionalOptions> /FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>dMath_d.lib;dContainers_d.lib;dJointLibrary_d.lib;core_d.lib;physics_d.lib;newton_d.lib;pthread_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dMath\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dJointLibrary\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\source\pthreads.2\VS_2015_static_mt\$(platform)\pthread\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\core\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\physics\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\newton\$(Configuration)</AdditionalLibraryDirectories>
+      <ShowProgress>NotSet</ShowProgress>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+</Command>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>dMath.lib;dContainers.lib;dJointLibrary.lib;core.lib;physics.lib;newton.lib;pthread.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dMath\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dJointLibrary\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\source\pthreads.2\VS_2015_static_mt\$(platform)\pthread\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\core\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\physics\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\newton\$(Configuration)</AdditionalLibraryDirectories>
+      <ShowProgress>NotSet</ShowProgress>
+    </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dMath\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dJointLibrary\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\source\pthreads.2\VS_2015_static_mt\$(platform)\pthread\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\core\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\physics\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\newton\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>dMath.lib;dContainers.lib;dJointLibrary.lib;core.lib;physics.lib;newton.lib;pthread.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <ShowProgress>NotSet</ShowProgress>
     </Link>
     <PostBuildEvent>
-      <Command>COPY /Y $(TargetPath) $(SolutionDir)Demos\Assets\Plugins\$(TargetFileName)</Command>
+      <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+</Command>
     </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="IUnityInterface.h" />
-    <ClInclude Include="NewtonWrapper.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="wrapperSdk\dAlloc.h" />
+    <ClInclude Include="wrapperSdk\dNewtonBody.h" />
+    <ClInclude Include="wrapperSdk\dNewtonCollision.h" />
+    <ClInclude Include="wrapperSdk\dNewtonCollisionBox.h" />
+    <ClInclude Include="wrapperSdk\dNewtonWorld.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CustomJoints.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </PrecompiledHeader>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Newton.cxx" />
-    <ClCompile Include="NewtonWrapper.cpp" />
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="Vehicle.cpp" />
+    <ClCompile Include="newton_wrap.cxx">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wrapperSdk\dAlloc.cpp" />
+    <ClCompile Include="wrapperSdk\dNewtonBody.cpp" />
+    <ClCompile Include="wrapperSdk\dNewtonCollision.cpp" />
+    <ClCompile Include="wrapperSdk\dNewtonCollisionBox.cpp" />
+    <ClCompile Include="wrapperSdk\dNewtonWorld.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="newton.i">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\swigwin-3.0.8\swig.exe -IwrapperSdk -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\swigwin-3.0.8\swig.exe -IwrapperSdk -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\swigwin-3.0.8\swig.exe -IwrapperSdk -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\swigwin-3.0.8\swig.exe -IwrapperSdk -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building newton sdk csharp wraper %(Filename).cs</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building newton sdk csharp wraper %(Filename).cs</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building newton sdk csharp wraper %(Filename).cs</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building newton sdk csharp wraper %(Filename).cs</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).cxx</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).cxx</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).cxx</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).cxx</Outputs>
+    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
