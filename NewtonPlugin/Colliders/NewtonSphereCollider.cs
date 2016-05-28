@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using NewtonAPI;
 
 namespace NewtonPlugin
 {
@@ -9,11 +10,11 @@ namespace NewtonPlugin
     {
         public float Radius = 0.5f;
 
-        public override IntPtr CreateCollider(bool applyOffset)
+        public unsafe override IntPtr CreateCollider(IntPtr world, bool applyOffset)
         {
             Matrix4x4 offsetMatrix = Matrix4x4.identity;
-            IntPtr collider = NewtonAPI.NewtonCreateSphere(NewtonWorld.Instance.pWorld, Radius, 0, ref offsetMatrix);
-            NewtonAPI.NewtonCollisionSetScale(collider, Scale.x, Scale.y, Scale.z);
+            IntPtr collider = NewtonInvoke.NewtonCreateSphere(world, Radius, 0, (float*)&offsetMatrix);
+            NewtonInvoke.NewtonCollisionSetScale(collider, Scale.x, Scale.y, Scale.z);
             return collider;
         }
 
