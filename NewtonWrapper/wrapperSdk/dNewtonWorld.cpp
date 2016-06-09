@@ -23,8 +23,9 @@
 #include "dAlloc.h"
 #include "dNewtonWorld.h"
 
-dNewtonWorld::dNewtonWorld()
+dNewtonWorld::dNewtonWorld(void* const userData)
 	:dAlloc()
+	,m_userData(userData)
 {
 	// create a newton world
 	m_world = NewtonCreate();

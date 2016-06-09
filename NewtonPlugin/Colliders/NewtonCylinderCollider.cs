@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using NewtonAPI;
 
 namespace NewtonPlugin
 {
@@ -13,7 +12,7 @@ namespace NewtonPlugin
         public float Height = 1.0f;
         public bool Chamfered = false;
 
-        public unsafe override IntPtr CreateCollider(IntPtr world, bool applyOffset)
+        public override IntPtr CreateCollider(bool applyOffset)
         {
 
             Matrix4x4 offsetMatrix = Matrix4x4.identity;
@@ -22,11 +21,11 @@ namespace NewtonPlugin
 
             IntPtr collider = IntPtr.Zero;
             if (Chamfered)
-                collider = NewtonInvoke.NewtonCreateChamferCylinder(world, Radius0, Height, 0, (float*)&offsetMatrix);
+                collider = NewtonAPI.NewtonCreateChamferCylinder(NewtonWorld.Instance.pWorld, Radius0, Height, 0, ref offsetMatrix);
             else
-                collider = NewtonInvoke.NewtonCreateCylinder(world, Radius0, Radius1, Height, 0, (float*)&offsetMatrix);
+                collider = NewtonAPI.NewtonCreateCylinder(NewtonWorld.Instance.pWorld, Radius0, Radius1, Height, 0, ref offsetMatrix);
 
-            NewtonInvoke.NewtonCollisionSetScale(collider, Scale.x, Scale.y, Scale.z);
+            NewtonAPI.NewtonCollisionSetScale(collider, Scale.x, Scale.y, Scale.z);
             return collider;
         }
 

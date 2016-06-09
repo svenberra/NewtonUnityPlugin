@@ -71,26 +71,6 @@
 %rename(__CustomJoint_AngularIntegration_Add__) CustomAlloc::AngularIntegration::operator+;
 %rename(__CustomJoint_AngularIntegration_Sub__) CustomAlloc::AngularIntegration::operator-;
 
-// Wrap void * to IntPtr
-%typemap(ctype)  void * "void *"
-%typemap(imtype) void * "global::System.IntPtr"
-%typemap(cstype) void * "global::System.IntPtr"
-%typemap(csin)   void * "$csinput"
-%typemap(in)     void * %{ $1 = $input; %}
-%typemap(out)    void * %{ $result = $1; %}
-
-%typemap(csout, excode=SWIGEXCODE)  void* { 
-    System.IntPtr cPtr = $imcall;$excode
-    return cPtr;
-}
-
-%typemap(csvarout, excode=SWIGEXCODE2) void* %{ 
-    get {
-        System.IntPtr cPtr = $imcall;$excode 
-        return cPtr; 
-   } 
-%}
-
 // Wrap float * to IntPtr
 %typemap(ctype)  float * "float *"
 %typemap(imtype) float * "global::System.IntPtr"
@@ -138,6 +118,30 @@
 %include "CustomJoint.h"
 %include "CustomBallAndSocket.h"
 */
+
+
+
+
+// Wrap void * to IntPtr
+%typemap(ctype)  void * "void *"
+%typemap(imtype) void * "global::System.IntPtr"
+%typemap(cstype) void * "global::System.IntPtr"
+%typemap(csin)   void * "$csinput"
+%typemap(in)     void * %{ $1 = $input; %}
+%typemap(out)    void * %{ $result = $1; %}
+
+%typemap(csout, excode=SWIGEXCODE)  void* { 
+    System.IntPtr cPtr = $imcall;$excode
+    return cPtr;
+}
+
+%typemap(csvarout, excode=SWIGEXCODE2) void* %{ 
+    get {
+        System.IntPtr cPtr = $imcall;$excode 
+        return cPtr; 
+   } 
+%}
+
 
 #pragma SWIG nowarn=401
 %rename(__dAlloc_Alloc__) dAlloc::operator new;  

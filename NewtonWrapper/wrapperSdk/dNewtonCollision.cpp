@@ -25,15 +25,13 @@
 #include "dNewtonWorld.h"
 #include "dNewtonCollision.h"
 
-dNewtonCollision::dNewtonCollision(dCollsionType type, dLong collisionMask)
+dNewtonCollision::dNewtonCollision(dLong collisionMask)
 //dNewtonCollision::dNewtonCollision(dCollsionType type)
 	:dAlloc()
 //	:dNewtonMaterial(collisionMask)
-//	,m_shape (NULL)
+	,m_shape (NULL)
 //	,m_userData(NULL)
-//	,m_type (type)
 {
-	dAssert(0);
 }
 
 dNewtonCollision::~dNewtonCollision()

@@ -36,11 +36,11 @@ class dNewtonBody;
 class dNewtonCollision: public dAlloc
 {
 	public:
+/*
 	enum dCollsionType
 	{
 //		m_null,
 		m_box,
-/*
 		m_sphere,
 		m_capsule,
 		m_taperedCapsule,
@@ -54,9 +54,9 @@ class dNewtonCollision: public dAlloc
 		m_mesh,
 		m_scene,
 		m_heighfield,
-*/
+
 	};
-/*
+
 	class dDebugRenderer
 	{
 		public:
@@ -71,7 +71,7 @@ class dNewtonCollision: public dAlloc
 	};
 */
 
-	dNewtonCollision (dCollsionType type, dLong collisionMask);
+	dNewtonCollision (dLong collisionMask);
 	virtual ~dNewtonCollision();
 /*
 	dCollsionType GetType() const {return m_type;}
@@ -106,6 +106,7 @@ class dNewtonCollision: public dAlloc
 
 	NewtonCollision* m_shape;
 	friend class dNewtonBody;
+	friend class dNewtonDynamicBody;
 };
 
 /*

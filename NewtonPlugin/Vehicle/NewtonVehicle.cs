@@ -1,257 +1,210 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
-using NewtonAPI;
-using System.Collections.Generic;
-
-namespace NewtonPlugin
-{
-    [Serializable]
-    public struct NewtonVehicleWheelSetup
-    {
-        public NewtonVehicleTire FrontLeft;
-        public NewtonVehicleTire FrontRight;
-        public NewtonVehicleTire RearLeft;
-        public NewtonVehicleTire RearRight;
-
-        public List<NewtonVehicleTire> GetList()
-        {
-            return new List<NewtonVehicleTire>() { FrontLeft, FrontRight, RearLeft, RearRight };
-        }
-
-    }
-
-    [DisallowMultipleComponent]
-    [AddComponentMenu("Newton Physics/Vehicle/Vehicle")]
-    public class NewtonVehicle : NewtonBody
-    {
-
-        public float mass = 1500.0f;
-        public float maxBrakeTorque = 3000.0f;
-        public bool DifferentialLock = false;
-
-        public Vector3 centerOfMass = Vector3.zero;
-        public NewtonDifferentialType differental;
-
-        public NewtonVehicleParameters vehicleParameters;
-        public NewtonEngineParameters engineParameters;
-
-        public NewtonVehicleWheelSetup tires;
-
-        private IntPtr vehiclePtr = IntPtr.Zero;
-
-        public void SetThrottle(float throttle)
-        {
-            NewtonInvoke.NewtonVehicleSetThrottle(vehiclePtr, throttle);
-        }
-
-        public void SetSteering(float steering)
-        {
-            NewtonInvoke.NewtonVehicleSetSteering(vehiclePtr, steering);
-        }
-
-        public void SetBrakes(float brakes)
-        {
-            NewtonInvoke.NewtonVehicleSetBrakes(vehiclePtr, brakes);
-        }
-
-        public void SetHandBrakes(float brakes)
-        {
-            NewtonInvoke.NewtonVehicleSetHandBrakes(vehiclePtr, brakes);
-        }
-
-        public void SetClutch(float clutch)
-        {
-            NewtonInvoke.NewtonVehicleSetClutch(vehiclePtr, clutch);
-        }
-
-        public void SetGear(int gear)
-        {
-            NewtonInvoke.NewtonVehicleSetGear(vehiclePtr, gear);
-        }
-
-        public int GetGear()
-        {
-            return NewtonInvoke.NewtonVehicleGetGear(vehiclePtr);
-        }
-
-        public float GetSpeed()
-        {
-            return NewtonInvoke.NewtonVehicleGetSpeed(vehiclePtr);
-        }
-
-        public float GetRPM()
-        {
-            return NewtonInvoke.NewtonVehicleGetRPM(vehiclePtr);
-        }
-
-
-        public void Awake()
-        {
-            CreateVehicle();
-        }
-
-        internal override IntPtr GetBodyPointer()
-        {
-
-            if (bodyPtr == IntPtr.Zero)
-                CreateVehicle();
-
-            return bodyPtr;
-        }
-
-        public unsafe void CreateVehicle()
-        {
-            if (bodyPtr != IntPtr.Zero)
-                return;
+﻿//using UnityEngine;
+//using System.Collections;
+//using System;
+
+//[DisallowMultipleComponent]
+//[AddComponentMenu("Newton Physics/Vehicle/Vehicle")]
+//public class NewtonVehicle : MonoBehaviour {
 
-            Debug.Log("Creating vehicle");
+//    public float mass = 1500.0f;
+//    public float maxSteeringAngle = 25.0f;
+//    public float maxBrakeTorque = 3000.0f;
 
-            worldPtr = NewtonManager.Register(this);
+//    public Vector3 centerOfMass = Vector3.zero;
 
-            if (worldPtr == IntPtr.Zero)
-            {
-                Debug.Log("Something went wrong, world is 0");
-                return;
-            }
+//    public NewtonPlugin.EngineParameters engineParameters;
 
-            NewtonCollider[] colliders = Helpers.GetAllColliders(this.gameObject);
-            IntPtr pColl = IntPtr.Zero;
+//    IntPtr vehicle = IntPtr.Zero;
+//    IntPtr body = IntPtr.Zero;
 
-            if (colliders.Length == 0) // No collider found, create null collision
-            {
-                pColl = NewtonInvoke.NewtonCreateNull(worldPtr);
-            }
-            else if (colliders.Length == 1) // One collider found
-            {
-                NewtonCollider coll = colliders[0];
+//    NewtonVehicleTire[] tires;
 
-                if (coll.transform == transform)
-                    pColl = coll.CreateCollider(worldPtr, false); // Collider is a component of the same GameObject the Body is attached to. No offset available in this case.
-                else
-                    pColl = coll.CreateCollider(worldPtr, true); // Collider is a component of a child GameObject, apply the child GameObjects offset transform.
-            }
-            else // Several colliders found, create a compound.
-            {
-                pColl = NewtonInvoke.NewtonCreateCompoundCollision(worldPtr, 0);
-                NewtonInvoke.NewtonCompoundCollisionBeginAddRemove(pColl);
+//    void Start()
+//    {
+//        Debug.Log("Creating vehicle");
 
-                foreach (NewtonCollider coll in colliders)
-                {
-                    IntPtr pSubColl;
+//        IntPtr umColl = IntPtr.Zero; //Unmanaged collider pointer
 
-                    if (coll.transform == transform)
-                        pSubColl = coll.CreateCollider(worldPtr, false);
-                    else
-                        pSubColl = coll.CreateCollider(worldPtr, true);
+//        NewtonCollider[] colliders = GetComponentsInChildren<NewtonCollider>();
 
-                    NewtonInvoke.NewtonCompoundCollisionAddSubCollision(pColl, pSubColl);
-                    NewtonInvoke.NewtonDestroyCollision(pSubColl);
-                }
+//        if (colliders.Length == 0)
+//        {
+//            umColl = NewtonPlugin.CreateNull();
+//        }
+//        else if (colliders.Length == 1)
+//        {
+//            NewtonCollider coll = colliders[0];
 
-                NewtonInvoke.NewtonCompoundCollisionEndAddRemove(pColl);
-            }
+//            if (coll.transform == transform)
+//                umColl = coll.CreateCollider(false);
+//            else
+//                umColl = coll.CreateCollider(true);
+//        }
+//        else
+//        {
+//            umColl = NewtonPlugin.CreateCompoundCollision(0);
+//            NewtonPlugin.CompoundCollisionBeginAddRemove(umColl);
 
-            Matrix4x4 matrix = Matrix4x4.identity;
-            matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
+//            foreach (NewtonCollider coll in colliders)
+//            {
+//                IntPtr umSubColl = IntPtr.Zero;
 
-            // Create vehicle base
-            vehiclePtr = NewtonInvoke.NewtonCreateVehicle(NewtonManager.VehicleManagerPointer, pColl, (float*)&matrix, mass, maxBrakeTorque, NewtonManager.ApplyForceAndTorque);
-            bodyPtr = NewtonInvoke.NewtonVehicleGetBody(vehiclePtr);
+//                if (coll.transform == transform)
+//                    umSubColl = coll.CreateCollider(false);
+//                else
+//                    umSubColl = coll.CreateCollider(true);
 
-            Vector3 pos = transform.position;
-            Quaternion rot = transform.rotation;
-            btsPtr = NewtonInvoke.NewtonCreateBodyTransformState((float*)&pos, (float*)&rot);
-            NewtonInvoke.NewtonBodySetUserData(bodyPtr, btsPtr);
+//                NewtonPlugin.CompoundCollisionAddSubCollision(umColl, umSubColl);
+//                NewtonPlugin.DestroyCollision(umSubColl);
+//            }
 
-            Vector3 com = this.centerOfMass;
-            NewtonInvoke.NewtonVehicleSetCOM(vehiclePtr, (float*)&com);
+//            NewtonPlugin.CompoundCollisionEndAddRemove(umColl);
+//        }
 
-            // Add tires
+//        Matrix4x4 matrix = Matrix4x4.identity;
+//        matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
 
-            AddTire(tires.FrontLeft);
-            AddTire(tires.FrontRight);
-            AddTire(tires.RearLeft);
-            AddTire(tires.RearRight);
+//        // Create vehicle base
+//        vehicle = NewtonPlugin.CreateVehicle(umColl, ref matrix, mass, maxSteeringAngle, maxBrakeTorque);
+//        body = NewtonPlugin.VehicleGetBody(vehicle);
 
-            // Set engine parameters(tires must be added first)
-            NewtonVehicleParameters vParams = vehicleParameters;
-            NewtonEngineParameters eParams = engineParameters;
-            NewtonInvoke.NewtonVehicleSetEngineParams(vehiclePtr, (void*)&vParams, (void*)&eParams, tires.FrontLeft.tirePtr, tires.FrontRight.tirePtr, tires.RearLeft.tirePtr, tires.RearRight.tirePtr, differental);
+//        NewtonPlugin.VehicleSetCOM(vehicle, ref centerOfMass);
 
-            NewtonInvoke.NewtonVehicleCalculateAckermannParameters(vehiclePtr, tires.FrontLeft.tirePtr, tires.FrontRight.tirePtr, tires.RearLeft.tirePtr, tires.RearRight.tirePtr);
+//        // Add tires
+//        tires = GetComponentsInChildren<NewtonVehicleTire>();
+//        foreach (NewtonVehicleTire tire in tires)
+//        {
 
-            NewtonInvoke.NewtonVehicleFinalize(vehiclePtr);
+//            Vector3 position = tire.transform.localPosition;
+//            tire._tirePtr = NewtonPlugin.VehicleAddTire(vehicle, ref position, tire.tireParameters);
+//        }
+        
+//        // Add the steering tires
+//        NewtonPlugin.VehicleSteeringAddTire(vehicle, tires[0]._tirePtr);
+//        NewtonPlugin.VehicleSteeringAddTire(vehicle, tires[1]._tirePtr);
 
-            NewtonInvoke.NewtonDestroyCollision(pColl); // Release the collision reference
+//        // Add brakes
+//        NewtonPlugin.VehicleBrakesAddTire(vehicle, tires[0]._tirePtr);
+//        NewtonPlugin.VehicleBrakesAddTire(vehicle, tires[1]._tirePtr);
+//        NewtonPlugin.VehicleBrakesAddTire(vehicle, tires[2]._tirePtr);
+//        NewtonPlugin.VehicleBrakesAddTire(vehicle, tires[3]._tirePtr);
 
-            NewtonInvoke.NewtonVehicleSetGear(vehiclePtr, 0); // 0 = Neutral, 1 = Reverse, 2 = Drive(1st Gear)
-            NewtonInvoke.NewtonVehicleSetDifferentialLock(vehiclePtr, DifferentialLock);
+//        // Add handbrakes
+//        NewtonPlugin.VehicleHandBrakesAddTire(vehicle, tires[2]._tirePtr);
+//        NewtonPlugin.VehicleHandBrakesAddTire(vehicle, tires[3]._tirePtr);
 
-            bodyPtr = NewtonInvoke.NewtonVehicleGetBody(vehiclePtr);
+//        // Set engine parameters(tires must be added first)
+//        NewtonPlugin.VehicleSetEngineParams(vehicle, engineParameters, tires[0]._tirePtr, tires[1]._tirePtr, tires[2]._tirePtr, tires[3]._tirePtr, 2); //AWD
+
+//        // Link tires for AWD...
+//        //NewtonPlugin.VehicleLinkTires(vehicle, tires[0]._tirePtr, tires[2]._tirePtr); // Link FrontLeft with RearLeft
+//        //NewtonPlugin.VehicleLinkTires(vehicle, tires[1]._tirePtr, tires[3]._tirePtr); // Link FrontRight with RearRight
 
-            foreach (var tire in tires.GetList())
-            {
-                pos = tire.transform.position;
-                rot = tire.transform.rotation * Quaternion.Euler(-tire.rotationOffset);
+//        NewtonPlugin.VehicleFinalize(vehicle);
 
-                tire.bodyPtr = NewtonInvoke.NewtonVehicleTireGetBody(tire.tirePtr);
-                tire.btsPtr = NewtonInvoke.NewtonCreateBodyTransformState((float*)&pos, (float*)&rot);
-                NewtonInvoke.NewtonBodySetUserData(tire.bodyPtr, tire.btsPtr);
-            }
+//        NewtonPlugin.DestroyCollision(umColl); // Release the reference
 
+//        NewtonPlugin.VehicleSetGear(vehicle, 2); // 0 = Neutral, 1 = Reverse, 2 = Drive(1st Gear)
+//    }
 
-        }
 
-        private unsafe void AddTire(NewtonVehicleTire tire)
-        {
-            Vector3 position = tire.transform.localPosition;
-            NewtonTireParameters tireParams = tire.tireParameters;
+//    void OnGUI()
+//    {
+//        float kph = NewtonPlugin.VehicleGetSpeed(vehicle) * 3.6f;
 
-            tire.tirePtr = NewtonInvoke.NewtonVehicleAddTire(vehiclePtr, (float*)&position, (float*)&tireParams);
+//        GUI.contentColor = Color.black;
+//        GUI.Label(new Rect(10, 10, 100, 20), "Speed:" + kph.ToString());
+//        GUI.Label(new Rect(10, 30, 100, 20), "RPM:" + NewtonPlugin.VehicleGetRPM(vehicle).ToString());
+//        GUI.Label(new Rect(10, 50, 100, 20), "Gear:" + NewtonPlugin.VehicleGetGear(vehicle).ToString());
 
-            if (tire.Steering)
-                NewtonInvoke.NewtonVehicleSteeringAddTire(vehiclePtr, tire.tirePtr);
+//        float throttle = Input.GetAxis("Horizontal");
+//        GUI.Label(new Rect(10, 70, 100, 20), throttle.ToString());
 
-            if (tire.Brakes)
-                NewtonInvoke.NewtonVehicleBrakesAddTire(vehiclePtr, tire.tirePtr);
+//    }
 
-            if (tire.HandBrakes)
-                NewtonInvoke.NewtonVehicleHandBrakesAddTire(vehiclePtr, tire.tirePtr);
+//    bool braking = false;
+//    void Update ()
+//    {
+//        float speed = NewtonPlugin.VehicleGetSpeed(vehicle);
+//        int gear = NewtonPlugin.VehicleGetGear(vehicle);
 
-        }
+//        float steer = Input.GetAxis("Horizontal");
+//        NewtonPlugin.VehicleSetSteering(vehicle, steer);
 
+//        float throttle = Input.GetAxis("Vertical");
 
-        //bool braking = false;
-        public unsafe new void Update()
-        {
+//        braking = false;
 
-            base.Update();
+//        if (throttle > 0)
+//        {
+//            if (Math.Abs(speed) < 0.5f && gear < 2)
+//                NewtonPlugin.VehicleSetGear(vehicle, 2); // Switch to Drive
 
-            // Update tire transforms
-            tires.FrontLeft.UpdateTransform();
-            tires.FrontRight.UpdateTransform();
-            tires.RearLeft.UpdateTransform();
-            tires.RearRight.UpdateTransform();
+//            if (Math.Abs(speed) > 0.1f && gear < 2)
+//                braking = true;
 
-        }
+//        }
+//        else if(throttle < 0)
+//        {
+//            if (Math.Abs(speed) < 0.9f && gear > 1)
+//                NewtonPlugin.VehicleSetGear(vehicle, 1); // Reverse
 
-        public new void OnDestroy()
-        {
-            base.OnDestroy();
+//            if (Math.Abs(speed) > 0.1f && gear > 1)
+//            {
+//                braking = true;
+//            }
 
-            Debug.Log("Destroying vehicle");
-            foreach(var tire in tires.GetList())
-            {
-                NewtonInvoke.NewtonDestroyBodyTransformState(tire.btsPtr);
-            }
+//        }
 
-            NewtonInvoke.NewtonDestroyVehicle(NewtonManager.VehicleManagerPointer, vehiclePtr);
+//        if(braking)
+//        {
+//            NewtonPlugin.VehicleSetThrottle(vehicle, 0);
+//            NewtonPlugin.VehicleSetBrakes(vehicle, 1);
+//        }
+//        else
+//        {
+//            NewtonPlugin.VehicleSetThrottle(vehicle, Math.Abs(throttle));
+//            NewtonPlugin.VehicleSetBrakes(vehicle, 0);
+//        }
 
-            NewtonManager.Unregister(this);
-            
-        }
 
-    }
+//        if (Input.GetKey(KeyCode.Space))
+//            NewtonPlugin.VehicleSetHandBrakes(vehicle, 1.0f);
+//        else
+//            NewtonPlugin.VehicleSetHandBrakes(vehicle, 0.0f);
 
-}
+
+//        // Update transform
+//        Matrix4x4 mat = Matrix4x4.identity;
+//        NewtonPlugin.BodyGetMatrix(body, ref mat);
+
+//        Quaternion q = new Quaternion();
+//        q.w = Mathf.Sqrt(Mathf.Max(0, 1 + mat[0, 0] + mat[1, 1] + mat[2, 2])) / 2;
+//        q.x = Mathf.Sqrt(Mathf.Max(0, 1 + mat[0, 0] - mat[1, 1] - mat[2, 2])) / 2;
+//        q.y = Mathf.Sqrt(Mathf.Max(0, 1 - mat[0, 0] + mat[1, 1] - mat[2, 2])) / 2;
+//        q.z = Mathf.Sqrt(Mathf.Max(0, 1 - mat[0, 0] - mat[1, 1] + mat[2, 2])) / 2;
+//        q.x *= Mathf.Sign(q.x * (mat[2, 1] - mat[1, 2]));
+//        q.y *= Mathf.Sign(q.y * (mat[0, 2] - mat[2, 0]));
+//        q.z *= Mathf.Sign(q.z * (mat[1, 0] - mat[0, 1]));
+
+//        transform.position = new Vector3(mat.m03, mat.m13, mat.m23);
+//        transform.rotation = q;
+
+//        // Update tire transforms
+//        foreach (NewtonVehicleTire tire in tires)
+//        {
+//            tire.UpdateTransform();
+//        }
+
+
+//    }
+
+//    void OnDestroy()
+//    {
+//        Debug.Log("Destroying vehicle");
+//        NewtonPlugin.DestroyVehicle(vehicle);
+//    }
+
+    
+    
+//}

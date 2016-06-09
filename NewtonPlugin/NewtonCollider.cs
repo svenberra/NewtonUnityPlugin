@@ -7,15 +7,6 @@ namespace NewtonPlugin
 {
     abstract public class NewtonCollider : MonoBehaviour
     {
-        public Vector3 m_size = Vector3.one;
-        public Vector3 m_posit = Vector3.zero;
-        public Vector3 m_rotation = Vector3.zero;
-        public Vector3 m_scale = Vector3.one;
-
-        protected dNewtonCollision m_collision;
-        private List<Line> lines = null;
-        Color col = new Color(0.6f, 1.0f, 0.6f);
-
         void OnDrawGizmosSelected()
         {
             //if (this.GetType() == typeof(NewtonTreeCollider))
@@ -30,7 +21,6 @@ namespace NewtonPlugin
             }
 
             DrawLines();
-
         }
 
         void OnValidate()
@@ -48,7 +38,6 @@ namespace NewtonPlugin
 
         void UpdateLines()
         {
-
             //Debug.Log("Building debug lines for " + this.name);
 
             //GCHandle gch = GCHandle.Alloc(lines);
@@ -107,7 +96,16 @@ namespace NewtonPlugin
 
         }
 
-        abstract public void CreateCollider(bool applyOffset);
+        abstract public dNewtonCollision Create(NewtonWorld world);
+
+        public Vector3 m_size = Vector3.one;
+        public Vector3 m_posit = Vector3.zero;
+        public Vector3 m_rotation = Vector3.zero;
+        public Vector3 m_scale = Vector3.one;
+
+        //protected dNewtonCollision m_collision;
+        private List<Line> lines = null;
+        Color col = new Color(0.6f, 1.0f, 0.6f);
 
     }
 

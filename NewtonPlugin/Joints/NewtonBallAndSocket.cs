@@ -1,56 +1,53 @@
 ﻿using UnityEngine;
 using System;
-using NewtonAPI;
 
 namespace NewtonPlugin
 {
 
     [AddComponentMenu("Newton Physics/Joints/BallAndSocket Joint")]
-    public class NewtonBallAndSocket : NewtonJoint
+    public class NewtonBallAndSocket : MonoBehaviour
     {
-        public NewtonBody ConnectedBody = null;
 
-        public Vector3 Anchor;
+        IntPtr joint = IntPtr.Zero;
+
+        private NewtonBody childBody = null;
+        public NewtonBody ConnectedBody = null;
 
         public bool useFriction = false;
         public float friction;
 
-        public new void Awake()
+        void Start()
         {
-            otherBody = ConnectedBody;
-            base.Awake();
-        }
+            Debug.Log("Creating ballandsocket");
 
-        public void OnDrawGizmosSelected()
-        {
-            Vector3 worldAnchorPos = transform.TransformPoint(Anchor);
+            childBody = GetComponentInParent<NewtonBody>();
+            Matrix4x4 matrix = Matrix4x4.identity;
+            matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
 
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(worldAnchorPos, 0.05f);
-        }
+            Debug.Log("ChildBodyPtr:" + childBody.pBody.ToString());
 
-        public unsafe override IntPtr CreateJoint()
-        {
-            Debug.Log("Creating BallAndSocketJoint");
-
-            // Health check
-            if(mainBodyPtr == IntPtr.Zero)
+            IntPtr parentBodyPtr = IntPtr.Zero;
+            if (ConnectedBody != null)
             {
-                Debug.LogError("[NewtonBallAndSocket]Something went bad, NewtonBody pointer is null.");
-                return IntPtr.Zero;
+                parentBodyPtr = ConnectedBody.pBody;
+                Debug.Log("ParentBodyPtr:" + parentBodyPtr.ToString());
             }
 
-            Vector3 worldAnchorPos = transform.TransformPoint(Anchor);
-            Quaternion worldRotation = transform.rotation;
-
-            Matrix4x4 matrix = Matrix4x4.identity;
-            matrix.SetTRS(worldAnchorPos, worldRotation, Vector3.one);
-
             if (useFriction)
-                return NewtonInvoke.NewtonCreateBallAndSocketWithFriction((float*)&matrix, mainBodyPtr, otherBodyPtr, friction);
+                joint = NewtonAPI.NewtonCreateBallAndSocketWithFriction(ref matrix, childBody.pBody, parentBodyPtr, friction);
             else
-                return NewtonInvoke.NewtonCreateBallAndSocket((float*)&matrix, mainBodyPtr, otherBodyPtr);
+                joint = NewtonAPI.NewtonCreateBallAndSocket(ref matrix, childBody.pBody, parentBodyPtr);
 
+            Debug.Log("Created Joint(" + joint.ToString() + ")");
+
+
+        }
+
+
+        void OnDestroy()
+        {
+            Debug.Log("Destroying ballandsocket");
+            //NewtonPlugin.DestroyJoint(joint);
         }
 
     }

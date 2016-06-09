@@ -32,13 +32,15 @@ class dNewtonCollisionBox;
 class dNewtonWorld: public dAlloc
 {
 	public:
-	dNewtonWorld();
+	dNewtonWorld(void* const userData);
 	virtual ~dNewtonWorld();
 
 	private:
 	NewtonWorld* m_world;
+	void* m_userData;
 	friend class dNewtonBody;
 	friend class dNewtonCollision;
+	friend class dNewtonDynamicBody;
 	friend class dNewtonCollisionBox;
 };
 

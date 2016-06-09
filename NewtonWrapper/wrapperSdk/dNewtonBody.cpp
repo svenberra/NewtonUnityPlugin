@@ -282,7 +282,8 @@ void dNewtonBody::AttachChild(dNewtonBody* const child)
 
 //dNewtonBody::dNewtonBody(dNewtonWorld* const dWorld, dFloat mass, const dNewtonCollision* const collision, void* const userData, const dFloat* const matrix, dBodyType type, dNewtonBody* const parent)
 //dNewtonBody::dNewtonBody(dNewtonWorld* const dWorld, dFloat mass, const dNewtonCollision* const collision, const dMatrix& matrix, dBodyType type, dNewtonBody* const parent)
-dNewtonBody::dNewtonBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const dMatrix& matrix)
+//dNewtonBody::dNewtonBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const dMatrix& matrix)
+dNewtonBody::dNewtonBody(void* const userData)
 	:dAlloc()
 //	,dNewtonTransformLerp(matrix)
 	,m_body(NULL)
@@ -290,12 +291,12 @@ dNewtonBody::dNewtonBody(dNewtonWorld* const world, const dNewtonCollision* cons
 //	,m_sibling(NULL)
 //	,m_parent(parent)
 //	,m_boneArticulation(NULL)
-//	,m_userData(userData)
+	,m_userData(userData)
 //	,m_bodyType(type)
 {
-	dAssert(0);
-	NewtonWorld* const newtond = world->m_world;
-	NewtonBody* const body = NewtonCreateDynamicBody(newtond, collision->m_shape, &matrix[0][0]);
+//	dAssert(0);
+//	NewtonWorld* const newtond = world->m_world;
+//	NewtonBody* const body = NewtonCreateDynamicBody(newtond, collision->m_shape, &matrix[0][0]);
 /*
 	NewtonCollision* const shape = NewtonBodyGetCollision(body);
 	NewtonBodySetMassProperties(body, mass, shape);
@@ -307,15 +308,18 @@ dNewtonBody::dNewtonBody(dNewtonWorld* const world, const dNewtonCollision* cons
 
 dNewtonBody::~dNewtonBody()
 {
-	dAssert(0);
-/*
-	if (m_body && NewtonBodyGetDestructorCallback(m_body)) {
-		NewtonBodySetDestructorCallback(m_body, NULL);
-		NewtonDestroyBody(m_body);
-	}
-*/
+	Destroy();
 }
 
+void dNewtonBody::Destroy()
+{
+//	if (m_body && NewtonBodyGetDestructorCallback(m_body)) {
+	if (m_body) {
+		NewtonBodySetDestructorCallback(m_body, NULL);
+		NewtonDestroyBody(m_body);
+		m_body = NULL;
+	}
+}
 
 void dNewtonBody::OnBodyDestroy(const NewtonBody* const body)
 {
@@ -327,4 +331,14 @@ void dNewtonBody::OnBodyDestroy(const NewtonBody* const body)
 		delete me;
 	}
 */
+}
+
+
+dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const void* const matrixPtr, void* const userData)
+	:dNewtonBody(userData)
+{
+	dMatrix matrix ((dFloat*)matrixPtr);
+	NewtonWorld* const newtond = world->m_world;
+	m_body = NewtonCreateDynamicBody(newtond, collision->m_shape, &matrix[0][0]);
+
 }

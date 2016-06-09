@@ -31,23 +31,23 @@ class NewtonBody;
 class dNewtonWorld;
 class dNewtonCollision;
 
+//class SWIGTYPE_p_float
 
 //class dNewtonBody: public dNewtonAlloc, public dNewtonTransformLerp
 class dNewtonBody: public dAlloc
 {
 	public:
-	enum dBodyType
-	{
-		m_dynamic,
-		m_kinematic,
-		m_unknown,
-	};
-
 //	dNewtonBody (dNewtonWorld* const world, dFloat mass, const dNewtonCollision* const collision, void* const userData, const dFloat* const matrix, dBodyType m_type, dNewtonBody* const parent);
 //	dNewtonBody(dNewtonWorld* const world, dFloat mass, const dNewtonCollision* const collision, const dMatrix& matrix, dBodyType m_type, dNewtonBody* const parent);
+//	dNewtonBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const dMatrix& matrix);
 
-	dNewtonBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const dMatrix& matrix);
+	dNewtonBody(void* const userData);
+	virtual void Destroy();
+
+	protected:
 	virtual ~dNewtonBody();
+
+	
 
 /*
 	dBodyType GetType() const {return m_bodyType;}
@@ -117,12 +117,18 @@ class dNewtonBody: public dAlloc
 
 	protected:
 	NewtonBody* m_body;
+	void* m_userData;
 	//dNewtonBody* m_child;
 	//dNewtonBody* m_sibling;
 	//dNewtonBody* m_parent;
 	//void* m_boneArticulation; 
-	//void* m_userData;
 	//dBodyType m_bodyType;
+};
+
+class dNewtonDynamicBody: public dNewtonBody
+{
+	public:
+	dNewtonDynamicBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const void* const matrix, void* const userData);
 };
 
 #endif
