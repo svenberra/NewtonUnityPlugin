@@ -63,76 +63,6 @@ namespace NewtonPlugin
                     BodyTransform = matrix;
                 }
 
-                void Start()
-                {
-
-                    IntPtr pWorld = NewtonWorld.Instance.pWorld;
-                    IntPtr pColl = IntPtr.Zero;
-
-                    //NewtonCollider[] colliders = GetComponentsInChildren<NewtonCollider>();
-                    NewtonCollider[] colliders = GetAllColliders();
-
-                    if (colliders.Length == 0) // No collider found, create null collision
-                    {
-                        pColl = NewtonAPI.NewtonCreateNull(pWorld);
-                    }
-                    else if (colliders.Length == 1) // One collider found
-                    {
-                        NewtonCollider coll = colliders[0];
-
-                        if (coll.transform == transform)
-                            pColl = coll.CreateCollider(false); // Collider is a component of the same GameObject the Body is attached to. No offset available in this case.
-                        else
-                            pColl = coll.CreateCollider(true); // Collider is a component of a child GameObject, apply the child GameObjects offset transform.
-                    }
-                    else // Several colliders found, create a compound.
-                    {
-                        pColl = NewtonAPI.NewtonCreateCompoundCollision(pWorld, 0);
-                        NewtonAPI.NewtonCompoundCollisionBeginAddRemove(pColl);
-
-                        foreach (NewtonCollider coll in colliders)
-                        {
-                            IntPtr pSubColl;
-
-                            if (coll.transform == transform)
-                                pSubColl = coll.CreateCollider(false);
-                            else
-                                pSubColl = coll.CreateCollider(true);
-
-                            NewtonAPI.NewtonCompoundCollisionAddSubCollision(pColl, pSubColl);
-                            NewtonAPI.NewtonDestroyCollision(pSubColl);
-                        }
-
-                        NewtonAPI.NewtonCompoundCollisionEndAddRemove(pColl);
-                    }
-
-                    Matrix4x4 matrix = Matrix4x4.identity;
-                    matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
-
-                    if (!Kinematic)
-                        pBody = NewtonAPI.NewtonCreateDynamicBody(pWorld, pColl, ref matrix);
-                    else
-                    {
-                        pBody = NewtonAPI.NewtonCreateKinematicBody(pWorld, pColl, ref matrix);
-                        if (KinematicCollidable)
-                            NewtonAPI.NewtonBodySetCollidable(pBody, 1);
-                    }
-
-                    NewtonAPI.NewtonBodySetMassProperties(pBody, Mass, pColl);
-
-                    NewtonAPI.NewtonBodySetForceAndTorqueCallback(pBody, ApplyForceAndTorque);
-
-                    //NewtonAPI.NewtonBodySetTransformCallback(pBody, SetTransform);
-
-                    //gcHandle_instance = GCHandle.Alloc(this, GCHandleType.Normal);
-                    //NewtonAPI.NewtonBodySetUserData(pBody, GCHandle.ToIntPtr(gcHandle_instance));
-
-                    NewtonAPI.NewtonDestroyCollision(pColl); // Release the reference
-
-                    //Debug.Log("Created body(" + pBody.ToString() + ")");
-
-
-                }
 
                 // Update is called once per frame
                 void Update()
@@ -155,24 +85,6 @@ namespace NewtonPlugin
                     transform.position = new Vector3(mat.m03, mat.m13, mat.m23);
                     transform.rotation = q;
 
-                }
-
-                void OnDestroy()
-                {
-                    //Debug.Log("Destroying body");
-
-                    //gcHandle_instance.Free();
-
-                    NewtonWorld world = NewtonWorld.Instance;
-
-                    // No need to destroy the body if the application is shutting down, Newton will have destroyed all remaining bodies.
-                    if (world!=null)
-                    {
-                        //Debug.Log("Destroyed body(" + pBody.ToString() + ")");
-                        NewtonAPI.NewtonDestroyBody(pBody);
-                    }
-                    //else
-                    //    Debug.Log("World already destroyed");
                 }
 
                 static void ApplyForceAndTorque(IntPtr body, float timestep, int threadIndex)

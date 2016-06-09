@@ -7,6 +7,14 @@ namespace NewtonPlugin
     [AddComponentMenu("Newton Physics/Colliders/Box Collider")]
     public class NewtonBoxCollider: NewtonCollider
     {
+        void Start()
+        {
+        }
+
+        void OnDestroy()
+        {
+        }
+
         public override dNewtonCollision Create(NewtonWorld world)
         {
             /*
