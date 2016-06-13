@@ -11,32 +11,25 @@ namespace NewtonPlugin
     {
         public dNewtonWorld GetWorld()
         {
+            UnityEngine.Debug.Log("xxxxxxxxx 6");
+            if (m_world == null)
+            {
+                m_userDataGlueObject = GCHandle.Alloc(this);
+
+                // create the low lever physic world
+                m_world = new dNewtonWorld(GCHandle.ToIntPtr(m_userDataGlueObject));
+            }
             return m_world;
         }
         void Start()
         {
-            m_pinThisObject = GCHandle.Alloc(this);
-
-            // create the low lever physic world
-            m_world = new dNewtonWorld(GCHandle.ToIntPtr(m_pinThisObject));
-
-            GameObject[] objectList = gameObject.scene.GetRootGameObjects();
-            foreach (GameObject rootObj in objectList)
-            {
-                InitPhysicsScene(rootObj);
-            }
+            InitScene();
         }
 
         void OnDestroy()
         {
-            GameObject[] objectList = gameObject.scene.GetRootGameObjects();
-            foreach (GameObject rootObj in objectList)
-            {
-                DestroyPhysicsScene(rootObj);
-            }
-
-            m_world.Dispose();
-            m_pinThisObject.Free();
+            UnityEngine.Debug.Log("xxxxxxxxx 5");
+            DestroyScene();
         }
 
         private void InitPhysicsScene(GameObject root)
@@ -53,6 +46,33 @@ namespace NewtonPlugin
             }
         }
 
+        public void InitScene()
+        {
+            GetWorld();
+            GameObject[] objectList = gameObject.scene.GetRootGameObjects();
+            foreach (GameObject rootObj in objectList)
+            {
+                InitPhysicsScene(rootObj);
+            }
+        }
+
+
+        public void DestroyScene()
+        {
+            if (m_world != null)
+            {
+                GameObject[] objectList = gameObject.scene.GetRootGameObjects();
+                foreach (GameObject rootObj in objectList)
+                {
+                    DestroyPhysicsScene(rootObj);
+                }
+
+                m_world = null;
+                m_userDataGlueObject.Free();
+            }
+        }
+
+
         private void DestroyPhysicsScene(GameObject root)
         {
             NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
@@ -67,7 +87,7 @@ namespace NewtonPlugin
             }
         }
         
-
+/*        
         public dNewtonCollision BuildCollision(List<NewtonCollider> colliders)
         {
             dNewtonCollision coll = null;
@@ -78,9 +98,10 @@ namespace NewtonPlugin
             }
             return coll;
         }
+*/
 
-        private dNewtonWorld m_world;
-        private GCHandle m_pinThisObject;
+        private dNewtonWorld m_world = null;
+        private GCHandle m_userDataGlueObject;
     }
 }
 

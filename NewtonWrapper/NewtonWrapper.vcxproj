@@ -94,7 +94,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -128,7 +128,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -161,7 +161,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -197,7 +197,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -269,10 +269,10 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\swigwin-3.0.8\swig.exe -IwrapperSdk -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\swigwin-3.0.8\swig.exe -IwrapperSdk -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\swigwin-3.0.8\swig.exe -IwrapperSdk -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building newton sdk csharp wraper %(Filename).cs</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building newton sdk csharp wraper %(Filename).cs</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building newton sdk csharp wraper %(Filename).cs</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building newton sdk csharp wraper %(Filename).cs</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">building newton sdk csharp wraper %(Filename)_wrap.cs</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">building newton sdk csharp wraper %(Filename)_wrap.cs</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building newton sdk csharp wraper %(Filename)_wrap.cs</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building newton sdk csharp wraper %(Filename)_wrap.cs</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).cxx</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).cxx</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).cxx</Outputs>

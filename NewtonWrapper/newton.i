@@ -168,3 +168,13 @@
 %include "dNewtonCollision.h"
 %include "dNewtonCollisionBox.h"
 
+/*
+// impementin some callbacks
+%callback("%s_cb");
+//int add(int,int);
+//int sub(int,int);
+//int mul(int,int);
+void TestingCallbacks(char* const xxx);
+%nocallback;
+*/
+

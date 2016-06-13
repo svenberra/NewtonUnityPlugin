@@ -31,32 +31,16 @@ class NewtonCollision;
 class dNewtonBody;
 //class dNewtonMesh;
 
+typedef void(*TestingCallbacks____)();
+//typedef void(*NewtonUserMeshCollisionCollideCallback) (NewtonUserMeshCollisionCollideDesc* const collideDescData, const void* const continueCollisionHandle);
 
 //class dNewtonCollision: virtual public dNewtonAlloc, public dNewtonMaterial
 class dNewtonCollision: public dAlloc
 {
 	public:
+//		typedef void(*DebugDisplayCallback_xxxxxxxxxxx)(char* const xxx, int size);
+
 /*
-	enum dCollsionType
-	{
-//		m_null,
-		m_box,
-		m_sphere,
-		m_capsule,
-		m_taperedCapsule,
-		m_cone,
-		m_cylinder,
-		m_taperedCyinder,
-		m_chamferedCylinder,
-		m_convex,
-		m_compound,
-		
-		m_mesh,
-		m_scene,
-		m_heighfield,
-
-	};
-
 	class dDebugRenderer
 	{
 		public:
@@ -73,6 +57,10 @@ class dNewtonCollision: public dAlloc
 
 	dNewtonCollision (dLong collisionMask);
 	virtual ~dNewtonCollision();
+
+
+	void DebugRender(TestingCallbacks____ callback);
+//	virtual void DebugRender(const void* const matrix, * const renderer) const;
 /*
 	dCollsionType GetType() const {return m_type;}
 	NewtonCollision* GetShape() const;
@@ -90,7 +78,7 @@ class dNewtonCollision: public dAlloc
 	void GetMatrix (dFloat* const matrix) const;
 
 	void CalculateAABB (const dFloat* const matrix, dFloat* const p0, dFloat* const p1) const;
-	virtual void DebugRender (const dFloat* const matrix, dDebugRenderer* const renderer) const;
+	
 
 	void CalculateBuoyancyAcceleration (const dFloat* const matrix, const dFloat* const shapeOrigin, const dFloat* const gravityVector, const dFloat* const fluidPlane, dFloat fluidDensity, dFloat fluidViscosity, dFloat* const accel, dFloat* const alpha);
 */
@@ -98,7 +86,7 @@ class dNewtonCollision: public dAlloc
 	void SetShape(NewtonCollision* const shape);
 
 //	dNewtonCollision (const dNewtonCollision& srcCollision, NewtonCollision* const shape);
-//	static void DebugRender (void* userData, int vertexCount, const dFloat* faceVertec, int id);
+	static void DebugRender (void* userData, int vertexCount, const dFloat* faceVertec, int id);
 	
 //	void* m_userData;
 //	dCollsionType m_type;

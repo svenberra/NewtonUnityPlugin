@@ -31,9 +31,9 @@ class dNewtonCollisionBox: public dNewtonCollision
 {
 	public:
 	dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z);
+
 //	dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z, dLong collisionMask);
 //	dNewtonCollision* Clone(NewtonCollision* const shape) const;
-
 	protected:
 //	dNewtonCollisionBox(const dNewtonCollisionBox& srcCollision, NewtonCollision* const shape);
 };

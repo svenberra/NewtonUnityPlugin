@@ -20,7 +20,6 @@
 
 
 #include "stdafx.h"
-#include "Newton.h"
 #include "dNewtonBody.h"
 #include "dNewtonWorld.h"
 #include "dNewtonCollisionBox.h"

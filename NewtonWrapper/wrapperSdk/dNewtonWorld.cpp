@@ -19,9 +19,10 @@
 */
 
 #include "stdafx.h"
-#include "Newton.h"
 #include "dAlloc.h"
 #include "dNewtonWorld.h"
+
+
 
 dNewtonWorld::dNewtonWorld(void* const userData)
 	:dAlloc()

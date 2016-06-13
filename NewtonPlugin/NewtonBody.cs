@@ -124,42 +124,48 @@ namespace NewtonPlugin
 
         void Start()
         {
-            m_pinThisObject = GCHandle.Alloc(this);
         }
 
         void OnDestroy()
         {
             DestroyRigidBody();
-            m_pinThisObject.Free();
         }
 
         public void InitRigidBody()
         {
-            // get the list of all collision components associated with the body
-            List<NewtonCollider> colliders = new List<NewtonCollider>();
-            TraverseColliders(gameObject, colliders);
+/*
+            if (m_userDataGlueObject == null)
+            {
+                m_userDataGlueObject = GCHandle.Alloc(this);
 
-            // generate the collision shape
-            dNewtonCollision collision = m_world.BuildCollision(colliders);
+                // get the list of all collision components associated with the body
+                List<NewtonCollider> colliders = new List<NewtonCollider>();
+                TraverseColliders(gameObject, colliders);
 
-            // create the body
-            Matrix4x4 matrix = Matrix4x4.identity;
-            matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
+                // generate the collision shape
+                dNewtonCollision collision = m_world.BuildCollision(colliders);
 
-            IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
-            // Copy the struct to unmanaged memory.
-            Marshal.StructureToPtr(matrix, pnt, false);
-            m_body = new dNewtonDynamicBody(m_world.GetWorld(), collision, pnt, GCHandle.ToIntPtr(m_pinThisObject));
-            // Free the unmanaged memory.
-            Marshal.FreeHGlobal(pnt);
+                // create the body
+                Matrix4x4 matrix = Matrix4x4.identity;
+                matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
+
+                IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
+                // Copy the struct to unmanaged memory.
+                Marshal.StructureToPtr(matrix, pnt, false);
+                m_body = new dNewtonDynamicBody(m_world.GetWorld(), collision, pnt, GCHandle.ToIntPtr(m_userDataGlueObject));
+                // Free the unmanaged memory.
+                Marshal.FreeHGlobal(pnt);
+            }
+*/
         }
 
         public void DestroyRigidBody()
         {
             if (m_body != null)
             {
-                m_body.Destroy();
-                m_body = null;
+  //              m_body.Destroy();
+//                m_body = null;
+//                m_userDataGlueObject.Free();
             }
         }
 
@@ -185,7 +191,8 @@ namespace NewtonPlugin
 
         public NewtonWorld m_world;
 //      public float m_mass;
-        private dNewtonBody m_body;
-        private GCHandle m_pinThisObject;
+        private dNewtonBody m_body = null;
+//      private GCHandle m_userDataGlueObject;
     }
 }
+

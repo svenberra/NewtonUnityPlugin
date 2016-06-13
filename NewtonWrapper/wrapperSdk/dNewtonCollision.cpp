@@ -20,33 +20,9 @@
 
 
 #include "stdafx.h"
-#include "Newton.h"
 #include "dNewtonBody.h"
 #include "dNewtonWorld.h"
 #include "dNewtonCollision.h"
-
-dNewtonCollision::dNewtonCollision(dLong collisionMask)
-//dNewtonCollision::dNewtonCollision(dCollsionType type)
-	:dAlloc()
-//	:dNewtonMaterial(collisionMask)
-	,m_shape (NULL)
-//	,m_userData(NULL)
-{
-}
-
-dNewtonCollision::~dNewtonCollision()
-{
-	if (m_shape) {
-		NewtonCollisionSetUserData(m_shape, NULL);
-		NewtonDestroyCollision(m_shape);
-	}
-}
-
-void dNewtonCollision::SetShape(NewtonCollision* const shape)
-{
-	m_shape = shape;
-	NewtonCollisionSetUserData(m_shape, this);
-}
 
 
 
@@ -105,11 +81,6 @@ NewtonCollision* dNewtonCollision::GetShape() const
 }
 
 
-void dNewtonCollision::DebugRender (void* userData, int vertexCount, const dFloat* faceVertec, int id)
-{
-	dDebugRenderer* const renderer = (dDebugRenderer*) userData;
-	renderer->OnDrawFace (vertexCount, faceVertec, id);
-}
 
 
 void dNewtonCollision::DebugRender (const dFloat* const matrix, dDebugRenderer* const renderer) const
@@ -263,3 +234,43 @@ dNewtonCollision* dNewtonCollisionCompound::GetChildFromNode(void* const collisi
 
 #endif
 
+dNewtonCollision::dNewtonCollision(dLong collisionMask)
+	:dAlloc()
+	,m_shape(NULL)
+{
+}
+
+dNewtonCollision::~dNewtonCollision()
+{
+	if (m_shape) {
+		NewtonCollisionSetUserData(m_shape, NULL);
+		NewtonDestroyCollision(m_shape);
+	}
+}
+
+void dNewtonCollision::SetShape(NewtonCollision* const shape)
+{
+	m_shape = shape;
+	NewtonCollisionSetUserData(m_shape, this);
+}
+
+/*
+void dNewtonCollision::DebugRender(void* userData, int vertexCount, const dFloat* faceVertec, int id)
+{
+	dDebugRenderer* const renderer = (dDebugRenderer*)userData;
+	renderer->OnDrawFace(vertexCount, faceVertec, id);
+}
+*/
+
+/*
+void dNewtonCollision::DebugRender(DebugDisplayCallback callback)
+{
+	char* xxx = "this is a test xxxxxxxxxx\n";
+	callback(xxx, int (strlen(xxx)));
+}
+*/
+
+void dNewtonCollision::DebugRender(TestingCallbacks____ callback)
+{
+
+}
