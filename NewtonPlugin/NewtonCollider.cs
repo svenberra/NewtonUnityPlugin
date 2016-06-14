@@ -7,7 +7,7 @@ namespace NewtonPlugin
 {
 
 //   public delegate void DebugDisplayCallback();
-    public class DebugDisplayCallback: xxxxxxx
+    public class DebugDisplayCallback: dDebugDrawCallback
     {
 
         public DebugDisplayCallback()
@@ -44,8 +44,11 @@ namespace NewtonPlugin
             //DebugDisplayCallback xxx = new DebugDisplayCallback(TestCallback);
             //m_shape.DebugRender(xxx);
 
+            // test call back mombo jumbo
             DebugDisplayCallback xxxx = new DebugDisplayCallback();
-            xxxx.Print();
+            //xxxx.Print();
+
+            m_shape.DebugRender(xxxx);
             /*
                         if (lines == null)
                         {

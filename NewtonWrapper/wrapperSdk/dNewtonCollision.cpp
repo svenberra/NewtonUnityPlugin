@@ -270,25 +270,27 @@ void dNewtonCollision::DebugRender(DebugDisplayCallback callback)
 }
 */
 
-void dNewtonCollision::DebugRender()
+void dNewtonCollision::DebugRender(dDebugDrawCallback* callback)
 {
+	callback->Print();
 }
 
 
 
 #include <cstdio>
 #include <iostream>
-xxxxxxx::xxxxxxx()
+dDebugDrawCallback::dDebugDrawCallback()
 {
 	std::cout << "Callback::Callback()" << std::endl;
 }
 
-xxxxxxx::~xxxxxxx()
+dDebugDrawCallback::~dDebugDrawCallback()
 {
 	std::cout << "Callback::~Callback()" << std::endl;
 }
 
-void xxxxxxx::Print()
+
+void dDebugDrawCallback::Print()
 {
 	std::cout << "xxxxx_0" << std::endl;
 }

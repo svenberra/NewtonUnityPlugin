@@ -31,15 +31,12 @@ class NewtonCollision;
 class dNewtonBody;
 //class dNewtonMesh;
 
-//typedef void(*TestingCallbacks____)();
-//typedef void(*NewtonUserMeshCollisionCollideCallback) (NewtonUserMeshCollisionCollideDesc* const collideDescData, const void* const continueCollisionHandle);
 
-
-class xxxxxxx
+class dDebugDrawCallback
 {
 	public: 
-	xxxxxxx();
-	virtual ~xxxxxxx();
+	dDebugDrawCallback();
+	virtual ~dDebugDrawCallback();
 	virtual void Print();
 };
 
@@ -70,7 +67,7 @@ class dNewtonCollision: public dAlloc
 	virtual ~dNewtonCollision();
 
 
-	void DebugRender();
+	void DebugRender(dDebugDrawCallback* callback);
 //	virtual void DebugRender(const void* const matrix, * const renderer) const;
 /*
 	dCollsionType GetType() const {return m_type;}
