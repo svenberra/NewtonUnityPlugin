@@ -4,16 +4,14 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 
-//    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
 public delegate void ProgressCallbackGlue();
-
 
 namespace NewtonPlugin
 {
 
     abstract public class NewtonCollider : MonoBehaviour
     {
-        public static void TestCallback()
+        public void TestCallback()
         {
             UnityEngine.Debug.Log("calling call back xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         }
