@@ -6,7 +6,21 @@ using System.Runtime.InteropServices;
 namespace NewtonPlugin
 {
 
-   public delegate void DebugDisplayCallback();
+//   public delegate void DebugDisplayCallback();
+    public class DebugDisplayCallback: xxxxxxx
+    {
+
+        public DebugDisplayCallback()
+            : base()
+        {
+
+        }
+
+        public override void Print()
+        {
+            UnityEngine.Debug.Log("xxxxxxxxx 2");
+        }
+    }
 
     abstract public class NewtonCollider : MonoBehaviour
     {
@@ -27,9 +41,11 @@ namespace NewtonPlugin
             Gizmos.color = Color.white;
             Gizmos.DrawSphere(transform.position, 1.0f);
 
-            DebugDisplayCallback xxx = new DebugDisplayCallback(TestCallback);
-            m_shape.DebugRender(xxx);
+            //DebugDisplayCallback xxx = new DebugDisplayCallback(TestCallback);
+            //m_shape.DebugRender(xxx);
 
+            DebugDisplayCallback xxxx = new DebugDisplayCallback();
+            xxxx.Print();
             /*
                         if (lines == null)
                         {

@@ -15,48 +15,16 @@
 
 %module NewtonWrapper
 %{
-	// minimal standard library support
-	#include "new"
-	#include "stdio.h"
-	#include "stdlib.h"
-
-	// newton SDK
-	#include "Newton.h"
+	#include "stdafx.h"
 
 	#include "dAlloc.h"
 	#include "dNewtonBody.h"
 	#include "dNewtonWorld.h"
 	#include "dNewtonCollision.h"
 	#include "dNewtonCollisionBox.h"
-
-	// dmath sdk
-	#include "dMathDefines.h"
-	#include "dVector.h"
-	#include "dMatrix.h"
-	#include "dQuaternion.h"
-	#include "dLinearAlgebra.h"
-/*
-	// dContainers SDK
-	#include "dContainersStdAfx.h"
-	#include "dCRC.h"
-	#include "dRtti.h"
-	#include "dTree.h"
-	#include "dList.h"
-	#include "dHeap.h"
-	#include "dClassInfo.h"
-	#include "dRefCounter.h"
-	#include "dBezierSpline.h"
-
-	// Custom Joints SDK
-	#include "CustomJointLibraryStdAfx.h"
-	#include "CustomAlloc.h"
-	#include "CustomJoint.h"
-	#include "CustomBallAndSocket.h"
-*/
 %}
 
 /*
-
 %rename(__dContainers_Alloc__) dContainersAlloc::operator new;  
 %rename(__dContainers_Freec__) dContainersAlloc::operator delete;  
 
@@ -104,10 +72,7 @@
 // Wrap Newton callbacks
 %cs_callback(NewtonAllocMemory, NewtonAllocMemoryDelegate)
 %cs_callback(NewtonFreeMemory, NewtonFreeMemoryDelegate)
-*/
 
-// Newton SDK Glue
-/*
 // dContainers SDK Glue
 %include "dContainersStdAfx.h"
 %include "dContainersAlloc.h"
@@ -167,14 +132,3 @@
 %include "dNewtonWorld.h"
 %include "dNewtonCollision.h"
 %include "dNewtonCollisionBox.h"
-
-/*
-// impementin some callbacks
-%callback("%s_cb");
-//int add(int,int);
-//int sub(int,int);
-//int mul(int,int);
-void TestingCallbacks(char* const xxx);
-%nocallback;
-*/
-
