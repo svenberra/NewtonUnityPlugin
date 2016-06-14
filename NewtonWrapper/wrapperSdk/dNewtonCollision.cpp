@@ -254,43 +254,10 @@ void dNewtonCollision::SetShape(NewtonCollision* const shape)
 	NewtonCollisionSetUserData(m_shape, this);
 }
 
-/*
-void dNewtonCollision::DebugRender(void* userData, int vertexCount, const dFloat* faceVertec, int id)
-{
-	dDebugRenderer* const renderer = (dDebugRenderer*)userData;
-	renderer->OnDrawFace(vertexCount, faceVertec, id);
-}
-*/
 
-/*
-void dNewtonCollision::DebugRender(DebugDisplayCallback callback)
-{
-	char* xxx = "this is a test xxxxxxxxxx\n";
-	callback(xxx, int (strlen(xxx)));
-}
-*/
 
-void dNewtonCollision::DebugRender(dDebugDrawCallback* callback)
+void dNewtonCollision::DebugRender(ProgressCallbackGlue callback)
 {
-	callback->Print();
+	callback();
 }
 
-
-
-#include <cstdio>
-#include <iostream>
-dDebugDrawCallback::dDebugDrawCallback()
-{
-	std::cout << "Callback::Callback()" << std::endl;
-}
-
-dDebugDrawCallback::~dDebugDrawCallback()
-{
-	std::cout << "Callback::~Callback()" << std::endl;
-}
-
-
-void dDebugDrawCallback::Print()
-{
-	std::cout << "xxxxx_0" << std::endl;
-}

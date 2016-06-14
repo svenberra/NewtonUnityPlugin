@@ -85,7 +85,17 @@
 */
 
 
-
+/*
+// Macro for wrapping C++ callbacks as C# delegates 
+%define %cs_callback(TYPE, CSTYPE)
+%typemap(ctype) TYPE, TYPE& "void*"
+%typemap(in) TYPE %{ $1 = (TYPE)$input; %}
+%typemap(in) TYPE& %{ $1 = (TYPE*)&$input; %}
+%typemap(imtype, out="IntPtr") TYPE, TYPE& "CSTYPE"
+%typemap(cstype, out="IntPtr") TYPE, TYPE& "CSTYPE"
+%typemap(csin) TYPE, TYPE& "$csinput"
+%enddef
+*/
 
 // Wrap void * to IntPtr
 %typemap(ctype)  void * "void *"
@@ -107,6 +117,17 @@
    } 
 %}
 
+
+%define %cs_callback(TYPE, CSTYPE) 
+    %typemap(ctype) TYPE, TYPE& "void*" 
+    %typemap(in) TYPE  %{ $1 = ($1_type)$input; %} 
+    %typemap(in) TYPE& %{ $1 = ($1_type)&$input; %} 
+    %typemap(imtype, out="IntPtr") TYPE, TYPE& "CSTYPE" 
+    %typemap(cstype, out="IntPtr") TYPE, TYPE& "CSTYPE" 
+    %typemap(csin) TYPE, TYPE& "$csinput" 
+%enddef 
+
+%cs_callback(ProgressCallbackGlue, ProgressCallbackGlue) 
 
 #pragma SWIG nowarn=401
 %rename(__dAlloc_Alloc__) dAlloc::operator new;  

@@ -3,33 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
+
+//    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+public delegate void ProgressCallbackGlue();
+
+
 namespace NewtonPlugin
 {
 
-//   public delegate void DebugDisplayCallback();
-    public class DebugDisplayCallback: dDebugDrawCallback
-    {
-
-        public DebugDisplayCallback()
-            : base()
-        {
-
-        }
-
-        public override void Print()
-        {
-            UnityEngine.Debug.Log("xxxxxxxxx 2");
-        }
-    }
-
     abstract public class NewtonCollider : MonoBehaviour
     {
-        //     internal delegate void NewtonCollisionIteratorDelegate(IntPtr userData, int vertexCount, IntPtr faceArray, int faceId);
-
-
         public static void TestCallback()
         {
-            UnityEngine.Debug.Log("calling call back");
+            UnityEngine.Debug.Log("calling call back xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         }
 
         void OnDrawGizmosSelected()
@@ -40,15 +26,13 @@ namespace NewtonPlugin
 
             Gizmos.color = Color.white;
             Gizmos.DrawSphere(transform.position, 1.0f);
+            //            m_shape.DebugRender(callback);
 
-            //DebugDisplayCallback xxx = new DebugDisplayCallback(TestCallback);
-            //m_shape.DebugRender(xxx);
+            ProgressCallbackGlue xxx = new ProgressCallbackGlue(TestCallback);
+            m_shape.DebugRender(xxx);
+            
 
-            // test call back mombo jumbo
-            DebugDisplayCallback xxxx = new DebugDisplayCallback();
-            //xxxx.Print();
-
-            m_shape.DebugRender(xxxx);
+            //m_shape.DebugRender(xxxx);
             /*
                         if (lines == null)
                         {

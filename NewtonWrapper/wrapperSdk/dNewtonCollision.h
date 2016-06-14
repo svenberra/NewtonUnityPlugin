@@ -32,21 +32,13 @@ class dNewtonBody;
 //class dNewtonMesh;
 
 
-class dDebugDrawCallback
-{
-	public: 
-	dDebugDrawCallback();
-	virtual ~dDebugDrawCallback();
-	virtual void Print();
-};
 
-
+typedef void(*ProgressCallbackGlue)();
 
 //class dNewtonCollision: virtual public dNewtonAlloc, public dNewtonMaterial
 class dNewtonCollision: public dAlloc
 {
 	public:
-//		typedef void(*DebugDisplayCallback_xxxxxxxxxxx)(char* const xxx, int size);
 
 /*
 	class dDebugRenderer
@@ -66,8 +58,8 @@ class dNewtonCollision: public dAlloc
 	dNewtonCollision (dLong collisionMask);
 	virtual ~dNewtonCollision();
 
-
-	void DebugRender(dDebugDrawCallback* callback);
+	void DebugRender(ProgressCallbackGlue callback);
+//	void DebugRender(dDebugDrawCallback* callback);
 //	virtual void DebugRender(const void* const matrix, * const renderer) const;
 /*
 	dCollsionType GetType() const {return m_type;}
