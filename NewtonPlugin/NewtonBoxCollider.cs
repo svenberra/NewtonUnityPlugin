@@ -13,7 +13,6 @@ namespace NewtonPlugin
 
         void OnDestroy()
         {
-            UnityEngine.Debug.Log("xxxxxxxxx 15");
         }
 
         public override dNewtonCollision Create(NewtonWorld world)

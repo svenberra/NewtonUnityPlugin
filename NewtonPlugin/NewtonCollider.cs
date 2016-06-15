@@ -52,9 +52,12 @@ namespace NewtonPlugin
             if (m_shape == null)
             {
                 GameObject owner = gameObject;
+
+                // find the world that own this collision shape
                 NewtonBody body = owner.GetComponent<NewtonBody>();
                 while (body == null)
                 {
+                    // this is a child body we need to fin the root rigid body owning the shape
                     owner = owner.GetComponentInParent<Transform>().gameObject;
                     body = owner.GetComponent<NewtonBody>();
                 }
@@ -67,6 +70,7 @@ namespace NewtonPlugin
             return m_shape;
         }
 
+        private dNewtonCollision m_shape;
         public Vector3 m_size = Vector3.one;
         public Vector3 m_posit = Vector3.zero;
         public Vector3 m_rotation = Vector3.zero;
@@ -76,8 +80,5 @@ namespace NewtonPlugin
         static Vector3 m_lineP0 = Vector3.zero;
         static Vector3 m_lineP1 = Vector3.zero;
         static float[] m_debugDisplayVertexBuffer = new float[64 * 3];
-
-        private dNewtonCollision m_shape;
-        //private GCHandle m_userDataGlueObject;
     }
 }
