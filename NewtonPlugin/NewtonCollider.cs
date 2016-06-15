@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 
-public delegate void DrawFaceDelegateCallback(int xxx);
+public delegate void DrawFaceDelegateCallback(IntPtr points, int vertexCount);
 
 namespace NewtonPlugin
 {
@@ -12,10 +12,14 @@ namespace NewtonPlugin
     abstract public class NewtonCollider : MonoBehaviour
     {
         string xxxxxxxxx = "this is a test xxxxx ";
-        public void DrawFace(int xxx)
+        public void DrawFace(IntPtr points, int vertexCount)
         {
-            UnityEngine.Debug.Log(xxxxxxxxx + xxx);
-            //UnityEngine.Debug.Log(xxxxxxxxx + points[0].m_x + " " + points[0].m_y + " " + points[0].m_z);
+            float[] points___ = new float[vertexCount * 3];
+
+            //Copy(IntPtr source, float[] destination, int startIndex, int length);
+            Marshal.Copy(points, points___, 0, vertexCount * 3);
+            //UnityEngine.Debug.Log(xxxxxxxxx + vertexCount);
+            UnityEngine.Debug.Log(xxxxxxxxx + points___[0] + " " + points___[1] + " " + points___[2]);
         }
 
         void OnDrawGizmosSelected()

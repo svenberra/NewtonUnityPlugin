@@ -39,7 +39,7 @@ struct dPoints
 	float m_z;
 };
 
-typedef void(*DrawFaceCallback)(int size);
+typedef void(*DrawFaceCallback)(float* points, int vertexCount);
 
 //class dNewtonCollision: virtual public dNewtonAlloc, public dNewtonMaterial
 class dNewtonCollision: public dAlloc

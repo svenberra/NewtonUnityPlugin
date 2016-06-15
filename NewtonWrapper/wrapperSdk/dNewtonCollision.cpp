@@ -264,6 +264,6 @@ void dNewtonCollision::DebugRender(DrawFaceCallback callback)
 	points[0].m_x = 1.0f;
 	points[0].m_y = 2.0f;
 	points[0].m_z = 3.0f;
-	callback(3);
+	callback(&points[0].m_x, 3);
 }
 
