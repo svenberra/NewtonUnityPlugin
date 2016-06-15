@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 
-public delegate void DrawFaceDelegateCallback();
+public delegate void DrawFaceDelegateCallback(int xxx);
 
 namespace NewtonPlugin
 {
 
     abstract public class NewtonCollider : MonoBehaviour
     {
-        string xxxxxxxxx = "this is a test xxxxxxxxxxxxxxx";
-        public void DrawFace()
+        string xxxxxxxxx = "this is a test xxxxx ";
+        public void DrawFace(int xxx)
         {
-            UnityEngine.Debug.Log(xxxxxxxxx);
+            UnityEngine.Debug.Log(xxxxxxxxx + xxx);
+            //UnityEngine.Debug.Log(xxxxxxxxx + points[0].m_x + " " + points[0].m_y + " " + points[0].m_z);
         }
 
         void OnDrawGizmosSelected()

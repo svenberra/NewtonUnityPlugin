@@ -32,8 +32,14 @@ class dNewtonBody;
 //class dNewtonMesh;
 
 
+struct dPoints
+{
+	float m_x;
+	float m_y;
+	float m_z;
+};
 
-typedef void(*DrawFaceCallback)();
+typedef void(*DrawFaceCallback)(int size);
 
 //class dNewtonCollision: virtual public dNewtonAlloc, public dNewtonMaterial
 class dNewtonCollision: public dAlloc

@@ -258,6 +258,12 @@ void dNewtonCollision::SetShape(NewtonCollision* const shape)
 
 void dNewtonCollision::DebugRender(DrawFaceCallback callback)
 {
-	callback();
+	dPoints points[32];
+	int size = 0;
+
+	points[0].m_x = 1.0f;
+	points[0].m_y = 2.0f;
+	points[0].m_z = 3.0f;
+	callback(3);
 }
 

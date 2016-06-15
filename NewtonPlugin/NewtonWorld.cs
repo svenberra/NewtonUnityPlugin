@@ -11,7 +11,7 @@ namespace NewtonPlugin
     {
         public dNewtonWorld GetWorld()
         {
-            UnityEngine.Debug.Log("xxxxxxxxx 6");
+            //UnityEngine.Debug.Log("xxxxxxxxx 6");
             if (m_world == null)
             {
                 m_userDataGlueObject = GCHandle.Alloc(this);
