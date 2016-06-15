@@ -11,9 +11,10 @@ namespace NewtonPlugin
 
     abstract public class NewtonCollider : MonoBehaviour
     {
+        string xxxxxxxxx = "this is a test xxxxxxxxxxxxxxx";
         public void TestCallback()
         {
-            UnityEngine.Debug.Log("calling call back xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+            UnityEngine.Debug.Log(xxxxxxxxx);
         }
 
         void OnDrawGizmosSelected()
