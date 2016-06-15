@@ -17,19 +17,18 @@ namespace NewtonPlugin
 
         public override dNewtonCollision Create(NewtonWorld world)
         {
-            /*
-                Matrix4x4 offsetMatrix = Matrix4x4.identity;
+            UnityEngine.Debug.Log("xxxxxxxxx 6");
 
-                if (applyOffset)
-                    offsetMatrix.SetTRS(transform.localPosition, transform.localRotation, Vector3.one);
-
-                IntPtr collider = NewtonAPI.NewtonCreateBox(NewtonWorld.Instance.pWorld, Size.x, Size.y, Size.z, 0, ref offsetMatrix);
-                NewtonAPI.NewtonCollisionSetScale(collider, Scale.x, Scale.y, Scale.z);
-
-                return collider;
-            */
-            // m_collision = new dNewtonCollisionBox(world.GetWorld(), 1.0f, 1.0f, 1.0f);
-            return new dNewtonCollisionBox(world.GetWorld(), 1.0f, 1.0f, 1.0f);
+            //Mesh mesh = gameObject.GetComponent<Mesh>();
+            //if (mesh)
+            //{
+            //  Bounds box = mesh.bounds;
+            //}
+            //m_size = box.size;
+            //m_size.x = m_size.x * 2.0f;
+            //return new dNewtonCollisionBox(world.GetWorld(), m_size.x, m_size.y, m_size.z);
+            m_size.x = 2.0f;
+            return new dNewtonCollisionBox(world.GetWorld(), m_size.x, m_size.y, m_size.z);
         }
         
     }

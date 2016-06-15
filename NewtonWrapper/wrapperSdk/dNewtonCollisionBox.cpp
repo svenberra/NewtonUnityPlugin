@@ -24,7 +24,6 @@
 #include "dNewtonWorld.h"
 #include "dNewtonCollisionBox.h"
 
-//dNewtonCollisionBox::dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z, dLong collisionMask)
 dNewtonCollisionBox::dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z)
 	:dNewtonCollision(0)
 {
