@@ -33,32 +33,17 @@ class dNewtonBody;
 
 
 
-typedef void(*ProgressCallbackGlue)();
+typedef void(*DrawFaceCallback)();
 
 //class dNewtonCollision: virtual public dNewtonAlloc, public dNewtonMaterial
 class dNewtonCollision: public dAlloc
 {
 	public:
 
-/*
-	class dDebugRenderer
-	{
-		public:
-		dDebugRenderer (dNewtonCollision* const me)
-			:m_collision(me)
-		{
-		}
-		
-		virtual void OnDrawFace (int vertexCount, const dFloat* const faceVertex, int faceId) = 0;
-
-		dNewtonCollision* m_collision;
-	};
-*/
-
 	dNewtonCollision (dLong collisionMask);
 	virtual ~dNewtonCollision();
 
-	void DebugRender(ProgressCallbackGlue callback);
+	void DebugRender(DrawFaceCallback callback);
 //	void DebugRender(dDebugDrawCallback* callback);
 //	virtual void DebugRender(const void* const matrix, * const renderer) const;
 /*

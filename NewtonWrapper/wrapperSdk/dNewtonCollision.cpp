@@ -256,7 +256,7 @@ void dNewtonCollision::SetShape(NewtonCollision* const shape)
 
 
 
-void dNewtonCollision::DebugRender(ProgressCallbackGlue callback)
+void dNewtonCollision::DebugRender(DrawFaceCallback callback)
 {
 	callback();
 }

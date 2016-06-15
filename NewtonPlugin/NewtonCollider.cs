@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 
-public delegate void ProgressCallbackGlue();
+public delegate void DrawFaceDelegateCallback();
 
 namespace NewtonPlugin
 {
@@ -12,7 +12,7 @@ namespace NewtonPlugin
     abstract public class NewtonCollider : MonoBehaviour
     {
         string xxxxxxxxx = "this is a test xxxxxxxxxxxxxxx";
-        public void TestCallback()
+        public void DrawFace()
         {
             UnityEngine.Debug.Log(xxxxxxxxx);
         }
@@ -26,8 +26,8 @@ namespace NewtonPlugin
             Gizmos.color = Color.white;
             Vector3 posit = new Vector3 (0.0f, 0.0f, 0.0f);
             Gizmos.DrawSphere(posit, 1.0f);
-            ProgressCallbackGlue xxx = new ProgressCallbackGlue(TestCallback);
-            m_shape.DebugRender(xxx);
+            DrawFaceDelegateCallback drawCallback = new DrawFaceDelegateCallback(DrawFace);
+            m_shape.DebugRender(drawCallback);
             
 
             //m_shape.DebugRender(xxxx);
