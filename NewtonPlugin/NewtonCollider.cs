@@ -24,9 +24,8 @@ namespace NewtonPlugin
             dNewtonCollision shape = GetShape();
 
             Gizmos.color = Color.white;
-            Gizmos.DrawSphere(transform.position, 1.0f);
-            //            m_shape.DebugRender(callback);
-
+            Vector3 posit = new Vector3 (0.0f, 0.0f, 0.0f);
+            Gizmos.DrawSphere(posit, 1.0f);
             ProgressCallbackGlue xxx = new ProgressCallbackGlue(TestCallback);
             m_shape.DebugRender(xxx);
             
