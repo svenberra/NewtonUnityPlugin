@@ -83,10 +83,6 @@ NewtonCollision* dNewtonCollision::GetShape() const
 
 
 
-void dNewtonCollision::DebugRender (const dFloat* const matrix, dDebugRenderer* const renderer) const
-{
-	NewtonCollisionForEachPolygonDo (m_shape, matrix, DebugRender, renderer);
-}
 
 
 void dNewtonCollision::CalculateAABB (const dFloat* const matrix, dFloat* const p0, dFloat* const p1) const
@@ -254,16 +250,16 @@ void dNewtonCollision::SetShape(NewtonCollision* const shape)
 	NewtonCollisionSetUserData(m_shape, this);
 }
 
-
+void dNewtonCollision::DebugRenderCallback(void* userData, int vertexCount, const dFloat* faceVertec, int id)
+{
+	dPoints* const polygon = (dPoints*)faceVertec;
+	DrawFaceCallback callback = (DrawFaceCallback)userData;
+	callback(polygon, vertexCount);
+}
 
 void dNewtonCollision::DebugRender(DrawFaceCallback callback)
 {
-	dPoints points[32];
-	int size = 0;
-
-	points[0].m_x = 1.0f;
-	points[0].m_y = 2.0f;
-	points[0].m_z = 3.0f;
-	callback(points, 3);
+	dMatrix matrix(dGetIdentityMatrix());
+	NewtonCollisionForEachPolygonDo(m_shape, &matrix[0][0], DebugRenderCallback, callback);
 }
 

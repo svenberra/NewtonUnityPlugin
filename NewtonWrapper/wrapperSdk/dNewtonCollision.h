@@ -49,34 +49,26 @@ class dNewtonCollision: public dAlloc
 	virtual ~dNewtonCollision();
 
 	void DebugRender(DrawFaceCallback callback);
-//	void DebugRender(dDebugDrawCallback* callback);
-//	virtual void DebugRender(const void* const matrix, * const renderer) const;
+
 /*
 	dCollsionType GetType() const {return m_type;}
 	NewtonCollision* GetShape() const;
 	virtual dNewtonCollision* Clone (NewtonCollision* const shape) const = 0; 
-
 	void* GetUserData() const;
 	void SetUserData(void* const userData);
-
 	dFloat GetVolume () const;
-
 	void SetScale(dFloat x, dFloat y, dFloat z);
 	void GetScale(dFloat& x, dFloat& y, dFloat& z) const;
-
 	void SetMatrix (const dFloat* const matrix);
 	void GetMatrix (dFloat* const matrix) const;
-
 	void CalculateAABB (const dFloat* const matrix, dFloat* const p0, dFloat* const p1) const;
-	
-
 	void CalculateBuoyancyAcceleration (const dFloat* const matrix, const dFloat* const shapeOrigin, const dFloat* const gravityVector, const dFloat* const fluidPlane, dFloat fluidDensity, dFloat fluidViscosity, dFloat* const accel, dFloat* const alpha);
 */
 	protected:
 	void SetShape(NewtonCollision* const shape);
 
 //	dNewtonCollision (const dNewtonCollision& srcCollision, NewtonCollision* const shape);
-	static void DebugRender (void* userData, int vertexCount, const dFloat* faceVertec, int id);
+	static void DebugRenderCallback (void* userData, int vertexCount, const dFloat* faceVertec, int id);
 	
 //	void* m_userData;
 //	dCollsionType m_type;
