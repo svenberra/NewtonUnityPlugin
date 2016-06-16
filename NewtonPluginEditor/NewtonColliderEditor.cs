@@ -16,6 +16,8 @@ namespace NewtonPlugin
             base.OnInspectorGUI();
             //EditorGUILayout.LabelField("testing editor script", "xxxxxxxx");
             collision.m_size = EditorGUILayout.Vector3Field("dimension", collision.m_size);
+
+            EditorUtility.SetDirty(target);
         }
     }
 
