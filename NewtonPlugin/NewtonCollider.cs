@@ -10,6 +10,8 @@ namespace NewtonPlugin
 {
     abstract public class NewtonCollider : MonoBehaviour
     {
+        abstract public dNewtonCollision Create(NewtonWorld world);
+
         public void DrawFace(IntPtr vertexDataPtr, int vertexCount)
         {
             Marshal.Copy(vertexDataPtr, m_debugDisplayVertexBuffer, 0, vertexCount * 3);
@@ -29,13 +31,14 @@ namespace NewtonPlugin
 
         void OnDrawGizmosSelected()
         {
-            Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
-            Gizmos.color = Color.yellow;
             dNewtonCollision shape = GetShape();
-            m_shape.DebugRender(DrawFace);
+            if (m_shape != null)
+            {
+                Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+                Gizmos.color = Color.yellow;
+                m_shape.DebugRender(DrawFace);
+            }
         }
-
-        abstract public dNewtonCollision Create(NewtonWorld world);
 
         public Matrix4x4 GetMatrix ()
         {
@@ -74,14 +77,18 @@ namespace NewtonPlugin
 
         public void UpdateParams()
         {
-            Matrix4x4 matrix = GetMatrix();
-            Vector3 scale = GetScale();
-           
-            IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
-            Marshal.StructureToPtr(matrix, pnt, false);
+            dNewtonCollision shape = GetShape();
+            if (m_shape != null)
+            {
+                Matrix4x4 matrix = GetMatrix();
+                Vector3 scale = GetScale();
 
-            m_shape.SetMatrix(pnt);
-            m_shape.SetScale(scale.x, scale.y, scale.z);
+                IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
+                Marshal.StructureToPtr(matrix, pnt, false);
+
+                m_shape.SetMatrix(pnt);
+                m_shape.SetScale(scale.x, scale.y, scale.z);
+            }
         }
 
         dNewtonCollision GetShape()

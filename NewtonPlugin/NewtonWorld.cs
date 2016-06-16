@@ -86,19 +86,6 @@ namespace NewtonPlugin
                 DestroyPhysicsScene(child.gameObject);
             }
         }
-        
-/*        
-        public dNewtonCollision BuildCollision(List<NewtonCollider> colliders)
-        {
-            dNewtonCollision coll = null;
-            if (colliders.Count == 1)
-            {
-                NewtonCollider collider = colliders[0];
-                coll = colliders[0].Create(this);
-            }
-            return coll;
-        }
-*/
 
         private dNewtonWorld m_world = null;
         private GCHandle m_userDataGlueObject;
