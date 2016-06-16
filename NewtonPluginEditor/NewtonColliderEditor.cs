@@ -13,19 +13,14 @@ namespace NewtonPlugin
         public override void OnInspectorGUI()
         {
             NewtonBoxCollider collision = (NewtonBoxCollider)target;
+            base.OnInspectorGUI();
 
             Vector3 size = EditorGUILayout.Vector3Field("dimension", collision.m_size);
             if (Vector3.Distance(size, collision.m_size) > 0.001f)
             {
-                //UnityEngine.Debug.Log("xxxxxxxxxxxxxxxxxxxxxx " + distance);
-                //UnityEngine.Debug.Log(size);
-                //UnityEngine.Debug.Log(collision.m_size);
                 collision.m_size = size;
                 collision.RecreateShape();
             }
-
-            base.OnInspectorGUI();
-            collision.m_size = EditorGUILayout.Vector3Field("dimension", collision.m_size);
             EditorUtility.SetDirty(target);
         }
     }

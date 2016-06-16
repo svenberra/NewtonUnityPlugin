@@ -51,16 +51,25 @@ namespace NewtonPlugin
             return scale;
         }
 
+        void OnDestroy()
+        {
+            Destroy();
+        }
+
         public void Destroy()
         {
-            m_shape.Cleanup();
-            m_shape = null;
+            if (m_shape != null)
+            {
+                m_shape.Cleanup();
+                m_shape = null;
+            }
         }
 
         public void RecreateShape()
         {
             Destroy();
             GetShape();
+            UpdateParams();
         }
 
         public void UpdateParams()
