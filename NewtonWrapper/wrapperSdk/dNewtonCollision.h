@@ -51,6 +51,7 @@ class dNewtonCollision: public dAlloc
 
 	void DebugRender(DrawFaceCallback callback);
 	void SetScale(dFloat x, dFloat y, dFloat z);
+	void SetMatrix(const void* const matrix);
 
 /*
 	dCollsionType GetType() const {return m_type;}

@@ -54,10 +54,6 @@ dFloat dNewtonCollision::GetVolume () const
 	return NewtonConvexCollisionCalculateVolume (m_shape);
 }
 
-void dNewtonCollision::SetMatrix (const dFloat* const matrix)
-{
-	NewtonCollisionSetMatrix(m_shape, matrix);
-}
 
 void dNewtonCollision::GetMatrix (dFloat* const matrix) const
 {
@@ -269,3 +265,10 @@ void dNewtonCollision::SetScale(dFloat x, dFloat y, dFloat z)
 {
 	NewtonCollisionSetScale(m_shape, x, y, z);
 }
+
+void dNewtonCollision::SetMatrix(const void* const matrixPtr)
+{
+	dMatrix matrix((dFloat*)matrixPtr);
+	NewtonCollisionSetMatrix(m_shape, &matrix[0][0]);
+}
+

@@ -74,7 +74,13 @@ namespace NewtonPlugin
 
         public void UpdateParams()
         {
+            Matrix4x4 matrix = GetMatrix();
             Vector3 scale = GetScale();
+           
+            IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
+            Marshal.StructureToPtr(matrix, pnt, false);
+
+            m_shape.SetMatrix(pnt);
             m_shape.SetScale(scale.x, scale.y, scale.z);
         }
 
