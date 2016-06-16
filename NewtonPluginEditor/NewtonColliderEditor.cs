@@ -28,7 +28,7 @@ namespace NewtonPlugin
             //EditorGUILayout.LabelField("Level", myTarget.Level.ToString());
             //EditorGUILayout.LabelField("testing editor script", "xxxxxxxx");
 
-            EditorGUILayout.Vector3Field("scale", collision.m_scale);
+            collision.m_scale = EditorGUILayout.Vector3Field("scale", collision.m_scale);
             collision.UpdateParams();
         }
     }
