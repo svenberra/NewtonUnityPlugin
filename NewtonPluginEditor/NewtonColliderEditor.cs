@@ -13,6 +13,7 @@ namespace NewtonPlugin
     {
         public override void OnInspectorGUI()
         {
+            UnityEngine.Debug.Log("xxxxxxxxxxxxxxxxxxxxxxxxxx 6");
             //LevelScript myTarget = (LevelScript)target;
             //myTarget.experience = EditorGUILayout.IntField("Experience", myTarget.experience);
             //EditorGUILayout.LabelField("Level", myTarget.Level.ToString());
