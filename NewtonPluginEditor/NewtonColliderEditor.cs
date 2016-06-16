@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace NewtonPlugin
 {
 
-    [CustomEditor(typeof(NewtonPlugin.NewtonCollider))]
+    [CustomEditor(typeof(NewtonPlugin.NewtonBoxCollider))]
     public class NewtonColliderEditor : Editor
     {
         public override void OnInspectorGUI()
