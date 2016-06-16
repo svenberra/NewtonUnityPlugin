@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewtonPlugin", "NewtonPlugi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NewtonWrapper", "NewtonWrapper\NewtonWrapper.vcxproj", "{FC72B9A5-5C6B-4051-9A72-95D1B606B81D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewtonPluginEditor", "NewtonPluginEditor\NewtonPluginEditor.csproj", "{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,18 @@ Global
 		{FC72B9A5-5C6B-4051-9A72-95D1B606B81D}.Release|x64.Build.0 = Release|x64
 		{FC72B9A5-5C6B-4051-9A72-95D1B606B81D}.Release|x86.ActiveCfg = Release|Win32
 		{FC72B9A5-5C6B-4051-9A72-95D1B606B81D}.Release|x86.Build.0 = Release|Win32
+		{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}.Debug|x64.ActiveCfg = Debug|x64
+		{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}.Debug|x64.Build.0 = Debug|x64
+		{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}.Debug|x86.Build.0 = Debug|Any CPU
+		{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}.Release|x64.ActiveCfg = Release|x64
+		{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}.Release|x64.Build.0 = Release|x64
+		{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}.Release|x86.ActiveCfg = Release|Any CPU
+		{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
