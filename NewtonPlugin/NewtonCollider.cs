@@ -1,6 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
 using UnityEngine;
-using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
@@ -82,20 +81,4 @@ namespace NewtonPlugin
         static Vector3 m_lineP1 = Vector3.zero;
         static float[] m_debugDisplayVertexBuffer = new float[64 * 3];
     }
-
-/*
-// for some reason this do no complele, so we are no allowe to write Eitor scripts whic sucks big time
-
-
-    [CustomEditor(typeof(NewtonCollider))]
-    public class NewtonColliderEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            //LevelScript myTarget = (LevelScript)target;
-            //myTarget.experience = EditorGUILayout.IntField("Experience", myTarget.experience);
-            //EditorGUILayout.LabelField("Level", myTarget.Level.ToString());
-        }
-    }
-*/
 }
