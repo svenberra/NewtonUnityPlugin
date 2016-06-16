@@ -31,11 +31,6 @@ namespace NewtonPlugin
         {
             Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
             Gizmos.color = Color.yellow;
-
-            //Vector3 posit = new Vector3 (0.0f, 0.0f, 0.0f);
-            //Gizmos.DrawSphere(posit, 1.0f);
-            //DrawFaceDelegateCallback drawCallback = new DrawFaceDelegateCallback(DrawFace);
-
             dNewtonCollision shape = GetShape();
             m_shape.DebugRender(DrawFace);
         }
@@ -93,7 +88,6 @@ namespace NewtonPlugin
         }
 
         private dNewtonCollision m_shape;
-        public Vector3 m_size = Vector3.one;
         public Vector3 m_posit = Vector3.zero;
         public Vector3 m_rotation = Vector3.zero;
         public Vector3 m_scale = Vector3.one;

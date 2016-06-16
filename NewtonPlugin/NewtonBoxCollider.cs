@@ -18,5 +18,7 @@ namespace NewtonPlugin
         {
             return new dNewtonCollisionBox(world.GetWorld(), m_size.x, m_size.y, m_size.z);
         }
+
+        public Vector3 m_size = Vector3.one;
     }
 }
