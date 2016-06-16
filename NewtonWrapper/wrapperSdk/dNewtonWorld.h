@@ -42,6 +42,7 @@ class dNewtonWorld: public dAlloc
 	friend class dNewtonCollision;
 	friend class dNewtonDynamicBody;
 	friend class dNewtonCollisionBox;
+	friend class dNewtonCollisionSphere;
 };
 
 #endif

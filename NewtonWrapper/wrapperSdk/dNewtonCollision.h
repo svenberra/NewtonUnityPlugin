@@ -372,4 +372,18 @@ class dNewtonCollisionCompound: public dNewtonCollision
 */
 
 
+class dNewtonCollisionSphere : public dNewtonCollision
+{
+	public:
+	dNewtonCollisionSphere(dNewtonWorld* const world, dFloat r);
+};
+
+
+class dNewtonCollisionBox : public dNewtonCollision
+{
+	public:
+	dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z);
+};
+
+
 #endif

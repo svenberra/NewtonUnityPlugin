@@ -272,3 +272,16 @@ void dNewtonCollision::SetMatrix(const void* const matrixPtr)
 	NewtonCollisionSetMatrix(m_shape, &matrix[0][0]);
 }
 
+
+dNewtonCollisionSphere::dNewtonCollisionSphere(dNewtonWorld* const world, dFloat r)
+	:dNewtonCollision(0)
+{
+	SetShape(NewtonCreateSphere(world->m_world, r, 0, NULL));
+}
+
+
+dNewtonCollisionBox::dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z)
+	:dNewtonCollision(0)
+{
+	SetShape(NewtonCreateBox(world->m_world, x, y, z, 0, NULL));
+}

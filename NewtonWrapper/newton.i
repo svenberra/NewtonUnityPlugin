@@ -21,7 +21,6 @@
 	#include "dNewtonBody.h"
 	#include "dNewtonWorld.h"
 	#include "dNewtonCollision.h"
-	#include "dNewtonCollisionBox.h"
 %}
 
 /*
@@ -97,4 +96,4 @@
 %include "dNewtonBody.h"
 %include "dNewtonWorld.h"
 %include "dNewtonCollision.h"
-%include "dNewtonCollisionBox.h"
+
