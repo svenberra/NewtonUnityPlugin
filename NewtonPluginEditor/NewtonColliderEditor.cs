@@ -12,7 +12,10 @@ namespace NewtonPlugin
     {
         public override void OnInspectorGUI()
         {
+            NewtonBoxCollider collision = (NewtonBoxCollider)target;
             base.OnInspectorGUI();
+            //EditorGUILayout.LabelField("testing editor script", "xxxxxxxx");
+            collision.m_size = EditorGUILayout.Vector3Field("dimension", collision.m_size);
         }
     }
 
@@ -22,12 +25,8 @@ namespace NewtonPlugin
         public override void OnInspectorGUI()
         {
             NewtonCollider collision = (NewtonCollider)target;
-
-            //UnityEngine.Debug.Log("xxxxxxxxxxxxxxxxxxxxxxxxxx 6");
-            //myTarget.experience = EditorGUILayout.IntField("Experience", myTarget.experience);
-            //EditorGUILayout.LabelField("Level", myTarget.Level.ToString());
-            //EditorGUILayout.LabelField("testing editor script", "xxxxxxxx");
-
+            collision.m_posit = EditorGUILayout.Vector3Field("posit", collision.m_posit);
+            collision.m_rotation = EditorGUILayout.Vector3Field("rotation", collision.m_rotation);
             collision.m_scale = EditorGUILayout.Vector3Field("scale", collision.m_scale);
             collision.UpdateParams();
         }
