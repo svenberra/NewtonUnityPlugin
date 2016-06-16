@@ -234,9 +234,15 @@ dNewtonCollision::dNewtonCollision(dLong collisionMask)
 
 dNewtonCollision::~dNewtonCollision()
 {
+	Cleanup();
+}
+
+void dNewtonCollision::Cleanup()
+{
 	if (m_shape) {
 		NewtonCollisionSetUserData(m_shape, NULL);
 		NewtonDestroyCollision(m_shape);
+		m_shape = NULL;
 	}
 }
 

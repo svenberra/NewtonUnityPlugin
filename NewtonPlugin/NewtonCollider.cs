@@ -53,14 +53,20 @@ namespace NewtonPlugin
 
         public void Destroy()
         {
+            m_shape.Cleanup();
             m_shape = null;
+        }
+
+        public void RecreateShape()
+        {
+            Destroy();
+            GetShape();
         }
 
         public void UpdateParams()
         {
             Vector3 scale = GetScale();
             m_shape.SetScale(scale.x, scale.y, scale.z);
-
         }
 
         dNewtonCollision GetShape()
