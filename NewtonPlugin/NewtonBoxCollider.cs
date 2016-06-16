@@ -17,7 +17,7 @@ namespace NewtonPlugin
 
         public override dNewtonCollision Create(NewtonWorld world)
         {
-            UnityEngine.Debug.Log("xxxxxxxxx 6");
+            //UnityEngine.Debug.Log("xxxxxxxxx 6");
 
             //Mesh mesh = gameObject.GetComponent<Mesh>();
             //if (mesh)
