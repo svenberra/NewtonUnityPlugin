@@ -16,6 +16,7 @@ namespace NewtonPlugin
         }
     }
 
+
     public class NewtonColliderEditor : Editor
     {
         public override void OnInspectorGUI()

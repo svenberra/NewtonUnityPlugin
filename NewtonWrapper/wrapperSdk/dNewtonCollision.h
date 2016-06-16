@@ -49,6 +49,7 @@ class dNewtonCollision: public dAlloc
 	virtual ~dNewtonCollision();
 
 	void DebugRender(DrawFaceCallback callback);
+	void SetScale(dFloat x, dFloat y, dFloat z);
 
 /*
 	dCollsionType GetType() const {return m_type;}
@@ -57,7 +58,7 @@ class dNewtonCollision: public dAlloc
 	void* GetUserData() const;
 	void SetUserData(void* const userData);
 	dFloat GetVolume () const;
-	void SetScale(dFloat x, dFloat y, dFloat z);
+	
 	void GetScale(dFloat& x, dFloat& y, dFloat& z) const;
 	void SetMatrix (const dFloat* const matrix);
 	void GetMatrix (dFloat* const matrix) const;

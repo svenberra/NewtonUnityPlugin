@@ -65,10 +65,6 @@ void dNewtonCollision::GetMatrix (dFloat* const matrix) const
 }
 
 
-void dNewtonCollision::SetScale(dFloat x, dFloat y, dFloat z)
-{
-	NewtonCollisionSetScale(m_shape, x, y, z);
-}
 void dNewtonCollision::GetScale(dFloat& x, dFloat& y, dFloat& z) const
 {
 	NewtonCollisionGetScale(m_shape, &x, &y, &z);
@@ -263,3 +259,7 @@ void dNewtonCollision::DebugRender(DrawFaceCallback callback)
 	NewtonCollisionForEachPolygonDo(m_shape, &matrix[0][0], DebugRenderCallback, callback);
 }
 
+void dNewtonCollision::SetScale(dFloat x, dFloat y, dFloat z)
+{
+	NewtonCollisionSetScale(m_shape, x, y, z);
+}

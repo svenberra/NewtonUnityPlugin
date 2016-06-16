@@ -42,6 +42,20 @@ namespace NewtonPlugin
 
         abstract public dNewtonCollision Create(NewtonWorld world);
 
+        public Matrix4x4 GetMatrix ()
+        {
+            return Matrix4x4.TRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
+        }
+
+        public Vector3 GetScale()
+        {
+            Vector3 scale = m_scale;
+            scale.x *= transform.localScale.x;
+            scale.y *= transform.localScale.y;
+            scale.z *= transform.localScale.z;
+            return scale;
+        }
+
         public void Destroy()
         {
             m_shape = null;
@@ -65,6 +79,8 @@ namespace NewtonPlugin
                 if (body.m_world != null)
                 {
                     m_shape = Create(body.m_world);
+                    Vector3 scale = GetScale();
+                    m_shape.SetScale(scale.x, scale.y, scale.z);
                 }
             }
             return m_shape;
