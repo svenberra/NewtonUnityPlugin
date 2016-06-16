@@ -1,12 +1,12 @@
 ﻿using System;
+using UnityEngine;
 using UnityEditor;
+using NewtonPlugin;
 using System.Collections.Generic;
 
 
 namespace NewtonPlugin
 {
-
-/*
 
     [CustomEditor(typeof(NewtonCollider))]
     public class NewtonColliderEditor : Editor
@@ -18,5 +18,4 @@ namespace NewtonPlugin
             //EditorGUILayout.LabelField("Level", myTarget.Level.ToString());
         }
     }
-*/
 }

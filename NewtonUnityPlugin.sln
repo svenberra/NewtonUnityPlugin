@@ -11,6 +11,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NewtonWrapper", "NewtonWrapper\NewtonWrapper.vcxproj", "{FC72B9A5-5C6B-4051-9A72-95D1B606B81D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewtonPluginEditor", "NewtonPluginEditor\NewtonPluginEditor.csproj", "{76B52B9B-9A88-4565-8AC2-95F0BFC65E39}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CDD6E2D7-832E-470F-984D-5A3D13C0F760} = {CDD6E2D7-832E-470F-984D-5A3D13C0F760}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
