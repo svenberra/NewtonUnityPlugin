@@ -61,6 +61,13 @@ namespace NewtonPlugin
             m_shape = null;
         }
 
+        public void UpdateParams()
+        {
+            Vector3 scale = GetScale();
+            m_shape.SetScale(scale.x, scale.y, scale.z);
+
+        }
+
         dNewtonCollision GetShape()
         {
             if (m_shape == null)
@@ -79,8 +86,7 @@ namespace NewtonPlugin
                 if (body.m_world != null)
                 {
                     m_shape = Create(body.m_world);
-                    Vector3 scale = GetScale();
-                    m_shape.SetScale(scale.x, scale.y, scale.z);
+                    UpdateParams();
                 }
             }
             return m_shape;

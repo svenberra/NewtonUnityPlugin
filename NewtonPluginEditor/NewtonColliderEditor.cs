@@ -21,11 +21,15 @@ namespace NewtonPlugin
     {
         public override void OnInspectorGUI()
         {
-            UnityEngine.Debug.Log("xxxxxxxxxxxxxxxxxxxxxxxxxx 6");
-            NewtonCollider myTarget = (NewtonCollider)target;
+            NewtonCollider collision = (NewtonCollider)target;
+
+            //UnityEngine.Debug.Log("xxxxxxxxxxxxxxxxxxxxxxxxxx 6");
             //myTarget.experience = EditorGUILayout.IntField("Experience", myTarget.experience);
             //EditorGUILayout.LabelField("Level", myTarget.Level.ToString());
-            EditorGUILayout.LabelField("testing editor script", "xxxxxxxx");
+            //EditorGUILayout.LabelField("testing editor script", "xxxxxxxx");
+
+            EditorGUILayout.Vector3Field("scale", collision.m_scale);
+            collision.UpdateParams();
         }
     }
 }
