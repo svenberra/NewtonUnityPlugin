@@ -3,92 +3,90 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace NewtonPlugin
+[DisallowMultipleComponent]
+[AddComponentMenu("Newton Physics/Newton World")]
+public class NewtonWorld : MonoBehaviour
 {
-    [DisallowMultipleComponent]
-    [AddComponentMenu("Newton Physics/Newton World")]
-    public class NewtonWorld : MonoBehaviour
+    public dNewtonWorld GetWorld()
     {
-        public dNewtonWorld GetWorld()
+        //UnityEngine.Debug.Log("xxxxxxxxx 6");
+        if (m_world == null)
         {
-            //UnityEngine.Debug.Log("xxxxxxxxx 6");
-            if (m_world == null)
-            {
-                m_userDataGlueObject = GCHandle.Alloc(this);
+            m_userDataGlueObject = GCHandle.Alloc(this);
 
-                // create the low lever physic world
-                m_world = new dNewtonWorld(GCHandle.ToIntPtr(m_userDataGlueObject));
-            }
-            return m_world;
+            // create the low lever physic world
+            m_world = new dNewtonWorld(GCHandle.ToIntPtr(m_userDataGlueObject));
         }
-        void Start()
-        {
-            InitScene();
-        }
+        return m_world;
+    }
+    void Start()
+    {
+        InitScene();
+    }
 
-        void OnDestroy()
-        {
-            UnityEngine.Debug.Log("xxxxxxxxx 5");
-            DestroyScene();
-        }
+    void OnDestroy()
+    {
+        UnityEngine.Debug.Log("xxxxxxxxx 5");
+        DestroyScene();
+    }
 
-        private void InitPhysicsScene(GameObject root)
+    private void InitPhysicsScene(GameObject root)
+    {
+        NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
+        if (bodyPhysics != null)
         {
-            NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
-            if (bodyPhysics != null)
-            {
-                bodyPhysics.InitRigidBody();
-            }
-
-            foreach (Transform child in root.transform)
-            {
-                InitPhysicsScene(child.gameObject);
-            }
+            bodyPhysics.InitRigidBody();
         }
 
-        public void InitScene()
+        foreach (Transform child in root.transform)
         {
-            GetWorld();
+            InitPhysicsScene(child.gameObject);
+        }
+    }
+
+    public void InitScene()
+    {
+        GetWorld();
+        GameObject[] objectList = gameObject.scene.GetRootGameObjects();
+        foreach (GameObject rootObj in objectList)
+        {
+            InitPhysicsScene(rootObj);
+        }
+    }
+
+
+    public void DestroyScene()
+    {
+        if (m_world != null)
+        {
             GameObject[] objectList = gameObject.scene.GetRootGameObjects();
             foreach (GameObject rootObj in objectList)
             {
-                InitPhysicsScene(rootObj);
+                DestroyPhysicsScene(rootObj);
             }
+
+            m_world = null;
+            m_userDataGlueObject.Free();
         }
-
-
-        public void DestroyScene()
-        {
-            if (m_world != null)
-            {
-                GameObject[] objectList = gameObject.scene.GetRootGameObjects();
-                foreach (GameObject rootObj in objectList)
-                {
-                    DestroyPhysicsScene(rootObj);
-                }
-
-                m_world = null;
-                m_userDataGlueObject.Free();
-            }
-        }
-
-
-        private void DestroyPhysicsScene(GameObject root)
-        {
-            NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
-            if (bodyPhysics != null)
-            {
-                bodyPhysics.DestroyRigidBody();
-            }
-
-            foreach (Transform child in root.transform)
-            {
-                DestroyPhysicsScene(child.gameObject);
-            }
-        }
-
-        private dNewtonWorld m_world = null;
-        private GCHandle m_userDataGlueObject;
     }
+
+
+    private void DestroyPhysicsScene(GameObject root)
+    {
+        NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
+        if (bodyPhysics != null)
+        {
+            bodyPhysics.DestroyRigidBody();
+        }
+
+        foreach (Transform child in root.transform)
+        {
+            DestroyPhysicsScene(child.gameObject);
+        }
+    }
+
+    private dNewtonWorld m_world = null;
+    private GCHandle m_userDataGlueObject;
 }
+
 
