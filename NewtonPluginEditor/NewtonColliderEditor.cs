@@ -1,11 +1,10 @@
 ﻿using System;
 using UnityEngine;
 using UnityEditor;
-using NewtonPlugin;
 using System.Collections.Generic;
 
 
-[CustomEditor(typeof(NewtonPlugin.NewtonSphereCollider))]
+[CustomEditor(typeof(NewtonSphereCollider))]
 public class NewtonSphereColliderEditor: NewtonColliderEditor
 {
     public override void OnInspectorGUI()
@@ -25,7 +24,7 @@ public class NewtonSphereColliderEditor: NewtonColliderEditor
 }
 
 
-[CustomEditor(typeof(NewtonPlugin.NewtonBoxCollider))]
+[CustomEditor(typeof(NewtonBoxCollider))]
 public class NewtonBoxColliderEditor: NewtonColliderEditor
 {
     public override void OnInspectorGUI()
@@ -43,15 +42,14 @@ public class NewtonBoxColliderEditor: NewtonColliderEditor
     }
 }
 
-
 public class NewtonColliderEditor: Editor
 {
     public override void OnInspectorGUI()
     {
         NewtonCollider collision = (NewtonCollider)target;
-        collision.m_posit = EditorGUILayout.Vector3Field("posit", collision.m_posit);
-        collision.m_rotation = EditorGUILayout.Vector3Field("rotation", collision.m_rotation);
-        collision.m_scale = EditorGUILayout.Vector3Field("scale", collision.m_scale);
+//        collision.m_posit = EditorGUILayout.Vector3Field("posit", collision.m_posit);
+//        collision.m_rotation = EditorGUILayout.Vector3Field("rotation", collision.m_rotation);
+//        collision.m_scale = EditorGUILayout.Vector3Field("scale", collision.m_scale);
         collision.UpdateParams();
     }
 }
