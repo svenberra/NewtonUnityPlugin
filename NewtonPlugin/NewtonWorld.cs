@@ -21,6 +21,7 @@ public class NewtonWorld : MonoBehaviour
     }
     void Start()
     {
+        QualitySettings.vSyncCount = 0;
         InitScene();
     }
 
@@ -70,7 +71,6 @@ public class NewtonWorld : MonoBehaviour
         }
     }
 
-
     private void DestroyPhysicsScene(GameObject root)
     {
         NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
@@ -84,6 +84,13 @@ public class NewtonWorld : MonoBehaviour
             DestroyPhysicsScene(child.gameObject);
         }
     }
+
+
+    void Update()
+    {
+        Debug.Log("Update time :" + Time.deltaTime);
+    }
+
 
     private dNewtonWorld m_world = null;
     private GCHandle m_userDataGlueObject;
