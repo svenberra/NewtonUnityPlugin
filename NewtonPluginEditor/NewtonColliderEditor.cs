@@ -7,6 +7,26 @@ using System.Collections.Generic;
 
 namespace NewtonPlugin
 {
+    [CustomEditor(typeof(NewtonPlugin.NewtonSphereCollider))]
+    public class NewtonSphereColliderEditor: NewtonColliderEditor
+    {
+        public override void OnInspectorGUI()
+        {
+            NewtonSphereCollider collision = (NewtonSphereCollider)target;
+            base.OnInspectorGUI();
+
+            float radius = EditorGUILayout.FloatField("radius", collision.m_radius);
+            float error = radius - collision.m_radius;
+            if (error * error > 0.000001f)
+            {
+                collision.m_radius = radius;
+                collision.RecreateShape();
+            }
+            EditorUtility.SetDirty(target);
+        }
+    }
+
+
     [CustomEditor(typeof(NewtonPlugin.NewtonBoxCollider))]
     public class NewtonBoxColliderEditor: NewtonColliderEditor
     {

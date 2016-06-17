@@ -27,7 +27,6 @@ namespace NewtonPlugin
 
             for (int i = 0; i < numTris; i++)
             {
-
                 triVertices[0] = vertices[triangles[i * 3 + 0]];
                 triVertices[1] = vertices[triangles[i * 3 + 1]];
                 triVertices[2] = vertices[triangles[i * 3 + 2]];
@@ -44,7 +43,5 @@ namespace NewtonPlugin
 
             return collider;
         }
-
     }
-
 }
