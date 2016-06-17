@@ -167,6 +167,13 @@ namespace NewtonPlugin
 //                m_body = null;
 //                m_userDataGlueObject.Free();
             }
+
+            List<NewtonCollider> colliders = new List<NewtonCollider>();
+            TraverseColliders(gameObject, colliders);
+            foreach (NewtonCollider coll in colliders)
+            {
+                coll.Destroy();
+            }
         }
 
         private void TraverseColliders(GameObject obj, List<NewtonPlugin.NewtonCollider> colliders)
