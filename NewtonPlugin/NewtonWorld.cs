@@ -12,10 +12,35 @@ public class NewtonWorld : MonoBehaviour
         //UnityEngine.Debug.Log("xxxxxxxxx 6");
         if (m_world == null)
         {
-            m_userDataGlueObject = GCHandle.Alloc(this);
-
             // create the low lever physic world
-            m_world = new dNewtonWorld(GCHandle.ToIntPtr(m_userDataGlueObject));
+            //m_world = new dNewtonWorld(m_updateRate);
+
+            float fps = 60.0f;
+            switch (m_updateRate)
+            {
+                case UpdateRate.Sixty_fps:
+                    fps = 60.0f;
+                    break;
+
+                case UpdateRate.Ninety_fps:
+                    fps = 90.0f;
+                    break;
+
+                case UpdateRate.Hundred_twenty_fps:
+                    fps = 120.0f;
+                    break;
+
+                case UpdateRate.Hundred_fifty_fps:
+                    fps = 150.0f;
+                    break;
+
+                case UpdateRate.Hundred_eighty_fps:
+                    fps = 180.0f;
+                    break;
+            }
+
+
+            m_world = new dNewtonWorld(fps);
         }
         return m_world;
     }
@@ -23,6 +48,8 @@ public class NewtonWorld : MonoBehaviour
     {
         QualitySettings.vSyncCount = 0;
         //Application.targetFrameRate = 1000;
+
+        //m_updateRate = 60.0f;
         InitScene();
     }
 
@@ -68,7 +95,6 @@ public class NewtonWorld : MonoBehaviour
             }
 
             m_world = null;
-            m_userDataGlueObject.Free();
         }
     }
 
@@ -89,12 +115,21 @@ public class NewtonWorld : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Update time :" + Time.deltaTime);
+        //Debug.Log("Update time :" + Time.deltaTime);
+        m_world.Update(Time.deltaTime);
     }
 
+    public enum UpdateRate
+    {
+        Sixty_fps,
+        Ninety_fps,
+        Hundred_twenty_fps,
+        Hundred_fifty_fps,
+        Hundred_eighty_fps,
+    }
 
     private dNewtonWorld m_world = null;
-    private GCHandle m_userDataGlueObject;
+    public UpdateRate m_updateRate;
 }
 
 

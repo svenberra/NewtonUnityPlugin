@@ -47,9 +47,9 @@ public class NewtonColliderEditor: Editor
     public override void OnInspectorGUI()
     {
         NewtonCollider collision = (NewtonCollider)target;
-//        collision.m_posit = EditorGUILayout.Vector3Field("posit", collision.m_posit);
-//        collision.m_rotation = EditorGUILayout.Vector3Field("rotation", collision.m_rotation);
-//        collision.m_scale = EditorGUILayout.Vector3Field("scale", collision.m_scale);
+        collision.m_posit = EditorGUILayout.Vector3Field("posit", collision.m_posit);
+        collision.m_rotation = EditorGUILayout.Vector3Field("rotation", collision.m_rotation);
+        collision.m_scale = EditorGUILayout.Vector3Field("scale", collision.m_scale);
         collision.UpdateParams();
     }
 }

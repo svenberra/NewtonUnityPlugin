@@ -32,12 +32,18 @@ class dNewtonCollisionBox;
 class dNewtonWorld: public dAlloc
 {
 	public:
-	dNewtonWorld(void* const userData);
+	dNewtonWorld(dFloat updateRate);
 	virtual ~dNewtonWorld();
+	void Update(dFloat timestepInSecunds);
 
 	private:
+
 	NewtonWorld* m_world;
-	void* m_userData;
+	dLong m_realTimeInMicrosecunds;
+	dLong m_timeStepInMicrosecunds;
+	
+	dFloat m_timeStep;
+
 	friend class dNewtonBody;
 	friend class dNewtonCollision;
 	friend class dNewtonDynamicBody;

@@ -24,9 +24,11 @@
 
 
 
-dNewtonWorld::dNewtonWorld(void* const userData)
+dNewtonWorld::dNewtonWorld(dFloat updateRate)
 	:dAlloc()
-	,m_userData(userData)
+	,m_realTimeInMicrosecunds(dLong(0))
+	,m_timeStepInMicrosecunds ((dLong)(1000000.0 / double (updateRate)))
+	,m_timeStep(1.0f / updateRate)
 {
 	// create a newton world
 	m_world = NewtonCreate();
@@ -52,9 +54,6 @@ dNewtonWorld::dNewtonWorld(void* const userData)
 
 	// add a hierarchical transform manage to update local transforms
 	new NewtonSDKTransformManager (this);
-
-	// set the timer
-	ResetTimer();
 */
 }
 
@@ -62,4 +61,21 @@ dNewtonWorld::~dNewtonWorld()
 {
 	NewtonWaitForUpdateToFinish (m_world);
 	NewtonDestroy (m_world);
+}
+
+
+void dNewtonWorld::Update(dFloat timestepInSecunds)
+{
+	dLong timestepMicrosecunds = dClamp((dLong)(double(timestepInSecunds) * 1000000.0f), dLong(0), m_timeStepInMicrosecunds);
+	m_realTimeInMicrosecunds += timestepMicrosecunds;
+
+	for (bool doUpate = true; m_realTimeInMicrosecunds >= m_timeStepInMicrosecunds; doUpate = false) {
+		if (doUpate) {
+			NewtonUpdate(m_world, m_timeStep);
+		}
+		m_realTimeInMicrosecunds -= m_timeStepInMicrosecunds;
+		dAssert(m_realTimeInMicrosecunds >= 0);
+	}
+	dAssert(m_realTimeInMicrosecunds >= 0);
+	dAssert(m_realTimeInMicrosecunds < m_timeStepInMicrosecunds);
 }
