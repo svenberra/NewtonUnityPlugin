@@ -7,50 +7,65 @@ using System.Runtime.InteropServices;
 [AddComponentMenu("Newton Physics/Newton World")]
 public class NewtonWorld : MonoBehaviour
 {
+    public enum UpdateRate
+    {
+        _120_fps,
+        _60_fps,
+        _90_fps,
+        _150_fps,
+        _180_fps,
+        _240_fps,
+    }
+
     public dNewtonWorld GetWorld()
     {
-        //UnityEngine.Debug.Log("xxxxxxxxx 6");
         if (m_world == null)
         {
-            // create the low lever physic world
-            //m_world = new dNewtonWorld(m_updateRate);
-
-            float fps = 60.0f;
-            switch (m_updateRate)
-            {
-                case UpdateRate.Sixty_fps:
-                    fps = 60.0f;
-                    break;
-
-                case UpdateRate.Ninety_fps:
-                    fps = 90.0f;
-                    break;
-
-                case UpdateRate.Hundred_twenty_fps:
-                    fps = 120.0f;
-                    break;
-
-                case UpdateRate.Hundred_fifty_fps:
-                    fps = 150.0f;
-                    break;
-
-                case UpdateRate.Hundred_eighty_fps:
-                    fps = 180.0f;
-                    break;
-            }
-
-
-            m_world = new dNewtonWorld(fps);
+            m_world = new dNewtonWorld();
         }
         return m_world;
     }
+
     void Start()
     {
-        QualitySettings.vSyncCount = 0;
-        //Application.targetFrameRate = 1000;
-
-        //m_updateRate = 60.0f;
+        GetWorld();
+        SetFrameRate ();
         InitScene();
+    }
+
+    private void SetFrameRate()
+    {
+        float fps = 60.0f;
+        switch (m_updateRate)
+        {
+            case UpdateRate._60_fps:
+                fps = 60.0f;
+                break;
+
+            case UpdateRate._90_fps:
+                fps = 90.0f;
+                break;
+
+            case UpdateRate._120_fps:
+                fps = 120.0f;
+                break;
+
+            case UpdateRate._150_fps:
+                fps = 150.0f;
+                break;
+
+            case UpdateRate._180_fps:
+                fps = 180.0f;
+                break;
+
+            case UpdateRate._240_fps:
+                fps = 240.0f;
+                break;
+
+        }
+
+
+        m_world.SetFrameRate(fps);
     }
 
     void OnDestroy()
@@ -73,9 +88,8 @@ public class NewtonWorld : MonoBehaviour
         }
     }
 
-    public void InitScene()
+    private void InitScene()
     {
-        GetWorld();
         GameObject[] objectList = gameObject.scene.GetRootGameObjects();
         foreach (GameObject rootObj in objectList)
         {
@@ -83,8 +97,7 @@ public class NewtonWorld : MonoBehaviour
         }
     }
 
-
-    public void DestroyScene()
+    private void DestroyScene()
     {
         if (m_world != null)
         {
@@ -112,20 +125,10 @@ public class NewtonWorld : MonoBehaviour
         }
     }
 
-
     void Update()
     {
-        //Debug.Log("Update time :" + Time.deltaTime);
+        Debug.Log("Update time :" + Time.deltaTime);
         m_world.Update(Time.deltaTime);
-    }
-
-    public enum UpdateRate
-    {
-        Sixty_fps,
-        Ninety_fps,
-        Hundred_twenty_fps,
-        Hundred_fifty_fps,
-        Hundred_eighty_fps,
     }
 
     private dNewtonWorld m_world = null;

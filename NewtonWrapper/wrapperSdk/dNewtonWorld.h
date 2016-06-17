@@ -32,9 +32,11 @@ class dNewtonCollisionBox;
 class dNewtonWorld: public dAlloc
 {
 	public:
-	dNewtonWorld(dFloat updateRate);
+	dNewtonWorld();
 	virtual ~dNewtonWorld();
 	void Update(dFloat timestepInSecunds);
+
+	void SetFrameRate(dFloat frameRate);
 
 	private:
 

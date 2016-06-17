@@ -23,12 +23,13 @@
 #include "dNewtonWorld.h"
 
 
+#define D_DEFAULT_FPS 120.0f
 
-dNewtonWorld::dNewtonWorld(dFloat updateRate)
+dNewtonWorld::dNewtonWorld()
 	:dAlloc()
-	,m_realTimeInMicrosecunds(dLong(0))
-	,m_timeStepInMicrosecunds ((dLong)(1000000.0 / double (updateRate)))
-	,m_timeStep(1.0f / updateRate)
+	,m_realTimeInMicrosecunds(0)
+	,m_timeStepInMicrosecunds (0)
+	,m_timeStep(0.0f)
 {
 	// create a newton world
 	m_world = NewtonCreate();
@@ -55,12 +56,21 @@ dNewtonWorld::dNewtonWorld(dFloat updateRate)
 	// add a hierarchical transform manage to update local transforms
 	new NewtonSDKTransformManager (this);
 */
+
+	SetFrameRate(D_DEFAULT_FPS);
 }
 
 dNewtonWorld::~dNewtonWorld()
 {
 	NewtonWaitForUpdateToFinish (m_world);
 	NewtonDestroy (m_world);
+}
+
+void dNewtonWorld::SetFrameRate(dFloat frameRate)
+{
+	m_timeStep = 1.0f / frameRate;
+	m_realTimeInMicrosecunds = 0;
+	m_timeStepInMicrosecunds = (dLong)(1000000.0 / double(frameRate));
 }
 
 
