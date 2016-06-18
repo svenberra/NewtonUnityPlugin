@@ -37,17 +37,28 @@ class dNewtonCollision;
 class dNewtonBody: public dAlloc
 {
 	public:
+
+	class ScopeLock
+	{
+		public:
+		ScopeLock(unsigned int* const lock);
+		~ScopeLock();
+		unsigned* m_atomicLock;
+	};
+
 //	dNewtonBody (dNewtonWorld* const world, dFloat mass, const dNewtonCollision* const collision, void* const userData, const dFloat* const matrix, dBodyType m_type, dNewtonBody* const parent);
 //	dNewtonBody(dNewtonWorld* const world, dFloat mass, const dNewtonCollision* const collision, const dMatrix& matrix, dBodyType m_type, dNewtonBody* const parent);
 //	dNewtonBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const dMatrix& matrix);
 
-	dNewtonBody(void* const userData);
+	dNewtonBody(const dMatrix* const matrix);
 	virtual void Destroy();
 
 	protected:
 	virtual ~dNewtonBody();
 
-	
+	// call each time the physics update the body transformation 
+	virtual void OnBodyTransform(const dFloat* const matrix, int threadIndex);
+
 
 /*
 	dBodyType GetType() const {return m_bodyType;}
@@ -84,8 +95,6 @@ class dNewtonBody: public dAlloc
 	// applications can overload this to update game object information each time there transformation changes 
 	virtual void OnApplicationPostTransform (dFloat timestep) {};
 
-	// call each time the physics update the body transformation 
-	virtual void OnBodyTransform (const dFloat* const matrix, int threadIndex);
 
 	virtual void OnContactProcess (dNewtonContactMaterial* const contactMaterial, dFloat timestep, int threadIndex) const {}
 
@@ -110,14 +119,20 @@ class dNewtonBody: public dAlloc
 	dNewtonBody(dBodyType type, dNewtonBody* const parent);
 	virtual void SetBody  (NewtonBody* const body);
 */
-	private: 
+	protected:
 	static void OnBodyDestroy (const NewtonBody* const body);
 	static void OnForceAndTorque(const NewtonBody* body, dFloat timestep, int threadIndex);
-	//static void OnBodyTransform (const NewtonBody* const body, const dFloat* const matrix, int threadIndex);
+	static void OnBodyTransform (const NewtonBody* const body, const dFloat* const matrix, int threadIndex);
 
-	protected:
+	
 	NewtonBody* m_body;
-	void* m_userData;
+
+	dVector m_posit0;
+	dVector m_posit1;
+	dQuaternion m_rotat0;
+	dQuaternion m_rotat1;
+	mutable unsigned m_lock;
+
 	//dNewtonBody* m_child;
 	//dNewtonBody* m_sibling;
 	//dNewtonBody* m_parent;
@@ -128,7 +143,7 @@ class dNewtonBody: public dAlloc
 class dNewtonDynamicBody: public dNewtonBody
 {
 	public:
-	dNewtonDynamicBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const void* const matrix, void* const userData);
+	dNewtonDynamicBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const void* const matrix);
 };
 
 #endif

@@ -88,7 +88,6 @@ public class NewtonWorld : MonoBehaviour
     }
 
     private dNewtonWorld m_world = null;
-    private int m_updateRate____ = 120;
     public int m_updateRate = 120;
 }
 

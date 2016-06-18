@@ -212,20 +212,6 @@ void dNewtonBody::GetVisualMatrix (dFloat param, dFloat* const matrix) const
 }
 
 
-void dNewtonBody::OnBodyTransform (const dFloat* const matrix, int threadIndex)
-{
-	Update (matrix);
-}
-
-/*
-void dNewtonBody::OnBodyTransform (const NewtonBody* const body, const dFloat* const matrix, int threadIndex)
-{
-	dNewtonBody* const me = (dNewtonBody*) NewtonBodyGetUserData(body);
-	dAssert (me);
-	me->OnBodyTransform (matrix, threadIndex);
-}
-*/
-
 dNewtonCollision* dNewtonBody::GetCollision() const
 {
 	return (dNewtonCollision*) NewtonCollisionGetUserData(NewtonBodyGetCollision (m_body));
@@ -279,18 +265,37 @@ void dNewtonBody::AttachChild(dNewtonBody* const child)
 
 
 
+dNewtonBody::ScopeLock::ScopeLock (unsigned int* const lock)
+	:m_atomicLock(lock)
+{
+	const int maxCount = 1024 * 32;
+	for (int i = 0; (i < maxCount) && NewtonAtomicSwap((int*)m_atomicLock, 1); i++) {
+		NewtonYield();
+	}
+}
+
+dNewtonBody::ScopeLock::~ScopeLock()
+{
+	NewtonAtomicSwap((int*)m_atomicLock, 0);
+}
+
+
 //dNewtonBody::dNewtonBody(dNewtonWorld* const dWorld, dFloat mass, const dNewtonCollision* const collision, void* const userData, const dFloat* const matrix, dBodyType type, dNewtonBody* const parent)
 //dNewtonBody::dNewtonBody(dNewtonWorld* const dWorld, dFloat mass, const dNewtonCollision* const collision, const dMatrix& matrix, dBodyType type, dNewtonBody* const parent)
 //dNewtonBody::dNewtonBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const dMatrix& matrix)
-dNewtonBody::dNewtonBody(void* const userData)
+dNewtonBody::dNewtonBody(const dMatrix* const matrix)
 	:dAlloc()
 //	,dNewtonTransformLerp(matrix)
 	,m_body(NULL)
+	,m_posit0(matrix->m_posit)
+	,m_posit1(matrix->m_posit)
+	,m_rotat0(*matrix)
+	,m_rotat1(m_rotat0)
+	,m_lock(0)
 //	,m_child(NULL)
 //	,m_sibling(NULL)
 //	,m_parent(parent)
 //	,m_boneArticulation(NULL)
-	,m_userData(userData)
 //	,m_bodyType(type)
 {
 //	dAssert(0);
@@ -304,11 +309,34 @@ dNewtonBody::dNewtonBody(void* const userData)
 */
 }
 
-
 dNewtonBody::~dNewtonBody()
 {
 	Destroy();
 }
+
+void dNewtonBody::OnBodyTransform(const dFloat* const matrix, int threadIndex)
+{
+	dMatrix mat(matrix);
+
+	ScopeLock scopelock(&m_lock);
+	m_posit0 = m_posit1;
+	m_rotat0 = m_rotat1;
+	m_posit1 = mat.m_posit;
+	m_rotat1 = dQuaternion(mat);
+	dFloat angle = m_rotat0.DotProduct(m_rotat1);
+	if (angle < 0.0f) {
+		m_rotat1.Scale(-1.0f);
+	}
+}
+
+
+void dNewtonBody::OnBodyTransform(const NewtonBody* const body, const dFloat* const matrix, int threadIndex)
+{
+	dNewtonBody* const me = (dNewtonBody*)NewtonBodyGetUserData(body);
+	dAssert(me);
+	me->OnBodyTransform(matrix, threadIndex);
+}
+
 
 void dNewtonBody::Destroy()
 {
@@ -333,11 +361,12 @@ void dNewtonBody::OnBodyDestroy(const NewtonBody* const body)
 }
 
 
-dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const void* const matrixPtr, void* const userData)
-	:dNewtonBody(userData)
+dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const void* const matrixPtr)
+	:dNewtonBody((dMatrix*)matrixPtr)
 {
-	dMatrix matrix ((dFloat*)matrixPtr);
+	dMatrix matrix (m_rotat0, m_posit0);
 	NewtonWorld* const newtond = world->m_world;
 	m_body = NewtonCreateDynamicBody(newtond, collision->m_shape, &matrix[0][0]);
 
+	NewtonBodySetTransformCallback(m_body, OnBodyTransform);
 }
