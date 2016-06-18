@@ -10,9 +10,11 @@ public class NewtonWorldEditor: Editor
     public override void OnInspectorGUI()
     {
         NewtonWorld world = (NewtonWorld)target;
-        world.m_updateRate = (NewtonWorld.UpdateRate) EditorGUILayout.EnumPopup("frame rate", world.m_updateRate);
-        //world.m_updateRate = EditorGUILayout.FloatField("posit", world.m_updateRate);
+        world.m_updateRate = EditorGUILayout.IntPopup("frame rate", world.m_updateRate, m_displayedOptions, m_values);
     }
+
+    private int[] m_values = {60, 90, 120, 150, 180, 240};
+    private string[] m_displayedOptions = { "60.0f fps", "90.0f fps", "120.0f fps", "150.0f fps", "180.0f fps", "240.0f fps" };
 }
 
 

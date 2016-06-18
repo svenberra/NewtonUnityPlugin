@@ -5,18 +5,9 @@ using System.Runtime.InteropServices;
 
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Newton World")]
-public class NewtonWorld : MonoBehaviour
+public class NewtonWorld : MonoBehaviour, ISerializationCallbackReceiver
+//public class NewtonWorld : MonoBehaviour
 {
-    public enum UpdateRate
-    {
-        _120_fps,
-        _60_fps,
-        _90_fps,
-        _150_fps,
-        _180_fps,
-        _240_fps,
-    }
-
     public dNewtonWorld GetWorld()
     {
         if (m_world == null)
@@ -29,43 +20,20 @@ public class NewtonWorld : MonoBehaviour
     void Start()
     {
         GetWorld();
-        SetFrameRate ();
+        m_world.SetFrameRate (m_updateRate);
         InitScene();
     }
 
-    private void SetFrameRate()
+    public void OnAfterDeserialize()
     {
-        float fps = 60.0f;
-        switch (m_updateRate)
-        {
-            case UpdateRate._60_fps:
-                fps = 60.0f;
-                break;
+        UnityEngine.Debug.Log("xxxxxxxxxxxxxxxxxxx " + m_updateRate + "   " + m_updateRate____);
+        m_updateRate = m_updateRate____;
+    }
 
-            case UpdateRate._90_fps:
-                fps = 90.0f;
-                break;
-
-            case UpdateRate._120_fps:
-                fps = 120.0f;
-                break;
-
-            case UpdateRate._150_fps:
-                fps = 150.0f;
-                break;
-
-            case UpdateRate._180_fps:
-                fps = 180.0f;
-                break;
-
-            case UpdateRate._240_fps:
-                fps = 240.0f;
-                break;
-
-        }
-
-
-        m_world.SetFrameRate(fps);
+    public void OnBeforeSerialize()
+    {
+        UnityEngine.Debug.Log("xxxxxxxxx " + m_updateRate + "   " + m_updateRate____);
+        m_updateRate____ = m_updateRate;
     }
 
     void OnDestroy()
@@ -73,6 +41,8 @@ public class NewtonWorld : MonoBehaviour
         UnityEngine.Debug.Log("xxxxxxxxx 5");
         DestroyScene();
     }
+
+
 
     private void InitPhysicsScene(GameObject root)
     {
@@ -132,7 +102,8 @@ public class NewtonWorld : MonoBehaviour
     }
 
     private dNewtonWorld m_world = null;
-    public UpdateRate m_updateRate;
+    private int m_updateRate____ = 120;
+    public int m_updateRate = 120;
 }
 
 
