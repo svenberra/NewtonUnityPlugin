@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Newton World")]
-public class NewtonWorld : MonoBehaviour, ISerializationCallbackReceiver
-//public class NewtonWorld : MonoBehaviour
+//public class NewtonWorld : MonoBehaviour, ISerializationCallbackReceiver
+public class NewtonWorld : MonoBehaviour
 {
     public dNewtonWorld GetWorld()
     {
@@ -24,25 +24,11 @@ public class NewtonWorld : MonoBehaviour, ISerializationCallbackReceiver
         InitScene();
     }
 
-    public void OnAfterDeserialize()
-    {
-        UnityEngine.Debug.Log("xxxxxxxxxxxxxxxxxxx " + m_updateRate + "   " + m_updateRate____);
-        m_updateRate = m_updateRate____;
-    }
-
-    public void OnBeforeSerialize()
-    {
-        UnityEngine.Debug.Log("xxxxxxxxx " + m_updateRate + "   " + m_updateRate____);
-        m_updateRate____ = m_updateRate;
-    }
-
     void OnDestroy()
     {
-        UnityEngine.Debug.Log("xxxxxxxxx 5");
+        //UnityEngine.Debug.Log("xxxxxxxxx 5");
         DestroyScene();
     }
-
-
 
     private void InitPhysicsScene(GameObject root)
     {
@@ -97,7 +83,7 @@ public class NewtonWorld : MonoBehaviour, ISerializationCallbackReceiver
 
     void Update()
     {
-        Debug.Log("Update time :" + Time.deltaTime);
+        //Debug.Log("Update time :" + Time.deltaTime);
         m_world.Update(Time.deltaTime);
     }
 
