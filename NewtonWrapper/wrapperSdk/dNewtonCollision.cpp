@@ -281,6 +281,15 @@ void dNewtonCollision::SetMatrix(const void* const matrixPtr)
 }
 
 
+
+dNewtonCollisionNull::dNewtonCollisionNull(dNewtonWorld* const world)
+	:dNewtonCollision(world, 0)
+{
+	SetShape(NewtonCreateNull(m_myWorld->m_world));
+}
+
+
+
 dNewtonCollisionSphere::dNewtonCollisionSphere(dNewtonWorld* const world, dFloat r)
 	:dNewtonCollision(world, 0)
 {

@@ -59,8 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NewtonBody.cs" />
+    <Compile Include="NewtonBodyCollision.cs" />
     <Compile Include="NewtonBoxCollider.cs" />
     <Compile Include="NewtonCollider.cs" />
+    <Compile Include="NewtonNullCollider.cs" />
     <Compile Include="NewtonSphereCollider.cs" />
     <Compile Include="NewtonWorld.cs" />
     <Compile Include="newton_wrap.cs" />

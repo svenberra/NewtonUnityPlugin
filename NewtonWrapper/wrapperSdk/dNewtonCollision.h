@@ -370,6 +370,13 @@ class dNewtonCollisionCompound: public dNewtonCollision
 */
 
 
+class dNewtonCollisionNull : public dNewtonCollision
+{
+	public:
+	dNewtonCollisionNull(dNewtonWorld* const world);
+};
+
+
 class dNewtonCollisionSphere : public dNewtonCollision
 {
 	public:
