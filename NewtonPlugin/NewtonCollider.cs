@@ -61,10 +61,9 @@ abstract public class NewtonCollider : MonoBehaviour
 
     public void RecreateEditorShape()
     {
-        Debug.Log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-        //        m_shape.ValidateShape();
-        //        m_shape.Cleanup();
-        //        UpdateEditorParams();
+        m_shape.Dispose();
+        m_shape = null;
+        UpdateEditorParams();
     }
 
     public void UpdateEditorParams()

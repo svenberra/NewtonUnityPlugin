@@ -81,12 +81,7 @@ public class NewtonWorld : MonoBehaviour
     void Update()
     {
         //Debug.Log("Update time :" + Time.deltaTime);
-//        m_world.Update(Time.deltaTime);
-    }
-
-    public void OnDestroyNewtonWorld ()
-    {
-        m_world = null; 
+        m_world.Update(Time.deltaTime);
     }
 
     private dNewtonWorld m_world = new dNewtonWorld();

@@ -46,7 +46,6 @@ class dNewtonCollision: public dAlloc
 	public:
 	dNewtonCollision (dNewtonWorld* const world, dLong collisionMask);
 	virtual ~dNewtonCollision();
-//	void Cleanup();
 
 	void DebugRender(DrawFaceCallback callback);
 	void SetScale(dFloat x, dFloat y, dFloat z);
