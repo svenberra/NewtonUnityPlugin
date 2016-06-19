@@ -328,6 +328,27 @@ void dNewtonBody::OnBodyTransform(const dFloat* const matrixPtr, int threadIndex
 	}
 }
 
+void dNewtonBody::OnForceAndTorque(dFloat timestep, int threadIndex)
+{
+	dFloat mass;
+	dFloat Ixx;
+	dFloat Iyy;
+	dFloat Izz;
+
+	NewtonBodyGetMass(m_body, &mass, &Ixx, &Iyy, &Izz);
+	const dNewtonWorld* const world = (dNewtonWorld*)NewtonWorldGetUserData(NewtonBodyGetWorld(m_body));
+
+	dVector weight(world->GetGravity().Scale(mass));
+	NewtonBodySetForce(m_body, &weight[0]);
+}
+
+void dNewtonBody::OnForceAndTorque(const NewtonBody* body, dFloat timestep, int threadIndex)
+{
+	dNewtonBody* const me = (dNewtonBody*)NewtonBodyGetUserData(body);
+	dAssert(me);
+	me->OnForceAndTorque(timestep, threadIndex);
+}
+
 
 void dNewtonBody::OnBodyTransform(const NewtonBody* const body, const dFloat* const matrix, int threadIndex)
 {
@@ -360,7 +381,7 @@ void dNewtonBody::OnBodyDestroy(const NewtonBody* const body)
 }
 
 
-dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr)
+dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr, dFloat mass)
 	:dNewtonBody((dMatrix*)matrixPtr)
 {
 	dMatrix matrix (m_rotation0, m_posit0);
@@ -369,10 +390,13 @@ dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollisi
 	collision->DeleteShape();
 	collision->SetShape(NewtonBodyGetCollision(m_body));
 
+	NewtonBodySetMassProperties(m_body, mass, NewtonBodyGetCollision(m_body));
+
 	NewtonBodySetUserData(m_body, this);
 	NewtonBodySetTransformCallback(m_body, OnBodyTransform);
+	NewtonBodySetForceAndTorqueCallback(m_body, OnForceAndTorque);
 
 //dVector v(0.0f, 5.0f, 0.0f, 0.0f);
 //NewtonBodySetVelocity(m_body, &v[0]);
-NewtonBodySetMassProperties(m_body, 10, NewtonBodyGetCollision(m_body));
+	
 }

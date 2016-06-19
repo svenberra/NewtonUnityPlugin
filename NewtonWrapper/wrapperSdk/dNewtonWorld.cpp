@@ -33,6 +33,7 @@ dNewtonWorld::dNewtonWorld()
 	,m_timeStepInMicrosecunds (0)
 	,m_timeStep(0.0f)
 	,m_interpotationParam(0.0f)
+	,m_gravity(0.0f, 0.0f, 0.0f, 0.0f)
 {
 	// for two way communication between low and high lever, link the world with this class for 
 	NewtonWorldSetUserData(m_world, this);
@@ -79,8 +80,21 @@ void dNewtonWorld::SetFrameRate(dFloat frameRate)
 	m_timeStepInMicrosecunds = (dLong)(1000000.0 / double(frameRate));
 }
 
+const dVector& dNewtonWorld::GetGravity() const
+{
+	return m_gravity;
+}
 
+void dNewtonWorld::SetGravity(const dVector& gravity)
+{
+	m_gravity = gravity;
+	m_gravity.m_w = 0.0f;
+}
 
+void dNewtonWorld::SetGravity(dFloat x, dFloat y, dFloat z)
+{
+	SetGravity(dVector(x, y, z, 0.0f));
+}
 
 void dNewtonWorld::Update(dFloat timestepInSecunds)
 {

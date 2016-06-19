@@ -39,6 +39,11 @@ class dNewtonWorld: public dAlloc
 
 	void SetFrameRate(dFloat frameRate);
 
+	
+	const dVector& GetGravity() const;
+	void SetGravity(const dVector& gravity);
+	void SetGravity(dFloat x, dFloat y, dFloat z);
+
 	private:
 	NewtonWorld* m_world;
 	dList<dNewtonCollision*> m_collisionCache;
@@ -47,6 +52,8 @@ class dNewtonWorld: public dAlloc
 	
 	dFloat m_timeStep;
 	dFloat m_interpotationParam;
+
+	dVector  m_gravity;
 
 	friend class dNewtonBody;
 	friend class dNewtonCollision;

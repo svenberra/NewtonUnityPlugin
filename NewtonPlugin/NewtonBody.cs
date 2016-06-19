@@ -48,7 +48,7 @@ public class NewtonBody : MonoBehaviour
         matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
         IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
         Marshal.StructureToPtr(matrix, pnt, false);
-        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), pnt);
+        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), pnt, m_mass);
         Marshal.FreeHGlobal(pnt);
         //Debug.Log("xxxx " + transform.rotation[0] + " " + transform.rotation[1] + " " + transform.rotation[2] + " " + transform.rotation[3]);
     }
@@ -68,7 +68,7 @@ public class NewtonBody : MonoBehaviour
         }
     }
 
-    //public float m_mass;
+    public float m_mass;
     public NewtonWorld m_world;
 
     private dNewtonBody m_body = null;

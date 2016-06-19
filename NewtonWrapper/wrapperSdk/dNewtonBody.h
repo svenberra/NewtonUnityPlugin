@@ -46,10 +46,6 @@ class dNewtonBody: public dAlloc
 		unsigned* m_atomicLock;
 	};
 
-//	dNewtonBody (dNewtonWorld* const world, dFloat mass, const dNewtonCollision* const collision, void* const userData, const dFloat* const matrix, dBodyType m_type, dNewtonBody* const parent);
-//	dNewtonBody(dNewtonWorld* const world, dFloat mass, const dNewtonCollision* const collision, const dMatrix& matrix, dBodyType m_type, dNewtonBody* const parent);
-//	dNewtonBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const dMatrix& matrix);
-
 	dNewtonBody(const dMatrix* const matrix);
 	virtual void Destroy();
 	void* GetPosition();
@@ -60,6 +56,9 @@ class dNewtonBody: public dAlloc
 
 	// call each time the physics update the body transformation 
 	virtual void OnBodyTransform(const dFloat* const matrix, int threadIndex);
+
+	// called from newton update
+	void OnForceAndTorque(dFloat timestep, int threadIndex);
 
 
 /*
@@ -141,7 +140,7 @@ class dNewtonBody: public dAlloc
 class dNewtonDynamicBody: public dNewtonBody
 {
 	public:
-	dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr);
+	dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr, dFloat mass);
 };
 
 #endif

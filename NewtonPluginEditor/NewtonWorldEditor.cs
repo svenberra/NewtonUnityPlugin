@@ -11,6 +11,7 @@ public class NewtonWorldEditor: Editor
     {
         NewtonWorld world = (NewtonWorld)target;
         world.m_updateRate = EditorGUILayout.IntPopup("frame rate", world.m_updateRate, m_displayedOptions, m_values);
+        world.m_gravity = EditorGUILayout.Vector3Field("gravity", world.m_gravity);
     }
 
     private int[] m_values = {60, 90, 120, 150, 180, 240};
