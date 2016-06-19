@@ -32,6 +32,7 @@ dNewtonWorld::dNewtonWorld()
 	,m_realTimeInMicrosecunds(0)
 	,m_timeStepInMicrosecunds (0)
 	,m_timeStep(0.0f)
+	,m_interpotationParam(0.0f)
 {
 	// for two way communication between low and high lever, link the world with this class for 
 	NewtonWorldSetUserData(m_world, this);
@@ -95,4 +96,6 @@ void dNewtonWorld::Update(dFloat timestepInSecunds)
 	}
 	dAssert(m_realTimeInMicrosecunds >= 0);
 	dAssert(m_realTimeInMicrosecunds < m_timeStepInMicrosecunds);
+
+	m_interpotationParam = dFloat (double(m_realTimeInMicrosecunds) / double(m_timeStepInMicrosecunds));
 }

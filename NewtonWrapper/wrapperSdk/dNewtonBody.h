@@ -135,10 +135,7 @@ class dNewtonBody: public dAlloc
 	dQuaternion m_rotation0;
 	dQuaternion m_rotation1;
 	dQuaternion m_interpolatedRotation;
-	dFloat m_inteplatedParam;
-	
-	mutable unsigned m_lock;
-
+	unsigned m_lock;
 };
 
 class dNewtonDynamicBody: public dNewtonBody

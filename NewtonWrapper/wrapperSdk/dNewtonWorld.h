@@ -46,6 +46,7 @@ class dNewtonWorld: public dAlloc
 	dLong m_timeStepInMicrosecunds;
 	
 	dFloat m_timeStep;
+	dFloat m_interpotationParam;
 
 	friend class dNewtonBody;
 	friend class dNewtonCollision;
