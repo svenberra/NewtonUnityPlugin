@@ -28,6 +28,7 @@ abstract public class NewtonCollider : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
+/*
         dNewtonCollision shape = GetShape();
         if (m_shape != null)
         {
@@ -35,8 +36,10 @@ abstract public class NewtonCollider : MonoBehaviour
             Gizmos.color = Color.yellow;
             m_shape.DebugRender(DrawFace);
         }
+*/  
     }
 
+/*
     public Matrix4x4 GetMatrix ()
     {
         return Matrix4x4.TRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
@@ -69,26 +72,31 @@ abstract public class NewtonCollider : MonoBehaviour
     {
         Destroy();
         GetShape();
-        UpdateParams();
+        UpdateParams(m_shape);
     }
 
-    public void UpdateParams()
+    
+
+    public void UpdateParams(dNewtonCollision shape)
     {
-        dNewtonCollision shape = GetShape();
-        if (m_shape != null)
-        {
-            Matrix4x4 matrix = GetMatrix();
-            Vector3 scale = GetScale();
+        Matrix4x4 matrix = GetMatrix();
+        Vector3 scale = GetScale();
 
-            IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
-            Marshal.StructureToPtr(matrix, pnt, false);
+        IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
+        Marshal.StructureToPtr(matrix, pnt, false);
 
-            m_shape.SetMatrix(pnt);
-            m_shape.SetScale(scale.x, scale.y, scale.z);
-        }
+        shape.SetMatrix(pnt);
+        shape.SetScale(scale.x, scale.y, scale.z);
     }
 
-    dNewtonCollision GetShape()
+    public dNewtonCollision CreateShape(NewtonWorld world)
+    {
+        dNewtonCollision shape = Create(world);
+        UpdateParams(shape);
+        return shape;
+    }
+
+    public dNewtonCollision GetShape()
     {
         if (m_shape == null)
         {
@@ -108,13 +116,13 @@ abstract public class NewtonCollider : MonoBehaviour
             {
                 if (body.m_world != null)
                 {
-                    m_shape = Create(body.m_world);
-                    UpdateParams();
+                    m_shape = CreateShape(body.m_world);
                 }
             }
         }
         return m_shape;
     }
+*/
 
     private dNewtonCollision m_shape = null;
     public Vector3 m_posit = Vector3.zero;

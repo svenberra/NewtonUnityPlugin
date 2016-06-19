@@ -3,6 +3,96 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
+
+public class NewtonBodyCollision
+{
+    struct ColliderShapePair
+    {
+        public NewtonCollider m_collider;
+        public dNewtonCollision m_shape;
+    }
+
+    public NewtonBodyCollision(NewtonBody body)
+    {
+        m_body = body;
+
+        List<NewtonCollider> colliderList = new List<NewtonCollider>();
+        TraverseColliders(m_body.gameObject, colliderList);
+
+        if (colliderList.Count == 0)
+        {
+
+        }
+        else if (colliderList.Count == 1)
+        {
+/*
+            int index = 0;
+            m_collidersArray = new ColliderShapePair[colliderList.Count];
+            foreach (NewtonCollider collider in colliderList)
+            {
+                m_collidersArray[index].m_collider = collider;
+                m_collidersArray[index].m_shape = collider.CreateShape(m_body.m_world);
+                index++;
+            }
+*/  
+        }
+        else
+        {
+/*
+            int index = 0;
+            m_collidersArray = new ColliderShapePair[colliderList.Count];
+            foreach (NewtonCollider collider in colliderList)
+            {
+                m_collidersArray[index].m_collider = collider;
+                m_collidersArray[index].m_shape = collider.CreateShape(m_body.m_world);
+            }
+*/
+        }
+    }
+
+    public void Destroy()
+    {
+//        Debug.Log("xxxxxxxxxxxx___");
+        /*
+                List<NewtonCollider> colliders = new List<NewtonCollider>();
+                TraverseColliders(gameObject, colliders);
+                foreach (NewtonCollider coll in colliders)
+                {
+                    coll.Destroy();
+                }
+        */
+        for (int i = 0; i < m_collidersArray.Length; i ++)
+        {
+            m_collidersArray[i].m_shape.Cleanup();
+            m_collidersArray[i].m_shape = null;
+            m_collidersArray[i].m_collider = null;
+        }
+    }
+
+    private void TraverseColliders(GameObject gameObject, List<NewtonCollider> colliderList)
+    {
+        // Don't fetch colliders from children with NewtonBodies
+        if ((gameObject == m_body.gameObject) || (gameObject.GetComponent<NewtonBody>() == null))
+        {
+
+            //Fetch all colliders
+            foreach (NewtonCollider collider in gameObject.GetComponents<NewtonCollider>())
+            {
+                colliderList.Add(collider);
+            }
+
+            foreach (Transform child in gameObject.transform)
+            {
+                TraverseColliders(child.gameObject, colliderList);
+            }
+        }
+    }
+
+
+    NewtonBody m_body;
+    ColliderShapePair[] m_collidersArray;
+}
+
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Rigid Body")]
 public class NewtonBody : MonoBehaviour
@@ -116,8 +206,6 @@ public class NewtonBody : MonoBehaviour
                 //body.transform.position = new Vector3(mat.m03, mat.m13, mat.m23);
                 //body.transform.rotation = q;
             }
-
-
     */
 
     void Start()
@@ -126,11 +214,14 @@ public class NewtonBody : MonoBehaviour
 
     void OnDestroy()
     {
+        Debug.Log("zzzzzzzz___");
         DestroyRigidBody();
     }
 
     public void InitRigidBody()
     {
+        Debug.Log("xxxxxxxxxxxx___");
+//      m_collision = new NewtonBodyCollision(this);
 /*
         if (m_userDataGlueObject == null)
         {
@@ -161,43 +252,40 @@ public class NewtonBody : MonoBehaviour
     {
         if (m_body != null)
         {
-//              m_body.Destroy();
-//                m_body = null;
-//                m_userDataGlueObject.Free();
+//           m_body.Destroy();
+//           m_body = null;
+//           m_userDataGlueObject.Free();
         }
 
-        List<NewtonCollider> colliders = new List<NewtonCollider>();
-        TraverseColliders(gameObject, colliders);
-        foreach (NewtonCollider coll in colliders)
+        if (m_collision != null)
         {
-            coll.Destroy();
+            m_collision.Destroy();
+            m_collision = null;
         }
+//        DestroyColliders(gameObject);
     }
-
-    private void TraverseColliders(GameObject obj, List<NewtonCollider> colliders)
+/*
+    private void DestroyColliders(GameObject obj)
     {
-        // Don't fetch colliders from children with NewtonBodies
-        if (obj != this.gameObject && obj.GetComponent<NewtonBody>() != null)
+        if ((gameObject == gameObject) || (gameObject.GetComponent<NewtonBody>() == null))
         {
-            return;
-        }
+            foreach (NewtonCollider collider in gameObject.GetComponents<NewtonCollider>())
+            {
+                collider.Destroy();
+            }
 
-        //Fetch all colliders
-        foreach (NewtonCollider coll in obj.GetComponents<NewtonCollider>())
-        {
-            colliders.Add(coll);
-        }
-
-        foreach (Transform child in obj.transform)
-        {
-            TraverseColliders(child.gameObject, colliders);
+            foreach (Transform child in obj.transform)
+            {
+                DestroyColliders(child.gameObject);
+            }
         }
     }
+*/
 
     public NewtonWorld m_world;
 //  public float m_mass;
     private dNewtonBody m_body = null;
-// private GCHandle m_userDataGlueObject;
+    private NewtonBodyCollision m_collision = null;
 }
 
 

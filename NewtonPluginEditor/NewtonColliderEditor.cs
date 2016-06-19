@@ -9,6 +9,7 @@ public class NewtonSphereColliderEditor: NewtonColliderEditor
 {
     public override void OnInspectorGUI()
     {
+/*
         NewtonSphereCollider collision = (NewtonSphereCollider)target;
         base.OnInspectorGUI();
 
@@ -20,6 +21,7 @@ public class NewtonSphereColliderEditor: NewtonColliderEditor
             collision.RecreateShape();
         }
         EditorUtility.SetDirty(target);
+*/  
     }
 }
 
@@ -29,6 +31,7 @@ public class NewtonBoxColliderEditor: NewtonColliderEditor
 {
     public override void OnInspectorGUI()
     {
+/*
         NewtonBoxCollider collision = (NewtonBoxCollider)target;
         base.OnInspectorGUI();
 
@@ -39,6 +42,7 @@ public class NewtonBoxColliderEditor: NewtonColliderEditor
             collision.RecreateShape();
         }
         EditorUtility.SetDirty(target);
+*/
     }
 }
 
@@ -50,7 +54,7 @@ public class NewtonColliderEditor: Editor
         collision.m_posit = EditorGUILayout.Vector3Field("posit", collision.m_posit);
         collision.m_rotation = EditorGUILayout.Vector3Field("rotation", collision.m_rotation);
         collision.m_scale = EditorGUILayout.Vector3Field("scale", collision.m_scale);
-        collision.UpdateParams();
+//        collision.UpdateParams(collision.GetShape());
     }
 }
 
