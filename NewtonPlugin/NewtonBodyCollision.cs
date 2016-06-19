@@ -21,7 +21,7 @@ public class NewtonBodyCollision
             m_collidersArray = new ColliderShapePair[1];
             NewtonCollider collider = new NewtonNullCollider();
             m_collidersArray[0].m_collider = collider;
-            m_collidersArray[0].m_shape = collider.CreateBodyShape(body.m_world);
+            m_collidersArray[0].m_shape = collider.Create(body.m_world);
         }
         else if (colliderList.Count == 1)
         {
