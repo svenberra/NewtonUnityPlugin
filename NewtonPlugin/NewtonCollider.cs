@@ -30,10 +30,12 @@ abstract public class NewtonCollider : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         ValidateEditorShape();
-
-        Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
-        Gizmos.color = Color.yellow;
-        m_shape.DebugRender(DrawFace);
+        if (m_shape != null)
+        {
+            Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+            Gizmos.color = Color.yellow;
+            m_shape.DebugRender(DrawFace);
+        }
     }
 
     public Matrix4x4 GetMatrix ()
@@ -49,34 +51,42 @@ abstract public class NewtonCollider : MonoBehaviour
         scale.z *= transform.localScale.z;
         return scale;
     }
-
-    /*
-    public dNewtonCollision CreateShape(NewtonWorld world)
-    {
-        dNewtonCollision shape = Create(world);
-        UpdateParams(shape);
-        return shape;
-    }
-    */
-
+    
     public void RecreateEditorShape()
     {
-        m_shape.Dispose();
-        m_shape = null;
-        UpdateEditorParams();
+        if (m_shape != null)
+        {
+            m_shape.Dispose();
+            m_shape = null;
+            UpdateEditorParams();
+        }
+    }
+    private void UpdateParams(dNewtonCollision shape)
+    {
+        Vector3 scale = GetScale();
+        shape.SetScale(scale.x, scale.y, scale.z);
+
+        Matrix4x4 matrix = GetMatrix();
+        IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
+        Marshal.StructureToPtr(matrix, pnt, false);
+        shape.SetMatrix(pnt);
+        Marshal.FreeHGlobal(pnt);
     }
 
     public void UpdateEditorParams()
     {
         ValidateEditorShape();
-        Matrix4x4 matrix = GetMatrix();
-        Vector3 scale = GetScale();
+        if (m_shape != null)
+        {
+            UpdateParams(m_shape);
+        }
+    }
 
-        IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
-        Marshal.StructureToPtr(matrix, pnt, false);
-
-        m_shape.SetMatrix(pnt);
-        m_shape.SetScale(scale.x, scale.y, scale.z);
+    public dNewtonCollision CreateBodyShape(NewtonWorld world)
+    {
+        dNewtonCollision shape = Create(world);
+        UpdateParams(shape);
+        return shape;
     }
 
     private void ValidateEditorShape()

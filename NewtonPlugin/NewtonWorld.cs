@@ -16,16 +16,14 @@ public class NewtonWorld : MonoBehaviour
     void Start()
     {
         m_world.SetFrameRate (m_updateRate);
-//        InitScene();
+        InitScene();
     }
 
     void OnDestroy()
     {
-//        UnityEngine.Debug.Log("xxxxxxxxx 5");
-//        DestroyScene();
+       DestroyScene();
     }
 
-/*
     private void InitPhysicsScene(GameObject root)
     {
         NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
@@ -42,7 +40,6 @@ public class NewtonWorld : MonoBehaviour
 
     private void InitScene()
     {
-        Debug.Log("tttttttttt___");
         GameObject[] objectList = gameObject.scene.GetRootGameObjects();
         foreach (GameObject rootObj in objectList)
         {
@@ -77,7 +74,7 @@ public class NewtonWorld : MonoBehaviour
             DestroyPhysicsScene(child.gameObject);
         }
     }
-*/
+
     void Update()
     {
         //Debug.Log("Update time :" + Time.deltaTime);

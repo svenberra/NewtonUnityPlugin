@@ -22,7 +22,6 @@
 #include "dNewtonBody.h"
 #include "dNewtonWorld.h"
 #include "dNewtonCollision.h"
-//#include "dNewtonTransformLerp.h"
 
 #if 0
 dNewtonBody::dNewtonBody(dBodyType type, dNewtonBody* const parent)
@@ -285,18 +284,15 @@ dNewtonBody::ScopeLock::~ScopeLock()
 //dNewtonBody::dNewtonBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const dMatrix& matrix)
 dNewtonBody::dNewtonBody(const dMatrix* const matrix)
 	:dAlloc()
-//	,dNewtonTransformLerp(matrix)
 	,m_body(NULL)
 	,m_posit0(matrix->m_posit)
 	,m_posit1(matrix->m_posit)
-	,m_rotat0(*matrix)
-	,m_rotat1(m_rotat0)
+	,m_interpolatedPosit(matrix->m_posit)
+	,m_rotation0(*matrix)
+	,m_rotation1(m_rotation0)
+	,m_interpolatedRotation(m_rotation0)
+	, m_inteplatedParam(0.0f)
 	,m_lock(0)
-//	,m_child(NULL)
-//	,m_sibling(NULL)
-//	,m_parent(parent)
-//	,m_boneArticulation(NULL)
-//	,m_bodyType(type)
 {
 //	dAssert(0);
 //	NewtonWorld* const newtond = world->m_world;
@@ -314,18 +310,32 @@ dNewtonBody::~dNewtonBody()
 	Destroy();
 }
 
-void dNewtonBody::OnBodyTransform(const dFloat* const matrix, int threadIndex)
+void* dNewtonBody::GetPosition()
 {
-	dMatrix mat(matrix);
+	ScopeLock scopelock(&m_lock);
+	m_interpolatedPosit = m_posit0 + (m_posit1 - m_posit0).Scale(m_inteplatedParam);
+	return &m_interpolatedPosit.m_x;
+}
+
+void* dNewtonBody::GetRotation()
+{
+	ScopeLock scopelock(&m_lock);
+	m_interpolatedRotation = m_rotation0.Slerp(m_rotation1, m_inteplatedParam);
+	return &m_interpolatedRotation.m_q0;
+}
+
+void dNewtonBody::OnBodyTransform(const dFloat* const matrixPtr, int threadIndex)
+{
+	dMatrix matrix(matrixPtr);
 
 	ScopeLock scopelock(&m_lock);
 	m_posit0 = m_posit1;
-	m_rotat0 = m_rotat1;
-	m_posit1 = mat.m_posit;
-	m_rotat1 = dQuaternion(mat);
-	dFloat angle = m_rotat0.DotProduct(m_rotat1);
+	m_rotation0 = m_rotation1;
+	m_posit1 = matrix.m_posit;
+	m_rotation1 = dQuaternion(matrix);
+	dFloat angle = m_rotation0.DotProduct(m_rotation1);
 	if (angle < 0.0f) {
-		m_rotat1.Scale(-1.0f);
+		m_rotation1.Scale(-1.0f);
 	}
 }
 
@@ -361,12 +371,19 @@ void dNewtonBody::OnBodyDestroy(const NewtonBody* const body)
 }
 
 
-dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const void* const matrixPtr)
+dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr)
 	:dNewtonBody((dMatrix*)matrixPtr)
 {
-	dMatrix matrix (m_rotat0, m_posit0);
+	dMatrix matrix (m_rotation0, m_posit0);
 	NewtonWorld* const newtond = world->m_world;
 	m_body = NewtonCreateDynamicBody(newtond, collision->m_shape, &matrix[0][0]);
+	collision->DeleteShape();
+	collision->SetShape(NewtonBodyGetCollision(m_body));
 
+	NewtonBodySetUserData(m_body, this);
 	NewtonBodySetTransformCallback(m_body, OnBodyTransform);
+
+//dVector v(0.0f, 5.0f, 0.0f, 0.0f);
+//NewtonBodySetVelocity(m_body, &v[0]);
+NewtonBodySetMassProperties(m_body, 10, NewtonBodyGetCollision(m_body));
 }

@@ -52,14 +52,16 @@
 %typemap(cstype) void* "global::System.IntPtr"
 %typemap(out)    void* %{ $result = $1; %}
 %typemap(csin)   void* "$csinput"
-
-// Wrap float * to IntPtr
-%typemap(ctype)  float* "float*"
-%typemap(in)     float* %{ $1 = $input; %}
-%typemap(imtype) float* "global::System.IntPtr"
-%typemap(cstype) float* "global::System.IntPtr"
-%typemap(out)    float* %{ $result = $1; %}
-%typemap(csin)   float* "$csinput"
+%typemap(csout, excode=SWIGEXCODE)  void* { 
+    System.IntPtr cPtr = $imcall;$excode
+    return cPtr;
+    }
+%typemap(csvarout, excode=SWIGEXCODE2) void* %{ 
+    get {
+        System.IntPtr cPtr = $imcall;$excode 
+        return cPtr; 
+   } 
+%} 
 
 
 // Macro for wrapping C++ callbacks as C# delegates 

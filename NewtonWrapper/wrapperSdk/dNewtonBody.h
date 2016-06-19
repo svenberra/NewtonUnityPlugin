@@ -52,6 +52,8 @@ class dNewtonBody: public dAlloc
 
 	dNewtonBody(const dMatrix* const matrix);
 	virtual void Destroy();
+	void* GetPosition();
+	void* GetRotation();
 
 	protected:
 	virtual ~dNewtonBody();
@@ -129,21 +131,20 @@ class dNewtonBody: public dAlloc
 
 	dVector m_posit0;
 	dVector m_posit1;
-	dQuaternion m_rotat0;
-	dQuaternion m_rotat1;
+	dVector m_interpolatedPosit;
+	dQuaternion m_rotation0;
+	dQuaternion m_rotation1;
+	dQuaternion m_interpolatedRotation;
+	dFloat m_inteplatedParam;
+	
 	mutable unsigned m_lock;
 
-	//dNewtonBody* m_child;
-	//dNewtonBody* m_sibling;
-	//dNewtonBody* m_parent;
-	//void* m_boneArticulation; 
-	//dBodyType m_bodyType;
 };
 
 class dNewtonDynamicBody: public dNewtonBody
 {
 	public:
-	dNewtonDynamicBody(dNewtonWorld* const world, const dNewtonCollision* const collision, const void* const matrix);
+	dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr);
 };
 
 #endif
