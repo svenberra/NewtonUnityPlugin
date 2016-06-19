@@ -61,6 +61,7 @@
     <Compile Include="NewtonBody.cs" />
     <Compile Include="NewtonBodyCollision.cs" />
     <Compile Include="NewtonBoxCollider.cs" />
+    <Compile Include="NewtonCapsuleCollider.cs" />
     <Compile Include="NewtonCollider.cs" />
     <Compile Include="NewtonCylinderCollider.cs" />
     <Compile Include="NewtonNullCollider.cs" />

@@ -392,13 +392,24 @@ class dNewtonCollisionBox : public dNewtonCollision
 };
 
 
-class dNewtonCollisionCylinder : public dNewtonCollision
+class dNewtonAlignedShapes : public dNewtonCollision
+{
+	public:
+	dNewtonAlignedShapes(dNewtonWorld* const world, dLong collisionMask);
+	void SetMatrix(const void* const matrix);
+	void SetScale(dFloat x, dFloat y, dFloat z);
+};
+
+class dNewtonCollisionCapsule: public dNewtonAlignedShapes
+{
+	public:
+	dNewtonCollisionCapsule(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height);
+};
+
+class dNewtonCollisionCylinder : public dNewtonAlignedShapes
 {
 	public:
 	dNewtonCollisionCylinder(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height);
-
-	void SetScale(dFloat x, dFloat y, dFloat z);
-	void SetMatrix(const void* const matrix);
 };
 
 

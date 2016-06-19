@@ -304,22 +304,34 @@ dNewtonCollisionBox::dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dF
 	SetShape(NewtonCreateBox(m_myWorld->m_world, x, y, z, 0, NULL));
 }
 
-dNewtonCollisionCylinder::dNewtonCollisionCylinder(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height)
+
+dNewtonAlignedShapes::dNewtonAlignedShapes(dNewtonWorld* const world, dLong collisionMask)
 	:dNewtonCollision(world, 0)
 {
-	SetShape(NewtonCreateCylinder(m_myWorld->m_world, radio0, radio1, height, 0, NULL));
 }
 
-void dNewtonCollisionCylinder::SetScale(dFloat x, dFloat y, dFloat z)
+void dNewtonAlignedShapes::SetScale(dFloat x, dFloat y, dFloat z)
 {
 	dVector scale(m_primitiveAligment.RotateVector(dVector(x, y, z, 0.0f)));
 	dNewtonCollision::SetScale(scale.m_x, scale.m_y, scale.m_z);
 }
 
-void dNewtonCollisionCylinder::SetMatrix(const void* const matrixPtr)
+void dNewtonAlignedShapes::SetMatrix(const void* const matrixPtr)
 {
 	dMatrix matrix((dFloat*)matrixPtr);
 	matrix = m_primitiveAligment * matrix;
 	dNewtonCollision::SetMatrix(&matrix[0][0]);
 }
 
+dNewtonCollisionCapsule::dNewtonCollisionCapsule(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height)
+	:dNewtonAlignedShapes(world, 0)
+{
+	SetShape(NewtonCreateCapsule(m_myWorld->m_world, radio0, radio1, height, 0, NULL));
+}
+
+
+dNewtonCollisionCylinder::dNewtonCollisionCylinder(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height)
+	:dNewtonAlignedShapes(world, 0)
+{
+	SetShape(NewtonCreateCylinder(m_myWorld->m_world, radio0, radio1, height, 0, NULL));
+}
