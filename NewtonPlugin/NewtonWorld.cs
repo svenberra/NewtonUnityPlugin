@@ -84,7 +84,7 @@ public class NewtonWorld : MonoBehaviour
 
     private dNewtonWorld m_world = new dNewtonWorld();
     public int m_updateRate = 120;
-    public Vector3 m_gravity;
+    public Vector3 m_gravity = new Vector3 (0.0f, -9.8f, 0.0f);
 }
 
 
