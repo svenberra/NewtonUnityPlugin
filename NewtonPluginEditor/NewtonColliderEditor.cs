@@ -69,7 +69,7 @@ public class NewtonCylinderColliderEditor : NewtonColliderEditor
             collision.m_radius1 = radius;
         }
 
-        float height = EditorGUILayout.FloatField("height 1", collision.m_height);
+        float height = EditorGUILayout.FloatField("height", collision.m_height);
         height = height > 0.01f ? height : 0.01f;
         error = height - collision.m_height;
         if (error * error > 0.000001f)
