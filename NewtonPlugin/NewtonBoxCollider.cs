@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-[AddComponentMenu("Newton Physics/Colliders/Box Collider")]
+[AddComponentMenu("Newton Physics/Colliders/Box")]
 public class NewtonBoxCollider: NewtonCollider
 {
     public override dNewtonCollision Create(NewtonWorld world)

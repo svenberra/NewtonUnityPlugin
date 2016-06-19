@@ -2,7 +2,7 @@
 using System;
 
 
-[AddComponentMenu("Newton Physics/Colliders/Sphere Collider")]
+[AddComponentMenu("Newton Physics/Colliders/Sphere")]
 public class NewtonSphereCollider : NewtonCollider
 {
     public override dNewtonCollision Create(NewtonWorld world)

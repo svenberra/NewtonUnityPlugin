@@ -25,6 +25,7 @@
 #include "dNewtonCollision.h"
 
 
+dMatrix dNewtonCollision::m_primitiveAligment(dVector(0.0f, 1.0f, 0.0f, 0.0f), dVector(-1.0f, 0.0f, 0.0f, 0.0f), dVector(0.0f, 0.0f, 1.0f, 0.0f), dVector(0.0f, 0.0f, 0.0f, 1.0f));
 
 #if 0
 dNewtonCollision::dNewtonCollision(const dNewtonCollision& srcCollision, NewtonCollision* const shape)
@@ -301,5 +302,18 @@ dNewtonCollisionBox::dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dF
 	:dNewtonCollision(world, 0)
 {
 	SetShape(NewtonCreateBox(m_myWorld->m_world, x, y, z, 0, NULL));
+}
+
+dNewtonCollisionCylinder::dNewtonCollisionCylinder(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height)
+	:dNewtonCollision(world, 0)
+{
+	SetShape(NewtonCreateCylinder(m_myWorld->m_world, radio0, radio1, height, 0, NULL));
+}
+
+void dNewtonCollisionCylinder::SetMatrix(const void* const matrixPtr)
+{
+	dMatrix matrix((dFloat*)matrixPtr);
+	matrix = m_primitiveAligment * matrix;
+	dNewtonCollision::SetMatrix(&matrix[0][0]);
 }
 

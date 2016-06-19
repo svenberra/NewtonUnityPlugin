@@ -42,6 +42,52 @@ public class NewtonBoxColliderEditor: NewtonColliderEditor
     }
 }
 
+[CustomEditor(typeof(NewtonCylinderCollider))]
+public class NewtonCylinderColliderEditor : NewtonColliderEditor
+{
+    public override void OnInspectorGUI()
+    {
+        NewtonCylinderCollider collision = (NewtonCylinderCollider)target;
+        base.OnInspectorGUI();
+
+        bool shapeChanged = false;
+        float radius = EditorGUILayout.FloatField("radius 0", collision.m_radius0);
+        radius = radius > 0.01f ? radius : 0.01f; 
+        float error = radius - collision.m_radius0;
+        if (error * error > 0.000001f)
+        {
+            shapeChanged = true;
+            collision.m_radius0 = radius;
+        }
+
+        radius = EditorGUILayout.FloatField("radius 1", collision.m_radius1);
+        radius = radius > 0.01f ? radius : 0.01f;
+        error = radius - collision.m_radius1;
+        if (error * error > 0.000001f)
+        {
+            shapeChanged = true;
+            collision.m_radius1 = radius;
+        }
+
+        float height = EditorGUILayout.FloatField("height 1", collision.m_height);
+        height = height > 0.01f ? height : 0.01f;
+        error = height - collision.m_height;
+        if (error * error > 0.000001f)
+        {
+            shapeChanged = true;
+            collision.m_height = height;
+        }
+
+        if (shapeChanged)
+        {
+            collision.RecreateEditorShape();
+        }
+
+        EditorUtility.SetDirty(target);
+    }
+}
+
+
 public class NewtonColliderEditor: Editor
 {
     public override void OnInspectorGUI()

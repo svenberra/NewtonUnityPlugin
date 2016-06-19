@@ -47,9 +47,10 @@ class dNewtonCollision: public dAlloc
 	dNewtonCollision (dNewtonWorld* const world, dLong collisionMask);
 	virtual ~dNewtonCollision();
 
+	virtual void SetMatrix(const void* const matrix);
 	void DebugRender(DrawFaceCallback callback);
 	void SetScale(dFloat x, dFloat y, dFloat z);
-	void SetMatrix(const void* const matrix);
+	
 
 /*
 	dCollsionType GetType() const {return m_type;}
@@ -69,9 +70,9 @@ class dNewtonCollision: public dAlloc
 	void SetShape(NewtonCollision* const shape);
 	void DeleteShape();
 
-//	dNewtonCollision (const dNewtonCollision& srcCollision, NewtonCollision* const shape);
 	static void DebugRenderCallback (void* userData, int vertexCount, const dFloat* faceVertec, int id);
 
+	static dMatrix m_primitiveAligment;
 	NewtonCollision* m_shape;
 	dNewtonWorld* m_myWorld;
 	dList<dNewtonCollision*>::dListNode* m_collisionCacheNode;
@@ -383,11 +384,18 @@ class dNewtonCollisionSphere : public dNewtonCollision
 	dNewtonCollisionSphere(dNewtonWorld* const world, dFloat r);
 };
 
-
 class dNewtonCollisionBox : public dNewtonCollision
 {
 	public:
 	dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z);
+};
+
+class dNewtonCollisionCylinder : public dNewtonCollision
+{
+	public:
+	dNewtonCollisionCylinder(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height);
+
+	void SetMatrix(const void* const matrix);
 };
 
 
