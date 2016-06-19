@@ -9,7 +9,6 @@ public class NewtonSphereColliderEditor: NewtonColliderEditor
 {
     public override void OnInspectorGUI()
     {
-/*
         NewtonSphereCollider collision = (NewtonSphereCollider)target;
         base.OnInspectorGUI();
 
@@ -18,10 +17,9 @@ public class NewtonSphereColliderEditor: NewtonColliderEditor
         if (error * error > 0.000001f)
         {
             collision.m_radius = radius;
-            collision.RecreateShape();
+            collision.RecreateEditorShape();
         }
         EditorUtility.SetDirty(target);
-*/
     }
 }
 
