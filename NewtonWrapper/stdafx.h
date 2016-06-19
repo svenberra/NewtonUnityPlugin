@@ -19,6 +19,8 @@
 #include <dMatrix.h>
 #include <dQuaternion.h>
 #include <dLinearAlgebra.h>
+#include <dList.h>
+#include <dTree.h>
 
 
 

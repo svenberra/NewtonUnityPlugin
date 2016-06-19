@@ -63,7 +63,7 @@ public class NewtonBodyCollision
         */
         for (int i = 0; i < m_collidersArray.Length; i ++)
         {
-            m_collidersArray[i].m_shape.Cleanup();
+//            m_collidersArray[i].m_shape.Cleanup();
             m_collidersArray[i].m_shape = null;
             m_collidersArray[i].m_collider = null;
         }

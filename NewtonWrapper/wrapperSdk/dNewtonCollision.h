@@ -26,11 +26,9 @@
 
 
 //#include "dNewtonMaterial.h"
-
-class NewtonCollision;
+//class NewtonCollision;
 class dNewtonBody;
-//class dNewtonMesh;
-
+class dNewtonWorld;
 
 struct dPoints
 {
@@ -38,16 +36,17 @@ struct dPoints
 	float m_y;
 	float m_z;
 };
+
+
 typedef void(*DrawFaceCallback)(const dPoints* const points, int vertexCount);
 
 //class dNewtonCollision: virtual public dNewtonAlloc, public dNewtonMaterial
 class dNewtonCollision: public dAlloc
 {
 	public:
-
-	dNewtonCollision (dLong collisionMask);
+	dNewtonCollision (dNewtonWorld* const world, dLong collisionMask);
 	virtual ~dNewtonCollision();
-	void Cleanup();
+//	void Cleanup();
 
 	void DebugRender(DrawFaceCallback callback);
 	void SetScale(dFloat x, dFloat y, dFloat z);
@@ -69,16 +68,16 @@ class dNewtonCollision: public dAlloc
 */
 	protected:
 	void SetShape(NewtonCollision* const shape);
+	void DeleteShape();
 
 //	dNewtonCollision (const dNewtonCollision& srcCollision, NewtonCollision* const shape);
 	static void DebugRenderCallback (void* userData, int vertexCount, const dFloat* faceVertec, int id);
-	
-//	void* m_userData;
-//	dCollsionType m_type;
-//	friend class dNewton;
 
 	NewtonCollision* m_shape;
+	dNewtonWorld* m_myWorld;
+	dList<dNewtonCollision*>::dListNode* m_collisionCacheNode;
 	friend class dNewtonBody;
+	friend class dNewtonWorld;
 	friend class dNewtonDynamicBody;
 };
 

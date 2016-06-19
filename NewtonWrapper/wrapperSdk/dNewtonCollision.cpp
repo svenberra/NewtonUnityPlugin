@@ -222,30 +222,35 @@ dNewtonCollision* dNewtonCollisionCompound::GetChildFromNode(void* const collisi
 
 #endif
 
-dNewtonCollision::dNewtonCollision(dLong collisionMask)
+dNewtonCollision::dNewtonCollision(dNewtonWorld* const world, dLong collisionMask)
 	:dAlloc()
 	,m_shape(NULL)
+	,m_myWorld(world)
 {
 }
 
 dNewtonCollision::~dNewtonCollision()
 {
-	Cleanup();
+	DeleteShape();
 }
 
-void dNewtonCollision::Cleanup()
+void dNewtonCollision::DeleteShape()
 {
 	if (m_shape) {
-		NewtonCollisionSetUserData(m_shape, NULL);
 		NewtonDestroyCollision(m_shape);
+		m_myWorld->m_collisionCache.Remove(m_collisionCacheNode);
+		NewtonCollisionSetUserData(m_shape, NULL);
 		m_shape = NULL;
+		m_collisionCacheNode = NULL;
 	}
 }
+
 
 void dNewtonCollision::SetShape(NewtonCollision* const shape)
 {
 	m_shape = shape;
 	NewtonCollisionSetUserData(m_shape, this);
+	m_collisionCacheNode = m_myWorld->m_collisionCache.Append(this);
 }
 
 void dNewtonCollision::DebugRenderCallback(void* userData, int vertexCount, const dFloat* faceVertec, int id)
@@ -277,14 +282,15 @@ void dNewtonCollision::SetMatrix(const void* const matrixPtr)
 
 
 dNewtonCollisionSphere::dNewtonCollisionSphere(dNewtonWorld* const world, dFloat r)
-	:dNewtonCollision(0)
+	:dNewtonCollision(world, 0)
 {
-	SetShape(NewtonCreateSphere(world->m_world, r, 0, NULL));
+	SetShape(NewtonCreateSphere(m_myWorld->m_world, r, 0, NULL));
 }
 
 
 dNewtonCollisionBox::dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z)
-	:dNewtonCollision(0)
+	:dNewtonCollision(world, 0)
 {
-	SetShape(NewtonCreateBox(world->m_world, x, y, z, 0, NULL));
+	SetShape(NewtonCreateBox(m_myWorld->m_world, x, y, z, 0, NULL));
 }
+

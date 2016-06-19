@@ -29,6 +29,7 @@ class dNewtonBody;
 class dNewtonCollision;
 class dNewtonCollisionBox;
 
+
 class dNewtonWorld: public dAlloc
 {
 	public:
@@ -39,8 +40,8 @@ class dNewtonWorld: public dAlloc
 	void SetFrameRate(dFloat frameRate);
 
 	private:
-
 	NewtonWorld* m_world;
+	dList<dNewtonCollision*> m_collisionCache;
 	dLong m_realTimeInMicrosecunds;
 	dLong m_timeStepInMicrosecunds;
 	

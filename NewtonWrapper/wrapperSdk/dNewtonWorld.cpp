@@ -21,19 +21,18 @@
 #include "stdafx.h"
 #include "dAlloc.h"
 #include "dNewtonWorld.h"
-
+#include "dNewtonCollision.h"
 
 #define D_DEFAULT_FPS 120.0f
 
+
 dNewtonWorld::dNewtonWorld()
 	:dAlloc()
+	,m_world (NewtonCreate())
 	,m_realTimeInMicrosecunds(0)
 	,m_timeStepInMicrosecunds (0)
 	,m_timeStep(0.0f)
 {
-	// create a newton world
-	m_world = NewtonCreate();
-
 	// for two way communication between low and high lever, link the world with this class for 
 	NewtonWorldSetUserData(m_world, this);
 
@@ -63,6 +62,12 @@ dNewtonWorld::dNewtonWorld()
 dNewtonWorld::~dNewtonWorld()
 {
 	NewtonWaitForUpdateToFinish (m_world);
+
+	dList<dNewtonCollision*>::dListNode* next;
+	for (dList<dNewtonCollision*>::dListNode* node = m_collisionCache.GetFirst(); node; node = next) {
+		next = node->GetNext();
+		node->GetInfo()->DeleteShape();
+	}
 	NewtonDestroy (m_world);
 }
 
@@ -72,6 +77,8 @@ void dNewtonWorld::SetFrameRate(dFloat frameRate)
 	m_realTimeInMicrosecunds = 0;
 	m_timeStepInMicrosecunds = (dLong)(1000000.0 / double(frameRate));
 }
+
+
 
 
 void dNewtonWorld::Update(dFloat timestepInSecunds)

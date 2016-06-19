@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
+
 public delegate void DrawFaceDelegateCallback(IntPtr points, int vertexCount);
 
 abstract public class NewtonCollider : MonoBehaviour
@@ -28,18 +29,13 @@ abstract public class NewtonCollider : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-/*
-        dNewtonCollision shape = GetShape();
-        if (m_shape != null)
-        {
-            Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
-            Gizmos.color = Color.yellow;
-            m_shape.DebugRender(DrawFace);
-        }
-*/  
+        ValidateEditorShape();
+
+        Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+        Gizmos.color = Color.yellow;
+        m_shape.DebugRender(DrawFace);
     }
 
-/*
     public Matrix4x4 GetMatrix ()
     {
         return Matrix4x4.TRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
@@ -54,49 +50,37 @@ abstract public class NewtonCollider : MonoBehaviour
         return scale;
     }
 
-    void OnDestroy()
-    {
-        Destroy();
-    }
-
-    public void Destroy()
-    {
-        if (m_shape != null)
-        {
-            m_shape.Cleanup();
-            m_shape = null;
-        }
-    }
-
-    public void RecreateShape()
-    {
-        Destroy();
-        GetShape();
-        UpdateParams(m_shape);
-    }
-
-    
-
-    public void UpdateParams(dNewtonCollision shape)
-    {
-        Matrix4x4 matrix = GetMatrix();
-        Vector3 scale = GetScale();
-
-        IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
-        Marshal.StructureToPtr(matrix, pnt, false);
-
-        shape.SetMatrix(pnt);
-        shape.SetScale(scale.x, scale.y, scale.z);
-    }
-
+    /*
     public dNewtonCollision CreateShape(NewtonWorld world)
     {
         dNewtonCollision shape = Create(world);
         UpdateParams(shape);
         return shape;
     }
+    */
 
-    public dNewtonCollision GetShape()
+    public void RecreateEditorShape()
+    {
+        Debug.Log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        //        m_shape.ValidateShape();
+        //        m_shape.Cleanup();
+        //        UpdateEditorParams();
+    }
+
+    public void UpdateEditorParams()
+    {
+        ValidateEditorShape();
+        Matrix4x4 matrix = GetMatrix();
+        Vector3 scale = GetScale();
+
+        IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
+        Marshal.StructureToPtr(matrix, pnt, false);
+
+        m_shape.SetMatrix(pnt);
+        m_shape.SetScale(scale.x, scale.y, scale.z);
+    }
+
+    private void ValidateEditorShape()
     {
         if (m_shape == null)
         {
@@ -116,13 +100,12 @@ abstract public class NewtonCollider : MonoBehaviour
             {
                 if (body.m_world != null)
                 {
-                    m_shape = CreateShape(body.m_world);
+                    m_shape = Create(body.m_world);
+                    UpdateEditorParams();
                 }
             }
         }
-        return m_shape;
     }
-*/
 
     private dNewtonCollision m_shape = null;
     public Vector3 m_posit = Vector3.zero;

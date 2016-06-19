@@ -3,25 +3,19 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
+
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Newton World")]
-//public class NewtonWorld : MonoBehaviour, ISerializationCallbackReceiver
 public class NewtonWorld : MonoBehaviour
 {
     public dNewtonWorld GetWorld()
     {
-        UnityEngine.Debug.Log("aaaaaaaaa");
-        if (m_world == null)
-        {
-            m_world = new dNewtonWorld();
-        }
         return m_world;
     }
 
     void Start()
     {
-//        GetWorld();
-//        m_world.SetFrameRate (m_updateRate);
+        m_world.SetFrameRate (m_updateRate);
 //        InitScene();
     }
 
@@ -90,7 +84,12 @@ public class NewtonWorld : MonoBehaviour
 //        m_world.Update(Time.deltaTime);
     }
 
-    private dNewtonWorld m_world = null;
+    public void OnDestroyNewtonWorld ()
+    {
+        m_world = null; 
+    }
+
+    private dNewtonWorld m_world = new dNewtonWorld();
     public int m_updateRate = 120;
 }
 
