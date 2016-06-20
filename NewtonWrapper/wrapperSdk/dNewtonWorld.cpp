@@ -112,10 +112,11 @@ void dNewtonWorld::UpdateWorld(OnApplyForceAndTorqueCallback forceCallback)
 
 void dNewtonWorld::Update(dFloat timestepInSecunds, OnApplyForceAndTorqueCallback forceCallback)
 {
+	int maxInterations = 1;
 	dLong timestepMicrosecunds = dClamp((dLong)(double(timestepInSecunds) * 1000000.0f), dLong(0), m_timeStepInMicrosecunds);
-	m_realTimeInMicrosecunds += timestepMicrosecunds;
+	m_realTimeInMicrosecunds += timestepMicrosecunds * maxInterations;
 
-	for (bool doUpate = true; m_realTimeInMicrosecunds >= m_timeStepInMicrosecunds; doUpate = false) {
+	for (int doUpate = maxInterations; m_realTimeInMicrosecunds >= m_timeStepInMicrosecunds; doUpate --) {
 		if (doUpate) {
 			UpdateWorld(forceCallback);
 		}
