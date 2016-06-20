@@ -32,7 +32,6 @@ class dNewtonWorld;
 class dNewtonCollision;
 
 
-
 typedef void(*OnApplyForceAndTorqueCallback)(dFloat timestep);
 
 class dNewtonBody: public dAlloc
@@ -55,12 +54,13 @@ class dNewtonBody: public dAlloc
 	protected:
 	virtual ~dNewtonBody();
 
-	// call each time the physics update the body transformation 
-	virtual void OnBodyTransform(const dFloat* const matrix, int threadIndex);
-
 	// called from newton update
 	virtual void OnForceAndTorque(dFloat timestep, int threadIndex);
 
+	// call each time the physics update the body transformation 
+	virtual void OnBodyTransform(const dFloat* const matrix, int threadIndex);
+
+	virtual void ApplyExternalForces(dFloat timestep);
 
 /*
 	dBodyType GetType() const {return m_bodyType;}
@@ -122,6 +122,9 @@ class dNewtonBody: public dAlloc
 	virtual void SetBody  (NewtonBody* const body);
 */
 	protected:
+
+
+
 	static void OnBodyDestroy (const NewtonBody* const body);
 	static void OnForceAndTorqueCallback (const NewtonBody* body, dFloat timestep, int threadIndex);
 	static void OnBodyTransformCallback(const NewtonBody* const body, const dFloat* const matrix, int threadIndex);
@@ -136,6 +139,8 @@ class dNewtonBody: public dAlloc
 	dQuaternion m_rotation1;
 	dQuaternion m_interpolatedRotation;
 	unsigned m_lock;
+
+	friend class dNewtonWorld;
 };
 
 class dNewtonDynamicBody: public dNewtonBody
@@ -143,9 +148,13 @@ class dNewtonDynamicBody: public dNewtonBody
 	public:
 	dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr, dFloat mass, OnApplyForceAndTorqueCallback forceCallback);
 
-	virtual void OnForceAndTorque(dFloat timestep, int threadIndex);
 	private:
+	virtual void OnForceAndTorque(dFloat timestep, int threadIndex);
+	virtual void ApplyExternalForces(dFloat timestep);
 	OnApplyForceAndTorqueCallback m_forceCallback;
+
+	dVector m_externalForce;
+	dVector m_externalTorque;
 };
 
 #endif

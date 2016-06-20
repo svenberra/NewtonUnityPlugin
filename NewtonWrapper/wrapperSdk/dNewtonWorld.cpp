@@ -20,6 +20,7 @@
 
 #include "stdafx.h"
 #include "dAlloc.h"
+#include "dNewtonBody.h"
 #include "dNewtonWorld.h"
 #include "dNewtonCollision.h"
 
@@ -96,6 +97,18 @@ void dNewtonWorld::SetGravity(dFloat x, dFloat y, dFloat z)
 	SetGravity(dVector(x, y, z, 0.0f));
 }
 
+void dNewtonWorld::UpdateWorld()
+{
+	NewtonWaitForUpdateToFinish(m_world);
+
+	for (NewtonBody* bodyPtr = NewtonWorldGetFirstBody(m_world); bodyPtr; bodyPtr = NewtonWorldGetNextBody(m_world, bodyPtr)) {
+		dNewtonBody* const body = (dNewtonBody*)NewtonBodyGetUserData(bodyPtr);
+		body->ApplyExternalForces(m_timeStep);
+	}
+
+	NewtonUpdate(m_world, m_timeStep);
+}
+
 void dNewtonWorld::Update(dFloat timestepInSecunds)
 {
 	dLong timestepMicrosecunds = dClamp((dLong)(double(timestepInSecunds) * 1000000.0f), dLong(0), m_timeStepInMicrosecunds);
@@ -103,7 +116,7 @@ void dNewtonWorld::Update(dFloat timestepInSecunds)
 
 	for (bool doUpate = true; m_realTimeInMicrosecunds >= m_timeStepInMicrosecunds; doUpate = false) {
 		if (doUpate) {
-			NewtonUpdate(m_world, m_timeStep);
+			UpdateWorld();
 		}
 		m_realTimeInMicrosecunds -= m_timeStepInMicrosecunds;
 		dAssert(m_realTimeInMicrosecunds >= 0);

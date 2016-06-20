@@ -45,6 +45,8 @@ class dNewtonWorld: public dAlloc
 	void SetGravity(dFloat x, dFloat y, dFloat z);
 
 	private:
+	void UpdateWorld();
+
 	NewtonWorld* m_world;
 	dList<dNewtonCollision*> m_collisionCache;
 	dLong m_realTimeInMicrosecunds;
