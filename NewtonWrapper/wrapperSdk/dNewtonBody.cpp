@@ -423,7 +423,8 @@ void dNewtonDynamicBody::OnForceAndTorque(dFloat timestep, int threadIndex)
 
 void dNewtonDynamicBody::AddForceAndTorque(dFloat* const force, dFloat* const torque)
 {
-
+	m_externalForce += dVector(force);
+	m_externalTorque += dVector(torque);
 }
 
 

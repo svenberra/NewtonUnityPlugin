@@ -4,6 +4,23 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 
+abstract public class NewtonBodyForceAction : MonoBehaviour
+{
+    abstract public void ApplyForceAction(NewtonBody body, float timestep);
+}
+
+
+[AddComponentMenu("Newton Physics/Force Actions/force field")]
+public class NewtonBodyForceField :  NewtonBodyForceAction
+{
+    public override void ApplyForceAction(NewtonBody body, float timestep)
+    {
+        body.m_forceAcc += m_forceValue;
+    }
+
+    public Vector3 m_forceValue;
+}
+
 
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Rigid Body")]
@@ -15,22 +32,19 @@ public class NewtonBody : MonoBehaviour
 
 */
 
-    public void OnApplyForceAndTorque(float timestep)
-    {
-        if (m_body != null)
-        {
-            Vector3 xxxx = new Vector3(0, 0, 0);
-            IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(xxxx));
-            Marshal.StructureToPtr(xxxx, pnt, false);
-            m_body.AddForceAndTorque(pnt, pnt);
-            Marshal.FreeHGlobal(pnt);
-        }
-    }
 
+
+    void Start()
+    {
+        m_forceAccPtr = Marshal.AllocHGlobal(Marshal.SizeOf(m_forceAcc));
+        m_torqueAccPtr = Marshal.AllocHGlobal(Marshal.SizeOf(m_torqueAcc));
+    }
 
     void OnDestroy()
     {
         DestroyRigidBody();
+        Marshal.FreeHGlobal(m_forceAccPtr);
+        Marshal.FreeHGlobal(m_torqueAccPtr);
     }
 
     // Update is called once per frame
@@ -73,6 +87,28 @@ public class NewtonBody : MonoBehaviour
             m_collision = null;
         }
     }
+       
+
+    public void OnApplyForceAndTorque(float timestep)
+    {
+        if (m_body != null)
+        {
+            NewtonBodyForceAction[] actions = GetComponents<NewtonBodyForceAction>();
+            if (actions.Length >= 1)
+            {
+                m_forceAcc = new Vector3(0.0f, 0.0f, 0.0f);
+                m_torqueAcc = new Vector3(0.0f, 0.0f, 0.0f);
+                foreach (NewtonBodyForceAction action in actions)
+                {
+                    action.ApplyForceAction(this, timestep);
+                }
+
+                Marshal.StructureToPtr(m_forceAcc, m_forceAccPtr, false);
+                Marshal.StructureToPtr(m_torqueAcc, m_torqueAccPtr, false);
+                m_body.AddForceAndTorque(m_forceAccPtr, m_torqueAccPtr);
+            }
+        }
+    }
 
     public float m_mass;
     public NewtonWorld m_world;
@@ -81,6 +117,11 @@ public class NewtonBody : MonoBehaviour
     private NewtonBodyCollision m_collision = null;
     private float[] m_positionPtr = new float[3];
     private float[] m_rotationPtr = new float[4];
+
+    public Vector3 m_forceAcc { get; set; }
+    public Vector3 m_torqueAcc { get; set; }
+    private IntPtr m_forceAccPtr;
+    private IntPtr m_torqueAccPtr;
 }
 
 
