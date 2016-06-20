@@ -257,11 +257,11 @@ void dNewtonCollision::SetShape(NewtonCollision* const shape)
 void dNewtonCollision::DebugRenderCallback(void* userData, int vertexCount, const dFloat* faceVertec, int id)
 {
 	dPoints* const polygon = (dPoints*)faceVertec;
-	DrawFaceCallback callback = (DrawFaceCallback)userData;
+	OnDrawFaceCallback callback = (OnDrawFaceCallback)userData;
 	callback(polygon, vertexCount);
 }
 
-void dNewtonCollision::DebugRender(DrawFaceCallback callback)
+void dNewtonCollision::DebugRender(OnDrawFaceCallback callback)
 {
 	dMatrix matrix(dGetIdentityMatrix());
 	NewtonCollisionForEachPolygonDo(m_shape, &matrix[0][0], DebugRenderCallback, callback);

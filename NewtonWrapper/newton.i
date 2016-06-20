@@ -73,7 +73,8 @@
     %typemap(cstype, out="IntPtr") TYPE, TYPE& "CSTYPE" 
     %typemap(csin) TYPE, TYPE& "$csinput" 
 %enddef 
-%cs_callback(DrawFaceCallback, DrawFaceDelegateCallback) 
+%cs_callback(OnDrawFaceCallback, OnDrawFaceDelegateCallback) 
+%cs_callback(OnApplyForceAndTorqueCallback, OnApplyForceAndTorqueCallback) 
 
 #pragma SWIG nowarn=401
 %rename(__dAlloc_Alloc__) dAlloc::operator new;  

@@ -26,7 +26,6 @@
 
 
 //#include "dNewtonMaterial.h"
-//class NewtonCollision;
 class dNewtonBody;
 class dNewtonWorld;
 
@@ -38,7 +37,7 @@ struct dPoints
 };
 
 
-typedef void(*DrawFaceCallback)(const dPoints* const points, int vertexCount);
+typedef void(*OnDrawFaceCallback)(const dPoints* const points, int vertexCount);
 
 //class dNewtonCollision: virtual public dNewtonAlloc, public dNewtonMaterial
 class dNewtonCollision: public dAlloc
@@ -49,7 +48,7 @@ class dNewtonCollision: public dAlloc
 
 	virtual void SetScale(dFloat x, dFloat y, dFloat z);
 	virtual void SetMatrix(const void* const matrix);
-	void DebugRender(DrawFaceCallback callback);
+	void DebugRender(OnDrawFaceCallback callback);
 	
 	
 

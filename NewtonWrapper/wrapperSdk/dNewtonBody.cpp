@@ -342,7 +342,7 @@ void dNewtonBody::OnForceAndTorque(dFloat timestep, int threadIndex)
 	NewtonBodySetForce(m_body, &weight[0]);
 }
 
-void dNewtonBody::OnForceAndTorque(const NewtonBody* body, dFloat timestep, int threadIndex)
+void dNewtonBody::OnForceAndTorqueCallback (const NewtonBody* body, dFloat timestep, int threadIndex)
 {
 	dNewtonBody* const me = (dNewtonBody*)NewtonBodyGetUserData(body);
 	dAssert(me);
@@ -350,7 +350,7 @@ void dNewtonBody::OnForceAndTorque(const NewtonBody* body, dFloat timestep, int 
 }
 
 
-void dNewtonBody::OnBodyTransform(const NewtonBody* const body, const dFloat* const matrix, int threadIndex)
+void dNewtonBody::OnBodyTransformCallback (const NewtonBody* const body, const dFloat* const matrix, int threadIndex)
 {
 	dNewtonBody* const me = (dNewtonBody*)NewtonBodyGetUserData(body);
 	dAssert(me);
@@ -381,8 +381,9 @@ void dNewtonBody::OnBodyDestroy(const NewtonBody* const body)
 }
 
 
-dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr, dFloat mass)
+dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr, dFloat mass, OnApplyForceAndTorqueCallback forceCallback)
 	:dNewtonBody((dMatrix*)matrixPtr)
+	,m_forceCallback(forceCallback)
 {
 	dMatrix matrix (m_rotation0, m_posit0);
 	NewtonWorld* const newton = world->m_world;
@@ -393,10 +394,16 @@ dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollisi
 	NewtonBodySetMassProperties(m_body, mass, NewtonBodyGetCollision(m_body));
 
 	NewtonBodySetUserData(m_body, this);
-	NewtonBodySetTransformCallback(m_body, OnBodyTransform);
-	NewtonBodySetForceAndTorqueCallback(m_body, OnForceAndTorque);
+	NewtonBodySetTransformCallback(m_body, OnBodyTransformCallback);
+	NewtonBodySetForceAndTorqueCallback(m_body, OnForceAndTorqueCallback);
 
 //dVector v(0.0f, 5.0f, 0.0f, 0.0f);
 //NewtonBodySetVelocity(m_body, &v[0]);
 	
+}
+
+void dNewtonDynamicBody::OnForceAndTorque(dFloat timestep, int threadIndex)
+{
+	dNewtonBody::OnForceAndTorque(timestep, threadIndex);
+//	m_forceCallback(timestep);
 }

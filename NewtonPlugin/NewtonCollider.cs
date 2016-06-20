@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 
-public delegate void DrawFaceDelegateCallback(IntPtr points, int vertexCount);
+public delegate void OnDrawFaceDelegateCallback(IntPtr points, int vertexCount);
 
 abstract public class NewtonCollider : MonoBehaviour
 {
