@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
+public delegate void OnApplyForceAndTorqueCallback(float timestep);
 
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Newton World")]
@@ -79,8 +80,33 @@ public class NewtonWorld : MonoBehaviour
     void Update()
     {
         //Debug.Log("Update time :" + Time.deltaTime);
-        m_world.Update(Time.deltaTime);
+        m_world.Update(Time.deltaTime, OnApplyForceAndTorque);
     }
+
+    void OnApplyForceAndTorque(float timestep)
+    {
+        GameObject[] objectList = gameObject.scene.GetRootGameObjects();
+        foreach (GameObject rootObj in objectList)
+        {
+            OnApplyForceAndTorque(rootObj, timestep);
+        }
+    }
+
+    private void OnApplyForceAndTorque(GameObject root, float timestep)
+    {
+        NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
+        if (bodyPhysics != null)
+        {
+            bodyPhysics.OnApplyForceAndTorque(timestep);
+        }
+
+        foreach (Transform child in root.transform)
+        {
+            OnApplyForceAndTorque(child.gameObject, timestep);
+        }
+    }
+
+
 
     private dNewtonWorld m_world = new dNewtonWorld();
     public int m_updateRate = 120;

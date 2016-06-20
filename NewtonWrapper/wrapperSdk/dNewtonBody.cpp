@@ -370,14 +370,18 @@ void dNewtonBody::OnBodyDestroy(const NewtonBody* const body)
 */
 }
 
-void dNewtonBody::ApplyExternalForces(dFloat timestep)
+void dNewtonBody::InitForceAccumulators()
+{
+}
+
+void dNewtonBody::AddForceAndTorque(dFloat* const force, dFloat* const torque)
 {
 }
 
 
-dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr, dFloat mass, OnApplyForceAndTorqueCallback forceCallback)
+dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr, dFloat mass)
 	:dNewtonBody((dMatrix*)matrixPtr)
-	,m_forceCallback(forceCallback)
+//	,m_forceCallback(forceCallback)
 {
 	dMatrix matrix (m_rotation0, m_posit0);
 	NewtonWorld* const newton = world->m_world;
@@ -396,7 +400,7 @@ dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollisi
 	
 }
 
-void dNewtonDynamicBody::ApplyExternalForces(dFloat timestep)
+void dNewtonDynamicBody::InitForceAccumulators()
 {
 	dFloat mass;
 	dFloat Ixx;
@@ -408,13 +412,18 @@ void dNewtonDynamicBody::ApplyExternalForces(dFloat timestep)
 
 	m_externalForce = world->GetGravity().Scale(mass);
 	m_externalTorque = dVector(0.0f);
-
-// this is a unity thrad, yet calling this delegate causes unity to crash. 
-//	m_forceCallback(timestep);
 }
+
 
 void dNewtonDynamicBody::OnForceAndTorque(dFloat timestep, int threadIndex)
 {
 	NewtonBodySetForce(m_body, &m_externalForce[0]);
 	NewtonBodySetTorque(m_body, &m_externalTorque[0]);
 }
+
+void dNewtonDynamicBody::AddForceAndTorque(dFloat* const force, dFloat* const torque)
+{
+
+}
+
+

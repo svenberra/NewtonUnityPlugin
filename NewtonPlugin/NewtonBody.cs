@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-public delegate void OnApplyForceAndTorqueCallback(float timestep);
+
 
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Rigid Body")]
@@ -15,13 +15,16 @@ public class NewtonBody : MonoBehaviour
 
 */
 
-    void OnApplyForceAndTorque(float timestep)
+    public void OnApplyForceAndTorque(float timestep)
     {
-//        float mass = 0, iXX = 0, iYY = 0, iZZ = 0;
-//        NewtonAPI.NewtonBodyGetMassMatrix(body, ref mass, ref iXX, ref iYY, ref iZZ);
-
-//        Vector3 force = new Vector3(0.0f, -9.8f * mass, 0.0f);
-//        NewtonAPI.NewtonBodyAddForce(body, ref force);
+        if (m_body != null)
+        {
+            Vector3 xxxx = new Vector3(0, 0, 0);
+            IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(xxxx));
+            Marshal.StructureToPtr(xxxx, pnt, false);
+            m_body.AddForceAndTorque(pnt, pnt);
+            Marshal.FreeHGlobal(pnt);
+        }
     }
 
 
@@ -51,7 +54,7 @@ public class NewtonBody : MonoBehaviour
         matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
         IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
         Marshal.StructureToPtr(matrix, pnt, false);
-        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), pnt, m_mass, OnApplyForceAndTorque);
+        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), pnt, m_mass);
         Marshal.FreeHGlobal(pnt);
         //Debug.Log("xxxx " + transform.rotation[0] + " " + transform.rotation[1] + " " + transform.rotation[2] + " " + transform.rotation[3]);
     }

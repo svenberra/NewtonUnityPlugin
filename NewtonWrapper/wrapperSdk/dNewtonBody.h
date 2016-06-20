@@ -24,15 +24,11 @@
 #include "stdafx.h"
 #include "dAlloc.h"
 
-//#include "dNewtonTransformLerp.h"
-
 class dMatrix;
 class NewtonBody;
 class dNewtonWorld;
 class dNewtonCollision;
 
-
-typedef void(*OnApplyForceAndTorqueCallback)(dFloat timestep);
 
 class dNewtonBody: public dAlloc
 {
@@ -51,6 +47,9 @@ class dNewtonBody: public dAlloc
 	void* GetPosition();
 	void* GetRotation();
 
+	virtual void AddForceAndTorque(dFloat* const force, dFloat* const torque);
+	
+
 	protected:
 	virtual ~dNewtonBody();
 
@@ -60,7 +59,7 @@ class dNewtonBody: public dAlloc
 	// call each time the physics update the body transformation 
 	virtual void OnBodyTransform(const dFloat* const matrix, int threadIndex);
 
-	virtual void ApplyExternalForces(dFloat timestep);
+	virtual void InitForceAccumulators();
 
 /*
 	dBodyType GetType() const {return m_bodyType;}
@@ -146,12 +145,14 @@ class dNewtonBody: public dAlloc
 class dNewtonDynamicBody: public dNewtonBody
 {
 	public:
-	dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr, dFloat mass, OnApplyForceAndTorqueCallback forceCallback);
+	dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr, dFloat mass);
 
 	private:
 	virtual void OnForceAndTorque(dFloat timestep, int threadIndex);
-	virtual void ApplyExternalForces(dFloat timestep);
-	OnApplyForceAndTorqueCallback m_forceCallback;
+	virtual void InitForceAccumulators();
+//	OnApplyForceAndTorqueCallback m_forceCallback;
+
+	virtual void AddForceAndTorque(dFloat* const force, dFloat* const torque);
 
 	dVector m_externalForce;
 	dVector m_externalTorque;

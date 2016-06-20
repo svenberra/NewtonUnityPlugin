@@ -30,12 +30,14 @@ class dNewtonCollision;
 class dNewtonCollisionBox;
 
 
+typedef void(*OnApplyForceAndTorqueCallback)(dFloat timestep);
+
 class dNewtonWorld: public dAlloc
 {
 	public:
 	dNewtonWorld();
 	virtual ~dNewtonWorld();
-	void Update(dFloat timestepInSecunds);
+	void Update(dFloat timestepInSecunds, OnApplyForceAndTorqueCallback forceCallback);
 
 	void SetFrameRate(dFloat frameRate);
 
@@ -45,7 +47,7 @@ class dNewtonWorld: public dAlloc
 	void SetGravity(dFloat x, dFloat y, dFloat z);
 
 	private:
-	void UpdateWorld();
+	void UpdateWorld(OnApplyForceAndTorqueCallback forceCallback);
 
 	NewtonWorld* m_world;
 	dList<dNewtonCollision*> m_collisionCache;

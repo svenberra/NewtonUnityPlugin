@@ -97,26 +97,27 @@ void dNewtonWorld::SetGravity(dFloat x, dFloat y, dFloat z)
 	SetGravity(dVector(x, y, z, 0.0f));
 }
 
-void dNewtonWorld::UpdateWorld()
+void dNewtonWorld::UpdateWorld(OnApplyForceAndTorqueCallback forceCallback)
 {
 	NewtonWaitForUpdateToFinish(m_world);
 
 	for (NewtonBody* bodyPtr = NewtonWorldGetFirstBody(m_world); bodyPtr; bodyPtr = NewtonWorldGetNextBody(m_world, bodyPtr)) {
 		dNewtonBody* const body = (dNewtonBody*)NewtonBodyGetUserData(bodyPtr);
-		body->ApplyExternalForces(m_timeStep);
+		body->InitForceAccumulators();
 	}
 
+	forceCallback(m_timeStep);
 	NewtonUpdate(m_world, m_timeStep);
 }
 
-void dNewtonWorld::Update(dFloat timestepInSecunds)
+void dNewtonWorld::Update(dFloat timestepInSecunds, OnApplyForceAndTorqueCallback forceCallback)
 {
 	dLong timestepMicrosecunds = dClamp((dLong)(double(timestepInSecunds) * 1000000.0f), dLong(0), m_timeStepInMicrosecunds);
 	m_realTimeInMicrosecunds += timestepMicrosecunds;
 
 	for (bool doUpate = true; m_realTimeInMicrosecunds >= m_timeStepInMicrosecunds; doUpate = false) {
 		if (doUpate) {
-			UpdateWorld();
+			UpdateWorld(forceCallback);
 		}
 		m_realTimeInMicrosecunds -= m_timeStepInMicrosecunds;
 		dAssert(m_realTimeInMicrosecunds >= 0);

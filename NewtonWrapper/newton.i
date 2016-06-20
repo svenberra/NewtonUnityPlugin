@@ -63,6 +63,25 @@
    } 
 %} 
 
+// Wrap dFloat* to IntPtr
+%typemap(ctype)  dFloat* "dFloat *"
+%typemap(in)     dFloat* %{ $1 = $input; %}
+%typemap(imtype) dFloat* "global::System.IntPtr"
+%typemap(cstype) dFloat* "global::System.IntPtr"
+%typemap(out)    dFloat* %{ $result = $1; %}
+%typemap(csin)   dFloat* "$csinput"
+%typemap(csout, excode=SWIGEXCODE)  dFloat* { 
+    System.IntPtr cPtr = $imcall;$excode
+    return cPtr;
+}
+%typemap(csvarout, excode=SWIGEXCODE2) dFloat* %{ 
+    get {
+        System.IntPtr cPtr = $imcall;$excode 
+        return cPtr; 
+   } 
+%} 
+
+
 
 // Macro for wrapping C++ callbacks as C# delegates 
 %define %cs_callback(TYPE, CSTYPE) 
