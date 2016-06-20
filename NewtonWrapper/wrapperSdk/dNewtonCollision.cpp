@@ -335,3 +335,16 @@ dNewtonCollisionCylinder::dNewtonCollisionCylinder(dNewtonWorld* const world, dF
 {
 	SetShape(NewtonCreateCylinder(m_myWorld->m_world, radio0, radio1, height, 0, NULL));
 }
+
+dNewtonCollisionCone::dNewtonCollisionCone(dNewtonWorld* const world, dFloat radio, dFloat height)
+	: dNewtonAlignedShapes(world, 0)
+{
+	SetShape(NewtonCreateCone(m_myWorld->m_world, radio, height, 0, NULL));
+}
+
+
+dNewtonCollisionChamferedCylinder::dNewtonCollisionChamferedCylinder(dNewtonWorld* const world, dFloat radio, dFloat height)
+	:dNewtonAlignedShapes(world, 0)
+{
+	SetShape(NewtonCreateChamferCylinder(m_myWorld->m_world, radio, height, 0, NULL));
+}

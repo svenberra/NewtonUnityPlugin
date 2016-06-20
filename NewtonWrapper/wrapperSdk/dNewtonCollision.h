@@ -153,154 +153,6 @@ class dNewtonCollisionHeightField: public dNewtonCollision
 	}
 };
 
-
-class dNewtonCollisionNull: public dNewtonCollision
-{
-	public: 
-	dNewtonCollisionNull (dNewton* const world)
-		:dNewtonCollision(m_null, 0)
-	{
-		SetShape (NewtonCreateNull(world->GetNewton()));
-	}
-
-	dNewtonCollision* Clone(NewtonCollision* const shape) const 
-	{
-		return new dNewtonCollisionNull (*this, shape);
-	}
-
-	protected:
-	dNewtonCollisionNull (const dNewtonCollisionNull& srcCollision, NewtonCollision* const shape)
-		:dNewtonCollision (srcCollision, shape)
-	{
-	}
-};
-
-
-
-
-class dNewtonCollisionSphere: public dNewtonCollision
-{
-	public: 
-	dNewtonCollisionSphere (dNewton* const world, dFloat radio, dLong collisionMask)
-		:dNewtonCollision(m_sphere, collisionMask)
-	{
-		SetShape (NewtonCreateSphere(world->GetNewton(), radio, 0, NULL));
-	}
-
-	dNewtonCollision* Clone(NewtonCollision* const shape) const 
-	{
-		return new dNewtonCollisionSphere (*this, shape);
-	}
-
-	protected:
-	dNewtonCollisionSphere (const dNewtonCollisionSphere& srcCollision, NewtonCollision* const shape)
-		:dNewtonCollision (srcCollision, shape)
-	{
-	}
-};
-
-
-class dNewtonCollisionCapsule: public dNewtonCollision
-{
-	public: 
-	dNewtonCollisionCapsule (NewtonCollision* const shape, dLong collisionMask)
-		:dNewtonCollision(m_capsule, collisionMask)
-	{
-		SetShape (shape);
-	}
-
-	dNewtonCollisionCapsule (dNewton* const world, dFloat radio0, dFloat radio1, dFloat height, dLong collisionMask)
-		:dNewtonCollision(m_capsule, collisionMask)
-	{
-		SetShape (NewtonCreateCapsule (world->GetNewton(), radio0, radio1, height, 0, NULL));
-	}
-
-	dNewtonCollision* Clone(NewtonCollision* const shape) const 
-	{
-		return new dNewtonCollisionCapsule (*this, shape);
-	}
-
-	protected:
-	dNewtonCollisionCapsule (const dNewtonCollisionCapsule& srcCollision, NewtonCollision* const shape)
-		:dNewtonCollision (srcCollision, shape)
-	{
-	}
-};
-
-
-class dNewtonCollisionCone: public dNewtonCollision
-{
-	public: 
-	dNewtonCollisionCone (dNewton* const world, dFloat radio, dFloat height, dLong collisionMask)
-		:dNewtonCollision(m_cone, collisionMask)
-	{
-		SetShape (NewtonCreateCone (world->GetNewton(), radio, height, 0, NULL));
-	}
-
-	dNewtonCollision* Clone(NewtonCollision* const shape) const 
-	{
-		return new dNewtonCollisionCone (*this, shape);
-	}
-
-	protected:
-	dNewtonCollisionCone (const dNewtonCollisionCone& srcCollision, NewtonCollision* const shape)
-		:dNewtonCollision (srcCollision, shape)
-	{
-	}
-};
-
-
-class dNewtonCollisionCylinder: public dNewtonCollision
-{
-	public: 
-	dNewtonCollisionCylinder (NewtonCollision* const shape, dLong collisionMask)
-		:dNewtonCollision(m_cylinder, collisionMask)
-	{
-		SetShape (shape);
-	}
-
-	dNewtonCollisionCylinder (dNewton* const world, dFloat radio0, dFloat radio1, dFloat height, dLong collisionMask)
-		:dNewtonCollision(m_cylinder, collisionMask)
-	{
-		SetShape (NewtonCreateCylinder (world->GetNewton(), radio0, radio1, height, 0, NULL));
-	}
-
-	dNewtonCollision* Clone(NewtonCollision* const shape) const 
-	{
-		return new dNewtonCollisionCylinder (*this, shape);
-	}
-
-	protected:
-	dNewtonCollisionCylinder (const dNewtonCollisionCylinder& srcCollision, NewtonCollision* const shape)
-		:dNewtonCollision (srcCollision, shape)
-	{
-	}
-};
-
-
-
-class dNewtonCollisionChamferedCylinder: public dNewtonCollision
-{
-	public: 
-	dNewtonCollisionChamferedCylinder (dNewton* const world, dFloat radio, dFloat height, dLong collisionMask)
-		:dNewtonCollision(m_chamferedCylinder, collisionMask)
-	{
-		SetShape (NewtonCreateChamferCylinder (world->GetNewton(), radio, height, 0, NULL));
-	}
-
-	dNewtonCollision* Clone(NewtonCollision* const shape) const 
-	{
-		return new dNewtonCollisionChamferedCylinder (*this, shape);
-	}
-
-	protected:
-	dNewtonCollisionChamferedCylinder (const dNewtonCollisionChamferedCylinder& srcCollision, NewtonCollision* const shape)
-		:dNewtonCollision (srcCollision, shape)
-	{
-	}
-};
-
-
 class dNewtonCollisionConvexHull: public dNewtonCollision
 {
 	public: 
@@ -410,6 +262,18 @@ class dNewtonCollisionCylinder : public dNewtonAlignedShapes
 {
 	public:
 	dNewtonCollisionCylinder(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height);
+};
+
+class dNewtonCollisionCone : public dNewtonAlignedShapes
+{
+	public:
+	dNewtonCollisionCone(dNewtonWorld* const world, dFloat radio, dFloat height);
+};
+
+class dNewtonCollisionChamferedCylinder : public dNewtonAlignedShapes
+{
+	public:
+	dNewtonCollisionChamferedCylinder(dNewtonWorld* const world, dFloat radio, dFloat height);
 };
 
 

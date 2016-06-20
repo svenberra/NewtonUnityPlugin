@@ -4,6 +4,20 @@ using UnityEditor;
 using System.Collections.Generic;
 
 
+public class NewtonColliderEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        NewtonCollider collision = (NewtonCollider)target;
+
+        collision.m_posit = EditorGUILayout.Vector3Field("posit", collision.m_posit);
+        collision.m_rotation = EditorGUILayout.Vector3Field("rotation", collision.m_rotation);
+        collision.m_scale = EditorGUILayout.Vector3Field("scale", collision.m_scale);
+        collision.UpdateEditorParams();
+    }
+}
+
+
 [CustomEditor(typeof(NewtonSphereCollider))]
 public class NewtonSphereColliderEditor: NewtonColliderEditor
 {
@@ -132,18 +146,77 @@ public class NewtonCapsuleColliderEditor : NewtonColliderEditor
     }
 }
 
-
-
-public class NewtonColliderEditor: Editor
+[CustomEditor(typeof(NewtonConeCollider))]
+public class NewtonCapsuleConeEditor : NewtonColliderEditor
 {
     public override void OnInspectorGUI()
     {
-        NewtonCollider collision = (NewtonCollider)target;
+        NewtonConeCollider collision = (NewtonConeCollider)target;
+        base.OnInspectorGUI();
 
-        collision.m_posit = EditorGUILayout.Vector3Field("posit", collision.m_posit);
-        collision.m_rotation = EditorGUILayout.Vector3Field("rotation", collision.m_rotation);
-        collision.m_scale = EditorGUILayout.Vector3Field("scale", collision.m_scale);
-        collision.UpdateEditorParams();
+        bool shapeChanged = false;
+        float radius = EditorGUILayout.FloatField("radius", collision.m_radius);
+        radius = radius > 0.01f ? radius : 0.01f;
+        float error = radius - collision.m_radius;
+        if (error * error > 0.000001f)
+        {
+            shapeChanged = true;
+            collision.m_radius = radius;
+        }
+
+        float height = EditorGUILayout.FloatField("height", collision.m_height);
+        height = height > 0.01f ? height : 0.01f;
+        error = height - collision.m_height;
+        if (error * error > 0.000001f)
+        {
+            shapeChanged = true;
+            collision.m_height = height;
+        }
+
+        if (shapeChanged)
+        {
+            collision.RecreateEditorShape();
+        }
+
+        EditorUtility.SetDirty(target);
     }
 }
+
+
+[CustomEditor(typeof(NewtonChamferedCylinderCollider))]
+public class NewtonChamferedCylinderEditor : NewtonColliderEditor
+{
+    public override void OnInspectorGUI()
+    {
+        NewtonChamferedCylinderCollider collision = (NewtonChamferedCylinderCollider)target;
+        base.OnInspectorGUI();
+
+        bool shapeChanged = false;
+        float radius = EditorGUILayout.FloatField("radius", collision.m_radius);
+        radius = radius > 0.01f ? radius : 0.01f;
+        float error = radius - collision.m_radius;
+        if (error * error > 0.000001f)
+        {
+            shapeChanged = true;
+            collision.m_radius = radius;
+        }
+
+        float height = EditorGUILayout.FloatField("height", collision.m_height);
+        height = height > 0.01f ? height : 0.01f;
+        error = height - collision.m_height;
+        if (error * error > 0.000001f)
+        {
+            shapeChanged = true;
+            collision.m_height = height;
+        }
+
+        if (shapeChanged)
+        {
+            collision.RecreateEditorShape();
+        }
+
+        EditorUtility.SetDirty(target);
+    }
+}
+
 
