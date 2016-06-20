@@ -35,6 +35,7 @@ dNewtonWorld::dNewtonWorld()
 	,m_timeStep(0.0f)
 	,m_interpotationParam(0.0f)
 	,m_gravity(0.0f, 0.0f, 0.0f, 0.0f)
+	,m_asyncUpdateMode(true)
 {
 	// for two way communication between low and high lever, link the world with this class for 
 	NewtonWorldSetUserData(m_world, this);
@@ -97,6 +98,11 @@ void dNewtonWorld::SetGravity(dFloat x, dFloat y, dFloat z)
 	SetGravity(dVector(x, y, z, 0.0f));
 }
 
+void dNewtonWorld::SetAsyncUpdate(bool updateMode)
+{
+	m_asyncUpdateMode = updateMode;
+}
+
 void dNewtonWorld::UpdateWorld(OnApplyForceAndTorqueCallback forceCallback)
 {
 	NewtonWaitForUpdateToFinish(m_world);
@@ -107,7 +113,12 @@ void dNewtonWorld::UpdateWorld(OnApplyForceAndTorqueCallback forceCallback)
 	}
 
 	forceCallback(m_timeStep);
-	NewtonUpdate(m_world, m_timeStep);
+
+	if (m_asyncUpdateMode) {
+		NewtonUpdateAsync(m_world, m_timeStep);
+	} else {
+		NewtonUpdate(m_world, m_timeStep);
+	}
 }
 
 void dNewtonWorld::Update(dFloat timestepInSecunds, OnApplyForceAndTorqueCallback forceCallback)

@@ -40,11 +40,10 @@ class dNewtonWorld: public dAlloc
 	void Update(dFloat timestepInSecunds, OnApplyForceAndTorqueCallback forceCallback);
 
 	void SetFrameRate(dFloat frameRate);
-
-	
 	const dVector& GetGravity() const;
 	void SetGravity(const dVector& gravity);
 	void SetGravity(dFloat x, dFloat y, dFloat z);
+	void SetAsyncUpdate(bool updateMode);
 
 	private:
 	void UpdateWorld(OnApplyForceAndTorqueCallback forceCallback);
@@ -58,6 +57,7 @@ class dNewtonWorld: public dAlloc
 	dFloat m_interpotationParam;
 
 	dVector  m_gravity;
+	bool m_asyncUpdateMode;
 
 	friend class dNewtonBody;
 	friend class dNewtonCollision;

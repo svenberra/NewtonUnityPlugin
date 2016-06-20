@@ -16,6 +16,7 @@ public class NewtonWorld : MonoBehaviour
 
     void Start()
     {
+        m_world.SetAsyncUpdate(m_asyncUpdate);
         m_world.SetFrameRate (m_updateRate);
         m_world.SetGravity(m_gravity.x, m_gravity.y, m_gravity.z);
         InitScene();
@@ -111,6 +112,7 @@ public class NewtonWorld : MonoBehaviour
     private dNewtonWorld m_world = new dNewtonWorld();
     public int m_updateRate = 120;
     public Vector3 m_gravity = new Vector3 (0.0f, -9.8f, 0.0f);
+    public bool m_asyncUpdate = true;
 }
 
 
