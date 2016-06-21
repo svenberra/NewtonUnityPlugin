@@ -2,7 +2,7 @@
 using System;
 
 
-[AddComponentMenu("Newton Physics/Colliders/ChamferedCylinder")]
+[AddComponentMenu("Newton Physics/Colliders/Chamfered Cylinder")]
 public class NewtonChamferedCylinderCollider : NewtonCollider
 {
     public override dNewtonCollision Create(NewtonWorld world)

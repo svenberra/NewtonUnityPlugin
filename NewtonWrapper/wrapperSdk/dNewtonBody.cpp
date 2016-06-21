@@ -381,7 +381,6 @@ void dNewtonBody::AddForceAndTorque(dFloat* const force, dFloat* const torque)
 
 dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr, dFloat mass)
 	:dNewtonBody((dMatrix*)matrixPtr)
-//	,m_forceCallback(forceCallback)
 {
 	dMatrix matrix (m_rotation0, m_posit0);
 	NewtonWorld* const newton = world->m_world;
@@ -394,10 +393,6 @@ dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollisi
 	NewtonBodySetUserData(m_body, this);
 	NewtonBodySetTransformCallback(m_body, OnBodyTransformCallback);
 	NewtonBodySetForceAndTorqueCallback(m_body, OnForceAndTorqueCallback);
-
-//dVector v(0.0f, 5.0f, 0.0f, 0.0f);
-//NewtonBodySetVelocity(m_body, &v[0]);
-	
 }
 
 void dNewtonDynamicBody::InitForceAccumulators()

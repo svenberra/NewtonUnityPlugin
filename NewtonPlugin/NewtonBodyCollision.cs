@@ -13,8 +13,8 @@ public class NewtonBodyCollision
 
     public NewtonBodyCollision(NewtonBody body)
     {
-        List<NewtonCollider> colliderList = new List<NewtonCollider>();
-        TraverseColliders(body.gameObject, colliderList, body.gameObject);
+        List<ColliderShapePair> colliderList = new List<ColliderShapePair>();
+        TraverseColliders(body.gameObject, colliderList, body.gameObject, body);
 
         if (colliderList.Count == 0)
         {
@@ -26,9 +26,10 @@ public class NewtonBodyCollision
         else if (colliderList.Count == 1)
         {
             m_collidersArray = new ColliderShapePair[1];
-            NewtonCollider collider = colliderList[0];
-            m_collidersArray[0].m_collider = collider;
-            m_collidersArray[0].m_shape = collider.CreateBodyShape(body.m_world);
+            //NewtonCollider collider = colliderList[0];
+            //m_collidersArray[0].m_collider = collider;
+            //m_collidersArray[0].m_shape = collider.CreateBodyShape(body.m_world);
+            m_collidersArray[0] = colliderList[0];
         }
         else
         {
@@ -56,7 +57,7 @@ public class NewtonBodyCollision
         }
     }
 
-    private void TraverseColliders(GameObject gameObject, List<NewtonCollider> colliderList, GameObject rootObject)
+    private void TraverseColliders(GameObject gameObject, List<ColliderShapePair> colliderList, GameObject rootObject, NewtonBody body)
     {
         // Don't fetch colliders from children with NewtonBodies
         if ((gameObject == rootObject) || (gameObject.GetComponent<NewtonBody>() == null))
@@ -64,12 +65,19 @@ public class NewtonBodyCollision
             //Fetch all colliders
             foreach (NewtonCollider collider in gameObject.GetComponents<NewtonCollider>())
             {
-                colliderList.Add(collider);
+                dNewtonCollision shape = collider.CreateBodyShape(body.m_world);
+                if (shape != null)
+                {
+                    ColliderShapePair pair;
+                    pair.m_collider = collider;
+                    pair.m_shape = collider.CreateBodyShape(body.m_world);
+                    colliderList.Add(pair);
+                }
             }
 
             foreach (Transform child in gameObject.transform)
             {
-                TraverseColliders(child.gameObject, colliderList, rootObject);
+                TraverseColliders(child.gameObject, colliderList, rootObject, body);
             }
         }
     }

@@ -103,7 +103,7 @@ void dNewtonWorld::SetAsyncUpdate(bool updateMode)
 	m_asyncUpdateMode = updateMode;
 }
 
-void dNewtonWorld::UpdateWorld(OnApplyForceAndTorqueCallback forceCallback)
+void dNewtonWorld::UpdateWorld(OnWorldUpdateCallback forceCallback)
 {
 	NewtonWaitForUpdateToFinish(m_world);
 
@@ -121,7 +121,7 @@ void dNewtonWorld::UpdateWorld(OnApplyForceAndTorqueCallback forceCallback)
 	}
 }
 
-void dNewtonWorld::Update(dFloat timestepInSecunds, OnApplyForceAndTorqueCallback forceCallback)
+void dNewtonWorld::Update(dFloat timestepInSecunds, OnWorldUpdateCallback forceCallback)
 {
 	int maxInterations = 1;
 	dLong timestepMicrosecunds = dClamp((dLong)(double(timestepInSecunds) * 1000000.0f), dLong(0), m_timeStepInMicrosecunds);

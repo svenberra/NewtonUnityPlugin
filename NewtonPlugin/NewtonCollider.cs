@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 
-public delegate void OnDrawFaceDelegateCallback(IntPtr points, int vertexCount);
+public delegate void OnDrawFaceCallback(IntPtr points, int vertexCount);
 
 abstract public class NewtonCollider : MonoBehaviour
 {
     abstract public dNewtonCollision Create(NewtonWorld world);
 
-    public void DrawFace(IntPtr vertexDataPtr, int vertexCount)
+    public void OnDrawFace(IntPtr vertexDataPtr, int vertexCount)
     {
         Marshal.Copy(vertexDataPtr, m_debugDisplayVertexBuffer, 0, vertexCount * 3);
         int i0 = vertexCount - 1;
@@ -34,7 +34,7 @@ abstract public class NewtonCollider : MonoBehaviour
         {
             Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
             Gizmos.color = Color.yellow;
-            m_shape.DebugRender(DrawFace);
+            m_shape.DebugRender(OnDrawFace);
         }
     }
 
@@ -85,7 +85,10 @@ abstract public class NewtonCollider : MonoBehaviour
     public dNewtonCollision CreateBodyShape(NewtonWorld world)
     {
         dNewtonCollision shape = Create(world);
-        UpdateParams(shape);
+        if (shape != null)
+        {
+            UpdateParams(shape);
+        }
         return shape;
     }
 
@@ -110,7 +113,6 @@ abstract public class NewtonCollider : MonoBehaviour
                 if (body.m_world != null)
                 {
                     m_shape = Create(body.m_world);
-                    UpdateEditorParams();
                 }
             }
         }

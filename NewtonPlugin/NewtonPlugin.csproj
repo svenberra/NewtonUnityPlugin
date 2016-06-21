@@ -65,6 +65,7 @@
     <Compile Include="NewtonChamferedCylinderCollider.cs" />
     <Compile Include="NewtonCollider.cs" />
     <Compile Include="NewtonConeCollider.cs" />
+    <Compile Include="NewtonConvexHullCollider.cs" />
     <Compile Include="NewtonCylinderCollider.cs" />
     <Compile Include="NewtonNullCollider.cs" />
     <Compile Include="NewtonSphereCollider.cs" />
