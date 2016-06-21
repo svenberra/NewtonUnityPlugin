@@ -12,6 +12,7 @@ public class NewtonColliderEditor : Editor
 
         collision.m_posit = EditorGUILayout.Vector3Field("posit", collision.m_posit);
         collision.m_rotation = EditorGUILayout.Vector3Field("rotation", collision.m_rotation);
+        collision.m_inheritTransformScale = EditorGUILayout.Toggle("inherit transform scale", collision.m_inheritTransformScale);
         collision.m_scale = EditorGUILayout.Vector3Field("scale", collision.m_scale);
         collision.UpdateEditorParams();
     }
