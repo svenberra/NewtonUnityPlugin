@@ -34,7 +34,20 @@ abstract public class NewtonCollider : MonoBehaviour
         {
             Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
             Gizmos.color = Color.yellow;
-            m_shape.DebugRender(OnDrawFace);
+
+            Camera camera = Camera.current;
+            Matrix4x4 matrix = Matrix4x4.Inverse (camera.worldToCameraMatrix * Gizmos.matrix);
+
+            //SceneCamera(-0.06834328 5.960464E-08 0.9976619 - 10.51591)(-0.2695866 0.9627991 - 0.01846763 - 5.616923)(-0.960548 - 0.2702184 - 0.06580079 6.189371)(0 0 0 1)
+            Vector4 eyepoint = matrix.GetColumn(3);
+            //Debug.Log(camera.name + " " + eyepoint.x + " " + eyepoint.y + " " + eyepoint.z);
+
+            IntPtr floatPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(Vector4)));
+            Marshal.StructureToPtr(eyepoint, floatPtr, false);
+
+            m_shape.DebugRender(OnDrawFace, floatPtr);
+
+            Marshal.FreeHGlobal(floatPtr);
         }
     }
 
@@ -67,10 +80,10 @@ abstract public class NewtonCollider : MonoBehaviour
         shape.SetScale(scale.x, scale.y, scale.z);
 
         Matrix4x4 matrix = GetMatrix();
-        IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
-        Marshal.StructureToPtr(matrix, pnt, false);
-        shape.SetMatrix(pnt);
-        Marshal.FreeHGlobal(pnt);
+        IntPtr floatPtr = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
+        Marshal.StructureToPtr(matrix, floatPtr, false);
+        shape.SetMatrix(floatPtr);
+        Marshal.FreeHGlobal(floatPtr);
     }
 
     public void UpdateEditorParams()

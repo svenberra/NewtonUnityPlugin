@@ -24,37 +24,23 @@
 #include "dNewtonWorld.h"
 #include "dNewtonCollision.h"
 
+class DebugCallBack
+{
+	public:
+	dVector m_eyePoint;
+	OnDrawFaceCallback m_callback;
+};
+
+
+
 
 dMatrix dNewtonCollision::m_primitiveAligment(dVector(0.0f, 1.0f, 0.0f, 0.0f), dVector(-1.0f, 0.0f, 0.0f, 0.0f), dVector(0.0f, 0.0f, 1.0f, 0.0f), dVector(0.0f, 0.0f, 0.0f, 1.0f));
 
 #if 0
-dNewtonCollision::dNewtonCollision(const dNewtonCollision& srcCollision, NewtonCollision* const shape)
-//	:dNewtonAlloc()
-	:dNewtonMaterial(srcCollision)
-	,m_shape (shape)
-	,m_userData(srcCollision.m_userData)
-	,m_type (srcCollision.m_type)
-{
-	SetShape(shape);
-}
-
-
-
-void* dNewtonCollision::GetUserData() const
-{
-	return m_userData;
-}
-
-void dNewtonCollision::SetUserData(void* const userData)
-{
-	m_userData = userData;
-}
-
 dFloat dNewtonCollision::GetVolume () const
 {
 	return NewtonConvexCollisionCalculateVolume (m_shape);
 }
-
 
 void dNewtonCollision::GetMatrix (dFloat* const matrix) const
 {
@@ -73,11 +59,6 @@ NewtonCollision* dNewtonCollision::GetShape() const
 	return m_shape;
 }
 
-
-
-
-
-
 void dNewtonCollision::CalculateAABB (const dFloat* const matrix, dFloat* const p0, dFloat* const p1) const
 {
 	NewtonCollisionCalculateAABB (m_shape, matrix, p0, p1);
@@ -87,9 +68,6 @@ void dNewtonCollision::CalculateBuoyancyAcceleration (const dFloat* const matrix
 {
 	NewtonConvexCollisionCalculateBuoyancyAcceleration (m_shape, matrix, shapeOrigin, gravityVector, fluidPlane, fluidDensity, fluidViscosity, accel, alpha);
 }
-
-
-
 
 dNewtonCollisionMesh::dNewtonCollisionMesh(dNewton* const world, dLong collisionMask)
 	:dNewtonCollision(m_mesh, collisionMask)
@@ -121,13 +99,11 @@ void dNewtonCollisionMesh::EndFace()
 	NewtonTreeCollisionEndBuild (m_shape, 0);
 }
 
-
 dNewtonCollisionScene::dNewtonCollisionScene(dNewton* const world, dLong collisionMask)
 	:dNewtonCollision(m_scene, collisionMask)
 {
 	SetShape (NewtonCreateSceneCollision(world->GetNewton(), 0));
 }
-
 
 void dNewtonCollisionScene::BeginAddRemoveCollision()
 {
@@ -183,7 +159,6 @@ dNewtonCollisionCompound::dNewtonCollisionCompound (dNewton* const world, const 
 		new dNewtonCollisionConvexHull (collision, collisionMask);
 	}
 }
-
 
 void dNewtonCollisionCompound::BeginAddRemoveCollision()
 {
@@ -261,15 +236,35 @@ void dNewtonCollision::SetShape(NewtonCollision* const shape)
 
 void dNewtonCollision::DebugRenderCallback(void* userData, int vertexCount, const dFloat* faceVertec, int id)
 {
-	dPoints* const polygon = (dPoints*)faceVertec;
-	OnDrawFaceCallback callback = (OnDrawFaceCallback)userData;
-	callback(polygon, vertexCount);
+	DebugCallBack* const callbackInfo = (DebugCallBack*)userData;
+
+	dVector normal = dVector(0.0f);
+	dVector p0 (faceVertec[0], faceVertec[1], faceVertec[2], 0.0f);
+	dVector p1 (faceVertec[3], faceVertec[4], faceVertec[5], 0.0f);
+	dVector p1p0(p1 - p0);
+	for (int i = 2; i < vertexCount; i++) {
+		dVector p2(faceVertec[i * 3 + 0], faceVertec[i * 3 + 1], faceVertec[i * 3 + 2], 0.0f);
+		dVector p2p0(p2 - p0);
+		normal += p1p0.CrossProduct(p2p0);
+		p1p0 = p2p0;
+	}
+
+	dFloat side = normal.DotProduct3 (callbackInfo->m_eyePoint - p0);
+	if (side > 0.0f) {
+		callbackInfo->m_callback(faceVertec, vertexCount);
+	}
 }
 
-void dNewtonCollision::DebugRender(OnDrawFaceCallback callback)
+void dNewtonCollision::DebugRender(OnDrawFaceCallback callback, const dFloat* const eyePoint)
 {
+	DebugCallBack callbackInfo;
+	callbackInfo.m_eyePoint = dVector(eyePoint);
+
+//callbackInfo.m_eyePoint = dVector(10, 0, 0, 0);
+
+	callbackInfo.m_callback = callback;
 	dMatrix matrix(dGetIdentityMatrix());
-	NewtonCollisionForEachPolygonDo(m_shape, &matrix[0][0], DebugRenderCallback, callback);
+	NewtonCollisionForEachPolygonDo(m_shape, &matrix[0][0], DebugRenderCallback, &callbackInfo);
 }
 
 void dNewtonCollision::SetScale(dFloat scaleX, dFloat scaleY, dFloat scaleZ)

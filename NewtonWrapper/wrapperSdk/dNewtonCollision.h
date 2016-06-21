@@ -29,15 +29,8 @@
 class dNewtonBody;
 class dNewtonWorld;
 
-struct dPoints
-{
-	float m_x;
-	float m_y;
-	float m_z;
-};
 
-
-typedef void(*OnDrawFaceCallback)(const dPoints* const points, int vertexCount);
+typedef void(*OnDrawFaceCallback)(const dFloat* const points, int vertexCount);
 
 //class dNewtonCollision: virtual public dNewtonAlloc, public dNewtonMaterial
 class dNewtonCollision: public dAlloc
@@ -49,7 +42,7 @@ class dNewtonCollision: public dAlloc
 	virtual bool IsValid();
 	virtual void SetScale(dFloat x, dFloat y, dFloat z);
 	virtual void SetMatrix(const void* const matrix);
-	virtual void DebugRender(OnDrawFaceCallback callback);
+	virtual void DebugRender(OnDrawFaceCallback callback, const dFloat* const eyePoint);
 	
 	
 
