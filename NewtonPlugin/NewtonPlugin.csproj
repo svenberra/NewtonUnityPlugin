@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="NewtonBody.cs" />
     <Compile Include="NewtonBodyCollision.cs" />
+    <Compile Include="NewtonBodyForceAction.cs" />
     <Compile Include="NewtonBoxCollider.cs" />
     <Compile Include="NewtonCapsuleCollider.cs" />
     <Compile Include="NewtonChamferedCylinderCollider.cs" />

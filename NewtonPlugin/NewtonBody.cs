@@ -1,38 +1,15 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-
-
-abstract public class NewtonBodyForceAction : MonoBehaviour
-{
-    abstract public void ApplyForceAction(NewtonBody body, float timestep);
-}
-
-
-[AddComponentMenu("Newton Physics/Force Actions/force field")]
-public class NewtonBodyForceField :  NewtonBodyForceAction
-{
-    public override void ApplyForceAction(NewtonBody body, float timestep)
-    {
-        body.m_forceAcc += m_forceValue;
-    }
-
-    public Vector3 m_forceValue;
-}
 
 
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Rigid Body")]
 public class NewtonBody : MonoBehaviour
 {
-    /*
-        public bool Kinematic = false;
-        public bool KinematicCollidable = false;
-
-*/
-
-
+    //public bool Kinematic = false;
+    //public bool KinematicCollidable = false;
 
     void Start()
     {
