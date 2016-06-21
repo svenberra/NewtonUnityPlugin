@@ -77,23 +77,6 @@ dNewtonCollisionMesh::dNewtonCollisionMesh (dNewton* const world, const dNewtonM
 }
 
 
-
-void dNewtonCollisionMesh::BeginFace()
-{
-	NewtonTreeCollisionBeginBuild(m_shape);
-}
-
-void dNewtonCollisionMesh::AddFace(int vertexCount, const dFloat* const vertexPtr, int strideInBytes, int faceAttribute)
-{
-	NewtonTreeCollisionAddFace (m_shape, vertexCount, vertexPtr, strideInBytes, faceAttribute);
-}
-
-void dNewtonCollisionMesh::EndFace()
-{
-	//NewtonTreeCollisionEndBuild (m_shape, 1);
-	NewtonTreeCollisionEndBuild (m_shape, 0);
-}
-
 dNewtonCollisionScene::dNewtonCollisionScene(dNewton* const world, dLong collisionMask)
 	:dNewtonCollision(m_scene, collisionMask)
 {
@@ -358,15 +341,15 @@ dNewtonCollisionMesh::dNewtonCollisionMesh(dNewtonWorld* const world)
 
 void dNewtonCollisionMesh::BeginFace()
 {
-
+	NewtonTreeCollisionBeginBuild(m_shape);
 }
 
 void dNewtonCollisionMesh::AddFace(int vertexCount, const dFloat* const vertexPtr, int strideInBytes, int faceAttribute)
 {
-
+	NewtonTreeCollisionAddFace(m_shape, vertexCount, vertexPtr, strideInBytes, faceAttribute);
 }
 
 void dNewtonCollisionMesh::EndFace(bool optimize)
 {
-
+	NewtonTreeCollisionEndBuild(m_shape, optimize ? 1 : 0);
 }

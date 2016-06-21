@@ -64,25 +64,29 @@ public class NewtonTreeCollider : NewtonCollider
         for (int i = 0; i < m_mesh.subMeshCount; i++)
         {
             int[] submesh = m_mesh.GetTriangles(i);
-            for (int j = 0; j < m_mesh.subMeshCount / 3; j++)
+            for (int j = 0; j < submesh.Length; j += 3)
             {
-                triVertices[j * 9 + 0] = m_mesh.vertices[j * 3 + 0].x;
-                triVertices[j * 9 + 1] = m_mesh.vertices[j * 3 + 0].y;
-                triVertices[j * 9 + 2] = m_mesh.vertices[j * 3 + 0].z;
+                int k = submesh[j];
+                triVertices[0] = vertices[k].x;
+                triVertices[1] = vertices[k].y;
+                triVertices[2] = vertices[k].z;
 
-                triVertices[j * 9 + 3] = m_mesh.vertices[j * 3 + 1].x;
-                triVertices[j * 9 + 4] = m_mesh.vertices[j * 3 + 1].y;
-                triVertices[j * 9 + 5] = m_mesh.vertices[j * 3 + 1].z;
+                k = submesh[j + 1];
+                triVertices[3] = vertices[k].x;
+                triVertices[4] = vertices[k].y;
+                triVertices[5] = vertices[k].z;
 
-                triVertices[j * 9 + 6] = m_mesh.vertices[j * 3 + 2].x;
-                triVertices[j * 9 + 7] = m_mesh.vertices[j * 3 + 2].y;
-                triVertices[j * 9 + 8] = m_mesh.vertices[j * 3 + 2].z;
+                k = submesh[j + 2];
+                triVertices[6] = vertices[k].x;
+                triVertices[7] = vertices[k].y;
+                triVertices[8] = vertices[k].z;
+
                 Marshal.Copy(triVertices, 0, floatsPtr, triVertices.Length);
                 collision.AddFace(3, floatsPtr, 3 * sizeof(float), i);
             }
-            collision.EndFace(m_optimize);
         }
-    
+
+        collision.EndFace(m_optimize);
         Marshal.FreeHGlobal(floatsPtr);
         return collision;
     }
