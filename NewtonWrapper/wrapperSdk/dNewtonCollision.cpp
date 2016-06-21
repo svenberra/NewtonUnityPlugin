@@ -235,6 +235,11 @@ dNewtonCollision::~dNewtonCollision()
 	DeleteShape();
 }
 
+bool dNewtonCollision::IsValid()
+{
+	return m_shape ? true : false;
+}
+
 void dNewtonCollision::DeleteShape()
 {
 	if (m_shape) {
@@ -288,8 +293,6 @@ dNewtonCollisionNull::dNewtonCollisionNull(dNewtonWorld* const world)
 {
 	SetShape(NewtonCreateNull(m_myWorld->m_world));
 }
-
-
 
 dNewtonCollisionSphere::dNewtonCollisionSphere(dNewtonWorld* const world, dFloat r)
 	:dNewtonCollision(world, 0)
@@ -347,4 +350,10 @@ dNewtonCollisionChamferedCylinder::dNewtonCollisionChamferedCylinder(dNewtonWorl
 	:dNewtonAlignedShapes(world, 0)
 {
 	SetShape(NewtonCreateChamferCylinder(m_myWorld->m_world, radio, height, 0, NULL));
+}
+
+dNewtonCollisionConvexHull::dNewtonCollisionConvexHull(dNewtonWorld* const world, int vertexCount, const dFloat* const vertexCloud, dFloat tolerance)
+	: dNewtonCollision(world, 0)
+{
+	SetShape(NewtonCreateConvexHull(m_myWorld->m_world, vertexCount, vertexCloud, 3 * sizeof (dFloat), tolerance, 0, NULL));
 }

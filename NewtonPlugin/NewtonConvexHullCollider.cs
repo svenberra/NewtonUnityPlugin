@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using System;
-
+﻿using System;
+using UnityEngine;
+using System.Runtime.InteropServices;
 
 [AddComponentMenu("Newton Physics/Colliders/Convex Hull")]
 public class NewtonConvexHullCollider : NewtonCollider
@@ -32,10 +32,35 @@ public class NewtonConvexHullCollider : NewtonCollider
             return null;
         }
 
-        return new dNewtonCollisionCylinder(world.GetWorld(), 1.0f, 1.0f, 1.0f);
+        if (mesh.vertices.Length < 4)
+        {
+            return null;
+        }
+
+
+        //Marshal.StructureToPtr(mesh.vertices, floatsPtr, false);
+
+        float[] array = new float[3 * mesh.vertices.Length];
+        for (int i = 0; i < mesh.vertices.Length; i ++)
+        {
+            array[i * 3 + 0] = mesh.vertices[i].x;
+            array[i * 3 + 1] = mesh.vertices[i].y;
+            array[i * 3 + 2] = mesh.vertices[i].z;
+        }
+
+        IntPtr floatsPtr = Marshal.AllocHGlobal(array.Length * Marshal.SizeOf(typeof(float)));
+        Marshal.Copy(array, 0, floatsPtr, array.Length);
+        dNewtonCollision collision = new dNewtonCollisionConvexHull(world.GetWorld(), mesh.vertices.Length, floatsPtr, tolerance);
+        if (collision.IsValid() == false)
+        {
+            collision.Dispose();
+            collision = null;
+        }
+        Marshal.FreeHGlobal(floatsPtr);
+        return collision;
     }
 
     public Mesh mesh;
-    //public float tolerance = 0.1f;
+    public float tolerance = 0.01f;
 }
 

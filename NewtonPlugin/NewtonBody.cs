@@ -66,10 +66,10 @@ public class NewtonBody : MonoBehaviour
 
         Matrix4x4 matrix = Matrix4x4.identity;
         matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
-        IntPtr pnt = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
-        Marshal.StructureToPtr(matrix, pnt, false);
-        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), pnt, m_mass);
-        Marshal.FreeHGlobal(pnt);
+        IntPtr floatsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
+        Marshal.StructureToPtr(matrix, floatsPtr, false);
+        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), floatsPtr, m_mass);
+        Marshal.FreeHGlobal(floatsPtr);
         //Debug.Log("xxxx " + transform.rotation[0] + " " + transform.rotation[1] + " " + transform.rotation[2] + " " + transform.rotation[3]);
     }
 

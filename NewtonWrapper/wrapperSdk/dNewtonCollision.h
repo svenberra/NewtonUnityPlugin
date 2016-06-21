@@ -46,9 +46,10 @@ class dNewtonCollision: public dAlloc
 	dNewtonCollision (dNewtonWorld* const world, dLong collisionMask);
 	virtual ~dNewtonCollision();
 
+	virtual bool IsValid();
 	virtual void SetScale(dFloat x, dFloat y, dFloat z);
 	virtual void SetMatrix(const void* const matrix);
-	void DebugRender(OnDrawFaceCallback callback);
+	virtual void DebugRender(OnDrawFaceCallback callback);
 	
 	
 
@@ -273,6 +274,13 @@ class dNewtonCollisionChamferedCylinder : public dNewtonAlignedShapes
 {
 	public:
 	dNewtonCollisionChamferedCylinder(dNewtonWorld* const world, dFloat radio, dFloat height);
+};
+
+
+class dNewtonCollisionConvexHull : public dNewtonCollision
+{
+	public:
+		dNewtonCollisionConvexHull(dNewtonWorld* const world, int vertexCount, const dFloat* const vertexCloud, dFloat tolerance);
 };
 
 

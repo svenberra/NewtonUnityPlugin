@@ -68,6 +68,7 @@ class dNewtonWorld: public dAlloc
 	friend class dNewtonCollisionSphere;
 	friend class dNewtonCollisionCapsule;
 	friend class dNewtonCollisionCylinder;
+	friend class dNewtonCollisionConvexHull;
 	friend class dNewtonCollisionChamferedCylinder;
 };
 
