@@ -220,3 +220,35 @@ public class NewtonChamferedCylinderEditor : NewtonColliderEditor
 }
 
 
+[CustomEditor(typeof(NewtonConvexHullCollider))]
+public class NewtonConvexHullEditor : NewtonColliderEditor
+{
+    public override void OnInspectorGUI()
+    {
+        NewtonConvexHullCollider collision = (NewtonConvexHullCollider)target;
+        base.OnInspectorGUI();
+
+        bool shapeChanged = false;
+        Mesh newMesh = (UnityEngine.Mesh)EditorGUILayout.ObjectField("Mesh", collision.m_mesh, typeof(Mesh), true);
+        if (newMesh != collision.m_mesh)
+        {
+            shapeChanged = true;
+            collision.m_mesh = newMesh;
+        }
+
+        float value = EditorGUILayout.Slider("quality", collision.m_quality, 0.0f, 1.0f);
+        float error = value - collision.m_quality;
+        if (error * error > 0.00001f)
+        {
+            shapeChanged = true;
+            collision.m_quality = value;
+        }
+
+        if (shapeChanged == true)
+        {
+            collision.RecreateEditorShape();
+        }
+
+        EditorUtility.SetDirty(target);
+    }
+}

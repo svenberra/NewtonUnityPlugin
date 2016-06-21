@@ -27,12 +27,12 @@ public class NewtonConvexHullCollider : NewtonCollider
 
     public override dNewtonCollision Create(NewtonWorld world)
     {
-        if (mesh == null)
+        if (m_mesh == null)
         {
             return null;
         }
 
-        if (mesh.vertices.Length < 4)
+        if (m_mesh.vertices.Length < 4)
         {
             return null;
         }
@@ -40,17 +40,17 @@ public class NewtonConvexHullCollider : NewtonCollider
 
         //Marshal.StructureToPtr(mesh.vertices, floatsPtr, false);
 
-        float[] array = new float[3 * mesh.vertices.Length];
-        for (int i = 0; i < mesh.vertices.Length; i ++)
+        float[] array = new float[3 * m_mesh.vertices.Length];
+        for (int i = 0; i < m_mesh.vertices.Length; i ++)
         {
-            array[i * 3 + 0] = mesh.vertices[i].x;
-            array[i * 3 + 1] = mesh.vertices[i].y;
-            array[i * 3 + 2] = mesh.vertices[i].z;
+            array[i * 3 + 0] = m_mesh.vertices[i].x;
+            array[i * 3 + 1] = m_mesh.vertices[i].y;
+            array[i * 3 + 2] = m_mesh.vertices[i].z;
         }
 
         IntPtr floatsPtr = Marshal.AllocHGlobal(array.Length * Marshal.SizeOf(typeof(float)));
         Marshal.Copy(array, 0, floatsPtr, array.Length);
-        dNewtonCollision collision = new dNewtonCollisionConvexHull(world.GetWorld(), mesh.vertices.Length, floatsPtr, tolerance);
+        dNewtonCollision collision = new dNewtonCollisionConvexHull(world.GetWorld(), m_mesh.vertices.Length, floatsPtr, 0.01f * (1.0f - m_quality));
         if (collision.IsValid() == false)
         {
             collision.Dispose();
@@ -60,7 +60,7 @@ public class NewtonConvexHullCollider : NewtonCollider
         return collision;
     }
 
-    public Mesh mesh;
-    public float tolerance = 0.01f;
+    public Mesh m_mesh;
+    public float m_quality = 0.5f;
 }
 
