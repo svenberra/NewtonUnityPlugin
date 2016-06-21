@@ -24,11 +24,8 @@
 #include "stdafx.h"
 #include "dAlloc.h"
 
-
-//#include "dNewtonMaterial.h"
 class dNewtonBody;
 class dNewtonWorld;
-
 
 typedef void(*OnDrawFaceCallback)(const dFloat* const points, int vertexCount);
 
@@ -76,28 +73,6 @@ class dNewtonCollision: public dAlloc
 };
 
 /*
-class dNewtonCollisionMesh: public dNewtonCollision
-{
-	public: 
-	dNewtonCollisionMesh (dNewton* const world, dLong collisionMask);
-	dNewtonCollisionMesh (dNewton* const world, const dNewtonMesh& mesh, dLong collisionMask);
-
-	dNewtonCollision* Clone (NewtonCollision* const shape) const 
-	{
-		return new dNewtonCollisionMesh (*this, shape);
-	}
-
-	virtual void BeginFace();
-	virtual void AddFace(int vertexCount, const dFloat* const vertexPtr, int strideInBytes, int faceAttribute);
-	virtual void EndFace();
-
-	protected:
-	dNewtonCollisionMesh (const dNewtonCollisionMesh& srcCollision, NewtonCollision* const shape)
-		:dNewtonCollision (srcCollision, shape)
-	{
-	}
-};
-
 
 class dNewtonCollisionScene: public dNewtonCollision
 {
@@ -141,35 +116,6 @@ class dNewtonCollisionHeightField: public dNewtonCollision
 
 	protected:
 	dNewtonCollisionHeightField (const dNewtonCollisionHeightField& srcCollision, NewtonCollision* const shape)
-		:dNewtonCollision (srcCollision, shape)
-	{
-	}
-};
-
-class dNewtonCollisionConvexHull: public dNewtonCollision
-{
-	public: 
-	dNewtonCollisionConvexHull (NewtonCollision* const shape, dLong collisionMask)
-		:dNewtonCollision(m_convex, collisionMask)
-	{
-		SetShape (shape);
-	}
-
-	dNewtonCollisionConvexHull (dNewton* const world, const dNewtonMesh& mesh, dLong collisionMask);
-
-	dNewtonCollisionConvexHull (dNewton* const world, int vertexCount, const dFloat* const vertexCloud, int strideInBytes, dFloat tolerance, dLong collisionMask)
-		:dNewtonCollision(m_convex, collisionMask)
-	{
-		SetShape (NewtonCreateConvexHull (world->GetNewton(), vertexCount, vertexCloud, strideInBytes, tolerance, 0, NULL));
-	}
-
-	dNewtonCollision* Clone(NewtonCollision* const shape) const 
-	{
-		return new dNewtonCollisionConvexHull (*this, shape);
-	}
-
-	protected:
-	dNewtonCollisionConvexHull (const dNewtonCollisionConvexHull& srcCollision, NewtonCollision* const shape)
 		:dNewtonCollision (srcCollision, shape)
 	{
 	}
@@ -273,8 +219,19 @@ class dNewtonCollisionChamferedCylinder : public dNewtonAlignedShapes
 class dNewtonCollisionConvexHull : public dNewtonCollision
 {
 	public:
-		dNewtonCollisionConvexHull(dNewtonWorld* const world, int vertexCount, const dFloat* const vertexCloud, dFloat tolerance);
+	dNewtonCollisionConvexHull(dNewtonWorld* const world, int vertexCount, const dFloat* const vertexCloud, dFloat tolerance);
 };
+
+
+class dNewtonCollisionMesh : public dNewtonCollision
+{
+	public:
+	dNewtonCollisionMesh(dNewtonWorld* const world);
+	void BeginFace();
+	void AddFace(int vertexCount, const dFloat* const vertexPtr, int strideInBytes, int faceAttribute);
+	void EndFace(bool optmized);
+};
+
 
 
 #endif

@@ -70,6 +70,7 @@
     <Compile Include="NewtonCylinderCollider.cs" />
     <Compile Include="NewtonNullCollider.cs" />
     <Compile Include="NewtonSphereCollider.cs" />
+    <Compile Include="NewtonTreeCollider.cs" />
     <Compile Include="NewtonWorld.cs" />
     <Compile Include="newton_wrap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

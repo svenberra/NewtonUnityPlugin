@@ -69,11 +69,6 @@ void dNewtonCollision::CalculateBuoyancyAcceleration (const dFloat* const matrix
 	NewtonConvexCollisionCalculateBuoyancyAcceleration (m_shape, matrix, shapeOrigin, gravityVector, fluidPlane, fluidDensity, fluidViscosity, accel, alpha);
 }
 
-dNewtonCollisionMesh::dNewtonCollisionMesh(dNewton* const world, dLong collisionMask)
-	:dNewtonCollision(m_mesh, collisionMask)
-{
-	SetShape (NewtonCreateTreeCollision(world->GetNewton(), 0));
-}
 
 dNewtonCollisionMesh::dNewtonCollisionMesh (dNewton* const world, const dNewtonMesh& mesh, dLong collisionMask)
 	:dNewtonCollision(m_mesh, collisionMask)
@@ -348,7 +343,30 @@ dNewtonCollisionChamferedCylinder::dNewtonCollisionChamferedCylinder(dNewtonWorl
 }
 
 dNewtonCollisionConvexHull::dNewtonCollisionConvexHull(dNewtonWorld* const world, int vertexCount, const dFloat* const vertexCloud, dFloat tolerance)
-	: dNewtonCollision(world, 0)
+	:dNewtonCollision(world, 0)
 {
 	SetShape(NewtonCreateConvexHull(m_myWorld->m_world, vertexCount, vertexCloud, 3 * sizeof (dFloat), tolerance, 0, NULL));
+}
+
+
+dNewtonCollisionMesh::dNewtonCollisionMesh(dNewtonWorld* const world)
+	:dNewtonCollision(world, 0)
+{
+	SetShape(NewtonCreateTreeCollision(m_myWorld->m_world, 0));
+}
+
+
+void dNewtonCollisionMesh::BeginFace()
+{
+
+}
+
+void dNewtonCollisionMesh::AddFace(int vertexCount, const dFloat* const vertexPtr, int strideInBytes, int faceAttribute)
+{
+
+}
+
+void dNewtonCollisionMesh::EndFace(bool optimize)
+{
+
 }
