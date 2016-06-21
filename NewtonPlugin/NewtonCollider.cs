@@ -59,9 +59,12 @@ abstract public class NewtonCollider : MonoBehaviour
     public Vector3 GetScale()
     {
         Vector3 scale = m_scale;
-        scale.x *= transform.localScale.x;
-        scale.y *= transform.localScale.y;
-        scale.z *= transform.localScale.z;
+        if (m_inheritParentScale)
+        {
+            scale.x *= transform.localScale.x;
+            scale.y *= transform.localScale.y;
+            scale.z *= transform.localScale.z;
+        }
         return scale;
     }
     
@@ -135,6 +138,7 @@ abstract public class NewtonCollider : MonoBehaviour
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
     public Vector3 m_scale = Vector3.one;
+    public bool m_inheritParentScale = true;
 
     // Reuse the same buffer for debug display
     static Vector3 m_lineP0 = Vector3.zero;
