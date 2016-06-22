@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [AddComponentMenu("Newton Physics/Colliders/Tree Collider")]
 public class NewtonTreeCollider : NewtonCollider
 {
-    virtual public bool IsStatic()
+    public override bool IsStatic()
     {
         return true;
     }
