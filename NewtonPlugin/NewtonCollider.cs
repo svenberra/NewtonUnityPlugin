@@ -124,7 +124,7 @@ abstract public class NewtonCollider : MonoBehaviour
                 // this is a child body we need to fin the root rigid body owning the shape
                 if (body == null)
                 {
-                     body = transform.gameObject.GetComponent<NewtonBody>();
+                     body = gameTransform.gameObject.GetComponent<NewtonBody>();
                 }
                 gameTransform = gameTransform.parent;
             }
@@ -133,6 +133,7 @@ abstract public class NewtonCollider : MonoBehaviour
             {
                 if (body.m_world != null)
                 {
+                    Debug.Log("xxxxxxxxxxxxxxxxxxxxxxx");
                     m_shape = Create(body.m_world);
                 }
             }
