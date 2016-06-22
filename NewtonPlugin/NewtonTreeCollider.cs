@@ -7,6 +7,10 @@ using System.Runtime.InteropServices;
 [AddComponentMenu("Newton Physics/Colliders/Tree Collider")]
 public class NewtonTreeCollider : NewtonCollider
 {
+    virtual public bool IsStatic()
+    {
+        return true;
+    }
     public override Vector3 GetScale()
     {
         if (m_freezeScale == true)

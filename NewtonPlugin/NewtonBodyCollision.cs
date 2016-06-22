@@ -26,14 +26,29 @@ public class NewtonBodyCollision
         else if (colliderList.Count == 1)
         {
             m_collidersArray = new ColliderShapePair[1];
-            //NewtonCollider collider = colliderList[0];
-            //m_collidersArray[0].m_collider = collider;
-            //m_collidersArray[0].m_shape = collider.CreateBodyShape(body.m_world);
             m_collidersArray[0] = colliderList[0];
         }
         else
         {
-            Debug.Log("TODO:: Build compound the NULL collision here");
+            
+
+            bool isScene = body.m_isScene;
+            if (isScene == false)
+            {
+                foreach (ColliderShapePair pair in colliderList)
+                {
+                    isScene = isScene || pair.m_collider.IsStatic();
+                }
+            }
+
+            if (isScene == true)
+            {
+                Debug.Log("TODO:: Build scene collision here");
+            } 
+            else
+            {
+                Debug.Log("TODO:: Build compound collision here");
+            }
             /*
             int index = 0;
             m_collidersArray = new ColliderShapePair[colliderList.Count];
@@ -87,6 +102,8 @@ public class NewtonBodyCollision
         return m_collidersArray[0].m_shape;
     }
 
+
     private ColliderShapePair[] m_collidersArray;
+    
 }
 

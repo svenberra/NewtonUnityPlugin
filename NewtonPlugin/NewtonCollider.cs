@@ -51,6 +51,11 @@ abstract public class NewtonCollider : MonoBehaviour
         }
     }
 
+    virtual public bool IsStatic()
+    {
+        return false;
+    }
+
     public Matrix4x4 GetMatrix ()
     {
         return Matrix4x4.TRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);

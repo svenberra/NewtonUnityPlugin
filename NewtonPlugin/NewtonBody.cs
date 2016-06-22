@@ -88,7 +88,9 @@ public class NewtonBody : MonoBehaviour
     }
 
     public float m_mass;
+    public bool m_isScene = false;
     public NewtonWorld m_world;
+
 
     private dNewtonBody m_body = null;
     private NewtonBodyCollision m_collision = null;
