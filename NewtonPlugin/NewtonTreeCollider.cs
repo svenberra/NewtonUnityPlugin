@@ -9,7 +9,7 @@ public class NewtonTreeCollider : NewtonCollider
 {
     public override Vector3 GetScale()
     {
-        if (m_bakeScale == true)
+        if (m_freezeScale == true)
         {
             return new Vector3 (1.0f, 1.0f, 1.0f);
         }
@@ -29,7 +29,7 @@ public class NewtonTreeCollider : NewtonCollider
         }
         
         Vector3 scale = base.GetScale();
-        if (m_bakeScale == false)
+        if (m_freezeScale == false)
         {
             scale = new Vector3(1.0f, 1.0f, 1.0f);
         }
@@ -72,6 +72,6 @@ public class NewtonTreeCollider : NewtonCollider
 
     public Mesh m_mesh;
     public bool m_optimize = true;
-    public bool m_bakeScale = true;
+    public bool m_freezeScale = true;
 }
 

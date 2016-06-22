@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 public delegate void OnWorldUpdateCallback(float timestep);
 
+
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Newton World")]
 public class NewtonWorld : MonoBehaviour
@@ -106,12 +107,13 @@ public class NewtonWorld : MonoBehaviour
             OnWorldUpdate(child.gameObject, timestep);
         }
     }
-
-
-
+    
     private dNewtonWorld m_world = new dNewtonWorld();
+    [SerializeField]
     public int m_updateRate = 120;
+    [SerializeField]
     public Vector3 m_gravity = new Vector3 (0.0f, -9.8f, 0.0f);
+    [SerializeField]
     public bool m_asyncUpdate = true;
 }
 

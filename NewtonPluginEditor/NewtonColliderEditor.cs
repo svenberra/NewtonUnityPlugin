@@ -253,3 +253,43 @@ public class NewtonConvexHullEditor : NewtonColliderEditor
         EditorUtility.SetDirty(target);
     }
 }
+
+
+[CustomEditor(typeof(NewtonTreeCollider))]
+public class NewtonTreeColliderEditor : NewtonColliderEditor
+{
+    public override void OnInspectorGUI()
+    {
+        NewtonTreeCollider collision = (NewtonTreeCollider)target;
+        base.OnInspectorGUI();
+
+        bool shapeChanged = false;
+        Mesh newMesh = (UnityEngine.Mesh)EditorGUILayout.ObjectField("Mesh", collision.m_mesh, typeof(Mesh), true);
+        if (newMesh != collision.m_mesh)
+        {
+            shapeChanged = true;
+            collision.m_mesh = newMesh;
+        }
+
+        bool optimize = EditorGUILayout.Toggle("optimize", collision.m_optimize);
+        if (optimize != collision.m_optimize)
+        {
+            shapeChanged = true;
+            collision.m_optimize = optimize;
+        }
+
+        bool bakeScale = EditorGUILayout.Toggle("freeze transform scale", collision.m_freezeScale);
+        if (optimize != collision.m_freezeScale)
+        {
+            shapeChanged = true;
+            collision.m_freezeScale = bakeScale;
+        }
+
+        if (shapeChanged == true)
+        {
+            collision.RecreateEditorShape();
+        }
+
+        EditorUtility.SetDirty(target);
+    }
+}
