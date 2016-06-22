@@ -32,6 +32,8 @@ abstract public class NewtonCollider : MonoBehaviour
         ValidateEditorShape();
         if (m_shape != null)
         {
+            UpdateParams(m_shape);
+
             Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
             Gizmos.color = Color.yellow;
 
@@ -66,9 +68,12 @@ abstract public class NewtonCollider : MonoBehaviour
         Vector3 scale = m_scale;
         if (m_inheritTransformScale)
         {
-            scale.x *= transform.localScale.x;
-            scale.y *= transform.localScale.y;
-            scale.z *= transform.localScale.z;
+            //scale.x *= transform.localScale.x;
+            //scale.y *= transform.localScale.y;
+            //scale.z *= transform.localScale.z;
+            scale.x *= transform.lossyScale.x;
+            scale.y *= transform.lossyScale.y;
+            scale.z *= transform.lossyScale.z;
         }
         return scale;
     }

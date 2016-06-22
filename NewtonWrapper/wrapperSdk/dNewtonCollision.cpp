@@ -31,9 +31,6 @@ class DebugCallBack
 	OnDrawFaceCallback m_callback;
 };
 
-
-
-
 dMatrix dNewtonCollision::m_primitiveAligment(dVector(0.0f, 1.0f, 0.0f, 0.0f), dVector(-1.0f, 0.0f, 0.0f, 0.0f), dVector(0.0f, 0.0f, 1.0f, 0.0f), dVector(0.0f, 0.0f, 0.0f, 1.0f));
 
 #if 0
