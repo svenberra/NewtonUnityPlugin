@@ -19,6 +19,9 @@ public class NewtonWorld : MonoBehaviour
     {
         m_world.SetAsyncUpdate(m_asyncUpdate);
         m_world.SetFrameRate (m_updateRate);
+        m_world.SetThreadsCount(m_numberOfThreads);
+        m_world.SetSolverMode(m_solverIterationsCount);
+        m_world.SetBroadPhase(m_broadPhaseType);
         m_world.SetGravity(m_gravity.x, m_gravity.y, m_gravity.z);
         InitScene();
     }
@@ -109,12 +112,12 @@ public class NewtonWorld : MonoBehaviour
     }
     
     private dNewtonWorld m_world = new dNewtonWorld();
-    [SerializeField]
-    public int m_updateRate = 120;
-    [SerializeField]
-    public Vector3 m_gravity = new Vector3 (0.0f, -9.8f, 0.0f);
-    [SerializeField]
     public bool m_asyncUpdate = true;
+    public int m_broadPhaseType = 0;
+    public int m_numberOfThreads = 0;
+    public int m_solverIterationsCount = 1;
+    public int m_updateRate = 120;
+    public Vector3 m_gravity = new Vector3 (0.0f, -9.8f, 0.0f);
 }
 
 

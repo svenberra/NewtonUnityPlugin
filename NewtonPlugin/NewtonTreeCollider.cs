@@ -13,6 +13,11 @@ public class NewtonTreeCollider : NewtonCollider
         {
             return new Vector3 (1.0f, 1.0f, 1.0f);
         }
+        return GetBaseScale();
+    }
+
+    public Vector3 GetBaseScale()
+    {
         return base.GetScale();
     }
 
@@ -28,7 +33,7 @@ public class NewtonTreeCollider : NewtonCollider
             return null;
         }
         
-        Vector3 scale = base.GetScale();
+        Vector3 scale = GetBaseScale();
         if (m_freezeScale == false)
         {
             scale = new Vector3(1.0f, 1.0f, 1.0f);
@@ -72,6 +77,7 @@ public class NewtonTreeCollider : NewtonCollider
 
     public Mesh m_mesh;
     public bool m_optimize = true;
+    public bool m_rebuildMesh = false;
     public bool m_freezeScale = true;
 }
 

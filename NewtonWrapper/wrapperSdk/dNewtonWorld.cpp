@@ -82,6 +82,21 @@ void dNewtonWorld::SetFrameRate(dFloat frameRate)
 	m_timeStepInMicrosecunds = (dLong)(1000000.0 / double(frameRate));
 }
 
+void dNewtonWorld::SetSolverMode(int mode)
+{
+	NewtonSetSolverModel(m_world, dClamp (mode, 1, 1000));
+}
+
+void dNewtonWorld::SetThreadsCount(int threads)
+{
+	NewtonSetThreadsCount(m_world, dClamp (threads, 0, 8));
+}
+
+void dNewtonWorld::SetBroadPhase(int broadphase)
+{
+	NewtonSelectBroadphaseAlgorithm(m_world, broadphase ? 0 : 1);
+}
+
 const dVector& dNewtonWorld::GetGravity() const
 {
 	return m_gravity;

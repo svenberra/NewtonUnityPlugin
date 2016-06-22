@@ -261,6 +261,7 @@ public class NewtonTreeColliderEditor : NewtonColliderEditor
     public override void OnInspectorGUI()
     {
         NewtonTreeCollider collision = (NewtonTreeCollider)target;
+
         base.OnInspectorGUI();
 
         bool shapeChanged = false;
@@ -278,11 +279,17 @@ public class NewtonTreeColliderEditor : NewtonColliderEditor
             collision.m_optimize = optimize;
         }
 
-        bool bakeScale = EditorGUILayout.Toggle("freeze transform scale", collision.m_freezeScale);
-        if (optimize != collision.m_freezeScale)
+        bool freezeScale = EditorGUILayout.Toggle("freeze transform scale", collision.m_freezeScale);
+        if (freezeScale != collision.m_freezeScale)
         {
             shapeChanged = true;
-            collision.m_freezeScale = bakeScale;
+            collision.m_freezeScale = freezeScale;
+        }
+
+        bool rebuildMesh = EditorGUILayout.Toggle("rebuild Mesh", collision.m_rebuildMesh);
+        if (rebuildMesh == true)
+        {
+            shapeChanged = true;
         }
 
         if (shapeChanged == true)

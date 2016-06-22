@@ -39,11 +39,14 @@ class dNewtonWorld: public dAlloc
 	virtual ~dNewtonWorld();
 	void Update(dFloat timestepInSecunds, OnWorldUpdateCallback forceCallback);
 
+	void SetSolverMode(int mode);
 	void SetFrameRate(dFloat frameRate);
 	const dVector& GetGravity() const;
 	void SetGravity(const dVector& gravity);
 	void SetGravity(dFloat x, dFloat y, dFloat z);
 	void SetAsyncUpdate(bool updateMode);
+	void SetThreadsCount(int threads);
+	void SetBroadPhase(int broadphase);
 
 	private:
 	void UpdateWorld(OnWorldUpdateCallback forceCallback);
