@@ -30,8 +30,6 @@ public class NewtonBodyCollision
         }
         else
         {
-            
-
             bool isScene = body.m_isScene;
             if (isScene == false)
             {
@@ -59,6 +57,9 @@ public class NewtonBodyCollision
                 index++;
             }
             */
+
+            m_collidersArray = new ColliderShapePair[1];
+            m_collidersArray[0] = colliderList[0];
         }
     }
 
