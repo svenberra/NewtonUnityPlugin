@@ -56,7 +56,7 @@ abstract public class NewtonCollider : MonoBehaviour
         return Matrix4x4.TRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
     }
 
-    public Vector3 GetScale()
+    virtual public Vector3 GetScale()
     {
         Vector3 scale = m_scale;
         if (m_inheritTransformScale)
