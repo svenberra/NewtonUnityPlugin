@@ -138,7 +138,6 @@ abstract public class NewtonCollider : MonoBehaviour
             {
                 if (body.m_world != null)
                 {
-                    Debug.Log("xxxxxxxxxxxxxxxxxxxxxxx");
                     m_shape = Create(body.m_world);
                 }
             }
