@@ -30,9 +30,9 @@ abstract public class NewtonCollider : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         ValidateEditorShape();
-        if (m_shape != null)
+        if (m_editorShape != null)
         {
-            UpdateParams(m_shape);
+            UpdateParams(m_editorShape);
 
             Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
             Gizmos.color = Color.yellow;
@@ -47,7 +47,7 @@ abstract public class NewtonCollider : MonoBehaviour
             IntPtr floatPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(Vector4)));
             Marshal.StructureToPtr(eyepoint, floatPtr, false);
 
-            m_shape.DebugRender(OnDrawFace, floatPtr);
+            m_editorShape.DebugRender(OnDrawFace, floatPtr);
 
             Marshal.FreeHGlobal(floatPtr);
         }
@@ -80,10 +80,10 @@ abstract public class NewtonCollider : MonoBehaviour
     
     public void RecreateEditorShape()
     {
-        if (m_shape != null)
+        if (m_editorShape != null)
         {
-            m_shape.Dispose();
-            m_shape = null;
+            m_editorShape.Dispose();
+            m_editorShape = null;
             UpdateEditorParams();
         }
     }
@@ -102,9 +102,9 @@ abstract public class NewtonCollider : MonoBehaviour
     public void UpdateEditorParams()
     {
         ValidateEditorShape();
-        if (m_shape != null)
+        if (m_editorShape != null)
         {
-            UpdateParams(m_shape);
+            UpdateParams(m_editorShape);
         }
     }
 
@@ -120,7 +120,7 @@ abstract public class NewtonCollider : MonoBehaviour
 
     private void ValidateEditorShape()
     {
-        if (m_shape == null)
+        if (m_editorShape == null)
         {
             NewtonBody body = null;
             Transform gameTransform = transform;
@@ -138,13 +138,13 @@ abstract public class NewtonCollider : MonoBehaviour
             {
                 if (body.m_world != null)
                 {
-                    m_shape = Create(body.m_world);
+                    m_editorShape = Create(body.m_world);
                 }
             }
         }
     }
 
-    private dNewtonCollision m_shape = null;
+    private dNewtonCollision m_editorShape = null;
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
     public Vector3 m_scale = Vector3.one;

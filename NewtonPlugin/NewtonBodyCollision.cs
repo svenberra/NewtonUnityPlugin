@@ -62,9 +62,6 @@ public class NewtonBodyCollision
                 }
                 compoundShape.EndAddRemoveCollision();
             }
-    
-            m_collidersArray = new ColliderShapePair[1];
-            m_collidersArray[0] = colliderList[0];
         }
     }
 
