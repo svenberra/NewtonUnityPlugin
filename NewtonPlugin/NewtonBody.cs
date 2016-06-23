@@ -37,8 +37,9 @@ public class NewtonBody : MonoBehaviour
         //Debug.Log("yyyy " + transform.rotation[0] + " " + transform.rotation[1] + " " + transform.rotation[2] + " " + transform.rotation[3]);
     }
 
-    public void InitRigidBody()
+    public void InitRigidBody(int sceneIndex)
     {
+        m_sceneIndex = sceneIndex;
         m_collision = new NewtonBodyCollision(this);
 
         Matrix4x4 matrix = Matrix4x4.identity;
@@ -64,7 +65,6 @@ public class NewtonBody : MonoBehaviour
             m_collision = null;
         }
     }
-       
 
     public void OnApplyForceAndTorque(float timestep)
     {
@@ -91,7 +91,7 @@ public class NewtonBody : MonoBehaviour
     public bool m_isScene = false;
     public NewtonWorld m_world;
 
-
+    private int m_sceneIndex { get; set; }
     private dNewtonBody m_body = null;
     private NewtonBodyCollision m_collision = null;
     private float[] m_positionPtr = new float[3];
