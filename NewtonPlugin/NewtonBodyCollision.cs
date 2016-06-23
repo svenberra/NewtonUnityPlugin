@@ -19,7 +19,7 @@ public class NewtonBodyCollision
         if (colliderList.Count == 0)
         {
             m_collidersArray = new ColliderShapePair[1];
-            NewtonCollider collider = new NewtonNullCollider();
+            NewtonCollider collider = body.gameObject.AddComponent<NewtonNullCollider>();
             m_collidersArray[0].m_collider = collider;
             m_collidersArray[0].m_shape = collider.Create(body.m_world);
         }
@@ -45,8 +45,9 @@ public class NewtonBodyCollision
             } 
             else
             {
+                
                 m_collidersArray = new ColliderShapePair[colliderList.Count + 1];
-                NewtonCompoundCollider compoundCollider = new NewtonCompoundCollider();
+                NewtonCompoundCollider compoundCollider = body.gameObject.AddComponent<NewtonCompoundCollider>();
                 dNewtonCollisionCompound compoundShape = (dNewtonCollisionCompound)compoundCollider.Create(body.m_world);
 
                 m_collidersArray[0].m_collider = compoundCollider;
@@ -105,8 +106,6 @@ public class NewtonBodyCollision
         return m_collidersArray[0].m_shape;
     }
 
-
     private ColliderShapePair[] m_collidersArray;
-    
 }
 
