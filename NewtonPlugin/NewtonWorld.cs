@@ -20,6 +20,7 @@ public class NewtonWorld : MonoBehaviour
         m_bodyCount = 0;
         m_bodyCapacity = 128;
         m_bodyArray = new NewtonBody[m_bodyCapacity];
+        m_onWorldCallcak = new OnWorldUpdateCallback(OnWorldUpdate);
 
         m_world.SetAsyncUpdate(m_asyncUpdate);
         m_world.SetFrameRate (m_updateRate);
@@ -33,6 +34,7 @@ public class NewtonWorld : MonoBehaviour
     void OnDestroy()
     {
        DestroyScene();
+       m_onWorldCallcak = null;
     }
 
     private void InitPhysicsScene(GameObject root)
@@ -94,7 +96,7 @@ public class NewtonWorld : MonoBehaviour
     void Update()
     {
         //Debug.Log("Update time :" + Time.deltaTime);
-        m_world.Update(Time.deltaTime, OnWorldUpdate);
+        m_world.Update(Time.deltaTime, m_onWorldCallcak);
     }
 
     void OnWorldUpdate(float timestep)
@@ -120,6 +122,10 @@ public class NewtonWorld : MonoBehaviour
     public int m_solverIterationsCount = 1;
     public int m_updateRate = 120;
     public Vector3 m_gravity = new Vector3 (0.0f, -9.8f, 0.0f);
+
+    // some how thios does no works
+    //private OnWorldUpdateCallback m_onWorldCallcak = new OnWorldUpdateCallback(OnWorldUpdate);
+    private OnWorldUpdateCallback m_onWorldCallcak;
 }
 
 
