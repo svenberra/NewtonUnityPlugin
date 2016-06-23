@@ -45,19 +45,24 @@ public class NewtonBodyCollision
             } 
             else
             {
-                Debug.Log("TODO:: Build compound collision here");
-            }
-            /*
-            int index = 0;
-            m_collidersArray = new ColliderShapePair[colliderList.Count];
-            foreach (NewtonCollider collider in colliderList)
-            {
-                m_collidersArray[index].m_collider = collider;
-                m_collidersArray[index].m_shape = collider.CreateBodyShape(body.m_world);
-                index++;
-            }
-            */
+                m_collidersArray = new ColliderShapePair[colliderList.Count + 1];
+                NewtonCompoundCollider compoundCollider = new NewtonCompoundCollider();
+                dNewtonCollisionCompound compoundShape = (dNewtonCollisionCompound)compoundCollider.Create(body.m_world);
 
+                m_collidersArray[0].m_collider = compoundCollider;
+                m_collidersArray[0].m_shape = compoundShape;
+
+                int index = 1;
+                compoundShape.BeginAddRemoveCollision();
+                foreach (ColliderShapePair pair in colliderList)
+                {
+                    m_collidersArray[index] = pair;
+                    compoundShape.AddCollision(pair.m_shape);
+                    index++;
+                }
+                compoundShape.EndAddRemoveCollision();
+            }
+    
             m_collidersArray = new ColliderShapePair[1];
             m_collidersArray[0] = colliderList[0];
         }
@@ -86,7 +91,7 @@ public class NewtonBodyCollision
                 {
                     ColliderShapePair pair;
                     pair.m_collider = collider;
-                    pair.m_shape = collider.CreateBodyShape(body.m_world);
+                    pair.m_shape = shape;
                     colliderList.Add(pair);
                 }
             }

@@ -70,6 +70,7 @@ class dNewtonCollision: public dAlloc
 	friend class dNewtonBody;
 	friend class dNewtonWorld;
 	friend class dNewtonDynamicBody;
+	friend class dNewtonCollisionCompound;
 };
 
 /*
@@ -122,44 +123,7 @@ class dNewtonCollisionHeightField: public dNewtonCollision
 };
 
 
-class dNewtonCollisionCompound: public dNewtonCollision
-{
-	public: 
-	dNewtonCollisionCompound (NewtonCollision* const shape, dLong collisionMask)
-		:dNewtonCollision(m_compound, collisionMask)
-	{
-		SetShape (shape);
-	}
 
-	dNewtonCollisionCompound (dNewton* const world, dLong collisionMask)
-		:dNewtonCollision(m_compound, collisionMask)
-	{
-		SetShape (NewtonCreateCompoundCollision (world->GetNewton(), 0));
-	}
-
-	dNewtonCollisionCompound (dNewton* const world, const dNewtonMesh& mesh, dLong collisionMask);
-
-
-	dNewtonCollision* Clone(NewtonCollision* const shape) const 
-	{
-		return new dNewtonCollisionCompound (*this, shape);
-	}
-
-	virtual void BeginAddRemoveCollision();
-	virtual void* AddCollision(const dNewtonCollision* const collision);
-	virtual void RemoveCollision (void* const handle);
-	virtual void EndAddRemoveCollision();
-
-	void* GetFirstNode () const;;
-	void* GetNextNode (void* const collisionNode) const;
-	dNewtonCollision* GetChildFromNode(void* const collisionNode) const; 
-
-	protected:
-	dNewtonCollisionCompound (const dNewtonCollisionCompound& srcCollision, NewtonCollision* const shape)
-		:dNewtonCollision (srcCollision, shape)
-	{
-	}
-};
 */
 
 
@@ -232,6 +196,21 @@ class dNewtonCollisionMesh : public dNewtonCollision
 	void EndFace(bool optmized);
 };
 
+class dNewtonCollisionCompound : public dNewtonCollision
+{
+	public:
+	dNewtonCollisionCompound(dNewtonWorld* const world);
 
+	void BeginAddRemoveCollision();
+	void* AddCollision(dNewtonCollision* const collision);
+	void RemoveCollision(void* const handle);
+	void EndAddRemoveCollision();
+/*
+	void* GetFirstNode() const;;
+	void* GetNextNode(void* const collisionNode) const;
+	dNewtonCollision* GetChildFromNode(void* const collisionNode) const;
+*/
+	
+};
 
 #endif

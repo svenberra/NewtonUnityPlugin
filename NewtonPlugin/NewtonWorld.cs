@@ -18,7 +18,7 @@ public class NewtonWorld : MonoBehaviour
     void Start()
     {
         m_bodyCount = 0;
-        m_bodyCapacity = 4;
+        m_bodyCapacity = 128;
         m_bodyArray = new NewtonBody[m_bodyCapacity];
 
         m_world.SetAsyncUpdate(m_asyncUpdate);

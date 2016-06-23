@@ -350,3 +350,31 @@ void dNewtonCollisionMesh::EndFace(bool optimize)
 {
 	NewtonTreeCollisionEndBuild(m_shape, optimize ? 1 : 0);
 }
+
+
+dNewtonCollisionCompound::dNewtonCollisionCompound(dNewtonWorld* const world)
+	:dNewtonCollision(world, 0)
+{
+	SetShape(NewtonCreateCompoundCollision(m_myWorld->m_world, 0));
+}
+
+void dNewtonCollisionCompound::BeginAddRemoveCollision()
+{
+	NewtonCompoundCollisionBeginAddRemove(m_shape);
+}
+
+void* dNewtonCollisionCompound::AddCollision(dNewtonCollision* const collision)
+{
+	void* handle = NewtonCompoundCollisionAddSubCollision(m_shape, collision->m_shape);
+	return handle;
+}
+
+void dNewtonCollisionCompound::RemoveCollision(void* const handle)
+{
+	NewtonCompoundCollisionRemoveSubCollision(m_shape, handle);
+}
+
+void dNewtonCollisionCompound::EndAddRemoveCollision()
+{
+	NewtonCompoundCollisionEndAddRemove(m_shape);
+}

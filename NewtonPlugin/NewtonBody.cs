@@ -15,6 +15,7 @@ public class NewtonBody : MonoBehaviour
     {
         m_forceAccPtr = Marshal.AllocHGlobal(Marshal.SizeOf(m_forceAcc));
         m_torqueAccPtr = Marshal.AllocHGlobal(Marshal.SizeOf(m_torqueAcc));
+        m_actions = GetComponents<NewtonBodyForceAction>();
     }
 
     void OnDestroy()
@@ -22,6 +23,7 @@ public class NewtonBody : MonoBehaviour
         DestroyRigidBody();
         Marshal.FreeHGlobal(m_forceAccPtr);
         Marshal.FreeHGlobal(m_torqueAccPtr);
+        m_actions = null;
     }
 
     // Update is called once per frame
@@ -70,12 +72,11 @@ public class NewtonBody : MonoBehaviour
     {
         if (m_body != null)
         {
-            NewtonBodyForceAction[] actions = GetComponents<NewtonBodyForceAction>();
-            if (actions.Length >= 1)
+            if (m_actions.Length >= 1)
             {
                 m_forceAcc = new Vector3(0.0f, 0.0f, 0.0f);
                 m_torqueAcc = new Vector3(0.0f, 0.0f, 0.0f);
-                foreach (NewtonBodyForceAction action in actions)
+                foreach (NewtonBodyForceAction action in m_actions)
                 {
                     action.ApplyForceAction(this, timestep);
                 }
@@ -101,6 +102,7 @@ public class NewtonBody : MonoBehaviour
     public Vector3 m_torqueAcc { get; set; }
     private IntPtr m_forceAccPtr;
     private IntPtr m_torqueAccPtr;
+    private NewtonBodyForceAction[] m_actions;
 }
 
 
