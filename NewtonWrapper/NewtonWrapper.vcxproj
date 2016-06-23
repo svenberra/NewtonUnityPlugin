@@ -118,7 +118,7 @@
     </CustomBuildStep>
     <PostBuildEvent>
       <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
-</Command>
+xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -141,7 +141,7 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
-</Command>
+xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Command>
     </PostBuildEvent>
     <CustomBuildStep>
       <Command>
@@ -185,7 +185,7 @@
     </CustomBuildStep>
     <PostBuildEvent>
       <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
-</Command>
+xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -211,7 +211,7 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
-</Command>
+xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Command>
     </PostBuildEvent>
     <CustomBuildStep>
       <Command>

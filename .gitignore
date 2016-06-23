@@ -235,6 +235,9 @@ FakesAssemblies/
 *.exp
 *.lib
 *.dll
+*.pdb
+*.mdb
+*.pdb.meta
 
 # Visual Studio LightSwitch build output
 **/*.HTMLClient/GeneratedArtifacts

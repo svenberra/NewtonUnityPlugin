@@ -80,7 +80,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R</PostBuildEvent>
+    <PostBuildEvent>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
