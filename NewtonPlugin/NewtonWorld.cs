@@ -8,7 +8,7 @@ public delegate void OnWorldUpdateCallback(float timestep);
 
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Newton World")]
-public class NewtonWorld : MonoBehaviour, ISerializationCallbackReceiver
+public class NewtonWorld : MonoBehaviour
 {
     public dNewtonWorld GetWorld()
     {
@@ -36,15 +36,6 @@ public class NewtonWorld : MonoBehaviour, ISerializationCallbackReceiver
        DestroyScene();
        m_onWorldCallcak = null;
     }
-    public void OnBeforeSerialize()
-    {
-        Debug.Log("xxxxxxxx bbbbbbbb  " + m_numberOfThreads);
-    }
-    public void OnAfterDeserialize()
-    {
-        Debug.Log("xxxxxxxx aaaaaaaaaaa  " + m_numberOfThreads);
-    }
-
 
     private void InitPhysicsScene(GameObject root)
     {
