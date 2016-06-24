@@ -1,16 +1,16 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 
-namespace NewtonPlugin
+
+abstract public class NewtonJoint : MonoBehaviour
 {
+    abstract public void Create(NewtonWorld world);
 
-    abstract public class NewtonJoint : MonoBehaviour
-    {
-
-        abstract public IntPtr CreateJoint();
-
-    }
-
+    CustomJoint m_joint;
+    public NewtonBody m_otherBody;
 }
+
+    
+
 
 
