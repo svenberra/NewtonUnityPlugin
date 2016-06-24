@@ -124,4 +124,4 @@
 
 %include "CustomAlloc.h"
 %include "CustomJoint.h"
-//%include "CustomHinge.h"
+%include "CustomHinge.h"

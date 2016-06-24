@@ -35,7 +35,7 @@ class MemoryDriverSingleton
 		return malloc(sizeInBytes);
 	}
 
-	static void Free(void* const ptr, int sizeInBytes)
+	static void Free(void* const ptr)
 	{
 		free(ptr);
 	}
@@ -44,6 +44,12 @@ class MemoryDriverSingleton
 	{
 		static MemoryDriverSingleton singleton;
 		return singleton;
+	}
+
+	private: 
+	static void Free(void* const ptr, int sizeInBytes)
+	{
+		Free(ptr);
 	}
 };
 
@@ -63,11 +69,11 @@ void dAlloc::operator delete (void* ptr)
 void* operator new (size_t size)
 {
 	MemoryDriverSingleton::GetMemoryDriverSingleton();
-	return NewtonAlloc(int(size));
+	return MemoryDriverSingleton::Malloc(int(size));
 }
 
 void operator delete (void* ptr)
 {
 	MemoryDriverSingleton::GetMemoryDriverSingleton();
-	NewtonFree(ptr);
+	MemoryDriverSingleton::Free(ptr);
 }
