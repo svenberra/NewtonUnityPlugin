@@ -120,6 +120,8 @@
 %include "dNewtonWorld.h"
 %include "dNewtonCollision.h"
 
+#include "dContainersAlloc.h"
+
 %include "CustomAlloc.h"
 %include "CustomJoint.h"
-%include "CustomHinge.h"
+//%include "CustomHinge.h"

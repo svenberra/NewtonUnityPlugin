@@ -19,8 +19,11 @@
 #include <dMatrix.h>
 #include <dQuaternion.h>
 #include <dLinearAlgebra.h>
+
+#include <dContainersAlloc.h>
 #include <dList.h>
 #include <dTree.h>
+
 
 #include <CustomAlloc.h>
 #include <CustomJoint.h>
