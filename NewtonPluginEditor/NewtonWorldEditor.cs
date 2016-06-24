@@ -11,7 +11,10 @@ public class NewtonWorldEditor: Editor
     {
         NewtonWorld world = (NewtonWorld)target;
         world.m_asyncUpdate = EditorGUILayout.Toggle("async update", world.m_asyncUpdate);
+
+Debug.Log("xxxxxxxx cccccc  " + world.m_numberOfThreads);
         world.m_numberOfThreads = EditorGUILayout.IntPopup("worked threads", world.m_numberOfThreads, m_numberOfThreads, m_numberOfThreadsValues);
+Debug.Log("xxxxxxxx dddddd  " + world.m_numberOfThreads);
 
         world.m_solverIterationsCount = EditorGUILayout.IntField("solver iterations", world.m_solverIterationsCount);
         if (world.m_solverIterationsCount < 1)
