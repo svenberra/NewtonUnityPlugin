@@ -33,11 +33,6 @@
 %rename(__dBezierSpline__GetControlPointArray__) dBezierSpline::GetControlPointArray();
 %rename(__dBezierSpline__GetControlPointArray__Const) dBezierSpline::GetControlPointArray() const; 
 
-%rename(__CustomAlloc_Alloc__) CustomAlloc::operator new;
-%rename(__CustomAlloc_Delete__) CustomAlloc::operator delete;
-%rename(__CustomJoint_AngularIntegration_Add__) CustomAlloc::AngularIntegration::operator+;
-%rename(__CustomJoint_AngularIntegration_Sub__) CustomAlloc::AngularIntegration::operator-;
-
 
 // Wrap Newton callbacks
 %cs_callback(NewtonAllocMemory, NewtonAllocMemoryDelegate)
@@ -52,10 +47,10 @@
 %typemap(cstype) void* "global::System.IntPtr"
 %typemap(out)    void* %{ $result = $1; %}
 %typemap(csin)   void* "$csinput"
-%typemap(csout, excode=SWIGEXCODE)  void* { 
+%typemap(csout, excode=SWIGEXCODE) void* { 
     System.IntPtr cPtr = $imcall;$excode
     return cPtr;
-    }
+}
 %typemap(csvarout, excode=SWIGEXCODE2) void* %{ 
     get {
         System.IntPtr cPtr = $imcall;$excode 
@@ -107,6 +102,12 @@
 %rename(__dQuaternion_sub__) dQuaternion::operator-;
 %rename(__dQuaternion_multiply__) dQuaternion::operator*;
 
+%rename(__CustomAlloc_Alloc__) CustomAlloc::operator new;
+%rename(__CustomAlloc_Delete__) CustomAlloc::operator delete;
+
+%rename(__CustomJoint_AngularIntegration_Add__) CustomAlloc::AngularIntegration::operator+;
+%rename(__CustomJoint_AngularIntegration_Sub__) CustomAlloc::AngularIntegration::operator-;
+
 
 // dmath sdk Glue
 %include "dMathDefines.h"
@@ -119,3 +120,6 @@
 %include "dNewtonWorld.h"
 %include "dNewtonCollision.h"
 
+%include "CustomAlloc.h"
+%include "CustomJoint.h"
+%include "CustomHinge.h"
