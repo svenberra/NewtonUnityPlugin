@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
-
+/*
 public class NewtonColliderEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -300,3 +300,4 @@ public class NewtonTreeColliderEditor : NewtonColliderEditor
         EditorUtility.SetDirty(target);
     }
 }
+*/

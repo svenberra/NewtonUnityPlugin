@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
-
+/*
 [CustomEditor(typeof(NewtonWorld))]
 public class NewtonWorldEditor: Editor
 {
@@ -35,6 +35,6 @@ public class NewtonWorldEditor: Editor
     static private int[] m_broaphaseValues = { 0, 1};
     static private string[] m_broaphase = { "optimized for dynamic scenes", "optimize for static scenes"};
 }
-
+*/
 
 
