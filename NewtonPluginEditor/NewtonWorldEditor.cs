@@ -37,4 +37,48 @@ public class NewtonWorldEditor: Editor
 }
 */
 
+[CustomEditor(typeof(NewtonWorld))]
+public class NewtonWorldEditor : Editor
+{
+    void OnEnable()
+    {
+        // Setup the SerializedProperties
+        m_numThreadsProp = serializedObject.FindProperty("m_numberOfThreads");
+        m_solverIterationsCountProp = serializedObject.FindProperty("m_solverIterationsCount");
+    }
+
+    public override void OnInspectorGUI()
+    {
+        // Update the serializedProperty - always do this in the beginning of OnInspectorGUI.
+        serializedObject.Update();
+
+        // Show the custom GUI controls
+        int oldNumThreadsValue = m_numThreadsProp.intValue;
+        EditorGUILayout.IntPopup(m_numThreadsProp, m_numberOfThreadsOptions, m_numberOfThreadsValues, new GUIContent("Worker threads"));
+
+        int oldIterationsCountValue = m_solverIterationsCountProp.intValue;
+        EditorGUILayout.IntSlider(m_solverIterationsCountProp, 1, 99, new GUIContent("Solver iteration count"));
+
+        // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
+        serializedObject.ApplyModifiedProperties();
+
+        if (oldNumThreadsValue != m_numThreadsProp.intValue)
+        {
+            Debug.Log("Threads property changed!");
+        }
+
+        if (oldIterationsCountValue != m_solverIterationsCountProp.intValue)
+        {
+            Debug.Log("Solver iterations property changed!");
+        }
+    }
+
+    SerializedProperty m_numThreadsProp;
+    SerializedProperty m_solverIterationsCountProp;
+
+    static private GUIContent[] m_numberOfThreadsOptions = { new GUIContent("Single threaded"), new GUIContent("2 worker threads"), new GUIContent("3 worker threads"), new GUIContent("4 worker threads"), new GUIContent("8 worker threads") };
+    static private int[] m_numberOfThreadsValues = { 0, 2, 3, 4, 8 };
+}
+
+
 

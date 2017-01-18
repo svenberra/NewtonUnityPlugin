@@ -1,0 +1,4 @@
+sceneSetups:
+- path: C:/Users/jjerez/Documents/GitHub/NewtonUnityPlugin/Demos/Assets/demo_01_BasicCollisionPrimives.unity
+  isLoaded: 1
+  isActive: 1
