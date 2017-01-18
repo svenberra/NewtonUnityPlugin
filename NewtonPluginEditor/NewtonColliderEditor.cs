@@ -3,9 +3,15 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
-/*
+
 public class NewtonColliderEditor : Editor
 {
+//    SerializedProperty m_positProp;
+    void OnEnable()
+    {
+//        SerializedProperty m_positProp;
+    }
+
     public override void OnInspectorGUI()
     {
         NewtonCollider collision = (NewtonCollider)target;
@@ -300,4 +306,3 @@ public class NewtonTreeColliderEditor : NewtonColliderEditor
         EditorUtility.SetDirty(target);
     }
 }
-*/

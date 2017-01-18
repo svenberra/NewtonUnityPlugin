@@ -57,7 +57,7 @@ public class NewtonWorldEditor : Editor
         EditorGUILayout.IntPopup(m_numThreadsProp, m_numberOfThreadsOptions, m_numberOfThreadsValues, new GUIContent("Worker threads"));
 
         int oldIterationsCountValue = m_solverIterationsCountProp.intValue;
-        EditorGUILayout.IntSlider(m_solverIterationsCountProp, 1, 99, new GUIContent("Solver iteration count"));
+        EditorGUILayout.IntSlider(m_solverIterationsCountProp, 1, 10, new GUIContent("Solver iteration count"));
 
         // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
         serializedObject.ApplyModifiedProperties();
