@@ -7,7 +7,7 @@ using System.Collections.Generic;
 [CustomEditor(typeof(NewtonCollider))]
 public class NewtonColliderEditor : Editor
 {
-    void OnEnable()
+    protected void SetupBaseProps()
     {
         // Setup the SerializedProperties
         posProp = serializedObject.FindProperty("m_posit");
@@ -20,12 +20,10 @@ public class NewtonColliderEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-
         EditorGUILayout.PropertyField(posProp, new GUIContent("Position"));
         EditorGUILayout.PropertyField(rotProp, new GUIContent("Rotation"));
         EditorGUILayout.PropertyField(inheritScaleProp, new GUIContent("Inherit Scale"));
         EditorGUILayout.PropertyField(scaleProp, new GUIContent("Scale"));
-
         serializedObject.ApplyModifiedProperties();
 
         //NewtonCollider collision = (NewtonCollider)target;
@@ -51,20 +49,50 @@ public class NewtonColliderEditor : Editor
 [CustomEditor(typeof(NewtonSphereCollider))]
 public class NewtonSphereColliderEditor: NewtonColliderEditor
 {
+    void OnEnable()
+    {
+        base.SetupBaseProps();
+
+        // Setup the SerializedProperties
+        radiusProp = serializedObject.FindProperty("m_radius");
+    }
+
     public override void OnInspectorGUI()
     {
         NewtonSphereCollider collision = (NewtonSphereCollider)target;
         base.OnInspectorGUI();
 
-        float radius = EditorGUILayout.FloatField("radius", collision.m_radius);
-        float error = radius - collision.m_radius;
-        if (error * error > 0.000001f)
+        serializedObject.Update();
+        var oldRadius = radiusProp.floatValue;
+        EditorGUILayout.PropertyField(radiusProp, new GUIContent("Radius"));
+        serializedObject.ApplyModifiedProperties();
+
+        if ( (oldRadius != radiusProp.floatValue) && (radiusProp.floatValue * radiusProp.floatValue > 0.000001f) )
         {
-            collision.m_radius = radius;
             collision.RecreateEditorShape();
+            Debug.Log("Radius changed");
         }
-        EditorUtility.SetDirty(target);
+        else
+        {
+            //Debug.LogError("Radius too small!!!");
+        }
+
+        //NewtonSphereCollider collision = (NewtonSphereCollider)target;
+        //base.OnInspectorGUI();
+
+        //float radius = EditorGUILayout.FloatField("radius", collision.m_radius);
+        //float error = radius - collision.m_radius;
+        //if (error * error > 0.000001f)
+        //{
+        //    collision.m_radius = radius;
+        //    collision.RecreateEditorShape();
+        //}
+        //EditorUtility.SetDirty(target);
     }
+
+    SerializedProperty radiusProp;
+
+
 }
 
 
