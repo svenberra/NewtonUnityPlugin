@@ -7,21 +7,44 @@ using System.Collections.Generic;
 [CustomEditor(typeof(NewtonCollider))]
 public class NewtonColliderEditor : Editor
 {
+    void OnEnable()
+    {
+        // Setup the SerializedProperties
+        posProp = serializedObject.FindProperty("m_posit");
+        rotProp = serializedObject.FindProperty("m_rotation");
+        inheritScaleProp = serializedObject.FindProperty("m_inheritTransformScale");
+        scaleProp = serializedObject.FindProperty("m_scale");
+    }
+
+
     public override void OnInspectorGUI()
     {
-        NewtonCollider collision = (NewtonCollider)target;
-        collision.m_posit = EditorGUILayout.Vector3Field("Pos", collision.m_posit);
-        collision.m_rotation = EditorGUILayout.Vector3Field("Rot", collision.m_rotation);
-        collision.m_inheritTransformScale = EditorGUILayout.Toggle("Inherit transform scale", collision.m_inheritTransformScale);
-        collision.m_scale = EditorGUILayout.Vector3Field("Scale", collision.m_scale);
+        serializedObject.Update();
 
-        if(GUI.changed)
-        {
-            Undo.RegisterCompleteObjectUndo(collision, "NewtonCollider property changed");
-            Debug.Log("NewtonCollider property changed");
-        }
+        EditorGUILayout.PropertyField(posProp, new GUIContent("Position"));
+        EditorGUILayout.PropertyField(rotProp, new GUIContent("Rotation"));
+        EditorGUILayout.PropertyField(inheritScaleProp, new GUIContent("Inherit Scale"));
+        EditorGUILayout.PropertyField(scaleProp, new GUIContent("Scale"));
 
+        serializedObject.ApplyModifiedProperties();
+
+        //NewtonCollider collision = (NewtonCollider)target;
+        //collision.m_posit = EditorGUILayout.Vector3Field("Pos", collision.m_posit);
+        //collision.m_rotation = EditorGUILayout.Vector3Field("Rot", collision.m_rotation);
+        //collision.m_inheritTransformScale = EditorGUILayout.Toggle("Inherit transform scale", collision.m_inheritTransformScale);
+        //collision.m_scale = EditorGUILayout.Vector3Field("Scale", collision.m_scale);
+
+        //if(GUI.changed)
+        //{
+        //    Undo.RegisterCompleteObjectUndo(collision, "NewtonCollider property changed");
+        //    Debug.Log("NewtonCollider property changed");
+        //}
     }
+
+    SerializedProperty posProp;
+    SerializedProperty rotProp;
+    SerializedProperty inheritScaleProp;
+    SerializedProperty scaleProp;
 
 }
 
