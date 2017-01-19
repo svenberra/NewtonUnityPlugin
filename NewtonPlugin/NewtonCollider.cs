@@ -54,7 +54,7 @@ abstract public class NewtonCollider : MonoBehaviour
     }
     void OnValidate()
     {
-        Debug.Log("xxxxxxx this is bullshit ");
+        //Debug.Log("xxxxxxx this is bullshit ");
     }
 
     virtual public bool IsStatic()

@@ -4,26 +4,26 @@ using UnityEditor;
 using System.Collections.Generic;
 
 
+[CustomEditor(typeof(NewtonCollider))]
 public class NewtonColliderEditor : Editor
 {
-//    SerializedProperty m_positProp;
-    void OnEnable()
-    {
-//        SerializedProperty m_positProp;
-    }
-
     public override void OnInspectorGUI()
     {
         NewtonCollider collision = (NewtonCollider)target;
+        collision.m_posit = EditorGUILayout.Vector3Field("Pos", collision.m_posit);
+        collision.m_rotation = EditorGUILayout.Vector3Field("Rot", collision.m_rotation);
+        collision.m_inheritTransformScale = EditorGUILayout.Toggle("Inherit transform scale", collision.m_inheritTransformScale);
+        collision.m_scale = EditorGUILayout.Vector3Field("Scale", collision.m_scale);
 
-        collision.m_posit = EditorGUILayout.Vector3Field("posit", collision.m_posit);
-        collision.m_rotation = EditorGUILayout.Vector3Field("rotation", collision.m_rotation);
-        collision.m_inheritTransformScale = EditorGUILayout.Toggle("inherit transform scale", collision.m_inheritTransformScale);
-        collision.m_scale = EditorGUILayout.Vector3Field("scale", collision.m_scale);
-        collision.UpdateEditorParams();
+        if(GUI.changed)
+        {
+            Undo.RegisterCompleteObjectUndo(collision, "NewtonCollider property changed");
+            Debug.Log("NewtonCollider property changed");
+        }
+
     }
-}
 
+}
 
 [CustomEditor(typeof(NewtonSphereCollider))]
 public class NewtonSphereColliderEditor: NewtonColliderEditor
