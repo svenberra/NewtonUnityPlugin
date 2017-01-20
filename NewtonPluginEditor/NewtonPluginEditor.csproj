@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MathHelpers.cs" />
     <Compile Include="NewtonColliderEditor.cs" />
     <Compile Include="NewtonWorldEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
