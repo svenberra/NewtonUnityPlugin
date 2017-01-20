@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using static ValidationHelpers;
 
 [CustomEditor(typeof(NewtonCollider))]
-public class NewtonColliderEditor : Editor
+public abstract class NewtonColliderEditor : Editor
 {
     protected void SetupBaseProps()
     {
@@ -14,9 +14,23 @@ public class NewtonColliderEditor : Editor
         rotProp = serializedObject.FindProperty("m_rotation");
         inheritScaleProp = serializedObject.FindProperty("m_inheritTransformScale");
         scaleProp = serializedObject.FindProperty("m_scale");
+
+        Undo.undoRedoPerformed += OnUndoRedo;
+
     }
 
-    
+    void OnDestroy()
+    {
+        Undo.undoRedoPerformed -= OnUndoRedo;
+    }
+
+    private void OnUndoRedo()
+    {
+        Validate(); // Trigger derived class to Validate and check if value changed.
+    }
+
+    protected abstract void Validate();
+
     public override void OnInspectorGUI()
     {
 
@@ -42,42 +56,27 @@ public class NewtonSphereColliderEditor: NewtonColliderEditor
     {
         base.SetupBaseProps();
         radiusProp = serializedObject.FindProperty("m_radius");
-
-        Undo.undoRedoPerformed += OnUndoRedo;
-    }
-
-    void OnDestroy()
-    {
-        Undo.undoRedoPerformed -= OnUndoRedo;
-    }
-
-    private void OnUndoRedo()
-    {
-        NewtonSphereCollider collision = (NewtonSphereCollider)target;
-
-        if (RadiusChangedAndValid(collision.m_radius, radiusProp.floatValue, 0.01f))
-        {
-            collision.RecreateEditorShape();
-            Debug.Log("Sphere radius changed by undo/redo");
-        }
     }
 
     public override void OnInspectorGUI()
     {
-        NewtonSphereCollider collision = (NewtonSphereCollider)target;
         base.OnInspectorGUI();
 
         serializedObject.Update();
-        var oldRadius = radiusProp.floatValue;
         EditorGUILayout.PropertyField(radiusProp, new GUIContent("Radius"));
+        Validate();
 
-        if (RadiusChangedAndValid(oldRadius, radiusProp.floatValue, 0.01f))
+    }
+
+    protected override void Validate()
+    {
+        NewtonSphereCollider collision = (NewtonSphereCollider)target;
+        if (RadiusChangedAndValid(collision.m_radius, radiusProp.floatValue, 0.01f))
         {
-            serializedObject.ApplyModifiedProperties();
+            serializedObject.ApplyModifiedProperties(); //Transfer Editor value change to target object and add the change to the Undo/Redo stack
             collision.RecreateEditorShape();
             Debug.Log("Sphere radius changed");
         }
-
     }
 
     SerializedProperty radiusProp;
@@ -95,14 +94,18 @@ public class NewtonBoxColliderEditor: NewtonColliderEditor
 
     public override void OnInspectorGUI()
     {
-        NewtonBoxCollider collision = (NewtonBoxCollider)target;
         base.OnInspectorGUI();
 
         serializedObject.Update();
-        var oldDimension = dimensionProp.vector3Value;
         EditorGUILayout.PropertyField(dimensionProp, new GUIContent("Dimension"));
+        Validate();
+    }
 
-        if(VolumeChangedAndValid(oldDimension, dimensionProp.vector3Value, 0.01f))
+    protected override void Validate()
+    {
+        NewtonBoxCollider collision = (NewtonBoxCollider)target;
+
+        if (VolumeChangedAndValid(collision.m_size, dimensionProp.vector3Value, 0.01f))
         {
             serializedObject.ApplyModifiedProperties();
             collision.RecreateEditorShape();
@@ -111,7 +114,6 @@ public class NewtonBoxColliderEditor: NewtonColliderEditor
     }
 
     SerializedProperty dimensionProp;
-
 }
 
 
@@ -128,24 +130,26 @@ public class NewtonCylinderColliderEditor : NewtonColliderEditor
 
     public override void OnInspectorGUI()
     {
-        NewtonCylinderCollider collision = (NewtonCylinderCollider)target;
         base.OnInspectorGUI();
 
         serializedObject.Update();
-        var oldRadius0 = radius0Prop.floatValue;
-        var oldRadius1 = radius1Prop.floatValue;
-        var oldHeight = heightProp.floatValue;
         EditorGUILayout.PropertyField(radius0Prop, new GUIContent("Radius 0"));
         EditorGUILayout.PropertyField(radius1Prop, new GUIContent("Radius 1"));
         EditorGUILayout.PropertyField(heightProp, new GUIContent("Height"));
+        Validate();
 
-        if (RadiusChangedAndValid(oldRadius0, radius0Prop.floatValue, 0.01f) || RadiusChangedAndValid(oldRadius1, radius1Prop.floatValue, 0.01f) || HeightChangedAndValid(oldHeight, heightProp.floatValue, 0.01f))
+    }
+
+    protected override void Validate()
+    {
+        NewtonCylinderCollider collision = (NewtonCylinderCollider)target;
+
+        if (RadiusChangedAndValid(collision.m_radius0, radius0Prop.floatValue, 0.01f) || RadiusChangedAndValid(collision.m_radius1, radius1Prop.floatValue, 0.01f) || HeightChangedAndValid(collision.m_height, heightProp.floatValue, 0.01f))
         {
             serializedObject.ApplyModifiedProperties();
             collision.RecreateEditorShape();
             Debug.Log("Cylinder shape changed");
         }
-
     }
 
     SerializedProperty radius0Prop;
@@ -167,24 +171,26 @@ public class NewtonCapsuleColliderEditor : NewtonColliderEditor
 
     public override void OnInspectorGUI()
     {
-        NewtonCapsuleCollider collision = (NewtonCapsuleCollider)target;
         base.OnInspectorGUI();
 
         serializedObject.Update();
-        var oldRadius0 = radius0Prop.floatValue;
-        var oldRadius1 = radius1Prop.floatValue;
-        var oldHeight = heightProp.floatValue;
         EditorGUILayout.PropertyField(radius0Prop, new GUIContent("Radius 0"));
         EditorGUILayout.PropertyField(radius1Prop, new GUIContent("Radius 1"));
         EditorGUILayout.PropertyField(heightProp, new GUIContent("Height"));
+        Validate();
 
-        if (RadiusChangedAndValid(oldRadius0, radius0Prop.floatValue, 0.01f) || RadiusChangedAndValid(oldRadius1, radius1Prop.floatValue, 0.01f) || HeightChangedAndValid(oldHeight, heightProp.floatValue, 0.01f))
+    }
+
+    protected override void Validate()
+    {
+        NewtonCapsuleCollider collision = (NewtonCapsuleCollider)target;
+
+        if (RadiusChangedAndValid(collision.m_radius0, radius0Prop.floatValue, 0.01f) || RadiusChangedAndValid(collision.m_radius1, radius1Prop.floatValue, 0.01f) || HeightChangedAndValid(collision.m_height, heightProp.floatValue, 0.01f))
         {
             serializedObject.ApplyModifiedProperties();
             collision.RecreateEditorShape();
             Debug.Log("Capsule shape changed");
         }
-
     }
 
     SerializedProperty radius0Prop;
@@ -205,22 +211,27 @@ public class NewtonCapsuleConeEditor : NewtonColliderEditor
 
     public override void OnInspectorGUI()
     {
-        NewtonConeCollider collision = (NewtonConeCollider)target;
         base.OnInspectorGUI();
 
         serializedObject.Update();
-        var oldRadius = radiusProp.floatValue;
-        var oldHeight = heightProp.floatValue;
         EditorGUILayout.PropertyField(radiusProp, new GUIContent("Radius"));
         EditorGUILayout.PropertyField(heightProp, new GUIContent("Height"));
+        Validate();
 
-        if (RadiusChangedAndValid(oldRadius, radiusProp.floatValue, 0.01f) || HeightChangedAndValid(oldHeight, heightProp.floatValue, 0.01f))
+    }
+
+    protected override void Validate()
+    {
+        NewtonConeCollider collision = (NewtonConeCollider)target;
+
+        if (RadiusChangedAndValid(collision.m_radius, radiusProp.floatValue, 0.01f) || HeightChangedAndValid(collision.m_height, heightProp.floatValue, 0.01f))
         {
             serializedObject.ApplyModifiedProperties();
             collision.RecreateEditorShape();
             Debug.Log("Cone shape changed");
         }
     }
+
 
     SerializedProperty radiusProp;
     SerializedProperty heightProp;
@@ -240,22 +251,25 @@ public class NewtonChamferedCylinderEditor : NewtonColliderEditor
 
     public override void OnInspectorGUI()
     {
-        NewtonChamferedCylinderCollider collision = (NewtonChamferedCylinderCollider)target;
         base.OnInspectorGUI();
 
         serializedObject.Update();
-        var oldRadius = radiusProp.floatValue;
-        var oldHeight = heightProp.floatValue;
         EditorGUILayout.PropertyField(radiusProp, new GUIContent("Radius"));
         EditorGUILayout.PropertyField(heightProp, new GUIContent("Height"));
+        Validate();
 
-        if (RadiusChangedAndValid(oldRadius, radiusProp.floatValue, 0.01f) || HeightChangedAndValid(oldHeight, heightProp.floatValue, 0.01f))
+    }
+
+    protected override void Validate()
+    {
+        NewtonChamferedCylinderCollider collision = (NewtonChamferedCylinderCollider)target;
+
+        if (RadiusChangedAndValid(collision.m_radius, radiusProp.floatValue, 0.01f) || HeightChangedAndValid(collision.m_height, heightProp.floatValue, 0.01f))
         {
             serializedObject.ApplyModifiedProperties();
             collision.RecreateEditorShape();
             Debug.Log("Chamfer cylinder shape changed");
         }
-
     }
 
     SerializedProperty radiusProp;
@@ -275,23 +289,26 @@ public class NewtonConvexHullEditor : NewtonColliderEditor
 
     public override void OnInspectorGUI()
     {
-        NewtonConvexHullCollider collision = (NewtonConvexHullCollider)target;
         base.OnInspectorGUI();
 
-        var oldMesh = (Mesh)meshProp.objectReferenceValue;
         EditorGUILayout.PropertyField(meshProp, new GUIContent("Mesh"));
+        Validate();
 
-        if(oldMesh != (Mesh)meshProp.objectReferenceValue)
+    }
+
+    protected override void Validate()
+    {
+        NewtonConvexHullCollider collision = (NewtonConvexHullCollider)target;
+
+        if (collision.m_mesh != (Mesh)meshProp.objectReferenceValue)
         {
             serializedObject.ApplyModifiedProperties();
             collision.RecreateEditorShape();
             Debug.Log("Convex mesh changed");
         }
-
     }
 
     SerializedProperty meshProp;
-
 }
 
 
@@ -310,26 +327,27 @@ public class NewtonTreeColliderEditor : NewtonColliderEditor
 
     public override void OnInspectorGUI()
     {
-        NewtonTreeCollider collision = (NewtonTreeCollider)target;
 
         base.OnInspectorGUI();
 
-        var oldMesh = (Mesh)meshProp.objectReferenceValue;
-        var oldOptimize = optimizeProp.boolValue;
-        var oldFreezeTransform = freezeTransformProp.boolValue;
-        var oldRebuildMesh = rebuildMeshProp.boolValue;
         EditorGUILayout.PropertyField(meshProp, new GUIContent("Mesh"));
         EditorGUILayout.PropertyField(optimizeProp, new GUIContent("Optimize"));
         EditorGUILayout.PropertyField(freezeTransformProp, new GUIContent("Freeze Transform"));
         EditorGUILayout.PropertyField(rebuildMeshProp, new GUIContent("Rebuild mesh"));
+        Validate();
 
-        if (oldMesh != (Mesh)meshProp.objectReferenceValue || oldOptimize != optimizeProp.boolValue || oldFreezeTransform != freezeTransformProp.boolValue || oldRebuildMesh != rebuildMeshProp.boolValue)
+    }
+
+    protected override void Validate()
+    {
+        NewtonTreeCollider collision = (NewtonTreeCollider)target;
+
+        if (collision.m_mesh != (Mesh)meshProp.objectReferenceValue || collision.m_optimize != optimizeProp.boolValue || collision.m_freezeScale != freezeTransformProp.boolValue || collision.m_rebuildMesh != rebuildMeshProp.boolValue)
         {
             serializedObject.ApplyModifiedProperties();
             collision.RecreateEditorShape();
             Debug.Log("Tree collider changed");
         }
-
     }
 
     SerializedProperty meshProp;
