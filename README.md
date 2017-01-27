@@ -1,52 +1,58 @@
 
-Compiling NewtonUnityPlugin
-===========================
+# Compiling NewtonUnityPlugin
 
-# READ THIS!
-### Plugin is being rebuilt from scratch, this time using Swig-generated wrapper.
-There will be limited functionality for a while because of this.
-
-## Windows
-
-Windows only for now.
+Windows supported only for now.
 It should work on any other OS too, but the project is new so only Windows for now. 
 
-Just open the solution file (NewtonUnityPlugin.sln) and build. (Visual Studio 2015)
+## Step 1, Download and build the Newton Dynamics Library 
 
-For now, choose Release and x64
-
-# NewtonWrapper
-You need to clone and build the Newton Dynamics Library first.
+The best option is to clone Newton from the following repository.
 https://github.com/MADEAPPS/newton-dynamics/
 
-Create an environment variable named NEWTON_DYNAMICS that match the location where you installed Newton.
+Open the following solution file.
+<newton install dir >\packages\projects\visualStudio_2015_static_mt\build.sln
 
-# NewtonPlugin
-NewtonPlugin requires a reference to the assembly UnityEngine.dll which you will find where Unity 3D is installed.
-<Unity Installdir>\Editor\Data\Managed\UnityEngine.dll
+Choose Release & x64 and build the solution.
 
-Using NewtonUnityPlugin
-=======================
+Finally, create an environment variable named NEWTON_DYNAMICS that points to the location where you installed Newton.
 
-After building the projects there will be two dlls in the PluginBinaries folder.
+## Step 2, Download and build the NewtonUnityPlugin
+https://github.com/svenberra/NewtonUnityPlugin
+
+Just open the solution file (NewtonUnityPlugin.sln) and build. (Visual Studio 2015)
+For now, choose Release and x64
+
+### NewtonPlugin & NewtonPluginEditor
+NewtonPlugin & NewtonPluginEditor requires references to the assemblies UnityEngine.dll & UnityEditor.dll which you will find where Unity 3D is installed.
+<Unity Installdir>\Editor\Data\Managed\
+Copy them over to the folder PluginBin to make sure you compile the plugin with the same dlls Unity are using. 
+
+
+# Using NewtonUnityPlugin
+
+After building the projects there will be three dlls in the PluginBin folder.
 
 * NewtonPlugin.dll
-This is the managed Unity plugin which must be added to your Unity project.
+This managed dll(assembly) contains the runtime components(world, colliders, bodies and joints).
 In your unity project Assets folder, create a subfolder named Plugins and put it there.  
 
+* NewtonPluginEditor.dll
+This is another managed dll that contain editors for the above components.
+This plugin goes into a subfolder called Editor under the Assets folder.  
+
 * NewtonWrapper.dll
-This dll contains wrapper functions the NewtonPlugin.dll uses to access certains c++ objects in Newton Dynamics that
-a .NET dll can't normally access.
+This native dll contains the SWIG-generated C-functions that the managed dlls above use to access the Newton API.
+This plugin goes into the same folder as NewtonPlugin.dll
 
-The plugin is compiled as a 64-bit library by default so remember to compile Newton as 64-bit as well.
+The plugins are compiled as 64-bit libraries by default so remember to compile Newton as 64-bit as well.
 
-When Unity detects the plugin you will need to tell Unity if it's 64-bit or not.
+When Unity detects the plugins you will need to tell Unity if it's 64-bit or not.
 Just click on the plugin in the Assets view and check the 64-bit option.
 
 Demo
 ====
 
-Unity demos and examples can be found in the Demos folder.[Soon, under construction right now]
+Demos and examples can be found in the Demos folder.
 
 
 
