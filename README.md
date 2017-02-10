@@ -2,7 +2,7 @@
 # Compiling NewtonUnityPlugin
 
 Windows supported only for now.
-It should work on any other OS too, but the project is new so only Windows for now. 
+It should work on any other OS too once the plugin is completed, but while the plugin is under development only a Windows project will be provided. 
 
 ## Step 1, Download and build the Newton Dynamics Library 
 
