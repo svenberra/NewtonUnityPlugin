@@ -44,11 +44,11 @@ class dNewtonBody: public dAlloc
 
 	dNewtonBody(const dMatrix* const matrix);
 	virtual void Destroy();
+
+	void* GetBody() const;
 	void* GetPosition();
 	void* GetRotation();
-
 	virtual void AddForceAndTorque(dFloat* const force, dFloat* const torque);
-	
 
 	protected:
 	virtual ~dNewtonBody();
@@ -121,16 +121,11 @@ class dNewtonBody: public dAlloc
 	virtual void SetBody  (NewtonBody* const body);
 */
 	protected:
-
-
-
 	static void OnBodyDestroy (const NewtonBody* const body);
 	static void OnForceAndTorqueCallback (const NewtonBody* body, dFloat timestep, int threadIndex);
 	static void OnBodyTransformCallback(const NewtonBody* const body, const dFloat* const matrix, int threadIndex);
 
-	
 	NewtonBody* m_body;
-
 	dVector m_posit0;
 	dVector m_posit1;
 	dVector m_interpolatedPosit;
@@ -140,6 +135,7 @@ class dNewtonBody: public dAlloc
 	unsigned m_lock;
 
 	friend class dNewtonWorld;
+	friend class dNewtonBallAndSocket;
 };
 
 class dNewtonDynamicBody: public dNewtonBody

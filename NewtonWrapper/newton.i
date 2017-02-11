@@ -20,7 +20,9 @@
 	#include "dAlloc.h"
 	#include "dNewtonBody.h"
 	#include "dNewtonWorld.h"
+	#include "dNewtonJoint.h"
 	#include "dNewtonCollision.h"
+	#include "CustomHinge.h"
 %}
 
 /*
@@ -118,9 +120,10 @@
 
 %include "dNewtonBody.h"
 %include "dNewtonWorld.h"
+%include "dNewtonJoint.h"
 %include "dNewtonCollision.h"
 
-#include "dContainersAlloc.h"
+//#include "dContainersAlloc.h"
 
 %include "CustomAlloc.h"
 %include "CustomJoint.h"

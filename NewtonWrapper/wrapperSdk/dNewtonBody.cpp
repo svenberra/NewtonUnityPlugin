@@ -297,6 +297,11 @@ dNewtonBody::~dNewtonBody()
 	Destroy();
 }
 
+void* dNewtonBody::GetBody() const
+{
+	return m_body;
+}
+
 void* dNewtonBody::GetPosition()
 {
 	const dNewtonWorld* const world = (dNewtonWorld*)NewtonWorldGetUserData(NewtonBodyGetWorld(m_body));

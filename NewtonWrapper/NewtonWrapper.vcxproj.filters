@@ -16,6 +16,9 @@
     <ClCompile Include="wrapperSdk\dNewtonCollision.cpp">
       <Filter>wrapperSdk</Filter>
     </ClCompile>
+    <ClCompile Include="wrapperSdk\dNewtonJoint.cpp">
+      <Filter>wrapperSdk</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -31,6 +34,9 @@
       <Filter>wrapperSdk</Filter>
     </ClInclude>
     <ClInclude Include="wrapperSdk\dNewtonCollision.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapperSdk\dNewtonJoint.h">
       <Filter>wrapperSdk</Filter>
     </ClInclude>
   </ItemGroup>

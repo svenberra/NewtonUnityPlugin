@@ -29,7 +29,6 @@ class dNewtonWorld;
 
 typedef void(*OnDrawFaceCallback)(const dFloat* const points, int vertexCount);
 
-//class dNewtonCollision: virtual public dNewtonAlloc, public dNewtonMaterial
 class dNewtonCollision: public dAlloc
 {
 	public:
@@ -40,23 +39,7 @@ class dNewtonCollision: public dAlloc
 	virtual void SetScale(dFloat x, dFloat y, dFloat z);
 	virtual void SetMatrix(const void* const matrix);
 	virtual void DebugRender(OnDrawFaceCallback callback, const dFloat* const eyePoint);
-	
-	
 
-/*
-	dCollsionType GetType() const {return m_type;}
-	NewtonCollision* GetShape() const;
-	virtual dNewtonCollision* Clone (NewtonCollision* const shape) const = 0; 
-	void* GetUserData() const;
-	void SetUserData(void* const userData);
-	dFloat GetVolume () const;
-	
-	void GetScale(dFloat& x, dFloat& y, dFloat& z) const;
-	void SetMatrix (const dFloat* const matrix);
-	void GetMatrix (dFloat* const matrix) const;
-	void CalculateAABB (const dFloat* const matrix, dFloat* const p0, dFloat* const p1) const;
-	void CalculateBuoyancyAcceleration (const dFloat* const matrix, const dFloat* const shapeOrigin, const dFloat* const gravityVector, const dFloat* const fluidPlane, dFloat fluidDensity, dFloat fluidViscosity, dFloat* const accel, dFloat* const alpha);
-*/
 	protected:
 	void SetShape(NewtonCollision* const shape);
 	void DeleteShape();
@@ -121,33 +104,30 @@ class dNewtonCollisionHeightField: public dNewtonCollision
 	{
 	}
 };
-
-
-
 */
 
 
-class dNewtonCollisionNull : public dNewtonCollision
+class dNewtonCollisionNull: public dNewtonCollision
 {
 	public:
 	dNewtonCollisionNull(dNewtonWorld* const world);
 };
 
 
-class dNewtonCollisionSphere : public dNewtonCollision
+class dNewtonCollisionSphere: public dNewtonCollision
 {
 	public:
 	dNewtonCollisionSphere(dNewtonWorld* const world, dFloat r);
 };
 
-class dNewtonCollisionBox : public dNewtonCollision
+class dNewtonCollisionBox: public dNewtonCollision
 {
 	public:
 	dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z);
 };
 
 
-class dNewtonAlignedShapes : public dNewtonCollision
+class dNewtonAlignedShapes: public dNewtonCollision
 {
 	public:
 	dNewtonAlignedShapes(dNewtonWorld* const world, dLong collisionMask);
@@ -161,33 +141,33 @@ class dNewtonCollisionCapsule: public dNewtonAlignedShapes
 	dNewtonCollisionCapsule(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height);
 };
 
-class dNewtonCollisionCylinder : public dNewtonAlignedShapes
+class dNewtonCollisionCylinder: public dNewtonAlignedShapes
 {
 	public:
 	dNewtonCollisionCylinder(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height);
 };
 
-class dNewtonCollisionCone : public dNewtonAlignedShapes
+class dNewtonCollisionCone: public dNewtonAlignedShapes
 {
 	public:
 	dNewtonCollisionCone(dNewtonWorld* const world, dFloat radio, dFloat height);
 };
 
-class dNewtonCollisionChamferedCylinder : public dNewtonAlignedShapes
+class dNewtonCollisionChamferedCylinder: public dNewtonAlignedShapes
 {
 	public:
 	dNewtonCollisionChamferedCylinder(dNewtonWorld* const world, dFloat radio, dFloat height);
 };
 
 
-class dNewtonCollisionConvexHull : public dNewtonCollision
+class dNewtonCollisionConvexHull: public dNewtonCollision
 {
 	public:
 	dNewtonCollisionConvexHull(dNewtonWorld* const world, int vertexCount, const dFloat* const vertexCloud, dFloat tolerance);
 };
 
 
-class dNewtonCollisionMesh : public dNewtonCollision
+class dNewtonCollisionMesh: public dNewtonCollision
 {
 	public:
 	dNewtonCollisionMesh(dNewtonWorld* const world);
@@ -196,7 +176,7 @@ class dNewtonCollisionMesh : public dNewtonCollision
 	void EndFace(bool optmized);
 };
 
-class dNewtonCollisionCompound : public dNewtonCollision
+class dNewtonCollisionCompound: public dNewtonCollision
 {
 	public:
 	dNewtonCollisionCompound(dNewtonWorld* const world);

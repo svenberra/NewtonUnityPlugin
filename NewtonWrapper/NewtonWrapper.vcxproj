@@ -229,6 +229,7 @@ xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Com
     <ClInclude Include="wrapperSdk\dAlloc.h" />
     <ClInclude Include="wrapperSdk\dNewtonBody.h" />
     <ClInclude Include="wrapperSdk\dNewtonCollision.h" />
+    <ClInclude Include="wrapperSdk\dNewtonJoint.h" />
     <ClInclude Include="wrapperSdk\dNewtonWorld.h" />
   </ItemGroup>
   <ItemGroup>
@@ -261,6 +262,7 @@ xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Com
     <ClCompile Include="wrapperSdk\dAlloc.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonBody.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonCollision.cpp" />
+    <ClCompile Include="wrapperSdk\dNewtonJoint.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonWorld.cpp" />
   </ItemGroup>
   <ItemGroup>

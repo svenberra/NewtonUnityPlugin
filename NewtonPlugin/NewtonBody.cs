@@ -57,8 +57,8 @@ public class NewtonBody : MonoBehaviour
     {
         if (m_body != null)
         {
-           m_body.Dispose();
-           m_body = null;
+            m_body.Dispose();
+            m_body = null;
         }
 
         if (m_collision != null)
@@ -86,6 +86,11 @@ public class NewtonBody : MonoBehaviour
                 m_body.AddForceAndTorque(m_forceAccPtr, m_torqueAccPtr);
             }
         }
+    }
+
+    public dNewtonBody GetBody()
+    {
+        return m_body;
     }
 
     public float m_mass;
