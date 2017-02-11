@@ -66,12 +66,31 @@ public class NewtonWorld : MonoBehaviour
         }
     }
 
+    private void InitPhysicsJoints(GameObject root)
+    {
+        foreach (NewtonHinge joint in root.GetComponents<NewtonHinge>())
+        {
+            joint.Create();
+        }
+
+        foreach (Transform child in root.transform)
+        {
+            InitPhysicsJoints(child.gameObject);
+        }
+    }
+
     private void InitScene()
     {
         GameObject[] objectList = gameObject.scene.GetRootGameObjects();
         foreach (GameObject rootObj in objectList)
         {
             InitPhysicsScene(rootObj);
+        }
+
+        foreach (GameObject rootObj in objectList)
+        {
+  Debug.Log("xxxxxxxxxxxxxxxxx I am here");
+            InitPhysicsJoints(rootObj);
         }
     }
 
