@@ -33,15 +33,26 @@ dNewtonBallAndSocket::dNewtonBallAndSocket(dNewtonWorld* const world)
 dNewtonHinge::dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0)
 	:dNewtonJoint()
 {
+	dMatrix bodyMatrix;
 	dMatrix matrix(pintAndPivotMatrix);
-	SetJoint(new CustomHinge(matrix, (NewtonBody*)body0, NULL));
+	
+	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
+	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
+
+	matrix = matrix * bodyMatrix;
+	SetJoint(new CustomHinge(matrix, netwonBody0, NULL));
 }
 
 dNewtonHinge::dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1)
 	:dNewtonJoint()
 {
+	dMatrix bodyMatrix;
 	dMatrix matrix(pintAndPivotMatrix);
-	SetJoint(new CustomHinge(matrix, (NewtonBody*)body0, (NewtonBody*)body1));
+	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
+	NewtonBody* const netwonBody1 = (NewtonBody*)body1;
+	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
+	matrix = matrix * bodyMatrix;
+	SetJoint(new CustomHinge(matrix, netwonBody0, netwonBody0));
 }
 
 

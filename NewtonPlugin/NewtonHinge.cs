@@ -8,17 +8,17 @@ public class NewtonHinge : NewtonJoint
 {
     public override void Create()
     {
-        Matrix4x4 bodyMatrix = Matrix4x4.identity;
-        Matrix4x4 localMatrx = Matrix4x4.identity;
+        //Matrix4x4 bodyMatrix = Matrix4x4.identity;
+        Matrix4x4 localMatrix = Matrix4x4.identity;
 
-        bodyMatrix.SetTRS(transform.position, transform.rotation, Vector3.one);
-        localMatrx.SetTRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
+        //bodyMatrix.SetTRS(transform.position, transform.rotation, Vector3.one);
+        localMatrix.SetTRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
 
         // I do not understand why I get the same matrix either way, I am doing the matrix multiplication wrong
-        Matrix4x4 matrix = localMatrx * bodyMatrix;
+        //Matrix4x4 matrix = localMatrx * bodyMatrix;
 
-        IntPtr floatsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
-        Marshal.StructureToPtr(matrix, floatsPtr, false);
+        IntPtr floatsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(localMatrix));
+        Marshal.StructureToPtr(localMatrix, floatsPtr, false);
         NewtonBody child = GetComponent<NewtonBody>();
         if (m_otherBody == null)
         {
@@ -40,13 +40,9 @@ public class NewtonHinge : NewtonJoint
 
         Gizmos.color = Color.red;
 
-        // I do not understand why I get the same matrix either way, I am doing the matrix multiplication wrong
-        //Gizmos.matrix = localMatrix * bodyMatrix;
-        Gizmos.matrix = bodyMatrix * localMatrix;
-        Debug.Log(Gizmos.matrix);
-        Vector3 origin = new Vector3 (0.0f, 0.0f, 0.0f);
-        Vector3 direction = new Vector3 (2.0f, 0.0f, 0.0f);
-        Gizmos.DrawLine(origin, direction);
+        Gizmos.matrix = bodyMatrix;
+        Vector3 direction = localMatrix.MultiplyPoint3x4(new Vector3(1.0f, 0.0f, 0.0f));
+        Gizmos.DrawLine(m_posit, direction);
     }
 
     public Vector3 m_posit = Vector3.zero;
