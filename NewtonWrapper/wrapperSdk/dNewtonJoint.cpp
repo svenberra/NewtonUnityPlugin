@@ -20,33 +20,20 @@
 
 
 #include "stdafx.h"
-#include "dNewtonBody.h"
-#include "dNewtonWorld.h"
-/*
 #include "dNewtonJoint.h"
-#include "CustomHinge.h"
-#include "CustomBallAndSocket.h"
 
-dNewtonJoint::dNewtonJoint(dNewtonWorld* const world)
-	:m_joint(NULL)
-	,m_myWorld(world)
-{
-}
-
-dNewtonJoint::~dNewtonJoint()
-{
-	if (m_joint) {
-		delete m_joint;
-		m_joint = NULL;
-	}
-}
-
+/*
 dNewtonBallAndSocket::dNewtonBallAndSocket(dNewtonWorld* const world)
 	:dNewtonJoint(world)
 {
 }
-
-CustomHinge
 */
+
+dNewtonHinge::dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1)
+	:CustomHinge (dMatrix (pintAndPivotMatrix), (NewtonBody*)body0, (NewtonBody*)body1)
+{
+
+}
+
 
 

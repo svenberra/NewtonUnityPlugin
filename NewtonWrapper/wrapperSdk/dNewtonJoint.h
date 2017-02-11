@@ -23,28 +23,8 @@
 
 #include "stdafx.h"
 #include "dAlloc.h"
-/*
-class dNewtonBody;
-class dNewtonWorld;
-class CustomJoint;
-
-class dNewtonJoint: public dAlloc
-{
-	public:
-	dNewtonJoint(dNewtonWorld* const world);
-	virtual ~dNewtonJoint();
-
-//	virtual void DebugRender(OnDrawFaceCallback callback, const dFloat* const eyePoint);
-
-	protected:
-//	static void DebugRenderCallback (void* userData, int vertexCount, const dFloat* faceVertec, int id);
-	CustomJoint* m_joint;
-	dNewtonWorld* m_myWorld;
-
-	friend class dNewtonBody;
-	friend class dNewtonWorld;
-	friend class dNewtonDynamicBody;
-};
+#include <CustomJoint.h>
+#include <CustomHinge.h>
 
 /*
 class dNewtonBallAndSocket: public dNewtonJoint
@@ -52,12 +32,13 @@ class dNewtonBallAndSocket: public dNewtonJoint
 	public:
 	dNewtonBallAndSocket(dNewtonWorld* const world);
 };
+*/
 
 
-class dNewtonHinge: public dNewtonJoint
+class dNewtonHinge: public CustomHinge
 {
 	public:
-	dNewtonBallAndSocket(dNewtonWorld* const world);
+	dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
 };
-*/
+
 #endif
