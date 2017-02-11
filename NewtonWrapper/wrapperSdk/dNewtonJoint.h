@@ -26,6 +26,25 @@
 #include <CustomJoint.h>
 #include <CustomHinge.h>
 
+
+class dNewtonJoint: public dAlloc
+{
+	public:
+	dNewtonJoint()
+		:dAlloc()
+		,m_joint(NULL)
+	{
+	}
+
+	protected:
+	void SetJoint(CustomJoint* const joint)
+	{
+		m_joint = joint;
+	}
+
+	CustomJoint* m_joint;
+};
+
 /*
 class dNewtonBallAndSocket: public dNewtonJoint
 {
@@ -35,7 +54,7 @@ class dNewtonBallAndSocket: public dNewtonJoint
 */
 
 
-class dNewtonHinge: public CustomHinge
+class dNewtonHinge: public dNewtonJoint
 {
 	public:
 	dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);

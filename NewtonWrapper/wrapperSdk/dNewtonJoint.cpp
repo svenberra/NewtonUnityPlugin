@@ -30,9 +30,9 @@ dNewtonBallAndSocket::dNewtonBallAndSocket(dNewtonWorld* const world)
 */
 
 dNewtonHinge::dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1)
-	:CustomHinge (dMatrix (pintAndPivotMatrix), (NewtonBody*)body0, (NewtonBody*)body1)
+	:dNewtonJoint()
 {
-
+	SetJoint(new CustomHinge(dMatrix(pintAndPivotMatrix), (NewtonBody*)body0, (NewtonBody*)body1));
 }
 
 
