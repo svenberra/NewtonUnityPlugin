@@ -12,7 +12,7 @@ public class NewtonHinge : NewtonJoint
         matrix.SetTRS(transform.position, transform.rotation, Vector3.one);
         IntPtr floatsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
         Marshal.StructureToPtr(matrix, floatsPtr, false);
-        m_joint = new dNewtonHinge(floatsPtr, m_body0.GetBody().GetBody(), m_body1.GetBody().GetBody());
+        m_joint = (CustomJoint) new dNewtonHinge(floatsPtr, m_body0.GetBody().GetBody(), m_body1.GetBody().GetBody());
     }
 
 }
