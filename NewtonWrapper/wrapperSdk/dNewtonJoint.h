@@ -57,6 +57,7 @@ class dNewtonBallAndSocket: public dNewtonJoint
 class dNewtonHinge: public dNewtonJoint
 {
 	public:
+	dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0);
 	dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
 };
 

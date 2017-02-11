@@ -29,6 +29,13 @@ dNewtonBallAndSocket::dNewtonBallAndSocket(dNewtonWorld* const world)
 }
 */
 
+
+dNewtonHinge::dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0)
+	:dNewtonJoint()
+{
+	SetJoint(new CustomHinge(dMatrix(pintAndPivotMatrix), (NewtonBody*)body0, NULL));
+}
+
 dNewtonHinge::dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1)
 	:dNewtonJoint()
 {

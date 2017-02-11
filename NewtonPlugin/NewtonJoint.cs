@@ -7,8 +7,7 @@ abstract public class NewtonJoint : MonoBehaviour
     abstract public void Create(NewtonWorld world);
 
     public dNewtonJoint m_joint = null;
-    public NewtonBody m_body0 = null;
-    public NewtonBody m_body1 = null;
+    public NewtonBody m_otherBody = null;
 }
 
     
