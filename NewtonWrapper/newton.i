@@ -120,6 +120,7 @@
 
 %include "CustomAlloc.h"
 %include "CustomJoint.h"
+#include "CustomHinge.h"
 
 %include "dNewtonBody.h"
 %include "dNewtonWorld.h"
