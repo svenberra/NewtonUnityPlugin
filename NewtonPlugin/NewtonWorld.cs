@@ -89,7 +89,6 @@ public class NewtonWorld : MonoBehaviour
 
         foreach (GameObject rootObj in objectList)
         {
-  Debug.Log("xxxxxxxxxxxxxxxxx I am here");
             InitPhysicsJoints(rootObj);
         }
     }
