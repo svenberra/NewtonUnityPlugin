@@ -8,6 +8,7 @@ abstract public class NewtonJoint : MonoBehaviour
 
     public dNewtonJoint m_joint = null;
     public NewtonBody m_otherBody = null;
+    public float m_gizmoScale = 1.0f;
 }
 
 

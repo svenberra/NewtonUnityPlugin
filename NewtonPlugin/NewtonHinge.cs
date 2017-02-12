@@ -41,7 +41,7 @@ public class NewtonHinge : NewtonJoint
         Gizmos.color = Color.red;
 
         Gizmos.matrix = bodyMatrix;
-        Vector3 direction = localMatrix.MultiplyPoint3x4(new Vector3(1.0f, 0.0f, 0.0f));
+        Vector3 direction = localMatrix.MultiplyPoint3x4(new Vector3(m_gizmoScale, 0.0f, 0.0f));
         Gizmos.DrawLine(m_posit, direction);
     }
 
