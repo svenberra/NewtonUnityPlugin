@@ -42,11 +42,23 @@ public class NewtonHinge : NewtonJoint
 
         Gizmos.matrix = bodyMatrix;
         Vector3 direction = localMatrix.MultiplyPoint3x4(new Vector3(m_gizmoScale, 0.0f, 0.0f));
+
         Gizmos.DrawLine(m_posit, direction);
+        if (m_enableLimits)
+        {
+            // draw hinge limit
+        }
     }
 
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
+    public bool m_enableLimits = false;
+    public float m_minLimit = -30.0f;
+    public float m_maxLimit =  30.0f;
+    public bool m_setSpringDamper = false;
+    public float m_springDamperForceMixing = 0.9f;
+    public float m_springConstant = 0.0f;
+    public float m_damperConstant = 10.0f;
 }
 
 
