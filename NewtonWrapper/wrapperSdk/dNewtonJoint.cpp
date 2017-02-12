@@ -22,6 +22,7 @@
 #include "stdafx.h"
 #include "dNewtonJoint.h"
 
+
 /*
 dNewtonBallAndSocket::dNewtonBallAndSocket(dNewtonWorld* const world)
 	:dNewtonJoint(world)
@@ -55,5 +56,30 @@ dNewtonHinge::dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, 
 	SetJoint(new CustomHinge(matrix, netwonBody0, netwonBody0));
 }
 
+
+dNewtonHingeActuator::dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0)
+	:dNewtonJoint()
+{
+	dMatrix bodyMatrix;
+	dMatrix matrix(pintAndPivotMatrix);
+
+	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
+	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
+
+	matrix = matrix * bodyMatrix;
+	SetJoint(new CustomHingeActuator(matrix, netwonBody0, NULL));
+}
+
+dNewtonHingeActuator::dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1)
+	:dNewtonJoint()
+{
+	dMatrix bodyMatrix;
+	dMatrix matrix(pintAndPivotMatrix);
+	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
+	NewtonBody* const netwonBody1 = (NewtonBody*)body1;
+	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
+	matrix = matrix * bodyMatrix;
+	SetJoint(new CustomHingeActuator(matrix, netwonBody0, netwonBody0));
+}
 
 

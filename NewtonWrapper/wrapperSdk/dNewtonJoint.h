@@ -24,8 +24,6 @@
 #include "stdafx.h"
 #include "dAlloc.h"
 #include <CustomJoint.h>
-#include <CustomHinge.h>
-
 
 class dNewtonJoint: public dAlloc
 {
@@ -60,5 +58,13 @@ class dNewtonHinge: public dNewtonJoint
 	dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0);
 	dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
 };
+
+class dNewtonHingeActuator : public dNewtonJoint
+{
+	public:
+	dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0);
+	dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
+};
+
 
 #endif

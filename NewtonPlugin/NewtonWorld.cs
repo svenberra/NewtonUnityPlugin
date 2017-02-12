@@ -68,7 +68,7 @@ public class NewtonWorld : MonoBehaviour
 
     private void InitPhysicsJoints(GameObject root)
     {
-        foreach (NewtonHinge joint in root.GetComponents<NewtonHinge>())
+        foreach (NewtonJoint joint in root.GetComponents<NewtonJoint>())
         {
             joint.Create();
         }

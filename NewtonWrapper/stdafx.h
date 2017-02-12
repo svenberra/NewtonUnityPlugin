@@ -24,12 +24,10 @@
 #include <dList.h>
 #include <dTree.h>
 
-
 #include <CustomAlloc.h>
 #include <CustomJoint.h>
 #include <CustomHinge.h>
-
-
+#include <CustomHingeActuator.h>
 
 
 // TODO: reference additional headers your program requires here
