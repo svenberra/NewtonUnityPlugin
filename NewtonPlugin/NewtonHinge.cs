@@ -196,6 +196,10 @@ public class NewtonActuator : NewtonJoint
         {
             m_joint = new dNewtonHingeActuator(floatsPtr, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
         }
+
+        TargetAngle = m_targetAngle;
+        AngularRate = m_angularRate;
+        MaxTorque = m_maxTorque;
     }
 
 
@@ -317,7 +321,7 @@ public class NewtonActuator : NewtonJoint
     public float m_angularRate = 1.0f;
     public float m_targetAngle = 0.0f;
     public float m_minAngle = -360.0f;
-    public float m_maxAngle = -360.0f;
+    public float m_maxAngle =  360.0f;
 }
 
 

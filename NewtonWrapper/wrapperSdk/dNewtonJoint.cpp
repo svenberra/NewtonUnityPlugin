@@ -141,7 +141,7 @@ void dNewtonHingeActuator::SetTargetAngle(dFloat angle, dFloat minLimit, dFloat 
 {
 	CustomHingeActuator* const actuator = (CustomHingeActuator*)m_joint;
 	actuator->SetMinAngularLimit(dMin(minLimit * DEGREES_TO_RAD, dFloat(0.0f)));
-	actuator->SetMinAngularLimit(dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
+	actuator->SetMaxAngularLimit(dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
 	actuator->SetTargetAngle(dClamp (angle * DEGREES_TO_RAD, actuator->GetMinAngularLimit(), actuator->GetMaxAngularLimit()));
 }
 
