@@ -9,9 +9,9 @@ public class HingeRotate : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
         na = GetComponent<NewtonActuator>();
-	}
+        targetAngle = na.MaximumAngle;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -21,11 +21,11 @@ public class HingeRotate : MonoBehaviour {
             float angle = na.GetJointAngle();
             if (targetAngle - angle < 1.0f)
             {
-                na.TargetAngle = targetAngle;
+                na.TargetAngle = na.MaximumAngle;
             }
             else
             {
-                na.TargetAngle = -targetAngle;
+                na.TargetAngle = na.MinimumAngle;
             }
         }	
 	}
