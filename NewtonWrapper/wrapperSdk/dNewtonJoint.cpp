@@ -69,7 +69,7 @@ dNewtonHinge::dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, 
 	NewtonBody* const netwonBody1 = (NewtonBody*)body1;
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 	matrix = matrix * bodyMatrix;
-	SetJoint(new CustomHinge(matrix, netwonBody0, netwonBody0));
+	SetJoint(new CustomHinge(matrix, netwonBody0, netwonBody1));
 }
 
 
@@ -99,7 +99,7 @@ dNewtonHingeActuator::dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, voi
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 
 	matrix = matrix * bodyMatrix;
-	CustomHingeActuator* const actuator = new CustomHingeActuator(matrix, netwonBody0, netwonBody0);
+	CustomHingeActuator* const actuator = new CustomHingeActuator(matrix, netwonBody0, NULL);
 	SetJoint(actuator);
 	actuator->SetEnableFlag(true);
 }
@@ -114,7 +114,7 @@ dNewtonHingeActuator::dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, voi
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 	matrix = matrix * bodyMatrix;
 
-	CustomHingeActuator* const actuator = new CustomHingeActuator(matrix, netwonBody0, netwonBody0);
+	CustomHingeActuator* const actuator = new CustomHingeActuator(matrix, netwonBody0, netwonBody1);
 	SetJoint(actuator);
 	actuator->SetEnableFlag(true);
 }
