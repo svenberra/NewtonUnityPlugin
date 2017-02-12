@@ -1,4 +1,4 @@
-/*
+/* 
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
 * arising from the use of this software.
@@ -18,22 +18,18 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef _D_NEWTON_JOINT_H_
-#define _D_NEWTON_JOINT_H_
 
 #include "stdafx.h"
-#include "dAlloc.h"
-#include <CustomJoint.h>
+#include "dNewtonJointRelational.h"
 
-class dNewtonJoint: public dAlloc
+dNewtonJointGear::dNewtonJointGear(dFloat ratio, dFloat* const pin0, dFloat* const pin1, void* const body0)
+	:dNewtonJoint()
 {
-	public:
-	dNewtonJoint();
-	void SetStiffness(dFloat stiffness);
 
-	protected:
-	void SetJoint(CustomJoint* const joint);
-	CustomJoint* m_joint;
-};
+}
 
-#endif
+dNewtonJointGear::dNewtonJointGear(dFloat ratio, dFloat* const pin0, dFloat* const pin1, void* const body0, void* const body1)
+	:dNewtonJoint()
+{
+
+}

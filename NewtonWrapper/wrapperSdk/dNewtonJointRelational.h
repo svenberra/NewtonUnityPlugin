@@ -18,22 +18,17 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef _D_NEWTON_JOINT_H_
-#define _D_NEWTON_JOINT_H_
+#ifndef _D_NEWTON_JOINT_GEAR_H_
+#define _D_NEWTON_JOINT_GEAR_H_
 
 #include "stdafx.h"
-#include "dAlloc.h"
-#include <CustomJoint.h>
+#include "dNewtonJoint.h"
 
-class dNewtonJoint: public dAlloc
+class dNewtonJointGear: public dNewtonJoint
 {
 	public:
-	dNewtonJoint();
-	void SetStiffness(dFloat stiffness);
-
-	protected:
-	void SetJoint(CustomJoint* const joint);
-	CustomJoint* m_joint;
+	dNewtonJointGear(dFloat ratio, dFloat* const pin0, dFloat* const pin1, void* const body0);
+	dNewtonJointGear(dFloat ratio, dFloat* const pin0, dFloat* const pin1, void* const body0, void* const body1);
 };
 
 #endif

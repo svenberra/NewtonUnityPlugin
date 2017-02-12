@@ -21,8 +21,9 @@
 	#include "dNewtonBody.h"
 	#include "dNewtonWorld.h"
 	#include "dNewtonJoint.h"
-	#include "CustomHinge.h"
 	#include "dNewtonCollision.h"
+	#include "dNewtonJointHinge.h"
+	#include "dNewtonJointRelational.h"
 %}
 
 /*
@@ -126,3 +127,5 @@
 %include "dNewtonWorld.h"
 %include "dNewtonJoint.h"
 %include "dNewtonCollision.h"
+%include "dNewtonJointHinge.h"
+%include "dNewtonJointRelational.h"

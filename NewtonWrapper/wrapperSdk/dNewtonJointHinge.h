@@ -18,22 +18,33 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef _D_NEWTON_JOINT_H_
-#define _D_NEWTON_JOINT_H_
+#ifndef _D_NEWTON_JOINT_HINGE_H_
+#define _D_NEWTON_JOINT_HINGE_H_
 
 #include "stdafx.h"
-#include "dAlloc.h"
-#include <CustomJoint.h>
+#include "dNewtonJoint.h"
 
-class dNewtonJoint: public dAlloc
+class dNewtonHinge: public dNewtonJoint
 {
 	public:
-	dNewtonJoint();
-	void SetStiffness(dFloat stiffness);
+	dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0);
+	dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
 
-	protected:
-	void SetJoint(CustomJoint* const joint);
-	CustomJoint* m_joint;
+	void SetLimits(bool enable, dFloat minVal, dFloat maxAngle);
+	void SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst);
 };
+
+class dNewtonHingeActuator : public dNewtonJoint
+{
+	public:
+	dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0);
+	dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
+
+	dFloat GetAngle() const;
+	void SetMaxToque(dFloat torque);
+	void SetAngularRate(dFloat rate);
+	void SetTargetAngle(dFloat angle, dFloat minLimit, dFloat maxLimit);
+};
+
 
 #endif
