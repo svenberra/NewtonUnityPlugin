@@ -48,7 +48,9 @@ class dNewtonBody: public dAlloc
 	void* GetBody() const;
 	void* GetPosition();
 	void* GetRotation();
-	virtual void AddForceAndTorque(dFloat* const force, dFloat* const torque);
+
+	virtual void AddForce(dFloat fx, dFloat fy, dFloat fz);
+	virtual void AddTorque(dFloat tx, dFloat ty, dFloat tz);
 
 	protected:
 	virtual ~dNewtonBody();
@@ -146,9 +148,9 @@ class dNewtonDynamicBody: public dNewtonBody
 	private:
 	virtual void OnForceAndTorque(dFloat timestep, int threadIndex);
 	virtual void InitForceAccumulators();
-//	OnApplyForceAndTorqueCallback m_forceCallback;
 
-	virtual void AddForceAndTorque(dFloat* const force, dFloat* const torque);
+	virtual void AddForce(dFloat fx, dFloat fy, dFloat fz);
+	virtual void AddTorque(dFloat tx, dFloat ty, dFloat tz);
 
 	dVector m_externalForce;
 	dVector m_externalTorque;
