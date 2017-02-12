@@ -60,6 +60,11 @@ class dNewtonHingeActuator : public dNewtonJoint
 	public:
 	dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0);
 	dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
+
+	dFloat GetAngle() const;
+	void SetMaxToque(dFloat torque);
+	void SetAngularRate(dFloat rate);
+	void SetTargetAngle(dFloat angle, dFloat minLimit, dFloat maxLimit);
 };
 
 

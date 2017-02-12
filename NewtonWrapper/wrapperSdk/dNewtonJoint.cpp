@@ -22,9 +22,6 @@
 #include "stdafx.h"
 #include "dNewtonJoint.h"
 
-
-
-
 dNewtonJoint::dNewtonJoint()
 	:dAlloc()
 	,m_joint(NULL)
@@ -81,7 +78,7 @@ void dNewtonHinge::SetLimits(bool enable, dFloat minVal, dFloat maxAngle)
 	CustomHinge* const hinge = (CustomHinge*)m_joint;
 	hinge->EnableLimits(enable);
 	if (enable) {
-		hinge->SetLimits(dMin(minVal, 0.0f), dMax(maxAngle, 0.0f));
+		hinge->SetLimits(dMin(minVal * DEGREES_TO_RAD, 0.0f), dMax(maxAngle * DEGREES_TO_RAD, 0.0f));
 	}
 }
 
@@ -102,7 +99,9 @@ dNewtonHingeActuator::dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, voi
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 
 	matrix = matrix * bodyMatrix;
-	SetJoint(new CustomHingeActuator(matrix, netwonBody0, NULL));
+	CustomHingeActuator* const actuator = new CustomHingeActuator(matrix, netwonBody0, netwonBody0);
+	SetJoint(actuator);
+	actuator->SetEnableFlag(true);
 }
 
 dNewtonHingeActuator::dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1)
@@ -114,7 +113,35 @@ dNewtonHingeActuator::dNewtonHingeActuator(dFloat* const pintAndPivotMatrix, voi
 	NewtonBody* const netwonBody1 = (NewtonBody*)body1;
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 	matrix = matrix * bodyMatrix;
-	SetJoint(new CustomHingeActuator(matrix, netwonBody0, netwonBody0));
+
+	CustomHingeActuator* const actuator = new CustomHingeActuator(matrix, netwonBody0, netwonBody0);
+	SetJoint(actuator);
+	actuator->SetEnableFlag(true);
 }
 
+dFloat dNewtonHingeActuator::GetAngle() const
+{
+	CustomHingeActuator* const actuator = (CustomHingeActuator*)m_joint;
+	return actuator->GetActuatorAngle() * RAD_TO_DEGREES;
+}
+
+void dNewtonHingeActuator::SetMaxToque(dFloat torque)
+{
+	CustomHingeActuator* const actuator = (CustomHingeActuator*)m_joint;
+	actuator->SetMaxForcePower(dAbs(torque));
+}
+
+void dNewtonHingeActuator::SetAngularRate(dFloat rate)
+{
+	CustomHingeActuator* const actuator = (CustomHingeActuator*)m_joint;
+	actuator->SetAngularRate(rate * DEGREES_TO_RAD);
+}
+
+void dNewtonHingeActuator::SetTargetAngle(dFloat angle, dFloat minLimit, dFloat maxLimit)
+{
+	CustomHingeActuator* const actuator = (CustomHingeActuator*)m_joint;
+	actuator->SetMinAngularLimit(dMin(minLimit * DEGREES_TO_RAD, dFloat(0.0f)));
+	actuator->SetMinAngularLimit(dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
+	actuator->SetTargetAngle(dClamp (angle * DEGREES_TO_RAD, actuator->GetMinAngularLimit(), actuator->GetMaxAngularLimit()));
+}
 

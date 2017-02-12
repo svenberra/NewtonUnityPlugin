@@ -214,12 +214,110 @@ public class NewtonActuator : NewtonJoint
         Gizmos.DrawLine(m_posit, direction);
     }
 
+
+    public float MaxTorque
+    {
+        get
+        {
+            return m_maxTorque;
+        }
+        set
+        {
+            m_maxTorque = value;
+            if (m_joint != null)
+            {
+                dNewtonHingeActuator hinge = (dNewtonHingeActuator)m_joint;
+                hinge.SetMaxToque(m_maxTorque);
+            }
+        }
+    }
+
+    public float AngularRate
+    {
+        get
+        {
+            return m_angularRate;
+        }
+        set
+        {
+            m_angularRate = value;
+            if (m_joint != null)
+            {
+                dNewtonHingeActuator hinge = (dNewtonHingeActuator)m_joint;
+                hinge.SetAngularRate(m_angularRate);
+            }
+        }
+    }
+
+    public float TargetAngle
+    {
+        get
+        {
+            return m_targetAngle;
+        }
+        set
+        {
+            m_targetAngle = value;
+            if (m_joint != null)
+            {
+                dNewtonHingeActuator hinge = (dNewtonHingeActuator)m_joint;
+                hinge.SetTargetAngle(m_targetAngle, m_minAngle, m_maxAngle);
+            }
+        }
+    }
+
+    public float MinimumAngle
+    {
+        get
+        {
+            return m_minAngle;
+        }
+        set
+        {
+            m_minAngle = value;
+            if (m_joint != null)
+            {
+                dNewtonHingeActuator hinge = (dNewtonHingeActuator)m_joint;
+                hinge.SetTargetAngle(m_targetAngle, m_minAngle, m_maxAngle);
+            }
+        }
+    }
+
+    float GetJointAngle()
+    {
+        float angle = 0.0f;
+        if (m_joint != null)
+        {
+            dNewtonHingeActuator hinge = (dNewtonHingeActuator)m_joint;
+            angle = hinge.GetAngle();
+        }
+        return angle; 
+    }
+
+    public float MaximumAngle
+    {
+        get
+        {
+            return m_maxAngle;
+        }
+        set
+        {
+            m_maxAngle = value;
+            if (m_joint != null)
+            {
+                dNewtonHingeActuator hinge = (dNewtonHingeActuator)m_joint;
+                hinge.SetTargetAngle(m_targetAngle, m_minAngle, m_maxAngle);
+            }
+        }
+    }
+
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
     public float m_maxTorque = 10.0f;
-    public float m_angulaVelocity = 1.0f;
-    public float m_minAngle = -60.0f;
-    public float m_maxAngle = 60.0f;
+    public float m_angularRate = 1.0f;
+    public float m_targetAngle = 0.0f;
+    public float m_minAngle = -360.0f;
+    public float m_maxAngle = -360.0f;
 }
 
 
