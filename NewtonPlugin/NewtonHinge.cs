@@ -25,20 +25,9 @@ public class NewtonHinge: NewtonJoint
 
         Stiffness = m_stiffness;
         EnableLimits = m_enableLimits;
-    }
-/*
-    void SetLimits ()
-    {
-        dNewtonHinge hinge = (dNewtonHinge)m_joint;
-        hinge.SetLimits(m_enableLimits, m_minLimit, m_maxLimit);
+        SetSpringDamper = m_setSpringDamper;
     }
 
-    void SetAsSpringDamper()
-    {
-        dNewtonHinge hinge = (dNewtonHinge)m_joint;
-        hinge.SetAsSpringDamper(m_setSpringDamper, m_springDamperForceMixing, m_springConstant, m_damperConstant);
-    }
-*/
     void OnDrawGizmosSelected()
     {
         Matrix4x4 bodyMatrix = Matrix4x4.identity;
@@ -109,6 +98,74 @@ public class NewtonHinge: NewtonJoint
         }
     }
 
+    public bool SetSpringDamper
+    {
+        get
+        {
+            return m_setSpringDamper;
+        }
+        set
+        {
+            m_setSpringDamper = value;
+            if (m_joint != null)
+            {
+                dNewtonHinge hinge = (dNewtonHinge)m_joint;
+                hinge.SetAsSpringDamper(m_setSpringDamper, m_springDamperForceMixing, m_springConstant, m_damperConstant);
+            }
+        }
+    }
+
+    public float SpringDamperForceMixing
+    {
+        get
+        {
+            return m_springDamperForceMixing;
+        }
+        set
+        {
+            m_springDamperForceMixing = value;
+            if (m_joint != null)
+            {
+                dNewtonHinge hinge = (dNewtonHinge)m_joint;
+                hinge.SetAsSpringDamper(m_setSpringDamper, m_springDamperForceMixing, m_springConstant, m_damperConstant);
+            }
+        }
+    }
+
+    public float SpringConstant
+    {
+        get
+        {
+            return m_springConstant;
+        }
+        set
+        {
+            m_springConstant = value;
+            if (m_joint != null)
+            {
+                dNewtonHinge hinge = (dNewtonHinge)m_joint;
+                hinge.SetAsSpringDamper(m_setSpringDamper, m_springDamperForceMixing, m_springConstant, m_damperConstant);
+            }
+        }
+    }
+
+    public float DamperConstant
+    {
+        get
+        {
+            return m_damperConstant;
+        }
+        set
+        {
+            m_damperConstant = value;
+            if (m_joint != null)
+            {
+                dNewtonHinge hinge = (dNewtonHinge)m_joint;
+                hinge.SetAsSpringDamper(m_setSpringDamper, m_springDamperForceMixing, m_springConstant, m_damperConstant);
+            }
+        }
+    }
+
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
     public bool m_enableLimits = false;
@@ -139,8 +196,6 @@ public class NewtonActuator : NewtonJoint
         {
             m_joint = new dNewtonHingeActuator(floatsPtr, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
         }
-
-
     }
 
 
