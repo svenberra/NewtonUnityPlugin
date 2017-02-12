@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 
 [AddComponentMenu("Newton Physics/Joints/Hinge")]
-public class NewtonHinge : NewtonJoint
+public class NewtonHinge: NewtonJoint
 {
     public override void Create()
     {
@@ -22,9 +22,23 @@ public class NewtonHinge : NewtonJoint
         {
             m_joint = new dNewtonHinge(floatsPtr, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
         }
+
+        Stiffness = m_stiffness;
+        EnableLimits = m_enableLimits;
+    }
+/*
+    void SetLimits ()
+    {
+        dNewtonHinge hinge = (dNewtonHinge)m_joint;
+        hinge.SetLimits(m_enableLimits, m_minLimit, m_maxLimit);
     }
 
-
+    void SetAsSpringDamper()
+    {
+        dNewtonHinge hinge = (dNewtonHinge)m_joint;
+        hinge.SetAsSpringDamper(m_setSpringDamper, m_springDamperForceMixing, m_springConstant, m_damperConstant);
+    }
+*/
     void OnDrawGizmosSelected()
     {
         Matrix4x4 bodyMatrix = Matrix4x4.identity;
@@ -41,6 +55,57 @@ public class NewtonHinge : NewtonJoint
         if (m_enableLimits)
         {
             // draw hinge limit
+        }
+    }
+
+    public bool EnableLimits
+    {
+        get
+        {
+            return m_enableLimits;
+        }
+        set
+        {
+            m_enableLimits = value;
+            if (m_joint != null)
+            {
+                dNewtonHinge hinge = (dNewtonHinge)m_joint;
+                hinge.SetLimits(m_enableLimits, m_minLimit, m_maxLimit);
+            }
+        }
+    }
+
+    public float MinimumLimit
+    {
+        get
+        {
+            return m_minLimit;
+        }
+        set
+        {
+            m_minLimit = value;
+            if (m_joint != null)
+            {
+                dNewtonHinge hinge = (dNewtonHinge)m_joint;
+                hinge.SetLimits(m_enableLimits, m_minLimit, m_maxLimit);
+            }
+        }
+    }
+
+    public float MaximunLimit
+    {
+        get
+        {
+            return m_maxLimit;
+        }
+        set
+        {
+            m_maxLimit = value;
+            if (m_joint != null)
+            {
+                dNewtonHinge hinge = (dNewtonHinge)m_joint;
+                hinge.SetLimits(m_enableLimits, m_minLimit, m_maxLimit);
+            }
         }
     }
 
@@ -74,6 +139,8 @@ public class NewtonActuator : NewtonJoint
         {
             m_joint = new dNewtonHingeActuator(floatsPtr, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
         }
+
+
     }
 
 

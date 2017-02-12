@@ -28,18 +28,11 @@
 class dNewtonJoint: public dAlloc
 {
 	public:
-	dNewtonJoint()
-		:dAlloc()
-		,m_joint(NULL)
-	{
-	}
+	dNewtonJoint();
+	void SetStiffness(dFloat stiffness);
 
 	protected:
-	void SetJoint(CustomJoint* const joint)
-	{
-		m_joint = joint;
-	}
-
+	void SetJoint(CustomJoint* const joint);
 	CustomJoint* m_joint;
 };
 
@@ -57,6 +50,9 @@ class dNewtonHinge: public dNewtonJoint
 	public:
 	dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0);
 	dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
+
+	void SetLimits(bool enable, dFloat minVal, dFloat maxAngle);
+	void SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst);
 };
 
 class dNewtonHingeActuator : public dNewtonJoint

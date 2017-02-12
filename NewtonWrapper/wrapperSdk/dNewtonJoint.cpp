@@ -23,6 +23,25 @@
 #include "dNewtonJoint.h"
 
 
+
+
+dNewtonJoint::dNewtonJoint()
+	:dAlloc()
+	,m_joint(NULL)
+{
+}
+
+void dNewtonJoint::SetJoint(CustomJoint* const joint)
+{
+	m_joint = joint;
+}
+
+
+void dNewtonJoint::SetStiffness(dFloat stiffness)
+{
+	m_joint->SetStiffness(stiffness);
+}
+
 /*
 dNewtonBallAndSocket::dNewtonBallAndSocket(dNewtonWorld* const world)
 	:dNewtonJoint(world)
@@ -54,6 +73,22 @@ dNewtonHinge::dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, 
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 	matrix = matrix * bodyMatrix;
 	SetJoint(new CustomHinge(matrix, netwonBody0, netwonBody0));
+}
+
+
+void dNewtonHinge::SetLimits(bool enable, dFloat minVal, dFloat maxAngle)
+{
+	CustomHinge* const hinge = (CustomHinge*)m_joint;
+	hinge->EnableLimits(enable);
+	if (enable) {
+		hinge->SetLimits(dMin(minVal, 0.0f), dMax(maxAngle, 0.0f));
+	}
+}
+
+void dNewtonHinge::SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst)
+{
+	CustomHinge* const hinge = (CustomHinge*)m_joint;
+	hinge->SetAsSpringDamper(enable, dClamp(forceMixing, 0.7f, 0.99f), dAbs(springConst), dAbs(damperConst));
 }
 
 

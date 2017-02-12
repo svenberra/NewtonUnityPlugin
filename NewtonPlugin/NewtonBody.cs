@@ -36,7 +36,6 @@ public class NewtonBody : MonoBehaviour
         Marshal.Copy(rotationPtr, m_rotationPtr, 0, 4);
         transform.position = new Vector3(m_positionPtr[0], m_positionPtr[1], m_positionPtr[2]);
         transform.rotation = new Quaternion(m_rotationPtr[1], m_rotationPtr[2], m_rotationPtr[3], m_rotationPtr[0]);
-        //Debug.Log("yyyy " + transform.rotation[0] + " " + transform.rotation[1] + " " + transform.rotation[2] + " " + transform.rotation[3]);
     }
 
     public void InitRigidBody(int sceneIndex)
@@ -50,7 +49,6 @@ public class NewtonBody : MonoBehaviour
         Marshal.StructureToPtr(matrix, floatsPtr, false);
         m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), floatsPtr, m_mass);
         Marshal.FreeHGlobal(floatsPtr);
-        //Debug.Log("xxxx " + transform.rotation[0] + " " + transform.rotation[1] + " " + transform.rotation[2] + " " + transform.rotation[3]);
     }
 
     public void DestroyRigidBody()
@@ -74,8 +72,8 @@ public class NewtonBody : MonoBehaviour
         {
             if (m_actions.Length >= 1)
             {
-                m_forceAcc = new Vector3(0.0f, 0.0f, 0.0f);
-                m_torqueAcc = new Vector3(0.0f, 0.0f, 0.0f);
+                m_forceAcc = Vector3.zero;
+                m_torqueAcc = Vector3.zero;
                 foreach (NewtonBodyForceAction action in m_actions)
                 {
                     action.ApplyForceAction(this, timestep);
