@@ -287,17 +287,6 @@ public class NewtonActuator : NewtonJoint
         }
     }
 
-    float GetJointAngle()
-    {
-        float angle = 0.0f;
-        if (m_joint != null)
-        {
-            dNewtonHingeActuator hinge = (dNewtonHingeActuator)m_joint;
-            angle = hinge.GetAngle();
-        }
-        return angle; 
-    }
-
     public float MaximumAngle
     {
         get
@@ -314,6 +303,29 @@ public class NewtonActuator : NewtonJoint
             }
         }
     }
+
+    public float GetJointAngle()
+    {
+        float angle = 0.0f;
+        if (m_joint != null)
+        {
+            dNewtonHingeActuator hinge = (dNewtonHingeActuator)m_joint;
+            angle = hinge.GetAngle();
+        }
+        return angle;
+    }
+
+    public float GetJointSpeed()
+    {
+        float angle = 0.0f;
+        if (m_joint != null)
+        {
+            dNewtonHingeActuator hinge = (dNewtonHingeActuator)m_joint;
+            angle = hinge.GetAngle();
+        }
+        return angle;
+    }
+
 
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
