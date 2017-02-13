@@ -44,16 +44,6 @@ NewtonBody* dNewtonBody::GetNewtonBody () const
 	return m_body;
 }
 
-bool dNewtonBody::GetSleepState() const
-{
-	return NewtonBodyGetSleepState(m_body) ? true : false;
-}
-
-void dNewtonBody::SetSleepState(bool state) const
-{
-	NewtonBodySetSleepState(m_body, state ? 1 : 0);
-}
-
 bool dNewtonBody::GetAutoSleepMode() const
 {
 	return NewtonBodyGetSleepState(m_body) ? true : false;
@@ -262,6 +252,15 @@ void dNewtonBody::AttachChild(dNewtonBody* const child)
 
 #endif
 
+bool dNewtonBody::GetSleepState() const
+{
+	return NewtonBodyGetSleepState(m_body) ? true : false;
+}
+
+void dNewtonBody::SetSleepState(bool state) const
+{
+	NewtonBodySetSleepState(m_body, state ? 1 : 0);
+}
 
 
 dNewtonBody::ScopeLock::ScopeLock (unsigned int* const lock)

@@ -106,6 +106,24 @@ public class NewtonBody : MonoBehaviour
         return m_body;
     }
 
+    public bool SleepState
+    {
+        get
+        {
+            if(m_body != null)
+                return m_body.GetSleepState();
+
+            return false;
+        }
+        set
+        {
+            if (m_body != null)
+            {
+                m_body.SetSleepState(value);
+            }
+        }
+    }
+
     public float m_mass;
     public bool m_isScene = false;
     public NewtonWorld m_world;

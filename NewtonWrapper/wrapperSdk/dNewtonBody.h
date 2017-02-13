@@ -52,6 +52,9 @@ class dNewtonBody: public dAlloc
 	virtual void AddForce(dFloat fx, dFloat fy, dFloat fz);
 	virtual void AddTorque(dFloat tx, dFloat ty, dFloat tz);
 
+	bool GetSleepState() const;
+	void SetSleepState(bool state) const;
+
 	protected:
 	virtual ~dNewtonBody();
 
@@ -65,8 +68,6 @@ class dNewtonBody: public dAlloc
 
 /*
 	dBodyType GetType() const {return m_bodyType;}
-	bool GetSleepState() const;
-	void SetSleepState(bool state) const;
 	bool GetAutoSleepMode() const;
 	void SetAutoSleepMode(bool mode);
 	void SetMatrix (const dFloat* const matrix);
