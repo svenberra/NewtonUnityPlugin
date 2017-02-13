@@ -49,8 +49,8 @@ class dNewtonBody: public dAlloc
 	void* GetPosition();
 	void* GetRotation();
 
-	virtual void AddForce(dFloat fx, dFloat fy, dFloat fz);
-	virtual void AddTorque(dFloat tx, dFloat ty, dFloat tz);
+	virtual void AddForce(dVector force);
+	virtual void AddTorque(dVector force);
 
 	bool GetSleepState() const;
 	void SetSleepState(bool state) const;
@@ -150,8 +150,8 @@ class dNewtonDynamicBody: public dNewtonBody
 	virtual void OnForceAndTorque(dFloat timestep, int threadIndex);
 	virtual void InitForceAccumulators();
 
-	virtual void AddForce(dFloat fx, dFloat fy, dFloat fz);
-	virtual void AddTorque(dFloat tx, dFloat ty, dFloat tz);
+	virtual void AddForce(dVector force);
+	virtual void AddTorque(dVector torque);
 
 	dVector m_externalForce;
 	dVector m_externalTorque;

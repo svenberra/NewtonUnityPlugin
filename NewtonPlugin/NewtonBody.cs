@@ -94,9 +94,8 @@ public class NewtonBody : MonoBehaviour
                 {
                     action.ApplyForceAction(this, timestep);
                 }
-
-                m_body.AddForce(m_forceAcc.x, m_forceAcc.y, m_forceAcc.z);
-                m_body.AddTorque(m_torqueAcc.x, m_torqueAcc.y, m_torqueAcc.z);
+                m_body.AddForce(new dVector(m_forceAcc.x, m_forceAcc.y, m_forceAcc.z, 0.0f));
+                m_body.AddTorque(new dVector(m_torqueAcc.x, m_torqueAcc.y, m_torqueAcc.z, 0.0f));
             }
         }
     }
