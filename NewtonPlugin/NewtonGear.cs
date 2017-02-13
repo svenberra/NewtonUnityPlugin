@@ -8,25 +8,24 @@ public class NewtonGear : NewtonJoint
 {
     public override void Create()
     {
-/*
-        Matrix4x4 localMatrix = Matrix4x4.identity;
-        localMatrix.SetTRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
-        IntPtr floatsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(localMatrix));
-        Marshal.StructureToPtr(localMatrix, floatsPtr, false);
-        NewtonBody child = GetComponent<NewtonBody>();
-        if (m_otherBody == null)
+        if (m_otherBody)
         {
-            m_joint = new dNewtonHingeActuator(floatsPtr, child.GetBody().GetBody());
-        }
-        else
-        {
-            m_joint = new dNewtonHingeActuator(floatsPtr, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
-        }
+            Matrix4x4 localMatrix0 = Matrix4x4.identity;
+            Matrix4x4 localMatrix1 = Matrix4x4.identity;
+            localMatrix0.SetTRS(Vector3.zero, Quaternion.Euler(m_rotation), Vector3.one);
+            localMatrix0.SetTRS(Vector3.zero, Quaternion.Euler(m_parentRotation), Vector3.one);
 
-        TargetAngle = m_targetAngle;
-        AngularRate = m_angularRate;
-        MaxTorque = m_maxTorque;
-*/
+            Vector4 childPin = localMatrix0.GetRow(0);
+            Vector4 parentPin = localMatrix1.GetRow(0);
+
+            IntPtr childPinPtr = Marshal.AllocHGlobal(Marshal.SizeOf(childPin));
+            IntPtr parentPinPtr = Marshal.AllocHGlobal(Marshal.SizeOf(parentPin));
+            Marshal.StructureToPtr(childPin, childPinPtr, false);
+            Marshal.StructureToPtr(parentPin, parentPinPtr, false);
+
+            NewtonBody child = GetComponent<NewtonBody>();
+            m_joint = new dNewtonJointGear(m_gearRatio, childPinPtr, parentPinPtr, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
+        }
     }
 
 /*
@@ -154,9 +153,7 @@ public class NewtonGear : NewtonJoint
     }
 */
 
-    public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
-    public Vector3 m_parentPosit = Vector3.zero;
     public Vector3 m_parentRotation = Vector3.zero;
     public float m_gearRatio = 1.0f;
 }
