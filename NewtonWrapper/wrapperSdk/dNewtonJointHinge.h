@@ -27,8 +27,8 @@
 class dNewtonJointHinge: public dNewtonJoint
 {
 	public:
-	dNewtonJointHinge(dFloat* const pintAndPivotMatrix, void* const body0);
-	dNewtonJointHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
+	dNewtonJointHinge(const dMatrix pintAndPivotMatrix, void* const body0);
+	dNewtonJointHinge(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1);
 
 	void SetLimits(bool enable, dFloat minVal, dFloat maxAngle);
 	void SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst);
@@ -37,8 +37,8 @@ class dNewtonJointHinge: public dNewtonJoint
 class dNewtonJointHingeActuator : public dNewtonJoint
 {
 	public:
-	dNewtonJointHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0);
-	dNewtonJointHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
+	dNewtonJointHingeActuator(const dMatrix pintAndPivotMatrix, void* const body0);
+	dNewtonJointHingeActuator(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1);
 
 	dFloat GetAngle() const;
 	void SetMaxToque(dFloat torque);
