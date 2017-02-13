@@ -32,7 +32,9 @@ dNewtonHinge::dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0)
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 
 	matrix = matrix * bodyMatrix;
-	SetJoint(new CustomHinge(matrix, netwonBody0, NULL));
+
+	CustomHinge* const hinge = new CustomHinge(matrix, netwonBody0, NULL);
+	SetJoint(hinge);
 }
 
 dNewtonHinge::dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1)
@@ -44,7 +46,8 @@ dNewtonHinge::dNewtonHinge(dFloat* const pintAndPivotMatrix, void* const body0, 
 	NewtonBody* const netwonBody1 = (NewtonBody*)body1;
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 	matrix = matrix * bodyMatrix;
-	SetJoint(new CustomHinge(matrix, netwonBody0, netwonBody1));
+	CustomHinge* const hinge = new CustomHinge(matrix, netwonBody0, netwonBody1);
+	SetJoint(hinge);
 }
 
 

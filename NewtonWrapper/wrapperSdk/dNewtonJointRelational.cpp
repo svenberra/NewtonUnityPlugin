@@ -25,11 +25,30 @@
 dNewtonJointGear::dNewtonJointGear(dFloat ratio, dFloat* const pin0, dFloat* const pin1, void* const body0)
 	:dNewtonJoint()
 {
+	dMatrix bodyMatrix;
+	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
+	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 
+	dVector childPin (bodyMatrix.RotateVector(dVector(pin0[0], pin0[1], pin0[2], 0.0f)));
+	dVector parentPin (dVector(pin1[0], pin1[1], pin1[2], 0.0f));
+
+	CustomGear* const gear = new CustomGear(dAbs (ratio), childPin, parentPin, netwonBody0, NULL);
+	SetJoint(gear);
 }
 
 dNewtonJointGear::dNewtonJointGear(dFloat ratio, dFloat* const pin0, dFloat* const pin1, void* const body0, void* const body1)
 	:dNewtonJoint()
 {
+	dMatrix bodyMatrix0;
+	dMatrix bodyMatrix1;
+	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
+	NewtonBody* const netwonBody1 = (NewtonBody*)body1;
+	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix0[0][0]);
+	NewtonBodyGetMatrix(netwonBody1, &bodyMatrix1[0][0]);
 
+	dVector childPin(bodyMatrix0.RotateVector(dVector(pin0[0], pin0[1], pin0[2], 0.0f)));
+	dVector parentPin(bodyMatrix1.RotateVector(dVector(pin1[0], pin1[1], pin1[2], 0.0f)));
+
+	CustomGear* const gear = new CustomGear(dAbs(ratio), childPin, parentPin, netwonBody0, netwonBody1);
+	SetJoint(gear);
 }

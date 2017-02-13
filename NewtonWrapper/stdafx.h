@@ -25,8 +25,10 @@
 #include <dTree.h>
 
 #include <CustomAlloc.h>
+
 #include <CustomJoint.h>
 #include <CustomHinge.h>
+#include <CustomGear.h>
 #include <CustomHingeActuator.h>
 
 #define RAD_TO_DEGREES	(180.0f / 3.141592f)
