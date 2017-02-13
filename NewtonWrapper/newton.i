@@ -145,5 +145,5 @@
 %include "dNewtonJoint.h"
 %include "dNewtonCollision.h"
 %include "dNewtonJointHinge.h"
-#include "dNewtonJointUniversal.h"
+%include "dNewtonJointUniversal.h"
 %include "dNewtonJointRelational.h"
