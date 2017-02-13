@@ -13,10 +13,10 @@ public class NewtonGear : NewtonJoint
             Matrix4x4 localMatrix0 = Matrix4x4.identity;
             Matrix4x4 localMatrix1 = Matrix4x4.identity;
             localMatrix0.SetTRS(Vector3.zero, Quaternion.Euler(m_rotation), Vector3.one);
-            localMatrix0.SetTRS(Vector3.zero, Quaternion.Euler(m_parentRotation), Vector3.one);
+            localMatrix1.SetTRS(Vector3.zero, Quaternion.Euler(m_parentRotation), Vector3.one);
 
-            Vector4 childPin = localMatrix0.GetRow(0);
-            Vector4 parentPin = localMatrix1.GetRow(0);
+            Vector4 childPin = localMatrix0.GetColumn(0);
+            Vector4 parentPin = localMatrix1.GetColumn(0);
 
             IntPtr childPinPtr = Marshal.AllocHGlobal(Marshal.SizeOf(childPin));
             IntPtr parentPinPtr = Marshal.AllocHGlobal(Marshal.SizeOf(parentPin));
@@ -28,22 +28,32 @@ public class NewtonGear : NewtonJoint
         }
     }
 
-/*
     void OnDrawGizmosSelected()
     {
-        Matrix4x4 bodyMatrix = Matrix4x4.identity;
-        Matrix4x4 localMatrix = Matrix4x4.identity;
-        bodyMatrix.SetTRS(transform.position, transform.rotation, Vector3.one);
-        localMatrix.SetTRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
+        Matrix4x4 bodyMatrix0 = Matrix4x4.identity;
+        Matrix4x4 localMatrix0 = Matrix4x4.identity;
+        bodyMatrix0.SetTRS(transform.position, transform.rotation, Vector3.one);
+        localMatrix0.SetTRS(Vector3.zero, Quaternion.Euler(m_rotation), Vector3.one);
 
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.cyan;
+        Gizmos.matrix = bodyMatrix0;
+        Vector4 childPin = localMatrix0.GetColumn(0) * m_gizmoScale;
+        Gizmos.DrawLine(Vector3.zero, childPin);
+        if (m_otherBody != null)
+        {
+            Matrix4x4 bodyMatrix1 = Matrix4x4.identity;
+            Matrix4x4 localMatrix1 = Matrix4x4.identity;
+            bodyMatrix1.SetTRS(m_otherBody.transform.position, m_otherBody.transform.rotation, Vector3.one);
+            localMatrix1.SetTRS(Vector3.zero, Quaternion.Euler(m_parentRotation), Vector3.one);
 
-        Gizmos.matrix = bodyMatrix;
-        Vector3 direction = localMatrix.MultiplyPoint3x4(new Vector3(m_gizmoScale, 0.0f, 0.0f));
-
-        Gizmos.DrawLine(m_posit, direction);
+            Gizmos.color = Color.cyan;
+            Gizmos.matrix = bodyMatrix1;
+            Vector4 parentPin = localMatrix1.GetColumn(0) * m_gizmoScale;
+            Gizmos.DrawLine(Vector3.zero, parentPin);
+        }
     }
 
+/*
     public float GetJointSpeed()
     {
         float angle = 0.0f;
