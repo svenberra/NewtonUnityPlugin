@@ -42,7 +42,7 @@ class dNewtonBody: public dAlloc
 		unsigned* m_atomicLock;
 	};
 
-	dNewtonBody(const dMatrix* const matrix);
+	dNewtonBody(const dMatrix& matrix);
 	virtual void Destroy();
 
 	void* GetBody() const;
@@ -144,7 +144,7 @@ class dNewtonBody: public dAlloc
 class dNewtonDynamicBody: public dNewtonBody
 {
 	public:
-	dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr, dFloat mass);
+	dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, dMatrix matrix, dFloat mass);
 
 	private:
 	virtual void OnForceAndTorque(dFloat timestep, int threadIndex);

@@ -278,13 +278,13 @@ dNewtonBody::ScopeLock::~ScopeLock()
 }
 
 
-dNewtonBody::dNewtonBody(const dMatrix* const matrix)
+dNewtonBody::dNewtonBody(const dMatrix& matrix)
 	:dAlloc()
 	,m_body(NULL)
-	,m_posit0(matrix->m_posit)
-	,m_posit1(matrix->m_posit)
-	,m_interpolatedPosit(matrix->m_posit)
-	,m_rotation0(*matrix)
+	,m_posit0(matrix.m_posit)
+	,m_posit1(matrix.m_posit)
+	,m_interpolatedPosit(matrix.m_posit)
+	,m_rotation0(matrix)
 	,m_rotation1(m_rotation0)
 	,m_interpolatedRotation(m_rotation0)
 	,m_lock(0)
@@ -386,10 +386,9 @@ void dNewtonBody::AddTorque(dVector torque)
 {
 }
 
-dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, const void* const matrixPtr, dFloat mass)
-	:dNewtonBody((dMatrix*)matrixPtr)
+dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, dMatrix matrix, dFloat mass)
+	:dNewtonBody(matrix)
 {
-	dMatrix matrix (m_rotation0, m_posit0);
 	NewtonWorld* const newton = world->m_world;
 	m_body = NewtonCreateDynamicBody(newton, collision->m_shape, &matrix[0][0]);
 	collision->DeleteShape();
