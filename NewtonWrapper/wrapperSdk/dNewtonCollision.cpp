@@ -248,9 +248,8 @@ void dNewtonCollision::SetScale(dFloat scaleX, dFloat scaleY, dFloat scaleZ)
 	NewtonCollisionSetScale(m_shape, scaleX, scaleY, scaleZ);
 }
 
-void dNewtonCollision::SetMatrix(const void* const matrixPtr)
+void dNewtonCollision::SetMatrix(const dMatrix matrix)
 {
-	dMatrix matrix((dFloat*)matrixPtr);
 	NewtonCollisionSetMatrix(m_shape, &matrix[0][0]);
 }
 

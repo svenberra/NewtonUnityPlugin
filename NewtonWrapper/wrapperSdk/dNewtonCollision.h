@@ -37,7 +37,7 @@ class dNewtonCollision: public dAlloc
 
 	virtual bool IsValid();
 	virtual void SetScale(dFloat x, dFloat y, dFloat z);
-	virtual void SetMatrix(const void* const matrix);
+	virtual void SetMatrix(const dMatrix matrix);
 	virtual void DebugRender(OnDrawFaceCallback callback, const dVector eyePoint);
 
 	protected:

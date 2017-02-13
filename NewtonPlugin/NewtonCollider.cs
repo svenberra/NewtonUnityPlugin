@@ -74,11 +74,6 @@ abstract public class NewtonCollider : MonoBehaviour
         return false;
     }
 
-    public Matrix4x4 GetMatrix ()
-    {
-        return Matrix4x4.TRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
-    }
-
     virtual public Vector3 GetScale()
     {
         Vector3 scale = m_scale;
@@ -107,12 +102,7 @@ abstract public class NewtonCollider : MonoBehaviour
     {
         Vector3 scale = GetScale();
         shape.SetScale(scale.x, scale.y, scale.z);
-
-        Matrix4x4 matrix = GetMatrix();
-        IntPtr floatPtr = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
-        Marshal.StructureToPtr(matrix, floatPtr, false);
-        shape.SetMatrix(floatPtr);
-        Marshal.FreeHGlobal(floatPtr);
+        shape.SetMatrix(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)));
     }
 
     public void UpdateEditorParams()
