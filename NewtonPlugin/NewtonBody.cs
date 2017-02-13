@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 
+
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Rigid Body")]
 public class NewtonBody : MonoBehaviour
@@ -41,6 +42,17 @@ public class NewtonBody : MonoBehaviour
         DestroyRigidBody();
         m_actions = null;
     }
+
+    static public dMatrix TodMatrix(Matrix4x4 entMatrix)
+    {
+        dMatrix matrix = new dMatrix();
+        matrix.m_front = new dVector(entMatrix.m00, entMatrix.m10, entMatrix.m20, entMatrix.m30);
+        matrix.m_up = new dVector(entMatrix.m01, entMatrix.m11, entMatrix.m21, entMatrix.m31);
+        matrix.m_right = new dVector(entMatrix.m02, entMatrix.m12, entMatrix.m22, entMatrix.m32);
+        matrix.m_posit = new dVector(entMatrix.m03, entMatrix.m13, entMatrix.m23, entMatrix.m33);
+        return matrix;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -61,16 +73,7 @@ public class NewtonBody : MonoBehaviour
 
         Matrix4x4 entMatrix = Matrix4x4.identity;
         entMatrix.SetTRS(transform.position, transform.rotation, Vector3.one);
-        //IntPtr floatsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
-        //Marshal.StructureToPtr(matrix, floatsPtr, false);
-
-        dMatrix matrix = new dMatrix();
-        matrix.m_front = new dVector(entMatrix.m00, entMatrix.m10, entMatrix.m20, entMatrix.m30);
-        matrix.m_up =    new dVector(entMatrix.m01, entMatrix.m11, entMatrix.m21, entMatrix.m31);
-        matrix.m_right = new dVector(entMatrix.m02, entMatrix.m12, entMatrix.m22, entMatrix.m32);
-        matrix.m_posit = new dVector(entMatrix.m03, entMatrix.m13, entMatrix.m23, entMatrix.m33);
-        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), matrix, m_mass);
-        //Marshal.FreeHGlobal(floatsPtr);
+        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), TodMatrix(entMatrix), m_mass);
     }
 
     public void DestroyRigidBody()
