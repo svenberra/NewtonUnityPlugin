@@ -57,8 +57,7 @@ public class NewtonGear : NewtonJoint
 
         Gizmos.color = Color.cyan;
         Gizmos.matrix = bodyMatrix0;
-        Vector4 childPin = localMatrix0.GetColumn(0) * m_gizmoScale;
-        Gizmos.DrawLine(Vector3.zero, childPin);
+        Gizmos.DrawRay(Vector3.zero, localMatrix0.GetColumn(0) * m_gizmoScale);
         if (m_otherBody != null)
         {
             Matrix4x4 bodyMatrix1 = Matrix4x4.identity;
@@ -68,8 +67,7 @@ public class NewtonGear : NewtonJoint
 
             Gizmos.color = Color.cyan;
             Gizmos.matrix = bodyMatrix1;
-            Vector4 parentPin = localMatrix1.GetColumn(0) * m_gizmoScale;
-            Gizmos.DrawLine(Vector3.zero, parentPin);
+            Gizmos.DrawRay(Vector3.zero, localMatrix1.GetColumn(0) * m_gizmoScale);
         }
     }
 

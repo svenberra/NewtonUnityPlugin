@@ -58,9 +58,7 @@ public class NewtonHinge: NewtonJoint
         Gizmos.color = Color.red;
 
         Gizmos.matrix = bodyMatrix;
-        Vector3 direction = localMatrix.MultiplyPoint3x4(new Vector3(m_gizmoScale, 0.0f, 0.0f));
-
-        Gizmos.DrawLine(m_posit, direction);
+        Gizmos.DrawRay(m_posit, localMatrix.GetColumn(0) * m_gizmoScale);
         if (m_enableLimits)
         {
             // draw hinge limit
@@ -221,8 +219,7 @@ public class NewtonHingeActuator: NewtonJoint
         AngularRate = m_angularRate;
         MaxTorque = m_maxTorque;
     }
-
-
+    
     void OnDrawGizmosSelected()
     {
         Matrix4x4 bodyMatrix = Matrix4x4.identity;
@@ -233,9 +230,7 @@ public class NewtonHingeActuator: NewtonJoint
         Gizmos.color = Color.red;
 
         Gizmos.matrix = bodyMatrix;
-        Vector3 direction = localMatrix.MultiplyPoint3x4(new Vector3(m_gizmoScale, 0.0f, 0.0f));
-
-        Gizmos.DrawLine(m_posit, direction);
+        Gizmos.DrawRay(m_posit, localMatrix.GetColumn(0) * m_gizmoScale);
     }
 
 

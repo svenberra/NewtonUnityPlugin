@@ -52,15 +52,15 @@ public class NewtonUniversal: NewtonJoint
         Matrix4x4 bodyMatrix = Matrix4x4.identity;
         Matrix4x4 localMatrix = Matrix4x4.identity;
         bodyMatrix.SetTRS(transform.position, transform.rotation, Vector3.one);
-        localMatrix.SetTRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
+        localMatrix.SetTRS(Vector3.zero, Quaternion.Euler(m_rotation), Vector3.one);
 
         Gizmos.matrix = bodyMatrix;
 
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(m_posit, localMatrix.MultiplyPoint3x4(new Vector3(m_gizmoScale, 0.0f, 0.0f)));
+        Gizmos.DrawRay(m_posit, localMatrix.GetColumn(0) * m_gizmoScale);
 
         Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(m_posit, localMatrix.MultiplyPoint3x4(new Vector3(0.0f, m_gizmoScale, 0.0f)));
+        Gizmos.DrawRay(m_posit, localMatrix.GetColumn(1) * m_gizmoScale);
     }
 
     public bool EnableLimits_0
@@ -165,8 +165,7 @@ public class NewtonUniversal: NewtonJoint
             }
         }
     }
-
-
+    
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
     public bool m_enableLimits_0 = false;
@@ -213,9 +212,7 @@ public class NewtonUniversalActuator: NewtonJoint
         Gizmos.color = Color.red;
 
         Gizmos.matrix = bodyMatrix;
-        Vector3 direction = localMatrix.MultiplyPoint3x4(new Vector3(m_gizmoScale, 0.0f, 0.0f));
-
-        Gizmos.DrawLine(m_posit, direction);
+        Gizmos.DrawRay(m_posit, localMatrix.GetColumn(0) * m_gizmoScale);
     }
 
     public float MaxTorque
