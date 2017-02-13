@@ -18,27 +18,27 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef _D_NEWTON_JOINT_HINGE_H_
-#define _D_NEWTON_JOINT_HINGE_H_
+#ifndef _D_NEWTON_JOINT_UNIVERSAL_H_
+#define _D_NEWTON_JOINT_UNIVERSAL_H_
 
 #include "stdafx.h"
 #include "dNewtonJoint.h"
 
-class dNewtonJointHinge: public dNewtonJoint
+class dNewtonJointUniversal: public dNewtonJoint
 {
 	public:
-	dNewtonJointHinge(dFloat* const pintAndPivotMatrix, void* const body0);
-	dNewtonJointHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
+	dNewtonJointUniversal(dFloat* const pintAndPivotMatrix, void* const body0);
+	dNewtonJointUniversal(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
 
 	void SetLimits(bool enable, dFloat minVal, dFloat maxAngle);
 	void SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst);
 };
 
-class dNewtonJointHingeActuator : public dNewtonJoint
+class dNewtonJointUniversalActuator : public dNewtonJoint
 {
 	public:
-	dNewtonJointHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0);
-	dNewtonJointHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
+	dNewtonJointUniversalActuator(dFloat* const pintAndPivotMatrix, void* const body0);
+	dNewtonJointUniversalActuator(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
 
 	dFloat GetAngle() const;
 	void SetMaxToque(dFloat torque);

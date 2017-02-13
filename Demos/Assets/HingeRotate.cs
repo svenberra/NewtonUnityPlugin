@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class HingeRotate : MonoBehaviour {
 
-    NewtonActuator na = null;
+    NewtonHingeActuator na = null;
     float targetAngle = 120.0f;
 
     // Use this for initialization
     void Start () {
-        na = GetComponent<NewtonActuator>();
+        na = GetComponent<NewtonHingeActuator>();
         targetAngle = na.MaximumAngle;
     }
 	

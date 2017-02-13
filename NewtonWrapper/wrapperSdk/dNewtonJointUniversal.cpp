@@ -20,9 +20,9 @@
 
 
 #include "stdafx.h"
-#include "dNewtonJointHinge.h"
+#include "dNewtonJointUniversal.h"
 
-dNewtonJointHinge::dNewtonJointHinge(dFloat* const pintAndPivotMatrix, void* const body0)
+dNewtonJointUniversal::dNewtonJointUniversal(dFloat* const pintAndPivotMatrix, void* const body0)
 	:dNewtonJoint()
 {
 	dMatrix bodyMatrix;
@@ -37,7 +37,7 @@ dNewtonJointHinge::dNewtonJointHinge(dFloat* const pintAndPivotMatrix, void* con
 	SetJoint(hinge);
 }
 
-dNewtonJointHinge::dNewtonJointHinge(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1)
+dNewtonJointUniversal::dNewtonJointUniversal(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1)
 	:dNewtonJoint()
 {
 	dMatrix bodyMatrix;
@@ -51,7 +51,7 @@ dNewtonJointHinge::dNewtonJointHinge(dFloat* const pintAndPivotMatrix, void* con
 }
 
 
-void dNewtonJointHinge::SetLimits(bool enable, dFloat minVal, dFloat maxAngle)
+void dNewtonJointUniversal::SetLimits(bool enable, dFloat minVal, dFloat maxAngle)
 {
 	CustomHinge* const hinge = (CustomHinge*)m_joint;
 	hinge->EnableLimits(enable);
@@ -60,14 +60,14 @@ void dNewtonJointHinge::SetLimits(bool enable, dFloat minVal, dFloat maxAngle)
 	}
 }
 
-void dNewtonJointHinge::SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst)
+void dNewtonJointUniversal::SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst)
 {
 	CustomHinge* const hinge = (CustomHinge*)m_joint;
 	hinge->SetAsSpringDamper(enable, dClamp(forceMixing, 0.7f, 0.99f), dAbs(springConst), dAbs(damperConst));
 }
 
 
-dNewtonJointHingeActuator::dNewtonJointHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0)
+dNewtonJointUniversalActuator::dNewtonJointUniversalActuator(dFloat* const pintAndPivotMatrix, void* const body0)
 	:dNewtonJoint()
 {
 	dMatrix bodyMatrix;
@@ -82,7 +82,7 @@ dNewtonJointHingeActuator::dNewtonJointHingeActuator(dFloat* const pintAndPivotM
 	actuator->SetEnableFlag(true);
 }
 
-dNewtonJointHingeActuator::dNewtonJointHingeActuator(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1)
+dNewtonJointUniversalActuator::dNewtonJointUniversalActuator(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1)
 	:dNewtonJoint()
 {
 	dMatrix bodyMatrix;
@@ -97,25 +97,25 @@ dNewtonJointHingeActuator::dNewtonJointHingeActuator(dFloat* const pintAndPivotM
 	actuator->SetEnableFlag(true);
 }
 
-dFloat dNewtonJointHingeActuator::GetAngle() const
+dFloat dNewtonJointUniversalActuator::GetAngle() const
 {
 	CustomHingeActuator* const actuator = (CustomHingeActuator*)m_joint;
 	return actuator->GetActuatorAngle() * RAD_TO_DEGREES;
 }
 
-void dNewtonJointHingeActuator::SetMaxToque(dFloat torque)
+void dNewtonJointUniversalActuator::SetMaxToque(dFloat torque)
 {
 	CustomHingeActuator* const actuator = (CustomHingeActuator*)m_joint;
 	actuator->SetMaxForcePower(dAbs(torque));
 }
 
-void dNewtonJointHingeActuator::SetAngularRate(dFloat rate)
+void dNewtonJointUniversalActuator::SetAngularRate(dFloat rate)
 {
 	CustomHingeActuator* const actuator = (CustomHingeActuator*)m_joint;
 	actuator->SetAngularRate(rate * DEGREES_TO_RAD);
 }
 
-void dNewtonJointHingeActuator::SetTargetAngle(dFloat angle, dFloat minLimit, dFloat maxLimit)
+void dNewtonJointUniversalActuator::SetTargetAngle(dFloat angle, dFloat minLimit, dFloat maxLimit)
 {
 	CustomHingeActuator* const actuator = (CustomHingeActuator*)m_joint;
 	actuator->SetMinAngularLimit(dMin(minLimit * DEGREES_TO_RAD, dFloat(0.0f)));
