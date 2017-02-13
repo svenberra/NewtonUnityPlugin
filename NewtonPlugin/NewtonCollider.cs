@@ -59,17 +59,8 @@ abstract public class NewtonCollider : MonoBehaviour
 
             Camera camera = Camera.current;
             Matrix4x4 matrix = Matrix4x4.Inverse (camera.worldToCameraMatrix * Gizmos.matrix);
-
-            //SceneCamera(-0.06834328 5.960464E-08 0.9976619 - 10.51591)(-0.2695866 0.9627991 - 0.01846763 - 5.616923)(-0.960548 - 0.2702184 - 0.06580079 6.189371)(0 0 0 1)
             Vector4 eyepoint = matrix.GetColumn(3);
-            //Debug.Log(camera.name + " " + eyepoint.x + " " + eyepoint.y + " " + eyepoint.z);
-
-            IntPtr floatPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(Vector4)));
-            Marshal.StructureToPtr(eyepoint, floatPtr, false);
-
-            m_editorShape.DebugRender(OnDrawFace, floatPtr);
-
-            Marshal.FreeHGlobal(floatPtr);
+            m_editorShape.DebugRender(OnDrawFace, new dVector (eyepoint.x, eyepoint.y, eyepoint.z));
         }
     }
 

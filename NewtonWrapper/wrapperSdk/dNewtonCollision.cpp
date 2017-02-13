@@ -230,12 +230,10 @@ void dNewtonCollision::DebugRenderCallback(void* userData, int vertexCount, cons
 	}
 }
 
-void dNewtonCollision::DebugRender(OnDrawFaceCallback callback, const dFloat* const eyePoint)
+void dNewtonCollision::DebugRender(OnDrawFaceCallback callback, const dVector eyePoint)
 {
 	DebugCallBack callbackInfo;
-	callbackInfo.m_eyePoint = dVector(eyePoint);
-
-//callbackInfo.m_eyePoint = dVector(10, 0, 0, 0);
+	callbackInfo.m_eyePoint = eyePoint;
 
 	callbackInfo.m_callback = callback;
 	dMatrix matrix(dGetIdentityMatrix());
