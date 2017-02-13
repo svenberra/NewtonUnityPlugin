@@ -30,10 +30,11 @@ class dNewtonJointUniversal: public dNewtonJoint
 	dNewtonJointUniversal(dFloat* const pintAndPivotMatrix, void* const body0);
 	dNewtonJointUniversal(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
 
-	void SetLimits(bool enable, dFloat minVal, dFloat maxAngle);
-	void SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst);
+	void SetLimits_0(bool enable, dFloat minVal, dFloat maxAngle);
+	void SetLimits_1(bool enable, dFloat minVal, dFloat maxAngle);
 };
 
+/*
 class dNewtonJointUniversalActuator : public dNewtonJoint
 {
 	public:
@@ -45,6 +46,6 @@ class dNewtonJointUniversalActuator : public dNewtonJoint
 	void SetAngularRate(dFloat rate);
 	void SetTargetAngle(dFloat angle, dFloat minLimit, dFloat maxLimit);
 };
-
+*/
 
 #endif

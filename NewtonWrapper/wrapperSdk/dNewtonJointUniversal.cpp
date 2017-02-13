@@ -33,7 +33,7 @@ dNewtonJointUniversal::dNewtonJointUniversal(dFloat* const pintAndPivotMatrix, v
 
 	matrix = matrix * bodyMatrix;
 
-	CustomHinge* const hinge = new CustomHinge(matrix, netwonBody0, NULL);
+	CustomUniversal* const hinge = new CustomUniversal(matrix, netwonBody0, NULL);
 	SetJoint(hinge);
 }
 
@@ -46,27 +46,30 @@ dNewtonJointUniversal::dNewtonJointUniversal(dFloat* const pintAndPivotMatrix, v
 	NewtonBody* const netwonBody1 = (NewtonBody*)body1;
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 	matrix = matrix * bodyMatrix;
-	CustomHinge* const hinge = new CustomHinge(matrix, netwonBody0, netwonBody1);
+	CustomUniversal* const hinge = new CustomUniversal(matrix, netwonBody0, netwonBody1);
 	SetJoint(hinge);
 }
 
-
-void dNewtonJointUniversal::SetLimits(bool enable, dFloat minVal, dFloat maxAngle)
+void dNewtonJointUniversal::SetLimits_0(bool enable, dFloat minVal, dFloat maxAngle)
 {
-	CustomHinge* const hinge = (CustomHinge*)m_joint;
-	hinge->EnableLimits(enable);
+	CustomUniversal* const hinge = (CustomUniversal*)m_joint;
+	hinge->EnableLimit_0(enable);
 	if (enable) {
-		hinge->SetLimits(dMin(minVal * DEGREES_TO_RAD, 0.0f), dMax(maxAngle * DEGREES_TO_RAD, 0.0f));
+		hinge->SetLimits_0(dMin(minVal * DEGREES_TO_RAD, 0.0f), dMax(maxAngle * DEGREES_TO_RAD, 0.0f));
 	}
 }
 
-void dNewtonJointUniversal::SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst)
+void dNewtonJointUniversal::SetLimits_1(bool enable, dFloat minVal, dFloat maxAngle)
 {
-	CustomHinge* const hinge = (CustomHinge*)m_joint;
-	hinge->SetAsSpringDamper(enable, dClamp(forceMixing, 0.7f, 0.99f), dAbs(springConst), dAbs(damperConst));
+	CustomUniversal* const hinge = (CustomUniversal*)m_joint;
+	hinge->EnableLimit_1(enable);
+	if (enable) {
+		hinge->SetLimits_1(dMin(minVal * DEGREES_TO_RAD, 0.0f), dMax(maxAngle * DEGREES_TO_RAD, 0.0f));
+	}
 }
 
 
+/*
 dNewtonJointUniversalActuator::dNewtonJointUniversalActuator(dFloat* const pintAndPivotMatrix, void* const body0)
 	:dNewtonJoint()
 {
@@ -122,4 +125,4 @@ void dNewtonJointUniversalActuator::SetTargetAngle(dFloat angle, dFloat minLimit
 	actuator->SetMaxAngularLimit(dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
 	actuator->SetTargetAngle(dClamp (angle * DEGREES_TO_RAD, actuator->GetMinAngularLimit(), actuator->GetMaxAngularLimit()));
 }
-
+*/
