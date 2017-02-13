@@ -4,16 +4,29 @@ using UnityEngine;
 
 public class RobotController : MonoBehaviour {
 
-    NewtonBody body = null;
-    NewtonHingeActuator RobotBase = null;
+    NewtonBody baseBody = null;
+    NewtonBody armBody = null;
+    NewtonBody handBody = null;
+    NewtonHingeActuator baseActuator = null;
+    NewtonHingeActuator armActuator = null;
+    NewtonHingeActuator handActuator = null;
 
-    private float BaseAngle = 0.0f;
+    private float baseAngle = 0.0f;
+    private float armAngle = 0.0f;
+    private float handAngle = 0.0f;
 
     // Use this for initialization
     void Start()
     {
-        RobotBase = GetComponent<NewtonHingeActuator>();
-        body = GetComponent<NewtonBody>();
+        baseBody = transform.Find("RobotBase").GetComponent<NewtonBody>();
+        baseActuator = transform.Find("RobotBase").GetComponent<NewtonHingeActuator>();
+
+        armBody = transform.Find("RobotArm").GetComponent<NewtonBody>();
+        armActuator = transform.Find("RobotArm").GetComponent<NewtonHingeActuator>();
+
+        handBody = transform.Find("RobotHand").GetComponent<NewtonBody>();
+        handActuator = transform.Find("RobotHand").GetComponent<NewtonHingeActuator>();
+
     }
 
     // Update is called once per frame
@@ -26,13 +39,29 @@ public class RobotController : MonoBehaviour {
     }
 
     void OnGUI()
-    {
-        var oldBaseAngle = BaseAngle;
-        BaseAngle = GUI.HorizontalSlider(new Rect(25, 25, 100, 30), BaseAngle, 0.0F, 359.0F);
-        if(oldBaseAngle != BaseAngle)
+    {        
+        var oldBaseAngle = baseAngle;
+        baseAngle = GUI.HorizontalSlider(new Rect(25, 25, 100, 30), baseAngle, 0.0F, 359.0F);
+        if(oldBaseAngle != baseAngle)
         {
-            RobotBase.TargetAngle = BaseAngle;
-            body.SleepState = false;
+            baseActuator.TargetAngle = baseAngle;
+            baseBody.SleepState = false;
+        }
+
+        var oldArmAngle = armAngle;
+        armAngle = GUI.HorizontalSlider(new Rect(25, 25 + 40, 100, 30), armAngle, 0.0F, 359.0F);
+        if (oldArmAngle != armAngle)
+        {
+            armActuator.TargetAngle = armAngle;
+            armBody.SleepState = false;
+        }
+
+        var oldHandAngle = handAngle;
+        handAngle = GUI.HorizontalSlider(new Rect(25, 25 + 80, 100, 30), handAngle, 0.0F, 359.0F);
+        if (oldHandAngle != handAngle)
+        {
+            handActuator.TargetAngle = handAngle;
+            handBody.SleepState = false;
         }
 
     }
