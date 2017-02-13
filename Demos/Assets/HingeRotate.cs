@@ -5,12 +5,12 @@ using UnityEngine;
 public class HingeRotate : MonoBehaviour {
 
     NewtonHingeActuator na = null;
-    float targetAngle = 120.0f;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         na = GetComponent<NewtonHingeActuator>();
-        targetAngle = na.MaximumAngle;
+        na.TargetAngle = 2000.0f;
     }
 	
 	// Update is called once per frame
@@ -19,15 +19,21 @@ public class HingeRotate : MonoBehaviour {
         if (na)
         {
             float angle = na.GetJointAngle();
-            if (targetAngle - angle < 1.0f)
+            if (na.TargetAngle >= 500.0f)
             {
-                na.TargetAngle = na.MaximumAngle;
+                if (angle > 498.0f)
+                {
+                    na.TargetAngle = -1000.0f;
+                }
             }
             else
             {
-                na.TargetAngle = na.MinimumAngle;
+                if (angle < -600.0f)
+                {
+                    na.TargetAngle = 1000.0f;
+                }
             }
         }	
-	}
+    }
 }
 
