@@ -32,7 +32,8 @@
 #include <CustomSlider.h>
 #include <CustomUniversal.h>
 #include <CustomHingeActuator.h>
-#include "CustomSliderActuator.h"
+#include <CustomSliderActuator.h>
+#include <CustomUniversalActuator.h>
 
 #define RAD_TO_DEGREES	(180.0f / 3.141592f)
 #define DEGREES_TO_RAD	(3.141592f / 180.0f)
