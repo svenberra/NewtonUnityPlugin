@@ -196,10 +196,6 @@ public class NewtonSliderActuator : NewtonJoint
 {
     public override void Create()
     {
-        Matrix4x4 localMatrix = Matrix4x4.identity;
-        localMatrix.SetTRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
-        IntPtr floatsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(localMatrix));
-        Marshal.StructureToPtr(localMatrix, floatsPtr, false);
         NewtonBody child = GetComponent<NewtonBody>();
         if (m_otherBody == null)
         {

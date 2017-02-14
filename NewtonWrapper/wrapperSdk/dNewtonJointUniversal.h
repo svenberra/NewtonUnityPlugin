@@ -27,8 +27,8 @@
 class dNewtonJointUniversal: public dNewtonJoint
 {
 	public:
-	dNewtonJointUniversal(dFloat* const pintAndPivotMatrix, void* const body0);
-	dNewtonJointUniversal(dFloat* const pintAndPivotMatrix, void* const body0, void* const body1);
+	dNewtonJointUniversal(const dMatrix pintAndPivotMatrix, void* const body0);
+	dNewtonJointUniversal(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1);
 
 	void SetLimits_0(bool enable, dFloat minVal, dFloat maxAngle);
 	void SetLimits_1(bool enable, dFloat minVal, dFloat maxAngle);

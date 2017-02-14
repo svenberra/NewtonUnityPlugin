@@ -28,19 +28,14 @@ public class NewtonUniversal: NewtonJoint
 {
     public override void Create()
     {
-        Matrix4x4 localMatrix = Matrix4x4.identity;
-        localMatrix.SetTRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
-
-        IntPtr floatsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(localMatrix));
-        Marshal.StructureToPtr(localMatrix, floatsPtr, false);
         NewtonBody child = GetComponent<NewtonBody>();
         if (m_otherBody == null)
         {
-            m_joint = new dNewtonJointUniversal(floatsPtr, child.GetBody().GetBody());
+            m_joint = new dNewtonJointUniversal(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)), child.GetBody().GetBody());
         }
         else
         {
-            m_joint = new dNewtonJointUniversal(floatsPtr, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
+            m_joint = new dNewtonJointUniversal(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)), child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
         }
 
         Stiffness = m_stiffness;
@@ -182,10 +177,6 @@ public class NewtonUniversalActuator: NewtonJoint
 {
     public override void Create()
     {
-        Matrix4x4 localMatrix = Matrix4x4.identity;
-        localMatrix.SetTRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
-        IntPtr floatsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(localMatrix));
-        Marshal.StructureToPtr(localMatrix, floatsPtr, false);
         NewtonBody child = GetComponent<NewtonBody>();
         if (m_otherBody == null)
         {
