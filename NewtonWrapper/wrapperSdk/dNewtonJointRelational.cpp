@@ -22,7 +22,7 @@
 #include "stdafx.h"
 #include "dNewtonJointRelational.h"
 
-dNewtonJointGear::dNewtonJointGear(dFloat ratio, dFloat* const pin0, dFloat* const pin1, void* const body0)
+dNewtonJointGear::dNewtonJointGear(dFloat ratio, const dVector pin0, const dVector pin1, void* const body0)
 	:dNewtonJoint()
 {
 	dMatrix bodyMatrix;
@@ -36,7 +36,7 @@ dNewtonJointGear::dNewtonJointGear(dFloat ratio, dFloat* const pin0, dFloat* con
 	SetJoint(gear);
 }
 
-dNewtonJointGear::dNewtonJointGear(dFloat ratio, dFloat* const pin0, dFloat* const pin1, void* const body0, void* const body1)
+dNewtonJointGear::dNewtonJointGear(dFloat ratio, const dVector pin0, const dVector pin1, void* const body0, void* const body1)
 	:dNewtonJoint()
 {
 	dMatrix bodyMatrix0;

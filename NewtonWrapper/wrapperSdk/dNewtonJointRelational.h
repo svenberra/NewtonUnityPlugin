@@ -27,8 +27,8 @@
 class dNewtonJointGear: public dNewtonJoint
 {
 	public:
-	dNewtonJointGear(dFloat ratio, dFloat* const pin0, dFloat* const pin1, void* const body0);
-	dNewtonJointGear(dFloat ratio, dFloat* const pin0, dFloat* const pin1, void* const body0, void* const body1);
+	dNewtonJointGear(dFloat ratio, const dVector pin0, const dVector pin1, void* const body0);
+	dNewtonJointGear(dFloat ratio, const dVector pin0, const dVector pin1, void* const body0, void* const body1);
 };
 
 #endif

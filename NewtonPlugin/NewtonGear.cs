@@ -38,13 +38,8 @@ public class NewtonGear : NewtonJoint
             Vector4 childPin = localMatrix0.GetColumn(0);
             Vector4 parentPin = localMatrix1.GetColumn(0);
 
-            IntPtr childPinPtr = Marshal.AllocHGlobal(Marshal.SizeOf(childPin));
-            IntPtr parentPinPtr = Marshal.AllocHGlobal(Marshal.SizeOf(parentPin));
-            Marshal.StructureToPtr(childPin, childPinPtr, false);
-            Marshal.StructureToPtr(parentPin, parentPinPtr, false);
-
             NewtonBody child = GetComponent<NewtonBody>();
-            m_joint = new dNewtonJointGear(m_gearRatio, childPinPtr, parentPinPtr, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
+            m_joint = new dNewtonJointGear(m_gearRatio, new dVector (childPin.x, childPin.y, childPin.z, 0.0f), new dVector(parentPin.x, parentPin.y, parentPin.z, 0.0f), child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
         }
     }
 
