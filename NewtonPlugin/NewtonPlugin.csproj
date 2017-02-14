@@ -74,6 +74,7 @@
     <Compile Include="NewtonJoint.cs" />
     <Compile Include="NewtonNullCollider.cs" />
     <Compile Include="NewtonSlider.cs" />
+    <Compile Include="NewtonSlidingHinge.cs" />
     <Compile Include="NewtonSphereCollider.cs" />
     <Compile Include="NewtonTreeCollider.cs" />
     <Compile Include="NewtonUniversal.cs" />
