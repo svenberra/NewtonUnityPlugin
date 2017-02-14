@@ -254,7 +254,6 @@ void dNewtonCollision::SetMatrix(const dMatrix matrix)
 }
 
 
-
 dNewtonCollisionNull::dNewtonCollisionNull(dNewtonWorld* const world)
 	:dNewtonCollision(world, 0)
 {

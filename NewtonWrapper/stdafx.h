@@ -24,15 +24,17 @@
 #include <dList.h>
 #include <dTree.h>
 
+#include <CustomJointLibraryStdAfx.h>
 #include <CustomAlloc.h>
-
 #include <CustomJoint.h>
 #include <CustomGear.h>
 #include <CustomHinge.h>
+#include <CustomSlider.h>
 #include <CustomUniversal.h>
 #include <CustomHingeActuator.h>
+#include "CustomSliderActuator.h"
 
 #define RAD_TO_DEGREES	(180.0f / 3.141592f)
 #define DEGREES_TO_RAD	(3.141592f / 180.0f)
 
-// TODO: reference additional headers your program requires here
+

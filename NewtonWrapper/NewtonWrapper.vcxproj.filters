@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="newton_wrap.cxx" />
-    <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="wrapperSdk\dAlloc.cpp">
       <Filter>wrapperSdk</Filter>
     </ClCompile>
@@ -28,9 +27,14 @@
     <ClCompile Include="wrapperSdk\dNewtonJointUniversal.cpp">
       <Filter>wrapperSdk</Filter>
     </ClCompile>
+    <ClCompile Include="wrapperSdk\dNewtonJointSlider.cpp">
+      <Filter>wrapperSdk</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>wrapperSdk</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="IUnityInterface.h" />
     <ClInclude Include="wrapperSdk\dAlloc.h">
@@ -55,6 +59,12 @@
       <Filter>wrapperSdk</Filter>
     </ClInclude>
     <ClInclude Include="wrapperSdk\dNewtonJointUniversal.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapperSdk\dNewtonJointSlider.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
       <Filter>wrapperSdk</Filter>
     </ClInclude>
   </ItemGroup>

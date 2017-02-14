@@ -18,32 +18,33 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef _D_NEWTON_JOINT_HINGE_H_
-#define _D_NEWTON_JOINT_HINGE_H_
+#ifndef _D_NEWTON_JOINT_SLIDER_H_
+#define _D_NEWTON_JOINT_SLIDER_H_
 
 #include "stdafx.h"
 #include "dNewtonJoint.h"
 
-class dNewtonJointHinge: public dNewtonJoint
+class dNewtonJointSlider: public dNewtonJoint
 {
 	public:
-	dNewtonJointHinge(const dMatrix pintAndPivotMatrix, void* const body0);
-	dNewtonJointHinge(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1);
+	dNewtonJointSlider(const dMatrix pintAndPivotMatrix, void* const body0);
+	dNewtonJointSlider(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1);
 
-	void SetLimits(bool enable, dFloat minAngle, dFloat maxAngle);
+	void SetLimits(bool enable, dFloat minDistance, dFloat maxDistance);
 	void SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst);
 };
 
-class dNewtonJointHingeActuator : public dNewtonJoint
+
+class dNewtonJointSliderActuator : public dNewtonJoint
 {
 	public:
-	dNewtonJointHingeActuator(const dMatrix pintAndPivotMatrix, void* const body0);
-	dNewtonJointHingeActuator(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1);
+	dNewtonJointSliderActuator(const dMatrix pintAndPivotMatrix, void* const body0);
+	dNewtonJointSliderActuator(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1);
 
-	dFloat GetAngle() const;
-	void SetMaxToque(dFloat torque);
-	void SetAngularRate(dFloat rate);
-	void SetTargetAngle(dFloat angle, dFloat minLimit, dFloat maxLimit);
+	dFloat GetPosition() const;
+	void SetSpeed(dFloat speed);
+	void SetMaxForce(dFloat force);
+	void SetTargetPosition(dFloat position, dFloat minLimit, dFloat maxLimit);
 };
 
 

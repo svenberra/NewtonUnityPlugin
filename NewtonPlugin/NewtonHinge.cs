@@ -29,13 +29,15 @@ public class NewtonHinge: NewtonJoint
     public override void Create()
     {
         NewtonBody child = GetComponent<NewtonBody>();
+
+        dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));
         if (m_otherBody == null)
         {
-            m_joint = new dNewtonJointHinge(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)), child.GetBody().GetBody());
+            m_joint = new dNewtonJointHinge(matrix, child.GetBody().GetBody());
         }
         else
         {
-            m_joint = new dNewtonJointHinge(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)), child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
+            m_joint = new dNewtonJointHinge(matrix, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
         }
 
         Stiffness = m_stiffness;
@@ -197,13 +199,14 @@ public class NewtonHingeActuator: NewtonJoint
     public override void Create()
     {
         NewtonBody child = GetComponent<NewtonBody>();
+        dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));
         if (m_otherBody == null)
         {
-            m_joint = new dNewtonJointHingeActuator(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)), child.GetBody().GetBody());
+            m_joint = new dNewtonJointHingeActuator(matrix, child.GetBody().GetBody());
         }
         else
         {
-            m_joint = new dNewtonJointHingeActuator(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)), child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
+            m_joint = new dNewtonJointHingeActuator(matrix, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
         }
 
         TargetAngle = m_targetAngle;
