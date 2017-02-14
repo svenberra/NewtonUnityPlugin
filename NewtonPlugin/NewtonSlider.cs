@@ -191,7 +191,7 @@ public class NewtonSlider: NewtonJoint
     public float m_damperConstant = 10.0f;
 }
 
-/*
+
 [AddComponentMenu("Newton Physics/Joints/Slider Actuator")]
 public class NewtonSliderActuator : NewtonJoint
 {
@@ -208,9 +208,9 @@ public class NewtonSliderActuator : NewtonJoint
             m_joint = new dNewtonJointSliderActuator(matrix, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
         }
 
-        TargetAngle = m_targetAngle;
-        AngularRate = m_angularRate;
-        MaxTorque = m_maxTorque;
+        Speed = m_speed;
+        MaxForce = m_maxForce;
+        TargetPosition = m_targetPosition;
     }
     
     void OnDrawGizmosSelected()
@@ -227,122 +227,123 @@ public class NewtonSliderActuator : NewtonJoint
     }
 
 
-    public float MaxTorque
+    public float MaxForce
     {
         get
         {
-            return m_maxTorque;
+            return m_maxForce;
         }
         set
         {
-            m_maxTorque = value;
+            m_maxForce = value;
             if (m_joint != null)
             {
-                dNewtonJointSliderActuator hinge = (dNewtonJointSliderActuator)m_joint;
-                joint.SetMaxToque(m_maxTorque);
+                dNewtonJointSliderActuator joint = (dNewtonJointSliderActuator)m_joint;
+                joint.SetMaxForce(m_maxForce);
             }
         }
     }
 
-    public float AngularRate
+    public float Speed
     {
         get
         {
-            return m_angularRate;
+            return m_speed;
         }
         set
         {
-            m_angularRate = value;
+            m_speed = value;
             if (m_joint != null)
             {
-                dNewtonJointSliderActuator hinge = (dNewtonJointSliderActuator)m_joint;
-                joint.SetAngularRate(m_angularRate);
+                dNewtonJointSliderActuator joint = (dNewtonJointSliderActuator)m_joint;
+                joint.SetSpeed(m_speed);
             }
         }
     }
 
-    public float TargetAngle
+    public float TargetPosition
     {
         get
         {
-            return m_targetAngle;
+            return m_targetPosition;
         }
         set
         {
-            m_targetAngle = value;
+            m_targetPosition = value;
             if (m_joint != null)
             {
-                dNewtonJointSliderActuator hinge = (dNewtonJointSliderActuator)m_joint;
-                joint.SetTargetAngle(m_targetAngle, m_minAngle, m_maxAngle);
+                dNewtonJointSliderActuator joint = (dNewtonJointSliderActuator)m_joint;
+                joint.SetTargetPosition(m_targetPosition, m_minPosition, m_maxPosition);
             }
         }
     }
 
-    public float MinimumAngle
+    public float MinimumPosition
     {
         get
         {
-            return m_minAngle;
+            return m_minPosition;
         }
         set
         {
-            m_minAngle = value;
+            m_minPosition = value;
             if (m_joint != null)
             {
-                dNewtonJointSliderActuator hinge = (dNewtonJointSliderActuator)m_joint;
-                joint.SetTargetAngle(m_targetAngle, m_minAngle, m_maxAngle);
+                dNewtonJointSliderActuator joint = (dNewtonJointSliderActuator)m_joint;
+                joint.SetTargetPosition(m_targetPosition, m_minPosition, m_maxPosition);
             }
         }
     }
 
-    public float MaximumAngle
+    public float MaximumPosition
     {
         get
         {
-            return m_maxAngle;
+            return m_maxPosition;
         }
         set
         {
-            m_maxAngle = value;
+            m_maxPosition = value;
             if (m_joint != null)
             {
-                dNewtonJointSliderActuator hinge = (dNewtonJointSliderActuator)m_joint;
-                joint.SetTargetAngle(m_targetAngle, m_minAngle, m_maxAngle);
+                dNewtonJointSliderActuator joint = (dNewtonJointSliderActuator)m_joint;
+                joint.SetTargetPosition(m_targetPosition, m_minPosition, m_maxPosition);
             }
         }
     }
 
-    public float GetJointAngle()
+    public float GetPosition()
     {
-        float angle = 0.0f;
+        float position = 0.0f;
         if (m_joint != null)
         {
-            dNewtonJointSliderActuator hinge = (dNewtonJointSliderActuator)m_joint;
-            angle = joint.GetAngle();
+            dNewtonJointSliderActuator joint = (dNewtonJointSliderActuator)m_joint;
+            position = joint.GetPosition();
         }
-        return angle;
+        return position;
     }
 
+/*
     public float GetJointSpeed()
     {
-        float angle = 0.0f;
+        float speed = 0.0f;
         if (m_joint != null)
         {
-            dNewtonJointSliderActuator hinge = (dNewtonJointSliderActuator)m_joint;
-            angle = joint.GetAngle();
+            dNewtonJointSliderActuator joint = (dNewtonJointSliderActuator)m_joint;
+            speed = joint.GetSpeed();
         }
-        return angle;
+        return speed;
     }
-
-
+*/
+    
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
-    public float m_maxTorque = 10.0f;
-    public float m_angularRate = 1.0f;
-    public float m_targetAngle = 0.0f;
-    public float m_minAngle = -360.0f;
-    public float m_maxAngle =  360.0f;
+    public float m_maxForce = 10.0f;
+    public float m_speed = 1.0f;
+    public float m_targetPosition = 0.0f;
+    public float m_minPosition = -1.0f;
+    public float m_maxPosition = 1.0f;
 }
-*/
+
 
 

@@ -323,7 +323,7 @@ public class NewtonHingeActuator: NewtonJoint
         }
         return angle;
     }
-
+/*
     public float GetJointSpeed()
     {
         float angle = 0.0f;
@@ -334,7 +334,7 @@ public class NewtonHingeActuator: NewtonJoint
         }
         return angle;
     }
-
+*/
 
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
