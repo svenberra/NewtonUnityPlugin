@@ -45,6 +45,7 @@
 	#include "dNewtonJointSlider.h"
 	#include "dNewtonJointUniversal.h"
 	#include "dNewtonJointRelational.h"
+	#include "dNewtonJointSlidingHinge.h"
 %}
 
 /*
@@ -149,3 +150,4 @@
 %include "dNewtonJointSlider.h"
 %include "dNewtonJointUniversal.h"
 %include "dNewtonJointRelational.h"
+%include "dNewtonJointSlidingHinge.h"
