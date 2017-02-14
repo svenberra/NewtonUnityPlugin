@@ -41,7 +41,7 @@ public class RobotController : MonoBehaviour {
     void OnGUI()
     {        
         var oldBaseAngle = baseAngle;
-        baseAngle = GUI.HorizontalSlider(new Rect(25, 25, 100, 30), baseAngle, 0.0F, 359.0F);
+        baseAngle = GUI.HorizontalSlider(new Rect(25, 25, 100, 30), baseAngle, -180.0F, 180.0F);
         if(oldBaseAngle != baseAngle)
         {
             baseActuator.TargetAngle = baseAngle;
@@ -49,7 +49,7 @@ public class RobotController : MonoBehaviour {
         }
 
         var oldArmAngle = armAngle;
-        armAngle = GUI.HorizontalSlider(new Rect(25, 25 + 40, 100, 30), armAngle, 0.0F, 359.0F);
+        armAngle = GUI.HorizontalSlider(new Rect(25, 25 + 40, 100, 30), armAngle, -180.0F, 180.0F);
         if (oldArmAngle != armAngle)
         {
             armActuator.TargetAngle = armAngle;
@@ -57,7 +57,7 @@ public class RobotController : MonoBehaviour {
         }
 
         var oldHandAngle = handAngle;
-        handAngle = GUI.HorizontalSlider(new Rect(25, 25 + 80, 100, 30), handAngle, 0.0F, 359.0F);
+        handAngle = GUI.HorizontalSlider(new Rect(25, 25 + 80, 100, 30), handAngle, -180.0F, 180.0F);
         if (oldHandAngle != handAngle)
         {
             handActuator.TargetAngle = handAngle;
