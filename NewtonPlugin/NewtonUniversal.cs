@@ -171,7 +171,7 @@ public class NewtonUniversal: NewtonJoint
     public float m_maxLimit_1 = 30.0f;
 }
 
-/*
+
 [AddComponentMenu("Newton Physics/Joints/Universal Actuator")]
 public class NewtonUniversalActuator: NewtonJoint
 {
@@ -180,18 +180,21 @@ public class NewtonUniversalActuator: NewtonJoint
         NewtonBody child = GetComponent<NewtonBody>();
         if (m_otherBody == null)
         {
-            m_joint = new dNewtonJointUniversalActuator(floatsPtr, child.GetBody().GetBody());
+            m_joint = new dNewtonJointUniversalActuator(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)), child.GetBody().GetBody());
         }
         else
         {
-            m_joint = new dNewtonJointUniversalActuator(floatsPtr, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
+            m_joint = new dNewtonJointUniversalActuator(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)), child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
         }
 
-        TargetAngle = m_targetAngle;
-        AngularRate = m_angularRate;
-        MaxTorque = m_maxTorque;
-    }
+        TargetAngle0 = m_targetAngle0;
+        AngularRate0 = m_angularRate0;
+        MaxTorque0 = m_maxTorque0;
 
+        TargetAngle1 = m_targetAngle1;
+        AngularRate1 = m_angularRate1;
+        MaxTorque1 = m_maxTorque1;
+    }
 
     void OnDrawGizmosSelected()
     {
@@ -206,109 +209,208 @@ public class NewtonUniversalActuator: NewtonJoint
         Gizmos.DrawRay(m_posit, localMatrix.GetColumn(0) * m_gizmoScale);
     }
 
-    public float MaxTorque
+    public float MaxTorque0
     {
         get
         {
-            return m_maxTorque;
+            return m_maxTorque0;
         }
         set
         {
-            m_maxTorque = value;
+            m_maxTorque0 = value;
             if (m_joint != null)
             {
-                dNewtonJointHingeActuator hinge = (dNewtonJointHingeActuator)m_joint;
-                joint.SetMaxToque(m_maxTorque);
+                dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+                joint.SetMaxToque0(m_maxTorque0);
             }
         }
     }
 
-    public float AngularRate
+    public float AngularRate0
     {
         get
         {
-            return m_angularRate;
+            return m_angularRate0;
         }
         set
         {
-            m_angularRate = value;
+            m_angularRate0 = value;
             if (m_joint != null)
             {
-                dNewtonJointHingeActuator hinge = (dNewtonJointHingeActuator)m_joint;
-                joint.SetAngularRate(m_angularRate);
+                dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+                joint.SetAngularRate0(m_angularRate0);
             }
         }
     }
 
-    public float TargetAngle
+    public float TargetAngle0
     {
         get
         {
-            return m_targetAngle;
+            return m_targetAngle0;
         }
         set
         {
-            m_targetAngle = value;
+            m_targetAngle0 = value;
             if (m_joint != null)
             {
-                dNewtonJointHingeActuator hinge = (dNewtonJointHingeActuator)m_joint;
-                joint.SetTargetAngle(m_targetAngle, m_minAngle, m_maxAngle);
+                dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+                joint.SetTargetAngle0(m_targetAngle0, m_minAngle0, m_maxAngle0);
             }
         }
     }
 
-    public float MinimumAngle
+    public float MinimumAngle0
     {
         get
         {
-            return m_minAngle;
+            return m_minAngle0;
         }
         set
         {
-            m_minAngle = value;
+            m_minAngle0 = value;
             if (m_joint != null)
             {
-                dNewtonJointHingeActuator hinge = (dNewtonJointHingeActuator)m_joint;
-                joint.SetTargetAngle(m_targetAngle, m_minAngle, m_maxAngle);
+                dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+                joint.SetTargetAngle0(m_targetAngle0, m_minAngle0, m_maxAngle0);
             }
         }
     }
 
-    public float MaximumAngle
+    public float MaximumAngle0
     {
         get
         {
-            return m_maxAngle;
+            return m_maxAngle0;
         }
         set
         {
-            m_maxAngle = value;
+            m_maxAngle0 = value;
             if (m_joint != null)
             {
-                dNewtonJointHingeActuator hinge = (dNewtonJointHingeActuator)m_joint;
-                joint.SetTargetAngle(m_targetAngle, m_minAngle, m_maxAngle);
+                dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+                joint.SetTargetAngle0(m_targetAngle0, m_minAngle0, m_maxAngle0);
             }
         }
     }
 
-    public float GetJointAngle()
+    public float GetJointAngle0()
     {
         float angle = 0.0f;
         if (m_joint != null)
         {
-            dNewtonJointHingeActuator hinge = (dNewtonJointHingeActuator)m_joint;
-            angle = joint.GetAngle();
+            dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+            angle = joint.GetAngle0();
         }
         return angle;
     }
 
-    public float GetJointSpeed()
+    /*
+        public float GetJointSpeed0()
+        {
+            float angle = 0.0f;
+            if (m_joint != null)
+            {
+                dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+                angle = joint.GetAngle();
+            }
+            return angle;
+        }
+    */
+
+
+    public float MaxTorque1
+    {
+        get
+        {
+            return m_maxTorque1;
+        }
+        set
+        {
+            m_maxTorque1 = value;
+            if (m_joint != null)
+            {
+                dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+                joint.SetMaxToque1(m_maxTorque1);
+            }
+        }
+    }
+
+    public float AngularRate1
+    {
+        get
+        {
+            return m_angularRate1;
+        }
+        set
+        {
+            m_angularRate1 = value;
+            if (m_joint != null)
+            {
+                dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+                joint.SetAngularRate1(m_angularRate1);
+            }
+        }
+    }
+
+    public float TargetAngle1
+    {
+        get
+        {
+            return m_targetAngle1;
+        }
+        set
+        {
+            m_targetAngle1 = value;
+            if (m_joint != null)
+            {
+                dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+                joint.SetTargetAngle1(m_targetAngle1, m_minAngle1, m_maxAngle1);
+            }
+        }
+    }
+
+    public float MinimumAngle1
+    {
+        get
+        {
+            return m_minAngle1;
+        }
+        set
+        {
+            m_minAngle1 = value;
+            if (m_joint != null)
+            {
+                dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+                joint.SetTargetAngle1(m_targetAngle1, m_minAngle1, m_maxAngle1);
+            }
+        }
+    }
+
+    public float MaximumAngle1
+    {
+        get
+        {
+            return m_maxAngle1;
+        }
+        set
+        {
+            m_maxAngle1 = value;
+            if (m_joint != null)
+            {
+                dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+                joint.SetTargetAngle1(m_targetAngle1, m_minAngle1, m_maxAngle1);
+            }
+        }
+    }
+
+    public float GetJointAngle1()
     {
         float angle = 0.0f;
         if (m_joint != null)
         {
-            dNewtonJointHingeActuator hinge = (dNewtonJointHingeActuator)m_joint;
-            angle = joint.GetAngle();
+            dNewtonJointUniversalActuator joint = (dNewtonJointUniversalActuator)m_joint;
+            angle = joint.GetAngle1();
         }
         return angle;
     }
@@ -316,12 +418,19 @@ public class NewtonUniversalActuator: NewtonJoint
 
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
-    public float m_maxTorque = 10.0f;
-    public float m_angularRate = 1.0f;
-    public float m_targetAngle = 0.0f;
-    public float m_minAngle = -360.0f;
-    public float m_maxAngle =  360.0f;
+    public float m_maxTorque0 = 10.0f;
+    public float m_angularRate0 = 1.0f;
+    public float m_targetAngle0 = 0.0f;
+    public float m_minAngle0 = -360.0f;
+    public float m_maxAngle0 =  360.0f;
+
+    public float m_maxTorque1 = 10.0f;
+    public float m_angularRate1 = 1.0f;
+    public float m_targetAngle1 = 0.0f;
+    public float m_minAngle1 = -360.0f;
+    public float m_maxAngle1 = 360.0f;
+
 }
-*/
+
 
 

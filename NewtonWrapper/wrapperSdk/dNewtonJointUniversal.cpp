@@ -78,8 +78,8 @@ dNewtonJointUniversalActuator::dNewtonJointUniversalActuator(const dMatrix pintA
 	dMatrix matrix(pintAndPivotMatrix * bodyMatrix);
 	CustomUniversalActuator* const joint = new CustomUniversalActuator(matrix, netwonBody0, NULL);
 	SetJoint(joint);
-	dAssert(0);
-//	joint->SetEnableFlag(true);
+	joint->SetEnableFlag0(true);
+	joint->SetEnableFlag1(true);
 }
 
 dNewtonJointUniversalActuator::dNewtonJointUniversalActuator(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1)
@@ -93,38 +93,59 @@ dNewtonJointUniversalActuator::dNewtonJointUniversalActuator(const dMatrix pintA
 	dMatrix matrix(pintAndPivotMatrix * bodyMatrix);
 	CustomUniversalActuator* const joint = new CustomUniversalActuator(matrix, netwonBody0, netwonBody1);
 	SetJoint(joint);
-	dAssert(0);
-	//joint->SetEnableFlag(true);
+	joint->SetEnableFlag0(true);
+	joint->SetEnableFlag1(true);
 }
 
-dFloat dNewtonJointUniversalActuator::GetAngle() const
+dFloat dNewtonJointUniversalActuator::GetAngle0() const
 {
 	CustomUniversalActuator* const joint = (CustomUniversalActuator*) m_joint;
-	dAssert(0);
-	return 0;
-//	return joint->GetActuatorAngle() * RAD_TO_DEGREES;
+	return joint->GetActuatorAngle0() * RAD_TO_DEGREES;
 }
 
-void dNewtonJointUniversalActuator::SetMaxToque(dFloat torque)
+void dNewtonJointUniversalActuator::SetMaxToque0(dFloat torque)
 {
 	CustomUniversalActuator* const joint = (CustomUniversalActuator*) m_joint;
-	dAssert(0);
-//	joint->SetMaxForcePower(dAbs(torque));
+	joint->SetMaxTorquePower0(dAbs(torque));
 }
 
-void dNewtonJointUniversalActuator::SetAngularRate(dFloat rate)
+void dNewtonJointUniversalActuator::SetAngularRate0(dFloat rate)
 {
 	CustomUniversalActuator* const joint = (CustomUniversalActuator*) m_joint;
-	dAssert(0);
-//	joint->SetAngularRate(rate * DEGREES_TO_RAD);
+	joint->SetAngularRate0(rate * DEGREES_TO_RAD);
 }
 
-void dNewtonJointUniversalActuator::SetTargetAngle(dFloat angle, dFloat minLimit, dFloat maxLimit)
+void dNewtonJointUniversalActuator::SetTargetAngle0(dFloat angle, dFloat minLimit, dFloat maxLimit)
 {
 	CustomUniversalActuator* const joint = (CustomUniversalActuator*) m_joint;
-	dAssert(0);
-//	joint->SetMinAngularLimit(dMin(minLimit * DEGREES_TO_RAD, dFloat(0.0f)));
-//	joint->SetMaxAngularLimit(dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
-//	joint->SetTargetAngle(dClamp (angle * DEGREES_TO_RAD, joint->GetMinAngularLimit(), joint->GetMaxAngularLimit()));
+	joint->SetMinAngularLimit0(dMin(minLimit * DEGREES_TO_RAD, dFloat(0.0f)));
+	joint->SetMaxAngularLimit0(dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
+	joint->SetTargetAngle0(dClamp (angle * DEGREES_TO_RAD, joint->GetMinAngularLimit0(), joint->GetMaxAngularLimit0()));
 }
 
+
+dFloat dNewtonJointUniversalActuator::GetAngle1() const
+{
+	CustomUniversalActuator* const joint = (CustomUniversalActuator*)m_joint;
+	return joint->GetActuatorAngle1() * RAD_TO_DEGREES;
+}
+
+void dNewtonJointUniversalActuator::SetMaxToque1(dFloat torque)
+{
+	CustomUniversalActuator* const joint = (CustomUniversalActuator*)m_joint;
+	joint->SetMaxTorquePower1(dAbs(torque));
+}
+
+void dNewtonJointUniversalActuator::SetAngularRate1(dFloat rate)
+{
+	CustomUniversalActuator* const joint = (CustomUniversalActuator*)m_joint;
+	joint->SetAngularRate1(rate * DEGREES_TO_RAD);
+}
+
+void dNewtonJointUniversalActuator::SetTargetAngle1(dFloat angle, dFloat minLimit, dFloat maxLimit)
+{
+	CustomUniversalActuator* const joint = (CustomUniversalActuator*)m_joint;
+	joint->SetMinAngularLimit1(dMin(minLimit * DEGREES_TO_RAD, dFloat(0.0f)));
+	joint->SetMaxAngularLimit1(dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
+	joint->SetTargetAngle1(dClamp(angle * DEGREES_TO_RAD, joint->GetMinAngularLimit1(), joint->GetMaxAngularLimit1()));
+}
