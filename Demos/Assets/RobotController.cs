@@ -81,7 +81,7 @@ public class RobotController : MonoBehaviour {
         {
             handAActuator.TargetPosition = gripperPos;
             handANB.SleepState = false;
-            handBActuator.TargetPosition = -gripperPos;
+            handBActuator.TargetPosition = gripperPos;
             handBNB.SleepState = false;
         }
 
