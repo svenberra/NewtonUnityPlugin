@@ -69,7 +69,7 @@
     <Compile Include="NewtonConeCollider.cs" />
     <Compile Include="NewtonConvexHullCollider.cs" />
     <Compile Include="NewtonCylinderCollider.cs" />
-    <Compile Include="NewtonGear.cs" />
+    <Compile Include="NewtonGears.cs" />
     <Compile Include="NewtonHinge.cs" />
     <Compile Include="NewtonJoint.cs" />
     <Compile Include="NewtonNullCollider.cs" />

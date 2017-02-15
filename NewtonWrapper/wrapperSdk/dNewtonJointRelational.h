@@ -30,9 +30,10 @@ class dNewtonJointGear: public dNewtonJoint
 	dNewtonJointGear(dFloat ratio, const dVector pin0, const dVector pin1, void* const body0, void* const body1);
 };
 
-class dNewtonJointDifferentialGear : public dNewtonJoint
+class dNewtonJointDifferentialGear: public dNewtonJoint
 {
-	dNewtonJointDifferentialGear(dFloat ratio, const dVector childPin, const dVector parentPin, const dVector referencePin, void* const body0, NewtonBody* const child, NewtonBody* const parent, NewtonBody* const parentReference);
+	public:
+	dNewtonJointDifferentialGear(dFloat ratio, const dVector childPin, const dVector parentPin, const dVector referencePin, void* const child, void* const parent, void* const parentReference);
 };
 
 #endif

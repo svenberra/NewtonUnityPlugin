@@ -39,7 +39,8 @@ dNewtonJointGear::dNewtonJointGear(dFloat ratio, const dVector pin0, const dVect
 	SetJoint(gear);
 }
 
-dNewtonJointDifferentialGear::dNewtonJointDifferentialGear(dFloat ratio, const dVector childPin, const dVector parentPin, const dVector referencePin, void* const body0, NewtonBody* const child, NewtonBody* const parent, NewtonBody* const parentReference)
+dNewtonJointDifferentialGear::dNewtonJointDifferentialGear(dFloat ratio, const dVector childPin, const dVector parentPin, const dVector referencePin, void* const child, void* const parent, void* const parentReference)
+	:dNewtonJoint()
 {
 	NewtonBody* const childBody = (NewtonBody*)child;
 	NewtonBody* const parentBody = (NewtonBody*)parent;
