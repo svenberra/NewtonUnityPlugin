@@ -203,10 +203,12 @@ public class NewtonUniversalActuator: NewtonJoint
         bodyMatrix.SetTRS(transform.position, transform.rotation, Vector3.one);
         localMatrix.SetTRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
 
-        Gizmos.color = Color.red;
-
         Gizmos.matrix = bodyMatrix;
+        Gizmos.color = Color.red;
         Gizmos.DrawRay(m_posit, localMatrix.GetColumn(0) * m_gizmoScale);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(m_posit, localMatrix.GetColumn(1) * m_gizmoScale);
     }
 
     public float MaxTorque0
