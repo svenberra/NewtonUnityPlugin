@@ -27,7 +27,6 @@
 class dNewtonJointSlider: public dNewtonJoint
 {
 	public:
-	dNewtonJointSlider(const dMatrix pintAndPivotMatrix, void* const body0);
 	dNewtonJointSlider(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1);
 
 	void SetLimits(bool enable, dFloat minDistance, dFloat maxDistance);
@@ -38,7 +37,6 @@ class dNewtonJointSlider: public dNewtonJoint
 class dNewtonJointSliderActuator : public dNewtonJoint
 {
 	public:
-	dNewtonJointSliderActuator(const dMatrix pintAndPivotMatrix, void* const body0);
 	dNewtonJointSliderActuator(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1);
 
 	dFloat GetPosition() const;

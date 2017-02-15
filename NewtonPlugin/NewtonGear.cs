@@ -39,7 +39,8 @@ public class NewtonGear : NewtonJoint
             Vector4 parentPin = localMatrix1.GetColumn(0);
 
             NewtonBody child = GetComponent<NewtonBody>();
-            m_joint = new dNewtonJointGear(m_gearRatio, new dVector (childPin.x, childPin.y, childPin.z, 0.0f), new dVector(parentPin.x, parentPin.y, parentPin.z, 0.0f), child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
+            IntPtr otherBody = (m_otherBody != null) ? m_otherBody.GetBody().GetBody() : new IntPtr(0);
+            m_joint = new dNewtonJointGear(m_gearRatio, new dVector (childPin.x, childPin.y, childPin.z, 0.0f), new dVector(parentPin.x, parentPin.y, parentPin.z, 0.0f), child.GetBody().GetBody(), otherBody);
         }
     }
 

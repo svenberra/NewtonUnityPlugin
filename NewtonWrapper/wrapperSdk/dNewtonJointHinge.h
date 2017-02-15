@@ -27,7 +27,6 @@
 class dNewtonJointHinge: public dNewtonJoint
 {
 	public:
-	dNewtonJointHinge(const dMatrix pintAndPivotMatrix, void* const body0);
 	dNewtonJointHinge(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1);
 
 	void SetLimits(bool enable, dFloat minAngle, dFloat maxAngle);
@@ -37,7 +36,6 @@ class dNewtonJointHinge: public dNewtonJoint
 class dNewtonJointHingeActuator : public dNewtonJoint
 {
 	public:
-	dNewtonJointHingeActuator(const dMatrix pintAndPivotMatrix, void* const body0);
 	dNewtonJointHingeActuator(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1);
 
 	dFloat GetAngle() const;

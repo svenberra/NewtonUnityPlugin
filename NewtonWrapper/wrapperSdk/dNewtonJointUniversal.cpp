@@ -22,19 +22,6 @@
 #include "stdafx.h"
 #include "dNewtonJointUniversal.h"
 
-dNewtonJointUniversal::dNewtonJointUniversal(const dMatrix pintAndPivotMatrix, void* const body0)
-	:dNewtonJoint()
-{
-	dMatrix bodyMatrix;
-	
-	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
-	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
-
-	dMatrix matrix(pintAndPivotMatrix * bodyMatrix);
-	CustomUniversal* const joint = new CustomUniversal(matrix, netwonBody0, NULL);
-	SetJoint(joint);
-}
-
 dNewtonJointUniversal::dNewtonJointUniversal(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1)
 	:dNewtonJoint()
 {
@@ -67,20 +54,6 @@ void dNewtonJointUniversal::SetLimits_1(bool enable, dFloat minVal, dFloat maxAn
 	}
 }
 
-
-dNewtonJointUniversalActuator::dNewtonJointUniversalActuator(const dMatrix pintAndPivotMatrix, void* const body0)
-	:dNewtonJoint()
-{
-	dMatrix bodyMatrix;
-	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
-	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
-	
-	dMatrix matrix(pintAndPivotMatrix * bodyMatrix);
-	CustomUniversalActuator* const joint = new CustomUniversalActuator(matrix, netwonBody0, NULL);
-	SetJoint(joint);
-	joint->SetEnableFlag0(true);
-	joint->SetEnableFlag1(true);
-}
 
 dNewtonJointUniversalActuator::dNewtonJointUniversalActuator(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1)
 	:dNewtonJoint()

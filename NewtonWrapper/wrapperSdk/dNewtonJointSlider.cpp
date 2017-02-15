@@ -22,18 +22,6 @@
 #include "stdafx.h"
 #include "dNewtonJointSlider.h"
 
-dNewtonJointSlider::dNewtonJointSlider(const dMatrix pintAndPivotMatrix, void* const body0)
-	:dNewtonJoint()
-{
-	dMatrix bodyMatrix;
-	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
-	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
-
-	dMatrix matrix (pintAndPivotMatrix * bodyMatrix);
-
-	CustomSlider* const joint = new CustomSlider(matrix, netwonBody0, NULL);
-	SetJoint(joint);
-}
 
 dNewtonJointSlider::dNewtonJointSlider(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1)
 	:dNewtonJoint()
@@ -64,19 +52,6 @@ void dNewtonJointSlider::SetAsSpringDamper(bool enable, dFloat forceMixing, dFlo
 	joint->SetAsSpringDamper(enable, dClamp(forceMixing, 0.7f, 0.99f), dAbs(springConst), dAbs(damperConst));
 }
 
-
-dNewtonJointSliderActuator::dNewtonJointSliderActuator(const dMatrix pintAndPivotMatrix, void* const body0)
-	:dNewtonJoint()
-{
-	dMatrix bodyMatrix;
-	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
-	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
-
-	dMatrix matrix (pintAndPivotMatrix * bodyMatrix);
-	CustomSliderActuator* const joint = new CustomSliderActuator(matrix, netwonBody0, NULL);
-	SetJoint(joint);
-	joint->SetEnableFlag(true);
-}
 
 dNewtonJointSliderActuator::dNewtonJointSliderActuator(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1)
 	:dNewtonJoint()

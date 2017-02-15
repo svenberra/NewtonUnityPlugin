@@ -22,19 +22,6 @@
 #include "stdafx.h"
 #include "dNewtonJointSlidingHinge.h"
 
-dNewtonJointSlidingHinge::dNewtonJointSlidingHinge(const dMatrix pintAndPivotMatrix, void* const body0)
-	:dNewtonJoint()
-{
-	dMatrix bodyMatrix;
-	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
-	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
-
-	dMatrix matrix (pintAndPivotMatrix * bodyMatrix);
-
-	CustomSlider* const joint = new CustomSlider(matrix, netwonBody0, NULL);
-	SetJoint(joint);
-}
-
 dNewtonJointSlidingHinge::dNewtonJointSlidingHinge(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1)
 	:dNewtonJoint()
 {

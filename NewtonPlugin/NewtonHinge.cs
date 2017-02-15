@@ -29,16 +29,9 @@ public class NewtonHinge: NewtonJoint
     public override void Create()
     {
         NewtonBody child = GetComponent<NewtonBody>();
-
         dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));
-        if (m_otherBody == null)
-        {
-            m_joint = new dNewtonJointHinge(matrix, child.GetBody().GetBody());
-        }
-        else
-        {
-            m_joint = new dNewtonJointHinge(matrix, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
-        }
+        IntPtr otherBody = (m_otherBody != null) ? m_otherBody.GetBody().GetBody() : new IntPtr(0);
+        m_joint = new dNewtonJointHinge(matrix, child.GetBody().GetBody(), otherBody);
 
         Stiffness = m_stiffness;
         EnableLimits = m_enableLimits;
@@ -200,14 +193,8 @@ public class NewtonHingeActuator: NewtonJoint
     {
         NewtonBody child = GetComponent<NewtonBody>();
         dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));
-        if (m_otherBody == null)
-        {
-            m_joint = new dNewtonJointHingeActuator(matrix, child.GetBody().GetBody());
-        }
-        else
-        {
-            m_joint = new dNewtonJointHingeActuator(matrix, child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
-        }
+        IntPtr otherBody = (m_otherBody != null) ? m_otherBody.GetBody().GetBody() : new IntPtr(0);
+        m_joint = new dNewtonJointHingeActuator(matrix, child.GetBody().GetBody(), otherBody);
 
         TargetAngle = m_targetAngle;
         AngularRate = m_angularRate;

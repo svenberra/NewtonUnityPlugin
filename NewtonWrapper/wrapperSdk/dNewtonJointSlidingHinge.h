@@ -27,14 +27,10 @@
 class dNewtonJointSlidingHinge: public dNewtonJoint
 {
 	public:
-	dNewtonJointSlidingHinge(const dMatrix pintAndPivotMatrix, void* const body0);
 	dNewtonJointSlidingHinge(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1);
 
 	void SetLimits(bool enable, dFloat minDistance, dFloat maxDistance);
 	void SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst);
 };
-
-
-
 
 #endif

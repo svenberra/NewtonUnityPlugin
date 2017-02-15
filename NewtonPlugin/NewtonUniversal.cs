@@ -29,14 +29,9 @@ public class NewtonUniversal: NewtonJoint
     public override void Create()
     {
         NewtonBody child = GetComponent<NewtonBody>();
-        if (m_otherBody == null)
-        {
-            m_joint = new dNewtonJointUniversal(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)), child.GetBody().GetBody());
-        }
-        else
-        {
-            m_joint = new dNewtonJointUniversal(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)), child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
-        }
+        dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));
+        IntPtr otherBody = (m_otherBody != null) ? m_otherBody.GetBody().GetBody() : new IntPtr(0);
+        m_joint = new dNewtonJointUniversal(matrix, child.GetBody().GetBody(), otherBody);
 
         Stiffness = m_stiffness;
         EnableLimits_0 = m_enableLimits_0;
@@ -178,14 +173,9 @@ public class NewtonUniversalActuator: NewtonJoint
     public override void Create()
     {
         NewtonBody child = GetComponent<NewtonBody>();
-        if (m_otherBody == null)
-        {
-            m_joint = new dNewtonJointUniversalActuator(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)), child.GetBody().GetBody());
-        }
-        else
-        {
-            m_joint = new dNewtonJointUniversalActuator(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)), child.GetBody().GetBody(), m_otherBody.GetBody().GetBody());
-        }
+        dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));
+        IntPtr otherBody = (m_otherBody != null) ? m_otherBody.GetBody().GetBody() : new IntPtr(0);
+        m_joint = new dNewtonJointUniversalActuator(matrix, child.GetBody().GetBody(), otherBody);
 
         TargetAngle0 = m_targetAngle0;
         AngularRate0 = m_angularRate0;

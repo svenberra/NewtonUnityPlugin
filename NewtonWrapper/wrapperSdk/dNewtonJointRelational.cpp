@@ -22,20 +22,6 @@
 #include "stdafx.h"
 #include "dNewtonJointRelational.h"
 
-dNewtonJointGear::dNewtonJointGear(dFloat ratio, const dVector pin0, const dVector pin1, void* const body0)
-	:dNewtonJoint()
-{
-	dMatrix bodyMatrix;
-	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
-	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
-
-	dVector childPin (bodyMatrix.RotateVector(dVector(pin0[0], pin0[1], pin0[2], 0.0f)));
-	dVector parentPin (dVector(pin1[0], pin1[1], pin1[2], 0.0f));
-
-	CustomGear* const gear = new CustomGear(dAbs (ratio), childPin, parentPin, netwonBody0, NULL);
-	SetJoint(gear);
-}
-
 dNewtonJointGear::dNewtonJointGear(dFloat ratio, const dVector pin0, const dVector pin1, void* const body0, void* const body1)
 	:dNewtonJoint()
 {
@@ -51,4 +37,10 @@ dNewtonJointGear::dNewtonJointGear(dFloat ratio, const dVector pin0, const dVect
 
 	CustomGear* const gear = new CustomGear(dAbs(ratio), childPin, parentPin, netwonBody0, netwonBody1);
 	SetJoint(gear);
+}
+
+//CustomDifferentialGear(dFloat gearRatio, const dVector& childPin, const dVector& parentPin, const dVector& referencePin, NewtonBody* const child, NewtonBody* const parent, NewtonBody* const parentReference);
+dNewtonJointDifferentialGear::dNewtonJointDifferentialGear(dFloat ratio, const dVector childPin, const dVector parentPin, const dVector referencePin, void* const body0, NewtonBody* const child, NewtonBody* const parent, NewtonBody* const parentReference)
+{
+	dAssert(0);
 }

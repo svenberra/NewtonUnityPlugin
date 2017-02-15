@@ -22,19 +22,6 @@
 #include "stdafx.h"
 #include "dNewtonJointHinge.h"
 
-dNewtonJointHinge::dNewtonJointHinge(const dMatrix pintAndPivotMatrix, void* const body0)
-	:dNewtonJoint()
-{
-	dMatrix bodyMatrix;
-	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
-	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
-
-	dMatrix matrix (pintAndPivotMatrix * bodyMatrix);
-
-	CustomHinge* const joint = new CustomHinge(matrix, netwonBody0, NULL);
-	SetJoint(joint);
-}
-
 dNewtonJointHinge::dNewtonJointHinge(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1)
 	:dNewtonJoint()
 {
@@ -64,19 +51,6 @@ void dNewtonJointHinge::SetAsSpringDamper(bool enable, dFloat forceMixing, dFloa
 	joint->SetAsSpringDamper(enable, dClamp(forceMixing, 0.7f, 0.99f), dAbs(springConst), dAbs(damperConst));
 }
 
-
-dNewtonJointHingeActuator::dNewtonJointHingeActuator(const dMatrix pintAndPivotMatrix, void* const body0)
-	:dNewtonJoint()
-{
-	dMatrix bodyMatrix;
-	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
-	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
-
-	dMatrix matrix (pintAndPivotMatrix * bodyMatrix);
-	CustomHingeActuator* const joint = new CustomHingeActuator(matrix, netwonBody0, NULL);
-	SetJoint(joint);
-	joint->SetEnableFlag(true);
-}
 
 dNewtonJointHingeActuator::dNewtonJointHingeActuator(const dMatrix pintAndPivotMatrix, void* const body0, void* const body1)
 	:dNewtonJoint()
