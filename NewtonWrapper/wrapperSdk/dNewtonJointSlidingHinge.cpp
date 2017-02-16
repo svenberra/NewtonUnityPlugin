@@ -31,23 +31,23 @@ dNewtonJointSlidingHinge::dNewtonJointSlidingHinge(const dMatrix pintAndPivotMat
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 
 	dMatrix matrix(pintAndPivotMatrix * bodyMatrix);
-	CustomSlider* const joint = new CustomSlider(matrix, netwonBody0, netwonBody1);
+	CustomSlidingContact* const joint = new CustomSlidingContact(matrix, netwonBody0, netwonBody1);
 	SetJoint(joint);
 }
 
 
 void dNewtonJointSlidingHinge::SetLimits(bool enable, dFloat minDistance, dFloat maxDistance)
 {
-	CustomSlider* const joint = (CustomSlider*)m_joint;
-	joint->EnableLimits(enable);
+	CustomSlidingContact* const joint = (CustomSlidingContact*)m_joint;
+	joint->EnableLinearLimits(enable);
 	if (enable) {
-		joint->SetLimits(dMin(minDistance, 0.0f), dMax(maxDistance, 0.0f));
+		joint->SetLinearLimits(dMin(minDistance, 0.0f), dMax(maxDistance, 0.0f));
 	}
 }
 
 void dNewtonJointSlidingHinge::SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst)
 {
-	CustomSlider* const joint = (CustomSlider*)m_joint;
+	CustomSlidingContact* const joint = (CustomSlidingContact*)m_joint;
 	joint->SetAsSpringDamper(enable, dClamp(forceMixing, 0.7f, 0.99f), dAbs(springConst), dAbs(damperConst));
 }
 

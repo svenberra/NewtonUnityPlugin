@@ -32,6 +32,7 @@
 #include <CustomSlider.h>
 #include <CustomUniversal.h>
 #include <CustomHingeActuator.h>
+#include <CustomSlidingContact.h>
 #include <CustomSliderActuator.h>
 #include <CustomUniversalActuator.h>
 
