@@ -7,8 +7,9 @@ public class PlayerDriver : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        motor = transform.Find("boxcar").GetComponent<NewtonUniversalActuator>();
-        if (motor == null)
+        motor = transform.Find("motor").GetComponent<NewtonBody>();
+//      motorJoint = transform.Find("motor").GetComponent<NewtonUniversalActuator>();
+        if (motor != null)
         {
             Debug.Log("xxxxx motor found");
         }
@@ -20,6 +21,6 @@ public class PlayerDriver : MonoBehaviour {
 		
 	}
 
-
-    NewtonUniversalActuator motor = null;
+    NewtonBody motor = null;
+    NewtonUniversalActuator motorJoint = null;
 }
