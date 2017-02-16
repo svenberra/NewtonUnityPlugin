@@ -93,11 +93,11 @@ public class NewtonDifferentialGear : NewtonJoint
         IntPtr otherBody = (m_otherBody != null) ? m_otherBody.GetBody().GetBody() : new IntPtr(0);
         IntPtr referenceBody = (m_referenceBody != null) ? m_referenceBody.GetBody().GetBody() : new IntPtr(0);
 
-        dVector childPin_ = new dVector(childPin.x, childPin.y, childPin.z, 0.0f);
-        dVector parentPin_ = new dVector(parentPin.x, parentPin.y, parentPin.z, 0.0f);
-        dVector referencePin_ = new dVector(referencePin.x, referencePin.y, referencePin.z, 0.0f);
+        dVector dChildPin = new dVector(childPin.x, childPin.y, childPin.z, 0.0f);
+        dVector dParentPin = new dVector(parentPin.x, parentPin.y, parentPin.z, 0.0f);
+        dVector dReferencePin = new dVector(referencePin.x, referencePin.y, referencePin.z, 0.0f);
 
-        m_joint = new dNewtonJointDifferentialGear(m_gearRatio, childPin_, parentPin_, referencePin_, child.GetBody().GetBody(), otherBody, referenceBody);
+        m_joint = new dNewtonJointDifferentialGear(m_gearRatio, dChildPin, dParentPin, dReferencePin, child.GetBody().GetBody(), otherBody, referenceBody);
     }
 
     void OnDrawGizmosSelected()
