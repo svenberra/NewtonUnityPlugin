@@ -73,7 +73,7 @@ dNewtonJointUniversalActuator::dNewtonJointUniversalActuator(const dMatrix pintA
 dFloat dNewtonJointUniversalActuator::GetAngle0() const
 {
 	CustomUniversalActuator* const joint = (CustomUniversalActuator*) m_joint;
-	return joint->GetActuatorAngle0() * RAD_TO_DEGREES;
+	return joint->GetJointAngle_0() * RAD_TO_DEGREES;
 }
 
 void dNewtonJointUniversalActuator::SetMaxToque0(dFloat torque)
@@ -91,16 +91,17 @@ void dNewtonJointUniversalActuator::SetAngularRate0(dFloat rate)
 void dNewtonJointUniversalActuator::SetTargetAngle0(dFloat angle, dFloat minLimit, dFloat maxLimit)
 {
 	CustomUniversalActuator* const joint = (CustomUniversalActuator*) m_joint;
-	joint->SetMinAngularLimit0(dMin(minLimit * DEGREES_TO_RAD, dFloat(0.0f)));
-	joint->SetMaxAngularLimit0(dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
-	joint->SetTargetAngle0(dClamp (angle * DEGREES_TO_RAD, joint->GetMinAngularLimit0(), joint->GetMaxAngularLimit0()));
+	//joint->SetMinAngularLimit0(dMin(minLimit * DEGREES_TO_RAD, dFloat(0.0f)));
+	//joint->SetMaxAngularLimit0(dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
+	joint->SetLimits_0(dMin(minLimit * DEGREES_TO_RAD, dFloat(0.0f)), dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
+	joint->SetTargetAngle0(dClamp (angle * DEGREES_TO_RAD, joint->GetMinAngularLimit_0(), joint->GetMaxAngularLimit_0()));
 }
 
 
 dFloat dNewtonJointUniversalActuator::GetAngle1() const
 {
 	CustomUniversalActuator* const joint = (CustomUniversalActuator*)m_joint;
-	return joint->GetActuatorAngle1() * RAD_TO_DEGREES;
+	return joint->GetJointAngle_1() * RAD_TO_DEGREES;
 }
 
 void dNewtonJointUniversalActuator::SetMaxToque1(dFloat torque)
@@ -118,7 +119,6 @@ void dNewtonJointUniversalActuator::SetAngularRate1(dFloat rate)
 void dNewtonJointUniversalActuator::SetTargetAngle1(dFloat angle, dFloat minLimit, dFloat maxLimit)
 {
 	CustomUniversalActuator* const joint = (CustomUniversalActuator*)m_joint;
-	joint->SetMinAngularLimit1(dMin(minLimit * DEGREES_TO_RAD, dFloat(0.0f)));
-	joint->SetMaxAngularLimit1(dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
-	joint->SetTargetAngle1(dClamp(angle * DEGREES_TO_RAD, joint->GetMinAngularLimit1(), joint->GetMaxAngularLimit1()));
+	joint->SetLimits_1(dMin(minLimit * DEGREES_TO_RAD, dFloat(0.0f)), dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
+	joint->SetTargetAngle1(dClamp(angle * DEGREES_TO_RAD, joint->GetMinAngularLimit_1(), joint->GetMaxAngularLimit_1()));
 }
