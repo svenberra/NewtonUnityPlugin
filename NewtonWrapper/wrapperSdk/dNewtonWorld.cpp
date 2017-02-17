@@ -132,6 +132,8 @@ void dNewtonWorld::UpdateWorld(OnWorldUpdateCallback forceCallback)
 
 	forceCallback(m_timeStep);
 
+//NewtonSerializeToFile(m_world, "C:/temp/xxxxx.bin", NULL, NULL);
+
 	if (m_asyncUpdateMode) {
 		NewtonUpdateAsync(m_world, m_timeStep);
 	} else {
