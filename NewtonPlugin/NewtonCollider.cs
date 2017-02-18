@@ -102,14 +102,6 @@ abstract public class NewtonCollider : MonoBehaviour
     {
         Vector3 scale = GetScale();
         shape.SetScale(scale.x, scale.y, scale.z);
-/*
-        Matrix4x4 matrix = Matrix4x4.identity;
-        matrix.SetTRS(m_posit, Quaternion.Euler(m_rotation), Vector3.one);
-        IntPtr floatPtr = Marshal.AllocHGlobal(Marshal.SizeOf(matrix));
-        Marshal.StructureToPtr(matrix, floatPtr, false);
-        shape.SetMatrix(floatPtr, Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)));
-        Marshal.FreeHGlobal(floatPtr);
-*/
         shape.SetMatrix(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)));
     }
 
@@ -159,11 +151,13 @@ abstract public class NewtonCollider : MonoBehaviour
     }
 
     private dNewtonCollision m_editorShape = null;
+
+    public int m_materialID = 0;
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
     public Vector3 m_scale = Vector3.one;
     public bool m_inheritTransformScale = true;
-
+    
     // Reuse the same buffer for debug display
     static Vector3 m_lineP0 = Vector3.zero;
     static Vector3 m_lineP1 = Vector3.zero;

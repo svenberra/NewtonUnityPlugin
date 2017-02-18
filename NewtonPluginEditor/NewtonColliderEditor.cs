@@ -14,6 +14,7 @@ public abstract class NewtonColliderEditor : Editor
         rotProp = serializedObject.FindProperty("m_rotation");
         inheritScaleProp = serializedObject.FindProperty("m_inheritTransformScale");
         scaleProp = serializedObject.FindProperty("m_scale");
+        materialProp = serializedObject.FindProperty("m_materialID");
 
         Undo.undoRedoPerformed += OnUndoRedo;
 
@@ -39,6 +40,7 @@ public abstract class NewtonColliderEditor : Editor
         EditorGUILayout.PropertyField(rotProp, new GUIContent("Rotation"));
         EditorGUILayout.PropertyField(inheritScaleProp, new GUIContent("Inherit Scale"));
         EditorGUILayout.PropertyField(scaleProp, new GUIContent("Scale"));
+        EditorGUILayout.PropertyField(materialProp, new GUIContent("Material ID"));
         serializedObject.ApplyModifiedProperties();
     }
 
@@ -46,7 +48,7 @@ public abstract class NewtonColliderEditor : Editor
     SerializedProperty rotProp;
     SerializedProperty inheritScaleProp;
     SerializedProperty scaleProp;
-
+    SerializedProperty materialProp;
 }
 
 [CustomEditor(typeof(NewtonSphereCollider))]
