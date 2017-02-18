@@ -27,11 +27,16 @@ using System.Runtime.InteropServices;
 [CreateAssetMenu(menuName = "Newton Material")]
 public class NewtonMaterial : ScriptableObject
 {
+}
 
-    public int m_materialId_0 = 0;
-    public int m_materialId_1 = 0;
-    public float m_staticFriction = 0.8f; 
-    public float m_kineticFriction = 0.8f; 
+
+[CreateAssetMenu(menuName = "Newton Material Interaction")]
+public class NewtonMaterialInteraction : ScriptableObject
+{
+    public NewtonMaterial m_material_0 = null;
+    public NewtonMaterial m_material_1 = null;
+    public float m_staticFriction = 0.9f; 
+    public float m_kineticFriction = 0.75f; 
 }
 
 
