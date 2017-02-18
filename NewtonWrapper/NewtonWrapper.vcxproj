@@ -231,6 +231,7 @@ xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Com
     <ClInclude Include="wrapperSdk\dNewtonCollision.h" />
     <ClInclude Include="wrapperSdk\dNewtonJoint.h" />
     <ClInclude Include="wrapperSdk\dNewtonJointHinge.h" />
+    <ClInclude Include="wrapperSdk\dNewtonJointPlane.h" />
     <ClInclude Include="wrapperSdk\dNewtonJointRelational.h" />
     <ClInclude Include="wrapperSdk\dNewtonJointSlider.h" />
     <ClInclude Include="wrapperSdk\dNewtonJointSlidingHinge.h" />
@@ -269,6 +270,7 @@ xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Com
     <ClCompile Include="wrapperSdk\dNewtonCollision.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonJoint.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonJointHinge.cpp" />
+    <ClCompile Include="wrapperSdk\dNewtonJointPlane.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonJointRelational.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonJointSlider.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonJointSlidingHinge.cpp" />

@@ -36,6 +36,9 @@
     <ClCompile Include="wrapperSdk\dNewtonJointSlidingHinge.cpp">
       <Filter>wrapperSdk</Filter>
     </ClCompile>
+    <ClCompile Include="wrapperSdk\dNewtonJointPlane.cpp">
+      <Filter>wrapperSdk</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h" />
@@ -71,6 +74,9 @@
       <Filter>wrapperSdk</Filter>
     </ClInclude>
     <ClInclude Include="wrapperSdk\dNewtonJointSlidingHinge.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapperSdk\dNewtonJointPlane.h">
       <Filter>wrapperSdk</Filter>
     </ClInclude>
   </ItemGroup>

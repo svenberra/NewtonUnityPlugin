@@ -28,6 +28,7 @@
 #include <CustomAlloc.h>
 #include <CustomJoint.h>
 #include <CustomGear.h>
+#include <CustomPlane.h>
 #include <CustomHinge.h>
 #include <CustomSlider.h>
 #include <CustomUniversal.h>
