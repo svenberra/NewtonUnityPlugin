@@ -102,13 +102,12 @@ public class NewtonWorld : MonoBehaviour
     private void InitScene()
     {
         Resources.LoadAll("Newton Materials");
-        NewtonMaterial[] materialList = FindObjectsOfType<NewtonMaterial>();
+        NewtonMaterial[] materialList = Resources.FindObjectsOfTypeAll<NewtonMaterial>();
         foreach (NewtonMaterial material in materialList)
         {
             // register all material nodes.
             Debug.Log("xxxxxxxxx this is a material");
         }
-
 
         GameObject[] objectList = gameObject.scene.GetRootGameObjects();
         foreach (GameObject rootObj in objectList)
