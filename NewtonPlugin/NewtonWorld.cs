@@ -88,6 +88,7 @@ public class NewtonWorld : MonoBehaviour
 
     private void InitPhysicsJoints(GameObject root)
     {
+        Resources.LoadAll("Newton Materials");
         foreach (NewtonJoint joint in root.GetComponents<NewtonJoint>())
         {
             joint.Create();
@@ -101,6 +102,13 @@ public class NewtonWorld : MonoBehaviour
 
     private void InitScene()
     {
+        NewtonMaterial[] materialList = FindObjectsOfType<NewtonMaterial>();
+        foreach (NewtonMaterial material in materialList)
+        {
+            Debug.Log("xxxxxxxxx");
+        }
+
+
         GameObject[] objectList = gameObject.scene.GetRootGameObjects();
         foreach (GameObject rootObj in objectList)
         {

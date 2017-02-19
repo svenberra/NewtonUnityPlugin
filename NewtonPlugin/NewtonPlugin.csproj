@@ -72,7 +72,7 @@
     <Compile Include="NewtonGears.cs" />
     <Compile Include="NewtonHinge.cs" />
     <Compile Include="NewtonJoint.cs" />
-    <Compile Include="NewtonMaterialInteration.cs" />
+    <Compile Include="NewtonMaterial.cs" />
     <Compile Include="NewtonNullCollider.cs" />
     <Compile Include="NewtonPlane.cs" />
     <Compile Include="NewtonSlider.cs" />
