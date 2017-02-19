@@ -136,7 +136,7 @@ static int xxx;
 if (!xxx)
 {
 	xxx = 1;
-	NewtonSerializeToFile(m_world, "xxxxxxx.bin", NULL, NULL);
+//	NewtonSerializeToFile(m_world, "xxxxxxx.bin", NULL, NULL);
 }
 
 	if (m_asyncUpdateMode) {
