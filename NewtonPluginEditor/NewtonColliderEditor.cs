@@ -34,7 +34,6 @@ public abstract class NewtonColliderEditor : Editor
 
     public override void OnInspectorGUI()
     {
-
         serializedObject.Update();
         EditorGUILayout.PropertyField(posProp, new GUIContent("Position"));
         EditorGUILayout.PropertyField(rotProp, new GUIContent("Rotation"));

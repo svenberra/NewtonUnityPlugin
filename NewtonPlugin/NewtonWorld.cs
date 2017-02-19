@@ -166,7 +166,13 @@ public class NewtonWorld : MonoBehaviour
     public int m_numberOfThreads = 0;
     public int m_solverIterationsCount = 1;
     public int m_updateRate = 120;
+    public int m_subSteps = 1;
     public Vector3 m_gravity = new Vector3 (0.0f, -9.8f, 0.0f);
+
+    public float m_defaultRestitution = 0.4f;
+    public float m_defaultStaticFriction = 0.8f;
+    public float m_defaultKineticFriction = 0.6f;
+    
 
     private OnWorldUpdateCallback m_onWorldCallcak;
 }

@@ -3,48 +3,23 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
-/*
-[CustomEditor(typeof(NewtonWorld))]
-public class NewtonWorldEditor: Editor
-{
-    public override void OnInspectorGUI()
-    {
-        NewtonWorld world = (NewtonWorld)target;
-        world.m_asyncUpdate = EditorGUILayout.Toggle("async update", world.m_asyncUpdate);
-
-        world.m_numberOfThreads = EditorGUILayout.IntPopup("worked threads", world.m_numberOfThreads, m_numberOfThreads, m_numberOfThreadsValues);
-
-        world.m_solverIterationsCount = EditorGUILayout.IntField("solver iterations", world.m_solverIterationsCount);
-        if (world.m_solverIterationsCount < 1)
-        {
-            world.m_solverIterationsCount = 1;
-        }
-        world.m_updateRate = EditorGUILayout.IntPopup("frame rate", world.m_updateRate, m_displayedOptions, m_displayedOptionsValues);
-
-        world.m_broadPhaseType = EditorGUILayout.IntPopup("broad phase type", world.m_broadPhaseType, m_broaphase, m_broaphaseValues);
-
-        world.m_gravity = EditorGUILayout.Vector3Field("gravity", world.m_gravity);
-    }
-
-    static private int[] m_displayedOptionsValues = {60, 90, 120, 150, 180, 240};
-    static private string[] m_displayedOptions = { "60.0f fps", "90.0f fps", "120.0f fps", "150.0f fps", "180.0f fps", "240.0f fps" };
-
-    static private int[] m_numberOfThreadsValues = { 0, 2, 3, 4, 8};
-    static private string[] m_numberOfThreads = { "single threaded", "2 worked threads", "3 worked threads", "4 worked threads", "8 worked threads"};
-
-    static private int[] m_broaphaseValues = { 0, 1};
-    static private string[] m_broaphase = { "optimized for dynamic scenes", "optimize for static scenes"};
-}
-*/
-
 [CustomEditor(typeof(NewtonWorld))]
 public class NewtonWorldEditor : Editor
 {
     void OnEnable()
     {
         // Setup the SerializedProperties
-        m_numThreadsProp = serializedObject.FindProperty("m_numberOfThreads");
+        m_gravityProp = serializedObject.FindProperty("m_gravity");
+        m_subStepsProp = serializedObject.FindProperty("m_subSteps");
+        m_updateRateProp = serializedObject.FindProperty("m_updateRate");
+        m_asyncUpdateProp = serializedObject.FindProperty("m_asyncUpdate");
+        m_numThreadsProp = serializedObject.FindProperty("m_numberOfThreads");
+        m_broadPhaseTypeProp = serializedObject.FindProperty("m_broadPhaseType");
         m_solverIterationsCountProp = serializedObject.FindProperty("m_solverIterationsCount");
+
+        m_defaultRestitutionProp = serializedObject.FindProperty("m_defaultRestitution");
+        m_defaultStaticFrictionProp = serializedObject.FindProperty("m_defaultStaticFriction");
+        m_defaultKineticFrictionProp = serializedObject.FindProperty("m_defaultKineticFriction");
     }
 
     public override void OnInspectorGUI()
@@ -53,30 +28,37 @@ public class NewtonWorldEditor : Editor
         serializedObject.Update();
 
         // Show the custom GUI controls
-        int oldNumThreadsValue = m_numThreadsProp.intValue;
+        EditorGUILayout.PropertyField(m_asyncUpdateProp, new GUIContent("Asynchronous update"));
         EditorGUILayout.IntPopup(m_numThreadsProp, m_numberOfThreadsOptions, m_numberOfThreadsValues, new GUIContent("Worker threads"));
+        EditorGUILayout.IntSlider(m_solverIterationsCountProp, 1, 10, new GUIContent("Solver iterations count"));
+        EditorGUILayout.IntSlider(m_updateRateProp, 60, 1000, new GUIContent("Update rate"));
+        EditorGUILayout.IntSlider(m_subStepsProp, 1, 4, new GUIContent("Number of update sub steps"));
+        EditorGUILayout.IntPopup(m_broadPhaseTypeProp, m_broadPhaseOptions, m_broadPhaseValues, new GUIContent("Broad phase type"));
+        EditorGUILayout.PropertyField(m_gravityProp, new GUIContent("Gravity"));
 
-        int oldIterationsCountValue = m_solverIterationsCountProp.intValue;
-        EditorGUILayout.IntSlider(m_solverIterationsCountProp, 1, 10, new GUIContent("Solver iteration count"));
+        EditorGUILayout.PropertyField(m_defaultRestitutionProp, new GUIContent("Default restitution"));
+        EditorGUILayout.PropertyField(m_defaultStaticFrictionProp, new GUIContent("Default static friction"));
+        EditorGUILayout.PropertyField(m_defaultKineticFrictionProp, new GUIContent("Default kinetic Friction"));
 
         // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
         serializedObject.ApplyModifiedProperties();
-
-        if (oldNumThreadsValue != m_numThreadsProp.intValue)
-        {
-            Debug.Log("Threads property changed!");
-        }
-
-        if (oldIterationsCountValue != m_solverIterationsCountProp.intValue)
-        {
-            Debug.Log("Solver iterations property changed!");
-        }
     }
 
+    SerializedProperty m_gravityProp;
+    SerializedProperty m_subStepsProp;
+    SerializedProperty m_updateRateProp;
     SerializedProperty m_numThreadsProp;
+    SerializedProperty m_asyncUpdateProp;
+    SerializedProperty m_broadPhaseTypeProp;
     SerializedProperty m_solverIterationsCountProp;
 
+    SerializedProperty m_defaultRestitutionProp;
+    SerializedProperty m_defaultStaticFrictionProp;
+    SerializedProperty m_defaultKineticFrictionProp;
+
+    static private GUIContent[] m_broadPhaseOptions = { new GUIContent("Mixed static dynamic"), new GUIContent("dynamics")};
     static private GUIContent[] m_numberOfThreadsOptions = { new GUIContent("Single threaded"), new GUIContent("2 worker threads"), new GUIContent("3 worker threads"), new GUIContent("4 worker threads"), new GUIContent("8 worker threads") };
+    static private int[] m_broadPhaseValues = { 0, 1};
     static private int[] m_numberOfThreadsValues = { 0, 2, 3, 4, 8 };
 }
 
