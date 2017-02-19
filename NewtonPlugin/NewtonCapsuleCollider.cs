@@ -26,7 +26,9 @@ public class NewtonCapsuleCollider : NewtonCollider
 {
     public override dNewtonCollision Create(NewtonWorld world)
     {
-        return new dNewtonCollisionCapsule(world.GetWorld(), m_radius0, m_radius1, m_height);
+        dNewtonCollision collider = new dNewtonCollisionCapsule(world.GetWorld(), m_radius0, m_radius1, m_height);
+        SetMaterial(collider);
+        return collider;
     }
 
     public float m_radius0 = 0.5f;

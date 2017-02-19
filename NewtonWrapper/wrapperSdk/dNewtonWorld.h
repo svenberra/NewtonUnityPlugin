@@ -35,9 +35,18 @@ typedef void(*OnWorldUpdateCallback)(dFloat timestep);
 class dNewtonWorld: public dAlloc
 {
 	public:
+	class dMaterialProperties
+	{
+		public:
+		float m_restitution;
+		float m_staticFriction;
+		float m_kineticFriction;
+		bool m_collisionEnable;
+	};
+
 	dNewtonWorld();
 	virtual ~dNewtonWorld();
-	void Update(dFloat timestepInSecunds, OnWorldUpdateCallback forceCallback);
+	void Update(dFloat timestepInSeconds, OnWorldUpdateCallback forceCallback);
 
 	void SetSolverMode(int mode);
 	void SetFrameRate(dFloat frameRate);
@@ -47,20 +56,33 @@ class dNewtonWorld: public dAlloc
 	void SetAsyncUpdate(bool updateMode);
 	void SetThreadsCount(int threads);
 	void SetBroadPhase(int broadphase);
+	void SetSubSteps(int subSteps);
+
+	long long GetMaterialKey(int materialID0, int materialID1) const;
+	void SetDefaultMaterial(float restitution, float staticFriction, float kineticFriction, bool collisionEnable);
+	void SetMaterialInteraction(int materialID0, int materialID1, float restitution, float staticFriction, float kineticFriction, bool collisionEnable);
 
 	private:
 	void UpdateWorld(OnWorldUpdateCallback forceCallback);
 
+	const dMaterialProperties& FindMaterial(int id0, int id1) const;
+	static void OnContactCollision(const NewtonJoint* contactJoint, dFloat timestep, int threadIndex);
+	static int OnBodiesAABBOverlap(const NewtonMaterial* const material, const NewtonBody* const body0, const NewtonBody* const body1, int threadIndex);
+	static int OnSubShapeAABBOverlapTest(const NewtonMaterial* const material, const NewtonBody* const body0, const void* const collisionNode0, const NewtonBody* const body1, const void* const collisionNode1, int threadIndex);
+
 	NewtonWorld* m_world;
 	dList<dNewtonCollision*> m_collisionCache;
-	dLong m_realTimeInMicrosecunds;
-	dLong m_timeStepInMicrosecunds;
+	dTree<dMaterialProperties, long long> m_materialGraph;
+	dLong m_realTimeInMicroSeconds;
+	dLong m_timeStepInMicroSeconds;
 	
 	dFloat m_timeStep;
 	dFloat m_interpotationParam;
 
 	dVector  m_gravity;
 	bool m_asyncUpdateMode;
+
+	dMaterialProperties m_defaultMaterial;
 
 	friend class dNewtonBody;
 	friend class dNewtonCollision;

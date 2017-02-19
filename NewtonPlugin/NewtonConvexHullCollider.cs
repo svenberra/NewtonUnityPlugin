@@ -54,6 +54,8 @@ public class NewtonConvexHullCollider : NewtonCollider
             collision = null;
         }
         Marshal.FreeHGlobal(floatsPtr);
+
+        SetMaterial(collision);
         return collision;
     }
 

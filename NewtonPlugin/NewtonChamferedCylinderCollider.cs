@@ -26,7 +26,9 @@ public class NewtonChamferedCylinderCollider : NewtonCollider
 {
     public override dNewtonCollision Create(NewtonWorld world)
     {
-        return new dNewtonCollisionChamferedCylinder(world.GetWorld(), m_radius, m_height);
+        dNewtonCollision collider = new dNewtonCollisionChamferedCylinder(world.GetWorld(), m_radius, m_height);
+        SetMaterial(collider);
+        return collider;
     }
 
     public float m_radius = 0.5f;

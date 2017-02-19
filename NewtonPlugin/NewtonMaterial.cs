@@ -35,8 +35,10 @@ public class NewtonMaterialInteraction : ScriptableObject
 {
     public NewtonMaterial m_material_0 = null;
     public NewtonMaterial m_material_1 = null;
+    public float m_restitution = 0.3f;
     public float m_staticFriction = 0.9f; 
-    public float m_kineticFriction = 0.75f; 
+    public float m_kineticFriction = 0.75f;
+    public bool m_collisionEnabled = true;
 }
 
 

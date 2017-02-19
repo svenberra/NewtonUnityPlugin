@@ -26,7 +26,9 @@ public class NewtonBoxCollider: NewtonCollider
 {
     public override dNewtonCollision Create(NewtonWorld world)
     {
-        return new dNewtonCollisionBox(world.GetWorld(), m_size.x, m_size.y, m_size.z);
+        dNewtonCollision collider = new dNewtonCollisionBox(world.GetWorld(), m_size.x, m_size.y, m_size.z);
+        SetMaterial(collider);
+        return collider;
     }
 
     public Vector3 m_size = Vector3.one;

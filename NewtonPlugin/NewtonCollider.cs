@@ -150,9 +150,14 @@ abstract public class NewtonCollider : MonoBehaviour
         }
     }
 
-    private dNewtonCollision m_editorShape = null;
+    public void SetMaterial(dNewtonCollision shape)
+    {
+        int materialID = m_material ? m_material.GetInstanceID() : 0;
+        shape.SetMaterialID(materialID);
+    }
 
-    public int m_materialID = 0;
+    private dNewtonCollision m_editorShape = null;
+    public NewtonMaterial m_material = null;
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
     public Vector3 m_scale = Vector3.one;

@@ -30,8 +30,10 @@
 dNewtonWorld::dNewtonWorld()
 	:dAlloc()
 	,m_world (NewtonCreate())
-	,m_realTimeInMicrosecunds(0)
-	,m_timeStepInMicrosecunds (0)
+	,m_collisionCache()
+	,m_materialGraph()
+	,m_realTimeInMicroSeconds(0)
+	,m_timeStepInMicroSeconds (0)
 	,m_timeStep(0.0f)
 	,m_interpotationParam(0.0f)
 	,m_gravity(0.0f, 0.0f, 0.0f, 0.0f)
@@ -50,20 +52,22 @@ dNewtonWorld::dNewtonWorld()
 	// set the collision copy constructor callback
 	NewtonSDKSetCollisionConstructorDestructorCallback (m_world, OnCollisionCopyConstruct, OnCollisionDestructorCallback);
 
-	// use default material to implement traditional "Game style" one side material system
-	int defaultMaterial = NewtonMaterialGetDefaultGroupID (m_world);
-	NewtonMaterialSetCallbackUserData (m_world, defaultMaterial, defaultMaterial, m_world);
-	NewtonMaterialSetCompoundCollisionCallback(m_world, defaultMaterial, defaultMaterial, OnCompoundSubCollisionAABBOverlap);
-	NewtonMaterialSetCollisionCallback (m_world, defaultMaterial, defaultMaterial, OnBodiesAABBOverlap, OnContactProcess);
-
 	// add a hierarchical transform manage to update local transforms
 	new NewtonSDKTransformManager (this);
 */
 
+	// use default material to implement traditional "Game style" one side material system
+	int defaultMaterial = NewtonMaterialGetDefaultGroupID(m_world);
+	NewtonMaterialSetCallbackUserData(m_world, defaultMaterial, defaultMaterial, this);
+	NewtonMaterialSetCompoundCollisionCallback(m_world, defaultMaterial, defaultMaterial, OnSubShapeAABBOverlapTest);
+	NewtonMaterialSetCollisionCallback(m_world, defaultMaterial, defaultMaterial, OnBodiesAABBOverlap, OnContactCollision);
+
 	// set joint serialization call back
 	CustomJoint::Initalize(m_world);
-
 	SetFrameRate(D_DEFAULT_FPS);
+
+
+	m_materialGraph.Insert(0);
 }
 
 dNewtonWorld::~dNewtonWorld()
@@ -78,11 +82,56 @@ dNewtonWorld::~dNewtonWorld()
 	NewtonDestroy (m_world);
 }
 
+long long dNewtonWorld::GetMaterialKey(int materialID0, int materialID1) const
+{
+	if (materialID0 > materialID1) {
+		dSwap(materialID0, materialID1);
+	}
+	return (long long (materialID1) << 32) + long long(materialID0);
+}
+
+const dNewtonWorld::dMaterialProperties& dNewtonWorld::FindMaterial(int id0, int id1) const
+{
+	long long key = GetMaterialKey(id0, id1);
+	dTree<dMaterialProperties, long long>::dTreeNode* const node = m_materialGraph.Find(key);
+	if (node) {
+		return node->GetInfo();
+	}
+	return m_defaultMaterial;
+}
+
+void dNewtonWorld::SetDefaultMaterial(float restitution, float staticFriction, float kineticFriction, bool collisionEnable)
+{
+	m_defaultMaterial.m_restitution = restitution;
+	m_defaultMaterial.m_staticFriction = staticFriction;
+	m_defaultMaterial.m_kineticFriction = kineticFriction;
+	m_defaultMaterial.m_collisionEnable = collisionEnable;
+}
+
+void dNewtonWorld::SetMaterialInteraction(int materialID0, int materialID1, float restitution, float staticFriction, float kineticFriction, bool collisionEnable)
+{
+	long long key = GetMaterialKey(materialID0, materialID1);
+	dTree<dMaterialProperties, long long>::dTreeNode* node = m_materialGraph.Find(key);
+	if (!node) {
+		node = m_materialGraph.Insert(key);
+	}
+	dMaterialProperties& material = node->GetInfo();
+	material.m_restitution = restitution;
+	material.m_staticFriction = staticFriction;
+	material.m_kineticFriction = kineticFriction;
+	material.m_collisionEnable = collisionEnable;
+}
+
 void dNewtonWorld::SetFrameRate(dFloat frameRate)
 {
 	m_timeStep = 1.0f / frameRate;
-	m_realTimeInMicrosecunds = 0;
-	m_timeStepInMicrosecunds = (dLong)(1000000.0 / double(frameRate));
+	m_realTimeInMicroSeconds = 0;
+	m_timeStepInMicroSeconds = (dLong)(1000000.0 / double(frameRate));
+}
+
+void dNewtonWorld::SetSubSteps(int subSteps)
+{
+	NewtonSetNumberOfSubsteps(m_world, dClamp(subSteps, 1, 4));
 }
 
 void dNewtonWorld::SetSolverMode(int mode)
@@ -146,21 +195,73 @@ if (!xxx)
 	}
 }
 
-void dNewtonWorld::Update(dFloat timestepInSecunds, OnWorldUpdateCallback forceCallback)
+void dNewtonWorld::Update(dFloat timestepInSeconds, OnWorldUpdateCallback forceCallback)
 {
 	int maxInterations = 1;
-	dLong timestepMicrosecunds = dClamp((dLong)(double(timestepInSecunds) * 1000000.0f), dLong(0), m_timeStepInMicrosecunds);
-	m_realTimeInMicrosecunds += timestepMicrosecunds * maxInterations;
+	dLong timestepMicroSeconds = dClamp((dLong)(double(timestepInSeconds) * 1000000.0f), dLong(0), m_timeStepInMicroSeconds);
+	m_realTimeInMicroSeconds += timestepMicroSeconds * maxInterations;
 
-	for (int doUpate = maxInterations; m_realTimeInMicrosecunds >= m_timeStepInMicrosecunds; doUpate --) {
+	for (int doUpate = maxInterations; m_realTimeInMicroSeconds >= m_timeStepInMicroSeconds; doUpate --) {
 		if (doUpate) {
 			UpdateWorld(forceCallback);
 		}
-		m_realTimeInMicrosecunds -= m_timeStepInMicrosecunds;
-		dAssert(m_realTimeInMicrosecunds >= 0);
+		m_realTimeInMicroSeconds -= m_timeStepInMicroSeconds;
+		dAssert(m_realTimeInMicroSeconds >= 0);
 	}
-	dAssert(m_realTimeInMicrosecunds >= 0);
-	dAssert(m_realTimeInMicrosecunds < m_timeStepInMicrosecunds);
+	dAssert(m_realTimeInMicroSeconds >= 0);
+	dAssert(m_realTimeInMicroSeconds < m_timeStepInMicroSeconds);
 
-	m_interpotationParam = dFloat (double(m_realTimeInMicrosecunds) / double(m_timeStepInMicrosecunds));
+	m_interpotationParam = dFloat (double(m_realTimeInMicroSeconds) / double(m_timeStepInMicroSeconds));
+}
+
+
+int dNewtonWorld::OnBodiesAABBOverlap(const NewtonMaterial* const material, const NewtonBody* const bodyPtr0, const NewtonBody* const bodyPtr1, int threadIndex)
+{
+//	dNewtonBody* const body0 = (dNewtonBody*)NewtonBodyGetUserData(bodyPtr0);
+//	dNewtonBody* const body1 = (dNewtonBody*)NewtonBodyGetUserData(bodyPtr1);
+//	NewtonCollision* const collision0 = NewtonBodyGetCollision(bodyPtr0);
+//	NewtonCollision* const collision1 = NewtonBodyGetCollision(bodyPtr1);
+
+	dNewtonCollision* const collision0 = (dNewtonCollision*)NewtonCollisionGetUserData(NewtonBodyGetCollision(bodyPtr0));
+	dNewtonCollision* const collision1 = (dNewtonCollision*)NewtonCollisionGetUserData(NewtonBodyGetCollision(bodyPtr1));
+	dNewtonWorld* const world = (dNewtonWorld*)NewtonMaterialGetMaterialPairUserData(material);
+	const dMaterialProperties materialProp = world->FindMaterial(collision0->m_materialID, collision1->m_materialID);
+	return materialProp.m_collisionEnable ? 1 : 0;
+}
+
+int dNewtonWorld::OnSubShapeAABBOverlapTest(const NewtonMaterial* const material, const NewtonBody* const body0, const void* const collisionNode0, const NewtonBody* const body1, const void* const collisionNode1, int threadIndex)
+{
+	return 1;
+}
+
+
+void dNewtonWorld::OnContactCollision(const NewtonJoint* contactJoint, dFloat timestep, int threadIndex)
+{
+/*
+	dFloat Ixx;
+	dFloat Iyy;
+	dFloat Izz;
+	dFloat mass;
+
+	// call  the basic call back
+	GenericContactProcess(contactJoint, timestep, threadIndex);
+
+	const NewtonBody* const body0 = NewtonJointGetBody0(contactJoint);
+	const NewtonBody* const body1 = NewtonJointGetBody1(contactJoint);
+	const NewtonBody* body = body0;
+	NewtonBodyGetMass(body, &mass, &Ixx, &Iyy, &Izz);
+	if (mass == 0.0f) {
+		body = body1;
+	}
+
+	//now core 300 can have per collision user data 		
+	NewtonCollision* const collision = NewtonBodyGetCollision(body);
+	void* userData = NewtonCollisionGetUserData(collision);
+	dFloat frictionValue = *((dFloat*)&userData);
+	for (void* contact = NewtonContactJointGetFirstContact(contactJoint); contact; contact = NewtonContactJointGetNextContact(contactJoint, contact)) {
+		NewtonMaterial* const material = NewtonContactGetMaterial(contact);
+		NewtonMaterialSetContactFrictionCoef(material, frictionValue + 0.1f, frictionValue, 0);
+		NewtonMaterialSetContactFrictionCoef(material, frictionValue + 0.1f, frictionValue, 1);
+	}
+*/
 }

@@ -48,6 +48,8 @@ public class NewtonWorld : MonoBehaviour
         m_world.SetSolverMode(m_solverIterationsCount);
         m_world.SetBroadPhase(m_broadPhaseType);
         m_world.SetGravity(m_gravity.x, m_gravity.y, m_gravity.z);
+        m_world.SetSubSteps(m_subSteps);
+        m_world.SetDefaultMaterial(m_defaultRestitution, m_defaultStaticFriction, m_defaultKineticFriction, true);
         InitScene();
     }
 
@@ -102,11 +104,16 @@ public class NewtonWorld : MonoBehaviour
     private void InitScene()
     {
         Resources.LoadAll("Newton Materials");
-        NewtonMaterial[] materialList = Resources.FindObjectsOfTypeAll<NewtonMaterial>();
-        foreach (NewtonMaterial material in materialList)
+        NewtonMaterialInteraction[] materialList = Resources.FindObjectsOfTypeAll<NewtonMaterialInteraction>();
+        foreach (NewtonMaterialInteraction materialInteraction in materialList)
         {
-            // register all material nodes.
-            Debug.Log("xxxxxxxxx this is a material");
+            // register all material interactions.
+            if (materialInteraction.m_material_0 && materialInteraction.m_material_1)
+            {
+                int id0 = materialInteraction.m_material_0.GetInstanceID();
+                int id1 = materialInteraction.m_material_1.GetInstanceID();
+                m_world.SetMaterialInteraction(id0, id1, materialInteraction.m_restitution, materialInteraction.m_staticFriction, materialInteraction.m_kineticFriction, materialInteraction.m_collisionEnabled);
+            }
         }
 
         GameObject[] objectList = gameObject.scene.GetRootGameObjects();

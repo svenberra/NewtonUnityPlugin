@@ -33,150 +33,12 @@ class DebugCallBack
 
 dMatrix dNewtonCollision::m_primitiveAligment(dVector(0.0f, 1.0f, 0.0f, 0.0f), dVector(-1.0f, 0.0f, 0.0f, 0.0f), dVector(0.0f, 0.0f, 1.0f, 0.0f), dVector(0.0f, 0.0f, 0.0f, 1.0f));
 
-#if 0
-dFloat dNewtonCollision::GetVolume () const
-{
-	return NewtonConvexCollisionCalculateVolume (m_shape);
-}
-
-void dNewtonCollision::GetMatrix (dFloat* const matrix) const
-{
-	NewtonCollisionGetMatrix(m_shape, matrix);
-}
-
-
-void dNewtonCollision::GetScale(dFloat& x, dFloat& y, dFloat& z) const
-{
-	NewtonCollisionGetScale(m_shape, &x, &y, &z);
-}
-
-
-NewtonCollision* dNewtonCollision::GetShape() const
-{
-	return m_shape;
-}
-
-void dNewtonCollision::CalculateAABB (const dFloat* const matrix, dFloat* const p0, dFloat* const p1) const
-{
-	NewtonCollisionCalculateAABB (m_shape, matrix, p0, p1);
-}
-
-void dNewtonCollision::CalculateBuoyancyAcceleration (const dFloat* const matrix, const dFloat* const shapeOrigin, const dFloat* const gravityVector, const dFloat* const fluidPlane, dFloat fluidDensity, dFloat fluidViscosity, dFloat* const accel, dFloat* const alpha)
-{
-	NewtonConvexCollisionCalculateBuoyancyAcceleration (m_shape, matrix, shapeOrigin, gravityVector, fluidPlane, fluidDensity, fluidViscosity, accel, alpha);
-}
-
-
-dNewtonCollisionMesh::dNewtonCollisionMesh (dNewton* const world, const dNewtonMesh& mesh, dLong collisionMask)
-	:dNewtonCollision(m_mesh, collisionMask)
-{
-	SetShape (NewtonCreateTreeCollisionFromMesh (world->GetNewton(), mesh.GetMesh(), 0));
-}
-
-
-dNewtonCollisionScene::dNewtonCollisionScene(dNewton* const world, dLong collisionMask)
-	:dNewtonCollision(m_scene, collisionMask)
-{
-	SetShape (NewtonCreateSceneCollision(world->GetNewton(), 0));
-}
-
-void dNewtonCollisionScene::BeginAddRemoveCollision()
-{
-	NewtonSceneCollisionBeginAddRemove (m_shape);	
-}
-
-void* dNewtonCollisionScene::AddCollision(const dNewtonCollision* const collision)
-{
-	return NewtonSceneCollisionAddSubCollision (m_shape, collision->GetShape());
-}
-
-void dNewtonCollisionScene::RemoveCollision (void* const handle)
-{
-	NewtonSceneCollisionRemoveSubCollision (m_shape, handle);
-}
-
-void dNewtonCollisionScene::EndAddRemoveCollision()
-{
-	NewtonSceneCollisionEndAddRemove(m_shape);	
-}
-
-void* dNewtonCollisionScene::GetFirstNode () const 
-{
-	return NewtonSceneCollisionGetFirstNode (m_shape);
-}
-
-void* dNewtonCollisionScene::GetNextNode (void* const collisionNode) const 
-{
-	return NewtonSceneCollisionGetNextNode (m_shape, collisionNode);
-}
-
-dNewtonCollision* dNewtonCollisionScene::GetChildFromNode(void* const collisionNode) const
-{
-	NewtonCollision* const collision = NewtonSceneCollisionGetCollisionFromNode (m_shape, collisionNode);
-	return (dNewtonCollision*) NewtonCollisionGetUserData (collision);
-}
-
-
-dNewtonCollisionConvexHull::dNewtonCollisionConvexHull (dNewton* const world, const dNewtonMesh& mesh, dLong collisionMask)
-	:dNewtonCollision(m_convex, collisionMask)
-{
-	SetShape (NewtonCreateConvexHullFromMesh (world->GetNewton(), mesh.GetMesh(), 0.001f, 0));
-}
-
-dNewtonCollisionCompound::dNewtonCollisionCompound (dNewton* const world, const dNewtonMesh& mesh, dLong collisionMask)
-	:dNewtonCollision(m_compound, collisionMask)
-{
-	SetShape (NewtonCreateCompoundCollisionFromMesh (world->GetNewton(), mesh.GetMesh(), 0.001f, 0, 0));
-	
-	for (void* node = GetFirstNode(); node; node = GetNextNode(node)) {
-		NewtonCollision* const collision = NewtonCompoundCollisionGetCollisionFromNode (m_shape, node);
-		dAssert (NewtonCollisionGetType (collision) == SERIALIZE_ID_CONVEXHULL);
-		new dNewtonCollisionConvexHull (collision, collisionMask);
-	}
-}
-
-void dNewtonCollisionCompound::BeginAddRemoveCollision()
-{
-	NewtonCompoundCollisionBeginAddRemove (m_shape);	
-}
-
-void* dNewtonCollisionCompound::AddCollision(const dNewtonCollision* const collision)
-{
-	return NewtonCompoundCollisionAddSubCollision(m_shape, collision->GetShape());
-}
-
-void dNewtonCollisionCompound::RemoveCollision (void* const handle)
-{
-	NewtonCompoundCollisionRemoveSubCollision (m_shape, handle);
-}
-
-void dNewtonCollisionCompound::EndAddRemoveCollision()
-{
-	NewtonCompoundCollisionEndAddRemove(m_shape);	
-}
-
-void* dNewtonCollisionCompound::GetFirstNode () const 
-{
-	return NewtonCompoundCollisionGetFirstNode (m_shape);
-}
-
-void* dNewtonCollisionCompound::GetNextNode (void* const collisionNode) const 
-{
-	return NewtonCompoundCollisionGetNextNode (m_shape, collisionNode);
-}
-
-dNewtonCollision* dNewtonCollisionCompound::GetChildFromNode(void* const collisionNode) const
-{
-	NewtonCollision* const collision = NewtonCompoundCollisionGetCollisionFromNode (m_shape, collisionNode);
-	return (dNewtonCollision*) NewtonCollisionGetUserData (collision);
-}
-
-#endif
 
 dNewtonCollision::dNewtonCollision(dNewtonWorld* const world, dLong collisionMask)
 	:dAlloc()
 	,m_shape(NULL)
 	,m_myWorld(world)
+	,m_materialID(0)
 {
 }
 
@@ -188,6 +50,11 @@ dNewtonCollision::~dNewtonCollision()
 bool dNewtonCollision::IsValid()
 {
 	return m_shape ? true : false;
+}
+
+void dNewtonCollision::SetMaterialID(int materialId)
+{
+	m_materialID = materialId;
 }
 
 void dNewtonCollision::DeleteShape()

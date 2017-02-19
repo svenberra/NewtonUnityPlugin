@@ -27,7 +27,9 @@ public class NewtonSphereCollider : NewtonCollider
 {
     public override dNewtonCollision Create(NewtonWorld world)
     {
-        return new dNewtonCollisionSphere(world.GetWorld(), m_radius);
+        dNewtonCollision collider = new dNewtonCollisionSphere(world.GetWorld(), m_radius);
+        SetMaterial(collider);
+        return collider;
     }
 
     public float m_radius = 0.5f;

@@ -25,6 +25,8 @@ public class NewtonCompoundCollider : NewtonCollider
 {
     public override dNewtonCollision Create(NewtonWorld world)
     {
-        return new dNewtonCollisionCompound(world.GetWorld());
+        dNewtonCollision collider = new dNewtonCollisionCompound(world.GetWorld());
+        SetMaterial(collider);
+        return collider;
     }
 }

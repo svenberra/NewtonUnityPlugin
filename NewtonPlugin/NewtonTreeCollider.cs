@@ -94,6 +94,8 @@ public class NewtonTreeCollider : NewtonCollider
 
         collision.EndFace(m_optimize);
         Marshal.FreeHGlobal(floatsPtr);
+
+        SetMaterial(collision);
         return collision;
     }
 
