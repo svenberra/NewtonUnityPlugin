@@ -234,6 +234,8 @@ void dNewtonWorld::OnContactCollision(const NewtonJoint* contactJoint, dFloat ti
 {
 	NewtonBody* const body = NewtonJointGetBody0(contactJoint);
 	dNewtonWorld* const world = (dNewtonWorld*)NewtonWorldGetUserData(NewtonBodyGetWorld(body));
+
+	const dMaterialProperties* lastMaterialProp = NULL;
 	for (void* contact = NewtonContactJointGetFirstContact(contactJoint); contact; contact = NewtonContactJointGetNextContact(contactJoint, contact)) {
 		NewtonMaterial* const material = NewtonContactGetMaterial(contact);
 
@@ -241,7 +243,12 @@ void dNewtonWorld::OnContactCollision(const NewtonJoint* contactJoint, dFloat ti
 		NewtonCollision* const newtonCollision1 = (NewtonCollision*)NewtonContactGetCollision1(contact);
 		dNewtonCollision* const collision0 = (dNewtonCollision*)NewtonCollisionGetUserData(newtonCollision0);
 		dNewtonCollision* const collision1 = (dNewtonCollision*)NewtonCollisionGetUserData(newtonCollision1);
-		const dMaterialProperties materialProp = world->FindMaterial(collision0->m_materialID, collision1->m_materialID);
+		const dMaterialProperties* const currentMaterialProp = &world->FindMaterial(collision0->m_materialID, collision1->m_materialID);
+		dMaterialProperties materialProp(*currentMaterialProp);
+		if (currentMaterialProp != lastMaterialProp) {
+			lastMaterialProp = currentMaterialProp;
+			// do a material callback here is needed
+		}
 
 		NewtonMaterialSetContactElasticity(material, materialProp.m_restitution);
 		NewtonMaterialSetContactFrictionCoef(material, materialProp.m_staticFriction, materialProp.m_kineticFriction, 0);
