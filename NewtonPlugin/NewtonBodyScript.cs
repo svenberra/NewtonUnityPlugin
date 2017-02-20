@@ -30,9 +30,22 @@ public class NewtonBodyScript : MonoBehaviour
     //  public void OnCollision(NewtonBody otherBody)
     virtual public void OnCollision(dNewtonBody otherBody)
     {
-        Debug.Log("do nothing");
+        // do nothing
+        //Debug.Log("do nothing");
     }
 
+    virtual public void OnApplyForceAndTorque(float timestep)
+    {
+        // do nothing
+        // example how to apply force to a game object
+        //NewtonBody body = GetComponent<NewtonBody>();
+        //Vector3 force = new Vector3 (0.0f, 1o.0f, 0.0f);
+        //Vector3 torque = new Vector3 (0.0f, 0.0f, 0.0f);
+        //body.GetBody().AddForce(new dVector(force.x, force.y, force.z, 0.0f));
+        //body.GetBody().AddTorque(new dVector(torque.x, torque.y, torque.z, 0.0f));
+    }
+
+    public bool m_enableForceAndTorque = true;
     public bool m_collisionNotification = true;
 }
 

@@ -135,26 +135,27 @@ public class NewtonWorld : MonoBehaviour
         NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
         if (bodyPhysics)
         {
-            // apply collision notification here
+            // update all rigid body scripts 
+            dNewtonBody newtonBody = bodyPhysics.GetBody();
             NewtonBodyScript[] rigidBodyScripts = root.GetComponents<NewtonBodyScript>();
-            if (rigidBodyScripts.Length != 0)
+            for (int i = 0; i < rigidBodyScripts.Length; i++)
             {
-                dNewtonBody newtonBody = bodyPhysics.GetBody();
-                for (IntPtr contact = m_world.GetFirstContactJoint(newtonBody); contact != IntPtr.Zero; contact = m_world.GetNextContactJoint(newtonBody, contact))
+                //apply all collision notification events is any
+                if (rigidBodyScripts[i].m_collisionNotification)
                 {
-                    dNewtonBody otherBody = (m_world.GetBody0(contact) == newtonBody) ? m_world.GetBody1(contact) : m_world.GetBody0(contact);
-                    for (int i = 0; i < rigidBodyScripts.Length; i++)
-                    {
-                        if (rigidBodyScripts[i].m_collisionNotification)
-                        {
-                            rigidBodyScripts[i].OnCollision(otherBody);
-                        }
+                    for (IntPtr contact = m_world.GetFirstContactJoint(newtonBody); contact != IntPtr.Zero; contact = m_world.GetNextContactJoint(newtonBody, contact))
+                    { 
+                        dNewtonBody otherBody = (m_world.GetBody0(contact) == newtonBody) ? m_world.GetBody1(contact) : m_world.GetBody0(contact);
+                        rigidBodyScripts[i].OnCollision(otherBody);
                     }
                 }
-            }
 
-            // apply new external force and torque
-            bodyPhysics.OnApplyForceAndTorque(timestep);
+                // apply external force and torque if any
+                if (rigidBodyScripts[i].m_enableForceAndTorque)
+                {
+                    rigidBodyScripts[i].OnApplyForceAndTorque(timestep);
+                }
+            }
         }
 
         foreach (Transform child in root.transform)
