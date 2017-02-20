@@ -214,54 +214,37 @@ void dNewtonWorld::Update(dFloat timestepInSeconds, OnWorldUpdateCallback forceC
 	m_interpotationParam = dFloat (double(m_realTimeInMicroSeconds) / double(m_timeStepInMicroSeconds));
 }
 
-
-int dNewtonWorld::OnBodiesAABBOverlap(const NewtonMaterial* const material, const NewtonBody* const bodyPtr0, const NewtonBody* const bodyPtr1, int threadIndex)
-{
-//	dNewtonBody* const body0 = (dNewtonBody*)NewtonBodyGetUserData(bodyPtr0);
-//	dNewtonBody* const body1 = (dNewtonBody*)NewtonBodyGetUserData(bodyPtr1);
-//	NewtonCollision* const collision0 = NewtonBodyGetCollision(bodyPtr0);
-//	NewtonCollision* const collision1 = NewtonBodyGetCollision(bodyPtr1);
-
-	dNewtonCollision* const collision0 = (dNewtonCollision*)NewtonCollisionGetUserData(NewtonBodyGetCollision(bodyPtr0));
-	dNewtonCollision* const collision1 = (dNewtonCollision*)NewtonCollisionGetUserData(NewtonBodyGetCollision(bodyPtr1));
-	dNewtonWorld* const world = (dNewtonWorld*)NewtonMaterialGetMaterialPairUserData(material);
-	const dMaterialProperties materialProp = world->FindMaterial(collision0->m_materialID, collision1->m_materialID);
-	return materialProp.m_collisionEnable ? 1 : 0;
-}
-
 int dNewtonWorld::OnSubShapeAABBOverlapTest(const NewtonMaterial* const material, const NewtonBody* const body0, const void* const collisionNode0, const NewtonBody* const body1, const void* const collisionNode1, int threadIndex)
 {
 	return 1;
 }
 
+int dNewtonWorld::OnBodiesAABBOverlap(const NewtonMaterial* const material, const NewtonBody* const bodyPtr0, const NewtonBody* const bodyPtr1, int threadIndex)
+{
+	dNewtonWorld* const world = (dNewtonWorld*)NewtonMaterialGetMaterialPairUserData(material);
+	NewtonCollision* const newtonCollision0 = (NewtonCollision*)NewtonBodyGetCollision(bodyPtr0);
+	NewtonCollision* const newtonCollision1 = (NewtonCollision*)NewtonBodyGetCollision(bodyPtr1);
+	dNewtonCollision* const collision0 = (dNewtonCollision*)NewtonCollisionGetUserData(newtonCollision0);
+	dNewtonCollision* const collision1 = (dNewtonCollision*)NewtonCollisionGetUserData(newtonCollision1);
+	const dMaterialProperties materialProp = world->FindMaterial(collision0->m_materialID, collision1->m_materialID);
+	return materialProp.m_collisionEnable ? 1 : 0;
+}
 
 void dNewtonWorld::OnContactCollision(const NewtonJoint* contactJoint, dFloat timestep, int threadIndex)
 {
-/*
-	dFloat Ixx;
-	dFloat Iyy;
-	dFloat Izz;
-	dFloat mass;
-
-	// call  the basic call back
-	GenericContactProcess(contactJoint, timestep, threadIndex);
-
-	const NewtonBody* const body0 = NewtonJointGetBody0(contactJoint);
-	const NewtonBody* const body1 = NewtonJointGetBody1(contactJoint);
-	const NewtonBody* body = body0;
-	NewtonBodyGetMass(body, &mass, &Ixx, &Iyy, &Izz);
-	if (mass == 0.0f) {
-		body = body1;
-	}
-
-	//now core 300 can have per collision user data 		
-	NewtonCollision* const collision = NewtonBodyGetCollision(body);
-	void* userData = NewtonCollisionGetUserData(collision);
-	dFloat frictionValue = *((dFloat*)&userData);
+	NewtonBody* const body = NewtonJointGetBody0(contactJoint);
+	dNewtonWorld* const world = (dNewtonWorld*)NewtonWorldGetUserData(NewtonBodyGetWorld(body));
 	for (void* contact = NewtonContactJointGetFirstContact(contactJoint); contact; contact = NewtonContactJointGetNextContact(contactJoint, contact)) {
 		NewtonMaterial* const material = NewtonContactGetMaterial(contact);
-		NewtonMaterialSetContactFrictionCoef(material, frictionValue + 0.1f, frictionValue, 0);
-		NewtonMaterialSetContactFrictionCoef(material, frictionValue + 0.1f, frictionValue, 1);
+
+		NewtonCollision* const newtonCollision0 = (NewtonCollision*)NewtonContactGetCollision0(contact);
+		NewtonCollision* const newtonCollision1 = (NewtonCollision*)NewtonContactGetCollision1(contact);
+		dNewtonCollision* const collision0 = (dNewtonCollision*)NewtonCollisionGetUserData(newtonCollision0);
+		dNewtonCollision* const collision1 = (dNewtonCollision*)NewtonCollisionGetUserData(newtonCollision1);
+		const dMaterialProperties materialProp = world->FindMaterial(collision0->m_materialID, collision1->m_materialID);
+
+		NewtonMaterialSetContactElasticity(material, materialProp.m_restitution);
+		NewtonMaterialSetContactFrictionCoef(material, materialProp.m_staticFriction, materialProp.m_kineticFriction, 0);
+		NewtonMaterialSetContactFrictionCoef(material, materialProp.m_staticFriction, materialProp.m_kineticFriction, 1);
 	}
-*/
 }
