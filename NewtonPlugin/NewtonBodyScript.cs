@@ -36,10 +36,9 @@ public class NewtonBodyScript : MonoBehaviour
 
     virtual public void OnApplyForceAndTorque(float timestep)
     {
-        // do nothing
-        // example how to apply force to a game object
+        // example how to apply force to a game object, for this example do nothing
         //NewtonBody body = GetComponent<NewtonBody>();
-        //Vector3 force = new Vector3 (0.0f, 1o.0f, 0.0f);
+        //Vector3 force = new Vector3 (0.0f, 10.0f, 0.0f);
         //Vector3 torque = new Vector3 (0.0f, 0.0f, 0.0f);
         //body.GetBody().AddForce(new dVector(force.x, force.y, force.z, 0.0f));
         //body.GetBody().AddTorque(new dVector(torque.x, torque.y, torque.z, 0.0f));

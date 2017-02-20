@@ -202,7 +202,6 @@ if (!xxx)
 	}
 }
 
-//void dNewtonWorld::Update(dFloat timestepInSeconds, OnWorldUpdateCallback forceCallback)
 void dNewtonWorld::Update(dFloat timestepInSeconds)
 {
 	int maxInterations = 1;
