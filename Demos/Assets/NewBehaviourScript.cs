@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : NewtonScript
+public class NewBehaviourScript: NewtonBodyScript
 {
 
 	// Use this for initialization
