@@ -63,9 +63,8 @@ public class NewtonBody : MonoBehaviour
         transform.rotation = new Quaternion(m_rotationPtr[1], m_rotationPtr[2], m_rotationPtr[3], m_rotationPtr[0]);
     }
 
-    public void InitRigidBody(int sceneIndex)
+    public void InitRigidBody()
     {
-        m_sceneIndex = sceneIndex;
         m_collision = new NewtonBodyCollision(this);
         m_onCollisionCallback = new OnCollisionCallback(OnCollision);
         m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
@@ -133,7 +132,6 @@ public class NewtonBody : MonoBehaviour
     public bool m_isScene = false;
     public NewtonWorld m_world;
 
-    private int m_sceneIndex { get; set; }
     private dNewtonBody m_body = null;
     private NewtonBodyCollision m_collision = null;
     private float[] m_positionPtr = new float[3];
