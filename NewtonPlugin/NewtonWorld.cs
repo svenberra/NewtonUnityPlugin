@@ -136,13 +136,20 @@ public class NewtonWorld : MonoBehaviour
         if (bodyPhysics)
         {
             // apply collision notification here
-            if (bodyPhysics.m_needsCollisionNotification)
+            NewtonScript[] rigidBodyScripts = root.GetComponents<NewtonScript>();
+            if (rigidBodyScripts.Length != 0)
             {
                 dNewtonBody newtonBody = bodyPhysics.GetBody();
                 for (IntPtr contact = m_world.GetFirstContactJoint(newtonBody); contact != IntPtr.Zero; contact = m_world.GetNextContactJoint(newtonBody, contact))
                 {
                     dNewtonBody otherBody = (m_world.GetBody0(contact) == newtonBody) ? m_world.GetBody1(contact) : m_world.GetBody0(contact);
-                    bodyPhysics.OnCollision(otherBody);
+                    for (int i = 0; i < rigidBodyScripts.Length; i++)
+                    {
+                        if (rigidBodyScripts[i].m_collisionNotification)
+                        {
+                            rigidBodyScripts[i].OnCollision(otherBody);
+                        }
+                    }
                 }
             }
 

@@ -92,14 +92,6 @@ public class NewtonBody : MonoBehaviour
         }
     }
 
-    //  I do not know howo to get a NetwonBody from a dNetwonBody, ideally a reference can be save with the NewtonBody 
-    //  public void OnCollision(NewtonBody otherBody)
-    public void OnCollision(dNewtonBody otherBody)
-    {
-        Debug.Log("collision xxxxxx");
-    }
-
-
     public dNewtonBody GetBody()
     {
         return m_body;
@@ -124,7 +116,7 @@ public class NewtonBody : MonoBehaviour
     }
 
     public float m_mass;
-    public bool m_needsCollisionNotification = false;
+//  public bool m_needsCollisionNotification = false;
 
     public NewtonWorld m_world;
     public Vector3 m_forceAcc { get; set; }

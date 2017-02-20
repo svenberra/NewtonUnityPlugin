@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\HingeRotate.cs" />
+    <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\PlayerDriver.cs" />
     <Compile Include="Assets\RobotController.cs" />
   </ItemGroup>
