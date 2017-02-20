@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 [AddComponentMenu("Newton Physics/Newton Body Script")]
-public class NewtonScript : MonoBehaviour
+public class NewtonBodyScript : MonoBehaviour
 {
     //  I do not know how to get a NetwonBody from a dNetwonBody, ideally a reference can be save with the NewtonBody 
     //  public void OnCollision(NewtonBody otherBody)

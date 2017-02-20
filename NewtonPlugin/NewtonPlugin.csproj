@@ -58,7 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NewtonScript.cs" />
+    <Compile Include="NewtonBodyScript.cs" />
     <Compile Include="NewtonBody.cs" />
     <Compile Include="NewtonBodyCollision.cs" />
     <Compile Include="NewtonBodyForceAction.cs" />
