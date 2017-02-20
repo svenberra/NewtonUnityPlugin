@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\DemoFirstScript.cs" />
     <Compile Include="Assets\Scripts\HingeRotate.cs" />
+    <Compile Include="Assets\Scripts\PlayerBallMovementController.cs" />
     <Compile Include="Assets\Scripts\PlayerDriver.cs" />
     <Compile Include="Assets\Scripts\RobotController.cs" />
   </ItemGroup>

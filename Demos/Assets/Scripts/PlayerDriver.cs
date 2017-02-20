@@ -32,7 +32,7 @@ public class PlayerDriver : MonoBehaviour {
                 motorJoint.TargetAngle1 = motorJoint.GetJointAngle1();
             }
 
-            // control sterring movement
+            // control steering movement
             if (Input.GetKey(KeyCode.A))
             {
                 motor.SleepState = false;
