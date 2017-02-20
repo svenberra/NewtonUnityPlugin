@@ -23,7 +23,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-
+public delegate void OnCollisionCallback(dNewtonBody otherBody);
 
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Rigid Body")]
@@ -41,6 +41,13 @@ public class NewtonBody : MonoBehaviour
     {
         DestroyRigidBody();
         m_actions = null;
+        m_onCollisionCallback = null;
+    }
+
+    //void OnCollision(dNewtonBody otherBody)
+    void OnCollision(dNewtonBody otherBody)
+    {
+        Debug.Log("collision xxxxxx");
     }
 
 
@@ -60,11 +67,14 @@ public class NewtonBody : MonoBehaviour
     {
         m_sceneIndex = sceneIndex;
         m_collision = new NewtonBodyCollision(this);
+        m_onCollisionCallback = new OnCollisionCallback(OnCollision);
         m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
+        m_body.SetCallbacks(m_onCollisionCallback);
     }
 
     public void DestroyRigidBody()
     {
+        m_onCollisionCallback = null;
         if (m_body != null)
         {
             m_body.Dispose();
@@ -132,6 +142,7 @@ public class NewtonBody : MonoBehaviour
     public Vector3 m_forceAcc { get; set; }
     public Vector3 m_torqueAcc { get; set; }
     private NewtonBodyForceAction[] m_actions;
+    private OnCollisionCallback m_onCollisionCallback;
 }
 
 

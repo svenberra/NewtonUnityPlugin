@@ -38,6 +38,7 @@ dNewtonWorld::dNewtonWorld()
 	,m_interpotationParam(0.0f)
 	,m_gravity(0.0f, 0.0f, 0.0f, 0.0f)
 	,m_asyncUpdateMode(true)
+	,m_onUpdateCallback(NULL)
 {
 	// for two way communication between low and high lever, link the world with this class for 
 	NewtonWorldSetUserData(m_world, this);
@@ -88,6 +89,11 @@ long long dNewtonWorld::GetMaterialKey(int materialID0, int materialID1) const
 		dSwap(materialID0, materialID1);
 	}
 	return (long long (materialID1) << 32) + long long(materialID0);
+}
+
+void dNewtonWorld::SetCallbacks(OnWorldUpdateCallback forceCallback)
+{
+	m_onUpdateCallback = forceCallback;
 }
 
 const dNewtonWorld::dMaterialProperties& dNewtonWorld::FindMaterial(int id0, int id1) const
@@ -170,7 +176,8 @@ void dNewtonWorld::SetAsyncUpdate(bool updateMode)
 	m_asyncUpdateMode = updateMode;
 }
 
-void dNewtonWorld::UpdateWorld(OnWorldUpdateCallback forceCallback)
+//void dNewtonWorld::UpdateWorld(OnWorldUpdateCallback forceCallback)
+void dNewtonWorld::UpdateWorld()
 {
 	NewtonWaitForUpdateToFinish(m_world);
 
@@ -179,7 +186,8 @@ void dNewtonWorld::UpdateWorld(OnWorldUpdateCallback forceCallback)
 		body->InitForceAccumulators();
 	}
 
-	forceCallback(m_timeStep);
+	//forceCallback(m_timeStep);
+	m_onUpdateCallback(m_timeStep);
 
 static int xxx;
 if (!xxx)
@@ -195,7 +203,8 @@ if (!xxx)
 	}
 }
 
-void dNewtonWorld::Update(dFloat timestepInSeconds, OnWorldUpdateCallback forceCallback)
+//void dNewtonWorld::Update(dFloat timestepInSeconds, OnWorldUpdateCallback forceCallback)
+void dNewtonWorld::Update(dFloat timestepInSeconds)
 {
 	int maxInterations = 1;
 	dLong timestepMicroSeconds = dClamp((dLong)(double(timestepInSeconds) * 1000000.0f), dLong(0), m_timeStepInMicroSeconds);
@@ -203,7 +212,8 @@ void dNewtonWorld::Update(dFloat timestepInSeconds, OnWorldUpdateCallback forceC
 
 	for (int doUpate = maxInterations; m_realTimeInMicroSeconds >= m_timeStepInMicroSeconds; doUpate --) {
 		if (doUpate) {
-			UpdateWorld(forceCallback);
+			//UpdateWorld(forceCallback);
+			UpdateWorld();
 		}
 		m_realTimeInMicroSeconds -= m_timeStepInMicroSeconds;
 		dAssert(m_realTimeInMicroSeconds >= 0);
@@ -232,8 +242,14 @@ int dNewtonWorld::OnBodiesAABBOverlap(const NewtonMaterial* const material, cons
 
 void dNewtonWorld::OnContactCollision(const NewtonJoint* contactJoint, dFloat timestep, int threadIndex)
 {
-	NewtonBody* const body = NewtonJointGetBody0(contactJoint);
-	dNewtonWorld* const world = (dNewtonWorld*)NewtonWorldGetUserData(NewtonBodyGetWorld(body));
+	NewtonBody* const body0 = NewtonJointGetBody0(contactJoint);
+	NewtonBody* const body1 = NewtonJointGetBody1(contactJoint);
+//	dNewtonBody* const dbody0 = (dNewtonBody*)NewtonBodyGetUserData(body0);
+//	dNewtonBody* const dbody1 = (dNewtonBody*)NewtonBodyGetUserData(body1);
+//	dbody0->m_onCollision(dbody1);
+//	dbody1->m_onCollision(dbody0);
+
+	dNewtonWorld* const world = (dNewtonWorld*)NewtonWorldGetUserData(NewtonBodyGetWorld(body0));
 
 	const dMaterialProperties* lastMaterialProp = NULL;
 	for (void* contact = NewtonContactJointGetFirstContact(contactJoint); contact; contact = NewtonContactJointGetNextContact(contactJoint, contact)) {

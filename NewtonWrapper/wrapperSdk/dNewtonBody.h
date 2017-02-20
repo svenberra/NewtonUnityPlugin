@@ -26,9 +26,11 @@
 
 class dMatrix;
 class NewtonBody;
+class dNewtonBody;
 class dNewtonWorld;
 class dNewtonCollision;
 
+typedef void(*OnCollisionCallback)(dNewtonBody* const otherBody);
 
 class dNewtonBody: public dAlloc
 {
@@ -55,6 +57,8 @@ class dNewtonBody: public dAlloc
 	bool GetSleepState() const;
 	void SetSleepState(bool state) const;
 
+	void SetCallbacks(OnCollisionCallback collisionCallback);
+
 	protected:
 	virtual ~dNewtonBody();
 
@@ -66,63 +70,6 @@ class dNewtonBody: public dAlloc
 
 	virtual void InitForceAccumulators();
 
-/*
-	dBodyType GetType() const {return m_bodyType;}
-	bool GetAutoSleepMode() const;
-	void SetAutoSleepMode(bool mode);
-	void SetMatrix (const dFloat* const matrix);
-	void GetMatrix (dFloat* const matrix) const;
-	void GetVisualMatrix (dFloat param, dFloat* const matrix) const;
-	void SetVeloc (const dFloat* const veloc);
-	void GetVeloc (dFloat* const veloc) const;
-	void SetOmega (const dFloat* const omega);
-	void GetOmega (dFloat* const omega) const;
-	void SetForce (const dFloat* const force);
-	void AddForce (const dFloat* const force);
-	//void GetForce (dFloat* const force) const;
-	void SetTorque (const dFloat* const torque);
-	void AddTorque (const dFloat* const torque);
-	//void GetTorque (dFloat* const torque) const;
-	dFloat GetLinearDrag () const;
-	void SetLinearDrag (const dFloat drag);
-	void GetAngularDrag (dFloat* const drag) const;
-	void SetAngularDrag (const dFloat* const drag);
-//	void  NewtonBodySetLinearDamping (const NewtonBody* const body, dFloat linearDamp);
-//	void  NewtonBodySetAngularDamping (const NewtonBody* const body, const dFloat* const angularDamp);
-	void GetCenterOfMass (dFloat* const com) const;
-	void SetCenterOfMass (const dFloat* const com);
-    void SetMassAndInertia (dFloat mass, dFloat Ixx, dFloat Iyy, dFloat Izz);
-	void SetMassAndInertia (dFloat mass, const dNewtonCollision* const collision);
-	void GetMassAndInertia (dFloat& mass, dFloat& Ixx, dFloat& Iyy, dFloat& Izz) const;
-	void SetCCDMode (bool mode);
-	bool GetCCDMode () const;
-	// applications can overload this to update game object information each time there transformation changes 
-	virtual void OnApplicationPostTransform (dFloat timestep) {};
-
-
-	virtual void OnContactProcess (dNewtonContactMaterial* const contactMaterial, dFloat timestep, int threadIndex) const {}
-
-	void* GetUserData() const;
-	void SetUserData(void* const userData);
-	
-	dNewtonBody* GetParent() const;
-	dNewtonBody* GetChild() const;
-	dNewtonBody* GetSibling() const;
-	void AttachChild (dNewtonBody* const child);
-
-	void* GetBoneArticulation() const;
-	void SetBoneArticulation(void* const boneArticulation);
-	
-	dNewton* GetNewton () const;
-
-	NewtonBody* GetNewtonBody () const;
-	dNewtonCollision* GetCollision() const;
-	void SetCollision(const dNewtonCollision* const collision) const;
-
-	protected:
-	dNewtonBody(dBodyType type, dNewtonBody* const parent);
-	virtual void SetBody  (NewtonBody* const body);
-*/
 	protected:
 	static void OnBodyDestroy (const NewtonBody* const body);
 	static void OnForceAndTorqueCallback (const NewtonBody* body, dFloat timestep, int threadIndex);
@@ -136,6 +83,7 @@ class dNewtonBody: public dAlloc
 	dQuaternion m_rotation1;
 	dQuaternion m_interpolatedRotation;
 	unsigned m_lock;
+	OnCollisionCallback m_onCollision;
 
 	friend class dNewtonWorld;
 	friend class dNewtonBallAndSocket;

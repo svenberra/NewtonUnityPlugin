@@ -25,7 +25,6 @@ using System.Runtime.InteropServices;
 
 public delegate void OnWorldUpdateCallback(float timestep);
 
-
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Newton World")]
 public class NewtonWorld : MonoBehaviour
@@ -40,8 +39,8 @@ public class NewtonWorld : MonoBehaviour
         m_bodyCount = 0;
         m_bodyCapacity = 128;
         m_bodyArray = new NewtonBody[m_bodyCapacity];
-        m_onWorldCallcak = new OnWorldUpdateCallback(OnWorldUpdate);
-
+        m_onWorldCallback = new OnWorldUpdateCallback(OnWorldUpdate);
+      
         m_world.SetAsyncUpdate(m_asyncUpdate);
         m_world.SetFrameRate (m_updateRate);
         m_world.SetThreadsCount(m_numberOfThreads);
@@ -50,13 +49,14 @@ public class NewtonWorld : MonoBehaviour
         m_world.SetGravity(m_gravity.x, m_gravity.y, m_gravity.z);
         m_world.SetSubSteps(m_subSteps);
         m_world.SetDefaultMaterial(m_defaultRestitution, m_defaultStaticFriction, m_defaultKineticFriction, true);
+        m_world.SetCallbacks(m_onWorldCallback);
         InitScene();
     }
 
     void OnDestroy()
     {
        DestroyScene();
-       m_onWorldCallcak = null;
+       m_onWorldCallback = null;
     }
 
     private void InitPhysicsScene(GameObject root)
@@ -149,7 +149,7 @@ public class NewtonWorld : MonoBehaviour
     void Update()
     {
         //Debug.Log("Update time :" + Time.deltaTime);
-        m_world.Update(Time.deltaTime, m_onWorldCallcak);
+        m_world.Update(Time.deltaTime);
     }
 
     void OnWorldUpdate(float timestep)
@@ -162,6 +162,7 @@ public class NewtonWorld : MonoBehaviour
             }
         }
     }
+
 
     private dNewtonWorld m_world = new dNewtonWorld();
     private int m_bodyCount;
@@ -180,8 +181,8 @@ public class NewtonWorld : MonoBehaviour
     public float m_defaultStaticFriction = 0.8f;
     public float m_defaultKineticFriction = 0.6f;
     
+    private OnWorldUpdateCallback m_onWorldCallback;
 
-    private OnWorldUpdateCallback m_onWorldCallcak;
 }
 
 

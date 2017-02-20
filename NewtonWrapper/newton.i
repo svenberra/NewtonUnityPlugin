@@ -114,6 +114,7 @@
     %typemap(csin) TYPE, TYPE& "$csinput" 
 %enddef 
 %cs_callback(OnDrawFaceCallback, OnDrawFaceCallback) 
+%cs_callback(OnCollisionCallback, OnCollisionCallback)
 %cs_callback(OnWorldUpdateCallback, OnWorldUpdateCallback) 
 
 #pragma SWIG nowarn=401

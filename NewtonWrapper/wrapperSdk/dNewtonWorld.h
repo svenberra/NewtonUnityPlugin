@@ -46,7 +46,7 @@ class dNewtonWorld: public dAlloc
 
 	dNewtonWorld();
 	virtual ~dNewtonWorld();
-	void Update(dFloat timestepInSeconds, OnWorldUpdateCallback forceCallback);
+	void Update(dFloat timestepInSeconds);
 
 	void SetSolverMode(int mode);
 	void SetFrameRate(dFloat frameRate);
@@ -62,8 +62,10 @@ class dNewtonWorld: public dAlloc
 	void SetDefaultMaterial(float restitution, float staticFriction, float kineticFriction, bool collisionEnable);
 	void SetMaterialInteraction(int materialID0, int materialID1, float restitution, float staticFriction, float kineticFriction, bool collisionEnable);
 
+	void SetCallbacks(OnWorldUpdateCallback forceCallback);
+
 	private:
-	void UpdateWorld(OnWorldUpdateCallback forceCallback);
+	void UpdateWorld();
 
 	const dMaterialProperties& FindMaterial(int id0, int id1) const;
 	static void OnContactCollision(const NewtonJoint* contactJoint, dFloat timestep, int threadIndex);
@@ -81,6 +83,7 @@ class dNewtonWorld: public dAlloc
 
 	dVector  m_gravity;
 	bool m_asyncUpdateMode;
+	OnWorldUpdateCallback m_onUpdateCallback;
 
 	dMaterialProperties m_defaultMaterial;
 
