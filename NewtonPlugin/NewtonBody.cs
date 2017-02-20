@@ -23,8 +23,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-public delegate void OnCollisionCallback(dNewtonBody otherBody);
-
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Rigid Body")]
 public class NewtonBody : MonoBehaviour
@@ -41,15 +39,7 @@ public class NewtonBody : MonoBehaviour
     {
         DestroyRigidBody();
         m_actions = null;
-        m_onCollisionCallback = null;
     }
-
-    //void OnCollision(dNewtonBody otherBody)
-    void OnCollision(dNewtonBody otherBody)
-    {
-        Debug.Log("collision xxxxxx");
-    }
-
 
     // Update is called once per frame
     void Update()
@@ -66,14 +56,11 @@ public class NewtonBody : MonoBehaviour
     public void InitRigidBody()
     {
         m_collision = new NewtonBodyCollision(this);
-        m_onCollisionCallback = new OnCollisionCallback(OnCollision);
         m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
-        m_body.SetCallbacks(m_onCollisionCallback);
     }
 
     public void DestroyRigidBody()
     {
-        m_onCollisionCallback = null;
         if (m_body != null)
         {
             m_body.Dispose();
@@ -105,6 +92,14 @@ public class NewtonBody : MonoBehaviour
         }
     }
 
+    //  I do not know howo to get a NetwonBody from a dNetwonBody, ideally a reference can be save with the NewtonBody 
+    //  public void OnCollision(NewtonBody otherBody)
+    public void OnCollision(dNewtonBody otherBody)
+    {
+        Debug.Log("collision xxxxxx");
+    }
+
+
     public dNewtonBody GetBody()
     {
         return m_body;
@@ -129,18 +124,18 @@ public class NewtonBody : MonoBehaviour
     }
 
     public float m_mass;
-    public bool m_isScene = false;
+    public bool m_needsCollisionNotification = false;
+
     public NewtonWorld m_world;
+    public Vector3 m_forceAcc { get; set; }
+    public Vector3 m_torqueAcc { get; set; }
+    public bool m_isScene { get; set; }
 
     private dNewtonBody m_body = null;
     private NewtonBodyCollision m_collision = null;
     private float[] m_positionPtr = new float[3];
     private float[] m_rotationPtr = new float[4];
-
-    public Vector3 m_forceAcc { get; set; }
-    public Vector3 m_torqueAcc { get; set; }
     private NewtonBodyForceAction[] m_actions;
-    private OnCollisionCallback m_onCollisionCallback;
 }
 
 

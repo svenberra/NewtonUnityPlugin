@@ -64,6 +64,11 @@ class dNewtonWorld: public dAlloc
 
 	void SetCallbacks(OnWorldUpdateCallback forceCallback);
 
+	void* GetFirstContactJoint(dNewtonBody* const body) const;
+	void* GetNextContactJoint(dNewtonBody* const body, void* const contact) const;
+	dNewtonBody* GetBody0(void* const contact) const;
+	dNewtonBody* GetBody1(void* const contact) const;
+
 	private:
 	void UpdateWorld();
 

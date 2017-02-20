@@ -135,6 +135,18 @@ public class NewtonWorld : MonoBehaviour
         NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
         if (bodyPhysics)
         {
+            // apply collision notification here
+            if (bodyPhysics.m_needsCollisionNotification)
+            {
+                dNewtonBody newtonBody = bodyPhysics.GetBody();
+                for (IntPtr contact = m_world.GetFirstContactJoint(newtonBody); contact != IntPtr.Zero; contact = m_world.GetNextContactJoint(newtonBody, contact))
+                {
+                    dNewtonBody otherBody = (m_world.GetBody0(contact) == newtonBody) ? m_world.GetBody1(contact) : m_world.GetBody0(contact);
+                    bodyPhysics.OnCollision(otherBody);
+                }
+            }
+
+            // apply new external force and torque
             bodyPhysics.OnApplyForceAndTorque(timestep);
         }
 

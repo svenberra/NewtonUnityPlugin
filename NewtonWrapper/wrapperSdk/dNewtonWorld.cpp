@@ -176,7 +176,6 @@ void dNewtonWorld::SetAsyncUpdate(bool updateMode)
 	m_asyncUpdateMode = updateMode;
 }
 
-//void dNewtonWorld::UpdateWorld(OnWorldUpdateCallback forceCallback)
 void dNewtonWorld::UpdateWorld()
 {
 	NewtonWaitForUpdateToFinish(m_world);
@@ -224,6 +223,32 @@ void dNewtonWorld::Update(dFloat timestepInSeconds)
 	m_interpotationParam = dFloat (double(m_realTimeInMicroSeconds) / double(m_timeStepInMicroSeconds));
 }
 
+void* dNewtonWorld::GetFirstContactJoint(dNewtonBody* const body) const
+{
+	return NewtonBodyGetFirstContactJoint(body->m_body);
+}
+
+void* dNewtonWorld::GetNextContactJoint(dNewtonBody* const body, void* const contact) const
+{
+	NewtonJoint* const contactJoint = (NewtonJoint*)contact;
+	return NewtonBodyGetNextContactJoint(body->m_body, contactJoint);
+}
+
+dNewtonBody* dNewtonWorld::GetBody0(void* const contact) const
+{
+	NewtonJoint* const contactJoint = (NewtonJoint*)contact;
+	NewtonBody* const body = NewtonJointGetBody0(contactJoint);
+	return (dNewtonBody*)NewtonBodyGetUserData(body);
+}
+
+dNewtonBody* dNewtonWorld::GetBody1(void* const contact) const
+{
+	NewtonJoint* const contactJoint = (NewtonJoint*)contact;
+	NewtonBody* const body = NewtonJointGetBody1(contactJoint);
+	return (dNewtonBody*)NewtonBodyGetUserData(body);
+}
+
+
 int dNewtonWorld::OnSubShapeAABBOverlapTest(const NewtonMaterial* const material, const NewtonBody* const body0, const void* const collisionNode0, const NewtonBody* const body1, const void* const collisionNode1, int threadIndex)
 {
 	return 1;
@@ -243,7 +268,7 @@ int dNewtonWorld::OnBodiesAABBOverlap(const NewtonMaterial* const material, cons
 void dNewtonWorld::OnContactCollision(const NewtonJoint* contactJoint, dFloat timestep, int threadIndex)
 {
 	NewtonBody* const body0 = NewtonJointGetBody0(contactJoint);
-	NewtonBody* const body1 = NewtonJointGetBody1(contactJoint);
+//	NewtonBody* const body1 = NewtonJointGetBody1(contactJoint);
 //	dNewtonBody* const dbody0 = (dNewtonBody*)NewtonBodyGetUserData(body0);
 //	dNewtonBody* const dbody1 = (dNewtonBody*)NewtonBodyGetUserData(body1);
 //	dbody0->m_onCollision(dbody1);

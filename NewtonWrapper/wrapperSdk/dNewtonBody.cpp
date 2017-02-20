@@ -60,7 +60,7 @@ dNewtonBody::dNewtonBody(const dMatrix& matrix)
 	,m_rotation1(m_rotation0)
 	,m_interpolatedRotation(m_rotation0)
 	,m_lock(0)
-	,m_onCollision(NULL)
+//	,m_onCollision(NULL)
 {
 }
 
@@ -69,10 +69,12 @@ dNewtonBody::~dNewtonBody()
 	Destroy();
 }
 
+/*
 void dNewtonBody::SetCallbacks(OnCollisionCallback collisionCallback)
 {
 	m_onCollision = collisionCallback;
 }
+*/
 
 void* dNewtonBody::GetBody() const
 {
