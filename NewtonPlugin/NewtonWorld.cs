@@ -146,7 +146,7 @@ public class NewtonWorld : MonoBehaviour
                     for (IntPtr contact = m_world.GetFirstContactJoint(newtonBody); contact != IntPtr.Zero; contact = m_world.GetNextContactJoint(newtonBody, contact))
                     { 
                         dNewtonBody otherBody = (m_world.GetBody0(contact) == newtonBody) ? m_world.GetBody1(contact) : m_world.GetBody0(contact);
-                        rigidBodyScripts[i].OnCollision(otherBody);
+                        rigidBodyScripts[i].OnCollision(otherBody.GetOwner());
                     }
                 }
 

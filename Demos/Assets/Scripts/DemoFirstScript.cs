@@ -17,7 +17,7 @@ public class DemoFirstScript: NewtonBodyScript
 		
 	}
 
-    override public void OnCollision(dNewtonBody otherBody)
+    override public void OnCollision(NewtonBody otherBody)
     {
         Debug.Log("xxxxxx woohoo collision notification script !!");
     }

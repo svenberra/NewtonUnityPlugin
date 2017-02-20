@@ -30,8 +30,6 @@ class dNewtonBody;
 class dNewtonWorld;
 class dNewtonCollision;
 
-//typedef void(*OnCollisionCallback)(dNewtonBody* const otherBody);
-
 class dNewtonBody: public dAlloc
 {
 	public:
@@ -57,8 +55,6 @@ class dNewtonBody: public dAlloc
 	bool GetSleepState() const;
 	void SetSleepState(bool state) const;
 
-//	void SetCallbacks(OnCollisionCallback collisionCallback);
-
 	protected:
 	virtual ~dNewtonBody();
 
@@ -83,8 +79,6 @@ class dNewtonBody: public dAlloc
 	dQuaternion m_rotation1;
 	dQuaternion m_interpolatedRotation;
 	unsigned m_lock;
-
-	//OnCollisionCallback m_onCollision;
 
 	friend class dNewtonWorld;
 	friend class dNewtonBallAndSocket;

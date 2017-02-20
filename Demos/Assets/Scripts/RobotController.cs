@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RobotController : MonoBehaviour {
+public class RobotController : MonoBehaviour
+{
 
     NewtonBody baseNB = null;
     NewtonBody bodyNB = null;
@@ -43,10 +44,6 @@ public class RobotController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //if(body)
-        //{
-        //    Debug.Log(body.SleepState);
-        //}
     }
 
     void OnGUI()
@@ -84,7 +81,5 @@ public class RobotController : MonoBehaviour {
             handBActuator.TargetPosition = gripperPos;
             handBNB.SleepState = false;
         }
-
     }
-
 }

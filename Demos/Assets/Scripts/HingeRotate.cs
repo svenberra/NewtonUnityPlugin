@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HingeRotate : MonoBehaviour {
+public class HingeRotate : MonoBehaviour
+{
 
     NewtonHingeActuator na = null;
 

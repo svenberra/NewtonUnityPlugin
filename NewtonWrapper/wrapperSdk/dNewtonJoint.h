@@ -23,7 +23,6 @@
 
 #include "stdafx.h"
 #include "dAlloc.h"
-#include <CustomJoint.h>
 
 class dNewtonJoint: public dAlloc
 {
