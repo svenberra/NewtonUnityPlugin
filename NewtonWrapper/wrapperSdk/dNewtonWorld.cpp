@@ -66,9 +66,6 @@ dNewtonWorld::dNewtonWorld()
 	// set joint serialization call back
 	CustomJoint::Initalize(m_world);
 	SetFrameRate(D_DEFAULT_FPS);
-
-
-	m_materialGraph.Insert(0);
 }
 
 dNewtonWorld::~dNewtonWorld()

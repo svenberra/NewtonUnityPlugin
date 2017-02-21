@@ -91,7 +91,6 @@ class dNewtonWorld: public dAlloc
 	dVector  m_gravity;
 	bool m_asyncUpdateMode;
 	OnWorldUpdateCallback m_onUpdateCallback;
-
 	dMaterialProperties m_defaultMaterial;
 
 	friend class dNewtonBody;
