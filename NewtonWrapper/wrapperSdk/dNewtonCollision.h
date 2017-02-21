@@ -55,6 +55,7 @@ class dNewtonCollision: public dAlloc
 	friend class dNewtonBody;
 	friend class dNewtonWorld;
 	friend class dNewtonDynamicBody;
+	friend class dNewtonKinematicBody;
 	friend class dNewtonCollisionCompound;
 };
 

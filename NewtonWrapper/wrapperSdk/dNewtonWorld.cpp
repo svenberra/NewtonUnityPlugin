@@ -222,16 +222,19 @@ void dNewtonWorld::Update(dFloat timestepInSeconds)
 	m_interpotationParam = dFloat (double(m_realTimeInMicroSeconds) / double(m_timeStepInMicroSeconds));
 }
 
-void* dNewtonWorld::GetFirstContactJoint(dNewtonBody* const body) const
-{
-	return NewtonBodyGetFirstContactJoint(body->m_body);
-}
-
 void* dNewtonWorld::GetNextContactJoint(dNewtonBody* const body, void* const contact) const
 {
-	NewtonJoint* const contactJoint = (NewtonJoint*)contact;
-	return NewtonBodyGetNextContactJoint(body->m_body, contactJoint);
+	for (NewtonJoint* contactJoint = (NewtonJoint*)contact; contactJoint; NewtonBodyGetNextContactJoint(body->m_body, contactJoint)) {
+	}
+	return NULL;
 }
+
+
+void* dNewtonWorld::GetFirstContactJoint(dNewtonBody* const body) const
+{
+	return GetNextContactJoint(body, NewtonBodyGetFirstContactJoint(body->m_body));
+}
+
 
 dNewtonBody* dNewtonWorld::GetBody0(void* const contact) const
 {

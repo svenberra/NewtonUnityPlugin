@@ -158,6 +158,21 @@ void dNewtonBody::AddTorque(dVector torque)
 {
 }
 
+dNewtonKinematicBody::dNewtonKinematicBody(dNewtonWorld* const world, dNewtonCollision* const collision, dMatrix matrix, dFloat mass)
+	:dNewtonBody(matrix)
+{
+	NewtonWorld* const newton = world->m_world;
+	m_body = NewtonCreateDynamicBody(newton, collision->m_shape, &matrix[0][0]);
+	collision->DeleteShape();
+	collision->SetShape(NewtonBodyGetCollision(m_body));
+
+	NewtonBodySetMassProperties(m_body, mass, NewtonBodyGetCollision(m_body));
+
+	NewtonBodySetUserData(m_body, this);
+	NewtonBodySetTransformCallback(m_body, OnBodyTransformCallback);
+	NewtonBodySetForceAndTorqueCallback(m_body, OnForceAndTorqueCallback);
+}
+
 dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollision* const collision, dMatrix matrix, dFloat mass)
 	:dNewtonBody(matrix)
 {

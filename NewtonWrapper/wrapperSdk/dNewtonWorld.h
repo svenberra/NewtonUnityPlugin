@@ -96,6 +96,7 @@ class dNewtonWorld: public dAlloc
 	friend class dNewtonCollision;
 	friend class dNewtonDynamicBody;
 	friend class dNewtonCollisionBox;
+	friend class dNewtonKinematicBody;
 	friend class dNewtonCollisionMesh;
 	friend class dNewtonCollisionNull;
 	friend class dNewtonCollisionCone;

@@ -84,6 +84,13 @@ class dNewtonBody: public dAlloc
 	friend class dNewtonBallAndSocket;
 };
 
+
+class dNewtonKinematicBody : public dNewtonBody
+{
+	public:
+	dNewtonKinematicBody(dNewtonWorld* const world, dNewtonCollision* const collision, dMatrix matrix, dFloat mass);
+};
+
 class dNewtonDynamicBody: public dNewtonBody
 {
 	public:
