@@ -68,6 +68,8 @@ class dNewtonWorld: public dAlloc
 	void* GetNextContactJoint(dNewtonBody* const body, void* const contact) const;
 	dNewtonBody* GetBody0(void* const contact) const;
 	dNewtonBody* GetBody1(void* const contact) const;
+	void* GetBody0UserData(void* const contact) const;
+	void* GetBody1UserData(void* const contact) const;
 
 	private:
 	void UpdateWorld();

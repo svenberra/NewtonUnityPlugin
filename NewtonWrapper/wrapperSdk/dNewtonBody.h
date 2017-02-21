@@ -48,6 +48,8 @@ class dNewtonBody: public dAlloc
 	void* GetBody() const;
 	void* GetPosition();
 	void* GetRotation();
+	void SetUserData(void* userData);
+	void* GetUserData();
 
 	virtual void AddForce(dVector force);
 	virtual void AddTorque(dVector force);
@@ -72,6 +74,7 @@ class dNewtonBody: public dAlloc
 	static void OnBodyTransformCallback(const NewtonBody* const body, const dFloat* const matrix, int threadIndex);
 
 	NewtonBody* m_body;
+	void* m_userData;
 	dVector m_posit0;
 	dVector m_posit1;
 	dVector m_interpolatedPosit;

@@ -54,12 +54,19 @@ public class NewtonBody : MonoBehaviour
     {
         m_collision = new NewtonBodyCollision(this);
         m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
+
+        var handle = GCHandle.Alloc(this);
+        m_body.SetUserData(GCHandle.ToIntPtr(handle));
     }
 
     public void DestroyRigidBody()
     {
+
         if (m_body != null)
         {
+            var handle = GCHandle.FromIntPtr(m_body.GetUserData());
+            handle.Free();
+
             m_body.Dispose();
             m_body = null;
         }

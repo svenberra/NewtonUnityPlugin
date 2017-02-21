@@ -90,6 +90,17 @@ void* dNewtonBody::GetRotation()
 	return &m_interpolatedRotation.m_q0;
 }
 
+void dNewtonBody::SetUserData(void* userData)
+{
+	m_userData = userData;
+}
+
+void* dNewtonBody::GetUserData()
+{
+	return m_userData;
+}
+
+
 void dNewtonBody::OnBodyTransform(const dFloat* const matrixPtr, int threadIndex)
 {
 	dMatrix matrix(matrixPtr);

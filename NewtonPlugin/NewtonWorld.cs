@@ -144,9 +144,12 @@ public class NewtonWorld : MonoBehaviour
                 if (rigidBodyScripts[i].m_collisionNotification)
                 {
                     for (IntPtr contact = m_world.GetFirstContactJoint(newtonBody); contact != IntPtr.Zero; contact = m_world.GetNextContactJoint(newtonBody, contact))
-                    { 
-                        dNewtonBody otherBody = (m_world.GetBody0(contact) == newtonBody) ? m_world.GetBody1(contact) : m_world.GetBody0(contact);
-                        rigidBodyScripts[i].OnCollision(otherBody.GetOwner());
+                    {
+                        var body0 = (NewtonBody)GCHandle.FromIntPtr(m_world.GetBody0UserData(contact)).Target;
+                        var body1 = (NewtonBody)GCHandle.FromIntPtr(m_world.GetBody1UserData(contact)).Target;
+                        //dNewtonBody otherBody = (m_world.GetBody0(contact) == newtonBody) ? m_world.GetBody1(contact) : m_world.GetBody0(contact);
+                        var otherBody = bodyPhysics == body0 ? body1 : body0;
+                        rigidBodyScripts[i].OnCollision(otherBody);
                     }
                 }
 
