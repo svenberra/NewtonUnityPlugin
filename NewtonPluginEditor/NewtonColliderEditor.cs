@@ -16,13 +16,13 @@ public abstract class NewtonColliderEditor : Editor
         scaleProp = serializedObject.FindProperty("m_scale");
         materialProp = serializedObject.FindProperty("m_material");
 
-        Undo.undoRedoPerformed += OnUndoRedo;
+        //Undo.undoRedoPerformed += OnUndoRedo;
 
     }
 
     void OnDestroy()
     {
-        Undo.undoRedoPerformed -= OnUndoRedo;
+        //Undo.undoRedoPerformed -= OnUndoRedo;
     }
 
     private void OnUndoRedo()
