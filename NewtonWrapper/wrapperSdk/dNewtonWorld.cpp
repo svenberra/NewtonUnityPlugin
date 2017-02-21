@@ -224,19 +224,24 @@ void dNewtonWorld::Update(dFloat timestepInSeconds)
 
 void* dNewtonWorld::GetNextContactJoint(dNewtonBody* const body, void* const contact) const
 {
-	//for (NewtonJoint* contactJoint = (NewtonJoint*)contact; contactJoint; NewtonBodyGetNextContactJoint(body->m_body, contactJoint)) {
-	//}
-	//return NULL;
-
-	NewtonJoint* const contactJoint = (NewtonJoint*)contact;
-	return NewtonBodyGetNextContactJoint(body->m_body, contactJoint);
+	NewtonBody* const newtonBody = body->m_body;
+	for (NewtonJoint* contactJoint = NewtonBodyGetNextContactJoint(newtonBody, (NewtonJoint*)contact); contactJoint; contactJoint = NewtonBodyGetNextContactJoint(newtonBody, contactJoint)) {
+		if (NewtonJointIsActive(contactJoint)) {
+			return contactJoint;
+		}
+	}
+	return NULL;
 }
-
 
 void* dNewtonWorld::GetFirstContactJoint(dNewtonBody* const body) const
 {
-	return NewtonBodyGetFirstContactJoint(body->m_body);
-	//return GetNextContactJoint(body, NewtonBodyGetFirstContactJoint(body->m_body));
+	NewtonBody* const newtonBody = body->m_body;
+	for (NewtonJoint* contactJoint = NewtonBodyGetFirstContactJoint(body->m_body); contactJoint; contactJoint = NewtonBodyGetNextContactJoint(newtonBody, contactJoint)) {
+		if (NewtonJointIsActive(contactJoint)) {
+			return contactJoint;
+		}
+	}
+	return NULL;
 }
 
 
