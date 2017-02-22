@@ -52,6 +52,13 @@ bool dNewtonCollision::IsValid()
 	return m_shape ? true : false;
 }
 
+void dNewtonCollision::SetAsTrigger(bool mode)
+{
+	if (m_shape) {
+		NewtonCollisionSetMode(m_shape, mode ? 0 : 1);
+	}
+}
+
 void dNewtonCollision::SetMaterialID(int materialId)
 {
 	m_materialID = materialId;

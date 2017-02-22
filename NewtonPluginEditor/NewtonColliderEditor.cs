@@ -12,12 +12,11 @@ public abstract class NewtonColliderEditor : Editor
         // Setup the SerializedProperties
         posProp = serializedObject.FindProperty("m_posit");
         rotProp = serializedObject.FindProperty("m_rotation");
-        inheritScaleProp = serializedObject.FindProperty("m_inheritTransformScale");
         scaleProp = serializedObject.FindProperty("m_scale");
         materialProp = serializedObject.FindProperty("m_material");
-
+        isTriggerProp = serializedObject.FindProperty("m_isTrigger");
+        inheritScaleProp = serializedObject.FindProperty("m_inheritTransformScale");
         //Undo.undoRedoPerformed += OnUndoRedo;
-
     }
 
     void OnDestroy()
@@ -35,6 +34,7 @@ public abstract class NewtonColliderEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        EditorGUILayout.PropertyField(isTriggerProp, new GUIContent("Is Trigger"));
         EditorGUILayout.PropertyField(materialProp, new GUIContent("Material"));
         EditorGUILayout.PropertyField(posProp, new GUIContent("Position"));
         EditorGUILayout.PropertyField(rotProp, new GUIContent("Rotation"));
@@ -48,6 +48,7 @@ public abstract class NewtonColliderEditor : Editor
     SerializedProperty rotProp;
     SerializedProperty scaleProp;
     SerializedProperty materialProp;
+    SerializedProperty isTriggerProp;
     SerializedProperty inheritScaleProp;
 }
 
@@ -80,10 +81,8 @@ public class NewtonSphereColliderEditor: NewtonColliderEditor
             Debug.Log("Sphere radius changed");
         }
     }
-
     SerializedProperty radiusProp;
 }
-
 
 [CustomEditor(typeof(NewtonBoxCollider))]
 public class NewtonBoxColliderEditor: NewtonColliderEditor

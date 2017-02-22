@@ -20,7 +20,11 @@ public class DemoFirstScript: NewtonBodyScript
     override public void OnCollision(NewtonBody otherBody)
     {
         //Debug.Log("xxxxxx woohoo collision notification script !!");
-        Debug.Log(this.gameObject.name + " colliding with " + otherBody.gameObject.name);    
+        if (GetComponent<NewtonCollider>().m_isTrigger)
+        {
+            Debug.Log(gameObject.name + " is trigger");
+        }
+        //Debug.Log(this.gameObject.name + " colliding with " + otherBody.gameObject.name);    
     }
 
 }

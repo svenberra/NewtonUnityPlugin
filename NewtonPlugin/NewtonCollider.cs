@@ -154,6 +154,7 @@ abstract public class NewtonCollider : MonoBehaviour
     {
         int materialID = m_material ? m_material.GetInstanceID() : 0;
         shape.SetMaterialID(materialID);
+        shape.SetAsTrigger(m_isTrigger);
     }
 
     private dNewtonCollision m_editorShape = null;
@@ -161,7 +162,9 @@ abstract public class NewtonCollider : MonoBehaviour
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
     public Vector3 m_scale = Vector3.one;
+    public bool m_isTrigger = false;
     public bool m_inheritTransformScale = true;
+
     
     // Reuse the same buffer for debug display
     static Vector3 m_lineP0 = Vector3.zero;
