@@ -137,6 +137,13 @@ public class NewtonWorld : MonoBehaviour
         {
             // update all rigid body scripts 
             dNewtonBody newtonBody = bodyPhysics.GetBody();
+
+            // Apply force & torque accumulators
+            newtonBody.AddForce(new dVector(bodyPhysics.m_forceAcc.x, bodyPhysics.m_forceAcc.y, bodyPhysics.m_forceAcc.z));
+            newtonBody.AddTorque(new dVector(bodyPhysics.m_torqueAcc.x, bodyPhysics.m_torqueAcc.y, bodyPhysics.m_torqueAcc.z));
+            bodyPhysics.m_forceAcc = Vector3.zero;
+            bodyPhysics.m_torqueAcc = Vector3.zero;
+
             NewtonBodyScript[] rigidBodyScripts = root.GetComponents<NewtonBodyScript>();
             for (int i = 0; i < rigidBodyScripts.Length; i++)
             {
