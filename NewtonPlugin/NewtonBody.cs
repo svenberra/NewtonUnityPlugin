@@ -97,6 +97,7 @@ public class NewtonBody : MonoBehaviour
 
             force = (Vector3)Marshal.PtrToStructure(forcePtr, typeof(Vector3));
             torque = (Vector3)Marshal.PtrToStructure(torquePtr, typeof(Vector3));
+            //Debug.Log("boyancy force = " + force);
 
             Marshal.FreeHGlobal(planePtr);
             Marshal.FreeHGlobal(forcePtr);

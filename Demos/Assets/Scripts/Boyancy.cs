@@ -24,12 +24,8 @@ public class Boyancy : NewtonBodyScript
         Vector3 torque = Vector3.zero;
 
         otherBody.CalculateBuoyancyForces(plane, ref force, ref torque);
-
-        print(force);
-
-        //Debug.Log(force);
-
-        //otherBody.m_forceAcc += new Vector3(0, 11, 0);
+        otherBody.m_forceAcc += force;
+        otherBody.m_torqueAcc += torque;
     }
 
 }

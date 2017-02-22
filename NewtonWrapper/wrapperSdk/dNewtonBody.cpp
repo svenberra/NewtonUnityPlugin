@@ -103,7 +103,7 @@ void* dNewtonBody::GetUserData()
 void dNewtonBody::CalculateBuoyancyForces(const void* plane, void* force, void* torque)
 {
 	//dVector _plane(((float*)plane)[0], ((float*)plane)[1], ((float*)plane)[2], 0.0f);
-	dVector _plane(0.0f, 5.0f, 0.0f, 0.0f);
+	dVector _plane(0.0f, 1.0f, 0.0f, -5.0f);
 
 	dFloat Ixx;
 	dFloat Iyy;
@@ -133,18 +133,13 @@ void dNewtonBody::CalculateBuoyancyForces(const void* plane, void* force, void* 
 		dVector finalForce(accelPerUnitMass.Scale(mass));
 		dVector finalTorque(torquePerUnitMass.Scale(mass));
 
-		((float*)force)[0] = finalForce.m_x;
-		((float*)force)[1] = finalForce.m_y;
-		((float*)force)[2] = finalForce.m_z;
+		((float*)force)[0] = finalForce.m_x ;
+		((float*)force)[1] = finalForce.m_y ;
+		((float*)force)[2] = finalForce.m_z ;
 		((float*)torque)[0] = finalTorque.m_x;
 		((float*)torque)[1] = finalTorque.m_y;
 		((float*)torque)[2] = finalTorque.m_z;
-
-		//((float*)force)[0] = 1.0f;
-		//((float*)force)[1] = 2.0f;
-		//((float*)force)[2] = 3.0f;
 	}
-
 }
 
 
