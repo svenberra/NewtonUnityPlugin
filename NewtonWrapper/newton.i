@@ -65,16 +65,6 @@
 %cs_callback(NewtonFreeMemory, NewtonFreeMemoryDelegate)
 */
 
-%typemap(cscode) dNewtonBody %{
-  public void SetOwner(NewtonBody owner) {
-    m_owner = owner;
-  }
-  public NewtonBody GetOwner() {
-    return m_owner;
-  }
-  NewtonBody m_owner;	
-%}
-
 
 // Wrap void* to IntPtr
 %typemap(ctype)  void* "void *"

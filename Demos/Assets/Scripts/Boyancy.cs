@@ -19,7 +19,17 @@ public class Boyancy : NewtonBodyScript
 
     override public void OnCollision(NewtonBody otherBody)
     {
-        otherBody.m_forceAcc += new Vector3(0, 11, 0);
+        Vector3 plane = new Vector3(0, 5, 0);
+        Vector3 force = Vector3.zero;
+        Vector3 torque = Vector3.zero;
+
+        otherBody.CalculateBuoyancyForces(plane, ref force, ref torque);
+
+        print(force);
+
+        //Debug.Log(force);
+
+        //otherBody.m_forceAcc += new Vector3(0, 11, 0);
     }
 
 }

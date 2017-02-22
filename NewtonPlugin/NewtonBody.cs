@@ -83,6 +83,28 @@ public class NewtonBody : MonoBehaviour
         return m_body;
     }
 
+    public void CalculateBuoyancyForces(Vector3 plane, ref Vector3 force, ref Vector3 torque)
+    {
+        if(m_body != null)
+        {
+            IntPtr planePtr = Marshal.AllocHGlobal(Marshal.SizeOf(plane));
+            IntPtr forcePtr = Marshal.AllocHGlobal(Marshal.SizeOf(force));
+            IntPtr torquePtr = Marshal.AllocHGlobal(Marshal.SizeOf(torque));
+
+            Marshal.StructureToPtr(plane, planePtr, false);
+
+            m_body.CalculateBuoyancyForces(planePtr, forcePtr, torquePtr);
+
+            force = (Vector3)Marshal.PtrToStructure(forcePtr, typeof(Vector3));
+            torque = (Vector3)Marshal.PtrToStructure(torquePtr, typeof(Vector3));
+
+            Marshal.FreeHGlobal(planePtr);
+            Marshal.FreeHGlobal(forcePtr);
+            Marshal.FreeHGlobal(torquePtr);
+
+        }
+    }
+
     public bool SleepState
     {
         get

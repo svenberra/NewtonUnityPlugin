@@ -100,6 +100,54 @@ void* dNewtonBody::GetUserData()
 	return m_userData;
 }
 
+void dNewtonBody::CalculateBuoyancyForces(const void* plane, void* force, void* torque)
+{
+	//dVector _plane(((float*)plane)[0], ((float*)plane)[1], ((float*)plane)[2], 0.0f);
+	dVector _plane(0.0f, 5.0f, 0.0f, 0.0f);
+
+	dFloat Ixx;
+	dFloat Iyy;
+	dFloat Izz;
+	dFloat mass;
+
+	NewtonBodyGetMass(m_body, &mass, &Ixx, &Iyy, &Izz);
+
+	if (mass > 0.0f) {
+		dMatrix matrix;
+		dVector cog(0.0f);
+		dVector accelPerUnitMass(0.0f);
+		dVector torquePerUnitMass(0.0f);
+		const dVector gravity(0.0f, -9.8f, 0.0f, 0.0f);
+
+		NewtonBodyGetMatrix(m_body, &matrix[0][0]);
+		NewtonBodyGetCentreOfMass(m_body, &cog[0]);
+		cog = matrix.TransformVector(cog);
+		NewtonCollision* const collision = NewtonBodyGetCollision(m_body);
+
+		dFloat shapeVolume = NewtonConvexCollisionCalculateVolume(collision);
+		dFloat fluidDensity = 1.0f / (0.9f * shapeVolume);
+		dFloat viscosity = 0.995f;
+
+		NewtonConvexCollisionCalculateBuoyancyAcceleration(collision, &matrix[0][0], &cog[0], &gravity[0], &_plane[0], fluidDensity, viscosity, &accelPerUnitMass[0], &torquePerUnitMass[0]);
+
+		dVector finalForce(accelPerUnitMass.Scale(mass));
+		dVector finalTorque(torquePerUnitMass.Scale(mass));
+
+		((float*)force)[0] = finalForce.m_x;
+		((float*)force)[1] = finalForce.m_y;
+		((float*)force)[2] = finalForce.m_z;
+		((float*)torque)[0] = finalTorque.m_x;
+		((float*)torque)[1] = finalTorque.m_y;
+		((float*)torque)[2] = finalTorque.m_z;
+
+		//((float*)force)[0] = 1.0f;
+		//((float*)force)[1] = 2.0f;
+		//((float*)force)[2] = 3.0f;
+	}
+
+}
+
+
 
 void dNewtonBody::OnBodyTransform(const dFloat* const matrixPtr, int threadIndex)
 {
