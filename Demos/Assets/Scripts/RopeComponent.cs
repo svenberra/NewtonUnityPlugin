@@ -10,6 +10,7 @@ public class RopeComponent : MonoBehaviour
     private List<GameObject> gameObjects = new List<GameObject>();
     private NewtonWorld world;
     private LineRenderer lineRenderer;
+    public Material material;
 
     void Awake()
     {
@@ -38,6 +39,7 @@ public class RopeComponent : MonoBehaviour
         lineRenderer = transform.gameObject.AddComponent<LineRenderer>();
         lineRenderer.numPositions = Segments;
         lineRenderer.widthMultiplier = SegmentSize;
+        lineRenderer.sharedMaterial = material;
     }
 
     void Start()
