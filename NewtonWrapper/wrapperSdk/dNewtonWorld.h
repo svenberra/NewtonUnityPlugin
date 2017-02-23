@@ -30,6 +30,7 @@ class dNewtonCollision;
 class dNewtonCollisionBox;
 
 
+typedef void(*OnWorldBodyTransfromUpdateCallback)();
 typedef void(*OnWorldUpdateCallback)(dFloat timestep);
 
 class dNewtonWorld: public dAlloc
@@ -61,8 +62,7 @@ class dNewtonWorld: public dAlloc
 	long long GetMaterialKey(int materialID0, int materialID1) const;
 	void SetDefaultMaterial(float restitution, float staticFriction, float kineticFriction, bool collisionEnable);
 	void SetMaterialInteraction(int materialID0, int materialID1, float restitution, float staticFriction, float kineticFriction, bool collisionEnable);
-
-	void SetCallbacks(OnWorldUpdateCallback forceCallback);
+	void SetCallbacks(OnWorldUpdateCallback forceCallback, OnWorldBodyTransfromUpdateCallback tranformCallback);
 
 	void* GetFirstContactJoint(dNewtonBody* const body) const;
 	void* GetNextContactJoint(dNewtonBody* const body, void* const contact) const;
@@ -91,6 +91,7 @@ class dNewtonWorld: public dAlloc
 	dVector  m_gravity;
 	bool m_asyncUpdateMode;
 	OnWorldUpdateCallback m_onUpdateCallback;
+	OnWorldBodyTransfromUpdateCallback m_onTransformCallback;
 	dMaterialProperties m_defaultMaterial;
 
 	friend class dNewtonBody;

@@ -23,7 +23,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
+public delegate void OnWorldBodyTransfromUpdateCallback();
 public delegate void OnWorldUpdateCallback(float timestep);
+
 
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Newton World")]
@@ -37,7 +39,8 @@ public class NewtonWorld : MonoBehaviour
     void Start()
     {
         m_onWorldCallback = new OnWorldUpdateCallback(OnWorldUpdate);
-      
+        m_onWorldBodyTransfromUpdateCallback = new OnWorldBodyTransfromUpdateCallback(OnBodyTransformUpdate);
+
         m_world.SetAsyncUpdate(m_asyncUpdate);
         m_world.SetFrameRate (m_updateRate);
         m_world.SetThreadsCount(m_numberOfThreads);
@@ -46,7 +49,7 @@ public class NewtonWorld : MonoBehaviour
         m_world.SetGravity(m_gravity.x, m_gravity.y, m_gravity.z);
         m_world.SetSubSteps(m_subSteps);
         m_world.SetDefaultMaterial(m_defaultRestitution, m_defaultStaticFriction, m_defaultKineticFriction, true);
-        m_world.SetCallbacks(m_onWorldCallback);
+        m_world.SetCallbacks(m_onWorldCallback, m_onWorldBodyTransfromUpdateCallback);
         InitScene();
     }
 
@@ -54,6 +57,8 @@ public class NewtonWorld : MonoBehaviour
     {
        DestroyScene();
        m_onWorldCallback = null;
+       m_onWorldBodyTransfromUpdateCallback = null;
+
     }
 
     private void InitPhysicsScene(GameObject root)
@@ -154,7 +159,6 @@ public class NewtonWorld : MonoBehaviour
                     {
                         var body0 = (NewtonBody)GCHandle.FromIntPtr(m_world.GetBody0UserData(contact)).Target;
                         var body1 = (NewtonBody)GCHandle.FromIntPtr(m_world.GetBody1UserData(contact)).Target;
-                        //dNewtonBody otherBody = (m_world.GetBody0(contact) == newtonBody) ? m_world.GetBody1(contact) : m_world.GetBody0(contact);
                         var otherBody = bodyPhysics == body0 ? body1 : body0;
                         rigidBodyScripts[i].OnCollision(otherBody);
                     }
@@ -197,6 +201,29 @@ public class NewtonWorld : MonoBehaviour
         }
     }
 
+    private void OnBodyTransformUpdate(GameObject root)
+    {
+        NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
+        if (bodyPhysics)
+        {
+            bodyPhysics.OnUpdateTranform();
+        }
+
+        foreach (Transform child in root.transform)
+        {
+            OnBodyTransformUpdate(child.gameObject);
+        }
+    }
+
+    private void OnBodyTransformUpdate()
+    {
+        GameObject[] objectList = gameObject.scene.GetRootGameObjects();
+        foreach (GameObject rootObj in objectList)
+        {
+            OnBodyTransformUpdate(rootObj);
+        }
+    }
+
     private dNewtonWorld m_world = new dNewtonWorld();
     public bool m_asyncUpdate = true;
     public int m_broadPhaseType = 0;
@@ -211,6 +238,7 @@ public class NewtonWorld : MonoBehaviour
     public float m_defaultKineticFriction = 0.6f;
     
     private OnWorldUpdateCallback m_onWorldCallback;
+    private OnWorldBodyTransfromUpdateCallback m_onWorldBodyTransfromUpdateCallback;
 
 }
 

@@ -88,9 +88,10 @@ long long dNewtonWorld::GetMaterialKey(int materialID0, int materialID1) const
 	return (long long (materialID1) << 32) + long long(materialID0);
 }
 
-void dNewtonWorld::SetCallbacks(OnWorldUpdateCallback forceCallback)
+void dNewtonWorld::SetCallbacks(OnWorldUpdateCallback forceCallback, OnWorldBodyTransfromUpdateCallback tranformCallback)
 {
 	m_onUpdateCallback = forceCallback;
+	m_onTransformCallback = tranformCallback;
 }
 
 const dNewtonWorld::dMaterialProperties& dNewtonWorld::FindMaterial(int id0, int id1) const
@@ -182,7 +183,7 @@ void dNewtonWorld::UpdateWorld()
 		body->InitForceAccumulators();
 	}
 
-	//forceCallback(m_timeStep);
+	// every rigid body update
 	m_onUpdateCallback(m_timeStep);
 
 static int xxx;
@@ -216,7 +217,9 @@ void dNewtonWorld::Update(dFloat timestepInSeconds)
 	dAssert(m_realTimeInMicroSeconds >= 0);
 	dAssert(m_realTimeInMicroSeconds < m_timeStepInMicroSeconds);
 
+	// call every frame update
 	m_interpotationParam = dFloat (double(m_realTimeInMicroSeconds) / double(m_timeStepInMicroSeconds));
+	m_onTransformCallback();
 }
 
 void* dNewtonWorld::GetNextContactJoint(dNewtonBody* const body, void* const contact) const

@@ -40,7 +40,7 @@ public class NewtonBody : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void OnUpdateTranform()
     {
         IntPtr positionPtr = m_body.GetPosition();
         IntPtr rotationPtr = m_body.GetRotation();
