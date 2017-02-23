@@ -27,6 +27,7 @@
 #include <CustomJointLibraryStdAfx.h>
 #include <CustomAlloc.h>
 #include <CustomJoint.h>
+#include <CustomBallAndSocket.h>
 #include <CustomGear.h>
 #include <CustomPlane.h>
 #include <CustomHinge.h>

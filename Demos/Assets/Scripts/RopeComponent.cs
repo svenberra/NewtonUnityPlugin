@@ -24,9 +24,8 @@ public class RopeComponent : MonoBehaviour
             rb.m_mass = 1.0f;
             var col = go.AddComponent<NewtonSphereCollider>();
             col.m_radius = SegmentSize / 2.0f;
-            var joint = go.AddComponent<NewtonHinge>();
+            var joint = go.AddComponent<NewtonBallAndSocket>();
             joint.m_posit = new Vector3(-(SegmentSize / 2.0f), 0, 0);
-            joint.m_rotation = new Vector3(0, 90, 0);
             if (i > 0)
             {
                 joint.m_otherBody = gameObjects[i - 1].GetComponent<NewtonBody>();
