@@ -51,7 +51,7 @@ class dNewtonBody: public dAlloc
 	void SetUserData(void* userData);
 	void* GetUserData();
 
-	void CalculateBuoyancyForces(const void* plane, void* force, void* torque);
+	void CalculateBuoyancyForces(const void* plane, void* force, void* torque, float bodyDensity);
 
 	virtual void AddForce(dVector force);
 	virtual void AddTorque(dVector force);
