@@ -38,4 +38,20 @@ public class Boyancy : NewtonBodyScript
         otherBody.m_torqueAcc += torque;
     }
 
+
+    void OnDrawGizmosSelected()
+    {
+        Matrix4x4 bodyMatrix = Matrix4x4.identity;
+        Matrix4x4 localMatrix = Matrix4x4.identity;
+        bodyMatrix.SetTRS(transform.position, transform.rotation, Vector3.one);
+        localMatrix.SetTRS(m_posit, Quaternion.Euler(m_normal), Vector3.one);
+
+        Gizmos.color = Color.red;
+        Gizmos.matrix = bodyMatrix;
+        Gizmos.DrawRay(m_posit, localMatrix.GetColumn(0) * m_gizmoScale);
+    }
+
+    public Vector3 m_posit = new Vector3(0.0f, 0.0f, 0.0f);
+    public Vector3 m_normal = new Vector3(0.0f, 0.0f, 0.0f);
+    public float m_gizmoScale = 1.0f;
 }
