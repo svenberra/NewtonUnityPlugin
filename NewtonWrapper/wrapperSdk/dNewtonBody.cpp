@@ -130,6 +130,11 @@ void dNewtonBody::CalculateBuoyancyForces(const void* plane, void* force, void* 
 		dVector finalForce(accelPerUnitMass.Scale(mass));
 		dVector finalTorque(torquePerUnitMass.Scale(mass));
 
+		dVector omega(0.0f);
+		NewtonBodyGetOmega(m_body, &omega[0]);
+		omega = omega.Scale(viscosity);
+		NewtonBodySetOmega(m_body, &omega[0]);
+
 		((float*)force)[0] = finalForce.m_x ;
 		((float*)force)[1] = finalForce.m_y ;
 		((float*)force)[2] = finalForce.m_z ;

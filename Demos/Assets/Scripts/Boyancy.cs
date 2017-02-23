@@ -29,7 +29,7 @@ public class Boyancy : NewtonBodyScript
         if (otherBody.gameObject.tag == "Ice")
             density = 0.9f;
         else if (otherBody.gameObject.tag == "Wood")
-            density = 0.5f;
+            density = 0.6f;
         else if (otherBody.gameObject.tag == "Metal")
             density = 1.2f;
 
