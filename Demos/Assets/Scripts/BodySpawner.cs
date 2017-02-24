@@ -10,7 +10,17 @@ public class BodySpawner : MonoBehaviour {
 	void Start () {
 
         reference = GameObject.Find("Box1");
-	}
+
+        for(var i = 0;i<100;i++)
+        {
+            var pos = Random.insideUnitSphere * 5 + new Vector3(0, 6, 0);
+            var rot = Random.rotation;
+            var go = Instantiate(reference, pos, rot);
+            go.GetComponent<NewtonBody>().InitRigidBody();
+        }
+
+
+    }
 
 	// Update is called once per frame
 	void Update ()
@@ -19,12 +29,12 @@ public class BodySpawner : MonoBehaviour {
 
     void OnGUI()
     {
-        if(GUI.Button(new Rect(10,10,100,20),"Spawn object"))
-        {
-            var pos = Random.insideUnitSphere * 5 + new Vector3(0,6,0);
-            var rot = Random.rotation;
-            var go = Instantiate(reference, pos, rot);
-            go.GetComponent<NewtonBody>().InitRigidBody();
-        }
+        //if (GUI.Button(new Rect(10, 10, 100, 20), "Spawn object"))
+        //{
+        //    var pos = Random.insideUnitSphere * 5 + new Vector3(0, 6, 0);
+        //    var rot = Random.rotation;
+        //    var go = Instantiate(reference, pos, rot);
+        //    go.GetComponent<NewtonBody>().InitRigidBody();
+        //}
     }
 }

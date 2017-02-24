@@ -32,10 +32,19 @@ public class NewtonBody : MonoBehaviour
 
     void Start()
     {
+        var scripts = GetComponents<NewtonBodyScript>();
+        foreach(var script in scripts)
+        {
+            m_scripts.Add(script);
+        }
     }
 
     void OnDestroy()
     {
+        if (m_world != null)
+            m_world.UnregisterBody(this);
+
+        // Destroy native body
         DestroyRigidBody();
     }
 
@@ -57,6 +66,9 @@ public class NewtonBody : MonoBehaviour
 
         var handle = GCHandle.Alloc(this);
         m_body.SetUserData(GCHandle.ToIntPtr(handle));
+
+        m_world.RegisterBody(this);
+
     }
 
     public void DestroyRigidBody()
@@ -130,8 +142,11 @@ public class NewtonBody : MonoBehaviour
     public Vector3 m_torqueAcc { get; set; }
     public bool m_isScene { get; set; }
 
-    private dNewtonBody m_body = null;
+    internal dNewtonBody m_body = null;
     private NewtonBodyCollision m_collision = null;
     private float[] m_positionPtr = new float[3];
     private float[] m_rotationPtr = new float[4];
+
+    internal List<NewtonBodyScript> m_scripts = new List<NewtonBodyScript>();
+
 }

@@ -27,7 +27,7 @@ public class DontTouchTheFloor : NewtonBodyScript
     {
         if (timer > 0)
         {
-            body.GetBody().AddForce(new dVector(force.x, force.y, force.z));
+            //body.GetBody().AddForce(new dVector(force.x, force.y, force.z));
         }
     }
 
