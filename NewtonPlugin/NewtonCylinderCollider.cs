@@ -34,6 +34,6 @@ public class NewtonCylinderCollider : NewtonCollider
 
     public float m_radius0 = 0.5f;
     public float m_radius1 = 0.5f;
-    public float m_height = 1.0f;
+    public float m_height = 2.0f;
 }
 
