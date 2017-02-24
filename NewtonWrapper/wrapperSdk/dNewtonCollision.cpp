@@ -159,11 +159,9 @@ void dNewtonAlignedShapes::SetScale(dFloat x, dFloat y, dFloat z)
 	dNewtonCollision::SetScale(scale.m_x, scale.m_y, scale.m_z);
 }
 
-void dNewtonAlignedShapes::SetMatrix(const void* const matrixPtr)
+void dNewtonAlignedShapes::SetMatrix(const dMatrix matrix)
 {
-	dMatrix matrix((dFloat*)matrixPtr);
-	matrix = m_primitiveAligment * matrix;
-	dNewtonCollision::SetMatrix(&matrix[0][0]);
+	dNewtonCollision::SetMatrix(m_primitiveAligment * matrix);
 }
 
 dNewtonCollisionCapsule::dNewtonCollisionCapsule(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height)

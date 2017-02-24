@@ -35,16 +35,16 @@ class dNewtonCollision: public dAlloc
 	dNewtonCollision (dNewtonWorld* const world, dLong collisionMask);
 	virtual ~dNewtonCollision();
 
-	bool IsValid();
-	void SetAsTrigger(bool mode);
-	void SetScale(dFloat x, dFloat y, dFloat z);
-	void SetMatrix(const dMatrix matrix);
-	void DebugRender(OnDrawFaceCallback callback, const dVector eyePoint);
-	void SetMaterialID(int materialId);
+	virtual bool IsValid();
+	virtual void SetAsTrigger(bool mode);
+	virtual void SetScale(dFloat x, dFloat y, dFloat z);
+	virtual void SetMatrix(const dMatrix matrix);
+	virtual void DebugRender(OnDrawFaceCallback callback, const dVector eyePoint);
+	virtual void SetMaterialID(int materialId);
 
 	protected:
-	void SetShape(NewtonCollision* const shape);
-	void DeleteShape();
+	virtual void SetShape(NewtonCollision* const shape);
+	virtual void DeleteShape();
 
 	static void DebugRenderCallback (void* userData, int vertexCount, const dFloat* faceVertec, int id);
 
@@ -135,7 +135,7 @@ class dNewtonAlignedShapes: public dNewtonCollision
 {
 	public:
 	dNewtonAlignedShapes(dNewtonWorld* const world, dLong collisionMask);
-	void SetMatrix(const void* const matrix);
+	void SetMatrix(const dMatrix matrix);
 	void SetScale(dFloat x, dFloat y, dFloat z);
 };
 
