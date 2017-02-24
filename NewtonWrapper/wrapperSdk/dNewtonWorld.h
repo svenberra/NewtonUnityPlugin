@@ -64,6 +64,9 @@ class dNewtonWorld: public dAlloc
 	void SetMaterialInteraction(int materialID0, int materialID1, float restitution, float staticFriction, float kineticFriction, bool collisionEnable);
 	void SetCallbacks(OnWorldUpdateCallback forceCallback, OnWorldBodyTransfromUpdateCallback tranformCallback);
 
+	dNewtonBody* GetFirstBody() const;
+	dNewtonBody* GetNextBody(dNewtonBody* const body) const;
+
 	void* GetFirstContactJoint(dNewtonBody* const body) const;
 	void* GetNextContactJoint(dNewtonBody* const body, void* const contact) const;
 	dNewtonBody* GetBody0(void* const contact) const;

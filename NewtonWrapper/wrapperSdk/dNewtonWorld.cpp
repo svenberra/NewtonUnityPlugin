@@ -222,6 +222,19 @@ void dNewtonWorld::Update(dFloat timestepInSeconds)
 	m_onTransformCallback();
 }
 
+dNewtonBody* dNewtonWorld::GetFirstBody() const
+{
+	NewtonBody* const body = NewtonWorldGetFirstBody(m_world);
+	return body ? (dNewtonBody*)NewtonBodyGetUserData(body) : NULL;
+}
+
+dNewtonBody* dNewtonWorld::GetNextBody(dNewtonBody* const body) const
+{
+	NewtonBody* const nextBody = NewtonWorldGetNextBody(m_world, body->m_body);
+	return nextBody ? (dNewtonBody*)NewtonBodyGetUserData(nextBody) : NULL;
+}
+
+
 void* dNewtonWorld::GetNextContactJoint(dNewtonBody* const body, void* const contact) const
 {
 	NewtonBody* const newtonBody = body->m_body;
@@ -243,7 +256,6 @@ void* dNewtonWorld::GetFirstContactJoint(dNewtonBody* const body) const
 	}
 	return NULL;
 }
-
 
 dNewtonBody* dNewtonWorld::GetBody0(void* const contact) const
 {
