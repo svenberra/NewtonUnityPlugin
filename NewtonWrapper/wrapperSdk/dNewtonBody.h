@@ -53,8 +53,8 @@ class dNewtonBody: public dAlloc
 
 	void CalculateBuoyancyForces(const void* plane, void* force, void* torque, float bodyDensity);
 
-	virtual void AddForce(dVector force);
-	virtual void AddTorque(dVector force);
+	virtual void AddForce(dFloat x, dFloat y, dFloat z);
+	virtual void AddTorque(dFloat x, dFloat y, dFloat z);
 
 	bool GetSleepState() const;
 	void SetSleepState(bool state) const;
@@ -105,8 +105,8 @@ class dNewtonDynamicBody: public dNewtonBody
 	virtual void OnForceAndTorque(dFloat timestep, int threadIndex);
 	virtual void InitForceAccumulators();
 
-	virtual void AddForce(dVector force);
-	virtual void AddTorque(dVector torque);
+	virtual void AddForce(dFloat x, dFloat y, dFloat z);
+	virtual void AddTorque(dFloat x, dFloat y, dFloat z);
 
 	dVector m_externalForce;
 	dVector m_externalTorque;

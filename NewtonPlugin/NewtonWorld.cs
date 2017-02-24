@@ -130,12 +130,6 @@ public class NewtonWorld : MonoBehaviour
     {
         if (m_world != null)
         {
-            //GameObject[] objectList = gameObject.scene.GetRootGameObjects();
-            //foreach (GameObject rootObj in objectList)
-            //{
-            //    DestroySceneRigidBody(rootObj);
-            //}
-
             foreach (NewtonBody nb in m_bodies)
             {
                 nb.DestroyRigidBody();
@@ -151,82 +145,12 @@ public class NewtonWorld : MonoBehaviour
         m_world.Update(Time.deltaTime);
     }
 
-    /*
-        private void UpdateRigidBody(GameObject root, float timestep)
-        {
-
-            NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
-            if (bodyPhysics)
-            {
-                // update all rigid body scripts 
-                dNewtonBody newtonBody = bodyPhysics.GetBody();
-
-                // Apply force & torque accumulators
-                newtonBody.AddForce(new dVector(bodyPhysics.m_forceAcc.x, bodyPhysics.m_forceAcc.y, bodyPhysics.m_forceAcc.z));
-                newtonBody.AddTorque(new dVector(bodyPhysics.m_torqueAcc.x, bodyPhysics.m_torqueAcc.y, bodyPhysics.m_torqueAcc.z));
-                bodyPhysics.m_forceAcc = Vector3.zero;
-                bodyPhysics.m_torqueAcc = Vector3.zero;
-
-                NewtonBodyScript[] rigidBodyScripts = root.GetComponents<NewtonBodyScript>();
-                for (int i = 0; i < rigidBodyScripts.Length; i++)
-                {
-                    //apply all collision notification events is any
-                    if (rigidBodyScripts[i].m_collisionNotification)
-                    {
-                        for (IntPtr contact = m_world.GetFirstContactJoint(newtonBody); contact != IntPtr.Zero; contact = m_world.GetNextContactJoint(newtonBody, contact))
-                        {
-                            var body0 = (NewtonBody)GCHandle.FromIntPtr(m_world.GetBody0UserData(contact)).Target;
-                            var body1 = (NewtonBody)GCHandle.FromIntPtr(m_world.GetBody1UserData(contact)).Target;
-                            var otherBody = bodyPhysics == body0 ? body1 : body0;
-                            rigidBodyScripts[i].OnCollision(otherBody);
-                        }
-                    }
-
-                    // apply external force and torque if any
-                    if (rigidBodyScripts[i].m_enableForceAndTorque)
-                    {
-                        rigidBodyScripts[i].OnApplyForceAndTorque(timestep);
-                    }
-                }
-            }
-
-            foreach (Transform child in root.transform)
-            {
-                UpdateRigidBody(child.gameObject, timestep);
-            }
-        }
-    */
-    //private void DestroySceneRigidBody(GameObject root)
-    //{
-    //    NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
-    //    if (bodyPhysics != null)
-    //    {
-    //        bodyPhysics.DestroyRigidBody();
-    //    }
-
-    //    foreach (Transform child in root.transform)
-    //    {
-    //        DestroySceneRigidBody(child.gameObject);
-    //    }
-    //}
-
     private void OnWorldUpdate(float timestep)
     {
-        /*
-        GameObject[] objectList = gameObject.scene.GetRootGameObjects();
-        foreach (GameObject rootObj in objectList)
-        {
-            UpdateRigidBody(rootObj, timestep);
-        }
-        */
-
         foreach (NewtonBody bodyPhysics in m_bodies)
         {
             // Apply force & torque accumulators
-            //bodyPhysics.m_body.AddForce(new dVector(bodyPhysics.m_forceAcc.x, bodyPhysics.m_forceAcc.y, bodyPhysics.m_forceAcc.z));
-            //bodyPhysics.m_body.AddTorque(new dVector(bodyPhysics.m_torqueAcc.x, bodyPhysics.m_torqueAcc.y, bodyPhysics.m_torqueAcc.z));
-            bodyPhysics.m_forceAcc = Vector3.zero;
-            bodyPhysics.m_torqueAcc = Vector3.zero;
+            bodyPhysics.ApplyExternaForces();
 
             foreach (NewtonBodyScript script in bodyPhysics.m_scripts)
             {
@@ -247,61 +171,13 @@ public class NewtonWorld : MonoBehaviour
                     script.OnApplyForceAndTorque(timestep);
                 }
             }
-
-            //NewtonBodyScript[] rigidBodyScripts = bodyPhysics.gameObject.GetComponents<NewtonBodyScript>();
-            //for (int i = 0; i < rigidBodyScripts.Length; i++)
-            //{
-            //    //apply all collision notification events is any
-            //    if (rigidBodyScripts[i].m_collisionNotification)
-            //    {
-            //        for (IntPtr contact = m_world.GetFirstContactJoint(newtonBody); contact != IntPtr.Zero; contact = m_world.GetNextContactJoint(newtonBody, contact))
-            //        {
-            //            var body0 = (NewtonBody)GCHandle.FromIntPtr(m_world.GetBody0UserData(contact)).Target;
-            //            var body1 = (NewtonBody)GCHandle.FromIntPtr(m_world.GetBody1UserData(contact)).Target;
-            //            var otherBody = bodyPhysics == body0 ? body1 : body0;
-            //            rigidBodyScripts[i].OnCollision(otherBody);
-            //        }
-            //    }
-
-            //    // apply external force and torque if any
-            //    if (rigidBodyScripts[i].m_enableForceAndTorque)
-            //    {
-            //        rigidBodyScripts[i].OnApplyForceAndTorque(timestep);
-            //    }
-            //}
         }
     }
 
-    /*
-        private void OnBodyTransformUpdate(GameObject root)
-        {
-            NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
-            if (bodyPhysics)
-            {
-                bodyPhysics.OnUpdateTranform();
-            }
-
-            foreach (Transform child in root.transform)
-            {
-                OnBodyTransformUpdate(child.gameObject);
-            }
-        }
-    */
-
     private void OnBodyTransformUpdate()
     {
-        /*
-                GameObject[] objectList = gameObject.scene.GetRootGameObjects();
-                foreach (GameObject rootObj in objectList)
-                {
-                    OnBodyTransformUpdate(rootObj);
-                }
-        */
-
-        //for (dNewtonBody newtonBody = m_world.GetFirstBody(); newtonBody != null; newtonBody = m_world.GetNextBody(newtonBody))
         foreach(NewtonBody bodyPhysics in m_bodies)
         {
-            //NewtonBody bodyPhysics = (NewtonBody)GCHandle.FromIntPtr(newtonBody.GetUserData()).Target;
             bodyPhysics.OnUpdateTranform();
         }
     }
@@ -323,7 +199,6 @@ public class NewtonWorld : MonoBehaviour
     private OnWorldBodyTransfromUpdateCallback m_onWorldBodyTransfromUpdateCallback;
 
     private List<NewtonBody> m_bodies = new List<NewtonBody>();
-
 }
 
 

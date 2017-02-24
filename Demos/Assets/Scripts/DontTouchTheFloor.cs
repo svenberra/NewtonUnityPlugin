@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DontTouchTheFloor : NewtonBodyScript
 {
-
     private NewtonBody body;
     private Vector3 force;
     private float timer;
@@ -27,7 +26,7 @@ public class DontTouchTheFloor : NewtonBodyScript
     {
         if (timer > 0)
         {
-            //body.GetBody().AddForce(new dVector(force.x, force.y, force.z));
+            body.GetBody().AddForce(force.x, force.y, force.z);
         }
     }
 
@@ -36,5 +35,4 @@ public class DontTouchTheFloor : NewtonBodyScript
         force = new Vector3(0, 20, 0);
         timer = Random.Range(1.0f, 3.0f);
     }
-
 }

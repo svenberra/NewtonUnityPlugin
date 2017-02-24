@@ -73,7 +73,6 @@ public class NewtonBody : MonoBehaviour
 
     public void DestroyRigidBody()
     {
-
         if (m_body != null)
         {
             var handle = GCHandle.FromIntPtr(m_body.GetUserData());
@@ -113,8 +112,16 @@ public class NewtonBody : MonoBehaviour
             Marshal.FreeHGlobal(planePtr);
             Marshal.FreeHGlobal(forcePtr);
             Marshal.FreeHGlobal(torquePtr);
-
         }
+    }
+
+    public void ApplyExternaForces ()
+    {
+        // Apply force & torque accumulators
+        m_body.AddForce(m_forceAcc.x, m_forceAcc.y, m_forceAcc.z);
+        m_body.AddTorque(m_torqueAcc.x, m_torqueAcc.y, m_torqueAcc.z);
+        m_forceAcc = Vector3.zero;
+        m_torqueAcc = Vector3.zero;
     }
 
     public bool SleepState
@@ -136,7 +143,6 @@ public class NewtonBody : MonoBehaviour
     }
 
     public float m_mass;
-
     public NewtonWorld m_world;
     public Vector3 m_forceAcc { get; set; }
     public Vector3 m_torqueAcc { get; set; }

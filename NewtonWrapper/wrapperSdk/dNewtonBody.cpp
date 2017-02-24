@@ -206,11 +206,11 @@ void dNewtonBody::InitForceAccumulators()
 {
 }
 
-void dNewtonBody::AddForce(dVector force)
+void dNewtonBody::AddForce(dFloat x, dFloat y, dFloat z)
 {
 }
 
-void dNewtonBody::AddTorque(dVector torque)
+void dNewtonBody::AddTorque(dFloat x, dFloat y, dFloat z)
 {
 }
 
@@ -266,14 +266,14 @@ void dNewtonDynamicBody::OnForceAndTorque(dFloat timestep, int threadIndex)
 }
 
 
-void dNewtonDynamicBody::AddForce(dVector force)
+void dNewtonDynamicBody::AddForce(dFloat x, dFloat y, dFloat z)
 {
-	m_externalForce += force;
+	m_externalForce += dVector (x, y, z);
 }
 
-void dNewtonDynamicBody::AddTorque(dVector torque)
+void dNewtonDynamicBody::AddTorque(dFloat x, dFloat y, dFloat z)
 {
-	m_externalTorque += torque;
+	m_externalTorque += dVector(x, y, z);
 }
 
 

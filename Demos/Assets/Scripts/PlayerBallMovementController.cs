@@ -16,24 +16,24 @@ public class PlayerBallMovementController : NewtonBodyScript
         if (Input.GetKey(KeyCode.W))
         {
             body.SleepState = false;
-            body.GetBody().AddTorque(new dVector(m_xScaler, 0.0f, 0.0f, 0.0f));
+            body.GetBody().AddTorque(m_xScaler, 0.0f, 0.0f);
         }
         else if (Input.GetKey(KeyCode.S))
         {
             body.SleepState = false;
-            body.GetBody().AddTorque(new dVector(-m_xScaler, 0.0f, 0.0f, 0.0f));
+            body.GetBody().AddTorque(-m_xScaler, 0.0f, 0.0f);
         }
 
         // control steering movement
         if (Input.GetKey(KeyCode.A))
         {
             body.SleepState = false;
-            body.GetBody().AddTorque(new dVector(0.0f, 0.0f, m_zScaler, 0.0f));
+            body.GetBody().AddTorque(0.0f, 0.0f, m_zScaler);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             body.SleepState = false;
-            body.GetBody().AddTorque(new dVector(0.0f, 0.0f, -m_zScaler, 0.0f));
+            body.GetBody().AddTorque(0.0f, 0.0f, -m_zScaler);
         }
     }
 
