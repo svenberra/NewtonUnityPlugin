@@ -10,13 +10,11 @@ public class BodySpawner : MonoBehaviour {
 	void Start () {
 
         reference = GameObject.Find("Box1");
-	
 	}
-	
 
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
 	}
 
     void OnGUI()
@@ -28,8 +26,5 @@ public class BodySpawner : MonoBehaviour {
             var go = Instantiate(reference, pos, rot);
             go.GetComponent<NewtonBody>().InitRigidBody();
         }
-
     }
-
-
 }
