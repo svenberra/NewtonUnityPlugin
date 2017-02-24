@@ -28,10 +28,11 @@ public class NewtonChamferedCylinderCollider : NewtonCollider
     {
         dNewtonCollision collider = new dNewtonCollisionChamferedCylinder(world.GetWorld(), m_radius, m_height);
         SetMaterial(collider);
+        m_scale.y = 4.0f;
         return collider;
     }
 
-    public float m_radius = 0.5f;
-    public float m_height = 1.0f;
+    public float m_radius = 0.25f;
+    public float m_height = 0.5f;
 }
 
