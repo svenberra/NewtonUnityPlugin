@@ -256,10 +256,17 @@ dNewtonCollisionHeightField::dNewtonCollisionHeightField(dNewtonWorld* const wor
 //		const void* const elevationMap, const char* const attributeMap, 
 //		dFloat verticalScale, dFloat horizontalScale, int shapeID);
 
-	float* map[10][10];
-	NewtonCollision* const shape = NewtonCreateHeightFieldCollision(
-		m_myWorld->m_world, width, height, 0, 0, map, NULL, 1.0f, 1.0f, 0);
+	float* map = new float [width * height];
+	char* attibute = new char[width * height];
 
+	memset(map, 0, sizeof(float) * width * height);
+	memset(attibute, 0, sizeof(char) * width * height);
+
+	NewtonCollision* const shape = NewtonCreateHeightFieldCollision(
+		m_myWorld->m_world, width, height, 1, 0, map, attibute, 1.0f, 1.0f, 0);
+
+	delete[] map;
+	delete[] attibute;
 	SetShape(shape);
 }
 
