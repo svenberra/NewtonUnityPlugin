@@ -110,7 +110,7 @@ class dNewtonWorld: public dAlloc
 	friend class dNewtonCollisionCylinder;
 	friend class dNewtonCollisionCompound;
 	friend class dNewtonCollisionConvexHull;
-	
+	friend class dNewtonCollisionHeightField;
 	friend class dNewtonCollisionChamferedCylinder;
 };
 

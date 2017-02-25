@@ -88,26 +88,6 @@ class dNewtonCollisionScene: public dNewtonCollision
 };
 
 
-class dNewtonCollisionHeightField: public dNewtonCollision
-{
-	public: 
-	dNewtonCollisionHeightField (dNewton* const world, int width, int height, int gridsDiagonals, int elevationdataType, dFloat vertcalScale, dFloat horizontalScale, const void* const elevationMap, const char* const attributeMap, dLong collisionMask)
-		:dNewtonCollision(m_heighfield, collisionMask)
-	{
-		SetShape (NewtonCreateHeightFieldCollision (world->GetNewton(), width, height, gridsDiagonals, elevationdataType, elevationMap, attributeMap, vertcalScale, horizontalScale, 0));
-	}
-
-	dNewtonCollision* Clone (NewtonCollision* const shape) const 
-	{
-		return new dNewtonCollisionHeightField (*this, shape);
-	}
-
-	protected:
-	dNewtonCollisionHeightField (const dNewtonCollisionHeightField& srcCollision, NewtonCollision* const shape)
-		:dNewtonCollision (srcCollision, shape)
-	{
-	}
-};
 */
 
 
@@ -170,7 +150,6 @@ class dNewtonCollisionConvexHull: public dNewtonCollision
 	dNewtonCollisionConvexHull(dNewtonWorld* const world, int vertexCount, const dFloat* const vertexCloud, dFloat tolerance);
 };
 
-
 class dNewtonCollisionMesh: public dNewtonCollision
 {
 	public:
@@ -189,12 +168,19 @@ class dNewtonCollisionCompound: public dNewtonCollision
 	void* AddCollision(dNewtonCollision* const collision);
 	void RemoveCollision(void* const handle);
 	void EndAddRemoveCollision();
-/*
-	void* GetFirstNode() const;;
-	void* GetNextNode(void* const collisionNode) const;
-	dNewtonCollision* GetChildFromNode(void* const collisionNode) const;
-*/
-	
+
+	//void* GetFirstNode() const;;
+	//void* GetNextNode(void* const collisionNode) const;
+	//dNewtonCollision* GetChildFromNode(void* const collisionNode) const;
 };
+
+
+class dNewtonCollisionHeightField: public dNewtonCollision
+{
+	public:
+	dNewtonCollisionHeightField(dNewtonWorld* const world, int width, int height);
+};
+
+
 
 #endif

@@ -246,3 +246,21 @@ void dNewtonCollisionCompound::EndAddRemoveCollision()
 {
 	NewtonCompoundCollisionEndAddRemove(m_shape);
 }
+
+dNewtonCollisionHeightField::dNewtonCollisionHeightField(dNewtonWorld* const world, int width, int height)
+	:dNewtonCollision(world, 0)
+{
+//	NEWTON_API NewtonCollision* NewtonCreateHeightFieldCollision(
+//		const NewtonWorld* const newtonWorld, int width, int height, 
+//		int gridsDiagonals, int elevationdatType,
+//		const void* const elevationMap, const char* const attributeMap, 
+//		dFloat verticalScale, dFloat horizontalScale, int shapeID);
+
+	float* map[10][10];
+	NewtonCollision* const shape = NewtonCreateHeightFieldCollision(
+		m_myWorld->m_world, width, height, 0, 0, map, NULL, 1.0f, 1.0f, 0);
+
+	SetShape(shape);
+}
+
+
