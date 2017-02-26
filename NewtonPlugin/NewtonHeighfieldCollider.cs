@@ -22,7 +22,7 @@ using System;
 using UnityEngine;
 using System.Runtime.InteropServices;
 
-[AddComponentMenu("Newton Physics/Colliders/Heightfield Collider")]
+[AddComponentMenu("Newton Physics/Colliders/Height field Collider")]
 class NewtonHeighfieldCollider: NewtonCollider
 {
     public override bool IsStatic()
@@ -45,76 +45,53 @@ class NewtonHeighfieldCollider: NewtonCollider
 
     public override dNewtonCollision Create(NewtonWorld world)
     {
-        /*
-            if (m_mesh == null)
-            {
-                return null;
-            }
-
-            if (m_mesh.triangles.Length < 3)
-            {
-                return null;
-            }
-
-            Vector3 scale = GetBaseScale();
-            if (m_freezeScale == false)
-            {
-                scale = new Vector3(1.0f, 1.0f, 1.0f);
-            }
-
-            Vector3[] vertices = m_mesh.vertices;
-            float[] triVertices = new float[3 * 3];
-            IntPtr floatsPtr = Marshal.AllocHGlobal(3 * 3 * Marshal.SizeOf(typeof(float)));
-
-            dNewtonCollisionMesh collision = new dNewtonCollisionMesh(world.GetWorld());
-            collision.BeginFace();
-            for (int i = 0; i < m_mesh.subMeshCount; i++)
-            {
-                int[] submesh = m_mesh.GetTriangles(i);
-                for (int j = 0; j < submesh.Length; j += 3)
-                {
-                    int k = submesh[j];
-                    triVertices[0] = vertices[k].x * scale.x;
-                    triVertices[1] = vertices[k].y * scale.y;
-                    triVertices[2] = vertices[k].z * scale.z;
-
-                    k = submesh[j + 1];
-                    triVertices[3] = vertices[k].x * scale.x;
-                    triVertices[4] = vertices[k].y * scale.y;
-                    triVertices[5] = vertices[k].z * scale.z;
-
-                    k = submesh[j + 2];
-                    triVertices[6] = vertices[k].x * scale.x;
-                    triVertices[7] = vertices[k].y * scale.y;
-                    triVertices[8] = vertices[k].z * scale.z;
-
-                    Marshal.Copy(triVertices, 0, floatsPtr, triVertices.Length);
-                    collision.AddFace(3, floatsPtr, 3 * sizeof(float), i);
-                }
-            }
-
-            collision.EndFace(m_optimize);
-            Marshal.FreeHGlobal(floatsPtr);
-
-            SetMaterial(collision);
-            return collision;
-        */
-
         TerrainData data = m_terrain.terrainData;
-
         //Debug.Log("xxxx  " + data.alphamapWidth + "   xxx  " + data.detailHeight);
-        Debug.Log("xxxx  " + data.heightmapScale);
-        Debug.Log("xxxx  " + data.size);
+        //Debug.Log("xxxx  " + data.heightmapScale);
+        //Debug.Log("xxxx  " + data.size);
 
         int resolution = data.heightmapResolution;
         dVector scale = new dVector(data.size.x, data.size.y, data.size.z, 0.0f);
-        dNewtonCollision collider = new dNewtonCollisionHeightField(world.GetWorld(), resolution, scale);
-        SetMaterial(collider);
 
+        m_oldSize = data.size;
+        m_oldResolution = resolution;
+
+        data.GetHeights(0, 0, resolution, resolution);
+
+        float[] elevation = new float [resolution * resolution];
+        for (int z = 0; z < resolution; z ++)
+        {
+            for (int x = 0; x < resolution; x++)
+            {
+                elevation[z * resolution + x] = data.GetHeight(x, z);
+            }
+        }
+        IntPtr elevationPtr = Marshal.AllocHGlobal(resolution * resolution * Marshal.SizeOf(typeof(float)));
+        Marshal.Copy(elevation, 0, elevationPtr, elevation.Length);
+        dNewtonCollision collider = new dNewtonCollisionHeightField(world.GetWorld(), elevationPtr, resolution, scale);
+        Marshal.FreeHGlobal(elevationPtr);
+
+        SetMaterial(collider);
         return collider;
     }
 
-    public Terrain m_terrain;
+    public override void OnDrawGizmosSelected()
+    {
+        //Debug.Log("xxxx  ");
+        TerrainData data = m_terrain.terrainData;
+        Debug.Log("xxxx  " + m_terrain.drawHeightmap);
+
+        if ((data.heightmapResolution != m_oldResolution) || (m_oldSize != data.size))
+        {
+            RecreateEditorShape();
+        }
+
+        base.OnDrawGizmosSelected();
+    }
+
+    public Terrain m_terrain = null;
     public bool m_freezeScale = true;
+    private int m_oldResolution;
+    private Vector3 m_oldSize;
 }
 

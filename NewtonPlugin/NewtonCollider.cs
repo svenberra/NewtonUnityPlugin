@@ -47,7 +47,7 @@ abstract public class NewtonCollider : MonoBehaviour
         }
     }
 
-    void OnDrawGizmosSelected()
+    virtual public void OnDrawGizmosSelected()
     {
         ValidateEditorShape();
         if (m_editorShape != null)

@@ -247,26 +247,16 @@ void dNewtonCollisionCompound::EndAddRemoveCollision()
 	NewtonCompoundCollisionEndAddRemove(m_shape);
 }
 
-dNewtonCollisionHeightField::dNewtonCollisionHeightField(dNewtonWorld* const world, int resolution, dVector scale)
+dNewtonCollisionHeightField::dNewtonCollisionHeightField(dNewtonWorld* const world, const dFloat* const elevations, int resolution, dVector scale)
 	:dNewtonCollision(world, 0)
 {
-//	NEWTON_API NewtonCollision* NewtonCreateHeightFieldCollision(
-//		const NewtonWorld* const newtonWorld, int width, int height, 
-//		int gridsDiagonals, int elevationdatType,
-//		const void* const elevationMap, const char* const attributeMap, 
-//		dFloat verticalScale, dFloat horizontalScale, int shapeID);
-
-	float* map = new float [resolution * resolution];
 	char* attibute = new char[resolution * resolution];
-
-	memset(map, 0, sizeof(float) * resolution * resolution);
 	memset(attibute, 0, sizeof(char) * resolution * resolution);
 
 	dFloat scaleFactor = 1.0f / (resolution - 1);
 	NewtonCollision* const shape = NewtonCreateHeightFieldCollision(
-		m_myWorld->m_world, resolution, resolution, 1, 0, map, attibute, scale.m_y, scale.m_x * scaleFactor, scale.m_z * scaleFactor, 0);
+		m_myWorld->m_world, resolution, resolution, 1, 0, elevations, attibute, 1.0f, scale.m_x * scaleFactor, scale.m_z * scaleFactor, 0);
 
-	delete[] map;
 	delete[] attibute;
 	SetShape(shape);
 }

@@ -178,7 +178,7 @@ class dNewtonCollisionCompound: public dNewtonCollision
 class dNewtonCollisionHeightField: public dNewtonCollision
 {
 	public:
-	dNewtonCollisionHeightField(dNewtonWorld* const world, int resolution, dVector scale);
+	dNewtonCollisionHeightField(dNewtonWorld* const world, const dFloat* const elevations, int resolution, dVector scale);
 };
 
 
