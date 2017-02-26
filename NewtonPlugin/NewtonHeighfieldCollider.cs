@@ -102,11 +102,13 @@ class NewtonHeighfieldCollider: NewtonCollider
 
         TerrainData data = m_terrain.terrainData;
 
-        Debug.Log(data);
+        //Debug.Log("xxxx  " + data.alphamapWidth + "   xxx  " + data.detailHeight);
+        Debug.Log("xxxx  " + data.heightmapScale);
+        Debug.Log("xxxx  " + data.size);
 
-        int width = data.heightmapResolution;
-        int height = data.heightmapResolution;
-        dNewtonCollision collider = new dNewtonCollisionHeightField(world.GetWorld(), width, height);
+        int resolution = data.heightmapResolution;
+        dVector scale = new dVector(data.size.x, data.size.y, data.size.z, 0.0f);
+        dNewtonCollision collider = new dNewtonCollisionHeightField(world.GetWorld(), resolution, scale);
         SetMaterial(collider);
 
         return collider;
