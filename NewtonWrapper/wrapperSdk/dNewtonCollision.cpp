@@ -250,7 +250,7 @@ void dNewtonCollisionCompound::EndAddRemoveCollision()
 dNewtonCollisionHeightField::dNewtonCollisionHeightField(dNewtonWorld* const world, const dFloat* const elevations, int resolution, dVector scale)
 	:dNewtonCollision(world, 0)
 {
-	char* attibute = new char[resolution * resolution];
+	char* const attibute = new char[resolution * resolution];
 	memset(attibute, 0, sizeof(char) * resolution * resolution);
 
 	dFloat scaleFactor = 1.0f / (resolution - 1);
@@ -262,3 +262,9 @@ dNewtonCollisionHeightField::dNewtonCollisionHeightField(dNewtonWorld* const wor
 }
 
 
+dNewtonCollisionScene::dNewtonCollisionScene(dNewtonWorld* const world)
+	:dNewtonCollision(world, 0)
+{
+	NewtonCollision* const shape = NewtonCreateSceneCollision(m_myWorld->m_world, 0);
+	SetShape(shape);
+}

@@ -60,36 +60,6 @@ class dNewtonCollision: public dAlloc
 	friend class dNewtonCollisionCompound;
 };
 
-/*
-
-class dNewtonCollisionScene: public dNewtonCollision
-{
-	public: 
-	dNewtonCollisionScene (dNewton* const world, dLong collisionMask);
-	dNewtonCollision* Clone (NewtonCollision* const shape) const 
-	{
-		return new dNewtonCollisionScene (*this, shape);
-	}
-
-	virtual void BeginAddRemoveCollision();
-	virtual void* AddCollision(const dNewtonCollision* const collision);
-	virtual void RemoveCollision (void* const handle);
-	virtual void EndAddRemoveCollision();
-
-	void* GetFirstNode () const;;
-	void* GetNextNode (void* const collisionNode) const;
-	dNewtonCollision* GetChildFromNode(void* const collisionNode) const; 
-
-	protected:
-	dNewtonCollisionScene (const dNewtonCollisionScene& srcCollision, NewtonCollision* const shape)
-		:dNewtonCollision (srcCollision, shape)
-	{
-	}
-};
-
-
-*/
-
 
 class dNewtonCollisionNull: public dNewtonCollision
 {
@@ -179,6 +149,23 @@ class dNewtonCollisionHeightField: public dNewtonCollision
 {
 	public:
 	dNewtonCollisionHeightField(dNewtonWorld* const world, const dFloat* const elevations, int resolution, dVector scale);
+};
+
+
+class dNewtonCollisionScene: public dNewtonCollision
+{
+	public:
+	dNewtonCollisionScene(dNewtonWorld* const world);
+/*
+	virtual void BeginAddRemoveCollision();
+	virtual void* AddCollision(const dNewtonCollision* const collision);
+	virtual void RemoveCollision(void* const handle);
+	virtual void EndAddRemoveCollision();
+
+	void* GetFirstNode() const;;
+	void* GetNextNode(void* const collisionNode) const;
+	dNewtonCollision* GetChildFromNode(void* const collisionNode) const;
+*/
 };
 
 
