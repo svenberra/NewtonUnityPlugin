@@ -24,17 +24,6 @@
 #include "dNewtonCollision.h"
 
 
-bool dNewtonBody::GetSleepState() const
-{
-	return NewtonBodyGetSleepState(m_body) ? true : false;
-}
-
-void dNewtonBody::SetSleepState(bool state) const
-{
-	NewtonBodySetSleepState(m_body, state ? 1 : 0);
-}
-
-
 dNewtonBody::ScopeLock::ScopeLock (unsigned int* const lock)
 	:m_atomicLock(lock)
 {
@@ -72,6 +61,17 @@ dNewtonBody::~dNewtonBody()
 void* dNewtonBody::GetBody() const
 {
 	return m_body;
+}
+
+
+bool dNewtonBody::GetSleepState() const
+{
+	return NewtonBodyGetSleepState(m_body) ? true : false;
+}
+
+void dNewtonBody::SetSleepState(bool state) const
+{
+	NewtonBodySetSleepState(m_body, state ? 1 : 0);
 }
 
 void* dNewtonBody::GetPosition()
@@ -144,8 +144,6 @@ void dNewtonBody::CalculateBuoyancyForces(const void* plane, void* force, void* 
 	}
 }
 
-
-
 void dNewtonBody::OnBodyTransform(const dFloat* const matrixPtr, int threadIndex)
 {
 	dMatrix matrix(matrixPtr);
@@ -182,8 +180,8 @@ void dNewtonBody::OnBodyTransformCallback (const NewtonBody* const body, const d
 
 void dNewtonBody::Destroy()
 {
-//	if (m_body && NewtonBodyGetDestructorCallback(m_body)) {
 	if (m_body) {
+		NewtonWaitForUpdateToFinish(NewtonBodyGetWorld(m_body));
 		NewtonBodySetDestructorCallback(m_body, NULL);
 		NewtonDestroyBody(m_body);
 		m_body = NULL;
@@ -218,6 +216,8 @@ dNewtonKinematicBody::dNewtonKinematicBody(dNewtonWorld* const world, dNewtonCol
 	:dNewtonBody(matrix)
 {
 	NewtonWorld* const newton = world->m_world;
+	NewtonWaitForUpdateToFinish(newton);
+
 	m_body = NewtonCreateDynamicBody(newton, collision->m_shape, &matrix[0][0]);
 	collision->DeleteShape();
 	collision->SetShape(NewtonBodyGetCollision(m_body));
@@ -233,6 +233,8 @@ dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollisi
 	:dNewtonBody(matrix)
 {
 	NewtonWorld* const newton = world->m_world;
+
+	NewtonWaitForUpdateToFinish(newton);
 	m_body = NewtonCreateDynamicBody(newton, collision->m_shape, &matrix[0][0]);
 	collision->DeleteShape();
 	collision->SetShape(NewtonBodyGetCollision(m_body));

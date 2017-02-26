@@ -28,6 +28,8 @@ class dNewtonJoint: public dAlloc
 {
 	public:
 	dNewtonJoint();
+	~dNewtonJoint();
+
 	void SetStiffness(dFloat stiffness);
 
 	protected:

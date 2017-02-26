@@ -28,6 +28,13 @@ dNewtonJoint::dNewtonJoint()
 {
 }
 
+dNewtonJoint::~dNewtonJoint()
+{
+	if (m_joint) {
+		NewtonWaitForUpdateToFinish(NewtonBodyGetWorld(m_joint->GetBody0()));
+	}
+}
+
 void dNewtonJoint::SetJoint(CustomJoint* const joint)
 {
 	m_joint = joint;

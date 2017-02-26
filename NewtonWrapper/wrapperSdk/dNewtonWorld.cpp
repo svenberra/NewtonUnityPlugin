@@ -174,55 +174,6 @@ void dNewtonWorld::SetAsyncUpdate(bool updateMode)
 	m_asyncUpdateMode = updateMode;
 }
 
-void dNewtonWorld::UpdateWorld()
-{
-//	NewtonWaitForUpdateToFinish(m_world);
-
-	for (NewtonBody* bodyPtr = NewtonWorldGetFirstBody(m_world); bodyPtr; bodyPtr = NewtonWorldGetNextBody(m_world, bodyPtr)) {
-		dNewtonBody* const body = (dNewtonBody*)NewtonBodyGetUserData(bodyPtr);
-		body->InitForceAccumulators();
-	}
-
-	// every rigid body update
-	m_onUpdateCallback(m_timeStep);
-
-static int xxx = 1;
-if (!xxx)
-{
-	xxx = 1;
-	NewtonSerializeToFile(m_world, "xxxxxxx.bin", NULL, NULL);
-}
-
-	if (m_asyncUpdateMode) {
-//		NewtonUpdateAsync(m_world, m_timeStep);
-	} else {
-//		NewtonUpdate(m_world, m_timeStep);
-	}
-	NewtonUpdate(m_world, m_timeStep);
-}
-
-void dNewtonWorld::Update(dFloat timestepInSeconds)
-{
-	int maxInterations = 1;
-	dLong timestepMicroSeconds = dClamp((dLong)(double(timestepInSeconds) * 1000000.0f), dLong(0), m_timeStepInMicroSeconds);
-	m_realTimeInMicroSeconds += timestepMicroSeconds * maxInterations;
-
-	for (int doUpate = maxInterations; m_realTimeInMicroSeconds >= m_timeStepInMicroSeconds; doUpate --) {
-		if (doUpate) {
-			//UpdateWorld(forceCallback);
-			UpdateWorld();
-		}
-		m_realTimeInMicroSeconds -= m_timeStepInMicroSeconds;
-		dAssert(m_realTimeInMicroSeconds >= 0);
-	}
-	dAssert(m_realTimeInMicroSeconds >= 0);
-	dAssert(m_realTimeInMicroSeconds < m_timeStepInMicroSeconds);
-
-	// call every frame update
-	m_interpotationParam = dFloat (double(m_realTimeInMicroSeconds) / double(m_timeStepInMicroSeconds));
-	m_onTransformCallback();
-}
-
 dNewtonBody* dNewtonWorld::GetFirstBody() const
 {
 	NewtonBody* const body = NewtonWorldGetFirstBody(m_world);
@@ -234,7 +185,6 @@ dNewtonBody* dNewtonWorld::GetNextBody(dNewtonBody* const body) const
 	NewtonBody* const nextBody = NewtonWorldGetNextBody(m_world, body->m_body);
 	return nextBody ? (dNewtonBody*)NewtonBodyGetUserData(nextBody) : NULL;
 }
-
 
 void* dNewtonWorld::GetNextContactJoint(dNewtonBody* const body, void* const contact) const
 {
@@ -288,7 +238,6 @@ void* dNewtonWorld::GetBody1UserData(void* const contact) const
 	return dBody->GetUserData();
 }
 
-
 int dNewtonWorld::OnSubShapeAABBOverlapTest(const NewtonMaterial* const material, const NewtonBody* const body0, const void* const collisionNode0, const NewtonBody* const body1, const void* const collisionNode1, int threadIndex)
 {
 	return 1;
@@ -334,5 +283,54 @@ void dNewtonWorld::OnContactCollision(const NewtonJoint* contactJoint, dFloat ti
 		NewtonMaterialSetContactElasticity(material, materialProp.m_restitution);
 		NewtonMaterialSetContactFrictionCoef(material, materialProp.m_staticFriction, materialProp.m_kineticFriction, 0);
 		NewtonMaterialSetContactFrictionCoef(material, materialProp.m_staticFriction, materialProp.m_kineticFriction, 1);
+	}
+}
+
+void dNewtonWorld::Update(dFloat timestepInSeconds)
+{
+	const int maxInterations = 1;
+	dLong timestepMicroSeconds = dClamp((dLong)(double(timestepInSeconds) * 1000000.0f), dLong(0), m_timeStepInMicroSeconds);
+	m_realTimeInMicroSeconds += timestepMicroSeconds * maxInterations;
+
+	for (int doUpate = maxInterations; m_realTimeInMicroSeconds >= m_timeStepInMicroSeconds; doUpate--) {
+		if (doUpate) {
+			//UpdateWorld(forceCallback);
+			UpdateWorld();
+		}
+		m_realTimeInMicroSeconds -= m_timeStepInMicroSeconds;
+		dAssert(m_realTimeInMicroSeconds >= 0);
+	}
+	dAssert(m_realTimeInMicroSeconds >= 0);
+	dAssert(m_realTimeInMicroSeconds < m_timeStepInMicroSeconds);
+
+	// call every frame update
+	m_interpotationParam = dFloat(double(m_realTimeInMicroSeconds) / double(m_timeStepInMicroSeconds));
+	m_onTransformCallback();
+}
+
+
+void dNewtonWorld::UpdateWorld()
+{
+	for (NewtonBody* bodyPtr = NewtonWorldGetFirstBody(m_world); bodyPtr; bodyPtr = NewtonWorldGetNextBody(m_world, bodyPtr)) {
+		dNewtonBody* const body = (dNewtonBody*)NewtonBodyGetUserData(bodyPtr);
+		body->InitForceAccumulators();
+	}
+
+	// every rigid body update
+	m_onUpdateCallback(m_timeStep);
+
+	static int xxx = 1;
+	if (!xxx)
+	{
+		xxx = 1;
+		NewtonSerializeToFile(m_world, "xxxxxxx.bin", NULL, NULL);
+	}
+
+	if (m_asyncUpdateMode) 
+	{
+		NewtonWaitForUpdateToFinish(m_world);
+		NewtonUpdateAsync(m_world, m_timeStep);
+	} else {
+		NewtonUpdate(m_world, m_timeStep);
 	}
 }
