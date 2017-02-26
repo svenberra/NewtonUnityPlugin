@@ -49,18 +49,21 @@ abstract public class NewtonCollider : MonoBehaviour
 
     virtual public void OnDrawGizmosSelected()
     {
-        ValidateEditorShape();
-        if (m_editorShape != null)
+        if (m_showGizmo)
         {
-            UpdateParams(m_editorShape);
+            ValidateEditorShape();
+            if (m_editorShape != null)
+            {
+                UpdateParams(m_editorShape);
 
-            Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
-            Gizmos.color = Color.yellow;
+                Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+                Gizmos.color = Color.yellow;
 
-            Camera camera = Camera.current;
-            Matrix4x4 matrix = Matrix4x4.Inverse (camera.worldToCameraMatrix * Gizmos.matrix);
-            Vector4 eyepoint = matrix.GetColumn(3);
-            m_editorShape.DebugRender(OnDrawFace, new dVector (eyepoint.x, eyepoint.y, eyepoint.z));
+                Camera camera = Camera.current;
+                Matrix4x4 matrix = Matrix4x4.Inverse(camera.worldToCameraMatrix * Gizmos.matrix);
+                Vector4 eyepoint = matrix.GetColumn(3);
+                m_editorShape.DebugRender(OnDrawFace, new dVector(eyepoint.x, eyepoint.y, eyepoint.z));
+            }
         }
     }
 
@@ -163,9 +166,9 @@ abstract public class NewtonCollider : MonoBehaviour
     public Vector3 m_rotation = Vector3.zero;
     public Vector3 m_scale = Vector3.one;
     public bool m_isTrigger = false;
+    public bool m_showGizmo = true;
     public bool m_inheritTransformScale = true;
 
-    
     // Reuse the same buffer for debug display
     static Vector3 m_lineP0 = Vector3.zero;
     static Vector3 m_lineP1 = Vector3.zero;

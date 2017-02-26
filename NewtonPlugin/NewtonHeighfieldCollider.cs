@@ -31,16 +31,29 @@ class NewtonHeighfieldCollider: NewtonCollider
     }
     public override Vector3 GetScale()
     {
-        if (m_freezeScale == true)
-        {
-            return new Vector3(1.0f, 1.0f, 1.0f);
-        }
-        return GetBaseScale();
+        return new Vector3(1.0f, 1.0f, 1.0f);
     }
 
     public Vector3 GetBaseScale()
     {
-        return base.GetScale();
+        return new Vector3(1.0f, 1.0f, 1.0f);
+    }
+
+    private void SetDefualtParams ()
+    {
+        m_isTrigger = false;
+        m_inheritTransformScale = false;
+
+        // static meshes can not be triggers.
+        m_isTrigger = false;
+
+        // In Unity terrain can not be scale, so we do not apply scale
+        m_inheritTransformScale = false;
+
+        // in unity terrain can not rotated or have local transformation either
+        m_posit = new Vector3(0.0f, 0.0f, 0.0f);
+        m_rotation = new Vector3(0.0f, 0.0f, 0.0f);
+        transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
     }
 
     public override dNewtonCollision Create(NewtonWorld world)
@@ -77,6 +90,7 @@ class NewtonHeighfieldCollider: NewtonCollider
         dNewtonCollision collider = new dNewtonCollisionHeightField(world.GetWorld(), elevationPtr, resolution, scale);
         Marshal.FreeHGlobal(elevationPtr);
 
+        SetDefualtParams();
         SetMaterial(collider);
         return collider;
     }
@@ -99,24 +113,24 @@ class NewtonHeighfieldCollider: NewtonCollider
         m_elevationHash = hash;
         return state;
     }
-
     public override void OnDrawGizmosSelected()
     {
-        //Debug.Log("xxxx  ");
-        TerrainData data = m_terrain.terrainData;
-        if ((data.heightmapResolution != m_oldResolution) || (m_oldSize != data.size) || ElevationHasChanged())
+        if (m_showGizmo)
         {
-            RecreateEditorShape();
-        }
+            SetDefualtParams();
+            TerrainData data = m_terrain.terrainData;
+            if ((data.heightmapResolution != m_oldResolution) || (m_oldSize != data.size) || ElevationHasChanged())
+            {
+                RecreateEditorShape();
+            }
 
-        base.OnDrawGizmosSelected();
+            base.OnDrawGizmosSelected();
+        }
     }
 
     public Terrain m_terrain = null;
-    public bool m_freezeScale = true;
     private int m_oldResolution = 0;
     private int m_elevationHash = 0;
     private Vector3 m_oldSize;
-    
 }
 

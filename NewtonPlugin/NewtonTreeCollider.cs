@@ -95,8 +95,16 @@ public class NewtonTreeCollider : NewtonCollider
         collision.EndFace(m_optimize);
         Marshal.FreeHGlobal(floatsPtr);
 
+        m_isTrigger = false;
         SetMaterial(collision);
         return collision;
+    }
+
+    public override void OnDrawGizmosSelected()
+    {
+        // static meshes can no be triggers.
+        m_isTrigger = false;
+        base.OnDrawGizmosSelected();
     }
 
     public Mesh m_mesh;
