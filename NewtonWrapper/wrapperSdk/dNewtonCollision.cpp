@@ -268,3 +268,26 @@ dNewtonCollisionScene::dNewtonCollisionScene(dNewtonWorld* const world)
 	NewtonCollision* const shape = NewtonCreateSceneCollision(m_myWorld->m_world, 0);
 	SetShape(shape);
 }
+
+
+void dNewtonCollisionScene::BeginAddRemoveCollision()
+{
+	NewtonSceneCollisionBeginAddRemove(m_shape);
+}
+
+void* dNewtonCollisionScene::AddCollision(const dNewtonCollision* const collision)
+{
+	dAssert(0);
+	return NewtonSceneCollisionAddSubCollision(m_shape, collision->m_shape);
+}
+
+void dNewtonCollisionScene::RemoveCollision(void* const handle)
+{
+	dAssert(0);
+	NewtonSceneCollisionRemoveSubCollision(m_shape, handle);
+}
+
+void dNewtonCollisionScene::EndAddRemoveCollision()
+{
+	NewtonSceneCollisionEndAddRemove(m_shape);
+}

@@ -57,6 +57,7 @@ class dNewtonCollision: public dAlloc
 	friend class dNewtonWorld;
 	friend class dNewtonDynamicBody;
 	friend class dNewtonKinematicBody;
+	friend class dNewtonCollisionScene;
 	friend class dNewtonCollisionCompound;
 };
 
@@ -156,16 +157,15 @@ class dNewtonCollisionScene: public dNewtonCollision
 {
 	public:
 	dNewtonCollisionScene(dNewtonWorld* const world);
-/*
-	virtual void BeginAddRemoveCollision();
-	virtual void* AddCollision(const dNewtonCollision* const collision);
-	virtual void RemoveCollision(void* const handle);
-	virtual void EndAddRemoveCollision();
 
-	void* GetFirstNode() const;;
-	void* GetNextNode(void* const collisionNode) const;
-	dNewtonCollision* GetChildFromNode(void* const collisionNode) const;
-*/
+	void BeginAddRemoveCollision();
+	void* AddCollision(const dNewtonCollision* const collision);
+	void RemoveCollision(void* const handle);
+	void EndAddRemoveCollision();
+
+//	void* GetFirstNode() const;;
+//	void* GetNextNode(void* const collisionNode) const;
+//	dNewtonCollision* GetChildFromNode(void* const collisionNode) const;
 };
 
 
