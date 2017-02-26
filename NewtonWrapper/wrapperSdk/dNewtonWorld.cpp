@@ -176,7 +176,7 @@ void dNewtonWorld::SetAsyncUpdate(bool updateMode)
 
 void dNewtonWorld::UpdateWorld()
 {
-	NewtonWaitForUpdateToFinish(m_world);
+//	NewtonWaitForUpdateToFinish(m_world);
 
 	for (NewtonBody* bodyPtr = NewtonWorldGetFirstBody(m_world); bodyPtr; bodyPtr = NewtonWorldGetNextBody(m_world, bodyPtr)) {
 		dNewtonBody* const body = (dNewtonBody*)NewtonBodyGetUserData(bodyPtr);
@@ -184,9 +184,9 @@ void dNewtonWorld::UpdateWorld()
 	}
 
 	// every rigid body update
-	m_onUpdateCallback(m_timeStep);
+//	m_onUpdateCallback(m_timeStep);
 
-static int xxx = 1;
+static int xxx = 0;
 if (!xxx)
 {
 	xxx = 1;
@@ -194,10 +194,11 @@ if (!xxx)
 }
 
 	if (m_asyncUpdateMode) {
-		NewtonUpdateAsync(m_world, m_timeStep);
+//		NewtonUpdateAsync(m_world, m_timeStep);
 	} else {
-		NewtonUpdate(m_world, m_timeStep);
+//		NewtonUpdate(m_world, m_timeStep);
 	}
+	NewtonUpdate(m_world, m_timeStep);
 }
 
 void dNewtonWorld::Update(dFloat timestepInSeconds)
