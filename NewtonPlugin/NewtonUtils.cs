@@ -34,6 +34,12 @@ public class Utils
         matrix.m_posit = new dVector(entMatrix.m03, entMatrix.m13, entMatrix.m23, entMatrix.m33);
         return matrix;
     }
+
+
+    static public int dRand(int seed, int oldSeed)
+    {
+        return oldSeed + seed * 31415821;
+    }
 }
 
 

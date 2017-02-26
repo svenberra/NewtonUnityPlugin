@@ -58,14 +58,20 @@ class NewtonHeighfieldCollider: NewtonCollider
 
         data.GetHeights(0, 0, resolution, resolution);
 
+        int hash = 0;
+        float elevationScale = data.size.y;
         float[] elevation = new float [resolution * resolution];
         for (int z = 0; z < resolution; z ++)
         {
             for (int x = 0; x < resolution; x++)
             {
-                elevation[z * resolution + x] = data.GetHeight(x, z);
+                float value = data.GetHeight(x, z);
+                elevation[z * resolution + x] = value;
+                hash = Utils.dRand((int)(elevationScale * value), hash);
             }
         }
+        m_elevationHash = hash;
+
         IntPtr elevationPtr = Marshal.AllocHGlobal(resolution * resolution * Marshal.SizeOf(typeof(float)));
         Marshal.Copy(elevation, 0, elevationPtr, elevation.Length);
         dNewtonCollision collider = new dNewtonCollisionHeightField(world.GetWorld(), elevationPtr, resolution, scale);
@@ -75,13 +81,31 @@ class NewtonHeighfieldCollider: NewtonCollider
         return collider;
     }
 
+    private bool ElevationHasChanged ()
+    {
+        TerrainData data = m_terrain.terrainData;
+        int resolution = data.heightmapResolution;
+        float scale = data.size.y;
+
+        int hash = 0;
+        for (int z = 0; z < resolution; z++)
+        {
+            for (int x = 0; x < resolution; x++)
+            {
+                hash = Utils.dRand((int) (data.GetHeight(x, z) * scale), hash);
+            }
+        }
+        bool state = (hash != m_elevationHash);
+        Debug.Log("xxxx  " + hash);
+        m_elevationHash = hash;
+        return state;
+    }
+
     public override void OnDrawGizmosSelected()
     {
         //Debug.Log("xxxx  ");
         TerrainData data = m_terrain.terrainData;
-        Debug.Log("xxxx  " + m_terrain.drawHeightmap);
-
-        if ((data.heightmapResolution != m_oldResolution) || (m_oldSize != data.size))
+        if ((data.heightmapResolution != m_oldResolution) || (m_oldSize != data.size) || ElevationHasChanged())
         {
             RecreateEditorShape();
         }
@@ -91,7 +115,9 @@ class NewtonHeighfieldCollider: NewtonCollider
 
     public Terrain m_terrain = null;
     public bool m_freezeScale = true;
-    private int m_oldResolution;
+    private int m_oldResolution = 0;
+    private int m_elevationHash = 0;
     private Vector3 m_oldSize;
+    
 }
 
