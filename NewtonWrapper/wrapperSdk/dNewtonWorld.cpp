@@ -184,9 +184,9 @@ void dNewtonWorld::UpdateWorld()
 	}
 
 	// every rigid body update
-//	m_onUpdateCallback(m_timeStep);
+	m_onUpdateCallback(m_timeStep);
 
-static int xxx = 0;
+static int xxx = 1;
 if (!xxx)
 {
 	xxx = 1;
