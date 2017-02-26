@@ -96,7 +96,6 @@ class NewtonHeighfieldCollider: NewtonCollider
             }
         }
         bool state = (hash != m_elevationHash);
-        Debug.Log("xxxx  " + hash);
         m_elevationHash = hash;
         return state;
     }
