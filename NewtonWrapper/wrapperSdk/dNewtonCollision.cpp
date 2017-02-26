@@ -67,6 +67,7 @@ void dNewtonCollision::SetMaterialID(int materialId)
 void dNewtonCollision::DeleteShape()
 {
 	if (m_shape) {
+		//NewtonWaitForUpdateToFinish(NewtonCollisionGetN);
 		NewtonDestroyCollision(m_shape);
 		m_myWorld->m_collisionCache.Remove(m_collisionCacheNode);
 		NewtonCollisionSetUserData(m_shape, NULL);
@@ -131,12 +132,14 @@ void dNewtonCollision::SetMatrix(const dMatrix matrix)
 dNewtonCollisionNull::dNewtonCollisionNull(dNewtonWorld* const world)
 	:dNewtonCollision(world, 0)
 {
+	NewtonWaitForUpdateToFinish(m_myWorld->m_world);
 	SetShape(NewtonCreateNull(m_myWorld->m_world));
 }
 
 dNewtonCollisionSphere::dNewtonCollisionSphere(dNewtonWorld* const world, dFloat r)
 	:dNewtonCollision(world, 0)
 {
+	NewtonWaitForUpdateToFinish(m_myWorld->m_world);
 	SetShape(NewtonCreateSphere(m_myWorld->m_world, r, 0, NULL));
 }
 
@@ -144,6 +147,7 @@ dNewtonCollisionSphere::dNewtonCollisionSphere(dNewtonWorld* const world, dFloat
 dNewtonCollisionBox::dNewtonCollisionBox(dNewtonWorld* const world, dFloat x, dFloat y, dFloat z)
 	:dNewtonCollision(world, 0)
 {
+	NewtonWaitForUpdateToFinish(m_myWorld->m_world);
 	SetShape(NewtonCreateBox(m_myWorld->m_world, x, y, z, 0, NULL));
 }
 
@@ -167,6 +171,7 @@ void dNewtonAlignedShapes::SetMatrix(const dMatrix matrix)
 dNewtonCollisionCapsule::dNewtonCollisionCapsule(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height)
 	:dNewtonAlignedShapes(world, 0)
 {
+	NewtonWaitForUpdateToFinish(m_myWorld->m_world);
 	SetShape(NewtonCreateCapsule(m_myWorld->m_world, radio0, radio1, height, 0, NULL));
 }
 
@@ -174,12 +179,14 @@ dNewtonCollisionCapsule::dNewtonCollisionCapsule(dNewtonWorld* const world, dFlo
 dNewtonCollisionCylinder::dNewtonCollisionCylinder(dNewtonWorld* const world, dFloat radio0, dFloat radio1, dFloat height)
 	:dNewtonAlignedShapes(world, 0)
 {
+	NewtonWaitForUpdateToFinish(m_myWorld->m_world);
 	SetShape(NewtonCreateCylinder(m_myWorld->m_world, radio0, radio1, height, 0, NULL));
 }
 
 dNewtonCollisionCone::dNewtonCollisionCone(dNewtonWorld* const world, dFloat radio, dFloat height)
-	: dNewtonAlignedShapes(world, 0)
+	:dNewtonAlignedShapes(world, 0)
 {
+	NewtonWaitForUpdateToFinish(m_myWorld->m_world);
 	SetShape(NewtonCreateCone(m_myWorld->m_world, radio, height, 0, NULL));
 }
 
@@ -187,12 +194,14 @@ dNewtonCollisionCone::dNewtonCollisionCone(dNewtonWorld* const world, dFloat rad
 dNewtonCollisionChamferedCylinder::dNewtonCollisionChamferedCylinder(dNewtonWorld* const world, dFloat radio, dFloat height)
 	:dNewtonAlignedShapes(world, 0)
 {
+	NewtonWaitForUpdateToFinish(m_myWorld->m_world);
 	SetShape(NewtonCreateChamferCylinder(m_myWorld->m_world, radio, height, 0, NULL));
 }
 
 dNewtonCollisionConvexHull::dNewtonCollisionConvexHull(dNewtonWorld* const world, int vertexCount, const dFloat* const vertexCloud, dFloat tolerance)
 	:dNewtonCollision(world, 0)
 {
+	NewtonWaitForUpdateToFinish(m_myWorld->m_world);
 	SetShape(NewtonCreateConvexHull(m_myWorld->m_world, vertexCount, vertexCloud, 3 * sizeof (dFloat), tolerance, 0, NULL));
 }
 
@@ -200,6 +209,7 @@ dNewtonCollisionConvexHull::dNewtonCollisionConvexHull(dNewtonWorld* const world
 dNewtonCollisionMesh::dNewtonCollisionMesh(dNewtonWorld* const world)
 	:dNewtonCollision(world, 0)
 {
+	NewtonWaitForUpdateToFinish(m_myWorld->m_world);
 	SetShape(NewtonCreateTreeCollision(m_myWorld->m_world, 0));
 }
 
@@ -223,6 +233,7 @@ void dNewtonCollisionMesh::EndFace(bool optimize)
 dNewtonCollisionCompound::dNewtonCollisionCompound(dNewtonWorld* const world)
 	:dNewtonCollision(world, 0)
 {
+	NewtonWaitForUpdateToFinish(m_myWorld->m_world);
 	SetShape(NewtonCreateCompoundCollision(m_myWorld->m_world, 0));
 }
 
@@ -265,10 +276,9 @@ dNewtonCollisionHeightField::dNewtonCollisionHeightField(dNewtonWorld* const wor
 dNewtonCollisionScene::dNewtonCollisionScene(dNewtonWorld* const world)
 	:dNewtonCollision(world, 0)
 {
-	NewtonCollision* const shape = NewtonCreateSceneCollision(m_myWorld->m_world, 0);
-	SetShape(shape);
+	NewtonWaitForUpdateToFinish(m_myWorld->m_world);
+	SetShape(NewtonCreateSceneCollision(m_myWorld->m_world, 0));
 }
-
 
 void dNewtonCollisionScene::BeginAddRemoveCollision()
 {
