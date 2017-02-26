@@ -67,16 +67,15 @@ void dNewtonCollision::SetMaterialID(int materialId)
 void dNewtonCollision::DeleteShape()
 {
 	if (m_shape) {
-		dAssert(NewtonCollisionGetWorld(m_shape));
-		NewtonWaitForUpdateToFinish(NewtonCollisionGetWorld(m_shape));
+		NewtonWaitForUpdateToFinish(m_myWorld->m_world);
 		NewtonDestroyCollision(m_shape);
-		m_myWorld->m_collisionCache.Remove(m_collisionCacheNode);
 		NewtonCollisionSetUserData(m_shape, NULL);
+
+		m_myWorld->m_collisionCache.Remove(m_collisionCacheNode);
 		m_shape = NULL;
 		m_collisionCacheNode = NULL;
 	}
 }
-
 
 void dNewtonCollision::SetShape(NewtonCollision* const shape)
 {
