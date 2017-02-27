@@ -141,7 +141,6 @@ public class NewtonWorld : MonoBehaviour
     void Update()
     {
         //Debug.Log("Update time :" + Time.deltaTime);
-
         if (m_serializeSceneOnce)
         {
             m_serializeSceneOnce = false;

@@ -130,12 +130,6 @@ abstract public class NewtonCollider : MonoBehaviour
     }
 
     // these are all privates 
-/*
-    private void OnValidate()
-    {
-        //Debug.Log("xxxxxxx this is bullshit ");
-    }
-*/
     private void UpdateParams(dNewtonCollision shape)
     {
         Vector3 scale = GetScale();

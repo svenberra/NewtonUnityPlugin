@@ -116,6 +116,39 @@ public class NewtonBodyCollision
                 }
             }
 
+            Terrain terrain = gameObject.GetComponent<Terrain>();
+            if (terrain)
+            {
+                NewtonHeighfieldCollider heighfield = gameObject.GetComponent<NewtonHeighfieldCollider>();
+                if (terrain)
+                {
+                    TerrainData data = terrain.terrainData;
+                    int treesCount = data.treeInstanceCount;
+                    TreePrototype[] treeProtoArray = data.treePrototypes;
+                    TreeInstance[] treeInstanceArray = data.treeInstances;
+                    for (int i = 0; i < treesCount; i ++)
+                    {
+                        TreeInstance tree = treeInstanceArray[i];
+                        TreePrototype treeProto = treeProtoArray[tree.prototypeIndex];
+                        GameObject treeGameObject = treeProto.prefab;
+                        foreach (NewtonCollider treeCollider in treeGameObject.GetComponents<NewtonCollider>())
+                        {
+/*
+                            dNewtonCollision treeShape = treeCollider.CreateBodyShape(body.m_world);
+                            if (treeShape != null)
+                            {
+                                ColliderShapePair pair;
+                                pair.m_collider = treeCollider;
+                                pair.m_shape = treeShape;
+                                colliderList.Add(pair);
+                            }
+*/
+                        }
+                    }
+                }
+            }
+                
+
             foreach (Transform child in gameObject.transform)
             {
                 TraverseColliders(child.gameObject, colliderList, rootObject, body);
