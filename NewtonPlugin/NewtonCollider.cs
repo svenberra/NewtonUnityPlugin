@@ -61,8 +61,7 @@ abstract public class NewtonCollider : MonoBehaviour
                 {
                     bodyTransform = bodyTransform.parent;
                 }
-
-                //Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+                
                 Gizmos.matrix = Matrix4x4.TRS(bodyTransform.position, bodyTransform.rotation, Vector3.one);
                 Gizmos.color = Color.yellow;
 
