@@ -11,6 +11,7 @@ public class RopeComponent : MonoBehaviour
     private NewtonWorld world;
     private LineRenderer lineRenderer;
     public Material material;
+    private Vector3[] points;
 
     void Awake()
     {
@@ -40,16 +41,16 @@ public class RopeComponent : MonoBehaviour
         lineRenderer.numPositions = Segments;
         lineRenderer.widthMultiplier = SegmentSize;
         lineRenderer.sharedMaterial = material;
+
     }
 
     void Start()
     {
-
+        points = new Vector3[Segments];
     }
 
     void Update()
     {
-        var points = new Vector3[Segments];
 
         for (int i = 0; i < Segments; i++)
         {
