@@ -38,7 +38,6 @@ public class NewtonBodyCollision
 
         if (body.m_isScene)
         {
-            Debug.Log("yyyy scene ");
             m_collidersArray = new ColliderShapePair[colliderList.Count + 1];
             NewtonSceneCollider sceneCollider = body.gameObject.AddComponent<NewtonSceneCollider>();
             dNewtonCollisionScene sceneShape = (dNewtonCollisionScene)sceneCollider.Create(body.m_world);
@@ -58,7 +57,6 @@ public class NewtonBodyCollision
         }
         else if (colliderList.Count == 0)
         {
-            Debug.Log("yyyy0 ");
             m_collidersArray = new ColliderShapePair[1];
             NewtonCollider collider = body.gameObject.AddComponent<NewtonNullCollider>();
             m_collidersArray[0].m_collider = collider;
@@ -66,13 +64,11 @@ public class NewtonBodyCollision
         }
         else if (colliderList.Count == 1)
         {
-            Debug.Log("yyyy1 ");
             m_collidersArray = new ColliderShapePair[1];
             m_collidersArray[0] = colliderList[0];
         }
         else
         {
-            Debug.Log("yyyy compound");
             m_collidersArray = new ColliderShapePair[colliderList.Count + 1];
             NewtonCompoundCollider compoundCollider = body.gameObject.AddComponent<NewtonCompoundCollider>();
             dNewtonCollisionCompound compoundShape = (dNewtonCollisionCompound)compoundCollider.Create(body.m_world);

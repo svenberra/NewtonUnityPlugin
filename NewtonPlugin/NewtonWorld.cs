@@ -142,6 +142,13 @@ public class NewtonWorld : MonoBehaviour
     void Update()
     {
         //Debug.Log("Update time :" + Time.deltaTime);
+
+        if (m_serializeSceneOnce)
+        {
+            m_serializeSceneOnce = false;
+            m_world.SaveSerializedScene(m_saveSceneName);
+        }
+
         m_world.Update(Time.deltaTime);
     }
 
@@ -184,6 +191,8 @@ public class NewtonWorld : MonoBehaviour
 
     private dNewtonWorld m_world = new dNewtonWorld();
     public bool m_asyncUpdate = true;
+    public bool m_serializeSceneOnce = false;
+    public string m_saveSceneName = "scene_01.bin";
     public int m_broadPhaseType = 0;
     public int m_numberOfThreads = 0;
     public int m_solverIterationsCount = 1;

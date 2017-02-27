@@ -308,6 +308,10 @@ void dNewtonWorld::Update(dFloat timestepInSeconds)
 	m_onTransformCallback();
 }
 
+void dNewtonWorld::SaveSerializedScene(char* const sceneName)
+{
+	NewtonSerializeToFile(m_world, sceneName, NULL, NULL);
+}
 
 void dNewtonWorld::UpdateWorld()
 {
@@ -318,13 +322,6 @@ void dNewtonWorld::UpdateWorld()
 
 	// every rigid body update
 	m_onUpdateCallback(m_timeStep);
-
-	static int xxx = 1;
-	if (!xxx)
-	{
-		xxx = 1;
-		NewtonSerializeToFile(m_world, "xxxxxxx.bin", NULL, NULL);
-	}
 
 	if (m_asyncUpdateMode) 
 	{

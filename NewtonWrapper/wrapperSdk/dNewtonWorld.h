@@ -74,6 +74,8 @@ class dNewtonWorld: public dAlloc
 	void* GetBody0UserData(void* const contact) const;
 	void* GetBody1UserData(void* const contact) const;
 
+	void SaveSerializedScene(char* const sceneName);
+
 	private:
 	void UpdateWorld();
 

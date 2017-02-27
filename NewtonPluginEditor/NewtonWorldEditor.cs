@@ -33,6 +33,8 @@ public class NewtonWorldEditor : Editor
         m_subStepsProp = serializedObject.FindProperty("m_subSteps");
         m_updateRateProp = serializedObject.FindProperty("m_updateRate");
         m_asyncUpdateProp = serializedObject.FindProperty("m_asyncUpdate");
+        m_saveSceneNameProp = serializedObject.FindProperty("m_saveSceneName");
+        m_serializeSceneOnceProp = serializedObject.FindProperty("m_serializeSceneOnce");
         m_numThreadsProp = serializedObject.FindProperty("m_numberOfThreads");
         m_broadPhaseTypeProp = serializedObject.FindProperty("m_broadPhaseType");
         m_solverIterationsCountProp = serializedObject.FindProperty("m_solverIterationsCount");
@@ -49,6 +51,8 @@ public class NewtonWorldEditor : Editor
 
         // Show the custom GUI controls
         EditorGUILayout.PropertyField(m_asyncUpdateProp, new GUIContent("Asynchronous update"));
+        EditorGUILayout.PropertyField(m_serializeSceneOnceProp, new GUIContent("Serialize scene once"));
+        EditorGUILayout.PropertyField(m_saveSceneNameProp, new GUIContent("Serialize scene name"));
         EditorGUILayout.IntPopup(m_numThreadsProp, m_numberOfThreadsOptions, m_numberOfThreadsValues, new GUIContent("Worker threads"));
         EditorGUILayout.IntSlider(m_solverIterationsCountProp, 1, 10, new GUIContent("Solver iterations count"));
         EditorGUILayout.IntSlider(m_updateRateProp, 60, 1000, new GUIContent("Update rate"));
@@ -64,13 +68,17 @@ public class NewtonWorldEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
+    
     SerializedProperty m_gravityProp;
     SerializedProperty m_subStepsProp;
     SerializedProperty m_updateRateProp;
     SerializedProperty m_numThreadsProp;
     SerializedProperty m_asyncUpdateProp;
+    SerializedProperty m_saveSceneNameProp;
+    SerializedProperty m_serializeSceneOnceProp;
     SerializedProperty m_broadPhaseTypeProp;
     SerializedProperty m_solverIterationsCountProp;
+    
 
     SerializedProperty m_defaultRestitutionProp;
     SerializedProperty m_defaultStaticFrictionProp;
