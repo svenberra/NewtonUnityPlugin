@@ -123,17 +123,25 @@ public class NewtonBodyCollision
                 if (terrain)
                 {
                     TerrainData data = terrain.terrainData;
+                    
                     int treesCount = data.treeInstanceCount;
-                    TreePrototype[] treeProtoArray = data.treePrototypes;
                     TreeInstance[] treeInstanceArray = data.treeInstances;
+
+                    Debug.Log("xxx count " + treesCount);
+                    Debug.Log("xxx0 " + treeInstanceArray[0].position);
+                    Debug.Log("xxx1 " + treeInstanceArray[1].position);
+                    Debug.Log("xxx2 " + treeInstanceArray[2].position);
+                    /*
+                     TreePrototype[] treeProtoArray = data.treePrototypes;
                     for (int i = 0; i < treesCount; i ++)
                     {
                         TreeInstance tree = treeInstanceArray[i];
+                        Debug.Log("xxx0 " + tree.position);
                         TreePrototype treeProto = treeProtoArray[tree.prototypeIndex];
                         GameObject treeGameObject = treeProto.prefab;
                         foreach (NewtonCollider treeCollider in treeGameObject.GetComponents<NewtonCollider>())
                         {
-/*
+                            Debug.Log("xxx1 " + treeCollider.m_posit);
                             dNewtonCollision treeShape = treeCollider.CreateBodyShape(body.m_world);
                             if (treeShape != null)
                             {
@@ -142,9 +150,9 @@ public class NewtonBodyCollision
                                 pair.m_shape = treeShape;
                                 colliderList.Add(pair);
                             }
-*/
                         }
                     }
+                    */
                 }
             }
                 

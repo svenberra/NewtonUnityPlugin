@@ -145,8 +145,11 @@ abstract public class NewtonCollider : MonoBehaviour
                 bodyTransform = bodyTransform.parent;
             }
 
-            dMatrix bodyMatrix = Utils.ToMatrix(bodyTransform.position, bodyTransform.rotation);
-            matrix = matrix.matrixMultiply(bodyMatrix.Inverse());
+            if (bodyTransform != null)
+            {
+                dMatrix bodyMatrix = Utils.ToMatrix(bodyTransform.position, bodyTransform.rotation);
+                matrix = matrix.matrixMultiply(bodyMatrix.Inverse());
+            }
         }
         shape.SetMatrix(matrix);
     }
