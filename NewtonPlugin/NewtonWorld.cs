@@ -125,7 +125,6 @@ public class NewtonWorld : MonoBehaviour
         }
     }
 
-
     private void DestroyScene()
     {
         if (m_world != null)

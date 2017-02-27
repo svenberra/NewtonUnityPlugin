@@ -105,7 +105,21 @@ abstract public class NewtonCollider : MonoBehaviour
     {
         Vector3 scale = GetScale();
         shape.SetScale(scale.x, scale.y, scale.z);
-        shape.SetMatrix(Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation)));
+
+        dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));
+        if (transform.gameObject.GetComponent<NewtonBody>() == null)
+        {
+            matrix = matrix.__dMatrix_multiply__(Utils.ToMatrix(transform.position, transform.rotation));
+            Transform bodyTransform = transform.parent;
+            while ((bodyTransform != null) && (bodyTransform.gameObject.GetComponent<NewtonBody>() == null))
+            {
+                bodyTransform = bodyTransform.parent;
+            }
+
+            dMatrix bodyMatrix = Utils.ToMatrix(bodyTransform.position, bodyTransform.rotation);
+            matrix = matrix.__dMatrix_multiply__(bodyMatrix.Inverse());
+        }
+        shape.SetMatrix(matrix);
     }
 
     public void UpdateEditorParams()
@@ -135,7 +149,7 @@ abstract public class NewtonCollider : MonoBehaviour
             Transform gameTransform = transform;
             while (gameTransform != null)
             {
-                // this is a child body we need to fin the root rigid body owning the shape
+                // this is a child body we need to find the root rigid body owning the shape
                 if (body == null)
                 {
                      body = gameTransform.gameObject.GetComponent<NewtonBody>();
