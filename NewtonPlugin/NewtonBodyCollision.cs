@@ -131,8 +131,12 @@ public class NewtonBodyCollision
                     Debug.Log("xxx0 " + treeInstanceArray[0].position);
                     Debug.Log("xxx1 " + treeInstanceArray[1].position);
                     Debug.Log("xxx2 " + treeInstanceArray[2].position);
-                    /*
-                     TreePrototype[] treeProtoArray = data.treePrototypes;
+                    
+                    TreePrototype[] treeProtoArray = data.treePrototypes;
+                    Debug.Log("xxx1 " + treeProtoArray[treeInstanceArray[0].prototypeIndex].prefab.transform.position);
+                    Debug.Log("xxx1 " + treeProtoArray[treeInstanceArray[1].prototypeIndex].prefab.transform.position);
+                    Debug.Log("xxx1 " + treeProtoArray[treeInstanceArray[2].prototypeIndex].prefab.transform.position);
+/*
                     for (int i = 0; i < treesCount; i ++)
                     {
                         TreeInstance tree = treeInstanceArray[i];
