@@ -122,13 +122,13 @@
 %rename(__dAlloc_Alloc__) dAlloc::operator new;  
 %rename(__dAlloc_Free__) dAlloc::operator delete;  
 
-%rename(__dMatrix_multiply__) dMatrix::operator*;
-%rename(__dMatrix_GetElement__) dMatrix::operator[](int i);
-%rename(__dMatrix_GetElement__Const__) dMatrix::operator[] (int i) const; 
+%rename(matrixMultiply) dMatrix::operator*;
+%rename(matrixGetElement) dMatrix::operator[](int i);
+%rename(matrixGetElementConst) dMatrix::operator[] (int i) const; 
 
-%rename(__dQuaternion_add__) dQuaternion::operator+;
-%rename(__dQuaternion_sub__) dQuaternion::operator-;
-%rename(__dQuaternion_multiply__) dQuaternion::operator*;
+%rename(quatAdd) dQuaternion::operator+;
+%rename(quatSub) dQuaternion::operator-;
+%rename(quatMultiply) dQuaternion::operator*;
 
 %rename(__CustomAlloc_Alloc__) CustomAlloc::operator new;
 %rename(__CustomAlloc_Delete__) CustomAlloc::operator delete;

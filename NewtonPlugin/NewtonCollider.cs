@@ -56,7 +56,14 @@ abstract public class NewtonCollider : MonoBehaviour
             {
                 UpdateParams(m_editorShape);
 
-                Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+                Transform bodyTransform = transform;
+                while ((bodyTransform != null) && (bodyTransform.gameObject.GetComponent<NewtonBody>() == null))
+                {
+                    bodyTransform = bodyTransform.parent;
+                }
+
+                //Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+                Gizmos.matrix = Matrix4x4.TRS(bodyTransform.position, bodyTransform.rotation, Vector3.one);
                 Gizmos.color = Color.yellow;
 
                 Camera camera = Camera.current;
@@ -67,9 +74,11 @@ abstract public class NewtonCollider : MonoBehaviour
         }
     }
 
-    void OnValidate()
+    public void SetMaterial(dNewtonCollision shape)
     {
-        //Debug.Log("xxxxxxx this is bullshit ");
+        int materialID = m_material ? m_material.GetInstanceID() : 0;
+        shape.SetMaterialID(materialID);
+        shape.SetAsTrigger(m_isTrigger);
     }
 
     virtual public bool IsStatic()
@@ -101,26 +110,6 @@ abstract public class NewtonCollider : MonoBehaviour
             UpdateEditorParams();
         }
     }
-    private void UpdateParams(dNewtonCollision shape)
-    {
-        Vector3 scale = GetScale();
-        shape.SetScale(scale.x, scale.y, scale.z);
-
-        dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));
-        if (transform.gameObject.GetComponent<NewtonBody>() == null)
-        {
-            matrix = matrix.__dMatrix_multiply__(Utils.ToMatrix(transform.position, transform.rotation));
-            Transform bodyTransform = transform.parent;
-            while ((bodyTransform != null) && (bodyTransform.gameObject.GetComponent<NewtonBody>() == null))
-            {
-                bodyTransform = bodyTransform.parent;
-            }
-
-            dMatrix bodyMatrix = Utils.ToMatrix(bodyTransform.position, bodyTransform.rotation);
-            matrix = matrix.__dMatrix_multiply__(bodyMatrix.Inverse());
-        }
-        shape.SetMatrix(matrix);
-    }
 
     public void UpdateEditorParams()
     {
@@ -139,6 +128,34 @@ abstract public class NewtonCollider : MonoBehaviour
             UpdateParams(shape);
         }
         return shape;
+    }
+
+    // these are all privates 
+/*
+    private void OnValidate()
+    {
+        //Debug.Log("xxxxxxx this is bullshit ");
+    }
+*/
+    private void UpdateParams(dNewtonCollision shape)
+    {
+        Vector3 scale = GetScale();
+        shape.SetScale(scale.x, scale.y, scale.z);
+
+        dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));
+        if (transform.gameObject.GetComponent<NewtonBody>() == null)
+        {
+            matrix = matrix.matrixMultiply(Utils.ToMatrix(transform.position, transform.rotation));
+            Transform bodyTransform = transform.parent;
+            while ((bodyTransform != null) && (bodyTransform.gameObject.GetComponent<NewtonBody>() == null))
+            {
+                bodyTransform = bodyTransform.parent;
+            }
+
+            dMatrix bodyMatrix = Utils.ToMatrix(bodyTransform.position, bodyTransform.rotation);
+            matrix = matrix.matrixMultiply(bodyMatrix.Inverse());
+        }
+        shape.SetMatrix(matrix);
     }
 
     private void ValidateEditorShape()
@@ -165,13 +182,6 @@ abstract public class NewtonCollider : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void SetMaterial(dNewtonCollision shape)
-    {
-        int materialID = m_material ? m_material.GetInstanceID() : 0;
-        shape.SetMaterialID(materialID);
-        shape.SetAsTrigger(m_isTrigger);
     }
 
     private dNewtonCollision m_editorShape = null;
