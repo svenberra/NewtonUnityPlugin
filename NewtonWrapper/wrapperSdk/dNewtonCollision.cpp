@@ -287,13 +287,11 @@ void dNewtonCollisionScene::BeginAddRemoveCollision()
 
 void* dNewtonCollisionScene::AddCollision(const dNewtonCollision* const collision)
 {
-	dAssert(0);
 	return NewtonSceneCollisionAddSubCollision(m_shape, collision->m_shape);
 }
 
 void dNewtonCollisionScene::RemoveCollision(void* const handle)
 {
-	dAssert(0);
 	NewtonSceneCollisionRemoveSubCollision(m_shape, handle);
 }
 

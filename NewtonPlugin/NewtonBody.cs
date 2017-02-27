@@ -142,11 +142,11 @@ public class NewtonBody : MonoBehaviour
         }
     }
 
-    public float m_mass;
+    public float m_mass = 0.0f;
+    public bool m_isScene = false;
     public NewtonWorld m_world;
     public Vector3 m_forceAcc { get; set; }
     public Vector3 m_torqueAcc { get; set; }
-    public bool m_isScene { get; set; }
 
     internal dNewtonBody m_body = null;
     private NewtonBodyCollision m_collision = null;

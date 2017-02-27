@@ -130,6 +130,12 @@ class dNewtonCollisionMesh: public dNewtonCollision
 	void EndFace(bool optmized);
 };
 
+class dNewtonCollisionHeightField : public dNewtonCollision
+{
+	public:
+	dNewtonCollisionHeightField(dNewtonWorld* const world, const dFloat* const elevations, int resolution, dVector scale);
+};
+
 class dNewtonCollisionCompound: public dNewtonCollision
 {
 	public:
@@ -144,14 +150,6 @@ class dNewtonCollisionCompound: public dNewtonCollision
 	//void* GetNextNode(void* const collisionNode) const;
 	//dNewtonCollision* GetChildFromNode(void* const collisionNode) const;
 };
-
-
-class dNewtonCollisionHeightField: public dNewtonCollision
-{
-	public:
-	dNewtonCollisionHeightField(dNewtonWorld* const world, const dFloat* const elevations, int resolution, dVector scale);
-};
-
 
 class dNewtonCollisionScene: public dNewtonCollision
 {

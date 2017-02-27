@@ -1,4 +1,4 @@
-/* 
+﻿/*
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
 * arising from the use of this software.
@@ -17,29 +17,16 @@
 * 
 * 3. This notice may not be removed or altered from any source distribution.
 */
+using UnityEngine;
+using System;
 
-
-#include "stdafx.h"
-#include "dNewtonJoint.h"
-
-dNewtonJoint::dNewtonJoint()
-	:dAlloc()
-	,m_joint(NULL)
+class NewtonSceneCollider : NewtonCollider
 {
-}
-
-dNewtonJoint::~dNewtonJoint()
-{
-}
-
-void dNewtonJoint::SetJoint(CustomJoint* const joint)
-{
-	m_joint = joint;
-}
-
-
-void dNewtonJoint::SetStiffness(dFloat stiffness)
-{
-	m_joint->SetStiffness(stiffness);
+    public override dNewtonCollision Create(NewtonWorld world)
+    {
+        dNewtonCollisionScene collider = new dNewtonCollisionScene(world.GetWorld());
+        SetMaterial(collider);
+        return collider;
+    }
 }
 
