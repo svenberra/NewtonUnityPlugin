@@ -41,31 +41,14 @@
 	#include "dNewtonWorld.h"
 	#include "dNewtonJoint.h"
 	#include "dNewtonCollision.h"
-	#include "dNewtonJointBallAndSocket.h"
 	#include "dNewtonJointHinge.h"
 	#include "dNewtonJointPlane.h"
 	#include "dNewtonJointSlider.h"
 	#include "dNewtonJointUniversal.h"
 	#include "dNewtonJointRelational.h"
 	#include "dNewtonJointSlidingHinge.h"
+	#include "dNewtonJointBallAndSocket.h"
 %}
-
-/*
-%rename(__dContainers_Alloc__) dContainersAlloc::operator new;  
-%rename(__dContainers_Freec__) dContainersAlloc::operator delete;  
-
-%rename(__dBezierSpline__Assigment__) dBezierSpline::operator=;  
-%rename(__dBezierSpline__GetKnotArray__) dBezierSpline::GetKnotArray();
-%rename(__dBezierSpline__GetKnotArray__Const) dBezierSpline::GetKnotArray() const; 
-%rename(__dBezierSpline__GetControlPointArray__) dBezierSpline::GetControlPointArray();
-%rename(__dBezierSpline__GetControlPointArray__Const) dBezierSpline::GetControlPointArray() const; 
-
-
-// Wrap Newton callbacks
-%cs_callback(NewtonAllocMemory, NewtonAllocMemoryDelegate)
-%cs_callback(NewtonFreeMemory, NewtonFreeMemoryDelegate)
-*/
-
 
 // Wrap void* to IntPtr
 %typemap(ctype)  void* "void *"
@@ -103,8 +86,6 @@
    } 
 %} 
 
-
-
 // Macro for wrapping C++ callbacks as C# delegates 
 %define %cs_callback(TYPE, CSTYPE) 
     %typemap(ctype) TYPE, TYPE& "void*" 
@@ -119,23 +100,33 @@
 %cs_callback(OnWorldBodyTransfromUpdateCallback, OnWorldBodyTransfromUpdateCallback)
 
 #pragma SWIG nowarn=401
-%rename(__dAlloc_Alloc__) dAlloc::operator new;  
-%rename(__dAlloc_Free__) dAlloc::operator delete;  
+%rename(quatAdd) dQuaternion::operator+;
+%rename(quatSub) dQuaternion::operator-;
+%rename(quatMultiply) dQuaternion::operator*;
 
 %rename(matrixMultiply) dMatrix::operator*;
 %rename(matrixGetElement) dMatrix::operator[](int i);
 %rename(matrixGetElementConst) dMatrix::operator[] (int i) const; 
 
-%rename(quatAdd) dQuaternion::operator+;
-%rename(quatSub) dQuaternion::operator-;
-%rename(quatMultiply) dQuaternion::operator*;
+// intenal functions use by joint library 
+//%rename(__dContainers_Alloc__) dContainersAlloc::operator new;  
+//%rename(__dContainers_Freec__) dContainersAlloc::operator delete;  
+//%rename(__dBezierSpline__Assigment__) dBezierSpline::operator=;  
+//%rename(__dBezierSpline__GetKnotArray__) dBezierSpline::GetKnotArray();
+//%rename(__dBezierSpline__GetKnotArray__Const) dBezierSpline::GetKnotArray() const; 
+//%rename(__dBezierSpline__GetControlPointArray__) dBezierSpline::GetControlPointArray();
+//%rename(__dBezierSpline__GetControlPointArray__Const) dBezierSpline::GetControlPointArray() const; 
+//%cs_callback(NewtonAllocMemory, NewtonAllocMemoryDelegate)
+//%cs_callback(NewtonFreeMemory, NewtonFreeMemoryDelegate)
+
+%rename(__dAlloc_Alloc__) dAlloc::operator new;  
+%rename(__dAlloc_Free__) dAlloc::operator delete;  
 
 %rename(__CustomAlloc_Alloc__) CustomAlloc::operator new;
 %rename(__CustomAlloc_Delete__) CustomAlloc::operator delete;
 
 %rename(__CustomJoint_AngularIntegration_Add__) CustomAlloc::AngularIntegration::operator+;
 %rename(__CustomJoint_AngularIntegration_Sub__) CustomAlloc::AngularIntegration::operator-;
-
 
 // dmath sdk Glue
 %include "dMathDefines.h"
@@ -150,9 +141,9 @@
 %include "dNewtonJoint.h"
 %include "dNewtonCollision.h"
 %include "dNewtonJointPlane.h"
-%include "dNewtonJointBallAndSocket.h"
 %include "dNewtonJointHinge.h"
 %include "dNewtonJointSlider.h"
 %include "dNewtonJointUniversal.h"
 %include "dNewtonJointRelational.h"
 %include "dNewtonJointSlidingHinge.h"
+%include "dNewtonJointBallAndSocket.h"
