@@ -120,7 +120,7 @@ public class NewtonBodyCollision
             if (terrain)
             {
                 NewtonHeighfieldCollider heighfield = gameObject.GetComponent<NewtonHeighfieldCollider>();
-                if (terrain)
+                if (heighfield)
                 {
                     TerrainData data = terrain.terrainData;
                     
@@ -131,11 +131,13 @@ public class NewtonBodyCollision
                     Debug.Log("xxx0 " + treeInstanceArray[0].position);
                     Debug.Log("xxx1 " + treeInstanceArray[1].position);
                     Debug.Log("xxx2 " + treeInstanceArray[2].position);
-                    
+                    //Debug.Log("yyy1 " + treeInstanceArray[0]);
+                    //Debug.Log("yyy2 " + treeInstanceArray[1]);
+
                     TreePrototype[] treeProtoArray = data.treePrototypes;
-                    Debug.Log("xxx1 " + treeProtoArray[treeInstanceArray[0].prototypeIndex].prefab.transform.position);
-                    Debug.Log("xxx1 " + treeProtoArray[treeInstanceArray[1].prototypeIndex].prefab.transform.position);
-                    Debug.Log("xxx1 " + treeProtoArray[treeInstanceArray[2].prototypeIndex].prefab.transform.position);
+                    Debug.Log("xxx3 " + treeProtoArray[treeInstanceArray[0].prototypeIndex].prefab.transform.position);
+                    Debug.Log("xxx4 " + treeProtoArray[treeInstanceArray[1].prototypeIndex].prefab.transform.position);
+                    Debug.Log("xxx5 " + treeProtoArray[treeInstanceArray[2].prototypeIndex].prefab.transform.position);
 /*
                     for (int i = 0; i < treesCount; i ++)
                     {
