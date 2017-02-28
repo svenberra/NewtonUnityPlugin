@@ -126,39 +126,36 @@ public class NewtonBodyCollision
                     
                     int treesCount = data.treeInstanceCount;
                     TreeInstance[] treeInstanceArray = data.treeInstances;
-
-                    Debug.Log("xxx count " + treesCount);
-                    Debug.Log("xxx0 " + treeInstanceArray[0].position);
-                    Debug.Log("xxx1 " + treeInstanceArray[1].position);
-                    Debug.Log("xxx2 " + treeInstanceArray[2].position);
-                    //Debug.Log("yyy1 " + treeInstanceArray[0]);
-                    //Debug.Log("yyy2 " + treeInstanceArray[1]);
-
                     TreePrototype[] treeProtoArray = data.treePrototypes;
-                    Debug.Log("xxx3 " + treeProtoArray[treeInstanceArray[0].prototypeIndex].prefab.transform.position);
-                    Debug.Log("xxx4 " + treeProtoArray[treeInstanceArray[1].prototypeIndex].prefab.transform.position);
-                    Debug.Log("xxx5 " + treeProtoArray[treeInstanceArray[2].prototypeIndex].prefab.transform.position);
-/*
+
+                    Vector3 posit = Vector3.zero;
                     for (int i = 0; i < treesCount; i ++)
                     {
                         TreeInstance tree = treeInstanceArray[i];
-                        Debug.Log("xxx0 " + tree.position);
+                        posit.x = tree.position.x * data.size.x;
+                        posit.y = tree.position.y * data.size.y;
+                        posit.z = tree.position.z * data.size.z;
+
+                        //Debug.Log("xxx0 " + posit);
                         TreePrototype treeProto = treeProtoArray[tree.prototypeIndex];
                         GameObject treeGameObject = treeProto.prefab;
                         foreach (NewtonCollider treeCollider in treeGameObject.GetComponents<NewtonCollider>())
                         {
-                            Debug.Log("xxx1 " + treeCollider.m_posit);
                             dNewtonCollision treeShape = treeCollider.CreateBodyShape(body.m_world);
                             if (treeShape != null)
                             {
                                 ColliderShapePair pair;
+                                Vector3 treePosit = terrain.transform.position + treeCollider.m_posit + posit;
+                                //Debug.Log("xxx1 " + treePosit);
+                                dMatrix matrix = Utils.ToMatrix(treePosit, Quaternion.identity);
+                                treeShape.SetMatrix(matrix);
+                                
                                 pair.m_collider = treeCollider;
                                 pair.m_shape = treeShape;
                                 colliderList.Add(pair);
                             }
                         }
                     }
-                    */
                 }
             }
                 
