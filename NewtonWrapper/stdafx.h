@@ -29,14 +29,14 @@
 #include <dCustomJoint.h>
 #include <dCustomBallAndSocket.h>
 #include <dCustomGear.h>
-#include <CustomPlane.h>
+#include <dCustomPlane.h>
 #include <dCustomHinge.h>
-#include <CustomSlider.h>
-#include <CustomUniversal.h>
+#include <dCustomSlider.h>
+#include <dCustomUniversal.h>
 #include <dCustomHingeActuator.h>
-#include <CustomSlidingContact.h>
-#include <CustomSliderActuator.h>
-#include <CustomUniversalActuator.h>
+#include <dCustomSlidingContact.h>
+#include <dCustomSliderActuator.h>
+#include <dCustomUniversalActuator.h>
 
 #define RAD_TO_DEGREES	(180.0f / 3.141592f)
 #define DEGREES_TO_RAD	(3.141592f / 180.0f)

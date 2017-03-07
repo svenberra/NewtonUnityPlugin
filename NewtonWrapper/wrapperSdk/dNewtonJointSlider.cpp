@@ -32,14 +32,14 @@ dNewtonJointSlider::dNewtonJointSlider(const dMatrix pintAndPivotMatrix, void* c
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 
 	dMatrix matrix(pintAndPivotMatrix * bodyMatrix);
-	CustomSlider* const joint = new CustomSlider(matrix, netwonBody0, netwonBody1);
+	dCustomSlider* const joint = new dCustomSlider(matrix, netwonBody0, netwonBody1);
 	SetJoint(joint);
 }
 
 
 void dNewtonJointSlider::SetLimits(bool enable, dFloat minDistance, dFloat maxDistance)
 {
-	CustomSlider* const joint = (CustomSlider*)m_joint;
+	dCustomSlider* const joint = (dCustomSlider*)m_joint;
 	joint->EnableLimits(enable);
 	if (enable) {
 		joint->SetLimits(dMin(minDistance, 0.0f), dMax(maxDistance, 0.0f));
@@ -48,7 +48,7 @@ void dNewtonJointSlider::SetLimits(bool enable, dFloat minDistance, dFloat maxDi
 
 void dNewtonJointSlider::SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst)
 {
-	CustomSlider* const joint = (CustomSlider*)m_joint;
+	dCustomSlider* const joint = (dCustomSlider*)m_joint;
 	joint->SetAsSpringDamper(enable, dClamp(forceMixing, 0.7f, 0.99f), dAbs(springConst), dAbs(damperConst));
 }
 
@@ -62,32 +62,32 @@ dNewtonJointSliderActuator::dNewtonJointSliderActuator(const dMatrix pintAndPivo
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 
 	dMatrix matrix(pintAndPivotMatrix * bodyMatrix);
-	CustomSliderActuator* const joint = new CustomSliderActuator(matrix, netwonBody0, netwonBody1);
+	dCustomSliderActuator* const joint = new dCustomSliderActuator(matrix, netwonBody0, netwonBody1);
 	SetJoint(joint);
 	joint->SetEnableFlag(true);
 }
 
 dFloat dNewtonJointSliderActuator::GetPosition() const
 {
-	CustomSliderActuator* const joint = (CustomSliderActuator*)m_joint;
+	dCustomSliderActuator* const joint = (dCustomSliderActuator*)m_joint;
 	return joint->GetActuatorPosit();
 }
 
 void dNewtonJointSliderActuator::SetMaxForce(dFloat force)
 {
-	CustomSliderActuator* const joint = (CustomSliderActuator*)m_joint;
+	dCustomSliderActuator* const joint = (dCustomSliderActuator*)m_joint;
 	joint->SetMaxForcePower(dAbs(force));
 }
 
 void dNewtonJointSliderActuator::SetSpeed(dFloat speed)
 {
-	CustomSliderActuator* const joint = (CustomSliderActuator*)m_joint;
+	dCustomSliderActuator* const joint = (dCustomSliderActuator*)m_joint;
 	joint->SetLinearRate(dAbs(speed));
 }
 
 void dNewtonJointSliderActuator::SetTargetPosition(dFloat position, dFloat minLimit, dFloat maxLimit)
 {
-	CustomSliderActuator* const joint = (CustomSliderActuator*)m_joint;
+	dCustomSliderActuator* const joint = (dCustomSliderActuator*)m_joint;
 	joint->SetMinPositLimit(dMin(minLimit, dFloat(0.0f)));
 	joint->SetMaxPositLimit(dMax(maxLimit, dFloat(0.0f)));
 	joint->SetTargetPosit(dClamp (position, joint->GetMinPositLimit(), joint->GetMaxPositLimit()));

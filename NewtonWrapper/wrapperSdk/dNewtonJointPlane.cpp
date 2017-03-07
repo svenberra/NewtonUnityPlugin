@@ -30,7 +30,7 @@ dNewtonJointPlane3DOF::dNewtonJointPlane3DOF(const dVector pivot, const dVector 
 	NewtonBody* const netwonBody1 = (NewtonBody*)body1;
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 
-	CustomPlane3DOF* const joint = new CustomPlane3DOF(bodyMatrix.TransformVector(pivot), bodyMatrix.RotateVector(normal), netwonBody0, netwonBody1);
+	dCustomPlane3DOF* const joint = new dCustomPlane3DOF(bodyMatrix.TransformVector(pivot), bodyMatrix.RotateVector(normal), netwonBody0, netwonBody1);
 	SetJoint(joint);
 }
 
@@ -42,7 +42,7 @@ dNewtonJointPlane5DOF::dNewtonJointPlane5DOF(const dVector pivot, const dVector 
 	NewtonBody* const netwonBody1 = (NewtonBody*)body1;
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 
-	CustomPlane5DOF* const joint = new CustomPlane5DOF(bodyMatrix.TransformVector(pivot), bodyMatrix.RotateVector(normal), netwonBody0, netwonBody1);
+	dCustomPlane5DOF* const joint = new dCustomPlane5DOF(bodyMatrix.TransformVector(pivot), bodyMatrix.RotateVector(normal), netwonBody0, netwonBody1);
 	SetJoint(joint);
 }
 
