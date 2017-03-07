@@ -31,7 +31,7 @@ dNewtonJointBallAndSocket::dNewtonJointBallAndSocket(const dMatrix pintAndPivotM
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 
 	dMatrix matrix(pintAndPivotMatrix * bodyMatrix);
-	CustomBallAndSocket* const joint = new CustomBallAndSocket(matrix, netwonBody0, netwonBody1);
+	dCustomBallAndSocket* const joint = new dCustomBallAndSocket(matrix, netwonBody0, netwonBody1);
 	SetJoint(joint);
 }
 

@@ -64,7 +64,7 @@ dNewtonWorld::dNewtonWorld()
 	NewtonMaterialSetCollisionCallback(m_world, defaultMaterial, defaultMaterial, OnBodiesAABBOverlap, OnContactCollision);
 
 	// set joint serialization call back
-	CustomJoint::Initalize(m_world);
+	dCustomJoint::Initalize(m_world);
 	SetFrameRate(D_DEFAULT_FPS);
 }
 

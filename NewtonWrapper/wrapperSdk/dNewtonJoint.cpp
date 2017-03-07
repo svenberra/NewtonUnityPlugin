@@ -32,7 +32,7 @@ dNewtonJoint::~dNewtonJoint()
 {
 }
 
-void dNewtonJoint::SetJoint(CustomJoint* const joint)
+void dNewtonJoint::SetJoint(dCustomJoint* const joint)
 {
 	m_joint = joint;
 }

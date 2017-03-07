@@ -31,14 +31,14 @@ dNewtonJointHinge::dNewtonJointHinge(const dMatrix pintAndPivotMatrix, void* con
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 
 	dMatrix matrix(pintAndPivotMatrix * bodyMatrix);
-	CustomHinge* const joint = new CustomHinge(matrix, netwonBody0, netwonBody1);
+	dCustomHinge* const joint = new dCustomHinge(matrix, netwonBody0, netwonBody1);
 	SetJoint(joint);
 }
 
 
 void dNewtonJointHinge::SetLimits(bool enable, dFloat minAngle, dFloat maxAngle)
 {
-	CustomHinge* const joint = (CustomHinge*)m_joint;
+	dCustomHinge* const joint = (dCustomHinge*)m_joint;
 	joint->EnableLimits(enable);
 	if (enable) {
 		joint->SetLimits(dMin(minAngle * DEGREES_TO_RAD, 0.0f), dMax(maxAngle * DEGREES_TO_RAD, 0.0f));
@@ -47,7 +47,7 @@ void dNewtonJointHinge::SetLimits(bool enable, dFloat minAngle, dFloat maxAngle)
 
 void dNewtonJointHinge::SetAsSpringDamper(bool enable, dFloat forceMixing, dFloat springConst, dFloat damperConst)
 {
-	CustomHinge* const joint = (CustomHinge*)m_joint;
+	dCustomHinge* const joint = (dCustomHinge*)m_joint;
 	joint->SetAsSpringDamper(enable, dClamp(forceMixing, 0.7f, 0.99f), dAbs(springConst), dAbs(damperConst));
 }
 
@@ -61,32 +61,32 @@ dNewtonJointHingeActuator::dNewtonJointHingeActuator(const dMatrix pintAndPivotM
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
 
 	dMatrix matrix(pintAndPivotMatrix * bodyMatrix);
-	CustomHingeActuator* const joint = new CustomHingeActuator(matrix, netwonBody0, netwonBody1);
+	dCustomHingeActuator* const joint = new dCustomHingeActuator(matrix, netwonBody0, netwonBody1);
 	SetJoint(joint);
 	joint->SetEnableFlag(true);
 }
 
 dFloat dNewtonJointHingeActuator::GetAngle() const
 {
-	CustomHingeActuator* const joint = (CustomHingeActuator*)m_joint;
+	dCustomHingeActuator* const joint = (dCustomHingeActuator*)m_joint;
 	return joint->GetActuatorAngle() * RAD_TO_DEGREES;
 }
 
 void dNewtonJointHingeActuator::SetMaxToque(dFloat torque)
 {
-	CustomHingeActuator* const joint = (CustomHingeActuator*)m_joint;
+	dCustomHingeActuator* const joint = (dCustomHingeActuator*)m_joint;
 	joint->SetMaxForcePower(dAbs(torque));
 }
 
 void dNewtonJointHingeActuator::SetAngularRate(dFloat rate)
 {
-	CustomHingeActuator* const joint = (CustomHingeActuator*)m_joint;
+	dCustomHingeActuator* const joint = (dCustomHingeActuator*)m_joint;
 	joint->SetAngularRate(dAbs(rate) * DEGREES_TO_RAD);
 }
 
 void dNewtonJointHingeActuator::SetTargetAngle(dFloat angle, dFloat minLimit, dFloat maxLimit)
 {
-	CustomHingeActuator* const joint = (CustomHingeActuator*)m_joint;
+	dCustomHingeActuator* const joint = (dCustomHingeActuator*)m_joint;
 	joint->SetMinAngularLimit(dMin(minLimit * DEGREES_TO_RAD, dFloat(0.0f)));
 	joint->SetMaxAngularLimit(dMax(maxLimit * DEGREES_TO_RAD, dFloat(0.0f)));
 	joint->SetTargetAngle(dClamp (angle * DEGREES_TO_RAD, joint->GetMinAngularLimit(), joint->GetMaxAngularLimit()));

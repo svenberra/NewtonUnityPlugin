@@ -119,14 +119,15 @@
 //%cs_callback(NewtonAllocMemory, NewtonAllocMemoryDelegate)
 //%cs_callback(NewtonFreeMemory, NewtonFreeMemoryDelegate)
 
+
 %rename(__dAlloc_Alloc__) dAlloc::operator new;  
 %rename(__dAlloc_Free__) dAlloc::operator delete;  
 
-%rename(__CustomAlloc_Alloc__) CustomAlloc::operator new;
-%rename(__CustomAlloc_Delete__) CustomAlloc::operator delete;
+%rename(__dCustomAlloc_Alloc__) dCustomAlloc::operator new;
+%rename(__dCustomAlloc_Delete__) dCustomAlloc::operator delete;
 
-%rename(__CustomJoint_AngularIntegration_Add__) CustomAlloc::AngularIntegration::operator+;
-%rename(__CustomJoint_AngularIntegration_Sub__) CustomAlloc::AngularIntegration::operator-;
+%rename(__dCustomJoint_AngularIntegration_Add__) dCustomJoint::AngularIntegration::operator+;
+%rename(__dCustomJoint_AngularIntegration_Sub__) dCustomJoint::AngularIntegration::operator-;
 
 // dmath sdk Glue
 %include "dMathDefines.h"
@@ -135,7 +136,7 @@
 %include "dQuaternion.h"
 %include "dLinearAlgebra.h"
 
-%include "CustomAlloc.h"
+%include "dCustomAlloc.h"
 %include "dNewtonBody.h"
 %include "dNewtonWorld.h"
 %include "dNewtonJoint.h"

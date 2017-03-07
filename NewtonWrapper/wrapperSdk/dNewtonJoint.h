@@ -33,8 +33,8 @@ class dNewtonJoint: public dAlloc
 	void SetStiffness(dFloat stiffness);
 
 	protected:
-	void SetJoint(CustomJoint* const joint);
-	CustomJoint* m_joint;
+	void SetJoint(dCustomJoint* const joint);
+	dCustomJoint* m_joint;
 };
 
 #endif

@@ -24,16 +24,16 @@
 #include <dList.h>
 #include <dTree.h>
 
-#include <CustomJointLibraryStdAfx.h>
-#include <CustomAlloc.h>
-#include <CustomJoint.h>
-#include <CustomBallAndSocket.h>
-#include <CustomGear.h>
+#include <dCustomJointLibraryStdAfx.h>
+#include <dCustomAlloc.h>
+#include <dCustomJoint.h>
+#include <dCustomBallAndSocket.h>
+#include <dCustomGear.h>
 #include <CustomPlane.h>
-#include <CustomHinge.h>
+#include <dCustomHinge.h>
 #include <CustomSlider.h>
 #include <CustomUniversal.h>
-#include <CustomHingeActuator.h>
+#include <dCustomHingeActuator.h>
 #include <CustomSlidingContact.h>
 #include <CustomSliderActuator.h>
 #include <CustomUniversalActuator.h>

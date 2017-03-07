@@ -35,7 +35,7 @@ dNewtonJointGear::dNewtonJointGear(dFloat ratio, const dVector pin0, const dVect
 	dVector childPin(bodyMatrix0.RotateVector(dVector(pin0[0], pin0[1], pin0[2], 0.0f)));
 	dVector parentPin(bodyMatrix1.RotateVector(dVector(pin1[0], pin1[1], pin1[2], 0.0f)));
 
-	CustomGear* const gear = new CustomGear(dAbs(ratio), childPin, parentPin, netwonBody0, netwonBody1);
+	dCustomGear* const gear = new dCustomGear(dAbs(ratio), childPin, parentPin, netwonBody0, netwonBody1);
 	SetJoint(gear);
 }
 
@@ -57,6 +57,6 @@ dNewtonJointDifferentialGear::dNewtonJointDifferentialGear(dFloat ratio, const d
 	dVector pin1 (bodyMatrix1.RotateVector(parentPin));
 	dVector pin2 (bodyMatrix2.RotateVector(referencePin));
 
-	CustomDifferentialGear* const gear = new CustomDifferentialGear(ratio, pin0, pin1, pin2, childBody, parentBody, parentReferenceBody);
+	dCustomDifferentialGear* const gear = new dCustomDifferentialGear(ratio, pin0, pin1, pin2, childBody, parentBody, parentReferenceBody);
 	SetJoint(gear);
 }
