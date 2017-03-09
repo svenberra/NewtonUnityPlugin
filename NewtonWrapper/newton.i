@@ -44,6 +44,7 @@
 	#include "dNewtonJointHinge.h"
 	#include "dNewtonJointPlane.h"
 	#include "dNewtonJointSlider.h"
+	#include "dNewtonVehicleManager.h"
 	#include "dNewtonJointUniversal.h"
 	#include "dNewtonJointRelational.h"
 	#include "dNewtonJointSlidingHinge.h"
@@ -140,11 +141,14 @@
 %include "dNewtonBody.h"
 %include "dNewtonWorld.h"
 %include "dNewtonJoint.h"
+
 %include "dNewtonCollision.h"
 %include "dNewtonJointPlane.h"
 %include "dNewtonJointHinge.h"
 %include "dNewtonJointSlider.h"
+%include "dNewtonVehicleManager.h"
 %include "dNewtonJointUniversal.h"
 %include "dNewtonJointRelational.h"
 %include "dNewtonJointSlidingHinge.h"
 %include "dNewtonJointBallAndSocket.h"
+

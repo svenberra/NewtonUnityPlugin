@@ -28,6 +28,7 @@ class NewtonWorld;
 class dNewtonBody;
 class dNewtonCollision;
 class dNewtonCollisionBox;
+class dNewtonVehicleManager;
 
 
 typedef void(*OnWorldBodyTransfromUpdateCallback)();
@@ -98,6 +99,7 @@ class dNewtonWorld: public dAlloc
 	OnWorldUpdateCallback m_onUpdateCallback;
 	OnWorldBodyTransfromUpdateCallback m_onTransformCallback;
 	dMaterialProperties m_defaultMaterial;
+	dNewtonVehicleManager* m_vehicleManager;
 
 	friend class dNewtonBody;
 	friend class dNewtonCollision;

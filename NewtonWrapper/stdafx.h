@@ -37,6 +37,7 @@
 #include <dCustomSlidingContact.h>
 #include <dCustomSliderActuator.h>
 #include <dCustomUniversalActuator.h>
+#include <dCustomVehicleControllerManager.h>
 
 #define RAD_TO_DEGREES	(180.0f / 3.141592f)
 #define DEGREES_TO_RAD	(3.141592f / 180.0f)

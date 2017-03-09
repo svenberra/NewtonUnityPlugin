@@ -23,9 +23,9 @@
 #include "dNewtonBody.h"
 #include "dNewtonWorld.h"
 #include "dNewtonCollision.h"
+#include "dNewtonVehicleManager.h"
 
 #define D_DEFAULT_FPS 120.0f
-
 
 dNewtonWorld::dNewtonWorld()
 	:dAlloc()
@@ -39,6 +39,7 @@ dNewtonWorld::dNewtonWorld()
 	,m_gravity(0.0f, 0.0f, 0.0f, 0.0f)
 	,m_asyncUpdateMode(true)
 	,m_onUpdateCallback(NULL)
+	,m_vehicleManager(NULL)
 {
 	// for two way communication between low and high lever, link the world with this class for 
 	NewtonWorldSetUserData(m_world, this);
@@ -66,11 +67,18 @@ dNewtonWorld::dNewtonWorld()
 	// set joint serialization call back
 	dCustomJoint::Initalize(m_world);
 	SetFrameRate(D_DEFAULT_FPS);
+
+	// create a vehicel controller manage for all vehicles.
+	int materialList[] = { defaultMaterial };
+	// create a vehicle controller manager
+	m_vehicleManager = new dNewtonVehicleManager(m_world, 1, materialList);
 }
 
 dNewtonWorld::~dNewtonWorld()
 {
 	NewtonWaitForUpdateToFinish (m_world);
+
+	delete m_vehicleManager;
 
 	dList<dNewtonCollision*>::dListNode* next;
 	for (dList<dNewtonCollision*>::dListNode* node = m_collisionCache.GetFirst(); node; node = next) {
