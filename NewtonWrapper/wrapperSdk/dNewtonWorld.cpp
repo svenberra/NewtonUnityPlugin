@@ -68,7 +68,7 @@ dNewtonWorld::dNewtonWorld()
 	dCustomJoint::Initalize(m_world);
 	SetFrameRate(D_DEFAULT_FPS);
 
-	// create a vehicel controller manage for all vehicles.
+	// create a vehicle controller manage for all vehicles.
 	int materialList[] = { defaultMaterial };
 	// create a vehicle controller manager
 	m_vehicleManager = new dNewtonVehicleManager(m_world, 1, materialList);
@@ -78,14 +78,24 @@ dNewtonWorld::~dNewtonWorld()
 {
 	NewtonWaitForUpdateToFinish (m_world);
 
-	delete m_vehicleManager;
+	if (m_vehicleManager) {
+		while (m_vehicleManager->GetFirst()) {
+			dCustomControllerManager<dCustomVehicleController>::dListNode* const node = m_vehicleManager->GetFirst();
+			m_vehicleManager->DestroyController(&node->GetInfo());
+		}
+	}
+	m_vehicleManager = NULL;
 
 	dList<dNewtonCollision*>::dListNode* next;
 	for (dList<dNewtonCollision*>::dListNode* node = m_collisionCache.GetFirst(); node; node = next) {
 		next = node->GetNext();
 		node->GetInfo()->DeleteShape();
 	}
-	NewtonDestroy (m_world);
+
+	if (m_world) {
+		NewtonDestroy(m_world);
+		m_world = NULL;
+	}
 }
 
 long long dNewtonWorld::GetMaterialKey(int materialID0, int materialID1) const
