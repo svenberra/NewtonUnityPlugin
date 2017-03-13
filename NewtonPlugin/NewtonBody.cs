@@ -23,8 +23,15 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
+
+abstract public class NewtonBodyInterface: MonoBehaviour
+{
+    abstract public void InitRigidBody();
+}
+
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Rigid Body")]
+//abstract public class NewtonBody: NewtonBodyInterface
 public class NewtonBody: MonoBehaviour
 {
     void Start()
@@ -38,7 +45,7 @@ public class NewtonBody: MonoBehaviour
 
     void OnDestroy()
     {
-        Debug.Log("body");
+        //Debug.Log("body");
         if (m_world != null)
             m_world.UnregisterBody(this);
 
@@ -76,9 +83,10 @@ public class NewtonBody: MonoBehaviour
         }
     }
 
-
+    //public override void InitRigidBody()
     public void InitRigidBody()
     {
+        Debug.Log("body");
         m_collision = new NewtonBodyCollision(this);
         m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
 

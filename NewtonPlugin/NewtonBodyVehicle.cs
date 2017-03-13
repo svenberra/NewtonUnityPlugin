@@ -36,5 +36,12 @@ class NewtonBodyVehicle: NewtonBody
     {
         Debug.Log("vehicle");
     }
+
+    //  public override void InitRigidBody()
+    public void InitRigidBody()
+    {
+        Debug.Log("vehicle");
+        base.InitRigidBody();
+    }
 }
 
