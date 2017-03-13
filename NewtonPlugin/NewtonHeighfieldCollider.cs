@@ -113,6 +113,7 @@ class NewtonHeighfieldCollider: NewtonCollider
         m_elevationHash = hash;
         return state;
     }
+
     public override void OnDrawGizmosSelected()
     {
         if (m_showGizmo)

@@ -32,15 +32,15 @@ class NewtonBodyVehicle: NewtonBody
         m_isScene = false;
     }
 
-    void OnDestroy()
+    public override void OnDestroy()
     {
-        Debug.Log("vehicle");
+        Debug.Log("destroy vehicle");
+        base.OnDestroy();
     }
 
-    //  public override void InitRigidBody()
-    public void InitRigidBody()
+    public override void InitRigidBody()
     {
-        Debug.Log("vehicle");
+        Debug.Log("create vehicle");
         base.InitRigidBody();
     }
 }

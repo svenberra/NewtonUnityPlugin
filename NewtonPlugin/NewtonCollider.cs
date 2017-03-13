@@ -47,7 +47,7 @@ abstract public class NewtonCollider : MonoBehaviour
         }
     }
 
-    virtual public void OnDrawGizmosSelected()
+    public virtual  void OnDrawGizmosSelected()
     {
         if (m_showGizmo)
         {
@@ -80,12 +80,12 @@ abstract public class NewtonCollider : MonoBehaviour
         shape.SetAsTrigger(m_isTrigger);
     }
 
-    virtual public bool IsStatic()
+    public virtual bool IsStatic()
     {
         return false;
     }
 
-    virtual public Vector3 GetScale()
+    public virtual  Vector3 GetScale()
     {
         Vector3 scale = m_scale;
         if (m_inheritTransformScale)

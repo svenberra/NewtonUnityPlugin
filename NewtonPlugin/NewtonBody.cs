@@ -24,14 +24,8 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 
-abstract public class NewtonBodyInterface: MonoBehaviour
-{
-    abstract public void InitRigidBody();
-}
-
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Rigid Body")]
-//abstract public class NewtonBody: NewtonBodyInterface
 public class NewtonBody: MonoBehaviour
 {
     void Start()
@@ -43,7 +37,7 @@ public class NewtonBody: MonoBehaviour
         }
     }
 
-    void OnDestroy()
+    public virtual void OnDestroy()
     {
         //Debug.Log("body");
         if (m_world != null)
@@ -54,7 +48,7 @@ public class NewtonBody: MonoBehaviour
     }
 
     // Update is called once per frame
-    public void OnUpdateTranform()
+    public virtual void OnUpdateTranform()
     {
         IntPtr positionPtr = m_body.GetPosition();
         IntPtr rotationPtr = m_body.GetRotation();
@@ -83,10 +77,8 @@ public class NewtonBody: MonoBehaviour
         }
     }
 
-    //public override void InitRigidBody()
-    public void InitRigidBody()
+    public virtual void InitRigidBody()
     {
-        Debug.Log("body");
         m_collision = new NewtonBodyCollision(this);
         m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
 
@@ -103,7 +95,7 @@ public class NewtonBody: MonoBehaviour
         m_body.SetCenterOfMass(m_centerOfMass.x, m_centerOfMass.y, m_centerOfMass.z);
     }
 
-    public void DestroyRigidBody()
+    public virtual void DestroyRigidBody()
     {
         if (m_body != null)
         {

@@ -28,13 +28,13 @@ public class NewtonBodyScript : MonoBehaviour
 {
     //  I do not know how to get a NewtonBody from a dNetwonBody, ideally a reference can be save with the NewtonBody 
     //  public void OnCollision(NewtonBody otherBody)
-    virtual public void OnCollision(NewtonBody otherBody)
+    public virtual  void OnCollision(NewtonBody otherBody)
     {
         // do nothing
         //Debug.Log("do nothing");
     }
 
-    virtual public void OnApplyForceAndTorque(float timestep)
+    public virtual  void OnApplyForceAndTorque(float timestep)
     {
         // example how to apply force to a game object, for this example do nothing
         //NewtonBody body = GetComponent<NewtonBody>();
