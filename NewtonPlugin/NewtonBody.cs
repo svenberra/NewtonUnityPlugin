@@ -25,11 +25,8 @@ using System.Runtime.InteropServices;
 
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Rigid Body")]
-public class NewtonBody : MonoBehaviour
+public class NewtonBody: MonoBehaviour
 {
-    //public bool Kinematic = false;
-    //public bool KinematicCollidable = false;
-
     void Start()
     {
         var scripts = GetComponents<NewtonBodyScript>();
@@ -41,6 +38,7 @@ public class NewtonBody : MonoBehaviour
 
     void OnDestroy()
     {
+        Debug.Log("body");
         if (m_world != null)
             m_world.UnregisterBody(this);
 
@@ -59,16 +57,42 @@ public class NewtonBody : MonoBehaviour
         transform.rotation = new Quaternion(m_rotationPtr[1], m_rotationPtr[2], m_rotationPtr[3], m_rotationPtr[0]);
     }
 
+    void OnDrawGizmosSelected()
+    {
+        if (m_showGizmo)
+        {
+            Matrix4x4 bodyMatrix = Matrix4x4.identity;
+            bodyMatrix.SetTRS(transform.position, transform.rotation, Vector3.one);
+            Gizmos.matrix = bodyMatrix;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(m_centerOfMass, bodyMatrix.GetColumn(0) * m_gizmoScale);
+
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(m_centerOfMass, bodyMatrix.GetColumn(1) * m_gizmoScale);
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(m_centerOfMass, bodyMatrix.GetColumn(2) * m_gizmoScale);
+        }
+    }
+
+
     public void InitRigidBody()
     {
         m_collision = new NewtonBodyCollision(this);
         m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
 
+        SetCenterOfMass();
+
         var handle = GCHandle.Alloc(this);
         m_body.SetUserData(GCHandle.ToIntPtr(handle));
 
         m_world.RegisterBody(this);
+    }
 
+    void SetCenterOfMass ()
+    {
+        m_body.SetCenterOfMass(m_centerOfMass.x, m_centerOfMass.y, m_centerOfMass.z);
     }
 
     public void DestroyRigidBody()
@@ -143,7 +167,10 @@ public class NewtonBody : MonoBehaviour
     }
 
     public float m_mass = 0.0f;
+    public Vector3 m_centerOfMass = new Vector3 (0.0f, 0.0f, 0.0f);
     public bool m_isScene = false;
+    public bool m_showGizmo = false;
+    public float m_gizmoScale = 1.0f;
     public NewtonWorld m_world;
     public Vector3 m_forceAcc { get; set; }
     public Vector3 m_torqueAcc { get; set; }
@@ -154,5 +181,4 @@ public class NewtonBody : MonoBehaviour
     private float[] m_rotationPtr = new float[4];
 
     internal List<NewtonBodyScript> m_scripts = new List<NewtonBodyScript>();
-
 }

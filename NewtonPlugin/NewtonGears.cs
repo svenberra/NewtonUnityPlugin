@@ -24,7 +24,7 @@ using System.Runtime.InteropServices;
 
 
 [AddComponentMenu("Newton Physics/Joints/Gear")]
-public class NewtonGear : NewtonJoint
+public class NewtonGear: NewtonJoint
 {
     public override void Create()
     {

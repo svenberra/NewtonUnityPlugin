@@ -100,6 +100,24 @@ void* dNewtonBody::GetUserData()
 	return m_userData;
 }
 
+void dNewtonBody::SetCenterOfMass(float com_x, float com_y, float com_z)
+{
+	dVector com;
+	dFloat Ixx;
+	dFloat Iyy;
+	dFloat Izz;
+	dFloat mass;
+
+	NewtonBodyGetMass(m_body, &mass, &Ixx, &Iyy, &Izz);
+	NewtonCollision* const collision = NewtonBodyGetCollision(m_body);
+	NewtonBodySetMassProperties(m_body, mass, NewtonBodyGetCollision(m_body));
+	NewtonBodyGetCentreOfMass (m_body, &com[0]);
+	com.m_x += com_x;
+	com.m_y += com_y;
+	com.m_z += com_z;
+	NewtonBodySetCentreOfMass(m_body, &com[0]);
+}
+
 void dNewtonBody::CalculateBuoyancyForces(const void* plane, void* force, void* torque, float bodyDensity)
 {
 	dFloat Ixx;
