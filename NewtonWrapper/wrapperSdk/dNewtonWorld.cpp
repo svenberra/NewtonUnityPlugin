@@ -171,6 +171,11 @@ void dNewtonWorld::SetBroadPhase(int broadphase)
 	NewtonSelectBroadphaseAlgorithm(m_world, broadphase ? 0 : 1);
 }
 
+dNewtonVehicleManager* dNewtonWorld::GetVehicleManager() const
+{
+	return m_vehicleManager;
+}
+
 const dVector& dNewtonWorld::GetGravity() const
 {
 	return m_gravity;

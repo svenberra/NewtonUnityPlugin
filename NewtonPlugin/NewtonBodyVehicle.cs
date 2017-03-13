@@ -51,5 +51,6 @@ class NewtonBodyVehicle: NewtonBody
         base.InitRigidBody();
     }
 
+    public NewtonBodyWheel[] m_wheels = null;
 }
 

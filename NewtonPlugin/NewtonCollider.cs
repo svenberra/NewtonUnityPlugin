@@ -26,7 +26,7 @@ using System.Runtime.InteropServices;
 
 public delegate void OnDrawFaceCallback(IntPtr points, int vertexCount);
 
-abstract public class NewtonCollider : MonoBehaviour
+abstract public class NewtonCollider: MonoBehaviour
 {
     abstract public dNewtonCollision Create(NewtonWorld world);
 

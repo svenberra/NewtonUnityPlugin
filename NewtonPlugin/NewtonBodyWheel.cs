@@ -1,4 +1,4 @@
-/* 
+﻿/*
 * This software is provided 'as-is', without any express or implied
 * warranty. In no event will the authors be held liable for any damages
 * arising from the use of this software.
@@ -18,22 +18,16 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef _D_NEWTON_VEHICLE_H_
-#define _D_NEWTON_VEHICLE_H_
+using System;
+using UnityEngine;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
-#include "stdafx.h"
-#include "dAlloc.h"
-#include "dNewtonBody.h"
-
-
-class dNewtonVehicle: public dNewtonDynamicBody
+[DisallowMultipleComponent]
+[AddComponentMenu("Newton Physics/Vehicle/Rigid Body Wheel")]
+class NewtonBodyWheel: MonoBehaviour
 {
-	public:
-	dNewtonVehicle(dNewtonWorld* const world, dNewtonCollision* const collision, dMatrix matrix, dFloat mass);
-	~dNewtonVehicle();
 
-	dCustomVehicleController* m_controller;
-};
+    public NewtonBodyVehicle m_owner = null;
+}
 
-
-#endif

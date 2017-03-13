@@ -20,6 +20,7 @@
 
 
 #include "stdafx.h"
+#include "dNewtonWorld.h"
 #include "dNewtonVehicle.h"
 #include "dNewtonVehicleManager.h"
 
@@ -27,9 +28,17 @@
 dNewtonVehicle::dNewtonVehicle(dNewtonWorld* const world, dNewtonCollision* const collision, dMatrix matrix, dFloat mass)
 	:dNewtonDynamicBody(world, collision, matrix, mass)
 {
+	dNewtonVehicleManager* const vehicleManager = world->GetVehicleManager();
+
+	dMatrix vehicleFrame(dGetIdentityMatrix());
+	NewtonApplyForceAndTorque forceCallback = NewtonBodyGetForceAndTorqueCallback(m_body);
+
+	dFloat gravidyMag = dSqrt(world->GetGravity().DotProduct3(world->GetGravity()));
+	m_controller = vehicleManager->CreateVehicle(m_body, vehicleFrame, forceCallback, this, gravidyMag);
 }
 
 dNewtonVehicle::~dNewtonVehicle()
 {
-
+	dNewtonVehicleManager* const vehicleManager = (dNewtonVehicleManager*) m_controller->GetManager();
+	vehicleManager->DestroyController(m_controller);
 }
