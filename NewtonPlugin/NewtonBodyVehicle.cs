@@ -38,10 +38,18 @@ class NewtonBodyVehicle: NewtonBody
         base.OnDestroy();
     }
 
+    protected override void CreateBodyAndCollision()
+    {
+        Debug.Log("create actual vehicle");
+        m_collision = new NewtonBodyCollision(this);
+        m_body = new dNewtonVehicle(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
+    }
+
     public override void InitRigidBody()
     {
-        Debug.Log("create vehicle");
+        Debug.Log("init vehicle");
         base.InitRigidBody();
     }
+
 }
 

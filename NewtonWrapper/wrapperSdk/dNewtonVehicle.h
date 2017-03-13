@@ -18,19 +18,19 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef _D_NEWTON_VEHICLE_MANAGER_H_
-#define _D_NEWTON_VEHICLE_MANAGER_H_
+#ifndef _D_NEWTON_VEHICLE_H_
+#define _D_NEWTON_VEHICLE_H_
 
 #include "stdafx.h"
 #include "dAlloc.h"
+#include "dNewtonBody.h"
 
-class dNewtonWorld;
 
-class dNewtonVehicleManager: public dCustomVehicleControllerManager
+class dNewtonVehicle: public dNewtonDynamicBody
 {
 	public:
-	dNewtonVehicleManager(NewtonWorld* const world, int materialsCount, int* const materialList);
-	~dNewtonVehicleManager();
+	dNewtonVehicle(dNewtonWorld* const world, dNewtonCollision* const collision, dMatrix matrix, dFloat mass);
+	~dNewtonVehicle();
 };
 
 

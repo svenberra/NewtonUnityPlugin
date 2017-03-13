@@ -45,6 +45,9 @@
     <ClCompile Include="wrapperSdk\dNewtonVehicleManager.cpp">
       <Filter>wrapperSdk</Filter>
     </ClCompile>
+    <ClCompile Include="wrapperSdk\dNewtonVehicle.cpp">
+      <Filter>wrapperSdk</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h" />
@@ -89,6 +92,9 @@
       <Filter>wrapperSdk</Filter>
     </ClInclude>
     <ClInclude Include="wrapperSdk\dNewtonVehicleManager.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapperSdk\dNewtonVehicle.h">
       <Filter>wrapperSdk</Filter>
     </ClInclude>
   </ItemGroup>

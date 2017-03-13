@@ -79,8 +79,9 @@ public class NewtonBody: MonoBehaviour
 
     public virtual void InitRigidBody()
     {
-        m_collision = new NewtonBodyCollision(this);
-        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
+        //m_collision = new NewtonBodyCollision(this);
+        //m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
+        CreateBodyAndCollision();
 
         SetCenterOfMass();
 
@@ -166,6 +167,13 @@ public class NewtonBody: MonoBehaviour
         }
     }
 
+    protected virtual void CreateBodyAndCollision()
+    {
+        m_collision = new NewtonBodyCollision(this);
+        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
+    }
+
+
     public float m_mass = 0.0f;
     public Vector3 m_centerOfMass = new Vector3 (0.0f, 0.0f, 0.0f);
     public bool m_isScene = false;
@@ -176,7 +184,7 @@ public class NewtonBody: MonoBehaviour
     public Vector3 m_torqueAcc { get; set; }
 
     internal dNewtonBody m_body = null;
-    private NewtonBodyCollision m_collision = null;
+    internal NewtonBodyCollision m_collision = null;
     private float[] m_positionPtr = new float[3];
     private float[] m_rotationPtr = new float[4];
 
