@@ -49,8 +49,19 @@ class NewtonBodyVehicle: NewtonBody
     {
         Debug.Log("init vehicle");
         base.InitRigidBody();
+
+        // initialize all wheels
+        foreach (NewtonBodyWheel wheel in m_wheels)
+        {
+            Debug.Log("xxxxxxxxxx0 ");
+            if ((wheel != null) && (wheel.m_owner == this))
+            {
+                wheel.InitWheel();
+            }
+        }
     }
 
+    [Header("vehicle chassis data")]
     public NewtonBodyWheel[] m_wheels = null;
 }
 

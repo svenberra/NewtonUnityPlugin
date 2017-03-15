@@ -46,6 +46,28 @@ class NewtonBodyWheel: NewtonBody
         m_shape = GetComponent<NewtonWheelCollider>();
         m_shape.m_scale= new Vector3(1.0f, 1.0f, 1.0f);
     }
+/*
+    protected override void CreateBodyAndCollision()
+    {
+        Debug.Log("create actual wheel");
+        m_collision = new NewtonBodyCollision(this);
+        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
+    }
+*/
+
+    public void InitWheel ()
+    {
+        Debug.Log("xxxx0 create actual wheel");
+    }
+
+    public override void InitRigidBody()
+    {
+        if (m_owner == null)
+        {
+            // if the tire is not attached to a vehicle the this is simple rigid body 
+            base.InitRigidBody();
+        }
+    }
 
     [Header ("wheel data")]
     public NewtonBodyVehicle m_owner = null;

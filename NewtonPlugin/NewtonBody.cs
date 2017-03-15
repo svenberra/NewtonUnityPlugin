@@ -79,8 +79,6 @@ public class NewtonBody: MonoBehaviour
 
     public virtual void InitRigidBody()
     {
-        //m_collision = new NewtonBodyCollision(this);
-        //m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
         CreateBodyAndCollision();
 
         SetCenterOfMass();
