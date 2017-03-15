@@ -42,3 +42,9 @@ dNewtonVehicle::~dNewtonVehicle()
 	dNewtonVehicleManager* const vehicleManager = (dNewtonVehicleManager*) m_controller->GetManager();
 	vehicleManager->DestroyController(m_controller);
 }
+
+
+void dNewtonVehicle::AddTire(dTireData tire)
+{
+
+}

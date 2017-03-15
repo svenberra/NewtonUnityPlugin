@@ -55,10 +55,6 @@ class NewtonBodyWheel: NewtonBody
     }
 */
 
-    public void InitWheel ()
-    {
-        Debug.Log("xxxx0 create actual wheel");
-    }
 
     public override void InitRigidBody()
     {

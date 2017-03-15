@@ -82,18 +82,6 @@
     <Reference Include="NewtonPlugin">
       <HintPath>Assets\Plugins\NewtonPlugin.dll</HintPath>
     </Reference>
-    <Reference Include="ProBuilderCore-Unity5">
-      <HintPath>Assets\ProCore\ProBuilder\Classes\ProBuilderCore-Unity5.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderMeshOps-Unity5">
-      <HintPath>Assets\ProCore\ProBuilder\Classes\ProBuilderMeshOps-Unity5.dll</HintPath>
-    </Reference>
-    <Reference Include="KDTree">
-      <HintPath>Assets\ProCore\ProBuilder\Classes\ClassesLib\KDTree.dll</HintPath>
-    </Reference>
-    <Reference Include="Triangle">
-      <HintPath>Assets\ProCore\ProBuilder\Classes\ClassesLib\Triangle.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BodySpawner.cs" />

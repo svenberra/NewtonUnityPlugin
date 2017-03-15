@@ -51,12 +51,15 @@ class NewtonBodyVehicle: NewtonBody
         base.InitRigidBody();
 
         // initialize all wheels
+        dNewtonVehicle vehicle = (dNewtonVehicle)m_body;
+
+        dTireData data = new dTireData();
         foreach (NewtonBodyWheel wheel in m_wheels)
         {
-            Debug.Log("xxxxxxxxxx0 ");
             if ((wheel != null) && (wheel.m_owner == this))
             {
-                wheel.InitWheel();
+                //wheel.InitWheel();
+                vehicle.AddTire(data);
             }
         }
     }

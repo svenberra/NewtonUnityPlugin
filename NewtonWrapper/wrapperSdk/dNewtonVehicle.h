@@ -26,11 +26,21 @@
 #include "dNewtonBody.h"
 
 
+class dTireData
+{
+	public:
+	dMatrix matrix;
+	dFloat mass;
+};
+
 class dNewtonVehicle: public dNewtonDynamicBody
 {
 	public:
+
 	dNewtonVehicle(dNewtonWorld* const world, dNewtonCollision* const collision, dMatrix matrix, dFloat mass);
 	~dNewtonVehicle();
+
+	void AddTire(dTireData tire);
 
 	dCustomVehicleController* m_controller;
 };
