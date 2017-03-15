@@ -51,6 +51,7 @@ abstract public class NewtonCollider: MonoBehaviour
     {
         if (m_showGizmo)
         {
+
             ValidateEditorShape();
             if (m_editorShape != null)
             {
@@ -61,14 +62,17 @@ abstract public class NewtonCollider: MonoBehaviour
                 {
                     bodyTransform = bodyTransform.parent;
                 }
-                
-                Gizmos.matrix = Matrix4x4.TRS(bodyTransform.position, bodyTransform.rotation, Vector3.one);
-                Gizmos.color = Color.yellow;
+           
+                if (bodyTransform != null)
+                {
+                    Gizmos.matrix = Matrix4x4.TRS(bodyTransform.position, bodyTransform.rotation, Vector3.one);
+                    Gizmos.color = Color.yellow;
 
-                Camera camera = Camera.current;
-                Matrix4x4 matrix = Matrix4x4.Inverse(camera.worldToCameraMatrix * Gizmos.matrix);
-                Vector4 eyepoint = matrix.GetColumn(3);
-                m_editorShape.DebugRender(OnDrawFace, new dVector(eyepoint.x, eyepoint.y, eyepoint.z));
+                    Camera camera = Camera.current;
+                    Matrix4x4 matrix = Matrix4x4.Inverse(camera.worldToCameraMatrix * Gizmos.matrix);
+                    Vector4 eyepoint = matrix.GetColumn(3);
+                    m_editorShape.DebugRender(OnDrawFace, new dVector(eyepoint.x, eyepoint.y, eyepoint.z));
+                }
             }
         }
     }

@@ -43,7 +43,6 @@ class NewtonBodyWheel: NewtonBody
     void Start()
     {
         m_isScene = false;
-        Debug.Log("xxxx ");
         m_shape = GetComponent<NewtonWheelCollider>();
         m_shape.m_scale= new Vector3(1.0f, 1.0f, 1.0f);
     }
