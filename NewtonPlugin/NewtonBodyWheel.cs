@@ -23,11 +23,49 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-[DisallowMultipleComponent]
-[AddComponentMenu("Newton Physics/Vehicle/Rigid Body Wheel")]
-class NewtonBodyWheel: MonoBehaviour
-{
 
+[DisallowMultipleComponent]
+class NewtonWheelCollider: NewtonChamferedCylinderCollider
+{
+    public override dNewtonCollision Create(NewtonWorld world)
+    {
+        dNewtonCollision shape = base.Create(world);
+        m_scale.y = 1.0f;
+        return shape;
+    }
+}
+
+[DisallowMultipleComponent]
+[RequireComponent(typeof(NewtonWheelCollider))]
+[AddComponentMenu("Newton Physics/Vehicle/Rigid Body Wheel")]
+class NewtonBodyWheel: NewtonBody
+{
+    void Start()
+    {
+        m_isScene = false;
+        Debug.Log("xxxx ");
+        m_shape = GetComponent<NewtonWheelCollider>();
+        m_shape.m_scale= new Vector3(1.0f, 1.0f, 1.0f);
+    }
+
+    [Header ("wheel data")]
     public NewtonBodyVehicle m_owner = null;
+    public float m_pivotOffset = 0.0f;
+    [Range(0.0f, 45.0f)]
+    public float m_maxSteeringAngle = 20.0f;
+    public float m_suspesionDamping = 1000.0f;
+    public float m_suspesionSpring = 100.0f;
+    public float m_suspesionlenght = 0.3f;
+    [Range(0.0f, 1.0f)]
+    public float m_lateralStiffness = 0.5f;
+    [Range(0.0f, 1.0f)]
+    public float m_longitudialStiffness = 0.5f;
+    [Range(0.0f, 1.0f)]
+    public float m_aligningMomentTrail = 0.5f;
+    [Range(0, 2)]
+    public int m_suspentionType = 1;
+    public bool m_hasFender = false;
+    //  void* m_userData;
+    NewtonWheelCollider m_shape;
 }
 

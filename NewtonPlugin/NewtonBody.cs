@@ -173,7 +173,7 @@ public class NewtonBody: MonoBehaviour
         m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
     }
 
-
+    [Header("rigid body data")]
     public float m_mass = 0.0f;
     public Vector3 m_centerOfMass = new Vector3 (0.0f, 0.0f, 0.0f);
     public bool m_isScene = false;

@@ -55,13 +55,13 @@ public abstract class NewtonColliderEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        EditorGUILayout.PropertyField(m_posProp, new GUIContent("Position"));
+        EditorGUILayout.PropertyField(m_rotProp, new GUIContent("Rotation"));
+        EditorGUILayout.PropertyField(m_scaleProp, new GUIContent("Scale"));
+        EditorGUILayout.PropertyField(m_inheritScaleProp, new GUIContent("Inherit Scale"));
         EditorGUILayout.PropertyField(m_showGizmoProp, new GUIContent("Show Gizmo"));
         EditorGUILayout.PropertyField(m_isTriggerProp, new GUIContent("Is Trigger"));
         EditorGUILayout.PropertyField(m_materialProp, new GUIContent("Material"));
-        EditorGUILayout.PropertyField(m_posProp, new GUIContent("Position"));
-        EditorGUILayout.PropertyField(m_rotProp, new GUIContent("Rotation"));
-        EditorGUILayout.PropertyField(m_inheritScaleProp, new GUIContent("Inherit Scale"));
-        EditorGUILayout.PropertyField(m_scaleProp, new GUIContent("Scale"));
         
         serializedObject.ApplyModifiedProperties();
     }
