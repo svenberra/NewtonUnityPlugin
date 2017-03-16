@@ -46,15 +46,21 @@ class NewtonBodyWheel: NewtonBody
         m_shape = GetComponent<NewtonWheelCollider>();
         m_shape.m_scale= new Vector3(1.0f, 1.0f, 1.0f);
     }
-/*
-    protected override void CreateBodyAndCollision()
+    /*
+        protected override void CreateBodyAndCollision()
+        {
+            Debug.Log("create actual wheel");
+            m_collision = new NewtonBodyCollision(this);
+            m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
+        }
+    */
+    public void CreateTire()
     {
         Debug.Log("create actual wheel");
-        m_collision = new NewtonBodyCollision(this);
-        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
-    }
-*/
 
+        dTireData data = new dTireData();
+        m_wheel = new dNewtonWheel((dNewtonVehicle) m_owner.m_body, data);
+    }
 
     public override void InitRigidBody()
     {
@@ -82,7 +88,8 @@ class NewtonBodyWheel: NewtonBody
     [Range(0, 2)]
     public int m_suspentionType = 1;
     public bool m_hasFender = false;
-    //  void* m_userData;
-    NewtonWheelCollider m_shape;
+    //void* m_userData;
+    NewtonWheelCollider m_shape = null;
+    dNewtonWheel m_wheel = null;
 }
 

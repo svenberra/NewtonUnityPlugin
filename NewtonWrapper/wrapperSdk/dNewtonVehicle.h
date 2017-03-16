@@ -25,12 +25,22 @@
 #include "dAlloc.h"
 #include "dNewtonBody.h"
 
+class dNewtonVehicle;
 
 class dTireData
 {
 	public:
 	dMatrix matrix;
 	dFloat mass;
+};
+
+class dNewtonWheel: public dAlloc
+{
+	public:
+	dNewtonWheel(dNewtonVehicle* const owner, dTireData tire);
+	~dNewtonWheel();
+	
+	dCustomVehicleController::dBodyPartTire* m_wheel;
 };
 
 class dNewtonVehicle: public dNewtonDynamicBody
@@ -40,7 +50,7 @@ class dNewtonVehicle: public dNewtonDynamicBody
 	dNewtonVehicle(dNewtonWorld* const world, dNewtonCollision* const collision, dMatrix matrix, dFloat mass);
 	~dNewtonVehicle();
 
-	void AddTire(dTireData tire);
+//	dCustomVehicleController::dBodyPartTire* AddTire(dTireData tire);
 
 	dCustomVehicleController* m_controller;
 };

@@ -44,7 +44,14 @@ dNewtonVehicle::~dNewtonVehicle()
 }
 
 
-void dNewtonVehicle::AddTire(dTireData tire)
+
+dNewtonWheel::dNewtonWheel(dNewtonVehicle* const owner, dTireData tireData)
+	:dAlloc()
+{
+
+}
+
+dNewtonWheel::~dNewtonWheel()
 {
 
 }
