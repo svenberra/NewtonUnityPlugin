@@ -58,8 +58,21 @@ class NewtonBodyWheel: NewtonBody
     {
         Debug.Log("create actual wheel");
 
+        var handle = GCHandle.Alloc(this);
+
         dTireData data = new dTireData();
+        data.m_owner = GCHandle.ToIntPtr(handle);
         m_wheel = new dNewtonWheel((dNewtonVehicle) m_owner.m_body, data);
+    }
+
+    public void DestroyTire()
+    {
+        Debug.Log("destroy actual wheel");
+        var handle = GCHandle.FromIntPtr(m_wheel.GetUserData());
+        handle.Free();
+
+        m_wheel.Dispose();
+        m_wheel = null;
     }
 
     public override void InitRigidBody()

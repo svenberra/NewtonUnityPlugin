@@ -35,6 +35,15 @@ class NewtonBodyVehicle: NewtonBody
     public override void OnDestroy()
     {
         Debug.Log("destroy vehicle");
+
+        foreach (NewtonBodyWheel wheel in m_wheels)
+        {
+            if ((wheel != null) && (wheel.m_owner == this))
+            {
+                wheel.DestroyTire();
+            }
+        }
+
         base.OnDestroy();
     }
 

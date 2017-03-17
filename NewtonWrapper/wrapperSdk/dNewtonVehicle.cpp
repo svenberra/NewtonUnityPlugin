@@ -47,11 +47,16 @@ dNewtonVehicle::~dNewtonVehicle()
 
 dNewtonWheel::dNewtonWheel(dNewtonVehicle* const owner, dTireData tireData)
 	:dAlloc()
+	,m_owner(tireData.m_owner)
 {
 
 }
 
 dNewtonWheel::~dNewtonWheel()
 {
+}
 
+void* dNewtonWheel::GetUserData()
+{
+	return m_owner;
 }

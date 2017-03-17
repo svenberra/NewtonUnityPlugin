@@ -32,6 +32,7 @@ class dTireData
 	public:
 	dMatrix matrix;
 	dFloat mass;
+	void* m_owner;
 };
 
 class dNewtonWheel: public dAlloc
@@ -39,8 +40,12 @@ class dNewtonWheel: public dAlloc
 	public:
 	dNewtonWheel(dNewtonVehicle* const owner, dTireData tire);
 	~dNewtonWheel();
+
+	void* GetUserData();
 	
+	private:
 	dCustomVehicleController::dBodyPartTire* m_wheel;
+	void* m_owner;
 };
 
 class dNewtonVehicle: public dNewtonDynamicBody
