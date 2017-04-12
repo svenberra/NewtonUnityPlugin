@@ -8,11 +8,11 @@ public class ExcavatorControl : MonoBehaviour {
 	void Start ()
     {
         // get the element form main body
-        //m_baseBody = transform.GetComponent<NewtonBody>();
-        //m_baseRotator = transform.GetComponent<NewtonHingeActuator>();
-
         m_baseBody = transform.Find("ExcavatorBody").GetComponent<NewtonBody>();
+        m_excavatorBoom = transform.Find("ExcavatorBoom").GetComponent<NewtonBody>();
+
         m_baseRotator = transform.Find("ExcavatorBody").GetComponent<NewtonHingeActuator>();
+        m_excavatorBoomRotator = transform.Find("ExcavatorBoom").GetComponent<NewtonHingeActuator>();
     }
 
     void OnGUI()
@@ -25,12 +25,24 @@ public class ExcavatorControl : MonoBehaviour {
             m_baseBody.SleepState = false;
             m_baseRotator.TargetAngle = m_baseAngle;
         }
+
+        var oldBoomAngle = m_boomAngle;
+        GUI.Label(new Rect(25, 54, 100, 30), "Boom rotation");
+        m_boomAngle = GUI.HorizontalSlider(new Rect(120, 60, 250, 30), m_boomAngle, -30.0F, 30.0F);
+        if (oldBoomAngle != m_boomAngle)
+        {
+            m_excavatorBoom.SleepState = false;
+            m_excavatorBoomRotator.TargetAngle = m_boomAngle;
+        }
     }
 
     NewtonBody m_baseBody = null;
+    NewtonBody m_excavatorBoom = null;
     NewtonHingeActuator m_baseRotator = null;
+    NewtonHingeActuator m_excavatorBoomRotator = null;
 
     private float m_baseAngle = 0.0f;
+    private float m_boomAngle = 0.0f;
 }
 
 
