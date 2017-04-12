@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\CameraFollowBall.cs" />
     <Compile Include="Assets\Scripts\DemoFirstScript.cs" />
     <Compile Include="Assets\Scripts\DontTouchTheFloor.cs" />
+    <Compile Include="Assets\Scripts\ExcavatorControl.cs" />
     <Compile Include="Assets\Scripts\HingeRotate.cs" />
     <Compile Include="Assets\Scripts\PlayerBallMovementController.cs" />
     <Compile Include="Assets\Scripts\PlayerDriver.cs" />
