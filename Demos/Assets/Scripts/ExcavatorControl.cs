@@ -28,7 +28,7 @@ public class ExcavatorControl : MonoBehaviour {
 
         var oldBoomAngle = m_boomAngle;
         GUI.Label(new Rect(25, 54, 100, 30), "Boom rotation");
-        m_boomAngle = GUI.HorizontalSlider(new Rect(120, 60, 250, 30), m_boomAngle, -30.0F, 30.0F);
+        m_boomAngle = GUI.HorizontalSlider(new Rect(120, 60, 250, 30), m_boomAngle, -20.0F, 20.0F);
         if (oldBoomAngle != m_boomAngle)
         {
             m_excavatorBoom.SleepState = false;
