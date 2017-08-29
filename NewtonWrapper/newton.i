@@ -102,6 +102,17 @@
 %cs_callback(OnWorldBodyTransfromUpdateCallback, OnWorldBodyTransfromUpdateCallback)
 
 #pragma SWIG nowarn=401
+#pragma SWIG nowarn=516
+
+%rename(spatialVectorAdd) dSpatialVector::operator+;
+%rename(spatialVectorSub) dSpatialVector::operator-;
+%rename(spatialVectorMul) dSpatialVector::operator*;
+%rename(spatialVectorGetElement) dSpatialVector::operator[](int i);
+%rename(spatialVectorGetElement) dSpatialVector::operator[](int i) const;
+
+%rename(spatialMatrixGetElement) dSpatialMatrix::operator[](int i);
+%rename(spatialMatrixGetElement) dSpatialMatrix::operator[](int i) const;
+
 %rename(quatAdd) dQuaternion::operator+;
 %rename(quatSub) dQuaternion::operator-;
 %rename(quatMultiply) dQuaternion::operator*;

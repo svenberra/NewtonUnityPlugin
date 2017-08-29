@@ -61,15 +61,15 @@ class NewtonBodyWheel: NewtonBody
         var handle = GCHandle.Alloc(this);
 
         dTireData data = new dTireData();
-        data.m_owner = GCHandle.ToIntPtr(handle);
+        //data.m_owner = GCHandle.ToIntPtr(handle);
         m_wheel = new dNewtonWheel((dNewtonVehicle) m_owner.m_body, data);
     }
 
     public void DestroyTire()
     {
         Debug.Log("destroy actual wheel");
-        var handle = GCHandle.FromIntPtr(m_wheel.GetUserData());
-        handle.Free();
+        //var handle = GCHandle.FromIntPtr(m_wheel.GetUserData());
+        //handle.Free();
 
         m_wheel.Dispose();
         m_wheel = null;

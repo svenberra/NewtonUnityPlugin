@@ -55,15 +55,15 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.\;wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;wrapperSdk;$(NEWTON_DYNAMICS)\sdk\dMath;$(NEWTON_DYNAMICS)\sdk\dgNewton;$(NEWTON_DYNAMICS)\sdk\dContainers;$(NEWTON_DYNAMICS)\sdk\dCustomJoints;$(NEWTON_DYNAMICS)\sdk\dgTimeTracker</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>dMath_d.lib;dContainers_d.lib;dCustomJoints_d.lib;core_d.lib;physics_d.lib;newton_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dMath\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dCustomJoints\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\core\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\physics\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\newton\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dgCore_d.lib;dMath_d.lib;newton_d.lib;dgPhysics_d.lib;dContainers_d.lib;dCustomJoints_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\$(platform)\dgCore\$(Configuration);$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\$(platform)\newton\$(Configuration);$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\$(platform)\dgPhysics\$(Configuration);$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\$(platform)\dMath\$(Configuration);$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\$(platform)\dCustomJoints\$(Configuration)</AdditionalLibraryDirectories>
       <ShowProgress>NotSet</ShowProgress>
     </Link>
     <PostBuildEvent>
@@ -88,7 +88,7 @@ xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Com
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NEWTONWRAPPER_EXPORTS;_NEWTON_STATIC_LIB;_CUSTOM_JOINTS_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.\;wrapperSdk;$(NEWTON_DYNAMICS)\packages\dMath;$(NEWTON_DYNAMICS)\packages\dContainers;$(NEWTON_DYNAMICS)\packages\dCustomJoints;$(NEWTON_DYNAMICS)\coreLibrary_300\source\newton;$(NEWTON_DYNAMICS)\packages\thirdParty\timeTracker</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;wrapperSdk;$(NEWTON_DYNAMICS)\sdk\dMath;$(NEWTON_DYNAMICS)\sdk\dgNewton;$(NEWTON_DYNAMICS)\sdk\dContainers;$(NEWTON_DYNAMICS)\sdk\dCustomJoints;$(NEWTON_DYNAMICS)\sdk\dgTimeTracker</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -96,8 +96,8 @@ xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Com
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dMath\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\packages\projects\visualStudio_2015_static_mt\$(platform)\dCustomJoints\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\core\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\physics\$(Configuration);$(NEWTON_DYNAMICS)\coreLibrary_300\projects\windows\project_vs2015_static_mt\$(platform)\newton\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>dMath.lib;dContainers.lib;dCustomJoints.lib;core.lib;physics.lib;newton.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\$(platform)\dgCore\$(Configuration);$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\$(platform)\newton\$(Configuration);$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\$(platform)\dgPhysics\$(Configuration);$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\$(platform)\dMath\$(Configuration);$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\$(platform)\dContainers\$(Configuration);$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\$(platform)\dCustomJoints\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dgCore.lib;dMath.lib;newton.lib;dgPhysics.lib;dContainers.lib;dCustomJoints.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ShowProgress>NotSet</ShowProgress>
     </Link>
     <PostBuildEvent>
@@ -167,8 +167,8 @@ xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Com
   <ItemGroup>
     <CustomBuild Include="newton.i">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\swigwin-3.0.8\swig.exe -IwrapperSdk -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\swigwin-3.0.8\swig.exe -IwrapperSdk -I$(NEWTON_DYNAMICS)\packages\dMath -I$(NEWTON_DYNAMICS)\packages\dContainers -I$(NEWTON_DYNAMICS)\packages\dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\swigwin-3.0.8\swig.exe -IwrapperSdk -I$(NEWTON_DYNAMICS)/sdk/dMath -I$(NEWTON_DYNAMICS)/sdk/dContainers -I$(NEWTON_DYNAMICS)/sdk/dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\swigwin-3.0.8\swig.exe -IwrapperSdk -I$(NEWTON_DYNAMICS)/sdk/dMath -I$(NEWTON_DYNAMICS)/sdk/dContainers -I$(NEWTON_DYNAMICS)/sdk/dCustomJoints -c++ -csharp -outdir ../NewtonPlugin -outfile %(Filename)_wrap.cs  %(Filename)%(Extension)</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">building newton sdk csharp wraper %(Filename)_wrap.cs</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building newton sdk csharp wraper %(Filename)_wrap.cs</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).cxx</Outputs>

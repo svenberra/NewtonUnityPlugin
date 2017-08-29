@@ -34,7 +34,9 @@ dNewtonVehicle::dNewtonVehicle(dNewtonWorld* const world, dNewtonCollision* cons
 	NewtonApplyForceAndTorque forceCallback = NewtonBodyGetForceAndTorqueCallback(m_body);
 
 	dFloat gravidyMag = dSqrt(world->GetGravity().DotProduct3(world->GetGravity()));
-	m_controller = vehicleManager->CreateVehicle(m_body, vehicleFrame, forceCallback, this, gravidyMag);
+//	m_controller = vehicleManager->CreateVehicle(m_body, vehicleFrame, forceCallback, this, gravidyMag);
+	dAssert(0);
+	m_controller = NULL;
 }
 
 dNewtonVehicle::~dNewtonVehicle()

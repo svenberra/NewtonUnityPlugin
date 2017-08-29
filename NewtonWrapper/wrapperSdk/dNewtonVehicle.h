@@ -44,7 +44,7 @@ class dNewtonWheel: public dAlloc
 	void* GetUserData();
 	
 	private:
-	dCustomVehicleController::dBodyPartTire* m_wheel;
+//	dCustomVehicleController::dBodyPartTire* m_wheel;
 	void* m_owner;
 };
 
