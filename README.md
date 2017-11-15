@@ -10,7 +10,7 @@ The best option is to clone Newton from the following repository.
 https://github.com/MADEAPPS/newton-dynamics/
 
 Open the following solution file.
-<newton install dir >\packages\projects\visualStudio_2015_static_mt\build.sln
+&lt;newton install dir&gt;\sdk\projects\visualStudio_2015_static_mt\build.sln
 
 Choose Release & x64 and build the solution.
 
@@ -24,7 +24,7 @@ For now, choose Release and x64
 
 ### NewtonPlugin & NewtonPluginEditor
 NewtonPlugin & NewtonPluginEditor requires references to the assemblies UnityEngine.dll & UnityEditor.dll which you will find where Unity 3D is installed.
-<Unity Installdir>\Editor\Data\Managed\
+&lt;Unity Installdir&gt;\Editor\Data\Managed\
 Copy them over to the folder PluginBin to make sure you compile the plugin with the same dlls Unity are using. 
 
 
