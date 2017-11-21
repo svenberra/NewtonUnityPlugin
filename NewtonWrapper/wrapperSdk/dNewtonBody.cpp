@@ -100,6 +100,30 @@ void* dNewtonBody::GetUserData()
 	return m_userData;
 }
 
+void* dNewtonBody::GetVelocity()
+{
+	NewtonBodyGetVelocity(m_body, &m_velocity.m_x);
+	return &m_velocity;
+}
+
+void* dNewtonBody::GetOmega()
+{
+	NewtonBodyGetOmega(m_body, &m_omega.m_x);
+	return &m_omega;
+}
+
+void dNewtonBody::SetVelocity(dFloat x, dFloat y, dFloat z)
+{
+	dVector vel(x,y,z);
+	NewtonBodySetVelocity(m_body, &vel.m_x);
+}
+
+void dNewtonBody::SetOmega(dFloat x, dFloat y, dFloat z)
+{
+	dVector omg(x, y, z);
+	NewtonBodySetOmega(m_body, &omg.m_x);
+}
+
 void dNewtonBody::SetCenterOfMass(float com_x, float com_y, float com_z)
 {
 	dVector com;

@@ -147,6 +147,52 @@ public class NewtonBody: MonoBehaviour
         m_torqueAcc = Vector3.zero;
     }
 
+    public Vector3 Velocity
+    {
+        get
+        {
+            if(m_body != null)
+            {
+                IntPtr velPtr = m_body.GetVelocity();
+                Marshal.Copy(velPtr, m_vec3Ptr, 0, 3);
+                return new Vector3(m_vec3Ptr[0], m_vec3Ptr[1], m_vec3Ptr[2]);
+            }
+            return Vector3.zero;
+        }
+
+        set
+        {
+            if (m_body != null)
+            {
+                m_body.SetVelocity(value.x, value.y, value.z);
+            }
+        }
+
+    }
+
+    public Vector3 Omega
+    {
+        get
+        {
+            if (m_body != null)
+            {
+                IntPtr omgPtr = m_body.GetOmega();
+                Marshal.Copy(omgPtr, m_vec3Ptr, 0, 3);
+                return new Vector3(m_vec3Ptr[0], m_vec3Ptr[1], m_vec3Ptr[2]);
+            }
+            return Vector3.zero;
+        }
+
+        set
+        {
+            if (m_body != null)
+            {
+                m_body.SetOmega(value.x,value.y,value.z);
+            }
+        }
+
+    }
+
     public bool SleepState
     {
         get
@@ -185,6 +231,7 @@ public class NewtonBody: MonoBehaviour
     internal NewtonBodyCollision m_collision = null;
     private float[] m_positionPtr = new float[3];
     private float[] m_rotationPtr = new float[4];
+    private float[] m_vec3Ptr = new float[3];
 
     internal List<NewtonBodyScript> m_scripts = new List<NewtonBodyScript>();
 }

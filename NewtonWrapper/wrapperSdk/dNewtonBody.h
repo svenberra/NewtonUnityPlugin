@@ -51,6 +51,11 @@ class dNewtonBody: public dAlloc
 	void SetUserData(void* userData);
 	void* GetUserData();
 
+	void* GetVelocity();
+	void* GetOmega();
+	void SetVelocity(dFloat x, dFloat y, dFloat z);
+	void SetOmega(dFloat x, dFloat y, dFloat z);
+
 	void SetCenterOfMass(float com_x, float com_y, float com_z);
 	void CalculateBuoyancyForces(const void* plane, void* force, void* torque, float bodyDensity);
 
@@ -84,6 +89,8 @@ class dNewtonBody: public dAlloc
 	dQuaternion m_rotation0;
 	dQuaternion m_rotation1;
 	dQuaternion m_interpolatedRotation;
+	dVector m_velocity;
+	dVector m_omega;
 	unsigned m_lock;
 
 	friend class dNewtonWorld;
