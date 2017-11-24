@@ -34,6 +34,18 @@ public class NewtonBodyScript : MonoBehaviour
         //Debug.Log("do nothing");
     }
 
+    public virtual void OnContact(NewtonBody otherBody, float normalImpact)
+    {
+        // do nothing
+        //Debug.Log("do nothing");
+    }
+
+    public virtual void OnPostCollision(NewtonBody otherBody)
+    {
+        // do nothing
+        //Debug.Log("do nothing");
+    }
+
     public virtual  void OnApplyForceAndTorque(float timestep)
     {
         // example how to apply force to a game object, for this example do nothing
@@ -46,5 +58,6 @@ public class NewtonBodyScript : MonoBehaviour
 
     public bool m_enableForceAndTorque = true;
     public bool m_collisionNotification = true;
+    public bool m_contactNotification = false;
 }
 

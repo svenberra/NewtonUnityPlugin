@@ -167,6 +167,17 @@ public class NewtonWorld : MonoBehaviour
                         var body1 = (NewtonBody)GCHandle.FromIntPtr(m_world.GetBody1UserData(contact)).Target;
                         var otherBody = bodyPhysics == body0 ? body1 : body0;
                         script.OnCollision(otherBody);
+
+                        if(script.m_contactNotification)
+                        {
+                            for (IntPtr ct = m_world.GetFirstContact(contact); ct != IntPtr.Zero; ct = m_world.GetNextContact(contact, ct))
+                            {
+                                var normImpact = m_world.GetContactNormalImpact(ct);
+                                script.OnContact(otherBody, normImpact);
+                            }
+                        }
+
+                        script.OnPostCollision(otherBody);
                     }
                 }
 

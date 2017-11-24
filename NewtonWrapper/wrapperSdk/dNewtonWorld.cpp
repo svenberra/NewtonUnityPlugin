@@ -231,6 +231,23 @@ void* dNewtonWorld::GetFirstContactJoint(dNewtonBody* const body) const
 	return NULL;
 }
 
+void* dNewtonWorld::GetFirstContact(void* const joint) const
+{
+	return NewtonContactJointGetFirstContact(static_cast<NewtonJoint*>(joint));
+}
+
+void* dNewtonWorld::GetNextContact(void* const joint, void* const contact) const
+{
+	return NewtonContactJointGetNextContact(static_cast<NewtonJoint*>(joint), contact);
+}
+
+float dNewtonWorld::GetContactNormalImpact(void* const contact) const
+{
+	NewtonMaterial* mat = NewtonContactGetMaterial(contact);
+	return NewtonMaterialGetContactMaxNormalImpact(mat);
+}
+
+
 dNewtonBody* dNewtonWorld::GetBody0(void* const contact) const
 {
 	NewtonJoint* const contactJoint = (NewtonJoint*)contact;
