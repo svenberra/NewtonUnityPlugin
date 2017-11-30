@@ -74,7 +74,7 @@ void dNewtonBody::SetSleepState(bool state) const
 	NewtonBodySetSleepState(m_body, state ? 1 : 0);
 }
 
-void* dNewtonBody::GetPosition()
+void* dNewtonBody::GetInterpolatedPosition()
 {
 	const dNewtonWorld* const world = (dNewtonWorld*)NewtonWorldGetUserData(NewtonBodyGetWorld(m_body));
 	ScopeLock scopelock(&m_lock);
@@ -82,12 +82,22 @@ void* dNewtonBody::GetPosition()
 	return &m_interpolatedPosit.m_x;
 }
 
-void* dNewtonBody::GetRotation()
+void* dNewtonBody::GetInterpolatedRotation()
 {
 	const dNewtonWorld* const world = (dNewtonWorld*) NewtonWorldGetUserData(NewtonBodyGetWorld(m_body));
 	ScopeLock scopelock(&m_lock);
 	m_interpolatedRotation = m_rotation0.Slerp(m_rotation1, world->m_interpotationParam);
 	return &m_interpolatedRotation.m_q0;
+}
+
+void* dNewtonBody::GetPosition()
+{
+	return &m_posit1.m_x;
+}
+
+void* dNewtonBody::GetRotation()
+{
+	return &m_rotation1.m_q0;
 }
 
 void dNewtonBody::SetUserData(void* userData)

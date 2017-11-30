@@ -50,8 +50,8 @@ public class NewtonBody: MonoBehaviour
     // Update is called once per frame
     public virtual void OnUpdateTranform()
     {
-        IntPtr positionPtr = m_body.GetPosition();
-        IntPtr rotationPtr = m_body.GetRotation();
+        IntPtr positionPtr = m_body.GetInterpolatedPosition();
+        IntPtr rotationPtr = m_body.GetInterpolatedRotation();
         Marshal.Copy(positionPtr, m_positionPtr, 0, 3);
         Marshal.Copy(rotationPtr, m_rotationPtr, 0, 4);
         transform.position = new Vector3(m_positionPtr[0], m_positionPtr[1], m_positionPtr[2]);
@@ -145,6 +145,38 @@ public class NewtonBody: MonoBehaviour
         m_body.AddTorque(m_torqueAcc.x, m_torqueAcc.y, m_torqueAcc.z);
         m_forceAcc = Vector3.zero;
         m_torqueAcc = Vector3.zero;
+    }
+
+    public Vector3 Position
+    {
+        get
+        {
+            if (m_body != null)
+            {
+                IntPtr positionPtr = m_body.GetPosition();
+                Marshal.Copy(positionPtr, m_positionPtr, 0, 3);
+                return new Vector3(m_positionPtr[0], m_positionPtr[1], m_positionPtr[2]);
+            }
+            return Vector3.zero;
+        }
+
+        //TODO: Add setter.
+    }
+
+    public Quaternion Rotation
+    {
+        get
+        {
+            if (m_body != null)
+            {
+                IntPtr rotationPtr = m_body.GetRotation();
+                Marshal.Copy(rotationPtr, m_rotationPtr, 0, 4);
+                return new Quaternion(m_rotationPtr[1], m_rotationPtr[2], m_rotationPtr[3], m_rotationPtr[0]);
+            }
+            return Quaternion.identity;
+        }
+
+        //TODO: Add setter.
     }
 
     public Vector3 Velocity

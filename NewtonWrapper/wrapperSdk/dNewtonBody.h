@@ -48,6 +48,8 @@ class dNewtonBody: public dAlloc
 	void* GetBody() const;
 	void* GetPosition();
 	void* GetRotation();
+	void* GetInterpolatedPosition();
+	void* GetInterpolatedRotation();
 	void SetUserData(void* userData);
 	void* GetUserData();
 
