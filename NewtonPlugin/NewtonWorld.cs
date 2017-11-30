@@ -26,6 +26,17 @@ using System.Runtime.InteropServices;
 public delegate void OnWorldBodyTransfromUpdateCallback();
 public delegate void OnWorldUpdateCallback(float timestep);
 
+public struct Contact
+{
+    IntPtr contact;
+    public float MaxNormalImpact
+    {
+        get
+        {
+            return 0;
+        }
+    }
+}
 
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Newton World")]
@@ -172,7 +183,7 @@ public class NewtonWorld : MonoBehaviour
                         {
                             for (IntPtr ct = m_world.GetFirstContact(contact); ct != IntPtr.Zero; ct = m_world.GetNextContact(contact, ct))
                             {
-                                var normImpact = m_world.GetContactNormalImpact(ct);
+                                var normImpact = dNewtonContact.GetContactNormalImpact(ct);
                                 script.OnContact(otherBody, normImpact);
                             }
                         }

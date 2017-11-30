@@ -50,6 +50,7 @@
 	#include "dNewtonJointRelational.h"
 	#include "dNewtonJointSlidingHinge.h"
 	#include "dNewtonJointBallAndSocket.h"
+	#include "dNewtonContact.h"
 %}
 
 // Wrap void* to IntPtr
@@ -162,4 +163,5 @@
 %include "dNewtonJointRelational.h"
 %include "dNewtonJointSlidingHinge.h"
 %include "dNewtonJointBallAndSocket.h"
+%include "dNewtonContact.h"
 

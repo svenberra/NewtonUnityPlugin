@@ -160,7 +160,14 @@ public class NewtonBody: MonoBehaviour
             return Vector3.zero;
         }
 
-        //TODO: Add setter.
+        set
+        {
+            if (m_body != null)
+            {
+                m_body.SetPosition(value.x, value.y, value.z);
+            }
+        }
+
     }
 
     public Quaternion Rotation
@@ -176,7 +183,13 @@ public class NewtonBody: MonoBehaviour
             return Quaternion.identity;
         }
 
-        //TODO: Add setter.
+        set
+        {
+            if (m_body != null)
+            {
+                m_body.SetRotation(value.z, value.w, value.x, value.y);
+            }
+        }
     }
 
     public Vector3 Velocity

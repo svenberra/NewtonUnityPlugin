@@ -241,13 +241,6 @@ void* dNewtonWorld::GetNextContact(void* const joint, void* const contact) const
 	return NewtonContactJointGetNextContact(static_cast<NewtonJoint*>(joint), contact);
 }
 
-float dNewtonWorld::GetContactNormalImpact(void* const contact) const
-{
-	NewtonMaterial* mat = NewtonContactGetMaterial(contact);
-	return NewtonMaterialGetContactMaxNormalImpact(mat);
-}
-
-
 dNewtonBody* dNewtonWorld::GetBody0(void* const contact) const
 {
 	NewtonJoint* const contactJoint = (NewtonJoint*)contact;
@@ -371,3 +364,4 @@ void dNewtonWorld::UpdateWorld()
 		NewtonUpdate(m_world, m_timeStep);
 	}
 }
+

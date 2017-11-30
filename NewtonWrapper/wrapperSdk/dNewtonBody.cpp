@@ -100,6 +100,22 @@ void* dNewtonBody::GetRotation()
 	return &m_rotation1.m_q0;
 }
 
+void dNewtonBody::SetPosition(dFloat x, dFloat y, dFloat z)
+{
+	dQuaternion rot;
+	NewtonBodyGetRotation(m_body, &rot.m_q0);
+	dMatrix mat(rot, dVector(x, y, z));
+	NewtonBodySetMatrix(m_body, &mat[0][0]);
+}
+
+void dNewtonBody::SetRotation(dFloat x, dFloat y, dFloat z, dFloat w)
+{
+	dVector pos(0, 0, 0);
+	NewtonBodyGetPosition(m_body, &pos.m_x);
+	dMatrix mat(dQuaternion(x, y, z, w), pos);
+	NewtonBodySetMatrix(m_body, &mat[0][0]);
+}
+
 void dNewtonBody::SetUserData(void* userData)
 {
 	m_userData = userData;

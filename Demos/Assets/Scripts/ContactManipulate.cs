@@ -7,10 +7,15 @@ public class ContactManipulate : NewtonBodyScript
 
     float largestImpact = 0;
 
-    void Start () {
+	//NewtonBody body = null;
+
+    void Start () 
+	{
+		//body = GetComponent<NewtonBody>();
     }
 
-    void Update () {
+    void Update () 
+	{
 	}
 
     override public void OnCollision(NewtonBody otherBody)
