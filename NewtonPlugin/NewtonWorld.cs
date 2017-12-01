@@ -183,8 +183,8 @@ public class NewtonWorld : MonoBehaviour
                         {
                             for (IntPtr ct = m_world.GetFirstContact(contact); ct != IntPtr.Zero; ct = m_world.GetNextContact(contact, ct))
                             {
-                                var normImpact = dNewtonContact.GetContactNormalImpact(ct);
-                                script.OnContact(otherBody, normImpact);
+                                //var normImpact = dNewtonContact.GetContactNormalImpact(ct);
+                                //script.OnContact(otherBody, normImpact);
                             }
                         }
 

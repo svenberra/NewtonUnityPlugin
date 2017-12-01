@@ -23,12 +23,32 @@
 
 #include "stdafx.h"
 
+struct ContactInfo
+{
+	float force[3];
+	float position[3];
+	float normal[3];
+	float tangent0[3];
+	float tangent1[3];
+	float normalSpeed;
+	float tangentSpeed0;
+	float tangentSpeed1;
+	float maxNormalImpact;
+	float maxTangentImpact0;
+	float maxTangentImpact1;
+	float penetration;
+};
+
 class dNewtonContact 
 {
 public:
-	static float GetContactNormalImpact(void* const contact);
+	static void* GetContactInfo(void* const body, void* const contact);
+
+private:
+	static ContactInfo cInfo;
 
 };
+
 
 
 #endif
