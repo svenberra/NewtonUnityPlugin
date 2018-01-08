@@ -130,6 +130,73 @@ void dNewtonWorld::SetDefaultMaterial(float restitution, float staticFriction, f
 	m_defaultMaterial.m_collisionEnable = collisionEnable;
 }
 
+void* dNewtonWorld::Raycast(float p0x, float p0y, float p0z, float p1x, float p1y, float p1z, int layerMask)
+{
+	dVector p0(p0x, p0y, p0z);
+	dVector p1(p1x, p1y, p1z);
+
+	hitInfo.clearData();
+	hitInfo.layermask = layerMask;
+	NewtonWorldRayCast(m_world, &p0.m_x, &p1.m_x, &rayFilterCallback, &hitInfo, &rayPreFilterCallback, 0);
+	if (hitInfo.intersectParam < 1.0f)
+	{
+		return &hitInfo;
+	}
+	else
+	{
+		return nullptr;
+	}
+
+}
+
+float dNewtonWorld::rayFilterCallback(const NewtonBody* const body, const NewtonCollision* const shapeHit, const dFloat* const hitContact, const dFloat* const hitNormal, dLong collisionID, void* const userData, dFloat intersectParam)
+{
+	rayHitInfo* hitInfo = static_cast<rayHitInfo*>(userData);
+
+	if (intersectParam < hitInfo->intersectParam)
+	{
+		if (body)
+		{
+			dNewtonBody* dBody = static_cast<dNewtonBody*>(NewtonBodyGetUserData(body));
+			hitInfo->managedBodyHandle = dBody->GetUserData();
+		}
+		else {
+			hitInfo->managedBodyHandle = nullptr;
+		}
+
+		hitInfo->intersectParam = intersectParam;
+		hitInfo->collider = shapeHit;
+		hitInfo->position[0] = hitContact[0];
+		hitInfo->position[1] = hitContact[1];
+		hitInfo->position[2] = hitContact[2];
+		hitInfo->normal[0] = hitNormal[0];
+		hitInfo->normal[1] = hitNormal[1];
+		hitInfo->normal[2] = hitNormal[2];
+		hitInfo->collisionID = collisionID;
+	}
+
+	return intersectParam;
+}
+
+unsigned dNewtonWorld::rayPreFilterCallback(const NewtonBody* const body, const NewtonCollision* const collision, void* const userData)
+{
+	rayHitInfo* hitInfo = static_cast<rayHitInfo*>(userData);
+
+	if (collision)
+	{
+		dNewtonCollision* dCol = static_cast<dNewtonCollision*>(NewtonCollisionGetUserData(collision));
+		int layer = dCol->m_layer;
+		
+		if (layer & hitInfo->layermask) {
+			return 0;
+		}
+
+		return 1;
+	}
+
+	return 1;
+}
+
 void dNewtonWorld::SetMaterialInteraction(int materialID0, int materialID1, float restitution, float staticFriction, float kineticFriction, bool collisionEnable)
 {
 	long long key = GetMaterialKey(materialID0, materialID1);

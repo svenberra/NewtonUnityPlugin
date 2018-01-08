@@ -28,6 +28,7 @@ public class NewtonBoxCollider: NewtonCollider
     {
         dNewtonCollision collider = new dNewtonCollisionBox(world.GetWorld(), m_size.x, m_size.y, m_size.z);
         SetMaterial(collider);
+        SetLayer(collider);
         return collider;
     }
 

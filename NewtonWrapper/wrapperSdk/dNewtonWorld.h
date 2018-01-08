@@ -34,6 +34,38 @@ class dNewtonVehicleManager;
 typedef void(*OnWorldBodyTransfromUpdateCallback)();
 typedef void(*OnWorldUpdateCallback)(dFloat timestep);
 
+class rayHitInfo
+{
+public:
+	float intersectParam;
+	int layermask;
+	void* managedBodyHandle;
+	const NewtonCollision* collider;
+	float position[3];
+	float normal[3];
+	dLong collisionID;
+
+	rayHitInfo()
+	{
+		clearData();
+	}
+
+	void clearData()
+	{
+		intersectParam = 2.0f;
+		managedBodyHandle = nullptr;
+		collider = nullptr;
+		position[0] = 0;
+		position[1] = 0;
+		position[2] = 0;
+		normal[0] = 0;
+		normal[1] = 0;
+		normal[2] = 0;
+		collisionID = 0;
+	}
+
+};
+
 class dNewtonWorld: public dAlloc
 {
 	public:
@@ -77,6 +109,11 @@ class dNewtonWorld: public dAlloc
 	void* GetBody0UserData(void* const contact) const;
 	void* GetBody1UserData(void* const contact) const;
 
+	// Return a hitinfo object if something was hit. LayerMask is used to exclude colliders from the raycast.
+	void* Raycast(float px, float py, float pz, float dx, float dy, float dz, int layerMask);
+	static float rayFilterCallback(const NewtonBody* const body, const NewtonCollision* const shapeHit, const dFloat* const hitContact, const dFloat* const hitNormal, dLong collisionID, void* const userData, dFloat intersectParam);
+	static unsigned rayPreFilterCallback(const NewtonBody* const body, const NewtonCollision* const collision, void* const userData);
+
 	dNewtonVehicleManager* GetVehicleManager() const;
 	void SaveSerializedScene(char* const sceneName);
 
@@ -103,6 +140,8 @@ class dNewtonWorld: public dAlloc
 	OnWorldBodyTransfromUpdateCallback m_onTransformCallback;
 	dMaterialProperties m_defaultMaterial;
 	dNewtonVehicleManager* m_vehicleManager;
+
+	rayHitInfo hitInfo;
 
 	friend class dNewtonBody;
 	friend class dNewtonCollision;

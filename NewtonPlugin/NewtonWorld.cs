@@ -26,17 +26,28 @@ using System.Runtime.InteropServices;
 public delegate void OnWorldBodyTransfromUpdateCallback();
 public delegate void OnWorldUpdateCallback(float timestep);
 
-public struct Contact
+[StructLayout(LayoutKind.Sequential)]
+internal struct _InternalRayHitInfo
 {
-    IntPtr contact;
-    public float MaxNormalImpact
-    {
-        get
-        {
-            return 0;
-        }
-    }
+    internal float intersectParam;
+    internal int layermask;
+    internal IntPtr body;
+    internal IntPtr collider;
+    internal Vector3 position;
+    internal Vector3 normal;
+    internal uint collisionID;
 }
+
+public struct NewtonRayHitInfo
+{
+    public NewtonBody body;
+    //public NewtonCollider collider;
+    public Vector3 position;
+    public Vector3 normal;
+    public uint collisionID;
+
+}
+
 
 [DisallowMultipleComponent]
 [AddComponentMenu("Newton Physics/Newton World")]
@@ -207,6 +218,40 @@ public class NewtonWorld : MonoBehaviour
         {
             bodyPhysics.OnUpdateTranform();
         }
+    }
+
+    public bool Raycast(Vector3 origin, Vector3 direction, float distance, out NewtonRayHitInfo hitInfo, int layerMask = 0)
+    {
+        Vector3 startPos = origin;
+        Vector3 endPos = startPos + (direction * distance);
+
+        var hitInfoPtr = m_world.Raycast(startPos.x, startPos.y, startPos.z, endPos.x, endPos.y, endPos.z, layerMask);
+        if(hitInfoPtr != IntPtr.Zero)
+        {
+            _InternalRayHitInfo info = (_InternalRayHitInfo)Marshal.PtrToStructure(hitInfoPtr, typeof(_InternalRayHitInfo));
+
+            if(info.body != IntPtr.Zero)
+            {
+                hitInfo.body = (NewtonBody)GCHandle.FromIntPtr(info.body).Target;
+            }
+            else
+            {
+                hitInfo.body = null;
+            }
+
+            //hitInfo.collider = null;
+            hitInfo.position = info.position;
+            hitInfo.normal = info.normal;
+            hitInfo.collisionID = info.collisionID;
+            return true;
+        }
+
+        hitInfo.body = null;
+        //hitInfo.collider = null;
+        hitInfo.position = Vector3.zero;
+        hitInfo.normal = Vector3.zero;
+        hitInfo.collisionID = 0;
+        return false;
     }
 
     private dNewtonWorld m_world = new dNewtonWorld();

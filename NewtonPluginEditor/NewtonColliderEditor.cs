@@ -35,6 +35,7 @@ public abstract class NewtonColliderEditor : Editor
         m_rotProp = serializedObject.FindProperty("m_rotation");
         m_scaleProp = serializedObject.FindProperty("m_scale");
         m_materialProp = serializedObject.FindProperty("m_material");
+        m_layerProp = serializedObject.FindProperty("m_layer");
         m_isTriggerProp = serializedObject.FindProperty("m_isTrigger");
         m_inheritScaleProp = serializedObject.FindProperty("m_inheritTransformScale");
         //Undo.undoRedoPerformed += OnUndoRedo;
@@ -62,7 +63,8 @@ public abstract class NewtonColliderEditor : Editor
         EditorGUILayout.PropertyField(m_showGizmoProp, new GUIContent("Show Gizmo"));
         EditorGUILayout.PropertyField(m_isTriggerProp, new GUIContent("Is Trigger"));
         EditorGUILayout.PropertyField(m_materialProp, new GUIContent("Material"));
-        
+        EditorGUILayout.PropertyField(m_layerProp, new GUIContent("Layer"));
+
         serializedObject.ApplyModifiedProperties();
     }
 
@@ -71,6 +73,7 @@ public abstract class NewtonColliderEditor : Editor
     SerializedProperty m_rotProp;
     SerializedProperty m_scaleProp;
     SerializedProperty m_materialProp;
+    SerializedProperty m_layerProp;
     SerializedProperty m_isTriggerProp;
     SerializedProperty m_inheritScaleProp;
 }

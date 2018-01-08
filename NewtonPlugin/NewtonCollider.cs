@@ -84,6 +84,11 @@ abstract public class NewtonCollider: MonoBehaviour
         shape.SetAsTrigger(m_isTrigger);
     }
 
+    public void SetLayer(dNewtonCollision shape)
+    {
+        shape.SetLayer(m_layer);
+    }
+
     public virtual bool IsStatic()
     {
         return false;
@@ -186,6 +191,7 @@ abstract public class NewtonCollider: MonoBehaviour
 
     private dNewtonCollision m_editorShape = null;
     public NewtonMaterial m_material = null;
+    public LayerMask m_layer;
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
     public Vector3 m_scale = Vector3.one;

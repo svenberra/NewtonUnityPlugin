@@ -28,6 +28,7 @@ public class NewtonCapsuleCollider : NewtonCollider
     {
         dNewtonCollision collider = new dNewtonCollisionCapsule(world.GetWorld(), m_radius0, m_radius1, m_height);
         SetMaterial(collider);
+        SetLayer(collider);
         return collider;
     }
 

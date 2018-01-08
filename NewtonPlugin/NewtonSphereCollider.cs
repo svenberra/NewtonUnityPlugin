@@ -29,6 +29,7 @@ public class NewtonSphereCollider : NewtonCollider
     {
         dNewtonCollision collider = new dNewtonCollisionSphere(world.GetWorld(), m_radius);
         SetMaterial(collider);
+        SetLayer(collider);
         return collider;
     }
 

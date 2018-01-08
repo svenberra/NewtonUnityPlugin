@@ -28,6 +28,7 @@ public class NewtonChamferedCylinderCollider : NewtonCollider
     {
         dNewtonCollision collider = new dNewtonCollisionChamferedCylinder(world.GetWorld(), m_radius, m_height);
         SetMaterial(collider);
+        SetLayer(collider);
         m_scale.y = 4.0f;
         return collider;
     }

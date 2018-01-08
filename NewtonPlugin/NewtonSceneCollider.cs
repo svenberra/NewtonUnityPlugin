@@ -26,6 +26,7 @@ class NewtonSceneCollider : NewtonCollider
     {
         dNewtonCollisionScene collider = new dNewtonCollisionScene(world.GetWorld());
         SetMaterial(collider);
+        SetLayer(collider);
         return collider;
     }
 }

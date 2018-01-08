@@ -41,6 +41,7 @@ class dNewtonCollision: public dAlloc
 	virtual void SetMatrix(const dMatrix matrix);
 	virtual void DebugRender(OnDrawFaceCallback callback, const dVector eyePoint);
 	virtual void SetMaterialID(int materialId);
+	virtual void SetLayer(int layer);
 
 	protected:
 	virtual void SetShape(NewtonCollision* const shape);
@@ -53,6 +54,7 @@ class dNewtonCollision: public dAlloc
 	dNewtonWorld* m_myWorld;
 	dList<dNewtonCollision*>::dListNode* m_collisionCacheNode;
 	int m_materialID;
+	int m_layer;
 	friend class dNewtonBody;
 	friend class dNewtonWorld;
 	friend class dNewtonDynamicBody;

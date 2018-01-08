@@ -97,6 +97,7 @@ public class NewtonTreeCollider : NewtonCollider
 
         m_isTrigger = false;
         SetMaterial(collision);
+        SetLayer(collision);
         return collision;
     }
 

@@ -28,6 +28,7 @@ public class NewtonConeCollider : NewtonCollider
     {
         dNewtonCollision collider = new dNewtonCollisionCone(world.GetWorld(), m_radius, m_height);
         SetMaterial(collider);
+        SetLayer(collider);
         return collider;
     }
 

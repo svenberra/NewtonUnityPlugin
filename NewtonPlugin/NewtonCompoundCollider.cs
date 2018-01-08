@@ -27,6 +27,7 @@ public class NewtonCompoundCollider: NewtonCollider
     {
         dNewtonCollision collider = new dNewtonCollisionCompound(world.GetWorld());
         SetMaterial(collider);
+        SetLayer(collider);
         return collider;
     }
 }

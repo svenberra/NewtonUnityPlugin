@@ -64,6 +64,11 @@ void dNewtonCollision::SetMaterialID(int materialId)
 	m_materialID = materialId;
 }
 
+void dNewtonCollision::SetLayer(int layer)
+{
+	m_layer = layer;
+}
+
 void dNewtonCollision::DeleteShape()
 {
 	if (m_shape) {

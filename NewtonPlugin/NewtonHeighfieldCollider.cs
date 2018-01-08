@@ -92,6 +92,7 @@ class NewtonHeighfieldCollider: NewtonCollider
 
         SetDefualtParams();
         SetMaterial(collider);
+        SetLayer(collider);
         return collider;
     }
 
