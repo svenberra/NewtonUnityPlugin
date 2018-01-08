@@ -15,7 +15,7 @@ Open the following solution file.
 Choose Release & x64 and build the solution.
 
 Finally, create an environment variable named NEWTON_DYNAMICS that points to the location where you cloned Newton.
-For example, if you cloned Newton to C:\newton-dynamics-master the enviroment variable should be C:\newton-dynamics-master without the slash in the end.
+For example, if you cloned Newton to C:\newton-dynamics-master the environment variable should be C:\newton-dynamics-master without the slash in the end.
 
 ## Step 2, Download and build the NewtonUnityPlugin
 https://github.com/svenberra/NewtonUnityPlugin
