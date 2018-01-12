@@ -40,7 +40,12 @@ abstract public class NewtonJoint : MonoBehaviour
             }
         }
     }
-    
+
+    void OnDestroy()
+    {
+        m_joint.Destroy();
+    }
+
     public dNewtonJoint m_joint = null;
     public NewtonBody m_otherBody = null;
     public float m_stiffness = 1.0f;

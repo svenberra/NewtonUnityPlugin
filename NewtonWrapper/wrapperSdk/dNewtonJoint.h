@@ -31,6 +31,7 @@ class dNewtonJoint: public dAlloc
 	~dNewtonJoint();
 
 	void SetStiffness(dFloat stiffness);
+	void Destroy();
 
 	protected:
 	void SetJoint(dCustomJoint* const joint);

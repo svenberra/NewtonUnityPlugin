@@ -37,6 +37,13 @@ void dNewtonJoint::SetJoint(dCustomJoint* const joint)
 	m_joint = joint;
 }
 
+void dNewtonJoint::Destroy()
+{
+	if (m_joint) {
+		delete m_joint;
+		m_joint = NULL;
+	}
+}
 
 void dNewtonJoint::SetStiffness(dFloat stiffness)
 {
