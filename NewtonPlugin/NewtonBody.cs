@@ -89,6 +89,13 @@ public class NewtonBody: MonoBehaviour
         m_world.RegisterBody(this);
     }
 
+    Vector3 GetCenterOfMass ()
+    {
+        IntPtr comPtr = m_body.GetCenterOfMass();
+        Marshal.Copy(comPtr, m_comPtr, 0, 3);
+        return new Vector3(m_comPtr[0], m_comPtr[1], m_comPtr[2]);
+    }
+
     void SetCenterOfMass ()
     {
         m_body.SetCenterOfMass(m_centerOfMass.x, m_centerOfMass.y, m_centerOfMass.z);
@@ -277,6 +284,7 @@ public class NewtonBody: MonoBehaviour
     private float[] m_positionPtr = new float[3];
     private float[] m_rotationPtr = new float[4];
     private float[] m_vec3Ptr = new float[3];
+    private float[] m_comPtr = new float[3];
 
     internal List<NewtonBodyScript> m_scripts = new List<NewtonBodyScript>();
 }

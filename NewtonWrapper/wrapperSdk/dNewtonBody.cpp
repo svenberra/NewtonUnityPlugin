@@ -150,6 +150,13 @@ void dNewtonBody::SetOmega(dFloat x, dFloat y, dFloat z)
 	NewtonBodySetOmega(m_body, &omg.m_x);
 }
 
+
+void* dNewtonBody::GetCenterOfMass()
+{
+	NewtonBodyGetCentreOfMass(m_body, &m_com.m_x);
+	return &m_com;
+}
+
 void dNewtonBody::SetCenterOfMass(float com_x, float com_y, float com_z)
 {
 	dVector com;
