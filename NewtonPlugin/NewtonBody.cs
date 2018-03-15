@@ -89,13 +89,6 @@ public class NewtonBody: MonoBehaviour
         m_world.RegisterBody(this);
     }
 
-    Vector3 GetCenterOfMass ()
-    {
-        IntPtr comPtr = m_body.GetCenterOfMass();
-        Marshal.Copy(comPtr, m_comPtr, 0, 3);
-        return new Vector3(m_comPtr[0], m_comPtr[1], m_comPtr[2]);
-    }
-
     void SetCenterOfMass ()
     {
         m_body.SetCenterOfMass(m_centerOfMass.x, m_centerOfMass.y, m_centerOfMass.z);
@@ -245,6 +238,73 @@ public class NewtonBody: MonoBehaviour
 
     }
 
+    public Vector3 CenterOfMass
+    {
+        get
+        {
+            if (m_body != null)
+            {
+                IntPtr comPtr = m_body.GetCenterOfMass();
+                Marshal.Copy(comPtr, m_vec3Ptr, 0, 3);
+                return new Vector3(m_vec3Ptr[0], m_vec3Ptr[1], m_vec3Ptr[2]);
+            }
+            return Vector3.zero;
+        }
+
+        set
+        {
+            if (m_body != null)
+            {
+                m_body.SetCenterOfMass(value.x, value.y, value.z);
+            }
+        }
+
+    }
+
+    public float LinearDamping
+    {
+        get
+        {
+            if (m_body != null)
+            {
+                return m_body.GetLinearDamping();
+            }
+            return 0;
+        }
+
+        set
+        {
+            if (m_body != null)
+            {
+                m_body.SetLinearDamping(value);
+            }
+        }
+    }
+
+    public Vector3 AngularDamping
+    {
+        get
+        {
+            if (m_body != null)
+            {
+                IntPtr dampingPtr = m_body.GetAngularDamping();
+                Marshal.Copy(dampingPtr, m_vec3Ptr, 0, 3);
+                return new Vector3(m_vec3Ptr[0], m_vec3Ptr[1], m_vec3Ptr[2]);
+            }
+            return Vector3.zero;
+        }
+
+        set
+        {
+            if (m_body != null)
+            {
+                m_body.SetAngularDamping(value.x, value.y, value.z);
+            }
+        }
+
+    }
+
+
     public bool SleepState
     {
         get
@@ -278,6 +338,8 @@ public class NewtonBody: MonoBehaviour
     public NewtonWorld m_world;
     public Vector3 m_forceAcc { get; set; }
     public Vector3 m_torqueAcc { get; set; }
+    public float m_linearDamping = 0.1f;
+    public Vector3 m_angularDamping = new Vector3(0.1f, 0.1f, 0.1f);
 
     internal dNewtonBody m_body = null;
     internal NewtonBodyCollision m_collision = null;

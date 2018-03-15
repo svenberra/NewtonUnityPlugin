@@ -150,6 +150,27 @@ void dNewtonBody::SetOmega(dFloat x, dFloat y, dFloat z)
 	NewtonBodySetOmega(m_body, &omg.m_x);
 }
 
+float dNewtonBody::GetLinearDamping()
+{
+	return NewtonBodyGetLinearDamping(m_body);
+}
+
+void dNewtonBody::SetLinearDamping(dFloat x)
+{
+	NewtonBodySetLinearDamping(m_body, x);
+}
+
+void* dNewtonBody::GetAngularDamping()
+{
+	NewtonBodyGetAngularDamping(m_body, &m_angulardamping.m_x);
+	return &m_angulardamping;
+}
+
+void dNewtonBody::SetAngularDamping(dFloat x, dFloat y, dFloat z)
+{
+	dVector damp(x, y, z);
+	NewtonBodySetAngularDamping(m_body, &damp.m_x);
+}
 
 void* dNewtonBody::GetCenterOfMass()
 {

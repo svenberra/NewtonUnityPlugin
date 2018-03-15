@@ -60,6 +60,12 @@ class dNewtonBody: public dAlloc
 	void SetVelocity(dFloat x, dFloat y, dFloat z);
 	void SetOmega(dFloat x, dFloat y, dFloat z);
 
+	float GetLinearDamping();
+	void SetLinearDamping(dFloat x);
+
+	void* GetAngularDamping();
+	void SetAngularDamping(dFloat x, dFloat y, dFloat z);
+
 	void* GetCenterOfMass();
 	void SetCenterOfMass(float com_x, float com_y, float com_z);
 	void CalculateBuoyancyForces(const void* plane, void* force, void* torque, float bodyDensity);
@@ -97,6 +103,7 @@ class dNewtonBody: public dAlloc
 	dVector m_velocity;
 	dVector m_omega;
 	dVector m_com;
+	dVector m_angulardamping;
 	unsigned m_lock;
 
 	friend class dNewtonWorld;
