@@ -124,11 +124,10 @@ xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Com
     <ClInclude Include="wrapperSdk\dNewtonJoint.h" />
     <ClInclude Include="wrapperSdk\dNewtonJointBallAndSocket.h" />
     <ClInclude Include="wrapperSdk\dNewtonJointHinge.h" />
-    <ClInclude Include="wrapperSdk\dNewtonJointPlane.h" />
     <ClInclude Include="wrapperSdk\dNewtonJointRelational.h" />
     <ClInclude Include="wrapperSdk\dNewtonJointSlider.h" />
     <ClInclude Include="wrapperSdk\dNewtonJointSlidingHinge.h" />
-    <ClInclude Include="wrapperSdk\dNewtonJointUniversal.h" />
+    <ClInclude Include="wrapperSdk\dNewtonJointDoubleHinge.h" />
     <ClInclude Include="wrapperSdk\dNewtonVehicle.h" />
     <ClInclude Include="wrapperSdk\dNewtonVehicleManager.h" />
     <ClInclude Include="wrapperSdk\dNewtonWorld.h" />
@@ -157,11 +156,10 @@ xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Com
     <ClCompile Include="wrapperSdk\dNewtonJoint.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonJointBallAndSocket.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonJointHinge.cpp" />
-    <ClCompile Include="wrapperSdk\dNewtonJointPlane.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonJointRelational.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonJointSlider.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonJointSlidingHinge.cpp" />
-    <ClCompile Include="wrapperSdk\dNewtonJointUniversal.cpp" />
+    <ClCompile Include="wrapperSdk\dNewtonJointDoubleHinge.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonVehicle.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonVehicleManager.cpp" />
     <ClCompile Include="wrapperSdk\dNewtonWorld.cpp" />

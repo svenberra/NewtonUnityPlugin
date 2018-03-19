@@ -32,11 +32,11 @@
 #include <dCustomPlane.h>
 #include <dCustomHinge.h>
 #include <dCustomSlider.h>
-#include <dCustomUniversal.h>
+#include <dCustomDoubleHinge.h>
 #include <dCustomHingeActuator.h>
 #include <dCustomSlidingContact.h>
 #include <dCustomSliderActuator.h>
-#include <dCustomUniversalActuator.h>
+#include <dCustomDoubleHingeActuator.h>
 #include <dCustomVehicleControllerManager.h>
 
 #define RAD_TO_DEGREES	(180.0f / 3.141592f)

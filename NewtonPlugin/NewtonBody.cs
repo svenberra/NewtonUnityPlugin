@@ -83,6 +83,9 @@ public class NewtonBody: MonoBehaviour
 
         SetCenterOfMass();
 
+        m_body.SetLinearDamping(m_linearDamping);
+        m_body.SetAngularDamping(m_angularDamping.x, m_angularDamping.y, m_angularDamping.z);
+
         var handle = GCHandle.Alloc(this);
         m_body.SetUserData(GCHandle.ToIntPtr(handle));
 
@@ -267,13 +270,14 @@ public class NewtonBody: MonoBehaviour
         {
             if (m_body != null)
             {
-                return m_body.GetLinearDamping();
+                m_linearDamping = m_body.GetLinearDamping();
             }
-            return 0;
+            return m_linearDamping;
         }
 
         set
         {
+            m_linearDamping = value;
             if (m_body != null)
             {
                 m_body.SetLinearDamping(value);
@@ -289,13 +293,14 @@ public class NewtonBody: MonoBehaviour
             {
                 IntPtr dampingPtr = m_body.GetAngularDamping();
                 Marshal.Copy(dampingPtr, m_vec3Ptr, 0, 3);
-                return new Vector3(m_vec3Ptr[0], m_vec3Ptr[1], m_vec3Ptr[2]);
+                m_angularDamping = new Vector3(m_vec3Ptr[0], m_vec3Ptr[1], m_vec3Ptr[2]);
             }
-            return Vector3.zero;
+            return m_angularDamping;
         }
 
         set
         {
+            m_angularDamping = new Vector3(value.x, value.y, value.z);
             if (m_body != null)
             {
                 m_body.SetAngularDamping(value.x, value.y, value.z);

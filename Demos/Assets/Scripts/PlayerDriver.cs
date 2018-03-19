@@ -9,7 +9,7 @@ public class PlayerDriver : MonoBehaviour
 	void Start ()
     {
         motor = transform.Find("motor").GetComponent<NewtonBody>();
-        motorJoint = transform.Find("motor").GetComponent<NewtonUniversalActuator>();
+        motorJoint = transform.Find("motor").GetComponent<NewtonDoubleHingeActuator>();
     }
 
     // Update is called once per frame
@@ -52,5 +52,5 @@ public class PlayerDriver : MonoBehaviour
     }
 
     NewtonBody motor = null;
-    NewtonUniversalActuator motorJoint = null;
+    NewtonDoubleHingeActuator motorJoint = null;
 }

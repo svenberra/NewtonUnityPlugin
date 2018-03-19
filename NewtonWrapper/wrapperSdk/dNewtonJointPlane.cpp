@@ -29,7 +29,6 @@ dNewtonJointPlane3DOF::dNewtonJointPlane3DOF(const dVector pivot, const dVector 
 	NewtonBody* const netwonBody0 = (NewtonBody*)body0;
 	NewtonBody* const netwonBody1 = (NewtonBody*)body1;
 	NewtonBodyGetMatrix(netwonBody0, &bodyMatrix[0][0]);
-
 	dCustomPlane3DOF* const joint = new dCustomPlane3DOF(bodyMatrix.TransformVector(pivot), bodyMatrix.RotateVector(normal), netwonBody0, netwonBody1);
 	SetJoint(joint);
 }

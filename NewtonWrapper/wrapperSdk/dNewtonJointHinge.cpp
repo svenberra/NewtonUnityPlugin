@@ -63,7 +63,7 @@ dNewtonJointHingeActuator::dNewtonJointHingeActuator(const dMatrix pintAndPivotM
 	dMatrix matrix(pintAndPivotMatrix * bodyMatrix);
 	dCustomHingeActuator* const joint = new dCustomHingeActuator(matrix, netwonBody0, netwonBody1);
 	SetJoint(joint);
-	joint->SetEnableFlag(true);
+	//joint->SetEnableFlag(true);
 }
 
 dFloat dNewtonJointHingeActuator::GetAngle() const
@@ -75,7 +75,7 @@ dFloat dNewtonJointHingeActuator::GetAngle() const
 void dNewtonJointHingeActuator::SetMaxToque(dFloat torque)
 {
 	dCustomHingeActuator* const joint = (dCustomHingeActuator*)m_joint;
-	joint->SetMaxForcePower(dAbs(torque));
+	joint->SetMaxTorque(dAbs(torque));
 }
 
 void dNewtonJointHingeActuator::SetAngularRate(dFloat rate)

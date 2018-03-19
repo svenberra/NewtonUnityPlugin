@@ -24,9 +24,6 @@
     <ClCompile Include="wrapperSdk\dNewtonJointRelational.cpp">
       <Filter>wrapperSdk</Filter>
     </ClCompile>
-    <ClCompile Include="wrapperSdk\dNewtonJointUniversal.cpp">
-      <Filter>wrapperSdk</Filter>
-    </ClCompile>
     <ClCompile Include="wrapperSdk\dNewtonJointSlider.cpp">
       <Filter>wrapperSdk</Filter>
     </ClCompile>
@@ -34,9 +31,6 @@
       <Filter>wrapperSdk</Filter>
     </ClCompile>
     <ClCompile Include="wrapperSdk\dNewtonJointSlidingHinge.cpp">
-      <Filter>wrapperSdk</Filter>
-    </ClCompile>
-    <ClCompile Include="wrapperSdk\dNewtonJointPlane.cpp">
       <Filter>wrapperSdk</Filter>
     </ClCompile>
     <ClCompile Include="wrapperSdk\dNewtonJointBallAndSocket.cpp">
@@ -49,6 +43,9 @@
       <Filter>wrapperSdk</Filter>
     </ClCompile>
     <ClCompile Include="dNewtonContact.cpp">
+      <Filter>wrapperSdk</Filter>
+    </ClCompile>
+    <ClCompile Include="wrapperSdk\dNewtonJointDoubleHinge.cpp">
       <Filter>wrapperSdk</Filter>
     </ClCompile>
   </ItemGroup>
@@ -76,9 +73,6 @@
     <ClInclude Include="wrapperSdk\dNewtonJointRelational.h">
       <Filter>wrapperSdk</Filter>
     </ClInclude>
-    <ClInclude Include="wrapperSdk\dNewtonJointUniversal.h">
-      <Filter>wrapperSdk</Filter>
-    </ClInclude>
     <ClInclude Include="wrapperSdk\dNewtonJointSlider.h">
       <Filter>wrapperSdk</Filter>
     </ClInclude>
@@ -86,9 +80,6 @@
       <Filter>wrapperSdk</Filter>
     </ClInclude>
     <ClInclude Include="wrapperSdk\dNewtonJointSlidingHinge.h">
-      <Filter>wrapperSdk</Filter>
-    </ClInclude>
-    <ClInclude Include="wrapperSdk\dNewtonJointPlane.h">
       <Filter>wrapperSdk</Filter>
     </ClInclude>
     <ClInclude Include="wrapperSdk\dNewtonJointBallAndSocket.h">
@@ -101,6 +92,9 @@
       <Filter>wrapperSdk</Filter>
     </ClInclude>
     <ClInclude Include="dNewtonContact.h">
+      <Filter>wrapperSdk</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapperSdk\dNewtonJointDoubleHinge.h">
       <Filter>wrapperSdk</Filter>
     </ClInclude>
   </ItemGroup>
