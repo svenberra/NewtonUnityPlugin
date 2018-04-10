@@ -36,6 +36,9 @@ class dNewtonJoint: public dAlloc
 	protected:
 	void SetJoint(dCustomJoint* const joint);
 	dCustomJoint* m_joint;
+
+	static void DestructorCallback(const dCustomJoint* const me);
+
 };
 
 #endif

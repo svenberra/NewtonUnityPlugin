@@ -35,6 +35,8 @@ dNewtonJoint::~dNewtonJoint()
 void dNewtonJoint::SetJoint(dCustomJoint* const joint)
 {
 	m_joint = joint;
+	m_joint->SetUserData(this);
+	m_joint->SetUserDestructorCallback(DestructorCallback);
 }
 
 void dNewtonJoint::Destroy()
@@ -50,3 +52,12 @@ void dNewtonJoint::SetStiffness(dFloat stiffness)
 	m_joint->SetStiffness(stiffness);
 }
 
+// This callback is triggered on join destruction and can be triggered when a body connected to this joint is destroyed.
+// This will set the reference joint pointer to NULL so that we won't try to delete it again if the method Destroy is called
+void dNewtonJoint::DestructorCallback(const dCustomJoint* const me) 
+{
+	dNewtonJoint* joint = static_cast<dNewtonJoint*>(me->GetUserData());
+	if (joint) {
+		joint->m_joint = NULL;
+	}
+}
