@@ -64,7 +64,6 @@ dNewtonJointSliderActuator::dNewtonJointSliderActuator(const dMatrix pintAndPivo
 	dMatrix matrix(pintAndPivotMatrix * bodyMatrix);
 	dCustomSliderActuator* const joint = new dCustomSliderActuator(matrix, netwonBody0, netwonBody1);
 	SetJoint(joint);
-	joint->SetEnableFlag(true);
 }
 
 dFloat dNewtonJointSliderActuator::GetPosition() const
