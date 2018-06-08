@@ -94,7 +94,7 @@ public class NewtonBody: MonoBehaviour
 
     void SetCenterOfMass ()
     {
-        m_body.SetCenterOfMass(m_centerOfMass.x, m_centerOfMass.y, m_centerOfMass.z);
+        m_body.SetCenterOfMass(m_centerOfMass.x, m_centerOfMass.y, m_centerOfMass.z, m_Ixx, m_Iyy, m_Izz, m_CalculateInertia);
     }
 
     public virtual void DestroyRigidBody()
@@ -258,7 +258,7 @@ public class NewtonBody: MonoBehaviour
         {
             if (m_body != null)
             {
-                m_body.SetCenterOfMass(value.x, value.y, value.z);
+                m_body.SetCenterOfMass(value.x, value.y, value.z, m_Ixx, m_Iyy, m_Izz, m_CalculateInertia);
             }
         }
 
@@ -337,6 +337,10 @@ public class NewtonBody: MonoBehaviour
     [Header("rigid body data")]
     public float m_mass = 0.0f;
     public Vector3 m_centerOfMass = new Vector3 (0.0f, 0.0f, 0.0f);
+    public float m_Ixx = 0.0f;
+    public float m_Iyy = 0.0f;
+    public float m_Izz = 0.0f;
+    public bool m_CalculateInertia = true;
     public bool m_isScene = false;
     public bool m_showGizmo = false;
     public float m_gizmoScale = 1.0f;

@@ -178,18 +178,27 @@ void* dNewtonBody::GetCenterOfMass()
 	return &m_com;
 }
 
-void dNewtonBody::SetCenterOfMass(float com_x, float com_y, float com_z)
+void dNewtonBody::SetCenterOfMass(float com_x, float com_y, float com_z, float Ixx, float Iyy, float Izz, bool Calc_inertia)
 {
 	dVector com;
-	dFloat Ixx;
-	dFloat Iyy;
-	dFloat Izz;
+	dFloat tmp_Ixx;
+	dFloat tmp_Iyy;
+	dFloat tmp_Izz;
 	dFloat mass;
 
-	NewtonBodyGetMass(m_body, &mass, &Ixx, &Iyy, &Izz);
+	NewtonBodyGetMass(m_body, &mass, &tmp_Ixx, &tmp_Iyy, &tmp_Izz);
 	NewtonCollision* const collision = NewtonBodyGetCollision(m_body);
-	NewtonBodySetMassProperties(m_body, mass, NewtonBodyGetCollision(m_body));
-	NewtonBodyGetCentreOfMass (m_body, &com[0]);
+	if (Calc_inertia) {
+		NewtonBodySetMassProperties(m_body, mass, NewtonBodyGetCollision(m_body));
+		NewtonBodyGetCentreOfMass(m_body, &com[0]);
+	}
+	else {
+		NewtonBodySetMassMatrix(m_body, mass, Ixx, Iyy, Izz);
+		com.m_x = 0;
+		com.m_y = 0;
+		com.m_z = 0;
+	}
+
 	com.m_x += com_x;
 	com.m_y += com_y;
 	com.m_z += com_z;
