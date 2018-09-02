@@ -122,8 +122,9 @@ class dNewtonWorld: public dAlloc
 
 	const dMaterialProperties& FindMaterial(int id0, int id1) const;
 	static void OnContactCollision(const NewtonJoint* contactJoint, dFloat timestep, int threadIndex);
-	static int OnBodiesAABBOverlap(const NewtonJoint* const contact, dFloat timestep, int threadIndex);
-	static int OnSubShapeAABBOverlapTest(const NewtonMaterial* const material, const NewtonBody* const body0, const void* const collisionNode0, const NewtonBody* const body1, const void* const collisionNode1, int threadIndex);
+	static int OnBodiesAABBOverlap(const NewtonJoint* const contactJoint, dFloat timestep, int threadIndex);
+	//static int OnSubShapeAABBOverlapTest(const NewtonMaterial* const material, const NewtonBody* const body0, const void* const collisionNode0, const NewtonBody* const body1, const void* const collisionNode1, int threadIndex);
+	static int OnSubShapeAABBOverlapTest(const NewtonJoint* const contactJoint, dFloat timestep, const NewtonBody* const body0, const void* const collsionNode0, const NewtonBody* const body1, const void* const collsionNode1, int threadIndex);
 
 	NewtonWorld* m_world;
 	dList<dNewtonCollision*> m_collisionCache;

@@ -338,15 +338,16 @@ void* dNewtonWorld::GetBody1UserData(void* const contact) const
 	return dBody->GetUserData();
 }
 
-int dNewtonWorld::OnSubShapeAABBOverlapTest(const NewtonMaterial* const material, const NewtonBody* const body0, const void* const collisionNode0, const NewtonBody* const body1, const void* const collisionNode1, int threadIndex)
+//int dNewtonWorld::OnSubShapeAABBOverlapTest(const NewtonMaterial* const material, const NewtonBody* const body0, const void* const collisionNode0, const NewtonBody* const body1, const void* const collisionNode1, int threadIndex)
+int dNewtonWorld::OnSubShapeAABBOverlapTest(const NewtonJoint* const contactJoint, dFloat timestep, const NewtonBody* const body0, const void* const collsionNode0, const NewtonBody* const body1, const void* const collsionNode1, int threadIndex)
 {
 	return 1;
 }
 
-int dNewtonWorld::OnBodiesAABBOverlap(const NewtonJoint* const contact, dFloat timestep, int threadIndex)
+int dNewtonWorld::OnBodiesAABBOverlap(const NewtonJoint* const contactJoint, dFloat timestep, int threadIndex)
 {
-	NewtonBody* const bodyPtr0 = NewtonJointGetBody0(contact);
-	NewtonBody* const bodyPtr1 = NewtonJointGetBody1(contact);
+	NewtonBody* const bodyPtr0 = NewtonJointGetBody0(contactJoint);
+	NewtonBody* const bodyPtr1 = NewtonJointGetBody1(contactJoint);
 	//dNewtonWorld* const world = (dNewtonWorld*)NewtonMaterialGetMaterialPairUserData(material);
 	NewtonCollision* const newtonCollision0 = (NewtonCollision*)NewtonBodyGetCollision(bodyPtr0);
 	NewtonCollision* const newtonCollision1 = (NewtonCollision*)NewtonBodyGetCollision(bodyPtr1);
