@@ -47,6 +47,9 @@ dNewtonWorld::dNewtonWorld()
 	// set the simplified solver mode (faster but less accurate)
 	NewtonSetSolverModel (m_world, 1);
 
+	// enable parallel solve on large island
+	NewtonSetParallelSolverOnLargeIsland(m_world, 1);
+
 /*
 	// by default runs on four micro threads
 	NewtonSetThreadsCount(m_world, 4);
@@ -236,6 +239,11 @@ void dNewtonWorld::SetThreadsCount(int threads)
 void dNewtonWorld::SetBroadPhase(int broadphase)
 {
 	NewtonSelectBroadphaseAlgorithm(m_world, broadphase ? 0 : 1);
+}
+
+void dNewtonWorld::SetParallelSolverOnLargeIsland(bool mode)
+{
+	NewtonSetParallelSolverOnLargeIsland(m_world, mode ? 1 : 0);
 }
 
 dNewtonVehicleManager* dNewtonWorld::GetVehicleManager() const

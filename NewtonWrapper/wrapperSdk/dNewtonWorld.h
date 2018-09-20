@@ -91,6 +91,7 @@ class dNewtonWorld: public dAlloc
 	void SetThreadsCount(int threads);
 	void SetBroadPhase(int broadphase);
 	void SetSubSteps(int subSteps);
+	void SetParallelSolverOnLargeIsland(bool mode);
 
 	long long GetMaterialKey(int materialID0, int materialID1) const;
 	void SetDefaultMaterial(float restitution, float staticFriction, float kineticFriction, bool collisionEnable);

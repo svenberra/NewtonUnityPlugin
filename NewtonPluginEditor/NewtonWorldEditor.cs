@@ -38,6 +38,7 @@ public class NewtonWorldEditor : Editor
         m_numThreadsProp = serializedObject.FindProperty("m_numberOfThreads");
         m_broadPhaseTypeProp = serializedObject.FindProperty("m_broadPhaseType");
         m_solverIterationsCountProp = serializedObject.FindProperty("m_solverIterationsCount");
+//      m_useParallerSolverProp = serializedObject.FindProperty("m_useParallerSolver");
 
         m_defaultRestitutionProp = serializedObject.FindProperty("m_defaultRestitution");
         m_defaultStaticFrictionProp = serializedObject.FindProperty("m_defaultStaticFriction");
@@ -53,6 +54,8 @@ public class NewtonWorldEditor : Editor
         EditorGUILayout.PropertyField(m_asyncUpdateProp, new GUIContent("Asynchronous update"));
         EditorGUILayout.PropertyField(m_serializeSceneOnceProp, new GUIContent("Serialize scene once"));
         EditorGUILayout.PropertyField(m_saveSceneNameProp, new GUIContent("Serialize scene name"));
+//      EditorGUILayout.PropertyField(m_useParallerSolverProp, new GUIContent("Use Parallel solver on large island"));
+
         EditorGUILayout.IntPopup(m_numThreadsProp, m_numberOfThreadsOptions, m_numberOfThreadsValues, new GUIContent("Worker threads"));
         EditorGUILayout.IntSlider(m_solverIterationsCountProp, 1, 10, new GUIContent("Solver iterations count"));
         EditorGUILayout.IntSlider(m_updateRateProp, 60, 1000, new GUIContent("Update rate"));
@@ -78,13 +81,13 @@ public class NewtonWorldEditor : Editor
     SerializedProperty m_serializeSceneOnceProp;
     SerializedProperty m_broadPhaseTypeProp;
     SerializedProperty m_solverIterationsCountProp;
-    
+//    SerializedProperty m_useParallerSolverProp;
 
     SerializedProperty m_defaultRestitutionProp;
     SerializedProperty m_defaultStaticFrictionProp;
     SerializedProperty m_defaultKineticFrictionProp;
 
-    static private GUIContent[] m_broadPhaseOptions = { new GUIContent("Mixed static dynamic"), new GUIContent("dynamics")};
+    static private GUIContent[] m_broadPhaseOptions = { new GUIContent("segregated"), new GUIContent("mixed")};
     static private GUIContent[] m_numberOfThreadsOptions = { new GUIContent("Single threaded"), new GUIContent("2 worker threads"), new GUIContent("3 worker threads"), new GUIContent("4 worker threads"), new GUIContent("8 worker threads") };
     static private int[] m_broadPhaseValues = { 0, 1};
     static private int[] m_numberOfThreadsValues = { 0, 2, 3, 4, 8 };

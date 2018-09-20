@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\RobotController.cs" />
     <Compile Include="Assets\Scripts\RopeComponent.cs" />
     <Compile Include="Assets\Scripts\VelocitySet.cs" />
+    <Compile Include="Assets\Scripts\test01forcecontroller.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\MedievalHouse\Readme.txt" />
