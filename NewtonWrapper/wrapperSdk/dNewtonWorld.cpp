@@ -75,9 +75,6 @@ dNewtonWorld::dNewtonWorld()
 	int materialList[] = { defaultMaterial };
 	// create a vehicle controller manager
 	m_vehicleManager = new dNewtonVehicleManager(m_world, 1, materialList);
-
-	// load all plugins
-	//LoadPlugins(pluginPath);
 }
 
 dNewtonWorld::~dNewtonWorld()
@@ -428,22 +425,36 @@ void dNewtonWorld::SaveSerializedScene(const char* const sceneName)
 	NewtonSerializeToFile(m_world, sceneName, NULL, NULL);
 }
 
-const char* dNewtonWorld::LoadPlugins(const char* const pluginPath)
+void dNewtonWorld::LoadPlugins(const char* const pluginPath)
 {
 	char plugInPath[2048];
 	sprintf(plugInPath, "%s/Plugins/newtonPlugins/Release", pluginPath);
 	NewtonLoadPlugins(m_world, plugInPath);
-
-	void* const bestPlugin = NewtonGetPreferedPlugin(m_world);
-	if (bestPlugin) {
-		NewtonSelectPlugin(m_world, bestPlugin);
-	}
-	return NewtonGetPluginString(m_world, bestPlugin);
 }
 
 void dNewtonWorld::UnloadPlugins()
 {
 	NewtonUnloadPlugins(m_world);
+}
+
+void* dNewtonWorld::FirstPlugin() const
+{
+	return NewtonGetFirstPlugin(m_world);
+}
+
+void* dNewtonWorld::NextPlugin(const void* const plugin) const
+{
+	return NewtonGetNextPlugin(m_world, plugin);
+}
+
+const char* dNewtonWorld::GetPluginName(const void* const plugin) const
+{
+	return NewtonGetPluginString(m_world, plugin);
+}
+
+void dNewtonWorld::SelectPlugin(const void* const plugin) const
+{
+	NewtonSelectPlugin(m_world, plugin);
 }
 
 void dNewtonWorld::UpdateWorld()

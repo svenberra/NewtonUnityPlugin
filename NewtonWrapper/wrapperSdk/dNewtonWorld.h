@@ -118,8 +118,12 @@ class dNewtonWorld: public dAlloc
 	dNewtonVehicleManager* GetVehicleManager() const;
 	void SaveSerializedScene(const char* const sceneName);
 
-	const char* LoadPlugins(const char* const pluginPath);
+	void LoadPlugins(const char* const pluginPath);
 	void UnloadPlugins();
+	void* FirstPlugin() const;
+	void* NextPlugin(const void* const plugin) const;
+	void SelectPlugin(const void* const plugin) const;
+	const char* GetPluginName(const void* const plugin) const;
 
 	private:
 	void UpdateWorld();

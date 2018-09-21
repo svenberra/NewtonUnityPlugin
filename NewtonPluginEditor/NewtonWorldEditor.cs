@@ -26,6 +26,25 @@ using System.Collections.Generic;
 [CustomEditor(typeof(NewtonWorld))]
 public class NewtonWorldEditor : Editor
 {
+
+    public void Awake()
+    {
+        if (m_firstTime)
+        {
+            m_firstTime = false;
+            dNewtonWorld world = new dNewtonWorld();
+            world.LoadPlugins(Application.dataPath);
+            int index = 1;
+            for (IntPtr plugin = world.FirstPlugin(); plugin != IntPtr.Zero; plugin = world.NextPlugin(plugin))
+            {
+                string name = world.GetPluginName(plugin);
+                //Debug.Log(name);
+                m_pluginsOptions[index] = new GUIContent(name);
+                index++;
+            }
+        }
+    }
+
     void OnEnable()
     {
         // Setup the SerializedProperties
@@ -39,6 +58,7 @@ public class NewtonWorldEditor : Editor
         m_broadPhaseTypeProp = serializedObject.FindProperty("m_broadPhaseType");
         m_solverIterationsCountProp = serializedObject.FindProperty("m_solverIterationsCount");
         m_useParallerSolverProp = serializedObject.FindProperty("m_useParallerSolver");
+        m_pluginsOptionsProp = serializedObject.FindProperty("m_pluginsOptions");
 
         m_defaultRestitutionProp = serializedObject.FindProperty("m_defaultRestitution");
         m_defaultStaticFrictionProp = serializedObject.FindProperty("m_defaultStaticFriction");
@@ -53,6 +73,8 @@ public class NewtonWorldEditor : Editor
         // Show the custom GUI controls
         EditorGUILayout.PropertyField(m_asyncUpdateProp, new GUIContent("Asynchronous update"));
         EditorGUILayout.PropertyField(m_useParallerSolverProp, new GUIContent("Solve large island in parallel"));
+        EditorGUILayout.IntPopup(m_pluginsOptionsProp, m_pluginsOptions, m_pluginsValues, new GUIContent("Available Plugins"));
+
         EditorGUILayout.PropertyField(m_serializeSceneOnceProp, new GUIContent("Serialize scene once"));
         EditorGUILayout.PropertyField(m_saveSceneNameProp, new GUIContent("Serialize scene name"));
 
@@ -81,15 +103,22 @@ public class NewtonWorldEditor : Editor
     SerializedProperty m_useParallerSolverProp;
     SerializedProperty m_serializeSceneOnceProp;
     SerializedProperty m_solverIterationsCountProp;
-    
+
+
+    SerializedProperty m_pluginsOptionsProp;
+
     SerializedProperty m_defaultRestitutionProp;
     SerializedProperty m_defaultStaticFrictionProp;
     SerializedProperty m_defaultKineticFrictionProp;
 
-    static private GUIContent[] m_broadPhaseOptions = { new GUIContent("segregated"), new GUIContent("mixed")};
-    static private GUIContent[] m_numberOfThreadsOptions = { new GUIContent("Single threaded"), new GUIContent("2 worker threads"), new GUIContent("3 worker threads"), new GUIContent("4 worker threads"), new GUIContent("8 worker threads") };
-    static private int[] m_broadPhaseValues = { 0, 1};
-    static private int[] m_numberOfThreadsValues = { 0, 2, 3, 4, 8 };
+    static bool m_firstTime = true;
+
+    static private GUIContent[] m_broadPhaseOptions = {new GUIContent("segregated"), new GUIContent("mixed")};
+    static private GUIContent[] m_numberOfThreadsOptions = {new GUIContent("Single threaded"), new GUIContent("2 worker threads"), new GUIContent("3 worker threads"), new GUIContent("4 worker threads"), new GUIContent("8 worker threads") };
+    static private GUIContent[] m_pluginsOptions = {new GUIContent("default"), new GUIContent(""), new GUIContent(""), new GUIContent("") };
+    static private int[] m_broadPhaseValues = {0, 1};
+    static private int[] m_numberOfThreadsValues = {0, 2, 3, 4, 8 };
+    static private int[] m_pluginsValues = {0, 1, 2, 3};
 }
 
 

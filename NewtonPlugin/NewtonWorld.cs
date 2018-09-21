@@ -75,11 +75,21 @@ public class NewtonWorld : MonoBehaviour
         m_world.SetCallbacks(m_onWorldCallback, m_onWorldBodyTransfromUpdateCallback);
 
         //Load all physics plug ins and choose the best one
-        if (m_useParallerSolver)
+        m_world.SelectPlugin(IntPtr.Zero);
+        if (m_useParallerSolver && (m_pluginsOptions > 0))
         {
             string path = Application.dataPath;
-            string pluginName = m_world.LoadPlugins(path);
-            Debug.Log("Executing physics plug in: " + pluginName);
+            m_world.LoadPlugins(path);
+            int index = 1;
+            for (IntPtr plugin = m_world.FirstPlugin(); plugin != IntPtr.Zero; plugin = m_world.NextPlugin(plugin))
+            {
+                if (index == m_pluginsOptions)
+                {
+                    Debug.Log("Using newton physics solver: " + m_world.GetPluginName(plugin));
+                    m_world.SelectPlugin(plugin);
+                }
+                index++;
+            }
         } else {
             m_world.UnloadPlugins();
         }
@@ -266,7 +276,6 @@ public class NewtonWorld : MonoBehaviour
         return false;
     }
 
-    //private dNewtonWorld m_world = new dNewtonWorld(Application.dataPath);
     private dNewtonWorld m_world = new dNewtonWorld();
     public bool m_asyncUpdate = true;
     public bool m_serializeSceneOnce = false;
@@ -277,7 +286,8 @@ public class NewtonWorld : MonoBehaviour
     public int m_solverIterationsCount = 1;
     public int m_updateRate = 60;
     public int m_subSteps = 2;
-    
+    public int m_pluginsOptions = 0;
+
     public Vector3 m_gravity = new Vector3(0.0f, -9.8f, 0.0f);
 
     public float m_defaultRestitution = 0.4f;
