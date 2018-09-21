@@ -38,7 +38,7 @@ public class NewtonWorldEditor : Editor
         m_numThreadsProp = serializedObject.FindProperty("m_numberOfThreads");
         m_broadPhaseTypeProp = serializedObject.FindProperty("m_broadPhaseType");
         m_solverIterationsCountProp = serializedObject.FindProperty("m_solverIterationsCount");
-//      m_useParallerSolverProp = serializedObject.FindProperty("m_useParallerSolver");
+        m_useParallerSolverProp = serializedObject.FindProperty("m_useParallerSolver");
 
         m_defaultRestitutionProp = serializedObject.FindProperty("m_defaultRestitution");
         m_defaultStaticFrictionProp = serializedObject.FindProperty("m_defaultStaticFriction");
@@ -52,9 +52,9 @@ public class NewtonWorldEditor : Editor
 
         // Show the custom GUI controls
         EditorGUILayout.PropertyField(m_asyncUpdateProp, new GUIContent("Asynchronous update"));
+        EditorGUILayout.PropertyField(m_useParallerSolverProp, new GUIContent("Solve large island in parallel"));
         EditorGUILayout.PropertyField(m_serializeSceneOnceProp, new GUIContent("Serialize scene once"));
         EditorGUILayout.PropertyField(m_saveSceneNameProp, new GUIContent("Serialize scene name"));
-//      EditorGUILayout.PropertyField(m_useParallerSolverProp, new GUIContent("Use Parallel solver on large island"));
 
         EditorGUILayout.IntPopup(m_numThreadsProp, m_numberOfThreadsOptions, m_numberOfThreadsValues, new GUIContent("Worker threads"));
         EditorGUILayout.IntSlider(m_solverIterationsCountProp, 1, 10, new GUIContent("Solver iterations count"));
@@ -71,18 +71,17 @@ public class NewtonWorldEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
-    
     SerializedProperty m_gravityProp;
     SerializedProperty m_subStepsProp;
     SerializedProperty m_updateRateProp;
     SerializedProperty m_numThreadsProp;
     SerializedProperty m_asyncUpdateProp;
     SerializedProperty m_saveSceneNameProp;
-    SerializedProperty m_serializeSceneOnceProp;
     SerializedProperty m_broadPhaseTypeProp;
+    SerializedProperty m_useParallerSolverProp;
+    SerializedProperty m_serializeSceneOnceProp;
     SerializedProperty m_solverIterationsCountProp;
-//    SerializedProperty m_useParallerSolverProp;
-
+    
     SerializedProperty m_defaultRestitutionProp;
     SerializedProperty m_defaultStaticFrictionProp;
     SerializedProperty m_defaultKineticFrictionProp;

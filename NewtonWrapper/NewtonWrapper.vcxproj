@@ -68,7 +68,15 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
-xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Command>
+xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+
+xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonAvx\$(Configuration)\*.dll" "../PluginBin/newtonPlugins/$(Configuration)/*.*"  /F /Y /R 
+xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonAvx2\$(Configuration)\*.dll" "../PluginBin/newtonPlugins/$(Configuration)/*.*"  /F /Y /R 
+xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonsse4.2\$(Configuration)\*.dll" "../PluginBin/newtonPlugins/$(Configuration)/*.*"  /F /Y /R 
+
+xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonAvx\$(Configuration)\*.dll" "../Demos/Assets/Plugins/newtonPlugins/$(Configuration)/*.*"  /F /Y /R 
+xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonAvx2\$(Configuration)\*.dll" "../Demos/Assets/Plugins/newtonPlugins/$(Configuration)/*.*"  /F /Y /R 
+xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonsse4.2\$(Configuration)\*.dll" "../Demos/Assets/Plugins/newtonPlugins/$(Configuration)/*.*"  /F /Y /R </Command>
     </PostBuildEvent>
     <CustomBuildStep>
       <Command>
@@ -102,7 +110,15 @@ xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Com
     </Link>
     <PostBuildEvent>
       <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
-xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R</Command>
+xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+
+xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonAvx\$(Configuration)\*.dll" "../PluginBin/newtonPlugins/$(Configuration)/*.*"  /F /Y /R 
+xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonAvx2\$(Configuration)\*.dll" "../PluginBin/newtonPlugins/$(Configuration)/*.*"  /F /Y /R 
+xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonsse4.2\$(Configuration)\*.dll" "../PluginBin/newtonPlugins/$(Configuration)/*.*"  /F /Y /R 
+
+xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonAvx\$(Configuration)\*.dll" "../Demos/Assets/Plugins/newtonPlugins/$(Configuration)/*.*"  /F /Y /R 
+xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonAvx2\$(Configuration)\*.dll" "../Demos/Assets/Plugins/newtonPlugins/$(Configuration)/*.*"  /F /Y /R 
+xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonsse4.2\$(Configuration)\*.dll" "../Demos/Assets/Plugins/newtonPlugins/$(Configuration)/*.*"  /F /Y /R </Command>
     </PostBuildEvent>
     <CustomBuildStep>
       <Command>

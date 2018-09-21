@@ -70,8 +70,20 @@ public class NewtonWorld : MonoBehaviour
         m_world.SetBroadPhase(m_broadPhaseType);
         m_world.SetGravity(m_gravity.x, m_gravity.y, m_gravity.z);
         m_world.SetSubSteps(m_subSteps);
+        m_world.SetParallelSolverOnLargeIsland(m_useParallerSolver);
         m_world.SetDefaultMaterial(m_defaultRestitution, m_defaultStaticFriction, m_defaultKineticFriction, true);
         m_world.SetCallbacks(m_onWorldCallback, m_onWorldBodyTransfromUpdateCallback);
+
+        //Load all physics plug ins and choose the best one
+        if (m_useParallerSolver)
+        {
+            string path = Application.dataPath;
+            string pluginName = m_world.LoadPlugins(path);
+            Debug.Log("Executing physics plug in: " + pluginName);
+        } else {
+            m_world.UnloadPlugins();
+        }
+
         InitScene();
     }
 
@@ -254,15 +266,18 @@ public class NewtonWorld : MonoBehaviour
         return false;
     }
 
+    //private dNewtonWorld m_world = new dNewtonWorld(Application.dataPath);
     private dNewtonWorld m_world = new dNewtonWorld();
     public bool m_asyncUpdate = true;
     public bool m_serializeSceneOnce = false;
+    public bool m_useParallerSolver = true;
     public string m_saveSceneName = "scene_01.bin";
     public int m_broadPhaseType = 0;
     public int m_numberOfThreads = 0;
     public int m_solverIterationsCount = 1;
-    public int m_updateRate = 120;
-    public int m_subSteps = 1;
+    public int m_updateRate = 60;
+    public int m_subSteps = 2;
+    
     public Vector3 m_gravity = new Vector3(0.0f, -9.8f, 0.0f);
 
     public float m_defaultRestitution = 0.4f;

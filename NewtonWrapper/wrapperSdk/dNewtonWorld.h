@@ -36,7 +36,7 @@ typedef void(*OnWorldUpdateCallback)(dFloat timestep);
 
 class rayHitInfo
 {
-public:
+	public:
 	float intersectParam;
 	int layermask;
 	void* managedBodyHandle;
@@ -116,10 +116,14 @@ class dNewtonWorld: public dAlloc
 	static unsigned rayPreFilterCallback(const NewtonBody* const body, const NewtonCollision* const collision, void* const userData);
 
 	dNewtonVehicleManager* GetVehicleManager() const;
-	void SaveSerializedScene(char* const sceneName);
+	void SaveSerializedScene(const char* const sceneName);
+
+	const char* LoadPlugins(const char* const pluginPath);
+	void UnloadPlugins();
 
 	private:
 	void UpdateWorld();
+	
 
 	const dMaterialProperties& FindMaterial(int id0, int id1) const;
 	static void OnContactCollision(const NewtonJoint* contactJoint, dFloat timestep, int threadIndex);
