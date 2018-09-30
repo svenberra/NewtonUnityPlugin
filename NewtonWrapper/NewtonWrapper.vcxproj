@@ -67,7 +67,11 @@
       <ShowProgress>NotSet</ShowProgress>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+      <Command>rem xcopy  "$(OutDir)$(TargetName).dll" "C:\Users\julio\Downloads\Gerador.Newton\Collisions_Data\Plugins/*.*"  /F /Y /R
+rem xcopy  "$(OutDir)$(TargetName).pdb" "C:\Users\julio\Downloads\Gerador.Newton\Collisions_Data\Plugins/*.*"  /F /Y /R
+
+
+xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
 xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R
 
 xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonAvx\$(Configuration)\*.dll" "../PluginBin/newtonPlugins/$(Configuration)/*.*"  /F /Y /R 
@@ -109,7 +113,11 @@ xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewton
       <ShowProgress>NotSet</ShowProgress>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
+      <Command>rem xcopy  "$(OutDir)$(TargetName).dll" "C:\Users\julio\Downloads\Gerador.Newton\Collisions_Data\Plugins/*.*"  /F /Y /R
+rem xcopy  "$(OutDir)$(TargetName).pdb" "C:\Users\julio\Downloads\Gerador.Newton\Collisions_Data\Plugins/*.*"  /F /Y /R
+
+
+xcopy  "$(OutDir)$(TargetName).dll" "../Demos/Assets/Plugins/*.*"  /F /Y /R
 xcopy  "$(OutDir)$(TargetName).pdb" "../Demos/Assets/Plugins/*.*"  /F /Y /R
 
 xcopy  "$(NEWTON_DYNAMICS)\sdk\projects\visualStudio_2015_static_mt\x64\dgNewtonAvx\$(Configuration)\*.dll" "../PluginBin/newtonPlugins/$(Configuration)/*.*"  /F /Y /R 

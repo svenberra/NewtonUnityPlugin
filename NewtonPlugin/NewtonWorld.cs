@@ -66,7 +66,7 @@ public class NewtonWorld : MonoBehaviour
         m_world.SetAsyncUpdate(m_asyncUpdate);
         m_world.SetFrameRate(m_updateRate);
         m_world.SetThreadsCount(m_numberOfThreads);
-        m_world.SetSolverMode(m_solverIterationsCount);
+        m_world.SetSolverIterations(m_solverIterationsCount);
         m_world.SetBroadPhase(m_broadPhaseType);
         m_world.SetGravity(m_gravity.x, m_gravity.y, m_gravity.z);
         m_world.SetSubSteps(m_subSteps);

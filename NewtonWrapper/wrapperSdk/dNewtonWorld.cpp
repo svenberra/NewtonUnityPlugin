@@ -45,7 +45,7 @@ dNewtonWorld::dNewtonWorld()
 	NewtonWorldSetUserData(m_world, this);
 
 	// set the simplified solver mode (faster but less accurate)
-	NewtonSetSolverModel (m_world, 1);
+	NewtonSetSolverIterations(m_world, 1);
 
 	// enable parallel solve on large island
 	NewtonSetParallelSolverOnLargeIsland(m_world, 1);
@@ -226,9 +226,9 @@ void dNewtonWorld::SetSubSteps(int subSteps)
 	NewtonSetNumberOfSubsteps(m_world, dClamp(subSteps, 1, 4));
 }
 
-void dNewtonWorld::SetSolverMode(int mode)
+void dNewtonWorld::SetSolverIterations(int mode)
 {
-	NewtonSetSolverModel(m_world, dClamp (mode, 1, 1000));
+	NewtonSetSolverIterations(m_world, dClamp (mode, 1, 1000));
 }
 
 void dNewtonWorld::SetThreadsCount(int threads)

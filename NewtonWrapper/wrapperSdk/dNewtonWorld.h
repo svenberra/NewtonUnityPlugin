@@ -82,7 +82,7 @@ class dNewtonWorld: public dAlloc
 	virtual ~dNewtonWorld();
 	void Update(dFloat timestepInSeconds);
 
-	void SetSolverMode(int mode);
+	void SetSolverIterations(int mode);
 	void SetFrameRate(dFloat frameRate);
 	const dVector& GetGravity() const;
 	void SetGravity(const dVector& gravity);
