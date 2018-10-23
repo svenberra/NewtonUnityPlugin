@@ -33,6 +33,8 @@ public class NewtonBodyCollision
 
     public NewtonBodyCollision(NewtonBody body)
     {
+        if (body.m_world.GetWorld() == null) { throw new NullReferenceException("Native world instance is null. The World component was probably destroyed"); }
+
         List<ColliderShapePair> colliderList = new List<ColliderShapePair>();
         TraverseColliders(body.gameObject, colliderList, body.gameObject, body);
 

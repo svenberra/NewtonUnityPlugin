@@ -117,6 +117,7 @@ public class NewtonBody: MonoBehaviour
 
     public dNewtonBody GetBody()
     {
+        if (m_world.GetWorld() == null) { throw new NullReferenceException("Native world instance is null. The World component was probably destroyed"); }
         return m_body;
     }
 
