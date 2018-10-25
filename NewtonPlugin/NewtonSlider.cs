@@ -26,7 +26,7 @@ using System.Runtime.InteropServices;
 [AddComponentMenu("Newton Physics/Joints/Slider")]
 public class NewtonSlider: NewtonJoint
 {
-    public override void Create()
+    public override void InitJoint()
     {
         NewtonBody child = GetComponent<NewtonBody>();
         dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));
@@ -189,7 +189,7 @@ public class NewtonSlider: NewtonJoint
 [AddComponentMenu("Newton Physics/Joints/Slider Actuator")]
 public class NewtonSliderActuator : NewtonJoint
 {
-    public override void Create()
+    public override void InitJoint()
     {
         NewtonBody child = GetComponent<NewtonBody>();
         dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));

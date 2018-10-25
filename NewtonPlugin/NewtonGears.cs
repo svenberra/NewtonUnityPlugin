@@ -26,7 +26,7 @@ using System.Runtime.InteropServices;
 [AddComponentMenu("Newton Physics/Joints/Gear")]
 public class NewtonGear: NewtonJoint
 {
-    public override void Create()
+    public override void InitJoint()
     {
         Matrix4x4 localMatrix0 = Matrix4x4.identity;
         Matrix4x4 localMatrix1 = Matrix4x4.identity;
@@ -76,7 +76,7 @@ public class NewtonGear: NewtonJoint
 [AddComponentMenu("Newton Physics/Joints/Differential Gear")]
 public class NewtonDifferentialGear : NewtonJoint
 {
-    public override void Create()
+    public override void InitJoint()
     {
         Matrix4x4 localMatrix0 = Matrix4x4.identity;
         Matrix4x4 localMatrix1 = Matrix4x4.identity;

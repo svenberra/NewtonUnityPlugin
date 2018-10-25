@@ -26,8 +26,11 @@ using System.Runtime.InteropServices;
 [AddComponentMenu("Newton Physics/Joints/Hinge")]
 public class NewtonHinge: NewtonJoint
 {
-    public override void Create()
+    public override void InitJoint()
     {
+        if (initialized)
+            return;
+
         NewtonBody child = GetComponent<NewtonBody>();
         dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));
         IntPtr otherBody = (m_otherBody != null) ? m_otherBody.GetBody().GetBody() : new IntPtr(0);
@@ -36,6 +39,7 @@ public class NewtonHinge: NewtonJoint
         Stiffness = m_stiffness;
         EnableLimits = m_enableLimits;
         SetSpringDamper = m_setSpringDamper;
+        initialized = true;
     }
 
     void OnDrawGizmosSelected()
@@ -189,7 +193,7 @@ public class NewtonHinge: NewtonJoint
 [AddComponentMenu("Newton Physics/Joints/Hinge Actuator")]
 public class NewtonHingeActuator: NewtonJoint
 {
-    public override void Create()
+    public override void InitJoint()
     {
         NewtonBody child = GetComponent<NewtonBody>();
         dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));

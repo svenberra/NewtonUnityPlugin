@@ -107,7 +107,10 @@ public class NewtonWorld : MonoBehaviour
 
     internal void RegisterBody(NewtonBody nb)
     {
-        m_bodies.Add(nb);
+        if (!m_bodies.Contains(nb))     // Had to add this
+        {
+            m_bodies.Add(nb);
+        }
     }
 
     internal void UnregisterBody(NewtonBody nb)
@@ -115,32 +118,32 @@ public class NewtonWorld : MonoBehaviour
         m_bodies.Remove(nb);
     }
 
-    private void InitPhysicsScene(GameObject root)
-    {
-        NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
-        if (bodyPhysics != null)
-        {
-            bodyPhysics.InitRigidBody();
-        }
+    //private void InitPhysicsScene(GameObject root)
+    //{
+    //    NewtonBody bodyPhysics = root.GetComponent<NewtonBody>();
+    //    if (bodyPhysics != null)
+    //    {
+    //        bodyPhysics.InitRigidBody();
+    //    }
 
-        foreach (Transform child in root.transform)
-        {
-            InitPhysicsScene(child.gameObject);
-        }
-    }
+    //    foreach (Transform child in root.transform)
+    //    {
+    //        InitPhysicsScene(child.gameObject);
+    //    }
+    //}
 
-    private void InitPhysicsJoints(GameObject root)
-    {
-        foreach (NewtonJoint joint in root.GetComponents<NewtonJoint>())
-        {
-            joint.Create();
-        }
+    //private void InitPhysicsJoints(GameObject root)
+    //{
+    //    foreach (NewtonJoint joint in root.GetComponents<NewtonJoint>())
+    //    {
+    //        joint.Create();
+    //    }
 
-        foreach (Transform child in root.transform)
-        {
-            InitPhysicsJoints(child.gameObject);
-        }
-    }
+    //    foreach (Transform child in root.transform)
+    //    {
+    //        InitPhysicsJoints(child.gameObject);
+    //    }
+    //}
 
     private void InitScene()
     {
@@ -157,16 +160,15 @@ public class NewtonWorld : MonoBehaviour
             }
         }
 
-        GameObject[] objectList = gameObject.scene.GetRootGameObjects();
-        foreach (GameObject rootObj in objectList)
-        {
-            InitPhysicsScene(rootObj);
-        }
-
-        foreach (GameObject rootObj in objectList)
-        {
-            InitPhysicsJoints(rootObj);
-        }
+        //GameObject[] objectList = gameObject.scene.GetRootGameObjects();
+        //foreach (GameObject rootObj in objectList)
+        //{
+        //    InitPhysicsScene(rootObj);
+        //}
+        //foreach (GameObject rootObj in objectList)
+        //{
+        //    InitPhysicsJoints(rootObj);
+        //}
     }
 
     private void DestroyScene()

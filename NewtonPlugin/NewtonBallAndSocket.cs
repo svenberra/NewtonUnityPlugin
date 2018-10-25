@@ -26,7 +26,7 @@ using System.Runtime.InteropServices;
 [AddComponentMenu("Newton Physics/Joints/BallAndSocket")]
 public class NewtonBallAndSocket: NewtonJoint
 {
-    public override void Create()
+    public override void InitJoint()
     {
         NewtonBody child = GetComponent<NewtonBody>();
         dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));

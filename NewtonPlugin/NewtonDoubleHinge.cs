@@ -26,7 +26,7 @@ using System.Runtime.InteropServices;
 [AddComponentMenu("Newton Physics/Joints/Universal")]
 public class NewtonDoubleHinge : NewtonJoint
 {
-    public override void Create()
+    public override void InitJoint()
     {
         NewtonBody child = GetComponent<NewtonBody>();
         dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));
@@ -170,7 +170,7 @@ public class NewtonDoubleHinge : NewtonJoint
 [AddComponentMenu("Newton Physics/Joints/Universal Actuator")]
 public class NewtonDoubleHingeActuator : NewtonJoint
 {
-    public override void Create()
+    public override void InitJoint()
     {
         NewtonBody child = GetComponent<NewtonBody>();
         dMatrix matrix = Utils.ToMatrix(m_posit, Quaternion.Euler(m_rotation));

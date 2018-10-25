@@ -35,6 +35,8 @@ public class NewtonBody: MonoBehaviour
         {
             m_scripts.Add(script);
         }
+
+        InitRigidBody();
     }
 
     public virtual void OnDestroy()
@@ -79,6 +81,9 @@ public class NewtonBody: MonoBehaviour
 
     public virtual void InitRigidBody()
     {
+        if (initialized)
+            return;
+
         CreateBodyAndCollision();
 
         SetCenterOfMass();
@@ -90,6 +95,7 @@ public class NewtonBody: MonoBehaviour
         m_body.SetUserData(GCHandle.ToIntPtr(handle));
 
         m_world.RegisterBody(this);
+        initialized = true;
     }
 
     void SetCenterOfMass ()
@@ -118,6 +124,10 @@ public class NewtonBody: MonoBehaviour
     public dNewtonBody GetBody()
     {
         if (m_world.GetWorld() == null) { throw new NullReferenceException("Native world instance is null. The World component was probably destroyed"); }
+        if (!initialized)
+        {
+            InitRigidBody();
+        }
         return m_body;
     }
 
@@ -331,8 +341,11 @@ public class NewtonBody: MonoBehaviour
 
     protected virtual void CreateBodyAndCollision()
     {
-        m_collision = new NewtonBodyCollision(this);
-        m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
+        if(m_collision == null && m_body == null)
+        {
+            m_collision = new NewtonBodyCollision(this);
+            m_body = new dNewtonDynamicBody(m_world.GetWorld(), m_collision.GetShape(), Utils.ToMatrix(transform.position, transform.rotation), m_mass);
+        }
     }
 
     [Header("rigid body data")]
@@ -359,4 +372,5 @@ public class NewtonBody: MonoBehaviour
     private float[] m_comPtr = new float[3];
 
     internal List<NewtonBodyScript> m_scripts = new List<NewtonBodyScript>();
+    private bool initialized = false;
 }

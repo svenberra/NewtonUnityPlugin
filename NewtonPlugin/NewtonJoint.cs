@@ -23,7 +23,7 @@ using UnityEngine;
 
 abstract public class NewtonJoint : MonoBehaviour
 {
-    abstract public void Create();
+    abstract public void InitJoint();
     
     public float Stiffness
     {
@@ -41,6 +41,11 @@ abstract public class NewtonJoint : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        InitJoint();
+    }
+
     void OnDestroy()
     {
         m_joint.Destroy();
@@ -50,6 +55,7 @@ abstract public class NewtonJoint : MonoBehaviour
     public NewtonBody m_otherBody = null;
     public float m_stiffness = 1.0f;
     public float m_gizmoScale = 1.0f;
+    protected bool initialized = false;
 }
 
 

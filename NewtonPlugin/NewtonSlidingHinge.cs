@@ -26,7 +26,7 @@ using System.Runtime.InteropServices;
 [AddComponentMenu("Newton Physics/Joints/Sliding Hinge")]
 public class NewtonJointSlidingHinge: NewtonJoint
 {
-    public override void Create()
+    public override void InitJoint()
     {
         NewtonBody child = GetComponent<NewtonBody>();
 
