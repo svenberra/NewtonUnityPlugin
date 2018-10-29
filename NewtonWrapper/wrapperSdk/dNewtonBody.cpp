@@ -341,8 +341,8 @@ dNewtonDynamicBody::dNewtonDynamicBody(dNewtonWorld* const world, dNewtonCollisi
 
 	NewtonWaitForUpdateToFinish(newton);
 	m_body = NewtonCreateDynamicBody(newton, collision->m_shape, &matrix[0][0]);
-	collision->DeleteShape();
-	collision->SetShape(NewtonBodyGetCollision(m_body));
+	//collision->DeleteShape();
+	//collision->SetShape(NewtonBodyGetCollision(m_body));
 
 	NewtonBodySetMassProperties(m_body, mass, NewtonBodyGetCollision(m_body));
 

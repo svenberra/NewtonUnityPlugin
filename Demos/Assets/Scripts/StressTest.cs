@@ -8,6 +8,7 @@ public class StressTest : MonoBehaviour
     public NewtonWorld world = null;
     public int BodyCount = 200;
     public float Delay = 1.0f;
+    public int Radius = 50;
 
     private GameObject groupContainer = null;
     private float timer = 0;
@@ -46,11 +47,11 @@ public class StressTest : MonoBehaviour
         for (var i = 0; i < BodyCount; i++)
         {
             var go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            go.transform.position = Random.insideUnitSphere * Radius + new Vector3(0, Radius, 0);
 
             var body = go.AddComponent<NewtonBody>();
             body.m_mass = 1.0f;
             body.m_world = world;
-            go.transform.position = new Vector3(Random.Range(-50, 50), 5, Random.Range(-50, 50));
 
             var coll = go.AddComponent<NewtonBoxCollider>();
             coll.m_size = new Vector3(1, 1, 1);
