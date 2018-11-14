@@ -41,7 +41,10 @@ class dNewtonJointSliderActuator : public dNewtonJoint
 
 	dFloat GetPosition() const;
 	void SetSpeed(dFloat speed);
+	dFloat GetMaxForce() const;
+	dFloat GetMinForce() const;
 	void SetMaxForce(dFloat force);
+	void SetMinForce(dFloat force);
 	void SetTargetPosition(dFloat position, dFloat minLimit, dFloat maxLimit);
 };
 

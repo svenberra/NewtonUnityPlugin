@@ -214,7 +214,6 @@ public class NewtonSliderActuator : NewtonJoint
         Gizmos.DrawRay(m_posit, localMatrix.GetColumn(0) * m_gizmoScale);
     }
 
-
     public float MaxForce
     {
         get
@@ -223,7 +222,7 @@ public class NewtonSliderActuator : NewtonJoint
         }
         set
         {
-            m_maxForce = value;
+            m_maxForce = Math.Abs (value);
             if (m_joint != null)
             {
                 dNewtonJointSliderActuator joint = (dNewtonJointSliderActuator)m_joint;
@@ -231,6 +230,24 @@ public class NewtonSliderActuator : NewtonJoint
             }
         }
     }
+
+    public float MinForce
+    {
+        get
+        {
+            return m_minForce;
+        }
+        set
+        {
+            m_minForce = -Math.Abs(value);
+            if (m_joint != null)
+            {
+                dNewtonJointSliderActuator joint = (dNewtonJointSliderActuator)m_joint;
+                joint.SetMinForce(m_minForce);
+            }
+        }
+    }
+
 
     public float Speed
     {
@@ -327,6 +344,7 @@ public class NewtonSliderActuator : NewtonJoint
     public Vector3 m_posit = Vector3.zero;
     public Vector3 m_rotation = Vector3.zero;
     public float m_maxForce = 10.0f;
+    public float m_minForce = -10.0f;
     public float m_speed = 1.0f;
     public float m_targetPosition = 0.0f;
     public float m_minPosition = -1.0f;

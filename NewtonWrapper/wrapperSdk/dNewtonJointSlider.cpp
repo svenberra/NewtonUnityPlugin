@@ -72,10 +72,28 @@ dFloat dNewtonJointSliderActuator::GetPosition() const
 	return joint->GetActuatorPosit();
 }
 
+dFloat dNewtonJointSliderActuator::GetMaxForce() const
+{
+	dCustomSliderActuator* const joint = (dCustomSliderActuator*)m_joint;
+	return joint->GetMaxForce();
+}
+
+dFloat dNewtonJointSliderActuator::GetMinForce() const
+{
+	dCustomSliderActuator* const joint = (dCustomSliderActuator*)m_joint;
+	return joint->GetMinForce();
+}
+
+void dNewtonJointSliderActuator::SetMinForce(dFloat force)
+{
+	dCustomSliderActuator* const joint = (dCustomSliderActuator*)m_joint;
+	joint->SetMinForce(dAbs(force));
+}
+
 void dNewtonJointSliderActuator::SetMaxForce(dFloat force)
 {
 	dCustomSliderActuator* const joint = (dCustomSliderActuator*)m_joint;
-	joint->SetMaxForcePower(dAbs(force));
+	joint->SetMaxForce(dAbs(force));
 }
 
 void dNewtonJointSliderActuator::SetSpeed(dFloat speed)

@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\RayCaster.cs" />
     <Compile Include="Assets\Scripts\RobotController.cs" />
     <Compile Include="Assets\Scripts\RopeComponent.cs" />
+    <Compile Include="Assets\Scripts\StressTest.cs" />
     <Compile Include="Assets\Scripts\VelocitySet.cs" />
     <Compile Include="Assets\Scripts\test01forcecontroller.cs" />
   </ItemGroup>
