@@ -198,6 +198,7 @@ public class NewtonSliderActuator : NewtonJoint
 
         Speed = m_speed;
         MaxForce = m_maxForce;
+        MinForce = m_minForce;
         TargetPosition = m_targetPosition;
     }
     
