@@ -72,6 +72,12 @@ dFloat dNewtonJointSliderActuator::GetPosition() const
 	return joint->GetActuatorPosit();
 }
 
+dFloat dNewtonJointSliderActuator::GetForce() const
+{
+	dCustomSliderActuator* const joint = (dCustomSliderActuator*)m_joint;
+	return joint->GetForce();
+}
+
 dFloat dNewtonJointSliderActuator::GetMaxForce() const
 {
 	dCustomSliderActuator* const joint = (dCustomSliderActuator*)m_joint;

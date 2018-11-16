@@ -249,6 +249,19 @@ public class NewtonSliderActuator : NewtonJoint
         }
     }
 
+    public float Force
+    {
+        get
+        {
+            float force = 0;
+            if (m_joint != null)
+            {
+                dNewtonJointSliderActuator joint = (dNewtonJointSliderActuator)m_joint;
+                force = joint.GetForce();
+            }
+            return force;
+        }
+    }
 
     public float Speed
     {
