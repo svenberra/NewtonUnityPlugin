@@ -87,7 +87,7 @@ void* dNewtonBody::GetInterpolatedRotation()
 	const dNewtonWorld* const world = (dNewtonWorld*) NewtonWorldGetUserData(NewtonBodyGetWorld(m_body));
 	ScopeLock scopelock(&m_lock);
 	m_interpolatedRotation = m_rotation0.Slerp(m_rotation1, world->m_interpotationParam);
-	return &m_interpolatedRotation.m_q0;
+	return &m_interpolatedRotation.m_x;
 }
 
 void* dNewtonBody::GetPosition()
@@ -97,13 +97,13 @@ void* dNewtonBody::GetPosition()
 
 void* dNewtonBody::GetRotation()
 {
-	return &m_rotation1.m_q0;
+	return &m_rotation1.m_x;
 }
 
 void dNewtonBody::SetPosition(dFloat x, dFloat y, dFloat z)
 {
 	dQuaternion rot;
-	NewtonBodyGetRotation(m_body, &rot.m_q0);
+	NewtonBodyGetRotation(m_body, &rot.m_x);
 	dMatrix mat(rot, dVector(x, y, z));
 	NewtonBodySetMatrix(m_body, &mat[0][0]);
 }
@@ -112,7 +112,7 @@ void dNewtonBody::SetRotation(dFloat x, dFloat y, dFloat z, dFloat w)
 {
 	dVector pos(0, 0, 0);
 	NewtonBodyGetPosition(m_body, &pos.m_x);
-	dMatrix mat(dQuaternion(x, y, z, w), pos);
+	dMatrix mat(dQuaternion(w, x, y, z), pos);
 	NewtonBodySetMatrix(m_body, &mat[0][0]);
 }
 
