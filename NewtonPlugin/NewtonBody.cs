@@ -57,7 +57,8 @@ public class NewtonBody: MonoBehaviour
         Marshal.Copy(positionPtr, m_positionPtr, 0, 3);
         Marshal.Copy(rotationPtr, m_rotationPtr, 0, 4);
         transform.position = new Vector3(m_positionPtr[0], m_positionPtr[1], m_positionPtr[2]);
-        transform.rotation = new Quaternion(m_rotationPtr[1], m_rotationPtr[2], m_rotationPtr[3], m_rotationPtr[0]);
+        //transform.rotation = new Quaternion(m_rotationPtr[1], m_rotationPtr[2], m_rotationPtr[3], m_rotationPtr[0]);
+        transform.rotation = new Quaternion(m_rotationPtr[0], m_rotationPtr[1], m_rotationPtr[2], m_rotationPtr[3]);
     }
 
     void OnDrawGizmosSelected()
@@ -192,7 +193,8 @@ public class NewtonBody: MonoBehaviour
             {
                 IntPtr rotationPtr = m_body.GetRotation();
                 Marshal.Copy(rotationPtr, m_rotationPtr, 0, 4);
-                return new Quaternion(m_rotationPtr[1], m_rotationPtr[2], m_rotationPtr[3], m_rotationPtr[0]);
+                //return new Quaternion(m_rotationPtr[1], m_rotationPtr[2], m_rotationPtr[3], m_rotationPtr[0]);
+                return new Quaternion(m_rotationPtr[0], m_rotationPtr[1], m_rotationPtr[2], m_rotationPtr[3]);
             }
             return Quaternion.identity;
         }
@@ -201,7 +203,8 @@ public class NewtonBody: MonoBehaviour
         {
             if (m_body != null)
             {
-                m_body.SetRotation(value.z, value.w, value.x, value.y);
+                //m_body.SetRotation(value.z, value.w, value.x, value.y);
+                m_body.SetRotation(value.x, value.y, value.z, value.w);
             }
         }
     }
