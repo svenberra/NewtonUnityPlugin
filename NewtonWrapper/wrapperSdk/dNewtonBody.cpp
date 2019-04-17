@@ -216,36 +216,59 @@ void dNewtonBody::CalculateBuoyancyForces(const void* plane, void* force, void* 
 
 	if (mass > 0.0f) {
 		dMatrix matrix;
-		dVector cog(0.0f);
-		dVector accelPerUnitMass(0.0f);
-		dVector torquePerUnitMass(0.0f);
-		const dVector gravity(0.0f, -9.8f, 0.0f, 0.0f);
+		dVector cenyterOfPreasure(0.0f);
 
 		NewtonBodyGetMatrix(m_body, &matrix[0][0]);
-		NewtonBodyGetCentreOfMass(m_body, &cog[0]);
-		cog = matrix.TransformVector(cog);
 		NewtonCollision* const collision = NewtonBodyGetCollision(m_body);
 
-		dFloat shapeVolume = NewtonConvexCollisionCalculateVolume(collision);
-		dFloat fluidDensity = 1.0f / (bodyDensity * shapeVolume);
-		dFloat viscosity = 0.995f;
+		// calculate the volume and center of mass of the shape under the water surface 
+		dFloat volume = NewtonConvexCollisionCalculateBuoyancyVolume(collision, &matrix[0][0], (dFloat*)plane, &cenyterOfPreasure[0]);
+		if (volume > 0.0f) {
+			// if some part of the shape si under water, calculate the buoyancy force base on 
+			// Archimedes's buoyancy principle, which is the buoyancy force is equal to the 
+			// weight of the fluid displaced by the volume under water. 
+			dVector cog(0.0f);
+			const dFloat viscousDrag = 0.997f;
+			//const dFloat solidDentityFactor = 1.35f;
 
-		NewtonConvexCollisionCalculateBuoyancyAcceleration(collision, &matrix[0][0], &cog[0], &gravity[0], (float*)plane, fluidDensity, viscosity, &accelPerUnitMass[0], &torquePerUnitMass[0]);
+			// Get the body density form the collision material.
+			NewtonCollisionMaterial collisionMaterial;
+			NewtonCollisionGetMaterial(collision, &collisionMaterial);
+			const dFloat solidDentityFactor = collisionMaterial.m_userParam[0];
 
-		dVector finalForce(accelPerUnitMass.Scale(mass));
-		dVector finalTorque(torquePerUnitMass.Scale(mass));
+			// calculate the ratio of volumes an use it calculate a density equivalent
+			dFloat shapeVolume = NewtonConvexCollisionCalculateVolume(collision);
+			dFloat density = mass * solidDentityFactor / shapeVolume;
 
-		dVector omega(0.0f);
-		NewtonBodyGetOmega(m_body, &omega[0]);
-		omega = omega.Scale(viscosity);
-		NewtonBodySetOmega(m_body, &omega[0]);
+			dFloat displacedMass = density * volume;
+			NewtonBodyGetCentreOfMass(m_body, &cog[0]);
+			cenyterOfPreasure -= matrix.TransformVector(cog);
 
-		((float*)force)[0] = finalForce.m_x ;
-		((float*)force)[1] = finalForce.m_y ;
-		((float*)force)[2] = finalForce.m_z ;
-		((float*)torque)[0] = finalTorque.m_x;
-		((float*)torque)[1] = finalTorque.m_y;
-		((float*)torque)[2] = finalTorque.m_z;
+			// now with the mass and center of mass of the volume under water, calculate buoyancy force and torque
+			dFloat DEMO_GRAVITY = 9.8f;
+			dVector finalForce(dFloat(0.0f), dFloat(-DEMO_GRAVITY * displacedMass), dFloat(0.0f), dFloat(0.0f));
+			dVector finalTorque(cenyterOfPreasure.CrossProduct(finalForce));
+
+			//NewtonBodyAddForce(visitor, &force[0]);
+			//NewtonBodyAddTorque(visitor, &torque[0]);
+
+			// apply a fake viscous drag to damp the under water motion 
+			dVector omega(0.0f);
+			dVector veloc(0.0f);
+			NewtonBodyGetOmega(m_body, &omega[0]);
+			NewtonBodyGetVelocity(m_body, &veloc[0]);
+			omega = omega.Scale(viscousDrag);
+			veloc = veloc.Scale(viscousDrag);
+			NewtonBodySetOmega(m_body, &omega[0]);
+			NewtonBodySetVelocity(m_body, &veloc[0]);
+
+			((float*)force)[0] = finalForce.m_x;
+			((float*)force)[1] = finalForce.m_y;
+			((float*)force)[2] = finalForce.m_z;
+			((float*)torque)[0] = finalTorque.m_x;
+			((float*)torque)[1] = finalTorque.m_y;
+			((float*)torque)[2] = finalTorque.m_z;
+		}
 	}
 }
 
