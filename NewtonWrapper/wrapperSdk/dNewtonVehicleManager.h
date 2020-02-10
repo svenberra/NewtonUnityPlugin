@@ -26,7 +26,8 @@
 
 class dNewtonWorld;
 
-class dNewtonVehicleManager: public dCustomVehicleControllerManager
+//class dNewtonVehicleManager: public dCustomVehicleControllerManager
+class dNewtonVehicleManager
 {
 	public:
 	dNewtonVehicleManager(NewtonWorld* const world, int materialsCount, int* const materialList);

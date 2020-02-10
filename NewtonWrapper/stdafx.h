@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <dgTypes.h>
 #include <Newton.h>
 #include <dMathDefines.h>
 #include <dVector.h>
@@ -37,7 +38,7 @@
 #include <dCustomSlidingContact.h>
 #include <dCustomSliderActuator.h>
 #include <dCustomDoubleHingeActuator.h>
-#include <dCustomVehicleControllerManager.h>
+//#include <dCustomVehicleControllerManager.h>
 
 #define RAD_TO_DEGREES	(180.0f / 3.141592f)
 #define DEGREES_TO_RAD	(3.141592f / 180.0f)

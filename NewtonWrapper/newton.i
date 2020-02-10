@@ -148,9 +148,9 @@
 %include "dVector.h"
 %include "dMatrix.h"
 %include "dQuaternion.h"
-%include "dLinearAlgebra.h"
+//%include "dLinearAlgebra.h"
 
-%include "dCustomAlloc.h"
+//%include "dCustomAlloc.h"
 %include "dNewtonBody.h"
 %include "dNewtonWorld.h"
 %include "dNewtonJoint.h"

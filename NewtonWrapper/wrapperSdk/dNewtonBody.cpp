@@ -207,6 +207,8 @@ void dNewtonBody::SetCenterOfMass(float com_x, float com_y, float com_z, float I
 
 void dNewtonBody::CalculateBuoyancyForces(const void* plane, void* force, void* torque, float bodyDensity)
 {
+	dAssert(0);
+/*
 	dFloat Ixx;
 	dFloat Iyy;
 	dFloat Izz;
@@ -270,6 +272,7 @@ void dNewtonBody::CalculateBuoyancyForces(const void* plane, void* force, void* 
 			((float*)torque)[2] = finalTorque.m_z;
 		}
 	}
+*/
 }
 
 void dNewtonBody::OnBodyTransform(const dFloat* const matrixPtr, int threadIndex)

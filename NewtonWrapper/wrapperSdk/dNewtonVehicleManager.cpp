@@ -23,8 +23,9 @@
 #include "dNewtonVehicleManager.h"
 
 dNewtonVehicleManager::dNewtonVehicleManager(NewtonWorld* const world, int materialsCount, int* const materialList)
-	:dCustomVehicleControllerManager(world, materialsCount, materialList)
+//	:dCustomVehicleControllerManager(world, materialsCount, materialList)
 {
+	dAssert(0);
 }
 
 dNewtonVehicleManager::~dNewtonVehicleManager()

@@ -82,10 +82,13 @@ dNewtonWorld::~dNewtonWorld()
 	NewtonWaitForUpdateToFinish (m_world);
 
 	if (m_vehicleManager) {
+		dAssert(0);
+/*
 		while (m_vehicleManager->GetFirst()) {
 			dCustomControllerManager<dCustomVehicleController>::dListNode* const node = m_vehicleManager->GetFirst();
 			m_vehicleManager->DestroyController(&node->GetInfo());
 		}
+*/
 	}
 	m_vehicleManager = NULL;
 

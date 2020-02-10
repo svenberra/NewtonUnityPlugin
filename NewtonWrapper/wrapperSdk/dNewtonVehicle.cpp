@@ -24,10 +24,12 @@
 #include "dNewtonVehicle.h"
 #include "dNewtonVehicleManager.h"
 
-
+#if 0
 dNewtonVehicle::dNewtonVehicle(dNewtonWorld* const world, dNewtonCollision* const collision, dMatrix matrix, dFloat mass)
-	:dNewtonDynamicBody(world, collision, matrix, mass)
+//	:dNewtonDynamicBody(world, collision, matrix, mass)
 {
+	dAssert(0);
+/*
 	dNewtonVehicleManager* const vehicleManager = world->GetVehicleManager();
 
 	dMatrix vehicleFrame(dGetIdentityMatrix());
@@ -37,15 +39,15 @@ dNewtonVehicle::dNewtonVehicle(dNewtonWorld* const world, dNewtonCollision* cons
 //	m_controller = vehicleManager->CreateVehicle(m_body, vehicleFrame, forceCallback, this, gravidyMag);
 	dAssert(0);
 	m_controller = NULL;
+*/
 }
 
 dNewtonVehicle::~dNewtonVehicle()
 {
-	dNewtonVehicleManager* const vehicleManager = (dNewtonVehicleManager*) m_controller->GetManager();
-	vehicleManager->DestroyController(m_controller);
+	dAssert(0);
+//	dNewtonVehicleManager* const vehicleManager = (dNewtonVehicleManager*) m_controller->GetManager();
+//	vehicleManager->DestroyController(m_controller);
 }
-
-
 
 dNewtonWheel::dNewtonWheel(dNewtonVehicle* const owner, dTireData tireData)
 	:dAlloc()
@@ -62,3 +64,4 @@ void* dNewtonWheel::GetUserData()
 {
 	return m_owner;
 }
+#endif

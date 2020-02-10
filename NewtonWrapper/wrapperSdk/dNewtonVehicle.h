@@ -25,6 +25,7 @@
 #include "dAlloc.h"
 #include "dNewtonBody.h"
 
+#if 0
 class dNewtonVehicle;
 
 class dTireData
@@ -57,8 +58,8 @@ class dNewtonVehicle: public dNewtonDynamicBody
 
 //	dCustomVehicleController::dBodyPartTire* AddTire(dTireData tire);
 
-	dCustomVehicleController* m_controller;
+//	dCustomVehicleController* m_controller;
 };
-
+#endif
 
 #endif
