@@ -24,9 +24,9 @@
 #include "dNewtonVehicle.h"
 #include "dNewtonVehicleManager.h"
 
-#if 0
+
 dNewtonVehicle::dNewtonVehicle(dNewtonWorld* const world, dNewtonCollision* const collision, dMatrix matrix, dFloat mass)
-//	:dNewtonDynamicBody(world, collision, matrix, mass)
+	:dNewtonDynamicBody(world, collision, matrix, mass)
 {
 	dAssert(0);
 /*
@@ -64,4 +64,3 @@ void* dNewtonWheel::GetUserData()
 {
 	return m_owner;
 }
-#endif
