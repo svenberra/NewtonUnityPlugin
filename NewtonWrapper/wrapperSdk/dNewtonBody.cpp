@@ -112,7 +112,8 @@ void dNewtonBody::SetRotation(dFloat x, dFloat y, dFloat z, dFloat w)
 {
 	dVector pos(0, 0, 0);
 	NewtonBodyGetPosition(m_body, &pos.m_x);
-	dMatrix mat(dQuaternion(w, x, y, z), pos);
+	//dMatrix mat(dQuaternion(w, x, y, z), pos);
+	dMatrix mat(dQuaternion(x, y, z, w), pos);
 	NewtonBodySetMatrix(m_body, &mat[0][0]);
 }
 
